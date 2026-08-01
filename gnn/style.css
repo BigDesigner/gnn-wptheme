@@ -1,0 +1,28 @@
+/*
+Theme Name: GNN
+Theme URI: https://gnn.example/
+Author: GNN Technologies
+Author URI: https://gnn.example/
+Description: Dark-by-default corporate IT / cybersecurity theme with light mode, full-screen hero slider, mega menu, WooCommerce support, Elementor compatibility and Customizer-managed accent color.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: gnn
+Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template, sticky-post
+
+GNN WordPress Theme, Copyright (C) 2026 GNN Technologies
+GNN is distributed under the terms of the GNU GPL v2 or later.
+
+Bundled fonts: Manrope and Space Grotesk, both licensed under the
+SIL Open Font License 1.1 (see LICENSE.md).
+*/
+
+/*
+All theme styles are enqueued from assets/css/ (see functions.php):
+- assets/css/main.css        core theme styles
+- assets/css/woocommerce.css WooCommerce styles (loaded only when WooCommerce is active)
+This file intentionally contains only the theme header.
+*/

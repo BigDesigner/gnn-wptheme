@@ -1,0 +1,56 @@
+/* GNN theme — block editor styles (dark tokens so the editor matches the front end). */
+
+@font-face {
+	font-family: 'Space Grotesk';
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+	src: url('../fonts/space-grotesk-latin.woff2') format('woff2');
+}
+@font-face {
+	font-family: 'Manrope';
+	font-style: normal;
+	font-weight: 200 800;
+	font-display: swap;
+	src: url('../fonts/manrope-latin.woff2') format('woff2');
+}
+
+:root {
+	--bg: #0a0a0b;
+	--bg2: #121214;
+	--bg3: #1b1b1f;
+	--fg: #f5f5f4;
+	--fg2: #9d9da4;
+	--line: #232328;
+	--accent: #34d399;
+	--accent-ink: #062416;
+	--accent-text: var(--accent);
+}
+
+.editor-styles-wrapper {
+	background: var(--bg);
+	color: var(--fg);
+	font-family: 'Manrope', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	line-height: 1.85;
+}
+.editor-styles-wrapper h1, .editor-styles-wrapper h2, .editor-styles-wrapper h3,
+.editor-styles-wrapper h4, .editor-styles-wrapper h5, .editor-styles-wrapper h6,
+.editor-styles-wrapper .editor-post-title__input {
+	font-family: 'Space Grotesk', sans-serif;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--fg);
+}
+.editor-styles-wrapper h2 { font-size: 26px; }
+.editor-styles-wrapper a { color: var(--accent-text); }
+.editor-styles-wrapper blockquote {
+	border-left: 3px solid var(--accent);
+	padding: 8px 0 8px 24px;
+	font-family: 'Space Grotesk', sans-serif;
+	font-size: 21px;
+	line-height: 1.5;
+	font-weight: 500;
+}
+.editor-styles-wrapper img { border-radius: 16px; }
+.editor-styles-wrapper ::selection { background: var(--accent); color: var(--accent-ink); }
