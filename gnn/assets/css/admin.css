@@ -1,25 +1,173 @@
 /* GNN Panel — admin screen styles (loaded only on the panel page). */
 
-.gnn-panel { max-width: 860px; }
-.gnn-panel h1 { display: flex; align-items: center; gap: 10px; }
+.gnn-panel {
+	--gnn-admin-accent: #6366f1;
+	--gnn-admin-accent-ink: #fff;
+	--gnn-admin-ink: #1e1b2e;
+	--gnn-admin-muted: #6b7280;
+	--gnn-admin-line: #e5e7eb;
+	--gnn-admin-bg: #fff;
+	max-width: 1100px;
+}
 
-.gnn-tab { display: none; background: #fff; border: 1px solid #dcdcde; border-top: 0; padding: 4px 24px 24px; }
+/* ---------------------------------------------------------------------------
+ * Header
+ * ------------------------------------------------------------------------- */
+.gnn-panel__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	background: var(--gnn-admin-bg);
+	border: 1px solid var(--gnn-admin-line);
+	border-radius: 14px;
+	padding: 20px 24px;
+	margin: 20px 0 16px;
+}
+.gnn-panel__heading { display: flex; align-items: center; gap: 14px; }
+.gnn-panel__icon {
+	display: flex; align-items: center; justify-content: center;
+	width: 44px; height: 44px; border-radius: 12px;
+	background: var(--gnn-admin-accent); color: var(--gnn-admin-accent-ink);
+	font-size: 22px;
+}
+.gnn-panel__icon:before { margin: 0; }
+.gnn-panel h1 {
+	margin: 0; padding: 0; font-size: 20px; font-weight: 700; color: var(--gnn-admin-ink); line-height: 1.3;
+}
+.gnn-panel__subtitle { margin: 2px 0 0; color: var(--gnn-admin-muted); font-size: 13px; }
+.gnn-panel__badge {
+	flex-shrink: 0;
+	background: color-mix(in srgb, var(--gnn-admin-accent) 12%, #fff);
+	color: var(--gnn-admin-accent);
+	font-weight: 700; font-size: 12px;
+	padding: 6px 14px; border-radius: 999px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Stat cards
+ * ------------------------------------------------------------------------- */
+.gnn-stats {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 16px;
+	margin-bottom: 20px;
+}
+.gnn-stat {
+	display: flex; align-items: center; gap: 14px;
+	background: var(--gnn-admin-bg); border: 1px solid var(--gnn-admin-line); border-radius: 14px;
+	padding: 18px 20px;
+}
+.gnn-stat__icon {
+	display: flex; align-items: center; justify-content: center;
+	width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+	background: color-mix(in srgb, var(--gnn-admin-accent) 12%, #fff);
+	color: var(--gnn-admin-accent); font-size: 18px;
+}
+.gnn-stat__icon:before { margin: 0; }
+.gnn-stat__value { display: flex; align-items: center; gap: 6px; font-size: 17px; font-weight: 700; color: var(--gnn-admin-ink); }
+.gnn-stat__label { display: block; font-size: 12px; color: var(--gnn-admin-muted); margin-top: 2px; }
+.gnn-swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid rgba(0,0,0,.1); }
+
+/* ---------------------------------------------------------------------------
+ * Tab nav — modern pill bar
+ * ------------------------------------------------------------------------- */
+.gnn-tabs.nav-tab-wrapper {
+	border-bottom: 0; margin: 0 0 16px; padding: 0;
+	display: flex; flex-wrap: wrap; gap: 8px;
+}
+.gnn-tabs .nav-tab {
+	display: inline-flex; align-items: center; gap: 6px;
+	background: var(--gnn-admin-bg); border: 1px solid var(--gnn-admin-line);
+	border-radius: 999px; margin: 0; padding: 8px 16px;
+	font-size: 13px; font-weight: 600; color: var(--gnn-admin-muted);
+	box-shadow: none; transition: background .15s, color .15s, border-color .15s;
+}
+.gnn-tabs .nav-tab .dashicons { font-size: 16px; width: 16px; height: 16px; }
+.gnn-tabs .nav-tab:hover { color: var(--gnn-admin-ink); border-color: var(--gnn-admin-accent); }
+.gnn-tabs .nav-tab.nav-tab-active,
+.gnn-tabs .nav-tab.nav-tab-active:hover {
+	background: var(--gnn-admin-accent); border-color: var(--gnn-admin-accent); color: var(--gnn-admin-accent-ink);
+}
+
+/* ---------------------------------------------------------------------------
+ * Tab panels — modern cards
+ * ------------------------------------------------------------------------- */
+.gnn-tab {
+	display: none; background: var(--gnn-admin-bg);
+	border: 1px solid var(--gnn-admin-line); border-radius: 14px;
+	padding: 26px 28px 28px;
+}
 .gnn-tab.is-active { display: block; }
 
-.gnn-field { margin: 18px 0; }
-.gnn-field__label { display: block; font-weight: 600; margin-bottom: 6px; }
-.gnn-field--check { display: block; margin: 12px 0; font-weight: 500; }
+.gnn-tab h2 {
+	display: flex; align-items: center; gap: 10px;
+	font-size: 16px; font-weight: 700; color: var(--gnn-admin-ink);
+	margin: 0 0 20px; padding: 0 0 16px; border-bottom: 1px solid var(--gnn-admin-line);
+}
+.gnn-tab h2 .dashicons { color: var(--gnn-admin-accent); font-size: 20px; width: 20px; height: 20px; }
+
+.gnn-tab h3 {
+	font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+	color: var(--gnn-admin-accent); margin: 28px 0 4px; padding-top: 20px; border-top: 1px solid var(--gnn-admin-line);
+}
+.gnn-tab > h3:first-of-type { margin-top: 8px; }
+
+/* ---------------------------------------------------------------------------
+ * Fields
+ * ------------------------------------------------------------------------- */
+.gnn-field { margin: 16px 0; max-width: 640px; }
+.gnn-field__label { display: block; font-weight: 600; font-size: 13px; color: var(--gnn-admin-ink); margin-bottom: 6px; }
+.gnn-field--check { display: flex; align-items: center; margin: 12px 0; font-weight: 500; max-width: none; }
 .gnn-field label + label { margin-left: 16px; }
-.gnn-field input[type="color"] { width: 64px; height: 36px; padding: 2px; cursor: pointer; }
+.gnn-field .description { color: var(--gnn-admin-muted); font-size: 12px; margin-top: 6px; }
+
+.gnn-field input[type="text"],
+.gnn-field input[type="email"],
+.gnn-field input[type="number"],
+.gnn-field select,
+.gnn-field textarea {
+	border: 1px solid var(--gnn-admin-line); border-radius: 8px;
+	padding: 8px 12px; font-size: 13px; box-shadow: none;
+}
+.gnn-field input[type="text"]:focus,
+.gnn-field input[type="email"]:focus,
+.gnn-field input[type="number"]:focus,
+.gnn-field select:focus,
+.gnn-field textarea:focus {
+	border-color: var(--gnn-admin-accent);
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--gnn-admin-accent) 18%, transparent);
+}
+.gnn-field input[type="checkbox"],
+.gnn-field input[type="radio"] {
+	accent-color: var(--gnn-admin-accent); width: 16px; height: 16px; margin: 0 6px 0 0;
+}
+.gnn-field input[type="color"] { width: 56px; height: 34px; padding: 2px; border-radius: 8px; cursor: pointer; }
 
 .gnn-media-box { margin: 6px 0 10px; }
 .gnn-media-box:empty { display: none; }
 
-.gnn-group-note { max-width: 640px; margin: 8px 0 16px; }
+.gnn-group-note { max-width: 640px; margin: 8px 0 16px; color: var(--gnn-admin-muted); font-size: 13px; }
 
-/* Slider admin */
-.gnn-slider-settings { display: flex; gap: 32px; align-items: flex-end; background: #fff; border: 1px solid #dcdcde; padding: 16px 24px; margin-bottom: 20px; }
-.gnn-slide-row { background: #fff; border: 1px solid #dcdcde; border-left: 4px solid #2271b1; padding: 12px 24px 20px; margin-bottom: 16px; }
+/* ---------------------------------------------------------------------------
+ * Buttons
+ * ------------------------------------------------------------------------- */
+.gnn-panel .button {
+	border-radius: 8px; font-weight: 600; box-shadow: none; text-shadow: none;
+}
+.gnn-panel .button-primary {
+	background: var(--gnn-admin-accent); border-color: var(--gnn-admin-accent); color: var(--gnn-admin-accent-ink);
+}
+.gnn-panel .button-primary:hover,
+.gnn-panel .button-primary:focus {
+	background: color-mix(in srgb, var(--gnn-admin-accent) 88%, #000); border-color: color-mix(in srgb, var(--gnn-admin-accent) 88%, #000);
+}
+
+/* ---------------------------------------------------------------------------
+ * Slider admin
+ * ------------------------------------------------------------------------- */
+.gnn-slider-settings { display: flex; gap: 32px; align-items: flex-end; background: #fff; border: 1px solid var(--gnn-admin-line); border-radius: 14px; padding: 16px 24px; margin-bottom: 20px; }
+.gnn-slide-row { background: #fff; border: 1px solid var(--gnn-admin-line); border-left: 4px solid #6366f1; border-radius: 10px; padding: 12px 24px 20px; margin-bottom: 16px; }
 .gnn-slide-row__head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f1; padding-bottom: 8px; margin-bottom: 12px; }
 .gnn-slide-row__num { font-weight: 700; }
 .gnn-slide-remove { color: #b32d2e; text-decoration: none; }
@@ -27,4 +175,4 @@
 @media (max-width: 782px) { .gnn-slide-row__grid, .gnn-slider-settings { grid-template-columns: 1fr; flex-direction: column; align-items: stretch; } }
 .gnn-logo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; }
 @media (max-width: 782px) { .gnn-logo-grid { grid-template-columns: 1fr; } }
-.gnn-media-preview { max-width: 220px; height: auto; border: 1px solid #dcdcde; border-radius: 4px; padding: 6px; background: repeating-conic-gradient(#f0f0f1 0% 25%, #fff 0% 50%) 50% / 20px 20px; }
+.gnn-media-preview { max-width: 220px; height: auto; border: 1px solid var(--gnn-admin-line); border-radius: 8px; padding: 6px; background: repeating-conic-gradient(#f0f0f1 0% 25%, #fff 0% 50%) 50% / 20px 20px; }

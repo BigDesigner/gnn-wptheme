@@ -56,6 +56,8 @@ function gnn_option_defaults() {
 		'footer_menu_align'      => 'left',
 		// Blog / shop.
 		'sidebar_position'       => 'right',
+		'content_top_padding'    => 50,
+		'content_bottom_padding' => 64,
 		'excerpt_length'         => 24,
 		'shop_columns'           => 4,
 		'shop_per_page'          => 8,
@@ -86,6 +88,9 @@ function gnn_option_defaults() {
 		'gtm_id'                 => '',
 		'head_html'              => '',
 		'body_html'              => '',
+		// Icons.
+		'google_material_icons'  => 1,
+		'material_icons_style'   => 'outlined', // outlined | rounded | sharp | filled.
 		// Performance.
 		'disable_emoji'          => 1,
 		'disable_oembed'         => 1,
@@ -435,3 +440,56 @@ function gnn_font_preload() {
 	}
 }
 add_action( 'wp_head', 'gnn_font_preload', 2 );
+
+// ----- Google Material Symbols / Icons ----------------------------------------------------------
+
+/**
+ * Map a panel icon style to its Google font family. "Filled" isn't a
+ * separate Material Symbols family — it's the Outlined family with the
+ * FILL variable axis set to 1 (see the .material-symbols-filled CSS rule).
+ *
+ * @param string $style One of: outlined, rounded, sharp, filled.
+ * @return string Google Fonts family slug (URL-encoded).
+ */
+function gnn_material_icons_family( $style ) {
+	$map = array(
+		'outlined' => 'Material+Symbols+Outlined',
+		'rounded'  => 'Material+Symbols+Rounded',
+		'sharp'    => 'Material+Symbols+Sharp',
+		'filled'   => 'Material+Symbols+Outlined',
+	);
+	return $map[ $style ] ?? $map['outlined'];
+}
+
+/**
+ * Enqueue the Google Material Symbols stylesheet when enabled.
+ */
+function gnn_material_icons_assets() {
+	if ( ! gnn_option( 'google_material_icons' ) ) {
+		return;
+	}
+	$style  = (string) gnn_option( 'material_icons_style' );
+	$style  = in_array( $style, array( 'outlined', 'rounded', 'sharp', 'filled' ), true ) ? $style : 'outlined';
+	$family = gnn_material_icons_family( $style );
+	$fill   = 'filled' === $style ? '1' : '0';
+
+	wp_enqueue_style(
+		'gnn-material-symbols',
+		esc_url_raw( "https://fonts.googleapis.com/css2?family={$family}:opsz,wght,FILL,GRAD@20..48,400,{$fill},0&display=block" ),
+		array(),
+		null // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- external CDN URL; a ?ver= query string must not be appended to it.
+	);
+}
+add_action( 'wp_enqueue_scripts', 'gnn_material_icons_assets' );
+
+/**
+ * Preconnect to the Google Fonts hosts when Material Symbols is enabled.
+ */
+function gnn_material_icons_preconnect() {
+	if ( ! gnn_option( 'google_material_icons' ) ) {
+		return;
+	}
+	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
+	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
+}
+add_action( 'wp_head', 'gnn_material_icons_preconnect', 1 );

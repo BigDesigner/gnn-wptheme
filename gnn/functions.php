@@ -106,9 +106,14 @@ function gnn_scripts() {
 	// immediately after gnn-main in the DOM, so it always wins the cascade
 	// over main.css's own :root default — a plain <style> tag in wp_head
 	// (even at priority 0) can print BEFORE main.css and get overridden by it.
-	$gnn_accent = sanitize_hex_color( get_theme_mod( 'gnn_accent_color', '#34d399' ) );
-	$gnn_accent = $gnn_accent ? $gnn_accent : '#34d399';
-	wp_add_inline_style( 'gnn-main', ':root{--accent:' . esc_html( $gnn_accent ) . ';}' );
+	$gnn_accent  = sanitize_hex_color( get_theme_mod( 'gnn_accent_color', '#34d399' ) );
+	$gnn_accent  = $gnn_accent ? $gnn_accent : '#34d399';
+	$gnn_top_pad = max( 0, min( 200, (int) gnn_option( 'content_top_padding' ) ) );
+	$gnn_bot_pad = max( 0, min( 300, (int) gnn_option( 'content_bottom_padding' ) ) );
+	wp_add_inline_style(
+		'gnn-main',
+		':root{--accent:' . esc_html( $gnn_accent ) . ';--gnn-content-top-pad:' . $gnn_top_pad . 'px;--gnn-content-bottom-pad:' . $gnn_bot_pad . 'px;}'
+	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
 		wp_enqueue_style( 'gnn-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'gnn-main' ), GNN_VERSION );
@@ -185,6 +190,7 @@ add_action( 'wp_head', 'gnn_pingback_header' );
 require get_template_directory() . '/inc/options.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-panel.php';
+	require get_template_directory() . '/inc/updater.php';
 }
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/frontend.php';
