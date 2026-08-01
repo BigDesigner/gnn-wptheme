@@ -20,6 +20,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Featured image banner: full-bleed under the header, above the sidebar/
+ * content grid entirely (never squeezed into one column). Uses the queried
+ * object directly since it runs before the_post()/setup_postdata() — WP
+ * already points $post at the singular queried object by this point.
+ *
+ * @param string $layout One of: full, boxed, right, left.
+ */
+function gnn_page_featured_image( $layout ) {
+	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		return;
+	}
+	printf( '<div class="gnn-page-thumb gnn-page-thumb--%s">', esc_attr( $layout ) );
+	the_post_thumbnail( 'gnn-cover', array( 'class' => 'gnn-page-thumb__img' ) );
+	echo '</div>';
+}
+
+/**
  * Render a standard page in the given layout.
  *
  * @param string $layout One of: full, boxed, right, left.
@@ -28,6 +45,8 @@ function gnn_render_page( $layout = 'full' ) {
 	$layout = in_array( $layout, array( 'full', 'boxed', 'right', 'left' ), true ) ? $layout : 'full';
 
 	get_header();
+
+	gnn_page_featured_image( $layout );
 
 	// A sidebar only appears for the sidebar layouts, and never on the
 	// WooCommerce utility pages (cart/checkout/account) which bring their own.
@@ -82,7 +101,6 @@ function gnn_translate_page_templates( $templates ) {
 		'page-templates/tpl-right-sidebar.php' => __( 'Right Sidebar', 'gnn' ),
 		'page-templates/tpl-left-sidebar.php'  => __( 'Left Sidebar', 'gnn' ),
 		'page-templates/tpl-blank.php'         => __( 'Blank Canvas (no header/footer)', 'gnn' ),
-		'page-templates/page-contact.php'      => __( 'Contact', 'gnn' ),
 	);
 	foreach ( $labels as $file => $label ) {
 		if ( isset( $templates[ $file ] ) ) {

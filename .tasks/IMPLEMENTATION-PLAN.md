@@ -43,7 +43,7 @@
 - **Teknik Detaylar:**
   - **Ayar Adı:** `content_top_padding`
   - **Varsayılan Değer:** `50` (px)
-  - **Kapsam / Aralık:** `0` ile `200` (px) arası.
+  - **Kapsam / Aralık:** `0` ile `200` (px) arası (`absint()` ile doğrulanacak).
   - **CSS Değişkeni:** `--gnn-content-top-pad: 50px;` (Theme panel/options tarafında head'e inline stil olarak eklenir).
 - **Çalışma Mantığı & Boşluk Sıralaması:**
   - **Öne çıkarılan görsel YOKSA:** Bu boşluk Header ile sayfa başlığı/breadcrumb/içerik (ve Sidebar) arasında uygulanır.
@@ -57,7 +57,7 @@
   - **Ayar Adı:** `content_bottom_padding`
   - **Konum:** GNN Tema Yönetim Paneli -> `Pages Layout` sekmesi.
   - **Varsayılan Değer:** `64` (px)
-  - **Kapsam / Aralık:** `0` ile `300` (px) arası.
+  - **Kapsam / Aralık:** `0` ile `300` (px) arası (`absint()` ile doğrulanacak).
   - **CSS Değişkeni:** `--gnn-content-bottom-pad: 64px;`
 - **Çalışma Mantığı:**
   - Sayfa içeriğinin bittiği nokta ile Footer başlangıcı/`site-footer__widgets` arasındaki mesafe bu değere bağlanır.
@@ -69,9 +69,9 @@
 - **Teknik Detaylar:**
   - **GNN Tema Yönetim Paneli -> Icons Sekmesi:**
     - **Google Material Icons Aktif Etme:** `google_material_icons` (Açık/Kapalı toggle, varsayılan: Aktif).
-    - **Stil Seçimi:** `material_icons_style` (`outlined`, `rounded`, `sharp`, `filled`).
+    - **Stil Seçimi:** `material_icons_style` (`outlined`, `rounded`, `sharp`, `filled` whitelisting).
   - **Front-end Yükleme:**
-    - `functions.php` / `options.php` içerisinden Google Fonts CDN üzerinden `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...` bağlantısı performanslı (preconnect ile) şekilde önbelleğe alınarak yüklenecek.
+    - `functions.php` / `options.php` içerisinden Google Fonts CDN üzerinden `https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined...` bağlantısı `esc_url()` ve `preconnect` desteği ile performanslı şekilde yüklenecek.
   - **Kullanım Kolaylığı & CSS:**
     - `<span class="material-symbols-outlined">search</span>` veya `<i class="material-symbols-outlined">home</i>` etiketlerinin temadaki tüm içerik, buton ve menülerde tam boyutsal ve dikey uyum (`vertical-align: middle; display: inline-flex;`) içerisinde çalışması sağlanacak.
 
@@ -87,6 +87,17 @@
 6. **[MODIFY] `gnn/inc/page-meta.php`**
 7. **[MODIFY] `gnn/template-parts/content-page.php`** & **`gnn/single.php`**
 8. **[MODIFY] `gnn/assets/css/main.css`** (Material Symbols ikon uyum CSS kuralları)
+
+---
+
+## 🔒 Audit Notes & Security Hardening (Sentinel Plan Audit)
+
+Plan, projenin güvenlik ve mimari sözleşmelerine (`.specs/boundary-conditions.md` ve `.specs/constitution.md`) göre incelenmiş ve şu güvenlik kontrolleri plana sıkı bir şekilde eklenmiştir:
+
+1. **Numeric Range Sanitization:** `content_top_padding` (0-200px) ve `content_bottom_padding` (0-300px) ayarları `gnn_options_sanitize()` içinde `absint()` ve `min/max` aralık filtresinden geçirilecektir.
+2. **Whitelist Sanitization:** `material_icons_style` değeri strictly whitelisted array (`['outlined', 'rounded', 'sharp', 'filled']`) ile doğrulanacaktır.
+3. **URL Escaping:** Google Fonts CDN linki `wp_enqueue_style()` çağrısında `esc_url()` ile sarmalanacak, `wp_head` üzerinde `preconnect` etiketleri güvenli basılacaktır.
+4. **Elementor Meta Escaping:** `get_post_meta()` değerleri doğrudan okunurken boolean dönüşümüne tabi tutulacak, XSS riski engellenecektir.
 
 ---
 

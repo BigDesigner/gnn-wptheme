@@ -111,10 +111,22 @@ add_action( 'save_post', 'gnn_save_page_meta' );
 /**
  * Whether the current singular entry hides its title.
  *
+ * Also honors Elementor's own Document Settings → Hide Title toggle
+ * (`_elementor_page_settings['hide_title']`), so pages built in Elementor
+ * don't end up with the theme's H1 still showing above Elementor content.
+ *
  * @return bool
  */
 function gnn_hide_title() {
-	return is_singular() && '1' === get_post_meta( get_the_ID(), '_gnn_hide_title', true );
+	if ( ! is_singular() ) {
+		return false;
+	}
+	$post_id = get_the_ID();
+	if ( '1' === get_post_meta( $post_id, '_gnn_hide_title', true ) ) {
+		return true;
+	}
+	$elementor_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
+	return is_array( $elementor_settings ) && ! empty( $elementor_settings['hide_title'] ) && 'yes' === $elementor_settings['hide_title'];
 }
 
 /**
