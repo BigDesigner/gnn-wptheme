@@ -4,7 +4,7 @@
 - **Project Name:** GNN WordPress Theme (`gnn-wptheme`)
 - **Repository URL:** https://github.com/BigDesigner/gnn-wptheme.git
 - **Type:** WordPress Classic PHP Theme (Dark-by-default, corporate IT / cybersecurity focus)
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Ecosystem:** PHP 7.4+, WordPress 6.0+, Elementor Free API, WooCommerce
 
 ---

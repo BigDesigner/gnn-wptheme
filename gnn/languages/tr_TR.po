@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.0.0\n"
+"Project-Id-Version: GNN 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 23:09+0000\n"
-"PO-Revision-Date: 2026-08-01 23:09+0000\n"
+"POT-Creation-Date: 2026-08-01 23:33+0000\n"
+"PO-Revision-Date: 2026-08-01 23:33+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -308,6 +308,9 @@ msgstr "Ve diğerleri"
 msgid "Events analyzed daily"
 msgstr "Günlük analiz edilen olay"
 
+msgid "Every theme color lives here. Type a hex code directly, or use the small swatch to pick one visually."
+msgstr "Temanın tüm renkleri burada. Doğrudan hex kod yazabilir ya da küçük renk örneğiyle görsel olarak seçebilirsiniz."
+
 msgid "Excerpt length (words)"
 msgstr "Özet uzunluğu (kelime)"
 
@@ -560,6 +563,9 @@ msgstr "Daha fazla bilgi"
 msgid "Leave a comment"
 msgstr "Yorum yazın"
 
+msgid "Leave empty to match the theme automatically."
+msgstr "Otomatik olarak temayla eşleşmesi için boş bırakın."
+
 msgid "Left"
 msgstr "Sol"
 
@@ -601,9 +607,6 @@ msgstr "Bakım / Çok yakında"
 
 msgid "Maintenance message"
 msgstr "Bakım mesajı"
-
-msgid "Matches the theme by default; pick a color to override."
-msgstr "Varsayılan olarak temayla eşleşir; geçersiz kılmak için bir renk seçin."
 
 msgid "Mean incident response"
 msgstr "Ortalama olay müdahalesi"
@@ -902,6 +905,9 @@ msgstr "Tema"
 msgid "Theme Mode"
 msgstr "Tema Modu"
 
+msgid "Theme default"
+msgstr "Tema varsayılanı"
+
 msgid "Theme update settings saved."
 msgstr "Tema güncelleme ayarları kaydedildi."
 
@@ -916,6 +922,9 @@ msgstr "Üst çubuk"
 
 msgid "Top bar background color"
 msgstr "Üst çubuk zemin rengi"
+
+msgid "Top bar colors have moved to the Colors tab, alongside every other theme color."
+msgstr "Üst çubuk renkleri, temanın diğer tüm renkleriyle birlikte Renkler sekmesine taşındı."
 
 msgid "Top bar text color"
 msgstr "Üst çubuk metin rengi"
@@ -955,6 +964,9 @@ msgstr "Daha önce dışa aktarılmış bir GNN ayar JSON dosyası yükleyin."
 
 msgid "Use it in content with e.g. %s"
 msgstr "İçerikte örneğin şöyle kullanın: %s"
+
+msgid "Used for buttons, links and highlights across the theme (and the Elementor color palette)."
+msgstr "Temadaki butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde)."
 
 msgid "View all"
 msgstr "Tümünü gör"
