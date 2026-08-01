@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNN 1.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-01 21:57+0000\n"
-"PO-Revision-Date: 2026-08-01 21:57+0000\n"
+"POT-Creation-Date: 2026-08-01 23:09+0000\n"
+"PO-Revision-Date: 2026-08-01 23:09+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -85,6 +85,9 @@ msgstr "Giriş metninizi buraya ekleyin. Öne çıkarmak istediğiniz özelliği
 
 msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
 msgstr "gnn-anim sınıflı öğelere kaydırınca beliren efekt ekler (reduced-motion desteği dahil)."
+
+msgid "Adds the font stylesheet site-wide so .material-symbols-* classes render."
+msgstr "Site genelinde .material-symbols-* sınıflarının çalışması için font stil dosyasını ekler."
 
 msgid "Advanced"
 msgstr "Gelişmiş"
@@ -182,8 +185,14 @@ msgstr "Ortalı (logo ortada, bölünmüş menüler)"
 msgid "Centered layout uses the Header Left and Header Right menu locations."
 msgstr "Ortalı düzen, Üst Bölüm Sol ve Üst Bölüm Sağ menü konumlarını kullanır."
 
+msgid "Check GitHub for new releases"
+msgstr "Yeni sürümler için GitHub’u kontrol et"
+
 msgid "Check back soon — new content is on the way."
 msgstr "Yakında tekrar bakın — yeni içerik yolda."
+
+msgid "Check for updates now"
+msgstr "Şimdi güncellemeleri kontrol et"
 
 msgid "Colors"
 msgstr "Renkler"
@@ -200,8 +209,17 @@ msgstr "Sosyal bağlantılı iletişim"
 msgid "Contain (fit, no crop)"
 msgstr "Sığdır (kırpmadan)"
 
+msgid "Content bottom spacing (px)"
+msgstr "İçerik alt boşluğu (px)"
+
+msgid "Content top spacing (px)"
+msgstr "İçerik üst boşluğu (px)"
+
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr "En-boy oranını koruyarak logo yüksekliğini kontrol eder (varsayılan: 40px). Çok geniş, afiş tipi logolar, alt bölüm sütunu darsa biraz daha kısa görünebilir."
+
+msgid "Could not reach GitHub to check for updates."
+msgstr "Güncellemeler kontrol edilirken GitHub’a ulaşılamadı."
 
 msgid "Cover (fill, cropped)"
 msgstr "Kapla (doldur, kırpılmış)"
@@ -262,6 +280,9 @@ msgstr "Tüm GNN Tema ayarlarını yedek veya aktarım için JSON dosyası olara
 
 msgid "Edit Slide"
 msgstr "Slaytı Düzenle"
+
+msgid "Elementor"
+msgstr "Elementor"
 
 msgid "Elementor templates"
 msgstr "Elementor şablonları"
@@ -325,6 +346,9 @@ msgstr "Öne çıkan ürünler (WooCommerce)"
 
 msgid "Featured — %s"
 msgstr "Öne çıkan — %s"
+
+msgid "Filled"
+msgstr "Dolu"
 
 msgid "Footer"
 msgstr "Alt Bölüm"
@@ -407,6 +431,12 @@ msgstr "GNN Tema Paneli"
 msgid "GNN's designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match."
 msgstr "GNN’in tasarlanmış bölümleri Elementor Kayıtlı Şablonlar olarak (editörde Şablonlar → Şablon Ekle). Vurgu rengini değiştirdikten sonra şablonların eşleşmesi için yeniden oluşturun."
 
+msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
+msgstr "Üst bölüm ile sayfa içeriği arasındaki boşluk — sayfada öne çıkarılan görsel varsa, görsel ile içerik arasındaki boşluk."
+
+msgid "Gap between the page content and the footer."
+msgstr "Sayfa içeriği ile alt bölüm arasındaki boşluk."
+
 msgid "Get a Quote"
 msgstr "Teklif Alın"
 
@@ -424,6 +454,9 @@ msgstr "Google Tag Manager kimliği"
 
 msgid "Got questions? Feel free to reach out."
 msgstr "Sorularınız mı var? Bize ulaşmaktan çekinmeyin."
+
+msgid "Gutenberg"
+msgstr "Gutenberg"
 
 msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
 msgstr "HTML etiketlerine izin verilir (ör. <a>, <br>, <strong>, <span>). Site sloganını kullanmak için boş bırakın."
@@ -476,6 +509,9 @@ msgstr "Öne çıkanlar"
 msgid "Home"
 msgstr "Ana Sayfa"
 
+msgid "Icon style"
+msgstr "İkon stili"
+
 msgid "Icons"
 msgstr "İkonlar"
 
@@ -499,6 +535,9 @@ msgstr "Ayarları içe aktar"
 
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i kurup etkinleştirin."
+
+msgid "Installed version: %s"
+msgstr "Kurulu sürüm: %s"
 
 msgid "Interactions"
 msgstr "Etkileşimler"
@@ -532,6 +571,9 @@ msgstr "Açık"
 
 msgid "Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both."
 msgstr "Açık mod koyu renk çizimi, koyu mod açık renk çizimi kullanır. Retina / yüksek yoğunluklu ekranlarda net görünmesi için her birinin 2× sürümünü de yükleyin. Yalnız bir modu doldurursanız ikisi için de o kullanılır."
+
+msgid "Load Google Material Symbols"
+msgstr "Google Material Symbols’ı yükle"
 
 msgid "Load WooCommerce assets only on shop pages"
 msgstr "WooCommerce varlıklarını yalnız mağaza sayfalarında yükle"
@@ -620,8 +662,14 @@ msgstr "Henüz içerik yok"
 msgid "Open spaces"
 msgstr "Açık alanlar"
 
+msgid "Outlined"
+msgstr "Çizgili"
+
 msgid "Page"
 msgstr "Sayfa"
+
+msgid "Page builder"
+msgstr "Sayfa oluşturucu"
 
 msgid "Page not found"
 msgstr "Sayfa bulunamadı"
@@ -634,6 +682,9 @@ msgstr "[products] veya Woo blokları kullanan sayfalar otomatik algılanır."
 
 msgid "Pages:"
 msgstr "Sayfalar:"
+
+msgid "Panel-controlled theme settings — no code required."
+msgstr "Panelden yönetilen tema ayarları — kod gerekmez."
 
 msgid "Performance"
 msgstr "Performans"
@@ -725,8 +776,14 @@ msgstr "Sağ"
 msgid "Right Sidebar"
 msgstr "Sağ Kenar Çubuğu"
 
+msgid "Rounded"
+msgstr "Yuvarlak"
+
 msgid "Sample title"
 msgstr "Örnek başlık"
+
+msgid "Save"
+msgstr "Kaydet"
 
 msgid "Save Settings"
 msgstr "Ayarları Kaydet"
@@ -760,6 +817,9 @@ msgstr "Ayarlar başarıyla içe aktarıldı."
 
 msgid "Settings reset to defaults."
 msgstr "Ayarlar varsayılana sıfırlandı."
+
+msgid "Sharp"
+msgstr "Keskin"
 
 msgid "Shop columns"
 msgstr "Mağaza kolon sayısı"
@@ -833,14 +893,20 @@ msgstr "Aradığınız sayfa taşınmış, adı değişmiş ya da hiç var olmam
 msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body). Font controls are managed in theme.json; per-option font settings can be added here."
 msgstr "Tema, kendi barındırılan Space Grotesk (başlıklar) ve Manrope (gövde) fontlarıyla gelir. Font kontrolleri theme.json’dan yönetilir; opsiyon bazlı font ayarları buraya eklenebilir."
 
-msgid "The theme uses inline SVG icons. Icon management options appear here as they are added."
-msgstr "Tema satır içi SVG ikonlar kullanır. İkon yönetim seçenekleri eklendikçe burada görünür."
+msgid "The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus."
+msgstr "Tema kendi arayüzü için satır içi SVG ikonlar kullanır. Sayfa içeriğinde ve menülerde kullanılmak üzere Google Material Symbols de yüklenebilir."
 
 msgid "Theme"
 msgstr "Tema"
 
 msgid "Theme Mode"
 msgstr "Tema Modu"
+
+msgid "Theme update settings saved."
+msgstr "Tema güncelleme ayarları kaydedildi."
+
+msgid "Theme updates (GitHub)"
+msgstr "Tema güncellemeleri (GitHub)"
 
 msgid "Toggle dark / light mode"
 msgstr "Koyu / açık modu değiştir"
@@ -875,8 +941,20 @@ msgstr "İki tonlu arka plan, ortalanmış görsel"
 msgid "Typography"
 msgstr "Tipografi"
 
+msgid "Update available: version %s."
+msgstr "Güncelleme mevcut: sürüm %s."
+
+msgid "Update check complete."
+msgstr "Güncelleme kontrolü tamamlandı."
+
+msgid "Update now"
+msgstr "Şimdi güncelle"
+
 msgid "Upload a previously exported GNN settings JSON file."
 msgstr "Daha önce dışa aktarılmış bir GNN ayar JSON dosyası yükleyin."
+
+msgid "Use it in content with e.g. %s"
+msgstr "İçerikte örneğin şöyle kullanın: %s"
 
 msgid "View all"
 msgstr "Tümünü gör"
@@ -892,6 +970,9 @@ msgstr "Neden biz"
 
 msgid "Written by"
 msgstr "Yazan"
+
+msgid "You are running the latest version."
+msgstr "En güncel sürümü kullanıyorsunuz."
 
 msgid "Your comment is awaiting moderation."
 msgstr "Yorumunuz onay bekliyor."
