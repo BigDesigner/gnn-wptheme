@@ -16,6 +16,9 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 THEME = os.path.join(HERE, 'gnn')
 LANG = os.path.join(THEME, 'languages')
 
+with open(os.path.join(THEME, 'style.css'), encoding='utf-8') as _f:
+    THEME_VERSION = re.search(r'^Version:\s*(\S+)', _f.read(), re.M).group(1)
+
 SINGULAR = re.compile(
     r"(?:__|_e|esc_html__|esc_html_e|esc_attr__|esc_attr_e)\(\s*'((?:[^'\\]|\\.)*)'\s*,\s*'gnn'"
 )
@@ -64,7 +67,7 @@ def po_escape(text):
 NOW = time.strftime('%Y-%m-%d %H:%M+0000')
 HEADER = '''msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.0.0\\n"
+"Project-Id-Version: GNN {version}\\n"
 "Report-Msgid-Bugs-To: \\n"
 "POT-Creation-Date: {now}\\n"
 "PO-Revision-Date: {now}\\n"
@@ -79,7 +82,7 @@ msgstr ""
 # --- POT ---
 os.makedirs(LANG, exist_ok=True)
 with open(os.path.join(LANG, 'gnn.pot'), 'w', encoding='utf-8', newline='\n') as f:
-    f.write(HEADER.format(now=NOW, extra='"Language: \\n"\n'))
+    f.write(HEADER.format(now=NOW, version=THEME_VERSION, extra='"Language: \\n"\n'))
     for mid in sorted(entries):
         e = entries[mid]
         f.write('\n')
@@ -107,6 +110,7 @@ if missing:
 with open(os.path.join(LANG, 'tr_TR.po'), 'w', encoding='utf-8', newline='\n') as f:
     f.write(HEADER.format(
         now=NOW,
+        version=THEME_VERSION,
         extra='"Language: tr_TR\\n"\n"Plural-Forms: nplurals=2; plural=(n > 1);\\n"\n'))
     for mid in sorted(entries):
         e = entries[mid]

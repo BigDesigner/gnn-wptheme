@@ -1,10 +1,10 @@
 === GNN ===
-Contributors: gnn
+Contributors: bigdesigner
 Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,16 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.1.0 =
+* GitHub-based automatic theme updates (GNN Panel → Advanced).
+* Google Material Symbols icon integration (GNN Panel → Icons).
+* Configurable content top/bottom spacing (GNN Panel → Pages Layout).
+* Featured image now displays full-width above the sidebar/content area.
+* Elementor "Hide Title" setting now syncs with the theme's own toggle.
+* Removed the Contact page template (use the default template + per-page
+  breadcrumb toggle instead).
+* Modernized the GNN Theme Panel admin UI.
 
 = 1.0.0 =
 * Initial release.

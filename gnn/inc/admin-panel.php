@@ -306,6 +306,36 @@ function gnn_field_number( $key, $label, $min = 0, $max = 9999, $hint = '' ) {
 	);
 }
 
+/**
+ * Render a color field: a text input for the hex value (the primary,
+ * readable control) paired with a small native color-picker swatch as a
+ * visual shortcut. Avoids relying solely on the browser's native color
+ * dialog for reading/typing a value.
+ *
+ * @param string $key            Option key.
+ * @param string $label          Label text.
+ * @param string $value          Current stored value ('' allowed when $allow_empty).
+ * @param string $default_swatch Fallback color for the picker when $value is empty.
+ * @param string $hint           Optional description.
+ * @param bool   $allow_empty    Whether an empty value (theme default) is valid.
+ */
+function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hint = '', $allow_empty = false ) {
+	$value = (string) $value;
+	printf(
+		'<div class="gnn-field"><label class="gnn-field__label" for="gnn-%1$s">%2$s</label>' .
+		'<div class="gnn-color-field">' .
+		'<input type="color" class="gnn-color-swatch" value="%3$s" aria-hidden="true" tabindex="-1">' .
+		'<input type="text" id="gnn-%1$s" name="gnn_options[%1$s]" value="%4$s" class="gnn-hex-input" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="%5$s">' .
+		'</div>%6$s</div>',
+		esc_attr( $key ),
+		esc_html( $label ),
+		esc_attr( $value ? $value : $default_swatch ),
+		esc_attr( $value ),
+		esc_attr( $allow_empty ? __( 'Theme default', 'gnn' ) : $default_swatch ),
+		$hint ? '<p class="description">' . esc_html( $hint ) . '</p>' : ''
+	);
+}
+
 // ----- Page render ----------------------------------------------------------
 
 /**
@@ -468,15 +498,7 @@ function gnn_panel_render() {
 				<?php gnn_field_text( 'topbar_text', __( 'Announcement text', 'gnn' ), (string) gnn_option( 'topbar_text' ) ); ?>
 				<?php gnn_field_text( 'topbar_email', __( 'Email', 'gnn' ), (string) gnn_option( 'topbar_email' ) ); ?>
 				<?php gnn_field_text( 'topbar_phone', __( 'Phone', 'gnn' ), (string) gnn_option( 'topbar_phone' ) ); ?>
-				<div class="gnn-field">
-					<label class="gnn-field__label" for="gnn-topbar_bg"><?php esc_html_e( 'Top bar background color', 'gnn' ); ?></label>
-					<input type="color" id="gnn-topbar_bg" name="gnn_options[topbar_bg]" value="<?php echo esc_attr( gnn_option( 'topbar_bg' ) ? gnn_option( 'topbar_bg' ) : '#141416' ); ?>">
-					<p class="description"><?php esc_html_e( 'Matches the theme by default; pick a color to override.', 'gnn' ); ?></p>
-				</div>
-				<div class="gnn-field">
-					<label class="gnn-field__label" for="gnn-topbar_text_color"><?php esc_html_e( 'Top bar text color', 'gnn' ); ?></label>
-					<input type="color" id="gnn-topbar_text_color" name="gnn_options[topbar_text_color]" value="<?php echo esc_attr( gnn_option( 'topbar_text_color' ) ? gnn_option( 'topbar_text_color' ) : '#9d9da4' ); ?>">
-				</div>
+				<p class="description"><?php esc_html_e( 'Top bar colors have moved to the Colors tab, alongside every other theme color.', 'gnn' ); ?></p>
 			</section>
 
 			<section id="gnn-tab-footer" class="gnn-tab">
@@ -548,10 +570,32 @@ function gnn_panel_render() {
 
 			<section id="gnn-tab-colors" class="gnn-tab">
 				<h2><span class="dashicons dashicons-art" aria-hidden="true"></span><?php esc_html_e( 'Colors', 'gnn' ); ?></h2>
-				<div class="gnn-field">
-					<label class="gnn-field__label" for="gnn-accent"><?php esc_html_e( 'Accent color', 'gnn' ); ?></label>
-					<input type="color" id="gnn-accent" name="gnn_options[accent]" value="<?php echo esc_attr( get_theme_mod( 'gnn_accent_color', '#34d399' ) ); ?>">
-				</div>
+				<p class="description"><?php esc_html_e( 'Every theme color lives here. Type a hex code directly, or use the small swatch to pick one visually.', 'gnn' ); ?></p>
+				<?php
+				gnn_field_color(
+					'accent',
+					__( 'Accent color', 'gnn' ),
+					get_theme_mod( 'gnn_accent_color', '#34d399' ),
+					'#34d399',
+					__( 'Used for buttons, links and highlights across the theme (and the Elementor color palette).', 'gnn' )
+				);
+				gnn_field_color(
+					'topbar_bg',
+					__( 'Top bar background color', 'gnn' ),
+					(string) gnn_option( 'topbar_bg' ),
+					'#141416',
+					__( 'Leave empty to match the theme automatically.', 'gnn' ),
+					true
+				);
+				gnn_field_color(
+					'topbar_text_color',
+					__( 'Top bar text color', 'gnn' ),
+					(string) gnn_option( 'topbar_text_color' ),
+					'#9d9da4',
+					__( 'Leave empty to match the theme automatically.', 'gnn' ),
+					true
+				);
+				?>
 			</section>
 
 			<section id="gnn-tab-typography" class="gnn-tab">
@@ -612,7 +656,7 @@ function gnn_panel_advanced_tab() {
 		<div class="gnn-field">
 			<span class="gnn-field__label"><?php esc_html_e( 'Export settings', 'gnn' ); ?></span>
 			<p class="description"><?php esc_html_e( 'Download all GNN Theme settings as a JSON file for backup or transfer.', 'gnn' ); ?></p>
-			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_export_settings">
 				<?php wp_nonce_field( 'gnn_export_settings' ); ?>
 				<?php submit_button( __( 'Export JSON', 'gnn' ), 'secondary', 'submit', false ); ?>
@@ -622,7 +666,7 @@ function gnn_panel_advanced_tab() {
 		<div class="gnn-field">
 			<span class="gnn-field__label"><?php esc_html_e( 'Import settings', 'gnn' ); ?></span>
 			<p class="description"><?php esc_html_e( 'Upload a previously exported GNN settings JSON file.', 'gnn' ); ?></p>
-			<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+			<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_import_settings">
 				<?php wp_nonce_field( 'gnn_import_settings' ); ?>
 				<input type="file" name="gnn_import_file" accept="application/json,.json" required>
@@ -633,7 +677,7 @@ function gnn_panel_advanced_tab() {
 		<div class="gnn-field">
 			<span class="gnn-field__label"><?php esc_html_e( 'Reset settings', 'gnn' ); ?></span>
 			<p class="description"><?php esc_html_e( 'Restore all GNN Theme settings to their defaults. This cannot be undone.', 'gnn' ); ?></p>
-			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return confirm('<?php echo esc_js( __( 'Reset all GNN Theme settings to defaults?', 'gnn' ) ); ?>');">
+			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return confirm('<?php echo esc_js( __( 'Reset all GNN Theme settings to defaults?', 'gnn' ) ); ?>');" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_reset_settings">
 				<?php wp_nonce_field( 'gnn_reset_settings' ); ?>
 				<?php submit_button( __( 'Reset to defaults', 'gnn' ), 'delete', 'submit', false ); ?>
@@ -644,7 +688,7 @@ function gnn_panel_advanced_tab() {
 			<div class="gnn-field">
 				<span class="gnn-field__label"><?php esc_html_e( 'Elementor templates', 'gnn' ); ?></span>
 				<p class="description"><?php esc_html_e( 'GNN\'s designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match.', 'gnn' ); ?></p>
-				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_rebuild_elementor_templates">
 					<?php wp_nonce_field( 'gnn_rebuild_elementor_templates' ); ?>
 					<?php submit_button( __( 'Rebuild Elementor templates', 'gnn' ), 'secondary', 'submit', false ); ?>
@@ -682,17 +726,16 @@ function gnn_panel_advanced_tab() {
 						<?php endif; ?>
 					</p>
 				<?php endif; ?>
-				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+
+				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_save_updater_settings">
 					<?php wp_nonce_field( 'gnn_save_updater_settings' ); ?>
 					<label><input type="checkbox" name="gnn_updates_enable" value="1" <?php checked( $gnn_updates_on ); ?>> <?php esc_html_e( 'Check GitHub for new releases', 'gnn' ); ?></label>
 					<?php submit_button( __( 'Save', 'gnn' ), 'secondary', 'submit', false ); ?>
 				</form>
-			</div>
 
-			<?php if ( $gnn_updates_on ) : ?>
-				<div class="gnn-field">
-					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+				<?php if ( $gnn_updates_on ) : ?>
+					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 						<input type="hidden" name="action" value="gnn_check_theme_update">
 						<?php wp_nonce_field( 'gnn_check_theme_update' ); ?>
 						<?php submit_button( __( 'Check for updates now', 'gnn' ), 'secondary', 'submit', false ); ?>
@@ -700,8 +743,8 @@ function gnn_panel_advanced_tab() {
 							<a class="button button-primary" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-theme&theme=' . rawurlencode( get_template() ) ), 'upgrade-theme_' . get_template() ) ); ?>"><?php esc_html_e( 'Update now', 'gnn' ); ?></a>
 						<?php endif; ?>
 					</form>
-				</div>
-			<?php endif; ?>
+				<?php endif; ?>
+			</div>
 		<?php endif; ?>
 	</section>
 	<?php

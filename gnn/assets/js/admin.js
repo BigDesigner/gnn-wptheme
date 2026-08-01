@@ -61,4 +61,20 @@
 			document.querySelector( '.gnn-media-box[data-target="' + t + '"]' ).innerHTML = '';
 		}
 	} );
+
+	/* Color fields: keep the hex text input and the picker swatch in sync. */
+	var HEX_RE = /^#[0-9a-fA-F]{6}$/;
+	document.addEventListener( 'input', function ( e ) {
+		var field = e.target.closest( '.gnn-color-field' );
+		if ( ! field ) {
+			return;
+		}
+		var swatch = field.querySelector( '.gnn-color-swatch' );
+		var hex = field.querySelector( '.gnn-hex-input' );
+		if ( e.target === swatch ) {
+			hex.value = swatch.value;
+		} else if ( e.target === hex && HEX_RE.test( hex.value ) ) {
+			swatch.value = hex.value;
+		}
+	} );
 } )();

@@ -130,6 +130,8 @@
 	border: 1px solid var(--gnn-admin-line); border-radius: 8px;
 	padding: 8px 12px; font-size: 13px; box-shadow: none;
 }
+/* Extra right padding so the native dropdown arrow never overlaps the text. */
+.gnn-field select { padding-right: 32px; }
 .gnn-field input[type="text"]:focus,
 .gnn-field input[type="email"]:focus,
 .gnn-field input[type="number"]:focus,
@@ -144,10 +146,28 @@
 }
 .gnn-field input[type="color"] { width: 56px; height: 34px; padding: 2px; border-radius: 8px; cursor: pointer; }
 
+.gnn-color-field { display: flex; align-items: center; gap: 10px; }
+.gnn-color-field .gnn-color-swatch {
+	width: 36px; height: 34px; padding: 2px; border-radius: 8px; cursor: pointer; flex-shrink: 0;
+}
+.gnn-color-field .gnn-hex-input {
+	width: 110px; font-family: Consolas, Menlo, Monaco, monospace; text-transform: lowercase;
+}
+
 .gnn-media-box { margin: 6px 0 10px; }
 .gnn-media-box:empty { display: none; }
 
 .gnn-group-note { max-width: 640px; margin: 8px 0 16px; color: var(--gnn-admin-muted); font-size: 13px; }
+
+/* Advanced tab: each tool is a self-contained card so its button is never
+   ambiguous about which description/heading it belongs to. */
+#gnn-tab-advanced .gnn-field {
+	border: 1px solid var(--gnn-admin-line); border-radius: 10px;
+	padding: 18px 20px; max-width: 640px;
+}
+#gnn-tab-advanced .gnn-field__label { font-size: 14px; }
+.gnn-inline-form { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.gnn-inline-form + .gnn-inline-form { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gnn-admin-line); }
 
 /* ---------------------------------------------------------------------------
  * Buttons

@@ -368,6 +368,14 @@ TRANSLATIONS = {
     'Update now': 'Şimdi güncelle',
     'Use it in content with e.g. %s': 'İçerikte örneğin şöyle kullanın: %s',
     'You are running the latest version.': 'En güncel sürümü kullanıyorsunuz.',
+    'Every theme color lives here. Type a hex code directly, or use the small swatch to pick one visually.':
+        'Temanın tüm renkleri burada. Doğrudan hex kod yazabilir ya da küçük renk örneğiyle görsel olarak seçebilirsiniz.',
+    'Leave empty to match the theme automatically.': 'Otomatik olarak temayla eşleşmesi için boş bırakın.',
+    'Theme default': 'Tema varsayılanı',
+    'Top bar colors have moved to the Colors tab, alongside every other theme color.':
+        'Üst çubuk renkleri, temanın diğer tüm renkleriyle birlikte Renkler sekmesine taşındı.',
+    'Used for buttons, links and highlights across the theme (and the Elementor color palette).':
+        'Temadaki butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde).',
     'Theme Mode': 'Tema Modu',
     'Toggle dark / light mode': 'Koyu / açık modu değiştir',
     'Trusted by security teams at': 'Güvenlik ekiplerinin tercihi:',
