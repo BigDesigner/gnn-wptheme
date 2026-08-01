@@ -43,7 +43,7 @@ if ( ! function_exists( 'gnn_breadcrumb' ) ) :
 			if ( $blog_page && ! is_home() ) {
 				echo '<span class="gnn-breadcrumb__sep">/</span><a href="' . esc_url( get_permalink( $blog_page ) ) . '">' . esc_html( get_the_title( $blog_page ) ) . '</a>';
 			}
-		} elseif ( is_page() && ! is_page_template( 'page-templates/page-contact.php' ) ) {
+		} elseif ( is_page() ) {
 			$parent_id = wp_get_post_parent_id( get_the_ID() );
 			if ( $parent_id ) {
 				echo '<span class="gnn-breadcrumb__sep">/</span><a href="' . esc_url( get_permalink( $parent_id ) ) . '">' . esc_html( get_the_title( $parent_id ) ) . '</a>';

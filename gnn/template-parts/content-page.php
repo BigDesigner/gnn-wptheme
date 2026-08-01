@@ -1,6 +1,9 @@
 <?php
 /**
- * Page content: breadcrumb, title, featured image, content.
+ * Page content: breadcrumb, title, content.
+ *
+ * The featured image (if any) is rendered by gnn_render_page() itself, above
+ * this template part — see inc/page-layouts.php.
  *
  * @package GNN
  */
@@ -22,8 +25,6 @@
 			<?php endif; ?>
 		</header>
 	<?php endif; ?>
-
-	<?php gnn_post_thumbnail( 'gnn-wide', false ); // No empty placeholder on pages. ?>
 
 	<div class="entry-content">
 		<?php
