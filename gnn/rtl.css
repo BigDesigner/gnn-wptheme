@@ -1,0 +1,24 @@
+/*
+ * GNN theme — RTL overrides. WordPress loads this automatically after
+ * style.css when the site language is right-to-left (ar, he, fa, …).
+ */
+
+body { direction: rtl; unicode-bidi: embed; }
+
+/* Header */
+.main-navigation .menu > li > .sub-menu { right: 0; left: auto; }
+.mega-menu { direction: rtl; }
+
+/* Breadcrumb + meta separators read naturally in RTL already (flex order). */
+.gnn-breadcrumb, .entry-meta { direction: rtl; }
+
+/* Cards & layout */
+.featured-post-card { direction: rtl; }
+body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 0; }
+
+/* Forms */
+input, textarea, select { text-align: right; }
+
+/* Hero arrows swap sides visually via flex; keep glyph direction. */
+.gnn-hero__arrow--prev { right: 24px; left: auto; }
+.gnn-hero__arrow--next { left: 24px; right: auto; }

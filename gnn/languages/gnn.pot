@@ -1,0 +1,1276 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GNN 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 21:57+0000\n"
+"PO-Revision-Date: 2026-08-01 21:57+0000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: gen-i18n.py\n"
+"Language: \n"
+
+
+#: search.php:24
+msgid "%1$s result for “%2$s”"
+msgid_plural "%1$s results for “%2$s”"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/template-tags.php:84
+msgid "%d min read"
+msgid_plural "%d min read"
+msgstr[0] ""
+msgstr[1] ""
+
+#: archive.php:33
+msgid "%s article"
+msgid_plural "%s articles"
+msgstr[0] ""
+msgstr[1] ""
+
+#: archive.php:58
+msgid "%s article in this archive."
+msgid_plural "%s articles in this archive."
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:20
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/admin-panel.php:492
+msgid "404 description"
+msgstr ""
+
+#: inc/admin-panel.php:495
+msgid "404 image"
+msgstr ""
+
+#: inc/admin-panel.php:490
+msgid "404 page"
+msgstr ""
+
+#: inc/admin-panel.php:491
+msgid "404 title"
+msgstr ""
+
+#: inc/elementor-templates.php:558
+msgid "A bold headline goes here"
+msgstr ""
+
+#: inc/elementor-templates.php:610
+msgid "A centered bold headline goes here"
+msgstr ""
+
+#: inc/elementor-templates.php:530
+msgid "A new collection"
+msgstr ""
+
+#: inc/elementor-templates.php:290
+msgid "About the event"
+msgstr ""
+
+#: inc/admin-panel.php:501
+#: inc/customizer.php:59
+msgid "Accent color"
+msgstr ""
+
+#: inc/slider.php:28
+msgid "Add New Slide"
+msgstr ""
+
+#: inc/slider.php:27
+msgid "Add Slide"
+msgstr ""
+
+#: inc/elementor-templates.php:484
+msgid "Add a short supporting paragraph here to describe the offer, product or story. Replace with your own copy."
+msgstr ""
+
+#: inc/elementor-templates.php:711
+msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
+msgstr ""
+
+#: inc/woocommerce.php:120
+msgid "Add to cart"
+msgstr ""
+
+#: inc/elementor-templates.php:226
+msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
+msgstr ""
+
+#: inc/admin-panel.php:355
+msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
+msgstr ""
+
+#: inc/admin-panel.php:325
+#: inc/admin-panel.php:544
+msgid "Advanced"
+msgstr ""
+
+#: inc/admin-panel.php:524
+msgid "After <body> HTML"
+msgstr ""
+
+#: inc/slider.php:30
+msgid "All Slides"
+msgstr ""
+
+#: inc/admin-panel.php:419
+msgid "Announcement text"
+msgstr ""
+
+#: inc/elementor-templates.php:315
+#: inc/elementor-templates.php:320
+#: inc/elementor-templates.php:325
+msgid "Answer the question here. Replace this placeholder text with your own content."
+msgstr ""
+
+#: functions.php:87
+msgid "Appears in the footer widget area."
+msgstr ""
+
+#: functions.php:73
+msgid "Appears on archives and pages with a sidebar."
+msgstr ""
+
+#: archive.php:47
+msgid "Archive"
+msgstr ""
+
+#: archive.php:25
+#: inc/class-gnn-walker-comment.php:38
+msgid "Author"
+msgstr ""
+
+#: inc/admin-panel.php:359
+msgid "Autoplay"
+msgstr ""
+
+#: inc/admin-panel.php:360
+msgid "Autoplay interval (seconds)"
+msgstr ""
+
+#: inc/elementor-templates.php:514
+msgid "BRAND."
+msgstr ""
+
+#: 404.php:18
+#: inc/admin-panel.php:494
+#: template-parts/content-none.php:33
+msgid "Back to Home"
+msgstr ""
+
+#: inc/slider.php:33
+msgid "Background image (1×)"
+msgstr ""
+
+#: inc/slider.php:128
+msgid "Background image (2× retina)"
+msgstr ""
+
+#: inc/frontend.php:165
+msgid "Badge (e.g. New, Hot, Sale)"
+msgstr ""
+
+#: inc/elementor-templates.php:456
+msgid "Big bold headline"
+msgstr ""
+
+#: inc/page-layouts.php:84
+msgid "Blank Canvas (no header/footer)"
+msgstr ""
+
+#: home.php:17
+#: inc/template-tags.php:56
+msgid "Blog"
+msgstr ""
+
+#: inc/elementor-templates.php:450
+#: inc/patterns.php:117
+msgid "Bold heading, paragraph & button"
+msgstr ""
+
+#: inc/page-layouts.php:81
+msgid "Boxed (max 1200px)"
+msgstr ""
+
+#: inc/customizer.php:41
+msgid "Brand"
+msgstr ""
+
+#: inc/template-tags.php:38
+#: inc/woocommerce.php:107
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/slider.php:148
+msgid "Button URL"
+msgstr ""
+
+#: inc/slider.php:144
+msgid "Button label"
+msgstr ""
+
+#: inc/patterns.php:89
+msgid "Call-to-action band"
+msgstr ""
+
+#: header.php:115
+#: inc/frontend.php:200
+msgid "Cart"
+msgstr ""
+
+#: inc/elementor-templates.php:665
+#: inc/elementor-templates.php:682
+msgid "Case study ↗"
+msgstr ""
+
+#: archive.php:43
+msgid "Category"
+msgstr ""
+
+#: inc/admin-panel.php:407
+#: inc/admin-panel.php:461
+msgid "Center"
+msgstr ""
+
+#: inc/admin-panel.php:398
+msgid "Centered (logo center, split menus)"
+msgstr ""
+
+#: inc/admin-panel.php:400
+msgid "Centered layout uses the Header Left and Header Right menu locations."
+msgstr ""
+
+#: template-parts/content-none.php:26
+msgid "Check back soon — new content is on the way."
+msgstr ""
+
+#: inc/admin-panel.php:321
+#: inc/admin-panel.php:499
+msgid "Colors"
+msgstr ""
+
+#: comments.php:46
+msgid "Comments are closed."
+msgstr ""
+
+#: inc/frontend.php:200
+#: inc/page-layouts.php:85
+msgid "Contact"
+msgstr ""
+
+#: inc/elementor-templates.php:344
+#: inc/patterns.php:115
+msgid "Contact with social links"
+msgstr ""
+
+#: inc/slider.php:157
+msgid "Contain (fit, no crop)"
+msgstr ""
+
+#: inc/admin-panel.php:453
+msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
+msgstr ""
+
+#: inc/slider.php:156
+msgid "Cover (fill, cropped)"
+msgstr ""
+
+#: inc/slider.php:159
+msgid "Cover — bottom"
+msgstr ""
+
+#: inc/slider.php:160
+msgid "Cover — centered"
+msgstr ""
+
+#: inc/patterns.php:61
+msgid "Cover — gradient text"
+msgstr ""
+
+#: inc/slider.php:158
+msgid "Cover — top"
+msgstr ""
+
+#: inc/elementor-templates.php:604
+#: inc/patterns.php:120
+msgid "Cover: heading & button (centered)"
+msgstr ""
+
+#: inc/elementor-templates.php:552
+#: inc/patterns.php:119
+msgid "Cover: heading & button (left)"
+msgstr ""
+
+#: inc/elementor-templates.php:204
+#: inc/patterns.php:111
+msgid "Cover: poster left, text right"
+msgstr ""
+
+#: inc/admin-panel.php:518
+msgid "Custom CSS"
+msgstr ""
+
+#: inc/admin-panel.php:324
+#: inc/admin-panel.php:517
+msgid "Custom Code"
+msgstr ""
+
+#: inc/admin-panel.php:522
+msgid "Custom JavaScript — footer"
+msgstr ""
+
+#: inc/admin-panel.php:521
+msgid "Custom JavaScript — head"
+msgstr ""
+
+#: inc/admin-panel.php:154
+msgid "Custom script fields were not saved: your account lacks the unfiltered_html capability."
+msgstr ""
+
+#: inc/admin-panel.php:345
+#: inc/customizer.php:106
+msgid "Dark"
+msgstr ""
+
+#: inc/elementor-templates.php:406
+#: inc/patterns.php:116
+msgid "Dark banner, top-left heading"
+msgstr ""
+
+#: inc/admin-panel.php:344
+#: inc/customizer.php:101
+msgid "Default mode"
+msgstr ""
+
+#: inc/admin-panel.php:476
+msgid "Default sidebar position"
+msgstr ""
+
+#: inc/admin-panel.php:370
+msgid "Disable the emoji script"
+msgstr ""
+
+#: inc/admin-panel.php:548
+msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
+msgstr ""
+
+#: inc/slider.php:29
+msgid "Edit Slide"
+msgstr ""
+
+#: inc/admin-panel.php:579
+msgid "Elementor templates"
+msgstr ""
+
+#: inc/admin-panel.php:711
+msgid "Elementor templates rebuilt."
+msgstr ""
+
+#: inc/admin-panel.php:420
+msgid "Email"
+msgstr ""
+
+#: inc/admin-panel.php:366
+msgid "Enable maintenance mode (logged-out visitors only)"
+msgstr ""
+
+#: inc/admin-panel.php:418
+msgid "Enable the top announcement bar"
+msgstr ""
+
+#: inc/patterns.php:73
+msgid "Enterprise clients"
+msgstr ""
+
+#: inc/elementor-templates.php:258
+msgid "Etcetera"
+msgstr ""
+
+#: inc/patterns.php:73
+msgid "Events analyzed daily"
+msgstr ""
+
+#: inc/admin-panel.php:484
+msgid "Excerpt length (words)"
+msgstr ""
+
+#: inc/elementor-templates.php:571
+#: inc/elementor-templates.php:624
+msgid "Explore"
+msgstr ""
+
+#: inc/admin-panel.php:552
+msgid "Export JSON"
+msgstr ""
+
+#: inc/admin-panel.php:547
+msgid "Export settings"
+msgstr ""
+
+#: inc/admin-panel.php:523
+msgid "Extra <head> HTML (meta/verification tags)"
+msgstr ""
+
+#: inc/elementor-templates.php:301
+#: inc/patterns.php:114
+msgid "FAQs"
+msgstr ""
+
+#: inc/admin-panel.php:350
+msgid "Favicon (site icon, 512×512)"
+msgstr ""
+
+#: inc/patterns.php:83
+msgid "Feature band (media + bullets)"
+msgstr ""
+
+#: inc/patterns.php:85
+msgid "Feature description goes here."
+msgstr ""
+
+#: inc/patterns.php:85
+msgid "Feature title"
+msgstr ""
+
+#: inc/patterns.php:79
+msgid "Featured products"
+msgstr ""
+
+#: inc/patterns.php:77
+msgid "Featured products (WooCommerce)"
+msgstr ""
+
+#: home.php:37
+msgid "Featured — %s"
+msgstr ""
+
+#: inc/admin-panel.php:319
+#: inc/admin-panel.php:434
+msgid "Footer"
+msgstr ""
+
+#: functions.php:85
+msgid "Footer Column %d"
+msgstr ""
+
+#: functions.php:43
+msgid "Footer Column 1"
+msgstr ""
+
+#: functions.php:44
+msgid "Footer Column 2"
+msgstr ""
+
+#: functions.php:45
+msgid "Footer Column 3"
+msgstr ""
+
+#: inc/admin-panel.php:438
+msgid "Footer brand"
+msgstr ""
+
+#: inc/admin-panel.php:466
+msgid "Footer copyright line"
+msgstr ""
+
+#: inc/admin-panel.php:467
+#: inc/customizer.php:76
+msgid "Footer legal text"
+msgstr ""
+
+#: inc/admin-panel.php:453
+msgid "Footer logo max height (px)"
+msgstr ""
+
+#: inc/admin-panel.php:450
+msgid "Footer logo — dark mode (1×)"
+msgstr ""
+
+#: inc/admin-panel.php:451
+msgid "Footer logo — dark mode (2× retina)"
+msgstr ""
+
+#: inc/admin-panel.php:448
+msgid "Footer logo — light mode (1×)"
+msgstr ""
+
+#: inc/admin-panel.php:449
+msgid "Footer logo — light mode (2× retina)"
+msgstr ""
+
+#: inc/admin-panel.php:458
+msgid "Footer menu alignment"
+msgstr ""
+
+#: inc/admin-panel.php:454
+msgid "Footer tagline"
+msgstr ""
+
+#: inc/elementor-templates.php:306
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: inc/admin-panel.php:361
+msgid "Full-height slider (fills the screen below the header)"
+msgstr ""
+
+#: inc/admin-panel.php:363
+msgid "Full-screen loading overlay"
+msgstr ""
+
+#: inc/patterns.php:85
+msgid "Full-stack security, one accountable partner."
+msgstr ""
+
+#: inc/demo-import.php:125
+msgid "GNN Demo"
+msgstr ""
+
+#: inc/page-meta.php:55
+msgid "GNN Display Options"
+msgstr ""
+
+#: inc/patterns.php:157
+msgid "GNN Pill"
+msgstr ""
+
+#: inc/slider.php:25
+#: inc/slider.php:31
+msgid "GNN Slider"
+msgstr ""
+
+#: inc/admin-panel.php:21
+#: inc/patterns.php:22
+msgid "GNN Theme"
+msgstr ""
+
+#: inc/customizer.php:32
+msgid "GNN Theme Options"
+msgstr ""
+
+#: inc/admin-panel.php:20
+#: inc/admin-panel.php:329
+msgid "GNN Theme Panel"
+msgstr ""
+
+#: inc/admin-panel.php:580
+msgid "GNN's designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match."
+msgstr ""
+
+#: inc/patterns.php:91
+msgid "Get a Quote"
+msgstr ""
+
+#: inc/admin-panel.php:317
+#: inc/admin-panel.php:342
+msgid "Global"
+msgstr ""
+
+#: template-parts/hero-slider.php:71
+msgid "Go to slide %d"
+msgstr ""
+
+#: inc/admin-panel.php:519
+msgid "Google Analytics 4 ID"
+msgstr ""
+
+#: inc/admin-panel.php:520
+msgid "Google Tag Manager ID"
+msgstr ""
+
+#: inc/elementor-templates.php:350
+msgid "Got questions? Feel free to reach out."
+msgstr ""
+
+#: inc/admin-panel.php:454
+msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
+msgstr ""
+
+#: inc/admin-panel.php:318
+#: inc/admin-panel.php:379
+msgid "Header"
+msgstr ""
+
+#: inc/frontend.php:20
+msgid "Header Left (centered layout)"
+msgstr ""
+
+#: inc/frontend.php:21
+msgid "Header Right (centered layout)"
+msgstr ""
+
+#: inc/admin-panel.php:395
+msgid "Header layout"
+msgstr ""
+
+#: header.php:42
+msgid "Header left"
+msgstr ""
+
+#: header.php:60
+msgid "Header right"
+msgstr ""
+
+#: inc/elementor-templates.php:284
+#: inc/patterns.php:113
+msgid "Heading & paragraph with image"
+msgstr ""
+
+#: inc/elementor-templates.php:508
+#: inc/patterns.php:118
+msgid "Headline with links, gradient background"
+msgstr ""
+
+#: inc/elementor-templates.php:700
+msgid "Headline."
+msgstr ""
+
+#: inc/elementor-templates.php:291
+msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
+msgstr ""
+
+#: inc/admin-panel.php:357
+msgid "Hero slider"
+msgstr ""
+
+#: inc/admin-panel.php:443
+msgid "Hide"
+msgstr ""
+
+#: inc/page-meta.php:83
+msgid "Hide the breadcrumb (Home / …)"
+msgstr ""
+
+#: inc/page-meta.php:77
+msgid "Hide the page title"
+msgstr ""
+
+#: template-parts/hero-slider.php:19
+msgid "Highlights"
+msgstr ""
+
+#: inc/frontend.php:205
+#: inc/template-tags.php:39
+msgid "Home"
+msgstr ""
+
+#: inc/admin-panel.php:323
+#: inc/admin-panel.php:512
+msgid "Icons"
+msgstr ""
+
+#: inc/admin-panel.php:442
+msgid "Image + text"
+msgstr ""
+
+#: inc/slider.php:152
+msgid "Image fit"
+msgstr ""
+
+#: inc/admin-panel.php:441
+msgid "Image logo"
+msgstr ""
+
+#: inc/admin-panel.php:563
+msgid "Import JSON"
+msgstr ""
+
+#: inc/admin-panel.php:709
+msgid "Import failed: the file is not a valid GNN settings export."
+msgstr ""
+
+#: inc/admin-panel.php:557
+msgid "Import settings"
+msgstr ""
+
+#: inc/demo-import.php:127
+msgid "Install and activate WooCommerce first so the demo products import correctly."
+msgstr ""
+
+#: inc/admin-panel.php:352
+msgid "Interactions"
+msgstr ""
+
+#: inc/slider.php:136
+msgid "Kicker"
+msgstr ""
+
+#: inc/elementor-templates.php:694
+#: inc/patterns.php:123
+msgid "Large header over cover (left text)"
+msgstr ""
+
+#: inc/admin-panel.php:391
+msgid "Layout"
+msgstr ""
+
+#: inc/elementor-templates.php:531
+msgid "Learn More →"
+msgstr ""
+
+#: inc/elementor-templates.php:228
+#: inc/elementor-templates.php:486
+msgid "Learn more"
+msgstr ""
+
+#: comments.php:54
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/admin-panel.php:406
+#: inc/admin-panel.php:460
+#: inc/admin-panel.php:479
+msgid "Left"
+msgstr ""
+
+#: inc/page-layouts.php:83
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/admin-panel.php:346
+#: inc/customizer.php:107
+msgid "Light"
+msgstr ""
+
+#: inc/admin-panel.php:381
+msgid "Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both."
+msgstr ""
+
+#: inc/admin-panel.php:374
+msgid "Load WooCommerce assets only on shop pages"
+msgstr ""
+
+#: inc/admin-panel.php:388
+msgid "Logo max height — desktop (px)"
+msgstr ""
+
+#: inc/admin-panel.php:389
+msgid "Logo max height — mobile (px)"
+msgstr ""
+
+#: inc/admin-panel.php:385
+msgid "Logo — dark mode (1×)"
+msgstr ""
+
+#: inc/admin-panel.php:386
+msgid "Logo — dark mode (2× retina)"
+msgstr ""
+
+#: inc/admin-panel.php:383
+msgid "Logo — light mode (1×)"
+msgstr ""
+
+#: inc/admin-panel.php:384
+msgid "Logo — light mode (2× retina)"
+msgstr ""
+
+#: inc/admin-panel.php:365
+msgid "Maintenance / Coming soon"
+msgstr ""
+
+#: inc/admin-panel.php:367
+msgid "Maintenance message"
+msgstr ""
+
+#: inc/admin-panel.php:425
+msgid "Matches the theme by default; pick a color to override."
+msgstr ""
+
+#: inc/patterns.php:73
+msgid "Mean incident response"
+msgstr ""
+
+#: inc/elementor-templates.php:658
+#: inc/patterns.php:121
+msgid "Media & text (image left)"
+msgstr ""
+
+#: inc/elementor-templates.php:676
+#: inc/patterns.php:122
+msgid "Media & text (image right)"
+msgstr ""
+
+#: header.php:37
+msgid "Menu"
+msgstr ""
+
+#: inc/admin-panel.php:404
+msgid "Menu alignment"
+msgstr ""
+
+#: header.php:123
+msgid "Mobile"
+msgstr ""
+
+#: functions.php:42
+msgid "Mobile Menu"
+msgstr ""
+
+#: inc/admin-panel.php:415
+msgid "Mobile bottom app dock (≤600px)"
+msgstr ""
+
+#: inc/frontend.php:202
+msgid "Mobile navigation"
+msgstr ""
+
+#: inc/class-gnn-walker-nav-menu.php:108
+msgid "New"
+msgstr ""
+
+#: comments.php:40
+msgid "Newer comments →"
+msgstr ""
+
+#: template-parts/hero-slider.php:67
+msgid "Next slide"
+msgstr ""
+
+#: single.php:73
+#: inc/template-tags.php:124
+msgid "Next →"
+msgstr ""
+
+#: template-parts/content-none.php:15
+msgid "No results found"
+msgstr ""
+
+#: inc/admin-panel.php:480
+msgid "No sidebar"
+msgstr ""
+
+#: inc/slider.php:32
+msgid "No slides yet."
+msgstr ""
+
+#: inc/template-tags.php:64
+msgid "Not found"
+msgstr ""
+
+#: template-parts/content-none.php:17
+msgid "Nothing here yet"
+msgstr ""
+
+#: inc/elementor-templates.php:664
+#: inc/elementor-templates.php:681
+msgid "Open spaces"
+msgstr ""
+
+#: template-parts/content-search.php:10
+msgid "Page"
+msgstr ""
+
+#: 404.php:16
+#: inc/admin-panel.php:491
+msgid "Page not found"
+msgstr ""
+
+#: inc/admin-panel.php:320
+#: inc/admin-panel.php:472
+msgid "Pages Layout"
+msgstr ""
+
+#: inc/admin-panel.php:374
+msgid "Pages using [products] or Woo blocks are detected automatically."
+msgstr ""
+
+#: single.php:49
+#: template-parts/content-page.php:33
+msgid "Pages:"
+msgstr ""
+
+#: inc/admin-panel.php:369
+msgid "Performance"
+msgstr ""
+
+#: inc/admin-panel.php:616
+#: inc/admin-panel.php:641
+#: inc/admin-panel.php:674
+msgid "Permission denied."
+msgstr ""
+
+#: inc/admin-panel.php:421
+msgid "Phone"
+msgstr ""
+
+#: inc/admin-panel.php:466
+msgid "Placeholders: %year% and %site%. Leave empty for the default."
+msgstr ""
+
+#: inc/patterns.php:73
+msgid "Platform uptime SLA"
+msgstr ""
+
+#: home.php:37
+#: template-parts/content-search.php:9
+msgid "Post"
+msgstr ""
+
+#: single.php:70
+msgid "Posts"
+msgstr ""
+
+#: inc/admin-panel.php:375
+msgid "Preload theme fonts"
+msgstr ""
+
+#: template-parts/hero-slider.php:66
+msgid "Previous slide"
+msgstr ""
+
+#: header.php:82
+msgid "Primary"
+msgstr ""
+
+#: functions.php:41
+msgid "Primary Menu"
+msgstr ""
+
+#: template-parts/content-search.php:11
+msgid "Product"
+msgstr ""
+
+#: inc/admin-panel.php:487
+msgid "Products per page"
+msgstr ""
+
+#: inc/elementor-templates.php:329
+msgid "Question four goes here?"
+msgstr ""
+
+#: inc/elementor-templates.php:314
+msgid "Question one goes here?"
+msgstr ""
+
+#: inc/elementor-templates.php:324
+msgid "Question three goes here?"
+msgstr ""
+
+#: inc/elementor-templates.php:319
+msgid "Question two goes here?"
+msgstr ""
+
+#: inc/admin-panel.php:521
+msgid "Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_html capability."
+msgstr ""
+
+#: inc/patterns.php:91
+msgid "Ready to secure your stack?"
+msgstr ""
+
+#: inc/admin-panel.php:584
+msgid "Rebuild Elementor templates"
+msgstr ""
+
+#: inc/admin-panel.php:349
+msgid "Remember each visitor's choice (localStorage)"
+msgstr ""
+
+#: inc/admin-panel.php:216
+#: inc/slider.php:132
+msgid "Remove"
+msgstr ""
+
+#: inc/admin-panel.php:372
+msgid "Remove jQuery Migrate (front-end)"
+msgstr ""
+
+#: inc/admin-panel.php:371
+msgid "Remove oEmbed discovery links"
+msgstr ""
+
+#: inc/admin-panel.php:570
+msgid "Reset all GNN Theme settings to defaults?"
+msgstr ""
+
+#: inc/admin-panel.php:568
+msgid "Reset settings"
+msgstr ""
+
+#: inc/admin-panel.php:573
+msgid "Reset to defaults"
+msgstr ""
+
+#: inc/admin-panel.php:569
+msgid "Restore all GNN Theme settings to their defaults. This cannot be undone."
+msgstr ""
+
+#: inc/admin-panel.php:408
+#: inc/admin-panel.php:462
+#: inc/admin-panel.php:478
+msgid "Right"
+msgstr ""
+
+#: inc/page-layouts.php:82
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/elementor-templates.php:210
+msgid "Sample title"
+msgstr ""
+
+#: inc/admin-panel.php:527
+msgid "Save Settings"
+msgstr ""
+
+#: inc/frontend.php:120
+msgid "Scroll to top"
+msgstr ""
+
+#: inc/admin-panel.php:355
+msgid "Scroll-in animations for blocks/images"
+msgstr ""
+
+#: header.php:101
+#: search.php:14
+#: searchform.php:14
+msgid "Search"
+msgstr ""
+
+#: searchform.php:11
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:12
+msgid "Search products, posts, pages…"
+msgstr ""
+
+#: inc/admin-panel.php:215
+#: inc/slider.php:131
+msgid "Select image"
+msgstr ""
+
+#: inc/slider.php:34
+msgid "Set background image"
+msgstr ""
+
+#: inc/slider.php:125
+msgid "Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens)."
+msgstr ""
+
+#: inc/admin-panel.php:708
+msgid "Settings imported successfully."
+msgstr ""
+
+#: inc/admin-panel.php:710
+msgid "Settings reset to defaults."
+msgstr ""
+
+#: inc/admin-panel.php:486
+msgid "Shop columns"
+msgstr ""
+
+#: inc/admin-panel.php:493
+msgid "Show a search box on the 404 page"
+msgstr ""
+
+#: inc/admin-panel.php:414
+msgid "Show the cart link (WooCommerce)"
+msgstr ""
+
+#: inc/admin-panel.php:348
+msgid "Show the dark/light toggle in the header"
+msgstr ""
+
+#: inc/admin-panel.php:413
+msgid "Show the search icon"
+msgstr ""
+
+#: inc/admin-panel.php:354
+msgid "Show the “Scroll to top” button"
+msgstr ""
+
+#: inc/admin-panel.php:467
+msgid "Shown bottom-right in the footer. Leave empty to hide."
+msgstr ""
+
+#: functions.php:71
+msgid "Sidebar"
+msgstr ""
+
+#: header.php:21
+msgid "Skip to content"
+msgstr ""
+
+#: inc/slider.php:26
+msgid "Slide"
+msgstr ""
+
+#: inc/slider.php:105
+msgid "Slide Details"
+msgstr ""
+
+#: inc/slider.php:168
+msgid "Slide order: set the \"Order\" field under Page Attributes (lower = earlier). An empty title hides the slide from the front page."
+msgstr ""
+
+#: inc/admin-panel.php:358
+msgid "Slides are managed under GNN Slider in the admin menu (unlimited slides)."
+msgstr ""
+
+#: inc/admin-panel.php:373
+msgid "Slow the Heartbeat API to 60s"
+msgstr ""
+
+#: inc/admin-panel.php:353
+msgid "Smooth scroll for anchor links"
+msgstr ""
+
+#: inc/admin-panel.php:397
+msgid "Standard (logo left, menu right)"
+msgstr ""
+
+#: inc/patterns.php:71
+msgid "Statistics cards"
+msgstr ""
+
+#: inc/admin-panel.php:412
+msgid "Sticky header"
+msgstr ""
+
+#: inc/customizer.php:60
+msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
+msgstr ""
+
+#: archive.php:45
+msgid "Tag"
+msgstr ""
+
+#: inc/slider.php:140
+msgid "Text"
+msgstr ""
+
+#: inc/admin-panel.php:440
+msgid "Text (site title)"
+msgstr ""
+
+#: 404.php:17
+msgid "The page you’re looking for was moved, renamed or never existed."
+msgstr ""
+
+#: inc/admin-panel.php:508
+msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body). Font controls are managed in theme.json; per-option font settings can be added here."
+msgstr ""
+
+#: inc/admin-panel.php:513
+msgid "The theme uses inline SVG icons. Icon management options appear here as they are added."
+msgstr ""
+
+#: inc/frontend.php:214
+msgid "Theme"
+msgstr ""
+
+#: inc/customizer.php:86
+msgid "Theme Mode"
+msgstr ""
+
+#: header.php:107
+#: inc/frontend.php:212
+msgid "Toggle dark / light mode"
+msgstr ""
+
+#: inc/admin-panel.php:417
+msgid "Top bar"
+msgstr ""
+
+#: inc/admin-panel.php:423
+msgid "Top bar background color"
+msgstr ""
+
+#: inc/admin-panel.php:428
+msgid "Top bar text color"
+msgstr ""
+
+#: inc/admin-panel.php:362
+msgid "Top loading progress bar"
+msgstr ""
+
+#: inc/patterns.php:67
+msgid "Trusted by security teams at"
+msgstr ""
+
+#: inc/patterns.php:65
+msgid "Trusted-by logo strip"
+msgstr ""
+
+#: template-parts/content-none.php:24
+msgid "Try a different search term, or browse the catalog and blog from the menu."
+msgstr ""
+
+#: inc/elementor-templates.php:737
+#: inc/patterns.php:124
+msgid "Two images side by side"
+msgstr ""
+
+#: inc/elementor-templates.php:250
+#: inc/patterns.php:112
+msgid "Two-tone background, centered image"
+msgstr ""
+
+#: inc/admin-panel.php:322
+#: inc/admin-panel.php:507
+msgid "Typography"
+msgstr ""
+
+#: inc/admin-panel.php:558
+msgid "Upload a previously exported GNN settings JSON file."
+msgstr ""
+
+#: inc/patterns.php:79
+msgid "View all"
+msgstr ""
+
+#: inc/customizer.php:102
+msgid "Visitors can still toggle; their choice persists in the browser."
+msgstr ""
+
+#: inc/frontend.php:245
+msgid "We are performing scheduled maintenance. Please check back soon."
+msgstr ""
+
+#: inc/patterns.php:85
+msgid "Why us"
+msgstr ""
+
+#: single.php:62
+msgid "Written by"
+msgstr ""
+
+#: inc/class-gnn-walker-comment.php:50
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/elementor-templates.php:412
+msgid "hello!"
+msgstr ""
+
+#: footer.php:78
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#: inc/elementor-templates.php:468
+msgid "— second line"
+msgstr ""
+
+#: inc/admin-panel.php:494
+msgid "“Back to home” button text"
+msgstr ""
+
+#: comments.php:39
+msgid "← Older comments"
+msgstr ""
+
+#: inc/template-tags.php:123
+msgid "← Prev"
+msgstr ""
+
+#: single.php:72
+msgid "← Previous"
+msgstr ""

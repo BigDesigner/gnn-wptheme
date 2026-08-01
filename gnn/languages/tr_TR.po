@@ -1,0 +1,918 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GNN 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-01 21:57+0000\n"
+"PO-Revision-Date: 2026-08-01 21:57+0000\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: gen-i18n.py\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+
+msgid "%1$s result for “%2$s”"
+msgid_plural "%1$s results for “%2$s”"
+msgstr[0] "“%2$s” için %1$s sonuç"
+msgstr[1] "“%2$s” için %1$s sonuç"
+
+msgid "%d min read"
+msgid_plural "%d min read"
+msgstr[0] "%d dk okuma"
+msgstr[1] "%d dk okuma"
+
+msgid "%s article"
+msgid_plural "%s articles"
+msgstr[0] "%s yazı"
+msgstr[1] "%s yazı"
+
+msgid "%s article in this archive."
+msgid_plural "%s articles in this archive."
+msgstr[0] "Bu arşivde %s yazı var."
+msgstr[1] "Bu arşivde %s yazı var."
+
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s yorum"
+msgstr[1] "%s yorum"
+
+msgid "404 description"
+msgstr "404 açıklaması"
+
+msgid "404 image"
+msgstr "404 görseli"
+
+msgid "404 page"
+msgstr "404 sayfası"
+
+msgid "404 title"
+msgstr "404 başlığı"
+
+msgid "A bold headline goes here"
+msgstr "Kalın bir başlık buraya gelir"
+
+msgid "A centered bold headline goes here"
+msgstr "Ortalanmış kalın bir başlık buraya gelir"
+
+msgid "A new collection"
+msgstr "Yeni bir koleksiyon"
+
+msgid "About the event"
+msgstr "Etkinlik hakkında"
+
+msgid "Accent color"
+msgstr "Vurgu rengi"
+
+msgid "Add New Slide"
+msgstr "Yeni Slayt Ekle"
+
+msgid "Add Slide"
+msgstr "Slayt Ekle"
+
+msgid "Add a short supporting paragraph here to describe the offer, product or story. Replace with your own copy."
+msgstr "Teklifi, ürünü ya da hikayeyi anlatan kısa bir destekleyici paragrafı buraya ekleyin. Kendi metninizle değiştirin."
+
+msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
+msgstr "Etkileyici kısa bir giriş buraya ekleyin. Bu örnek metni bölümü, ürünü ya da hikayeyi anlatan kendi içeriğinizle değiştirin."
+
+msgid "Add to cart"
+msgstr "Sepete ekle"
+
+msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
+msgstr "Giriş metninizi buraya ekleyin. Öne çıkarmak istediğiniz özelliği, ürünü ya da hikayeyi birkaç kısa cümleyle anlatın."
+
+msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
+msgstr "gnn-anim sınıflı öğelere kaydırınca beliren efekt ekler (reduced-motion desteği dahil)."
+
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+msgid "After <body> HTML"
+msgstr "<body> sonrası HTML"
+
+msgid "All Slides"
+msgstr "Tüm Slaytlar"
+
+msgid "Announcement text"
+msgstr "Duyuru metni"
+
+msgid "Answer the question here. Replace this placeholder text with your own content."
+msgstr "Cevabı buraya yazın. Bu örnek metni kendi içeriğinizle değiştirin."
+
+msgid "Appears in the footer widget area."
+msgstr "Footer bileşen alanında görünür."
+
+msgid "Appears on archives and pages with a sidebar."
+msgstr "Arşivlerde ve kenar çubuklu sayfalarda görünür."
+
+msgid "Archive"
+msgstr "Arşiv"
+
+msgid "Author"
+msgstr "Yazar"
+
+msgid "Autoplay"
+msgstr "Otomatik oynat"
+
+msgid "Autoplay interval (seconds)"
+msgstr "Otomatik oynatma aralığı (saniye)"
+
+msgid "BRAND."
+msgstr "MARKA."
+
+msgid "Back to Home"
+msgstr "Ana Sayfaya Dön"
+
+msgid "Background image (1×)"
+msgstr "Arka plan görseli (1×)"
+
+msgid "Background image (2× retina)"
+msgstr "Arka plan görseli (2× retina)"
+
+msgid "Badge (e.g. New, Hot, Sale)"
+msgstr "Rozet (ör. Yeni, Popüler, İndirim)"
+
+msgid "Big bold headline"
+msgstr "Büyük kalın başlık"
+
+msgid "Blank Canvas (no header/footer)"
+msgstr "Boş Tuval (başlık/altbilgi yok)"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Bold heading, paragraph & button"
+msgstr "Kalın başlık, paragraf ve düğme"
+
+msgid "Boxed (max 1200px)"
+msgstr "Kutulu (maks 1200px)"
+
+msgid "Brand"
+msgstr "Marka"
+
+msgid "Breadcrumb"
+msgstr "İçerik yolu"
+
+msgid "Button URL"
+msgstr "Düğme URL’si"
+
+msgid "Button label"
+msgstr "Düğme etiketi"
+
+msgid "Call-to-action band"
+msgstr "Eylem çağrısı bandı"
+
+msgid "Cart"
+msgstr "Sepet"
+
+msgid "Case study ↗"
+msgstr "Örnek olay incelemesi ↗"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Center"
+msgstr "Orta"
+
+msgid "Centered (logo center, split menus)"
+msgstr "Ortalı (logo ortada, bölünmüş menüler)"
+
+msgid "Centered layout uses the Header Left and Header Right menu locations."
+msgstr "Ortalı düzen, Üst Bölüm Sol ve Üst Bölüm Sağ menü konumlarını kullanır."
+
+msgid "Check back soon — new content is on the way."
+msgstr "Yakında tekrar bakın — yeni içerik yolda."
+
+msgid "Colors"
+msgstr "Renkler"
+
+msgid "Comments are closed."
+msgstr "Yorumlar kapalı."
+
+msgid "Contact"
+msgstr "İletişim"
+
+msgid "Contact with social links"
+msgstr "Sosyal bağlantılı iletişim"
+
+msgid "Contain (fit, no crop)"
+msgstr "Sığdır (kırpmadan)"
+
+msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
+msgstr "En-boy oranını koruyarak logo yüksekliğini kontrol eder (varsayılan: 40px). Çok geniş, afiş tipi logolar, alt bölüm sütunu darsa biraz daha kısa görünebilir."
+
+msgid "Cover (fill, cropped)"
+msgstr "Kapla (doldur, kırpılmış)"
+
+msgid "Cover — bottom"
+msgstr "Kapla — alt"
+
+msgid "Cover — centered"
+msgstr "Kapla — ortalı"
+
+msgid "Cover — gradient text"
+msgstr "Kapak — degrade metin"
+
+msgid "Cover — top"
+msgstr "Kapla — üst"
+
+msgid "Cover: heading & button (centered)"
+msgstr "Kapak: başlık ve düğme (orta)"
+
+msgid "Cover: heading & button (left)"
+msgstr "Kapak: başlık ve düğme (sol)"
+
+msgid "Cover: poster left, text right"
+msgstr "Kapak: solda afiş, sağda metin"
+
+msgid "Custom CSS"
+msgstr "Özel CSS"
+
+msgid "Custom Code"
+msgstr "Özel Kod"
+
+msgid "Custom JavaScript — footer"
+msgstr "Özel JavaScript — footer"
+
+msgid "Custom JavaScript — head"
+msgstr "Özel JavaScript — head"
+
+msgid "Custom script fields were not saved: your account lacks the unfiltered_html capability."
+msgstr "Özel script alanları kaydedilmedi: hesabınızda unfiltered_html yetkisi yok."
+
+msgid "Dark"
+msgstr "Koyu"
+
+msgid "Dark banner, top-left heading"
+msgstr "Koyu afiş, sol üst başlık"
+
+msgid "Default mode"
+msgstr "Varsayılan mod"
+
+msgid "Default sidebar position"
+msgstr "Varsayılan kenar çubuğu konumu"
+
+msgid "Disable the emoji script"
+msgstr "Emoji script’ini devre dışı bırak"
+
+msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
+msgstr "Tüm GNN Tema ayarlarını yedek veya aktarım için JSON dosyası olarak indirin."
+
+msgid "Edit Slide"
+msgstr "Slaytı Düzenle"
+
+msgid "Elementor templates"
+msgstr "Elementor şablonları"
+
+msgid "Elementor templates rebuilt."
+msgstr "Elementor şablonları yeniden oluşturuldu."
+
+msgid "Email"
+msgstr "E-posta"
+
+msgid "Enable maintenance mode (logged-out visitors only)"
+msgstr "Bakım modunu etkinleştir (yalnız oturum açmamış ziyaretçiler)"
+
+msgid "Enable the top announcement bar"
+msgstr "Üst duyuru çubuğunu etkinleştir"
+
+msgid "Enterprise clients"
+msgstr "Kurumsal müşteri"
+
+msgid "Etcetera"
+msgstr "Ve diğerleri"
+
+msgid "Events analyzed daily"
+msgstr "Günlük analiz edilen olay"
+
+msgid "Excerpt length (words)"
+msgstr "Özet uzunluğu (kelime)"
+
+msgid "Explore"
+msgstr "Keşfet"
+
+msgid "Export JSON"
+msgstr "JSON’a Aktar"
+
+msgid "Export settings"
+msgstr "Ayarları dışa aktar"
+
+msgid "Extra <head> HTML (meta/verification tags)"
+msgstr "Ek <head> HTML (meta/doğrulama etiketleri)"
+
+msgid "FAQs"
+msgstr "Sıkça Sorulan Sorular"
+
+msgid "Favicon (site icon, 512×512)"
+msgstr "Favicon (site simgesi, 512×512)"
+
+msgid "Feature band (media + bullets)"
+msgstr "Özellik bandı (görsel + maddeler)"
+
+msgid "Feature description goes here."
+msgstr "Özellik açıklaması buraya gelir."
+
+msgid "Feature title"
+msgstr "Özellik başlığı"
+
+msgid "Featured products"
+msgstr "Öne çıkan ürünler"
+
+msgid "Featured products (WooCommerce)"
+msgstr "Öne çıkan ürünler (WooCommerce)"
+
+msgid "Featured — %s"
+msgstr "Öne çıkan — %s"
+
+msgid "Footer"
+msgstr "Alt Bölüm"
+
+msgid "Footer Column %d"
+msgstr "Footer Kolonu %d"
+
+msgid "Footer Column 1"
+msgstr "Footer Kolonu 1"
+
+msgid "Footer Column 2"
+msgstr "Footer Kolonu 2"
+
+msgid "Footer Column 3"
+msgstr "Footer Kolonu 3"
+
+msgid "Footer brand"
+msgstr "Alt bölüm markası"
+
+msgid "Footer copyright line"
+msgstr "Footer telif satırı"
+
+msgid "Footer legal text"
+msgstr "Footer yasal metni"
+
+msgid "Footer logo max height (px)"
+msgstr "Alt bölüm logosu en fazla yükseklik (px)"
+
+msgid "Footer logo — dark mode (1×)"
+msgstr "Alt bölüm logosu — koyu mod (1×)"
+
+msgid "Footer logo — dark mode (2× retina)"
+msgstr "Alt bölüm logosu — koyu mod (2× retina)"
+
+msgid "Footer logo — light mode (1×)"
+msgstr "Alt bölüm logosu — açık mod (1×)"
+
+msgid "Footer logo — light mode (2× retina)"
+msgstr "Alt bölüm logosu — açık mod (2× retina)"
+
+msgid "Footer menu alignment"
+msgstr "Alt bölüm menü hizalama"
+
+msgid "Footer tagline"
+msgstr "Alt bölüm sloganı"
+
+msgid "Frequently Asked Questions"
+msgstr "Sıkça Sorulan Sorular"
+
+msgid "Full-height slider (fills the screen below the header)"
+msgstr "Tam yükseklik slider (üst bölümün altında ekranı kaplar)"
+
+msgid "Full-screen loading overlay"
+msgstr "Tam ekran yükleme katmanı"
+
+msgid "Full-stack security, one accountable partner."
+msgstr "Uçtan uca güvenlik, tek sorumlu iş ortağı."
+
+msgid "GNN Demo"
+msgstr "GNN Demo"
+
+msgid "GNN Display Options"
+msgstr "GNN Görüntü Seçenekleri"
+
+msgid "GNN Pill"
+msgstr "GNN Hap Buton"
+
+msgid "GNN Slider"
+msgstr "GNN Slider"
+
+msgid "GNN Theme"
+msgstr "GNN Tema"
+
+msgid "GNN Theme Options"
+msgstr "GNN Tema Seçenekleri"
+
+msgid "GNN Theme Panel"
+msgstr "GNN Tema Paneli"
+
+msgid "GNN's designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match."
+msgstr "GNN’in tasarlanmış bölümleri Elementor Kayıtlı Şablonlar olarak (editörde Şablonlar → Şablon Ekle). Vurgu rengini değiştirdikten sonra şablonların eşleşmesi için yeniden oluşturun."
+
+msgid "Get a Quote"
+msgstr "Teklif Alın"
+
+msgid "Global"
+msgstr "Genel"
+
+msgid "Go to slide %d"
+msgstr "%d. slayta git"
+
+msgid "Google Analytics 4 ID"
+msgstr "Google Analytics 4 kimliği"
+
+msgid "Google Tag Manager ID"
+msgstr "Google Tag Manager kimliği"
+
+msgid "Got questions? Feel free to reach out."
+msgstr "Sorularınız mı var? Bize ulaşmaktan çekinmeyin."
+
+msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
+msgstr "HTML etiketlerine izin verilir (ör. <a>, <br>, <strong>, <span>). Site sloganını kullanmak için boş bırakın."
+
+msgid "Header"
+msgstr "Üst Bölüm"
+
+msgid "Header Left (centered layout)"
+msgstr "Üst Bölüm Sol (ortalı düzen)"
+
+msgid "Header Right (centered layout)"
+msgstr "Üst Bölüm Sağ (ortalı düzen)"
+
+msgid "Header layout"
+msgstr "Üst bölüm düzeni"
+
+msgid "Header left"
+msgstr "Üst bölüm sol"
+
+msgid "Header right"
+msgstr "Üst bölüm sağ"
+
+msgid "Heading & paragraph with image"
+msgstr "Başlık + paragraf, görselli"
+
+msgid "Headline with links, gradient background"
+msgstr "Bağlantılı başlık, degrade arka plan"
+
+msgid "Headline."
+msgstr "Başlık."
+
+msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
+msgstr "Bir hafta sonu boyunca süren etkinlik; sergiler, atölyeler ve panel tartışmalarından oluşuyor. Bu metni kendi içeriğinizle değiştirin."
+
+msgid "Hero slider"
+msgstr "Hero slider"
+
+msgid "Hide"
+msgstr "Gizle"
+
+msgid "Hide the breadcrumb (Home / …)"
+msgstr "İçerik yolunu gizle (Ana Sayfa / …)"
+
+msgid "Hide the page title"
+msgstr "Sayfa başlığını gizle"
+
+msgid "Highlights"
+msgstr "Öne çıkanlar"
+
+msgid "Home"
+msgstr "Ana Sayfa"
+
+msgid "Icons"
+msgstr "İkonlar"
+
+msgid "Image + text"
+msgstr "Görsel + metin"
+
+msgid "Image fit"
+msgstr "Görsel sığdırma"
+
+msgid "Image logo"
+msgstr "Görsel logo"
+
+msgid "Import JSON"
+msgstr "JSON İçe Aktar"
+
+msgid "Import failed: the file is not a valid GNN settings export."
+msgstr "İçe aktarma başarısız: dosya geçerli bir GNN ayar dışa aktarımı değil."
+
+msgid "Import settings"
+msgstr "Ayarları içe aktar"
+
+msgid "Install and activate WooCommerce first so the demo products import correctly."
+msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i kurup etkinleştirin."
+
+msgid "Interactions"
+msgstr "Etkileşimler"
+
+msgid "Kicker"
+msgstr "Üst başlık"
+
+msgid "Large header over cover (left text)"
+msgstr "Kapak üzerinde büyük başlık (sol metin)"
+
+msgid "Layout"
+msgstr "Düzen"
+
+msgid "Learn More →"
+msgstr "Daha Fazla Bilgi →"
+
+msgid "Learn more"
+msgstr "Daha fazla bilgi"
+
+msgid "Leave a comment"
+msgstr "Yorum yazın"
+
+msgid "Left"
+msgstr "Sol"
+
+msgid "Left Sidebar"
+msgstr "Sol Kenar Çubuğu"
+
+msgid "Light"
+msgstr "Açık"
+
+msgid "Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both."
+msgstr "Açık mod koyu renk çizimi, koyu mod açık renk çizimi kullanır. Retina / yüksek yoğunluklu ekranlarda net görünmesi için her birinin 2× sürümünü de yükleyin. Yalnız bir modu doldurursanız ikisi için de o kullanılır."
+
+msgid "Load WooCommerce assets only on shop pages"
+msgstr "WooCommerce varlıklarını yalnız mağaza sayfalarında yükle"
+
+msgid "Logo max height — desktop (px)"
+msgstr "Logo en fazla yükseklik — masaüstü (px)"
+
+msgid "Logo max height — mobile (px)"
+msgstr "Logo en fazla yükseklik — mobil (px)"
+
+msgid "Logo — dark mode (1×)"
+msgstr "Logo — koyu mod (1×)"
+
+msgid "Logo — dark mode (2× retina)"
+msgstr "Logo — koyu mod (2× retina)"
+
+msgid "Logo — light mode (1×)"
+msgstr "Logo — açık mod (1×)"
+
+msgid "Logo — light mode (2× retina)"
+msgstr "Logo — açık mod (2× retina)"
+
+msgid "Maintenance / Coming soon"
+msgstr "Bakım / Çok yakında"
+
+msgid "Maintenance message"
+msgstr "Bakım mesajı"
+
+msgid "Matches the theme by default; pick a color to override."
+msgstr "Varsayılan olarak temayla eşleşir; geçersiz kılmak için bir renk seçin."
+
+msgid "Mean incident response"
+msgstr "Ortalama olay müdahalesi"
+
+msgid "Media & text (image left)"
+msgstr "Görsel ve metin (solda görsel)"
+
+msgid "Media & text (image right)"
+msgstr "Görsel ve metin (sağda görsel)"
+
+msgid "Menu"
+msgstr "Menü"
+
+msgid "Menu alignment"
+msgstr "Menü hizalama"
+
+msgid "Mobile"
+msgstr "Mobil"
+
+msgid "Mobile Menu"
+msgstr "Mobil Menü"
+
+msgid "Mobile bottom app dock (≤600px)"
+msgstr "Mobil alt uygulama çubuğu (≤600px)"
+
+msgid "Mobile navigation"
+msgstr "Mobil gezinme"
+
+msgid "New"
+msgstr "Yeni"
+
+msgid "Newer comments →"
+msgstr "Yeni yorumlar →"
+
+msgid "Next slide"
+msgstr "Sonraki slayt"
+
+msgid "Next →"
+msgstr "Sonraki →"
+
+msgid "No results found"
+msgstr "Sonuç bulunamadı"
+
+msgid "No sidebar"
+msgstr "Kenar çubuğu yok"
+
+msgid "No slides yet."
+msgstr "Henüz slayt yok."
+
+msgid "Not found"
+msgstr "Bulunamadı"
+
+msgid "Nothing here yet"
+msgstr "Henüz içerik yok"
+
+msgid "Open spaces"
+msgstr "Açık alanlar"
+
+msgid "Page"
+msgstr "Sayfa"
+
+msgid "Page not found"
+msgstr "Sayfa bulunamadı"
+
+msgid "Pages Layout"
+msgstr "Sayfa Düzeni"
+
+msgid "Pages using [products] or Woo blocks are detected automatically."
+msgstr "[products] veya Woo blokları kullanan sayfalar otomatik algılanır."
+
+msgid "Pages:"
+msgstr "Sayfalar:"
+
+msgid "Performance"
+msgstr "Performans"
+
+msgid "Permission denied."
+msgstr "İzin reddedildi."
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Placeholders: %year% and %site%. Leave empty for the default."
+msgstr "Yer tutucular: %year% ve %site%. Varsayılan için boş bırakın."
+
+msgid "Platform uptime SLA"
+msgstr "Platform çalışma süresi SLA"
+
+msgid "Post"
+msgstr "Yazı"
+
+msgid "Posts"
+msgstr "Yazılar"
+
+msgid "Preload theme fonts"
+msgstr "Tema fontlarını önden yükle"
+
+msgid "Previous slide"
+msgstr "Önceki slayt"
+
+msgid "Primary"
+msgstr "Birincil"
+
+msgid "Primary Menu"
+msgstr "Birincil Menü"
+
+msgid "Product"
+msgstr "Ürün"
+
+msgid "Products per page"
+msgstr "Sayfa başına ürün"
+
+msgid "Question four goes here?"
+msgstr "Dördüncü soru buraya gelir?"
+
+msgid "Question one goes here?"
+msgstr "Birinci soru buraya gelir?"
+
+msgid "Question three goes here?"
+msgstr "Üçüncü soru buraya gelir?"
+
+msgid "Question two goes here?"
+msgstr "İkinci soru buraya gelir?"
+
+msgid "Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_html capability."
+msgstr "Ham JS; <head> içinde <script> etiketiyle basılır. unfiltered_html yetkisi gerektirir."
+
+msgid "Ready to secure your stack?"
+msgstr "Altyapınızı güvenceye almaya hazır mısınız?"
+
+msgid "Rebuild Elementor templates"
+msgstr "Elementor şablonlarını yeniden oluştur"
+
+msgid "Remember each visitor's choice (localStorage)"
+msgstr "Her ziyaretçinin seçimini hatırla (localStorage)"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid "Remove jQuery Migrate (front-end)"
+msgstr "jQuery Migrate’i kaldır (ön yüz)"
+
+msgid "Remove oEmbed discovery links"
+msgstr "oEmbed keşif bağlantılarını kaldır"
+
+msgid "Reset all GNN Theme settings to defaults?"
+msgstr "Tüm GNN Tema ayarları varsayılana sıfırlansın mı?"
+
+msgid "Reset settings"
+msgstr "Ayarları sıfırla"
+
+msgid "Reset to defaults"
+msgstr "Varsayılana sıfırla"
+
+msgid "Restore all GNN Theme settings to their defaults. This cannot be undone."
+msgstr "Tüm GNN Tema ayarlarını varsayılana döndürür. Bu işlem geri alınamaz."
+
+msgid "Right"
+msgstr "Sağ"
+
+msgid "Right Sidebar"
+msgstr "Sağ Kenar Çubuğu"
+
+msgid "Sample title"
+msgstr "Örnek başlık"
+
+msgid "Save Settings"
+msgstr "Ayarları Kaydet"
+
+msgid "Scroll to top"
+msgstr "Yukarı çık"
+
+msgid "Scroll-in animations for blocks/images"
+msgstr "Bloklar/görseller için kaydırma animasyonları"
+
+msgid "Search"
+msgstr "Ara"
+
+msgid "Search for:"
+msgstr "Şunu ara:"
+
+msgid "Search products, posts, pages…"
+msgstr "Ürün, yazı, sayfa arayın…"
+
+msgid "Select image"
+msgstr "Görsel seç"
+
+msgid "Set background image"
+msgstr "Arka plan görseli seç"
+
+msgid "Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens)."
+msgstr "Standart arka planı Öne Çıkan Görsel kutusundan ayarlayın. Aşağıdaki 2× görsel isteğe bağlıdır (Retina / yüksek yoğunluklu ekranlarda kullanılır)."
+
+msgid "Settings imported successfully."
+msgstr "Ayarlar başarıyla içe aktarıldı."
+
+msgid "Settings reset to defaults."
+msgstr "Ayarlar varsayılana sıfırlandı."
+
+msgid "Shop columns"
+msgstr "Mağaza kolon sayısı"
+
+msgid "Show a search box on the 404 page"
+msgstr "404 sayfasında arama kutusu göster"
+
+msgid "Show the cart link (WooCommerce)"
+msgstr "Sepet bağlantısını göster (WooCommerce)"
+
+msgid "Show the dark/light toggle in the header"
+msgstr "Üst bölümde koyu/açık düğmesini göster"
+
+msgid "Show the search icon"
+msgstr "Arama ikonunu göster"
+
+msgid "Show the “Scroll to top” button"
+msgstr "“Yukarı çık” butonunu göster"
+
+msgid "Shown bottom-right in the footer. Leave empty to hide."
+msgstr "Footer’ın sağ altında görünür. Gizlemek için boş bırakın."
+
+msgid "Sidebar"
+msgstr "Kenar Çubuğu"
+
+msgid "Skip to content"
+msgstr "İçeriğe geç"
+
+msgid "Slide"
+msgstr "Slayt"
+
+msgid "Slide Details"
+msgstr "Slayt Ayrıntıları"
+
+msgid "Slide order: set the \"Order\" field under Page Attributes (lower = earlier). An empty title hides the slide from the front page."
+msgstr "Slayt sırası: Sayfa Öznitelikleri altındaki \"Sıra\" alanını ayarlayın (küçük = önce). Boş başlık slaytı ön sayfadan gizler."
+
+msgid "Slides are managed under GNN Slider in the admin menu (unlimited slides)."
+msgstr "Slaytlar yönetim menüsündeki GNN Slider bölümünden yönetilir (sınırsız slayt)."
+
+msgid "Slow the Heartbeat API to 60s"
+msgstr "Heartbeat API’yi 60 sn’ye yavaşlat"
+
+msgid "Smooth scroll for anchor links"
+msgstr "Çapa bağlantıları için yumuşak kaydırma"
+
+msgid "Standard (logo left, menu right)"
+msgstr "Standart (logo solda, menü sağda)"
+
+msgid "Statistics cards"
+msgstr "İstatistik kartları"
+
+msgid "Sticky header"
+msgstr "Sabit üst bölüm"
+
+msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
+msgstr "Önerilen: #34d399, #22d3ee, #fb923c, #a78bfa"
+
+msgid "Tag"
+msgstr "Etiket"
+
+msgid "Text"
+msgstr "Metin"
+
+msgid "Text (site title)"
+msgstr "Metin (site başlığı)"
+
+msgid "The page you’re looking for was moved, renamed or never existed."
+msgstr "Aradığınız sayfa taşınmış, adı değişmiş ya da hiç var olmamış."
+
+msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body). Font controls are managed in theme.json; per-option font settings can be added here."
+msgstr "Tema, kendi barındırılan Space Grotesk (başlıklar) ve Manrope (gövde) fontlarıyla gelir. Font kontrolleri theme.json’dan yönetilir; opsiyon bazlı font ayarları buraya eklenebilir."
+
+msgid "The theme uses inline SVG icons. Icon management options appear here as they are added."
+msgstr "Tema satır içi SVG ikonlar kullanır. İkon yönetim seçenekleri eklendikçe burada görünür."
+
+msgid "Theme"
+msgstr "Tema"
+
+msgid "Theme Mode"
+msgstr "Tema Modu"
+
+msgid "Toggle dark / light mode"
+msgstr "Koyu / açık modu değiştir"
+
+msgid "Top bar"
+msgstr "Üst çubuk"
+
+msgid "Top bar background color"
+msgstr "Üst çubuk zemin rengi"
+
+msgid "Top bar text color"
+msgstr "Üst çubuk metin rengi"
+
+msgid "Top loading progress bar"
+msgstr "Üstte yükleme ilerleme çubuğu"
+
+msgid "Trusted by security teams at"
+msgstr "Güvenlik ekiplerinin tercihi:"
+
+msgid "Trusted-by logo strip"
+msgstr "Referans logo şeridi"
+
+msgid "Try a different search term, or browse the catalog and blog from the menu."
+msgstr "Farklı bir arama terimi deneyin ya da menüden kataloğa ve bloga göz atın."
+
+msgid "Two images side by side"
+msgstr "Yan yana iki görsel"
+
+msgid "Two-tone background, centered image"
+msgstr "İki tonlu arka plan, ortalanmış görsel"
+
+msgid "Typography"
+msgstr "Tipografi"
+
+msgid "Upload a previously exported GNN settings JSON file."
+msgstr "Daha önce dışa aktarılmış bir GNN ayar JSON dosyası yükleyin."
+
+msgid "View all"
+msgstr "Tümünü gör"
+
+msgid "Visitors can still toggle; their choice persists in the browser."
+msgstr "Ziyaretçiler yine de değiştirebilir; seçim tarayıcıda saklanır."
+
+msgid "We are performing scheduled maintenance. Please check back soon."
+msgstr "Planlı bakım çalışması yapıyoruz. Lütfen kısa süre sonra tekrar bakın."
+
+msgid "Why us"
+msgstr "Neden biz"
+
+msgid "Written by"
+msgstr "Yazan"
+
+msgid "Your comment is awaiting moderation."
+msgstr "Yorumunuz onay bekliyor."
+
+msgid "hello!"
+msgstr "merhaba!"
+
+msgid "© %1$s %2$s. All rights reserved."
+msgstr "© %1$s %2$s. Tüm hakları saklıdır."
+
+msgid "— second line"
+msgstr "— ikinci satır"
+
+msgid "“Back to home” button text"
+msgstr "“Ana sayfaya dön” buton metni"
+
+msgid "← Older comments"
+msgstr "← Eski yorumlar"
+
+msgid "← Prev"
+msgstr "← Önceki"
+
+msgid "← Previous"
+msgstr "← Önceki"

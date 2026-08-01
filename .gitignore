@@ -1,0 +1,16 @@
+# Ignored local agent & development folders
+.agents/
+.build/
+.claude/
+.temp/
+
+# Zip outputs & archives
+*.zip
+
+# OS & IDE temporary files
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
