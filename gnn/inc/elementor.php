@@ -45,6 +45,41 @@ function gnn_elementor_defaults() {
 add_action( 'after_switch_theme', 'gnn_elementor_defaults' );
 
 /**
+ * Add a "Hide Breadcrumb" toggle to Elementor's native Page Settings panel,
+ * in its own small "GNN Theme" section. Breadcrumb has no Elementor
+ * equivalent to sync with (unlike title), so this registers a new document
+ * control instead; Elementor stores it in the same `_elementor_page_settings`
+ * postmeta array, which gnn_hide_breadcrumb() (inc/page-meta.php) reads.
+ *
+ * @param \Elementor\Core\Base\Document $document Document being loaded.
+ */
+function gnn_elementor_register_breadcrumb_control( $document ) {
+	if ( ! is_a( $document, '\Elementor\Core\DocumentTypes\PageBase' ) ) {
+		return;
+	}
+
+	$document->start_controls_section(
+		'gnn_page_settings_section',
+		array(
+			'label' => __( 'GNN Theme', 'gnn' ),
+			'tab'   => \Elementor\Controls_Manager::TAB_SETTINGS,
+		)
+	);
+
+	$document->add_control(
+		'gnn_hide_breadcrumb',
+		array(
+			'label'   => __( 'Hide Breadcrumb', 'gnn' ),
+			'type'    => \Elementor\Controls_Manager::SWITCHER,
+			'default' => '',
+		)
+	);
+
+	$document->end_controls_section();
+}
+add_action( 'elementor/documents/register_controls', 'gnn_elementor_register_breadcrumb_control' );
+
+/**
  * Bridge the theme's CSS custom properties into Elementor content so
  * dark/light mode works inside Elementor-built sections too.
  */

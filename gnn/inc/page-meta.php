@@ -132,8 +132,21 @@ function gnn_hide_title() {
 /**
  * Whether the current singular entry hides its breadcrumb.
  *
+ * Also honors the custom "Hide Breadcrumb" toggle this theme adds to
+ * Elementor's own Page Settings panel (see gnn_elementor_register_
+ * breadcrumb_control() in inc/elementor.php), stored the same way
+ * Elementor stores its native settings.
+ *
  * @return bool
  */
 function gnn_hide_breadcrumb() {
-	return is_singular() && '1' === get_post_meta( get_the_ID(), '_gnn_hide_breadcrumb', true );
+	if ( ! is_singular() ) {
+		return false;
+	}
+	$post_id = get_the_ID();
+	if ( '1' === get_post_meta( $post_id, '_gnn_hide_breadcrumb', true ) ) {
+		return true;
+	}
+	$elementor_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
+	return is_array( $elementor_settings ) && ! empty( $elementor_settings['gnn_hide_breadcrumb'] ) && 'yes' === $elementor_settings['gnn_hide_breadcrumb'];
 }

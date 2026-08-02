@@ -392,6 +392,7 @@ TRANSLATIONS = {
         'Sayfalar: Varsayılan, Kutulu, Sol Kenar Çubuğu ve Sağ Kenar Çubuğu şablonları.',
     'Top': 'Üst',
     'Which part of the image stays visible when it gets cropped.': 'Kırpıldığında görselin hangi kısmının görünür kalacağı.',
+    'Hide Breadcrumb': 'Breadcrumb’ı Gizle',
     'Theme Mode': 'Tema Modu',
     'Toggle dark / light mode': 'Koyu / açık modu değiştir',
     'Trusted by security teams at': 'Güvenlik ekiplerinin tercihi:',
