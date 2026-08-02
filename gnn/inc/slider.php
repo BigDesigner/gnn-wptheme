@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the gnn_slide CPT. Menu stays "GNN Slider" for continuity.
+ * Register the gnn_slide CPT. Nested as a "Slider" submenu under the
+ * top-level "GNN" menu (see gnn_panel_menu() in inc/admin-panel.php)
+ * instead of its own separate top-level menu.
  */
 function gnn_register_slide_cpt() {
 	register_post_type(
@@ -28,16 +30,14 @@ function gnn_register_slide_cpt() {
 				'add_new_item'       => __( 'Add New Slide', 'gnn' ),
 				'edit_item'          => __( 'Edit Slide', 'gnn' ),
 				'all_items'          => __( 'All Slides', 'gnn' ),
-				'menu_name'          => __( 'GNN Slider', 'gnn' ),
+				'menu_name'          => __( 'Slider', 'gnn' ),
 				'not_found'          => __( 'No slides yet.', 'gnn' ),
 				'featured_image'     => __( 'Background image (1×)', 'gnn' ),
 				'set_featured_image' => __( 'Set background image', 'gnn' ),
 			),
 			'public'              => false,
 			'show_ui'             => true,
-			'show_in_menu'        => true,
-			'menu_icon'           => 'dashicons-images-alt2',
-			'menu_position'       => 60,
+			'show_in_menu'        => 'gnn-panel',
 			'supports'            => array( 'title', 'thumbnail', 'page-attributes' ),
 			'has_archive'         => false,
 			'exclude_from_search' => true,
