@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,13 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.4 =
+* Fix: the stat strip and closing CTA heading now render as plain
+  centered HTML (inline styles) instead of Elementor's heading widget,
+  so centering can never lose a CSS specificity fight with any theme
+  style applied inside .entry-content, regardless of the page/sidebar
+  context the template is embedded in.
 
 = 1.3.3 =
 * Fix: GNN Ana Sayfa's zigzag sections had no gap between their two

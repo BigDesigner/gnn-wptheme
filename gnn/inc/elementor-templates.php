@@ -883,82 +883,32 @@ function gnn_elementor_library() {
 					)
 				),
 
-				// 2. Stat strip.
+				// 2. Stat strip. Plain centered HTML (not the heading widget) so
+				// centering can never lose a CSS specificity fight with theme
+				// styles applied inside .entry-content.
 				gnn_el_section(
 					array(
 						gnn_el_column(
 							array(
-								gnn_el_heading(
-									'7/24',
-									array(
-										'align'       => 'center',
-										'title_color' => $accent,
-										'typography_typography' => 'custom',
-										'typography_font_size' => array(
-											'unit' => 'px',
-											'size' => 34,
-										),
-										'typography_font_weight' => '800',
-									)
-								),
-								gnn_el_text( '<p style="text-align:center">SOC İzleme</p>', array( 'text_color' => $muted ) ),
+								gnn_el_text( '<div style="text-align:center;"><div style="font-size:34px;font-weight:800;color:' . $accent . ';">7/24</div><div style="margin-top:6px;color:' . $muted . ';">SOC İzleme</div></div>' ),
 							),
 							25
 						),
 						gnn_el_column(
 							array(
-								gnn_el_heading(
-									'50+',
-									array(
-										'align'       => 'center',
-										'title_color' => $cyan,
-										'typography_typography' => 'custom',
-										'typography_font_size' => array(
-											'unit' => 'px',
-											'size' => 34,
-										),
-										'typography_font_weight' => '800',
-									)
-								),
-								gnn_el_text( '<p style="text-align:center">Kurumsal Proje</p>', array( 'text_color' => $muted ) ),
+								gnn_el_text( '<div style="text-align:center;"><div style="font-size:34px;font-weight:800;color:' . $cyan . ';">50+</div><div style="margin-top:6px;color:' . $muted . ';">Kurumsal Proje</div></div>' ),
 							),
 							25
 						),
 						gnn_el_column(
 							array(
-								gnn_el_heading(
-									'%99.9',
-									array(
-										'align'       => 'center',
-										'title_color' => $purple,
-										'typography_typography' => 'custom',
-										'typography_font_size' => array(
-											'unit' => 'px',
-											'size' => 34,
-										),
-										'typography_font_weight' => '800',
-									)
-								),
-								gnn_el_text( '<p style="text-align:center">Uptime Garantisi</p>', array( 'text_color' => $muted ) ),
+								gnn_el_text( '<div style="text-align:center;"><div style="font-size:34px;font-weight:800;color:' . $purple . ';">%99.9</div><div style="margin-top:6px;color:' . $muted . ';">Uptime Garantisi</div></div>' ),
 							),
 							25
 						),
 						gnn_el_column(
 							array(
-								gnn_el_heading(
-									'10+',
-									array(
-										'align'       => 'center',
-										'title_color' => $accent,
-										'typography_typography' => 'custom',
-										'typography_font_size' => array(
-											'unit' => 'px',
-											'size' => 34,
-										),
-										'typography_font_weight' => '800',
-									)
-								),
-								gnn_el_text( '<p style="text-align:center">Yıl Deneyim</p>', array( 'text_color' => $muted ) ),
+								gnn_el_text( '<div style="text-align:center;"><div style="font-size:34px;font-weight:800;color:' . $accent . ';">10+</div><div style="margin-top:6px;color:' . $muted . ';">Yıl Deneyim</div></div>' ),
 							),
 							25
 						),
@@ -1215,23 +1165,13 @@ function gnn_elementor_library() {
 					)
 				),
 
-				// 7. Final CTA.
+				// 7. Final CTA. Heading is plain centered HTML (not the heading
+				// widget), same reasoning as the stat strip.
 				gnn_el_section(
 					array(
 						gnn_el_column(
 							array(
-								gnn_el_heading(
-									'Sıradaki Büyük Projenizi GNN Ekosistemiyle Şekillendirin',
-									array(
-										'align'       => 'center',
-										'title_color' => $fg,
-										'typography_typography' => 'custom',
-										'typography_font_size' => array(
-											'unit' => 'px',
-											'size' => 30,
-										),
-									)
-								),
+								gnn_el_text( '<h2 style="text-align:center;color:' . $fg . ';font-size:30px;font-weight:700;margin:0;">Sıradaki Büyük Projenizi GNN Ekosistemiyle Şekillendirin</h2>' ),
 								gnn_el_text( '<p style="text-align:center">Tasarımdan güvenliğe, yazılımdan stratejiye — tek ekip, tek sorumluluk.</p>', array( 'text_color' => $muted ) ),
 								gnn_el_spacer( 24 ),
 								gnn_el_widget(
