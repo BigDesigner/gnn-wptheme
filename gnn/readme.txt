@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.8
+Stable tag: 1.3.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,16 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.9 =
+* Fix: the mobile dock's theme-toggle button shared the header's round
+  icon-button styling (fixed 34x34px, border-radius, border, background)
+  via the .theme-toggle class, sitting visibly higher/smaller than its
+  plain-link siblings — reset inside the dock so all 4 items match.
+* The dock's 4 items are now centered as a group with breathing room on
+  both sides instead of stretching edge-to-edge, so they no longer sit
+  flush in the bottom corners where third-party floating widgets
+  (cookie-consent icons, chat bubbles) conventionally live.
 
 = 1.3.8 =
 * Fix: the mobile dock's sun icon had much less visual weight than its

@@ -1333,19 +1333,29 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
 .gnn-scrolltop.is-visible { opacity: 1; visibility: visible; transform: none; }
 .gnn-scrolltop:hover { filter: brightness(1.1); }
 
-/* Mobile bottom dock */
+/* Mobile bottom dock — items are centered as a group with room on both
+   sides (not stretched edge-to-edge), so the row never sits flush in the
+   corners where third-party floating widgets (cookie-consent icons, chat
+   bubbles) conventionally live. */
 .gnn-dock { display: none; }
 body.gnn-has-dock .gnn-dock {
 	position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
-	display: none; grid-auto-flow: column; grid-auto-columns: 1fr;
-	background: var(--bg2); border-top: 1px solid var(--line); padding: 6px 4px env(safe-area-inset-bottom);
+	display: none; justify-content: center; align-items: stretch; gap: clamp(8px, 5vw, 32px);
+	background: var(--bg2); border-top: 1px solid var(--line); padding: 6px 28px env(safe-area-inset-bottom);
 }
 .gnn-dock__item {
 	display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-	background: none; border: 0; cursor: pointer; padding: 6px 0; width: 100%;
+	background: none; border: 0; cursor: pointer; padding: 6px 4px;
 	color: var(--fg2); font-size: 10px; text-decoration: none;
+	flex: 0 1 76px; min-width: 52px;
 }
 .gnn-dock__item:hover { color: var(--fg); }
+/* .theme-toggle is shared with the header's round icon button (width/
+   height/border-radius/border/background) — reset all of that inside the
+   dock so its toggle lines up with its plain <a> siblings. */
+.gnn-dock__item.theme-toggle {
+	width: auto; height: auto; border-radius: 0; border: 0; background: none;
+}
 .gnn-dock__ico { display: block; flex-shrink: 0; }
 /* Sun/moon dock icons share the header's toggle classes for the same
    dark/light swap behaviour — these two-class rules must outrank both
@@ -1354,7 +1364,7 @@ body.gnn-has-dock .gnn-dock {
 [data-theme="light"] .gnn-dock__ico.theme-toggle__icon--sun { display: none; }
 [data-theme="light"] .gnn-dock__ico.theme-toggle__icon--moon { display: block; }
 @media (max-width: 600px) {
-	body.gnn-has-dock .gnn-dock { display: grid; }
+	body.gnn-has-dock .gnn-dock { display: flex; }
 	body.gnn-has-dock { padding-bottom: 64px; }
 	/* The dock already covers search/theme toggle — drop the header's
 	   copies so the two controls aren't duplicated on small screens. */
