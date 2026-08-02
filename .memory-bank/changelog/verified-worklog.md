@@ -40,3 +40,7 @@
 
 ## [2026-08-02] Admin menu restructure (v1.3.12)
 - "GNN Theme" and "GNN Slider" were two separate top-level wp-admin menu entries. Consolidated into one "GNN" top-level parent with "Theme" and "Slider" as its two submenus: `gnn_panel_menu()` now also calls `add_submenu_page()` on the same 'gnn-panel' slug to rename the auto-generated first submenu item, and the `gnn_slide` CPT's `show_in_menu` changed from `true` to the parent slug string `'gnn-panel'`.
+
+## [2026-08-02] GNN product family menu-position registry (v1.3.13)
+- Established a cross-product admin-menu-position convention for the whole GNN family (this theme plus sibling plugins like GNN SMTPMail, GNN Shortner): themes claim the `'58.xyz'`–`'59.xyz'` band (next to Appearance), plugins claim `'78.xyz'`–`'79.xyz'` (next to Settings), position values are always quoted strings (never bare floats, which can silently lose trailing zeros at parse time and collide). See [[0009-gnn-product-family-menu-position-registry]] and `.specs/constitution.md` rule 7.
+- This theme's own `add_menu_page()` call updated to use its registry slot `'59'` as an explicit string (previously an unquoted int — functionally identical today, but now consistent with the documented convention for every future GNN product to follow).

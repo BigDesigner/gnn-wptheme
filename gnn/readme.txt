@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.12
+Stable tag: 1.3.13
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,14 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.13 =
+* Governance: established a shared admin-menu-position convention across
+  the whole GNN product family (this theme plus sibling GNN plugins) so
+  every GNN product clusters near the WordPress core menu its users
+  already expect (themes near Appearance, plugins near Settings) instead
+  of scattering across the sidebar. No visible change to this theme's
+  own menu — it already sat in its correct reserved slot.
 
 = 1.3.12 =
 * Admin menu restructured: "GNN Theme" and "GNN Slider" used to be two
