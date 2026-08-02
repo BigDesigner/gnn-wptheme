@@ -30,7 +30,7 @@
    - Applies to every GNN-branded theme and plugin (this repo and all sibling products), not just this theme.
    - `add_menu_page()`'s `$position` argument is always passed as a **quoted string** (`'58.101'`), never a bare number — WordPress uses `"$position"` as the array key, and a bare float literal like `58.010` silently loses its trailing zero at parse time (becomes `58.01`), which can collide with a different product's slot.
    - Two position bands, chosen by product type so each family sits next to the WordPress core menu users already associate it with:
-     - **Themes** → `'58.xyz'`–`'59.xyz'` (next to Appearance/Görünüm). `'59'` is reserved for GNN Tema (this theme).
+     - **Themes** → `'58.xyz'`–`'59.xyz'` (next to Appearance/Görünüm). `'59.100'` is reserved for GNN Tema (this theme).
      - **Plugins** → `'78.xyz'`–`'79.xyz'` (next to Settings/Ayarlar).
    - A product with more than one admin screen registers ONE top-level menu and nests the rest as `add_submenu_page()` entries under it — never multiple top-level menus for one product (see `gnn_panel_menu()` in `gnn/inc/admin-panel.php`, which nests the Slider CPT this way).
    - The full slot registry lives in [ADR 0009](../.memory-bank/adr/0009-gnn-product-family-menu-position-registry.md) — check it before assigning a new position, and add a row there for every new GNN product.

@@ -38,6 +38,10 @@ Two additional constraints shaped the design:
 - Every position is written as a **quoted string literal** in source
   (`'58.101'`), never a bare number, specifically to sidestep the
   float-truncation collision described above.
+- Every slot — including the first/anchor product in a band — uses the
+  same 3-digit-suffix format (`'59.100'`, not a bare `'59'`), so the
+  registry table stays visually uniform as more products are added rather
+  than mixing bare-integer and decimal entries.
 - A product with more than one admin screen (like this theme's Theme panel
   + Slider CPT) registers exactly ONE top-level menu and nests every other
   screen under it via `add_submenu_page()` — never multiple top-level
@@ -53,7 +57,7 @@ Two additional constraints shaped the design:
 
 | Position | Product | Type | Repo |
 |---|---|---|---|
-| `'59'` | GNN Tema (Theme panel + Slider submenu) | Theme | this repo (`gnn-wptheme`) |
+| `'59.100'` | GNN Tema (Theme panel + Slider submenu) | Theme | this repo (`gnn-wptheme`) |
 | `'58.101'` | *(next theme product — unassigned)* | Theme | — |
 | `'79.101'` | GNN SMTPMail *(planned)* | Plugin | — |
 | `'79.102'` | GNN Shortner *(planned)* | Plugin | — |

@@ -44,3 +44,6 @@
 ## [2026-08-02] GNN product family menu-position registry (v1.3.13)
 - Established a cross-product admin-menu-position convention for the whole GNN family (this theme plus sibling plugins like GNN SMTPMail, GNN Shortner): themes claim the `'58.xyz'`–`'59.xyz'` band (next to Appearance), plugins claim `'78.xyz'`–`'79.xyz'` (next to Settings), position values are always quoted strings (never bare floats, which can silently lose trailing zeros at parse time and collide). See [[0009-gnn-product-family-menu-position-registry]] and `.specs/constitution.md` rule 7.
 - This theme's own `add_menu_page()` call updated to use its registry slot `'59'` as an explicit string (previously an unquoted int — functionally identical today, but now consistent with the documented convention for every future GNN product to follow).
+
+## [2026-08-02] Menu-position registry format consistency (v1.3.14)
+- Renamed GNN Tema's registry slot from the bare `'59'` to `'59.100'` so every entry in the registry (this theme's anchor slot included) shares the same 3-digit-suffix format — avoids a mix of bare-integer and decimal entries as more GNN products are added. Updated in code (`gnn_panel_menu()`), `.specs/constitution.md` rule 7, and ADR 0009.
