@@ -1280,7 +1280,10 @@ function gnn_install_elementor_templates() {
  * option flag makes this a no-op after the first successful run.
  */
 function gnn_maybe_install_elementor_templates() {
-	if ( post_type_exists( 'elementor_library' ) && ! get_option( 'gnn_elementor_templates_installed' ) ) {
+	// Re-syncs whenever the theme version changes too (not just on first
+	// install), so templates added/changed in a theme update show up
+	// automatically instead of requiring the manual "Rebuild" button.
+	if ( post_type_exists( 'elementor_library' ) && get_option( 'gnn_elementor_templates_installed' ) !== GNN_VERSION ) {
 		gnn_install_elementor_templates();
 	}
 }
