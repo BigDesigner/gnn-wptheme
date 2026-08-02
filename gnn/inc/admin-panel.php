@@ -108,12 +108,16 @@ function gnn_options_sanitize( $input ) {
 
 	// --- Choices. ---
 	$choices = array(
-		'sidebar_position'     => array( 'right', 'left', 'none' ),
-		'header_layout'        => array( 'standard', 'centered' ),
-		'header_menu_align'    => array( 'left', 'center', 'right' ),
-		'footer_menu_align'    => array( 'left', 'center', 'right' ),
-		'footer_brand_type'    => array( 'text', 'image', 'both', 'none' ),
-		'material_icons_style' => array( 'outlined', 'rounded', 'sharp', 'filled' ),
+		'sidebar_position'             => array( 'right', 'left', 'none' ),
+		'header_layout'                => array( 'standard', 'centered' ),
+		'header_menu_align'            => array( 'left', 'center', 'right' ),
+		'footer_menu_align'            => array( 'left', 'center', 'right' ),
+		'footer_brand_type'            => array( 'text', 'image', 'both', 'none' ),
+		'material_icons_style'         => array( 'outlined', 'rounded', 'sharp', 'filled' ),
+		'page_featured_image_fit'      => array( 'cover', 'contain', 'fill' ),
+		'page_featured_image_position' => array( 'top', 'center', 'bottom' ),
+		'post_featured_image_fit'      => array( 'cover', 'contain', 'fill' ),
+		'post_featured_image_position' => array( 'top', 'center', 'bottom' ),
 	);
 	foreach ( $choices as $key => $allowed ) {
 		if ( isset( $input[ $key ] ) && in_array( $input[ $key ], $allowed, true ) ) {
@@ -123,15 +127,17 @@ function gnn_options_sanitize( $input ) {
 
 	// --- Numbers (clamped). ---
 	foreach ( array(
-		'content_top_padding'    => array( 0, 200 ),
-		'content_bottom_padding' => array( 0, 300 ),
-		'excerpt_length'         => array( 5, 100 ),
-		'shop_columns'           => array( 2, 6 ),
-		'shop_per_page'          => array( 2, 48 ),
-		'logo_max_height'        => array( 12, 200 ),
-		'logo_max_height_mobile' => array( 12, 200 ),
-		'footer_logo_height'     => array( 12, 300 ),
-		'slider_interval'        => array( 2, 30 ),
+		'content_top_padding'        => array( 0, 200 ),
+		'content_bottom_padding'     => array( 0, 300 ),
+		'page_featured_image_height' => array( 80, 600 ),
+		'post_featured_image_height' => array( 80, 800 ),
+		'excerpt_length'             => array( 5, 100 ),
+		'shop_columns'               => array( 2, 6 ),
+		'shop_per_page'              => array( 2, 48 ),
+		'logo_max_height'            => array( 12, 200 ),
+		'logo_max_height_mobile'     => array( 12, 200 ),
+		'footer_logo_height'         => array( 12, 300 ),
+		'slider_interval'            => array( 2, 30 ),
 	) as $key => $range ) {
 		if ( isset( $input[ $key ] ) ) {
 			$out[ $key ] = min( $range[1], max( $range[0], absint( $input[ $key ] ) ) );
@@ -554,6 +560,56 @@ function gnn_panel_render() {
 				?>
 				<?php gnn_field_number( 'content_top_padding', __( 'Content top spacing (px)', 'gnn' ), 0, 200, __( 'Gap between the header and the page content — or between the featured image and the content, when the page has one.', 'gnn' ) ); ?>
 				<?php gnn_field_number( 'content_bottom_padding', __( 'Content bottom spacing (px)', 'gnn' ), 0, 300, __( 'Gap between the page content and the footer.', 'gnn' ) ); ?>
+
+				<h3><?php esc_html_e( 'Featured image', 'gnn' ); ?></h3>
+				<p class="description"><?php esc_html_e( 'Pages: Default, Boxed, Left Sidebar and Right Sidebar templates.', 'gnn' ); ?></p>
+				<?php gnn_field_number( 'page_featured_image_height', __( 'Page image height (px)', 'gnn' ), 80, 600 ); ?>
+				<?php
+				gnn_field_select(
+					'page_featured_image_fit',
+					__( 'Page image fit', 'gnn' ),
+					array(
+						'cover'   => __( 'Cover (fill and crop)', 'gnn' ),
+						'contain' => __( 'Contain (show the whole image)', 'gnn' ),
+						'fill'    => __( 'Fill (stretch)', 'gnn' ),
+					)
+				);
+				gnn_field_select(
+					'page_featured_image_position',
+					__( 'Page image alignment', 'gnn' ),
+					array(
+						'top'    => __( 'Top', 'gnn' ),
+						'center' => __( 'Center', 'gnn' ),
+						'bottom' => __( 'Bottom', 'gnn' ),
+					),
+					__( 'Which part of the image stays visible when it gets cropped.', 'gnn' )
+				);
+				?>
+
+				<p class="description"><?php esc_html_e( 'Blog: single post pages.', 'gnn' ); ?></p>
+				<?php gnn_field_number( 'post_featured_image_height', __( 'Blog image height (px)', 'gnn' ), 80, 800 ); ?>
+				<?php
+				gnn_field_select(
+					'post_featured_image_fit',
+					__( 'Blog image fit', 'gnn' ),
+					array(
+						'cover'   => __( 'Cover (fill and crop)', 'gnn' ),
+						'contain' => __( 'Contain (show the whole image)', 'gnn' ),
+						'fill'    => __( 'Fill (stretch)', 'gnn' ),
+					)
+				);
+				gnn_field_select(
+					'post_featured_image_position',
+					__( 'Blog image alignment', 'gnn' ),
+					array(
+						'top'    => __( 'Top', 'gnn' ),
+						'center' => __( 'Center', 'gnn' ),
+						'bottom' => __( 'Bottom', 'gnn' ),
+					),
+					__( 'Which part of the image stays visible when it gets cropped.', 'gnn' )
+				);
+				?>
+
 				<?php gnn_field_number( 'excerpt_length', __( 'Excerpt length (words)', 'gnn' ), 5, 100 ); ?>
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
 					<?php gnn_field_number( 'shop_columns', __( 'Shop columns', 'gnn' ), 2, 6 ); ?>
