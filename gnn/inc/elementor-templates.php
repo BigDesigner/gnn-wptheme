@@ -1273,17 +1273,39 @@ function gnn_install_elementor_templates() {
 }
 
 /**
- * Install once, the first time Elementor is active. Hooked to admin_init
+ * Install (or heal) the Elementor template library. Hooked to admin_init
  * (runs on every wp-admin request) rather than elementor/loaded: in some
  * environments (e.g. automated/headless installs) elementor/loaded fires
- * without a full admin request ever completing, so it can be missed. The
- * option flag makes this a no-op after the first successful run.
+ * without a full admin request ever completing, so it can be missed.
+ *
+ * Re-runs when either:
+ * - The stored "installed" version doesn't match GNN_VERSION (a theme
+ *   update may have added/changed templates), or
+ * - No GNN-authored templates actually exist any more (e.g. someone
+ *   deleted them from Templates → Saved Templates) — checking the version
+ *   flag alone isn't enough here, since the flag survives post deletion.
  */
 function gnn_maybe_install_elementor_templates() {
-	// Re-syncs whenever the theme version changes too (not just on first
-	// install), so templates added/changed in a theme update show up
-	// automatically instead of requiring the manual "Rebuild" button.
-	if ( post_type_exists( 'elementor_library' ) && get_option( 'gnn_elementor_templates_installed' ) !== GNN_VERSION ) {
+	if ( ! post_type_exists( 'elementor_library' ) ) {
+		return;
+	}
+
+	$version_synced = get_option( 'gnn_elementor_templates_installed' ) === GNN_VERSION;
+	$has_templates  = ! empty(
+		get_posts(
+			array(
+				'post_type'      => 'elementor_library',
+				'post_status'    => 'any',
+				'posts_per_page' => 1,
+				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin-only, LIMIT 1, indexed meta key.
+					array( 'key' => '_gnn_elementor_template' ),
+				),
+				'fields'         => 'ids',
+			)
+		)
+	);
+
+	if ( ! $version_synced || ! $has_templates ) {
 		gnn_install_elementor_templates();
 	}
 }
