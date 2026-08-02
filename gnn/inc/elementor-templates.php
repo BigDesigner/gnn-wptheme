@@ -188,13 +188,15 @@ function gnn_elementor_library() {
 	$ph     = get_theme_file_uri( 'assets/img/placeholder-cover.svg' );
 
 	// Home page template — matches the theme's own dark tokens exactly
-	// (see :root in main.css) so it blends seamlessly, plus two fixed
-	// accent companions (cyan/purple) for the three-pillar service grid.
+	// (see :root in main.css) so it blends seamlessly, plus fixed accent
+	// companions, one per GNN sub-brand, for visual identity.
 	$bg     = '#0a0a0b';
 	$bg2    = '#121214';
 	$line   = '#232328';
 	$cyan   = '#22d3ee';
 	$purple = '#a78bfa';
+	$amber  = '#fb923c';
+	$blue   = '#60a5fa';
 
 	$section_pad = array(
 		'padding' => array(
@@ -756,13 +758,13 @@ function gnn_elementor_library() {
 			'title'    => 'GNN Ana Sayfa',
 			'sections' => array(
 
-				// 1. Hero: kicker + headline + copy + dual CTA (left), live "code" art panel (right).
+				// 1. Hero: kicker + headline + copy + dual CTA (left), ecosystem "code" art panel (right).
 				gnn_el_section(
 					array(
 						gnn_el_column(
 							array(
 								gnn_el_heading(
-									'🛡️ GNN ADVANCED CYBER LABS',
+									'GNN ENTERPRISE ECOSYSTEM',
 									array(
 										'header_size' => 'h6',
 										'title_color' => $accent,
@@ -774,37 +776,37 @@ function gnn_elementor_library() {
 										'typography_font_weight' => '700',
 										'typography_letter_spacing' => array(
 											'unit' => 'px',
-											'size' => 1,
+											'size' => 1.5,
 										),
 									)
 								),
 								gnn_el_heading(
-									'Yazılım, AI &amp; Siber Güvenlikte Geleceğin Altyapısı',
+									'Kritik Altyapılar ve Dijital Varlıklar İçin Mutlak Mühendislik.',
 									array(
 										'header_size' => 'h1',
 										'title_color' => $fg,
 										'typography_typography' => 'custom',
 										'typography_font_size' => array(
 											'unit' => 'px',
-											'size' => 48,
+											'size' => 46,
 										),
 										'typography_font_weight' => '800',
 										'typography_line_height' => array(
 											'unit' => 'em',
-											'size' => 1.15,
+											'size' => 1.18,
 										),
 									)
 								),
 								gnn_el_text(
-									'<p>Kurumsal web &amp; mobil uygulamalar, SIEM siber güvenlik çözümleri ve yapay zekâ araç geliştirme alanında yüksek performanslı dijital dönüşüm.</p>',
+									'<p>Siber savunma, zafiyet analitiği, kurumsal kimlik tasarımı, özel yazılım geliştirme ve bütüncül IT danışmanlığını kapsayan uçtan uca kurumsal teknoloji ekosistemi.</p>',
 									array( 'text_color' => $muted )
 								),
 								gnn_el_spacer( 8 ),
 								gnn_el_widget(
 									'button',
 									array(
-										'text'          => 'Projeyi Başlat →',
-										'link'          => array( 'url' => '#contact' ),
+										'text'          => 'Ekosistemi Keşfedin →',
+										'link'          => array( 'url' => '#ecosystem' ),
 										'button_type'   => 'success',
 										'size'          => 'md',
 										'border_radius' => array(
@@ -828,8 +830,8 @@ function gnn_elementor_library() {
 								gnn_el_widget(
 									'button',
 									array(
-										'text'          => 'Hizmetleri Gör',
-										'link'          => array( 'url' => '#services' ),
+										'text'          => 'İletişime Geçin',
+										'link'          => array( 'url' => '#contact' ),
 										'button_type'   => 'outline',
 										'border_color'  => $line,
 										'button_text_color' => $fg,
@@ -851,12 +853,14 @@ function gnn_elementor_library() {
 						gnn_el_column(
 							array(
 								gnn_el_text(
-									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';padding:28px;border-radius:20px;font-family:Consolas,Menlo,monospace;font-size:14px;line-height:1.9;color:' . $cyan . ';box-shadow:0 20px 60px -20px rgba(0,0,0,.6);">' .
-										'<span style="color:' . $purple . ';">const</span> gnnEngine = <span style="color:' . $purple . ';">new</span> SecurityLab({<br>' .
-										'&nbsp;&nbsp;siem: <span style="color:' . $accent . ';">\'7/24 Aktif\'</span>,<br>' .
-										'&nbsp;&nbsp;aiTools: <span style="color:' . $accent . ';">\'Otonom Ajanlar\'</span>,<br>' .
-										'&nbsp;&nbsp;apps: <span style="color:' . $accent . ';">\'Web &amp; Mobil\'</span><br>' .
-										'});</div>'
+									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';padding:28px;border-radius:20px;font-family:Consolas,Menlo,monospace;font-size:14px;line-height:2;color:' . $muted . ';box-shadow:0 20px 60px -20px rgba(0,0,0,.6);">' .
+										'<span style="color:' . $purple . ';">const</span> gnnEcosystem = {<br>' .
+										'&nbsp;&nbsp;creative: <span style="color:' . $purple . ';">\'Kimlik &amp; Arayüz\'</span>,<br>' .
+										'&nbsp;&nbsp;cyber: <span style="color:' . $accent . ';">\'Zero-Trust Savunma\'</span>,<br>' .
+										'&nbsp;&nbsp;logix: <span style="color:' . $cyan . ';">\'SIEM &amp; Zafiyet Analizi\'</span>,<br>' .
+										'&nbsp;&nbsp;labs: <span style="color:' . $amber . ';">\'Özel Yazılım\'</span>,<br>' .
+										'&nbsp;&nbsp;advisory: <span style="color:' . $blue . ';">\'IT Stratejisi\'</span><br>' .
+										'};</div>'
 								),
 							),
 							50,
@@ -971,169 +975,30 @@ function gnn_elementor_library() {
 					)
 				),
 
-				// 3. Sub-brand ecosystem tags (uses .gnn-subbrand-tag, see main.css).
+				// 3. GNNcreative — zigzag #1: copy left, design-system mockup right.
 				gnn_el_section(
 					array(
 						gnn_el_column(
 							array(
-								gnn_el_heading(
-									'GNN Ekosistemi',
-									array(
-										'align'       => 'center',
-										'header_size' => 'h5',
-										'title_color' => $muted,
-									)
-								),
+								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $purple . '"></span><span class="gnn-brand-suffix" style="color:' . $purple . '">Creative</span></span>' ),
 								gnn_el_spacer( 20 ),
-								gnn_el_text(
-									'<div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">' .
-										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">Security</span></span>' .
-										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">AI Labs</span></span>' .
-										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">Software</span></span>' .
-										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">Cloud</span></span>' .
-									'</div>'
-								),
-							),
-							100
-						),
-					),
-					array(
-						'background_background' => 'classic',
-						'background_color'      => $bg,
-						'padding'               => array(
-							'unit'     => 'px',
-							'top'      => '56',
-							'right'    => '32',
-							'bottom'   => '56',
-							'left'     => '32',
-							'isLinked' => false,
-						),
-					)
-				),
-
-				// 4. Services heading + 3-column icon-box grid.
-				gnn_el_section(
-					array(
-						gnn_el_column(
-							array(
 								gnn_el_heading(
-									'Geleceğin Dijital Çözümleri',
-									array(
-										'align'       => 'center',
-										'title_color' => $fg,
-										'typography_typography' => 'custom',
-										'typography_font_size' => array(
-											'unit' => 'px',
-											'size' => 36,
-										),
-									)
-								),
-								gnn_el_text( '<p style="text-align:center">Tek çatı altında güvenlik, otomasyon ve mühendislik.</p>', array( 'text_color' => $muted ) ),
-							),
-							100
-						),
-					),
-					array(
-						'background_background' => 'classic',
-						'background_color'      => $bg,
-						'padding'               => array(
-							'unit'     => 'px',
-							'top'      => '80',
-							'right'    => '32',
-							'bottom'   => '16',
-							'left'     => '32',
-							'isLinked' => false,
-						),
-					)
-				),
-				gnn_el_section(
-					array(
-						gnn_el_column(
-							array(
-								gnn_el_widget(
-									'icon-box',
-									array(
-										'selected_icon'    => array(
-											'value'   => 'fas fa-shield-halved',
-											'library' => 'fa-solid',
-										),
-										'title_text'       => 'SIEM &amp; Siber Güvenlik',
-										'description_text' => '7/24 log yönetimi, SIEM mimarisi, siber tehdit avcılığı ve sızma testleri.',
-										'primary_color'    => $accent,
-									)
-								),
-							),
-							33
-						),
-						gnn_el_column(
-							array(
-								gnn_el_widget(
-									'icon-box',
-									array(
-										'selected_icon'    => array(
-											'value'   => 'fas fa-robot',
-											'library' => 'fa-solid',
-										),
-										'title_text'       => 'Yapay Zekâ Araçları',
-										'description_text' => 'LLM entegrasyonları, otonom ajan sistemleri ve özel AI modelleri.',
-										'primary_color'    => $cyan,
-									)
-								),
-							),
-							33
-						),
-						gnn_el_column(
-							array(
-								gnn_el_widget(
-									'icon-box',
-									array(
-										'selected_icon'    => array(
-											'value'   => 'fas fa-code',
-											'library' => 'fa-solid',
-										),
-										'title_text'       => 'Yazılım &amp; Web App',
-										'description_text' => 'Ölçeklenebilir SaaS platformları, React/Next.js ve microservice mimarileri.',
-										'primary_color'    => $purple,
-									)
-								),
-							),
-							33
-						),
-					),
-					array(
-						'background_background' => 'classic',
-						'background_color'      => $bg,
-						'padding'               => array(
-							'unit'     => 'px',
-							'top'      => '16',
-							'right'    => '32',
-							'bottom'   => '80',
-							'left'     => '32',
-							'isLinked' => false,
-						),
-					)
-				),
-
-				// 5. "Neden GNN?" — copy left, checklist right.
-				gnn_el_section(
-					array(
-						gnn_el_column(
-							array(
-								gnn_el_heading(
-									'Neden GNN?',
+									'Kurumsal Kimlikten Dijital Deneyime, Tek Hassas Çizgi.',
 									array(
 										'title_color' => $fg,
 										'typography_typography' => 'custom',
 										'typography_font_size' => array(
 											'unit' => 'px',
-											'size' => 32,
+											'size' => 30,
 										),
+										'typography_font_weight' => '700',
 									)
 								),
 								gnn_el_text(
-									'<p>Ürün, altyapı ve güvenliği tek ekipte birleştiriyoruz — konuşulan değil, ölçülen sonuçlar üretiyoruz.</p>',
+									'<p>Marka kimliğinizi sıfırdan kurguluyor; logo, kurumsal doküman ve fuar/outdoor materyallerinden, milisaniyeler içinde yüklenen yüksek dönüşümlü web platformlarına kadar her temas noktasını aynı hassasiyetle tasarlıyoruz.</p>',
 									array( 'text_color' => $muted )
 								),
+								gnn_el_text( '<p><a href="#contact" style="color:' . $purple . ';font-weight:700;text-decoration:none;">Tasarım Sürecini İnceleyin →</a></p>' ),
 							),
 							50,
 							array( 'content_position' => 'center' )
@@ -1141,13 +1006,22 @@ function gnn_elementor_library() {
 						gnn_el_column(
 							array(
 								gnn_el_text(
-									'<div style="display:flex;flex-direction:column;gap:16px;">' .
-										'<div>✅ Uçtan uca güvenlik mimarisi</div>' .
-										'<div>✅ Otonom AI ajanları ile operasyon</div>' .
-										'<div>✅ Ölçeklenebilir, bulut-native mimari</div>' .
-										'<div>✅ Kesintisiz 7/24 destek</div>' .
-									'</div>',
-									array( 'text_color' => $fg )
+									'<div style="background:' . $bg . ';border:1px solid ' . $line . ';border-radius:20px;padding:28px;box-shadow:0 20px 60px -20px rgba(0,0,0,.6);">' .
+										'<div style="display:flex;gap:6px;margin-bottom:22px;">' .
+											'<span style="width:10px;height:10px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>' .
+											'<span style="width:10px;height:10px;border-radius:50%;background:#febc2e;display:inline-block;"></span>' .
+											'<span style="width:10px;height:10px;border-radius:50%;background:#28c840;display:inline-block;"></span>' .
+										'</div>' .
+										'<div style="font-family:Consolas,Menlo,monospace;font-size:40px;font-weight:800;color:' . $fg . ';margin-bottom:20px;">Aa</div>' .
+										'<div style="display:flex;gap:10px;margin-bottom:22px;">' .
+											'<span style="width:28px;height:28px;border-radius:8px;background:' . $purple . ';display:inline-block;"></span>' .
+											'<span style="width:28px;height:28px;border-radius:8px;background:' . $accent . ';display:inline-block;"></span>' .
+											'<span style="width:28px;height:28px;border-radius:8px;background:' . $cyan . ';display:inline-block;"></span>' .
+											'<span style="width:28px;height:28px;border-radius:8px;background:' . $fg . ';display:inline-block;"></span>' .
+										'</div>' .
+										'<div style="height:10px;background:' . $line . ';border-radius:6px;margin-bottom:8px;"></div>' .
+										'<div style="height:10px;width:70%;background:' . $line . ';border-radius:6px;"></div>' .
+									'</div>'
 								),
 							),
 							50,
@@ -1159,27 +1033,194 @@ function gnn_elementor_library() {
 						'background_color'      => $bg2,
 						'padding'               => array(
 							'unit'     => 'px',
-							'top'      => '72',
+							'top'      => '96',
 							'right'    => '32',
-							'bottom'   => '72',
+							'bottom'   => '96',
 							'left'     => '32',
 							'isLinked' => false,
 						),
 					)
 				),
 
-				// 6. Final CTA.
+				// 4. GNNcyber — zigzag #2: SIEM/EDR terminal mockup left, copy right.
+				gnn_el_section(
+					array(
+						gnn_el_column(
+							array(
+								gnn_el_text(
+									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';border-radius:20px;padding:28px;font-family:Consolas,Menlo,monospace;font-size:13px;line-height:2;color:' . $muted . ';box-shadow:0 20px 60px -20px rgba(0,0,0,.6);">' .
+										'<div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">' .
+											'<span style="width:8px;height:8px;border-radius:50%;background:' . $accent . ';display:inline-block;"></span>' .
+											'<span style="color:' . $accent . ';font-weight:700;">Sistem Güvende</span>' .
+										'</div>' .
+										'<div>[19:42:11] <span style="color:' . $cyan . ';">EDR</span> :: endpoint-042 ... <span style="color:' . $accent . ';">OK</span></div>' .
+										'<div>[19:42:13] <span style="color:' . $cyan . ';">SIEM</span> :: korelasyon ... 3 olay</div>' .
+										'<div>[19:42:15] <span style="color:' . $cyan . ';">FIREWALL</span> :: kural senkronu ... <span style="color:' . $accent . ';">OK</span></div>' .
+										'<div>[19:42:18] <span style="color:' . $cyan . ';">XDR</span> :: tehdit avı ... temiz</div>' .
+									'</div>'
+								),
+							),
+							50,
+							array( 'content_position' => 'center' )
+						),
+						gnn_el_column(
+							array(
+								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $accent . '"></span><span class="gnn-brand-suffix" style="color:' . $accent . '">Cyber</span></span>' ),
+								gnn_el_spacer( 20 ),
+								gnn_el_heading(
+									'Sıfır Güven Mimarisiyle Kesintisiz Siber Savunma.',
+									array(
+										'title_color' => $fg,
+										'typography_typography' => 'custom',
+										'typography_font_size' => array(
+											'unit' => 'px',
+											'size' => 30,
+										),
+										'typography_font_weight' => '700',
+									)
+								),
+								gnn_el_text(
+									'<p>Kurumsal ağınızı EDR, SIEM, XDR ve yeni nesil güvenlik duvarı entegrasyonlarıyla uçtan uca koruyoruz. Sızma testlerinden Active Directory sıkılaştırmasına, gerçek zamanlı tehdit avcılığından yetkisiz erişim denetimine kadar savunmanız hiç durmuyor.</p>',
+									array( 'text_color' => $muted )
+								),
+								gnn_el_text( '<p><a href="#contact" style="color:' . $accent . ';font-weight:700;text-decoration:none;">Güvenlik Mimarisini Görün →</a></p>' ),
+							),
+							50,
+							array( 'content_position' => 'center' )
+						),
+					),
+					array(
+						'background_background' => 'classic',
+						'background_color'      => $bg,
+						'padding'               => array(
+							'unit'     => 'px',
+							'top'      => '96',
+							'right'    => '32',
+							'bottom'   => '96',
+							'left'     => '32',
+							'isLinked' => false,
+						),
+					)
+				),
+
+				// 5. GNNlogix — zigzag #3: copy left, vulnerability report mockup right.
+				gnn_el_section(
+					array(
+						gnn_el_column(
+							array(
+								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $cyan . '"></span><span class="gnn-brand-suffix" style="color:' . $cyan . '">Logix</span></span>' ),
+								gnn_el_spacer( 20 ),
+								gnn_el_heading(
+									'Riski Görünür Kılan Zafiyet İstihbaratı.',
+									array(
+										'title_color' => $fg,
+										'typography_typography' => 'custom',
+										'typography_font_size' => array(
+											'unit' => 'px',
+											'size' => 30,
+										),
+										'typography_font_weight' => '700',
+									)
+								),
+								gnn_el_text(
+									'<p>Kendi geliştirdiğimiz tarama araçları ve Wazuh SIEM mimarisiyle altyapınızı gerçek zamanlı izliyor; teknik bulguları yönetim kurulunun okuyabileceği net, aksiyon alınabilir raporlara dönüştürüyoruz.</p>',
+									array( 'text_color' => $muted )
+								),
+								gnn_el_text( '<p><a href="#contact" style="color:' . $cyan . ';font-weight:700;text-decoration:none;">Örnek Raporu İnceleyin →</a></p>' ),
+							),
+							50,
+							array( 'content_position' => 'center' )
+						),
+						gnn_el_column(
+							array(
+								gnn_el_text(
+									'<div style="background:' . $bg . ';border:1px solid ' . $line . ';border-radius:20px;padding:28px;box-shadow:0 20px 60px -20px rgba(0,0,0,.6);">' .
+										'<div style="font-family:Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:' . $muted . ';margin-bottom:18px;">Wazuh SIEM · Zafiyet Taraması</div>' .
+										'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid ' . $line . ';"><span style="color:' . $fg . ';font-size:14px;">Kritik</span><span style="background:#ef4444;color:#fff;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;">0</span></div>' .
+										'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid ' . $line . ';"><span style="color:' . $fg . ';font-size:14px;">Yüksek</span><span style="background:' . $amber . ';color:#111;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;">2</span></div>' .
+										'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid ' . $line . ';"><span style="color:' . $fg . ';font-size:14px;">Orta</span><span style="background:#eab308;color:#111;font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;">5</span></div>' .
+										'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;"><span style="color:' . $fg . ';font-size:14px;">Düşük</span><span style="background:' . $line . ';color:' . $muted . ';font-size:12px;font-weight:800;padding:3px 10px;border-radius:999px;">11</span></div>' .
+									'</div>'
+								),
+							),
+							50,
+							array( 'content_position' => 'center' )
+						),
+					),
+					array(
+						'background_background' => 'classic',
+						'background_color'      => $bg2,
+						'padding'               => array(
+							'unit'     => 'px',
+							'top'      => '96',
+							'right'    => '32',
+							'bottom'   => '96',
+							'left'     => '32',
+							'isLinked' => false,
+						),
+					)
+				),
+
+				// 6. GNNlabs & GNNadvisory — compressed 2-card grid (breaks the zigzag rhythm).
+				gnn_el_section(
+					array(
+						gnn_el_column(
+							array(
+								gnn_el_text(
+									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';border-radius:16px;padding:32px;height:100%;box-sizing:border-box;">' .
+										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $amber . '"></span><span class="gnn-brand-suffix" style="color:' . $amber . '">Labs</span></span>' .
+										'<h3 style="color:' . $fg . ';font-size:20px;margin:18px 0 10px;">Web, Mobil ve Özel Yazılım Mühendisliği</h3>' .
+										'<p style="color:' . $muted . ';font-size:15px;line-height:1.7;margin:0;">İş süreçlerinize özel CRM\'ler, yüksek performanslı mobil uygulamalar ve ölçeklenebilir platformlar — fikirden dağıtıma tüm mühendislik döngüsü tek çatı altında.</p>' .
+									'</div>'
+								),
+							),
+							50
+						),
+						gnn_el_column(
+							array(
+								gnn_el_text(
+									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';border-radius:16px;padding:32px;height:100%;box-sizing:border-box;">' .
+										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $blue . '"></span><span class="gnn-brand-suffix" style="color:' . $blue . '">Advisory</span></span>' .
+										'<h3 style="color:' . $fg . ';font-size:20px;margin:18px 0 10px;">Stratejik IT ve Teknoloji Danışmanlığı</h3>' .
+										'<p style="color:' . $muted . ';font-size:15px;line-height:1.7;margin:0;">Altyapınızın tam bir röntgenini çekiyoruz: sunucu ve yedekleme stratejisinden ERP seçimine, KVKK/GDPR uyumluluğuna kadar eksiksiz bir teknoloji yol haritası çıkarıyoruz.</p>' .
+									'</div>'
+								),
+							),
+							50
+						),
+					),
+					array(
+						'background_background' => 'classic',
+						'background_color'      => $bg,
+						'padding'               => array(
+							'unit'     => 'px',
+							'top'      => '16',
+							'right'    => '32',
+							'bottom'   => '96',
+							'left'     => '32',
+							'isLinked' => false,
+						),
+					)
+				),
+
+				// 7. Final CTA.
 				gnn_el_section(
 					array(
 						gnn_el_column(
 							array(
 								gnn_el_heading(
-									'Projenizi GNN İle Hayata Geçirin',
+									'Sıradaki Büyük Projenizi GNN Ekosistemiyle Şekillendirin',
 									array(
 										'align'       => 'center',
 										'title_color' => $fg,
+										'typography_typography' => 'custom',
+										'typography_font_size' => array(
+											'unit' => 'px',
+											'size' => 30,
+										),
 									)
 								),
+								gnn_el_text( '<p style="text-align:center">Tasarımdan güvenliğe, yazılımdan stratejiye — tek ekip, tek sorumluluk.</p>', array( 'text_color' => $muted ) ),
 								gnn_el_spacer( 24 ),
 								gnn_el_widget(
 									'button',
@@ -1207,9 +1248,9 @@ function gnn_elementor_library() {
 						'background_color'      => $bg2,
 						'padding'               => array(
 							'unit'     => 'px',
-							'top'      => '64',
+							'top'      => '72',
 							'right'    => '40',
-							'bottom'   => '64',
+							'bottom'   => '72',
 							'left'     => '40',
 							'isLinked' => false,
 						),

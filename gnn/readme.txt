@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.3
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,13 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.0 =
+* Rebuilt "GNN Ana Sayfa" template: full zigzag layout showcasing all 5
+  GNN sub-brands (Creative, Cyber, Logix, Labs, Advisory), each with its
+  own accent color, brand tag and a bespoke visual mockup (design system
+  preview, SIEM/EDR terminal, vulnerability report card). Refreshed hero
+  and closing CTA copy to match the ecosystem positioning.
 
 = 1.2.3 =
 * Fix: the Elementor template auto-heal now also detects when templates
