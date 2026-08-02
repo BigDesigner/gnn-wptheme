@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,11 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.1 =
+* Sub-brand tag styling matched to the exact reference design: solid
+  black pill (no border), SF Pro Display, 24px, neutral gray dot/suffix
+  instead of per-section accent colors.
 
 = 1.3.0 =
 * Rebuilt "GNN Ana Sayfa" template: full zigzag layout showcasing all 5
