@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,15 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.8 =
+* Fix: the mobile dock's sun icon had much less visual weight than its
+  siblings (a thin 4px-radius outline vs. bold shapes elsewhere) — its
+  core is now solid-filled at 5px radius to match.
+* Add a "Contact page" picker (GNN Panel → Pages Layout) so the mobile
+  dock's Contact link (and any future "get in touch" link) can point at
+  any page instead of a hardcoded /contact/ guess. Auto-detects a page
+  slugged "contact" or "iletisim" when left on default.
 
 = 1.3.7 =
 * Default Elementor to printing CSS inline ("Internal Embedding") instead

@@ -77,6 +77,11 @@ function gnn_options_sanitize( $input ) {
 		}
 	}
 
+	// --- Post ids (page pickers). ---
+	if ( isset( $input['contact_page_id'] ) ) {
+		$out['contact_page_id'] = absint( $input['contact_page_id'] );
+	}
+
 	// --- Plain text. ---
 	foreach ( array( 'footer_copyright', 'ga4_id', 'gtm_id', 'topbar_text', 'topbar_phone', 'error404_title', 'error404_button' ) as $key ) {
 		if ( isset( $input[ $key ] ) ) {
@@ -556,6 +561,16 @@ function gnn_panel_render() {
 						'left'  => __( 'Left', 'gnn' ),
 						'none'  => __( 'No sidebar', 'gnn' ),
 					)
+				);
+				$gnn_contact_options = array( 0 => __( 'Auto-detect (default)', 'gnn' ) );
+				foreach ( get_pages( array( 'sort_column' => 'post_title' ) ) as $gnn_contact_page ) {
+					$gnn_contact_options[ $gnn_contact_page->ID ] = $gnn_contact_page->post_title;
+				}
+				gnn_field_select(
+					'contact_page_id',
+					__( 'Contact page', 'gnn' ),
+					$gnn_contact_options,
+					__( 'Used by the mobile dock\'s Contact link (and anywhere else the theme links to "get in touch"). Auto-detect looks for a page slugged "contact" or "iletisim".', 'gnn' )
 				);
 				?>
 				<?php gnn_field_number( 'content_top_padding', __( 'Content top spacing (px)', 'gnn' ), 0, 200, __( 'Gap between the header and the page content — or between the featured image and the content, when the page has one.', 'gnn' ) ); ?>

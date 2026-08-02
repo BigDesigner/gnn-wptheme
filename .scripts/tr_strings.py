@@ -393,6 +393,10 @@ TRANSLATIONS = {
     'Top': 'Üst',
     'Which part of the image stays visible when it gets cropped.': 'Kırpıldığında görselin hangi kısmının görünür kalacağı.',
     'Hide Breadcrumb': 'Breadcrumb’ı Gizle',
+    'Auto-detect (default)': 'Otomatik algıla (varsayılan)',
+    'Contact page': 'İletişim sayfası',
+    'Used by the mobile dock\'s Contact link (and anywhere else the theme links to "get in touch"). Auto-detect looks for a page slugged "contact" or "iletisim".':
+        'Mobil dock’taki İletişim bağlantısı için kullanılır (temanın “bize ulaşın” bağlantısı verdiği her yerde). Otomatik algılama “contact” veya “iletisim” slug’lı bir sayfa arar.',
     'Theme Mode': 'Tema Modu',
     'Toggle dark / light mode': 'Koyu / açık modu değiştir',
     'Trusted by security teams at': 'Güvenlik ekiplerinin tercihi:',

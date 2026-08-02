@@ -196,7 +196,7 @@ add_action( 'wp_update_nav_menu_item', 'gnn_save_menu_item_badge' );
  * Mobile bottom app dock.
  */
 function gnn_render_mobile_dock() {
-	$cart_url = class_exists( 'WooCommerce' ) ? wc_get_cart_url() : home_url( '/contact/' );
+	$cart_url = class_exists( 'WooCommerce' ) ? wc_get_cart_url() : gnn_contact_url();
 	$cart_lbl = class_exists( 'WooCommerce' ) ? __( 'Cart', 'gnn' ) : __( 'Contact', 'gnn' );
 	// Same Feather-style outline SVGs as the header (gnn-icon class), so the
 	// dock never depends on the optional Google Material Symbols toggle.
@@ -215,7 +215,7 @@ function gnn_render_mobile_dock() {
 		</a>
 		<?php if ( gnn_option( 'show_toggle' ) ) : ?>
 			<button class="gnn-dock__item theme-toggle" aria-label="<?php esc_attr_e( 'Toggle dark / light mode', 'gnn' ); ?>">
-				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor" stroke="none"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
 				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
 				<span class="gnn-dock__lbl"><?php esc_html_e( 'Theme', 'gnn' ); ?></span>
 			</button>

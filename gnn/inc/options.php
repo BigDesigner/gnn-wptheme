@@ -56,6 +56,7 @@ function gnn_option_defaults() {
 		'footer_menu_align'            => 'left',
 		// Blog / shop.
 		'sidebar_position'             => 'right',
+		'contact_page_id'              => 0, // 0 = auto-detect (see gnn_contact_url()).
 		'content_top_padding'          => 50,
 		'content_bottom_padding'       => 64,
 		'page_featured_image_height'   => 250,
@@ -260,6 +261,28 @@ function gnn_option_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'gnn_option_body_classes' );
+
+/**
+ * The site's contact page URL, used by the mobile dock's Contact item
+ * (and anywhere else a "get in touch" link is needed). Panel selection
+ * wins; otherwise falls back to a page slugged "contact" or "iletisim",
+ * then to a bare /contact/ guess.
+ *
+ * @return string
+ */
+function gnn_contact_url() {
+	$page_id = (int) gnn_option( 'contact_page_id' );
+	if ( $page_id && 'publish' === get_post_status( $page_id ) ) {
+		return get_permalink( $page_id );
+	}
+	foreach ( array( 'contact', 'iletisim' ) as $slug ) {
+		$page = get_page_by_path( $slug );
+		if ( $page ) {
+			return get_permalink( $page );
+		}
+	}
+	return home_url( '/contact/' );
+}
 
 /**
  * Whether the theme sidebar should render at all (panel can turn it off).
