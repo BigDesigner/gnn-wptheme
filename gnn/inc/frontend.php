@@ -198,24 +198,30 @@ add_action( 'wp_update_nav_menu_item', 'gnn_save_menu_item_badge' );
 function gnn_render_mobile_dock() {
 	$cart_url = class_exists( 'WooCommerce' ) ? wc_get_cart_url() : home_url( '/contact/' );
 	$cart_lbl = class_exists( 'WooCommerce' ) ? __( 'Cart', 'gnn' ) : __( 'Contact', 'gnn' );
+	// Same Feather-style outline SVGs as the header (gnn-icon class), so the
+	// dock never depends on the optional Google Material Symbols toggle.
+	$cart_icon = class_exists( 'WooCommerce' )
+		? '<circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>'
+		: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline>';
 	?>
 	<nav class="gnn-dock" aria-label="<?php esc_attr_e( 'Mobile navigation', 'gnn' ); ?>">
 		<a class="gnn-dock__item" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<span class="gnn-dock__ico" aria-hidden="true">&#8962;</span>
+			<svg class="gnn-dock__ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
 			<span class="gnn-dock__lbl"><?php esc_html_e( 'Home', 'gnn' ); ?></span>
 		</a>
 		<a class="gnn-dock__item" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>">
-			<span class="gnn-dock__ico" aria-hidden="true">&#9906;</span>
+			<svg class="gnn-dock__ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 			<span class="gnn-dock__lbl"><?php esc_html_e( 'Search', 'gnn' ); ?></span>
 		</a>
 		<?php if ( gnn_option( 'show_toggle' ) ) : ?>
 			<button class="gnn-dock__item theme-toggle" aria-label="<?php esc_attr_e( 'Toggle dark / light mode', 'gnn' ); ?>">
-				<span class="gnn-dock__ico" aria-hidden="true">&#9789;</span>
+				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
 				<span class="gnn-dock__lbl"><?php esc_html_e( 'Theme', 'gnn' ); ?></span>
 			</button>
 		<?php endif; ?>
 		<a class="gnn-dock__item" href="<?php echo esc_url( $cart_url ); ?>">
-			<span class="gnn-dock__ico" aria-hidden="true">&#128722;</span>
+			<svg class="gnn-dock__ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><?php echo $cart_icon; // phpcs:ignore WordPress.Security.EscapeOutput -- literal, hardcoded SVG markup, not user input. ?></svg>
 			<span class="gnn-dock__lbl"><?php echo esc_html( $cart_lbl ); ?></span>
 		</a>
 	</nav>

@@ -1341,15 +1341,27 @@ body.gnn-has-dock .gnn-dock {
 	background: var(--bg2); border-top: 1px solid var(--line); padding: 6px 4px env(safe-area-inset-bottom);
 }
 .gnn-dock__item {
-	display: flex; flex-direction: column; align-items: center; gap: 2px;
-	background: none; border: 0; cursor: pointer; padding: 6px 0;
+	display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+	background: none; border: 0; cursor: pointer; padding: 6px 0; width: 100%;
 	color: var(--fg2); font-size: 10px; text-decoration: none;
 }
 .gnn-dock__item:hover { color: var(--fg); }
-.gnn-dock__ico { font-size: 18px; line-height: 1; }
+.gnn-dock__ico { display: block; flex-shrink: 0; }
+/* Sun/moon dock icons share the header's toggle classes for the same
+   dark/light swap behaviour — these two-class rules must outrank both
+   .gnn-dock__ico and the header's single-class toggle rules above. */
+.gnn-dock__ico.theme-toggle__icon--moon { display: none; }
+[data-theme="light"] .gnn-dock__ico.theme-toggle__icon--sun { display: none; }
+[data-theme="light"] .gnn-dock__ico.theme-toggle__icon--moon { display: block; }
 @media (max-width: 600px) {
 	body.gnn-has-dock .gnn-dock { display: grid; }
 	body.gnn-has-dock { padding-bottom: 64px; }
+	/* The dock already covers search/theme toggle — drop the header's
+	   copies so the two controls aren't duplicated on small screens. */
+	body.gnn-has-dock .header-actions .header-search-link,
+	body.gnn-has-dock .header-actions .theme-toggle { display: none; }
+	/* Keep the scroll-to-top button clear of the fixed dock bar. */
+	body.gnn-has-dock .gnn-scrolltop { bottom: 86px; }
 }
 
 /* Preloader (top bar) + loading overlay */
