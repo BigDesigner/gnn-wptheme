@@ -1425,16 +1425,16 @@ body.gnn-has-dock .gnn-dock {
 	display: inline-flex;
 	align-items: center;
 	gap: 0.35em;
-	background-color: var(--bg2, #121214);
-	border: 1px solid var(--line, #232328);
-	padding: 0.4em 0.85em;
+	background-color: #000000;
+	padding: 0.4em 0.8em;
 	border-radius: 8px;
-	font-size: 18px;
+	font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+	font-size: 24px;
 	line-height: 1;
 }
 
 .gnn-subbrand-tag .gnn-brand-prefix {
-	color: var(--fg, #ffffff);
+	color: #ffffff;
 	font-weight: 700;
 }
 
@@ -1442,11 +1442,11 @@ body.gnn-has-dock .gnn-dock {
 	display: inline-block;
 	width: 0.32em;
 	height: 0.32em;
-	background-color: var(--fg2, #86868b);
+	background-color: #d1d1d6;
 	border-radius: 50%;
 }
 
 .gnn-subbrand-tag .gnn-brand-suffix {
-	color: var(--fg2, #86868b);
+	color: #86868b;
 	font-weight: 400;
 }

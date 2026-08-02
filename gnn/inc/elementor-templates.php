@@ -980,7 +980,7 @@ function gnn_elementor_library() {
 					array(
 						gnn_el_column(
 							array(
-								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $purple . '"></span><span class="gnn-brand-suffix" style="color:' . $purple . '">Creative</span></span>' ),
+								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">creative</span></span>' ),
 								gnn_el_spacer( 20 ),
 								gnn_el_heading(
 									'Kurumsal Kimlikten Dijital Deneyime, Tek Hassas Çizgi.',
@@ -1065,7 +1065,7 @@ function gnn_elementor_library() {
 						),
 						gnn_el_column(
 							array(
-								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $accent . '"></span><span class="gnn-brand-suffix" style="color:' . $accent . '">Cyber</span></span>' ),
+								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">cyber</span></span>' ),
 								gnn_el_spacer( 20 ),
 								gnn_el_heading(
 									'Sıfır Güven Mimarisiyle Kesintisiz Siber Savunma.',
@@ -1108,7 +1108,7 @@ function gnn_elementor_library() {
 					array(
 						gnn_el_column(
 							array(
-								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $cyan . '"></span><span class="gnn-brand-suffix" style="color:' . $cyan . '">Logix</span></span>' ),
+								gnn_el_text( '<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">logix</span></span>' ),
 								gnn_el_spacer( 20 ),
 								gnn_el_heading(
 									'Riski Görünür Kılan Zafiyet İstihbaratı.',
@@ -1168,7 +1168,7 @@ function gnn_elementor_library() {
 							array(
 								gnn_el_text(
 									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';border-radius:16px;padding:32px;height:100%;box-sizing:border-box;">' .
-										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $amber . '"></span><span class="gnn-brand-suffix" style="color:' . $amber . '">Labs</span></span>' .
+										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">labs</span></span>' .
 										'<h3 style="color:' . $fg . ';font-size:20px;margin:18px 0 10px;">Web, Mobil ve Özel Yazılım Mühendisliği</h3>' .
 										'<p style="color:' . $muted . ';font-size:15px;line-height:1.7;margin:0;">İş süreçlerinize özel CRM\'ler, yüksek performanslı mobil uygulamalar ve ölçeklenebilir platformlar — fikirden dağıtıma tüm mühendislik döngüsü tek çatı altında.</p>' .
 									'</div>'
@@ -1180,7 +1180,7 @@ function gnn_elementor_library() {
 							array(
 								gnn_el_text(
 									'<div style="background:' . $bg2 . ';border:1px solid ' . $line . ';border-radius:16px;padding:32px;height:100%;box-sizing:border-box;">' .
-										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot" style="background-color:' . $blue . '"></span><span class="gnn-brand-suffix" style="color:' . $blue . '">Advisory</span></span>' .
+										'<span class="gnn-subbrand-tag"><span class="gnn-brand-prefix">GNN</span><span class="gnn-brand-dot"></span><span class="gnn-brand-suffix">advisory</span></span>' .
 										'<h3 style="color:' . $fg . ';font-size:20px;margin:18px 0 10px;">Stratejik IT ve Teknoloji Danışmanlığı</h3>' .
 										'<p style="color:' . $muted . ';font-size:15px;line-height:1.7;margin:0;">Altyapınızın tam bir röntgenini çekiyoruz: sunucu ve yedekleme stratejisinden ERP seçimine, KVKK/GDPR uyumluluğuna kadar eksiksiz bir teknoloji yol haritası çıkarıyoruz.</p>' .
 									'</div>'
