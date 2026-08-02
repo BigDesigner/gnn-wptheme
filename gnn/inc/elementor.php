@@ -28,8 +28,13 @@ add_action( 'elementor/theme/register_locations', 'gnn_register_elementor_locati
 
 /**
  * First activation next to Elementor: align its defaults with the theme —
- * container width 1280 and "inherit theme colors/fonts" (disable Elementor's
- * own kits) so widgets pick up the GNN tokens. Only touches unset options.
+ * container width 1280, "inherit theme colors/fonts" (disable Elementor's
+ * own kits) so widgets pick up the GNN tokens, and CSS printed inline
+ * rather than to an external file (many hosts restrict writes to
+ * wp-content/uploads/elementor/css/, which silently drops backgrounds/
+ * icons/borders while widget content still renders — inline sidesteps
+ * that class of hosting issue entirely). Only touches unset options, so
+ * an intentional External File choice is never overridden.
  */
 function gnn_elementor_defaults() {
 	if ( ! get_option( 'elementor_container_width' ) ) {
@@ -41,8 +46,16 @@ function gnn_elementor_defaults() {
 	if ( false === get_option( 'elementor_disable_typography_schemes', false ) ) {
 		update_option( 'elementor_disable_typography_schemes', 'yes' );
 	}
+	if ( ! get_option( 'elementor_css_print_method' ) ) {
+		update_option( 'elementor_css_print_method', 'internal' );
+	}
 }
 add_action( 'after_switch_theme', 'gnn_elementor_defaults' );
+// Also runs on admin_init (not just theme activation) so sites already
+// running an older copy of the theme get these defaults too, without
+// needing to reactivate. Cheap: every check is a single guarded option
+// read/write that becomes a no-op after the first successful run.
+add_action( 'admin_init', 'gnn_elementor_defaults' );
 
 /**
  * Add a "Hide Breadcrumb" toggle to Elementor's native Page Settings panel,
