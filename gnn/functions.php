@@ -110,9 +110,19 @@ function gnn_scripts() {
 	$gnn_accent  = $gnn_accent ? $gnn_accent : '#34d399';
 	$gnn_top_pad = max( 0, min( 200, (int) gnn_option( 'content_top_padding' ) ) );
 	$gnn_bot_pad = max( 0, min( 300, (int) gnn_option( 'content_bottom_padding' ) ) );
+
+	$gnn_page_thumb_h   = max( 80, min( 600, (int) gnn_option( 'page_featured_image_height' ) ) );
+	$gnn_page_thumb_fit = in_array( gnn_option( 'page_featured_image_fit' ), array( 'cover', 'contain', 'fill' ), true ) ? gnn_option( 'page_featured_image_fit' ) : 'cover';
+	$gnn_page_thumb_pos = in_array( gnn_option( 'page_featured_image_position' ), array( 'top', 'center', 'bottom' ), true ) ? gnn_option( 'page_featured_image_position' ) : 'center';
+	$gnn_post_thumb_h   = max( 80, min( 800, (int) gnn_option( 'post_featured_image_height' ) ) );
+	$gnn_post_thumb_fit = in_array( gnn_option( 'post_featured_image_fit' ), array( 'cover', 'contain', 'fill' ), true ) ? gnn_option( 'post_featured_image_fit' ) : 'cover';
+	$gnn_post_thumb_pos = in_array( gnn_option( 'post_featured_image_position' ), array( 'top', 'center', 'bottom' ), true ) ? gnn_option( 'post_featured_image_position' ) : 'center';
+
 	wp_add_inline_style(
 		'gnn-main',
-		':root{--accent:' . esc_html( $gnn_accent ) . ';--gnn-content-top-pad:' . $gnn_top_pad . 'px;--gnn-content-bottom-pad:' . $gnn_bot_pad . 'px;}'
+		':root{--accent:' . esc_html( $gnn_accent ) . ';--gnn-content-top-pad:' . $gnn_top_pad . 'px;--gnn-content-bottom-pad:' . $gnn_bot_pad . 'px;' .
+		'--gnn-page-thumb-h:' . $gnn_page_thumb_h . 'px;--gnn-page-thumb-fit:' . esc_html( $gnn_page_thumb_fit ) . ';--gnn-page-thumb-pos:' . esc_html( $gnn_page_thumb_pos ) . ';' .
+		'--gnn-post-thumb-h:' . $gnn_post_thumb_h . 'px;--gnn-post-thumb-fit:' . esc_html( $gnn_post_thumb_fit ) . ';--gnn-post-thumb-pos:' . esc_html( $gnn_post_thumb_pos ) . ';}'
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
