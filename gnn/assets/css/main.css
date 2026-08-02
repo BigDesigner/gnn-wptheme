@@ -1417,3 +1417,36 @@ body.gnn-has-dock .gnn-dock {
 	letter-spacing: .04em; text-transform: uppercase;
 	background: var(--bg3); color: var(--fg2);
 }
+
+/* ---------------------------------------------------------------------------
+ * 22. Sub-brand tags (used by the "GNN Ana Sayfa" Elementor template)
+ * ------------------------------------------------------------------------- */
+.gnn-subbrand-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35em;
+	background-color: var(--bg2, #121214);
+	border: 1px solid var(--line, #232328);
+	padding: 0.4em 0.85em;
+	border-radius: 8px;
+	font-size: 18px;
+	line-height: 1;
+}
+
+.gnn-subbrand-tag .gnn-brand-prefix {
+	color: var(--fg, #ffffff);
+	font-weight: 700;
+}
+
+.gnn-subbrand-tag .gnn-brand-dot {
+	display: inline-block;
+	width: 0.32em;
+	height: 0.32em;
+	background-color: var(--fg2, #86868b);
+	border-radius: 50%;
+}
+
+.gnn-subbrand-tag .gnn-brand-suffix {
+	color: var(--fg2, #86868b);
+	font-weight: 400;
+}

@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,11 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.2.1 =
+* Add "GNN Ana Sayfa" Elementor Saved Template — a full multi-section home
+  page design (hero, stats, sub-brand tags, services, differentiators, CTA).
+* Add .gnn-subbrand-tag utility component to main.css.
 
 = 1.2.0 =
 * Featured image height, fit (cover/contain/fill) and alignment
