@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '1.3.10' );
+define( 'GNN_VERSION', '1.3.11' );
 
 /**
  * Theme setup.
@@ -198,6 +198,7 @@ function gnn_pingback_header() {
 add_action( 'wp_head', 'gnn_pingback_header' );
 
 require get_template_directory() . '/inc/options.php';
+require get_template_directory() . '/inc/typography.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-panel.php';
 	require get_template_directory() . '/inc/updater.php';

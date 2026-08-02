@@ -350,6 +350,21 @@ TRANSLATIONS = {
         'Üst bölüm ile sayfa içeriği arasındaki boşluk — sayfada öne çıkarılan görsel varsa, görsel ile içerik arasındaki boşluk.',
     'Gap between the page content and the footer.': 'Sayfa içeriği ile alt bölüm arasındaki boşluk.',
     'Gutenberg': 'Gutenberg',
+    'Fonts by element': 'Öğeye göre yazı tipleri',
+    'H1': 'H1',
+    'H2': 'H2',
+    'H3': 'H3',
+    'H4': 'H4',
+    'H5': 'H5',
+    'H6': 'H6',
+    'Paragraph (body text)': 'Paragraf (gövde metni)',
+    'Use Google Fonts instead': 'Bunun yerine Google Fonts kullan',
+    'Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font.':
+        "Varsayılan olarak kapalıdır. Açıldığında, aşağıda yazı tipi adı girilen her öğe o Google Font'u yükler; boş bırakılan öğeler hızlı, sunucuda barındırılan varsayılanı kullanmaya devam eder. Seçtiğiniz tüm yazı tipleri tek bir stil dosyası isteğinde birleştirilir, asla yazı tipi başına ayrı istek yapılmaz.",
+    'The theme ships self-hosted Space Grotesk (headings) and Manrope (body) — fast, and used by default with zero extra requests.':
+        'Tema, sunucuda barındırılan Space Grotesk (başlıklar) ve Manrope (gövde) yazı tipleriyle gelir — hızlıdır ve varsayılan olarak ekstra istek yapmadan kullanılır.',
+    'Type the exact name from fonts.google.com (e.g. "Poppins", "IBM Plex Sans"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it.':
+        'fonts.google.com\'daki tam adı yazın (ör. "Poppins", "IBM Plex Sans"). O öğe için tema varsayılanını korumak üzere boş bırakın. Türkçe karakterler (ğ ı ş ö ü ç) için ayrı bir ayar gerekmez — Google Fonts ve tarayıcı, genişletilmiş karakter setini yalnızca sayfa gerçekten ihtiyaç duyduğunda otomatik olarak getirir.',
     'Icon style': 'İkon stili',
     'Installed version: %s': 'Kurulu sürüm: %s',
     'Load Google Material Symbols': 'Google Material Symbols’ı yükle',

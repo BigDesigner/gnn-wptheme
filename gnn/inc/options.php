@@ -98,6 +98,22 @@ function gnn_option_defaults() {
 		// Icons.
 		'google_material_icons'        => 1,
 		'material_icons_style'         => 'outlined', // outlined | rounded | sharp | filled.
+		// Typography (Google Fonts, per element — off by default, see inc/typography.php).
+		'typography_google_enable'     => 0,
+		'typo_h1_family'               => '',
+		'typo_h1_weight'               => '400',
+		'typo_h2_family'               => '',
+		'typo_h2_weight'               => '400',
+		'typo_h3_family'               => '',
+		'typo_h3_weight'               => '400',
+		'typo_h4_family'               => '',
+		'typo_h4_weight'               => '400',
+		'typo_h5_family'               => '',
+		'typo_h5_weight'               => '400',
+		'typo_h6_family'               => '',
+		'typo_h6_weight'               => '400',
+		'typo_p_family'                => '',
+		'typo_p_weight'                => '400',
 		// Performance.
 		'disable_emoji'                => 1,
 		'disable_oembed'               => 1,
@@ -512,13 +528,17 @@ function gnn_material_icons_assets() {
 add_action( 'wp_enqueue_scripts', 'gnn_material_icons_assets' );
 
 /**
- * Preconnect to the Google Fonts hosts when Material Symbols is enabled.
+ * Preconnect to the Google Fonts hosts, once, whenever anything actually
+ * requests them (Material Symbols and/or Typography's per-element Google
+ * Fonts) — never printed when both features are off.
  */
-function gnn_material_icons_preconnect() {
-	if ( ! gnn_option( 'google_material_icons' ) ) {
+function gnn_google_fonts_preconnect() {
+	$needs_it = gnn_option( 'google_material_icons' )
+		|| '' !== gnn_typography_google_fonts_url();
+	if ( ! $needs_it ) {
 		return;
 	}
 	echo '<link rel="preconnect" href="https://fonts.googleapis.com">' . "\n";
 	echo '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>' . "\n";
 }
-add_action( 'wp_head', 'gnn_material_icons_preconnect', 1 );
+add_action( 'wp_head', 'gnn_google_fonts_preconnect', 1 );

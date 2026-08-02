@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNN 1.3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 20:54+0000\n"
-"PO-Revision-Date: 2026-08-02 20:54+0000\n"
+"POT-Creation-Date: 2026-08-02 21:23+0000\n"
+"PO-Revision-Date: 2026-08-02 21:23+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -386,6 +386,9 @@ msgstr "Doldur (uzat)"
 msgid "Filled"
 msgstr "Dolu"
 
+msgid "Fonts by element"
+msgstr "Öğeye göre yazı tipleri"
+
 msgid "Footer"
 msgstr "Alt Bölüm"
 
@@ -496,6 +499,24 @@ msgstr "Gutenberg"
 
 msgid "Gutenberg only."
 msgstr "Sadece Gutenberg."
+
+msgid "H1"
+msgstr "H1"
+
+msgid "H2"
+msgstr "H2"
+
+msgid "H3"
+msgstr "H3"
+
+msgid "H4"
+msgstr "H4"
+
+msgid "H5"
+msgstr "H5"
+
+msgid "H6"
+msgstr "H6"
 
 msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
 msgstr "HTML etiketlerine izin verilir (ör. <a>, <br>, <strong>, <span>). Site sloganını kullanmak için boş bırakın."
@@ -701,6 +722,9 @@ msgstr "Bulunamadı"
 msgid "Nothing here yet"
 msgstr "Henüz içerik yok"
 
+msgid "Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font."
+msgstr "Varsayılan olarak kapalıdır. Açıldığında, aşağıda yazı tipi adı girilen her öğe o Google Font'u yükler; boş bırakılan öğeler hızlı, sunucuda barındırılan varsayılanı kullanmaya devam eder. Seçtiğiniz tüm yazı tipleri tek bir stil dosyası isteğinde birleştirilir, asla yazı tipi başına ayrı istek yapılmaz."
+
 msgid "Open spaces"
 msgstr "Açık alanlar"
 
@@ -739,6 +763,9 @@ msgstr "Sayfalar: Varsayılan, Kutulu, Sol Kenar Çubuğu ve Sağ Kenar Çubuğu
 
 msgid "Panel-controlled theme settings — no code required."
 msgstr "Panelden yönetilen tema ayarları — kod gerekmez."
+
+msgid "Paragraph (body text)"
+msgstr "Paragraf (gövde metni)"
 
 msgid "Performance"
 msgstr "Performans"
@@ -947,8 +974,8 @@ msgstr "Güncelleme kontrolü / güncelleme butonu artık bu panelin en üstünd
 msgid "The page you’re looking for was moved, renamed or never existed."
 msgstr "Aradığınız sayfa taşınmış, adı değişmiş ya da hiç var olmamış."
 
-msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body). Font controls are managed in theme.json; per-option font settings can be added here."
-msgstr "Tema, kendi barındırılan Space Grotesk (başlıklar) ve Manrope (gövde) fontlarıyla gelir. Font kontrolleri theme.json’dan yönetilir; opsiyon bazlı font ayarları buraya eklenebilir."
+msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body) — fast, and used by default with zero extra requests."
+msgstr "Tema, sunucuda barındırılan Space Grotesk (başlıklar) ve Manrope (gövde) yazı tipleriyle gelir — hızlıdır ve varsayılan olarak ekstra istek yapmadan kullanılır."
 
 msgid "The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus."
 msgstr "Tema kendi arayüzü için satır içi SVG ikonlar kullanır. Sayfa içeriğinde ve menülerde kullanılmak üzere Google Material Symbols de yüklenebilir."
@@ -1007,6 +1034,9 @@ msgstr "Yan yana iki görsel"
 msgid "Two-tone background, centered image"
 msgstr "İki tonlu arka plan, ortalanmış görsel"
 
+msgid "Type the exact name from fonts.google.com (e.g. \"Poppins\", \"IBM Plex Sans\"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it."
+msgstr "fonts.google.com'daki tam adı yazın (ör. \"Poppins\", \"IBM Plex Sans\"). O öğe için tema varsayılanını korumak üzere boş bırakın. Türkçe karakterler (ğ ı ş ö ü ç) için ayrı bir ayar gerekmez — Google Fonts ve tarayıcı, genişletilmiş karakter setini yalnızca sayfa gerçekten ihtiyaç duyduğunda otomatik olarak getirir."
+
 msgid "Typography"
 msgstr "Tipografi"
 
@@ -1021,6 +1051,9 @@ msgstr "%s sürümüne güncelle"
 
 msgid "Upload a previously exported GNN settings JSON file."
 msgstr "Daha önce dışa aktarılmış bir GNN ayar JSON dosyası yükleyin."
+
+msgid "Use Google Fonts instead"
+msgstr "Bunun yerine Google Fonts kullan"
 
 msgid "Use it in content with e.g. %s"
 msgstr "İçerikte örneğin şöyle kullanın: %s"
