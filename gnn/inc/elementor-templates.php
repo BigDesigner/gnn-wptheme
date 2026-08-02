@@ -869,6 +869,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg,
 						'padding'               => array(
 							'unit'     => 'px',
@@ -963,6 +964,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg2,
 						'padding'               => array(
 							'unit'     => 'px',
@@ -1030,6 +1032,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg2,
 						'padding'               => array(
 							'unit'     => 'px',
@@ -1091,6 +1094,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg,
 						'padding'               => array(
 							'unit'     => 'px',
@@ -1149,6 +1153,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg2,
 						'padding'               => array(
 							'unit'     => 'px',
@@ -1191,6 +1196,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg,
 						'padding'               => array(
 							'unit'     => 'px',
@@ -1245,6 +1251,7 @@ function gnn_elementor_library() {
 					),
 					array(
 						'background_background' => 'classic',
+						'layout'                => 'boxed',
 						'background_color'      => $bg2,
 						'padding'               => array(
 							'unit'     => 'px',
