@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.13
+Stable tag: 1.3.14
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,12 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.14 =
+* Governance: GNN Tema's admin-menu-position registry slot renamed from
+  the bare `59` to `59.100` so every product in the shared GNN family
+  registry (see readme's constitution docs) uses the same 3-digit-suffix
+  format. No visible change to the menu itself.
 
 = 1.3.13 =
 * Governance: established a shared admin-menu-position convention across

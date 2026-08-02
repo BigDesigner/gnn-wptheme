@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * (this panel) and "Slider" (gnn_slide CPT, see inc/slider.php) as its two
  * submenu items, instead of two separate top-level menus.
  *
- * Position '59' is this theme's reserved slot in the GNN product family's
- * shared menu-position registry (see .specs/constitution.md rule 7 and
- * .memory-bank/adr/0009-gnn-product-family-menu-position-registry.md).
+ * Position '59.100' is this theme's reserved slot in the GNN product
+ * family's shared menu-position registry (see .specs/constitution.md
+ * rule 7 and .memory-bank/adr/0009-gnn-product-family-menu-position-registry.md).
  * Always a quoted string — WordPress keys the $menu array off "$position",
  * and a bare float literal can silently lose trailing zeros at parse time.
  */
@@ -31,7 +31,7 @@ function gnn_panel_menu() {
 		'gnn-panel',
 		'gnn_panel_render',
 		'dashicons-shield-alt',
-		'59'
+		'59.100'
 	);
 	// Renames the auto-added first submenu item (same slug as the parent)
 	// from "GNN" to "Theme" instead of adding a duplicate entry.
