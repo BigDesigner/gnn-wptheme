@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.2.0\n"
+"Project-Id-Version: GNN 1.2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 03:05+0000\n"
-"PO-Revision-Date: 2026-08-02 03:05+0000\n"
+"POT-Creation-Date: 2026-08-02 03:14+0000\n"
+"PO-Revision-Date: 2026-08-02 03:14+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,19 +58,19 @@ msgstr ""
 msgid "404 title"
 msgstr ""
 
-#: inc/elementor-templates.php:558
+#: inc/elementor-templates.php:567
 msgid "A bold headline goes here"
 msgstr ""
 
-#: inc/elementor-templates.php:610
+#: inc/elementor-templates.php:619
 msgid "A centered bold headline goes here"
 msgstr ""
 
-#: inc/elementor-templates.php:530
+#: inc/elementor-templates.php:539
 msgid "A new collection"
 msgstr ""
 
-#: inc/elementor-templates.php:290
+#: inc/elementor-templates.php:299
 msgid "About the event"
 msgstr ""
 
@@ -88,11 +88,11 @@ msgstr ""
 msgid "Add Slide"
 msgstr ""
 
-#: inc/elementor-templates.php:484
+#: inc/elementor-templates.php:493
 msgid "Add a short supporting paragraph here to describe the offer, product or story. Replace with your own copy."
 msgstr ""
 
-#: inc/elementor-templates.php:711
+#: inc/elementor-templates.php:720
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr ""
 
@@ -100,7 +100,7 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: inc/elementor-templates.php:226
+#: inc/elementor-templates.php:235
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
 msgstr ""
 
@@ -129,9 +129,9 @@ msgstr ""
 msgid "Announcement text"
 msgstr ""
 
-#: inc/elementor-templates.php:315
-#: inc/elementor-templates.php:320
-#: inc/elementor-templates.php:325
+#: inc/elementor-templates.php:324
+#: inc/elementor-templates.php:329
+#: inc/elementor-templates.php:334
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Autoplay interval (seconds)"
 msgstr ""
 
-#: inc/elementor-templates.php:514
+#: inc/elementor-templates.php:523
 msgid "BRAND."
 msgstr ""
 
@@ -182,7 +182,7 @@ msgstr ""
 msgid "Badge (e.g. New, Hot, Sale)"
 msgstr ""
 
-#: inc/elementor-templates.php:456
+#: inc/elementor-templates.php:465
 msgid "Big bold headline"
 msgstr ""
 
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Blog: single post pages."
 msgstr ""
 
-#: inc/elementor-templates.php:450
+#: inc/elementor-templates.php:459
 #: inc/patterns.php:117
 msgid "Bold heading, paragraph & button"
 msgstr ""
@@ -251,8 +251,8 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-#: inc/elementor-templates.php:665
-#: inc/elementor-templates.php:682
+#: inc/elementor-templates.php:674
+#: inc/elementor-templates.php:691
 msgid "Case study ↗"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
-#: inc/elementor-templates.php:344
+#: inc/elementor-templates.php:353
 #: inc/patterns.php:115
 msgid "Contact with social links"
 msgstr ""
@@ -354,17 +354,17 @@ msgstr ""
 msgid "Cover — top"
 msgstr ""
 
-#: inc/elementor-templates.php:604
+#: inc/elementor-templates.php:613
 #: inc/patterns.php:120
 msgid "Cover: heading & button (centered)"
 msgstr ""
 
-#: inc/elementor-templates.php:552
+#: inc/elementor-templates.php:561
 #: inc/patterns.php:119
 msgid "Cover: heading & button (left)"
 msgstr ""
 
-#: inc/elementor-templates.php:204
+#: inc/elementor-templates.php:213
 #: inc/patterns.php:111
 msgid "Cover: poster left, text right"
 msgstr ""
@@ -396,7 +396,7 @@ msgstr ""
 msgid "Dark"
 msgstr ""
 
-#: inc/elementor-templates.php:406
+#: inc/elementor-templates.php:415
 #: inc/patterns.php:116
 msgid "Dark banner, top-left heading"
 msgstr ""
@@ -451,7 +451,7 @@ msgstr ""
 msgid "Enterprise clients"
 msgstr ""
 
-#: inc/elementor-templates.php:258
+#: inc/elementor-templates.php:267
 msgid "Etcetera"
 msgstr ""
 
@@ -467,8 +467,8 @@ msgstr ""
 msgid "Excerpt length (words)"
 msgstr ""
 
-#: inc/elementor-templates.php:571
-#: inc/elementor-templates.php:624
+#: inc/elementor-templates.php:580
+#: inc/elementor-templates.php:633
 msgid "Explore"
 msgstr ""
 
@@ -484,7 +484,7 @@ msgstr ""
 msgid "Extra <head> HTML (meta/verification tags)"
 msgstr ""
 
-#: inc/elementor-templates.php:301
+#: inc/elementor-templates.php:310
 #: inc/patterns.php:114
 msgid "FAQs"
 msgstr ""
@@ -592,7 +592,7 @@ msgstr ""
 msgid "Footer tagline"
 msgstr ""
 
-#: inc/elementor-templates.php:306
+#: inc/elementor-templates.php:315
 msgid "Frequently Asked Questions"
 msgstr ""
 
@@ -672,7 +672,7 @@ msgstr ""
 msgid "Google Tag Manager ID"
 msgstr ""
 
-#: inc/elementor-templates.php:350
+#: inc/elementor-templates.php:359
 msgid "Got questions? Feel free to reach out."
 msgstr ""
 
@@ -709,21 +709,21 @@ msgstr ""
 msgid "Header right"
 msgstr ""
 
-#: inc/elementor-templates.php:284
+#: inc/elementor-templates.php:293
 #: inc/patterns.php:113
 msgid "Heading & paragraph with image"
 msgstr ""
 
-#: inc/elementor-templates.php:508
+#: inc/elementor-templates.php:517
 #: inc/patterns.php:118
 msgid "Headline with links, gradient background"
 msgstr ""
 
-#: inc/elementor-templates.php:700
+#: inc/elementor-templates.php:709
 msgid "Headline."
 msgstr ""
 
-#: inc/elementor-templates.php:291
+#: inc/elementor-templates.php:300
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr ""
 
@@ -801,7 +801,7 @@ msgstr ""
 msgid "Kicker"
 msgstr ""
 
-#: inc/elementor-templates.php:694
+#: inc/elementor-templates.php:703
 #: inc/patterns.php:123
 msgid "Large header over cover (left text)"
 msgstr ""
@@ -810,12 +810,12 @@ msgstr ""
 msgid "Layout"
 msgstr ""
 
-#: inc/elementor-templates.php:531
+#: inc/elementor-templates.php:540
 msgid "Learn More →"
 msgstr ""
 
-#: inc/elementor-templates.php:228
-#: inc/elementor-templates.php:486
+#: inc/elementor-templates.php:237
+#: inc/elementor-templates.php:495
 msgid "Learn more"
 msgstr ""
 
@@ -892,12 +892,12 @@ msgstr ""
 msgid "Mean incident response"
 msgstr ""
 
-#: inc/elementor-templates.php:658
+#: inc/elementor-templates.php:667
 #: inc/patterns.php:121
 msgid "Media & text (image left)"
 msgstr ""
 
-#: inc/elementor-templates.php:676
+#: inc/elementor-templates.php:685
 #: inc/patterns.php:122
 msgid "Media & text (image right)"
 msgstr ""
@@ -963,8 +963,8 @@ msgstr ""
 msgid "Nothing here yet"
 msgstr ""
 
-#: inc/elementor-templates.php:664
-#: inc/elementor-templates.php:681
+#: inc/elementor-templates.php:673
+#: inc/elementor-templates.php:690
 msgid "Open spaces"
 msgstr ""
 
@@ -1074,19 +1074,19 @@ msgstr ""
 msgid "Products per page"
 msgstr ""
 
-#: inc/elementor-templates.php:329
+#: inc/elementor-templates.php:338
 msgid "Question four goes here?"
 msgstr ""
 
-#: inc/elementor-templates.php:314
+#: inc/elementor-templates.php:323
 msgid "Question one goes here?"
 msgstr ""
 
-#: inc/elementor-templates.php:324
+#: inc/elementor-templates.php:333
 msgid "Question three goes here?"
 msgstr ""
 
-#: inc/elementor-templates.php:319
+#: inc/elementor-templates.php:328
 msgid "Question two goes here?"
 msgstr ""
 
@@ -1149,7 +1149,7 @@ msgstr ""
 msgid "Rounded"
 msgstr ""
 
-#: inc/elementor-templates.php:210
+#: inc/elementor-templates.php:219
 msgid "Sample title"
 msgstr ""
 
@@ -1370,12 +1370,12 @@ msgstr ""
 msgid "Try a different search term, or browse the catalog and blog from the menu."
 msgstr ""
 
-#: inc/elementor-templates.php:737
+#: inc/elementor-templates.php:746
 #: inc/patterns.php:124
 msgid "Two images side by side"
 msgstr ""
 
-#: inc/elementor-templates.php:250
+#: inc/elementor-templates.php:259
 #: inc/patterns.php:112
 msgid "Two-tone background, centered image"
 msgstr ""
@@ -1442,7 +1442,7 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/elementor-templates.php:412
+#: inc/elementor-templates.php:421
 msgid "hello!"
 msgstr ""
 
@@ -1450,7 +1450,7 @@ msgstr ""
 msgid "© %1$s %2$s. All rights reserved."
 msgstr ""
 
-#: inc/elementor-templates.php:468
+#: inc/elementor-templates.php:477
 msgid "— second line"
 msgstr ""
 
