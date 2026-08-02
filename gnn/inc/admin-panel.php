@@ -150,8 +150,20 @@ function gnn_options_sanitize( $input ) {
 	}
 
 	// --- Checkboxes (a submitted form turns unchecked boxes off). ---
-	foreach ( array( 'show_toggle', 'remember_mode', 'sticky_header', 'show_search', 'show_cart', 'disable_emoji', 'disable_oembed', 'disable_migrate', 'heartbeat_slow', 'woo_scope', 'font_preload', 'mobile_dock', 'topbar_enable', 'smooth_scroll', 'scroll_top', 'scroll_anim', 'preloader', 'loading_screen', 'maintenance_mode', 'error404_search', 'slider_autoplay', 'slider_full_height', 'google_material_icons' ) as $key ) {
+	foreach ( array( 'show_toggle', 'remember_mode', 'sticky_header', 'show_search', 'show_cart', 'disable_emoji', 'disable_oembed', 'disable_migrate', 'heartbeat_slow', 'woo_scope', 'font_preload', 'mobile_dock', 'topbar_enable', 'smooth_scroll', 'scroll_top', 'scroll_anim', 'preloader', 'loading_screen', 'maintenance_mode', 'error404_search', 'slider_autoplay', 'slider_full_height', 'google_material_icons', 'typography_google_enable' ) as $key ) {
 		$out[ $key ] = empty( $input[ $key ] ) ? 0 : 1;
+	}
+
+	// --- Typography: a Google Font name + weight per element. ---
+	foreach ( array_keys( gnn_typography_roles() ) as $gnn_typo_role ) {
+		$fam_key = "typo_{$gnn_typo_role}_family";
+		if ( isset( $input[ $fam_key ] ) ) {
+			$out[ $fam_key ] = substr( trim( (string) preg_replace( '/[^A-Za-z0-9 ]/', '', $input[ $fam_key ] ) ), 0, 60 );
+		}
+		$wt_key = "typo_{$gnn_typo_role}_weight";
+		if ( isset( $input[ $wt_key ] ) && in_array( $input[ $wt_key ], gnn_typography_weights(), true ) ) {
+			$out[ $wt_key ] = $input[ $wt_key ];
+		}
 	}
 
 	// --- Custom CSS (tags stripped). ---
@@ -185,8 +197,39 @@ function gnn_panel_assets( $hook ) {
 	wp_enqueue_media();
 	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array(), GNN_VERSION );
 	wp_enqueue_script( 'gnn-admin', get_template_directory_uri() . '/assets/js/admin.js', array(), GNN_VERSION, true );
+	gnn_panel_code_editors();
 }
 add_action( 'admin_enqueue_scripts', 'gnn_panel_assets' );
+
+/**
+ * Turn the Custom Code tab's plain textareas into syntax-highlighted
+ * CodeMirror editors using WordPress core's own bundled editor (the same
+ * one behind Customizer → Additional CSS) — no third-party library added.
+ */
+function gnn_panel_code_editors() {
+	$fields = array(
+		'gnn-custom_css'       => 'text/css',
+		'gnn-custom_js_head'   => 'text/javascript',
+		'gnn-custom_js_footer' => 'text/javascript',
+		'gnn-head_html'        => 'text/html',
+		'gnn-body_html'        => 'text/html',
+	);
+	$init = '';
+	foreach ( $fields as $id => $mime ) {
+		$settings = wp_enqueue_code_editor( array( 'type' => $mime ) );
+		if ( false === $settings ) {
+			continue; // The user disabled the code editor in their WP profile.
+		}
+		$init .= sprintf(
+			'if(document.getElementById(%1$s)){wp.codeEditor.initialize(%1$s,%2$s);}',
+			wp_json_encode( $id ),
+			wp_json_encode( $settings )
+		);
+	}
+	if ( '' !== $init ) {
+		wp_add_inline_script( 'code-editor', $init );
+	}
+}
 
 // ----- Field helpers ----------------------------------------------------------
 
@@ -694,7 +737,29 @@ function gnn_panel_render() {
 
 			<section id="gnn-tab-typography" class="gnn-tab">
 				<h2><span class="dashicons dashicons-editor-textcolor" aria-hidden="true"></span><?php esc_html_e( 'Typography', 'gnn' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'The theme ships self-hosted Space Grotesk (headings) and Manrope (body). Font controls are managed in theme.json; per-option font settings can be added here.', 'gnn' ); ?></p>
+				<p class="description"><?php esc_html_e( 'The theme ships self-hosted Space Grotesk (headings) and Manrope (body) — fast, and used by default with zero extra requests.', 'gnn' ); ?></p>
+				<?php
+				gnn_field_checkbox(
+					'typography_google_enable',
+					__( 'Use Google Fonts instead', 'gnn' ),
+					__( 'Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font.', 'gnn' )
+				);
+				?>
+				<h3><?php esc_html_e( 'Fonts by element', 'gnn' ); ?></h3>
+				<p class="description"><?php esc_html_e( 'Type the exact name from fonts.google.com (e.g. "Poppins", "IBM Plex Sans"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it.', 'gnn' ); ?></p>
+				<div class="gnn-typo-grid">
+					<?php foreach ( gnn_typography_roles() as $gnn_typo_role => $gnn_typo_label ) : ?>
+						<div class="gnn-typo-row">
+							<span class="gnn-typo-row__label"><?php echo esc_html( $gnn_typo_label ); ?></span>
+							<input type="text" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_family]" value="<?php echo esc_attr( (string) gnn_option( "typo_{$gnn_typo_role}_family" ) ); ?>" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>" class="regular-text">
+							<select name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_weight]">
+								<?php foreach ( gnn_typography_weights() as $gnn_typo_weight ) : ?>
+									<option value="<?php echo esc_attr( $gnn_typo_weight ); ?>" <?php selected( (string) gnn_option( "typo_{$gnn_typo_role}_weight" ), $gnn_typo_weight ); ?>><?php echo esc_html( $gnn_typo_weight ); ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
+					<?php endforeach; ?>
+				</div>
 			</section>
 
 			<section id="gnn-tab-icons" class="gnn-tab">

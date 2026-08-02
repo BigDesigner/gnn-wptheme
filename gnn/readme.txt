@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.10
+Stable tag: 1.3.11
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,20 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.11 =
+* Add an optional Google Fonts typography system (GNN Panel → Typography):
+  assign a font family and weight to each of H1-H6 and paragraph text
+  independently. Off by default — the theme keeps using its self-hosted
+  Space Grotesk / Manrope fonts with zero extra requests until enabled.
+  When enabled, every configured font is merged into a single stylesheet
+  request (never one per font), with a shared preconnect and font-display:
+  swap; Turkish characters (ğ ı ş ö ü ç) are fetched automatically by
+  Google Fonts/the browser only when the page needs them, no extra
+  setting required.
+* Custom Code tab: the CSS / JS / HTML fields now use WordPress core's
+  own CodeMirror code editor (the same one behind Customizer → Additional
+  CSS) for syntax highlighting — no third-party library added.
 
 = 1.3.10 =
 * GNN Panel: replaced the purple/indigo accent with a monochrome black/white

@@ -180,6 +180,17 @@
 
 .gnn-group-note { max-width: 640px; margin: 8px 0 16px; color: var(--gnn-admin-muted); font-size: 13px; }
 
+/* Typography tab: one row per element (H1-H6, paragraph). */
+.gnn-typo-grid { max-width: 640px; margin: 12px 0; }
+.gnn-typo-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.gnn-typo-row__label { width: 100px; flex-shrink: 0; font-weight: 600; font-size: 13px; color: var(--gnn-admin-ink); }
+.gnn-typo-row input[type="text"] { flex: 1; }
+.gnn-typo-row select { width: 90px; flex-shrink: 0; }
+
+/* Custom Code tab: CodeMirror editors (WordPress core), styled to match. */
+.gnn-tab .CodeMirror { border: 1px solid var(--gnn-admin-line); border-radius: 8px; font-size: 13px; }
+.gnn-tab .CodeMirror-focused { border-color: var(--gnn-admin-accent); }
+
 /* Advanced tab: each tool is a self-contained card so its button is never
    ambiguous about which description/heading it belongs to. */
 #gnn-tab-advanced .gnn-field {
