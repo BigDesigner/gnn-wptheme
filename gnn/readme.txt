@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,17 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.5 =
+* Fix: mobile bottom dock used wrong/mismatched Unicode glyphs for its
+  icons (a random symbol for Search, a cart emoji even for the "Contact"
+  fallback item). Replaced with proper outline SVG icons matching the
+  header's own icon style — home, search, sun/moon toggle, cart or mail.
+* On mobile, the header's search and dark/light toggle buttons are now
+  hidden when the bottom dock is active (the dock already has both),
+  removing the duplicate controls.
+* Fix: the scroll-to-top button was hidden behind the fixed mobile dock
+  bar — it now sits above it.
 
 = 1.3.4 =
 * Fix: the stat strip and closing CTA heading now render as plain
