@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.9
+Stable tag: 1.3.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,24 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.10 =
+* GNN Panel: replaced the purple/indigo accent with a monochrome black/white
+  palette, and every checkbox setting is now an on/off toggle switch.
+* Fix: third-party admin notices (e.g. cache-clearing plugins) were rendering
+  inside the GNN Panel's title card instead of below it, because the panel
+  was missing the standard `wp-header-end` marker WordPress core uses to
+  relocate them.
+* GNN Panel: the GitHub update check + "Update now" actions are now a single
+  dynamic button under the version number at the top of the panel — it
+  reads "Check for updates" normally and becomes "Update to X.X.X" once a
+  release is available. The Advanced tab keeps only the enable/disable
+  setting.
+* GNN Slider admin screen now notes that the slider only renders on the
+  Gutenberg front page template, not when Elementor replaces the front
+  page content.
+* Docs: brought internal task/bug tracking up to date and removed an unused
+  duplicate copy of the bundled demo content file.
 
 = 1.3.9 =
 * Fix: the mobile dock's theme-toggle button shared the header's round

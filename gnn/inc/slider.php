@@ -113,6 +113,14 @@ add_action( 'add_meta_boxes', 'gnn_add_slide_meta_box' );
  */
 function gnn_render_slide_meta_box( $post ) {
 	wp_nonce_field( 'gnn_slide_meta', 'gnn_slide_meta_nonce' );
+	?>
+	<div class="notice notice-warning inline" style="margin:0 0 16px;">
+		<p>
+			<strong><?php esc_html_e( 'Gutenberg only.', 'gnn' ); ?></strong>
+			<?php esc_html_e( 'This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the "GNN Ana Sayfa" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page.', 'gnn' ); ?>
+		</p>
+	</div>
+	<?php
 	$image_2x = (int) get_post_meta( $post->ID, '_gnn_slide_image_2x', true );
 	$kicker   = (string) get_post_meta( $post->ID, '_gnn_slide_kicker', true );
 	$text     = (string) get_post_meta( $post->ID, '_gnn_slide_text', true );

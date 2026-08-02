@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.3.9\n"
+"Project-Id-Version: GNN 1.3.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-02 09:13+0000\n"
-"PO-Revision-Date: 2026-08-02 09:13+0000\n"
+"POT-Creation-Date: 2026-08-02 20:54+0000\n"
+"PO-Revision-Date: 2026-08-02 20:54+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -209,8 +209,8 @@ msgstr "Yeni sürümler için GitHub’u kontrol et"
 msgid "Check back soon — new content is on the way."
 msgstr "Yakında tekrar bakın — yeni içerik yolda."
 
-msgid "Check for updates now"
-msgstr "Şimdi güncellemeleri kontrol et"
+msgid "Check for updates"
+msgstr "Güncellemeleri kontrol et"
 
 msgid "Colors"
 msgstr "Renkler"
@@ -493,6 +493,9 @@ msgstr "Sorularınız mı var? Bize ulaşmaktan çekinmeyin."
 
 msgid "Gutenberg"
 msgstr "Gutenberg"
+
+msgid "Gutenberg only."
+msgstr "Sadece Gutenberg."
 
 msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
 msgstr "HTML etiketlerine izin verilir (ör. <a>, <br>, <strong>, <span>). Site sloganını kullanmak için boş bırakın."
@@ -938,6 +941,9 @@ msgstr "Metin"
 msgid "Text (site title)"
 msgstr "Metin (site başlığı)"
 
+msgid "The check-for-updates / update button now lives at the top of this panel, under the version number."
+msgstr "Güncelleme kontrolü / güncelleme butonu artık bu panelin en üstünde, sürüm numarasının altında yer alıyor."
+
 msgid "The page you’re looking for was moved, renamed or never existed."
 msgstr "Aradığınız sayfa taşınmış, adı değişmiş ya da hiç var olmamış."
 
@@ -961,6 +967,9 @@ msgstr "Tema güncelleme ayarları kaydedildi."
 
 msgid "Theme updates (GitHub)"
 msgstr "Tema güncellemeleri (GitHub)"
+
+msgid "This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the \"GNN Ana Sayfa\" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page."
+msgstr "Bu slider yalnızca varsayılan (Gutenberg tabanlı) ön sayfa şablonunda görüntülenir. Ön sayfa Elementor ile oluşturulmuş veya değiştirilmişse — \"GNN Ana Sayfa\" Elementor şablonu dahil — slider orada görünmez, çünkü Elementor içeriği tüm ön sayfayı devralır."
 
 msgid "Toggle dark / light mode"
 msgstr "Koyu / açık modu değiştir"
@@ -1007,8 +1016,8 @@ msgstr "Güncelleme mevcut: sürüm %s."
 msgid "Update check complete."
 msgstr "Güncelleme kontrolü tamamlandı."
 
-msgid "Update now"
-msgstr "Şimdi güncelle"
+msgid "Update to %s"
+msgstr "%s sürümüne güncelle"
 
 msgid "Upload a previously exported GNN settings JSON file."
 msgstr "Daha önce dışa aktarılmış bir GNN ayar JSON dosyası yükleyin."
