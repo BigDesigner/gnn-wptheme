@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,13 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.6 =
+* Add a "Hide Breadcrumb" toggle to Elementor's own Page Settings panel
+  (new "GNN Theme" section, next to the native Hide Title control), so
+  breadcrumb visibility can be set without leaving the Elementor editor —
+  matching how Hide Title already syncs. gnn_hide_breadcrumb() now reads
+  it from `_elementor_page_settings` the same way gnn_hide_title() does.
 
 = 1.3.5 =
 * Fix: mobile bottom dock used wrong/mismatched Unicode glyphs for its
