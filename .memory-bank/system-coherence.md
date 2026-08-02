@@ -4,7 +4,7 @@
 - **Project Name:** GNN WordPress Theme (`gnn-wptheme`)
 - **Repository URL:** https://github.com/BigDesigner/gnn-wptheme.git
 - **Type:** WordPress Classic PHP Theme (Dark-by-default, corporate IT / cybersecurity focus)
-- **Version:** 1.3.9
+- **Version:** 1.3.10
 - **Ecosystem:** PHP 7.4+, WordPress 6.0+, Elementor Free API, WooCommerce
 
 ---
@@ -32,15 +32,18 @@ gnn/
 │   ├── js/                # theme.js, admin.js, features.js, slider.js
 │   └── fonts/             # Space Grotesk & Manrope variable WOFF2 fonts
 └── inc/
-    ├── admin-panel.php    # GNN Theme Panel 9-tab settings interface
-    ├── options.php        # Option defaults, getters (gnn_option), logo helpers
-    ├── frontend.php       # Topbar, dock, scroll-to-top, preloader, badge hooks
-    ├── page-layouts.php   # Page layout renderer (full, boxed, right, left)
-    ├── page-meta.php      # Per-page display options metabox (_gnn_hide_title, _gnn_hide_breadcrumb)
-    ├── slider.php         # Custom Post Type (gnn_slide) hero slider manager
-    ├── patterns.php       # Gutenberg Block Patterns registration (14 pattern parts)
-    ├── elementor.php      # Elementor theme locations registration
-    └── woocommerce.php    # WooCommerce support hooks and styling bridges
+    ├── admin-panel.php            # GNN Theme Panel 9-tab settings interface
+    ├── options.php                # Option defaults, getters (gnn_option), logo helpers
+    ├── frontend.php                # Topbar, dock, scroll-to-top, preloader, badge hooks
+    ├── page-layouts.php            # Page layout renderer (full, boxed, right, left)
+    ├── page-meta.php                # Per-page display options metabox (_gnn_hide_title, _gnn_hide_breadcrumb)
+    ├── slider.php                    # Custom Post Type (gnn_slide) hero slider manager
+    ├── patterns.php                  # Gutenberg Block Patterns registration (14 pattern parts)
+    ├── elementor.php                  # Elementor theme locations + Page Settings controls (hide title/breadcrumb, CSS print method default)
+    ├── elementor-templates.php        # Elementor Saved Templates library (14 mirrored patterns + GNN Ana Sayfa), self-healing install
+    ├── updater.php                     # GitHub self-updater bootstrap (admin-only)
+    ├── class-gnn-github-updater.php    # GitHub Releases API client, WP upgrader integration
+    └── woocommerce.php                 # WooCommerce support hooks and styling bridges
 ```
 
 ---

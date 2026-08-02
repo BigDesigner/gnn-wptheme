@@ -1,5 +1,24 @@
 # Bug List & Issues Tracking
 
+All entries below were found and fixed in the same working session (real production
+reports and code-review findings, not hypothetical). PRD Phase 1's 19 items remain
+independently verified clean.
+
 | ID | Issue Description | Status | Resolution / Notes |
 |---|---|---|---|
-| - | No active bugs recorded. | Clean | All 19 PRD items verified clean. |
+| 20 | `inc/updater.php` used the wrong theme slug/text domain, an undefined sanitize callback, referenced a non-existent Customizer panel, and had broken negative-cache logic; the file was also never `require`d. | Fixed | Rewritten and split into `class-gnn-github-updater.php` (class) + `updater.php` (bootstrap) per PHPCS's class-file-naming rule. |
+| 21 | Elementor "Hide Breadcrumb" control used `start_injection()`, which threw a real 500 error ("Cannot add a control outside of a section"). | Fixed | Switched to `start_controls_section()` / `end_controls_section()`. Caught via `read_network_requests` before shipping. |
+| 22 | Elementor template auto-heal only checked a version flag, so manually deleting all Saved Templates left the library empty forever (flag still said "installed"). | Fixed | Added an actual `get_posts()` existence check via `meta_query` on `_gnn_elementor_template`, independent of the version flag. |
+| 23 | "GNN Ana Sayfa" Elementor template sections had no gap between columns; the shared `gnn_el_section()` helper defaults to `gap: 'no'` (correct for other edge-to-edge templates, wrong here). | Fixed | All 7 sections explicitly set `'gap' => 'wide'`. |
+| 24 | Same template's sections used `layout: 'full_width'`, so text/columns stretched across the full browser width on wide screens. | Fixed | All 7 sections explicitly set `'layout' => 'boxed'`. |
+| 25 | Stat-strip numbers and the closing CTA heading (Elementor `heading` widget) sometimes lost text-centering to `.entry-content` specificity, depending on the page/sidebar context the template was embedded in. | Fixed | Replaced with plain inline-styled HTML (`gnn_el_text()`), immune to cascade context. |
+| 26 | Mobile bottom dock used mismatched Unicode glyphs (an unrelated symbol for Search; a cart emoji even for the "Contact" fallback item). | Fixed | Replaced with proper outline SVG icons matching the header's own icon style. |
+| 27 | Mobile dock's `.theme-toggle` button shared the header's round icon-button CSS (fixed 34×34px, border, background), so it sat visibly higher/smaller than its plain-link siblings. | Fixed | Scoped reset: `.gnn-dock__item.theme-toggle` clears width/height/border/background inside the dock only. |
+| 28 | Dock's sun icon had less visual weight than its siblings (thin 4px-radius outline core vs. bold filled shapes elsewhere). | Fixed | Core is now solid-filled at 5px radius (`fill="currentColor" stroke="none"`). |
+| 29 | Scroll-to-top button was hidden behind the fixed mobile dock bar (both anchored near `bottom: 0-22px`). | Fixed | `body.gnn-has-dock .gnn-scrolltop { bottom: 86px; }` inside the mobile media query. |
+| 30 | A third-party cookie-consent plugin's floating icon overlapped the dock's edge-to-edge icons in the bottom corner. | Fixed | Dock's 4 items are centered as a group with side padding (`justify-content: center; padding: 6px 28px`) instead of stretching edge-to-edge, per the user's own proposed approach. |
+| 31 | Elementor's "External File" CSS Print Method silently dropped backgrounds/icons/borders (but not widget text) on hosts that restrict writes to `wp-content/uploads/elementor/css/`. | Fixed | Theme now defaults `elementor_css_print_method` to `'internal'` on `after_switch_theme` and `admin_init` (self-heals existing installs too). |
+| 32 | Contact link in the mobile dock was hardcoded to `/contact/`. | Fixed | Added a "Contact page" picker (GNN Panel → Pages Layout) with auto-detect fallback for a page slugged "contact" or "iletisim" (`gnn_contact_url()`). |
+| 33 | GNN Panel used a purple/indigo accent (`#6366f1`) and native checkboxes throughout, inconsistent with the requested black-and-white admin aesthetic. | Fixed | `--gnn-admin-accent` set to black; all `gnn_field_checkbox()` fields (and the updater's enable checkbox) rebuilt as on/off toggle switches. |
+| 34 | Third-party admin notices (e.g. a cache-clearing plugin's success notice) rendered visually inside the GNN Panel's custom header card, between the title and the version badge. | Fixed | WordPress core relocates untagged notices to right after the first `.wrap` heading or `.wp-header-end` marker; the panel lacked that marker. Added `<hr class="wp-header-end">` after the header block so notices land below it instead of inside it. |
+| 35 | The GitHub update check/"Update now" action was buried in the Advanced tab, requiring two clicks (open tab, then act) and duplicating state across two buttons. | Fixed | Single dynamic button now lives in the panel header under the version badge: "Check for updates" when up to date, automatically becomes "Update to X.X.X" when a release is available. The Advanced tab keeps only the enable/disable + Save setting. |

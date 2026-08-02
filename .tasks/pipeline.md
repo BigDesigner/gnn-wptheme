@@ -23,10 +23,25 @@
 
 ---
 
-## Pending Features (PRD Phase 2: Implementation Plan in `.tasks/IMPLEMENTATION-PLAN.md`)
-- [ ] **Task 1:** Remove Contact Page Template (`page-templates/page-contact.php`).
-- [ ] **Task 2:** Synchronize Breadcrumb & Title Hide options with Elementor page settings.
-- [ ] **Task 3:** Featured Image 0px header attachment, 250px max-height, Full-width / Boxed layout, & top placement above sidebar & content.
-- [ ] **Task 4:** Add `content_top_padding` option (default: 50px) to GNN Theme Panel.
-- [ ] **Task 5:** Add `content_bottom_padding` option (default: 64px) to GNN Theme Panel.
-- [ ] **Task 6:** Integrate Google Material Symbols & Icons (`fonts.google.com/icons`) into GNN Theme Panel & Frontend.
+## Completed Features (PRD Phase 2: Implementation Plan in `.tasks/IMPLEMENTATION-PLAN.md`)
+- [x] **Task 1:** Remove Contact Page Template (`page-templates/page-contact.php`).
+- [x] **Task 2:** Synchronize Breadcrumb & Title Hide options with Elementor page settings.
+- [x] **Task 3:** Featured Image 0px header attachment, 250px max-height, Full-width / Boxed layout, & top placement above sidebar & content.
+- [x] **Task 4:** Add `content_top_padding` option (default: 50px) to GNN Theme Panel.
+- [x] **Task 5:** Add `content_bottom_padding` option (default: 64px) to GNN Theme Panel.
+- [x] **Task 6:** Integrate Google Material Symbols & Icons (`fonts.google.com/icons`) into GNN Theme Panel & Frontend.
+
+---
+
+## Completed Features (PRD Phase 3: post-launch hardening, v1.1.0 - v1.3.10)
+- [x] GitHub-based theme auto-updater (`class-gnn-github-updater.php`), surfaced in GNN Panel → Advanced with a single dynamic check/update button in the panel header.
+- [x] Modernized GNN Panel admin UI (card-based header/stats/pill-tabs, hex-input color fields, on/off toggle switches instead of checkboxes, monochrome black/white palette).
+- [x] Fixed third-party admin notices (e.g. cache plugins) rendering inside the panel's title card by adding the standard `wp-header-end` marker.
+- [x] Contact page picker (GNN Panel → Pages Layout) driving the mobile dock's Contact link.
+- [x] Elementor "Hide Breadcrumb" native Page Settings control (parallel to Hide Title).
+- [x] Elementor CSS Print Method defaults to "Internal Embedding" (self-healing on activation + admin_init) to avoid a hosting trap where External File silently drops backgrounds/icons.
+- [x] 14 Elementor Free Saved Templates mirroring the Gutenberg patterns, plus a full "GNN Ana Sayfa" multi-section home page template.
+- [x] GitHub Actions `release.yml` for automated GitHub Releases via `workflow_dispatch`.
+- [x] Mobile bottom dock: real SVG icons, centered layout with breathing room (avoids third-party floating widgets), scroll-to-top offset fix.
+- [x] GNN Slider admin screen documents that the slider only renders on the Gutenberg front page, not under Elementor.
+- [x] Semantic versioning governance policy (`.specs/constitution.md`): never bump MAJOR by default, version synced across style.css/functions.php/readme.txt/memory-bank on every behavior-changing commit.

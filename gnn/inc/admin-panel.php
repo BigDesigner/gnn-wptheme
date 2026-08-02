@@ -199,7 +199,7 @@ add_action( 'admin_enqueue_scripts', 'gnn_panel_assets' );
  */
 function gnn_field_checkbox( $key, $label, $hint = '' ) {
 	printf(
-		'<label class="gnn-field gnn-field--check"><input type="checkbox" name="gnn_options[%1$s]" value="1" %2$s> <span>%3$s</span></label>%4$s',
+		'<div class="gnn-field gnn-field--switch"><label class="gnn-switch"><input type="checkbox" name="gnn_options[%1$s]" value="1" %2$s><span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span></label><span class="gnn-switch__label">%3$s</span></div>%4$s',
 		esc_attr( $key ),
 		checked( (bool) gnn_option( $key ), true, false ),
 		esc_html( $label ),
@@ -390,8 +390,31 @@ function gnn_panel_render() {
 					<p class="gnn-panel__subtitle"><?php esc_html_e( 'Panel-controlled theme settings — no code required.', 'gnn' ); ?></p>
 				</div>
 			</div>
-			<span class="gnn-panel__badge">v<?php echo esc_html( GNN_VERSION ); ?></span>
+			<div class="gnn-panel__header-actions">
+				<span class="gnn-panel__badge">v<?php echo esc_html( GNN_VERSION ); ?></span>
+				<?php if ( function_exists( 'gnn_updates_enabled' ) && gnn_updates_enabled() ) : ?>
+					<?php
+					$gnn_hdr_release    = function_exists( 'gnn_updater' ) ? gnn_updater()->get_remote_release() : false;
+					$gnn_hdr_has_update = $gnn_hdr_release && version_compare( $gnn_hdr_release->version, GNN_VERSION, '>' );
+					?>
+					<?php if ( $gnn_hdr_has_update ) : ?>
+						<a class="button button-primary gnn-update-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-theme&theme=' . rawurlencode( get_template() ) ), 'upgrade-theme_' . get_template() ) ); ?>">
+							<?php
+							/* translators: %s: latest available version. */
+							printf( esc_html__( 'Update to %s', 'gnn' ), esc_html( $gnn_hdr_release->version ) );
+							?>
+						</a>
+					<?php else : ?>
+						<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-update-form">
+							<input type="hidden" name="action" value="gnn_check_theme_update">
+							<?php wp_nonce_field( 'gnn_check_theme_update' ); ?>
+							<button type="submit" class="button gnn-update-btn"><?php esc_html_e( 'Check for updates', 'gnn' ); ?></button>
+						</form>
+					<?php endif; ?>
+				<?php endif; ?>
+			</div>
 		</header>
+		<hr class="wp-header-end">
 
 		<div class="gnn-stats">
 			<div class="gnn-stat">
@@ -801,20 +824,10 @@ function gnn_panel_advanced_tab() {
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_save_updater_settings">
 					<?php wp_nonce_field( 'gnn_save_updater_settings' ); ?>
-					<label><input type="checkbox" name="gnn_updates_enable" value="1" <?php checked( $gnn_updates_on ); ?>> <?php esc_html_e( 'Check GitHub for new releases', 'gnn' ); ?></label>
+					<label class="gnn-switch"><input type="checkbox" name="gnn_updates_enable" value="1" <?php checked( $gnn_updates_on ); ?>><span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span></label> <span class="gnn-switch__label"><?php esc_html_e( 'Check GitHub for new releases', 'gnn' ); ?></span>
 					<?php submit_button( __( 'Save', 'gnn' ), 'secondary', 'submit', false ); ?>
 				</form>
-
-				<?php if ( $gnn_updates_on ) : ?>
-					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
-						<input type="hidden" name="action" value="gnn_check_theme_update">
-						<?php wp_nonce_field( 'gnn_check_theme_update' ); ?>
-						<?php submit_button( __( 'Check for updates now', 'gnn' ), 'secondary', 'submit', false ); ?>
-						<?php if ( $gnn_has_update ) : ?>
-							<a class="button button-primary" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-theme&theme=' . rawurlencode( get_template() ) ), 'upgrade-theme_' . get_template() ) ); ?>"><?php esc_html_e( 'Update now', 'gnn' ); ?></a>
-						<?php endif; ?>
-					</form>
-				<?php endif; ?>
+				<p class="description"><?php esc_html_e( 'The check-for-updates / update button now lives at the top of this panel, under the version number.', 'gnn' ); ?></p>
 			</div>
 		<?php endif; ?>
 	</section>

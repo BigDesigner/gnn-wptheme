@@ -1,9 +1,9 @@
 /* GNN Panel — admin screen styles (loaded only on the panel page). */
 
 .gnn-panel {
-	--gnn-admin-accent: #6366f1;
+	--gnn-admin-accent: #000;
 	--gnn-admin-accent-ink: #fff;
-	--gnn-admin-ink: #1e1b2e;
+	--gnn-admin-ink: #111;
 	--gnn-admin-muted: #6b7280;
 	--gnn-admin-line: #e5e7eb;
 	--gnn-admin-bg: #fff;
@@ -36,13 +36,17 @@
 	margin: 0; padding: 0; font-size: 20px; font-weight: 700; color: var(--gnn-admin-ink); line-height: 1.3;
 }
 .gnn-panel__subtitle { margin: 2px 0 0; color: var(--gnn-admin-muted); font-size: 13px; }
+.gnn-panel__header-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
 .gnn-panel__badge {
 	flex-shrink: 0;
-	background: color-mix(in srgb, var(--gnn-admin-accent) 12%, #fff);
+	background: color-mix(in srgb, var(--gnn-admin-accent) 8%, #fff);
 	color: var(--gnn-admin-accent);
 	font-weight: 700; font-size: 12px;
 	padding: 6px 14px; border-radius: 999px;
+	border: 1px solid var(--gnn-admin-line);
 }
+.gnn-update-form { margin: 0; }
+.gnn-update-btn { white-space: nowrap; }
 
 /* ---------------------------------------------------------------------------
  * Stat cards
@@ -118,9 +122,26 @@
  * ------------------------------------------------------------------------- */
 .gnn-field { margin: 16px 0; max-width: 640px; }
 .gnn-field__label { display: block; font-weight: 600; font-size: 13px; color: var(--gnn-admin-ink); margin-bottom: 6px; }
-.gnn-field--check { display: flex; align-items: center; margin: 12px 0; font-weight: 500; max-width: none; }
 .gnn-field label + label { margin-left: 16px; }
 .gnn-field .description { color: var(--gnn-admin-muted); font-size: 12px; margin-top: 6px; }
+
+/* Toggle switches (replace native checkboxes throughout the panel). */
+.gnn-field--switch { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 12px 0; max-width: none; }
+.gnn-switch { position: relative; display: inline-flex; flex-shrink: 0; cursor: pointer; line-height: 0; }
+.gnn-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.gnn-switch__track {
+	display: inline-block; position: relative;
+	width: 40px; height: 22px; border-radius: 999px;
+	background: var(--gnn-admin-line); transition: background .15s;
+}
+.gnn-switch__thumb {
+	position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%;
+	background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.25); transition: transform .15s;
+}
+.gnn-switch input:checked + .gnn-switch__track { background: var(--gnn-admin-accent); }
+.gnn-switch input:checked + .gnn-switch__track .gnn-switch__thumb { transform: translateX(18px); }
+.gnn-switch input:focus-visible + .gnn-switch__track { box-shadow: 0 0 0 3px color-mix(in srgb, var(--gnn-admin-accent) 25%, transparent); }
+.gnn-switch__label { font-weight: 500; font-size: 13px; color: var(--gnn-admin-ink); }
 
 .gnn-field input[type="text"],
 .gnn-field input[type="email"],
@@ -180,14 +201,14 @@
 }
 .gnn-panel .button-primary:hover,
 .gnn-panel .button-primary:focus {
-	background: color-mix(in srgb, var(--gnn-admin-accent) 88%, #000); border-color: color-mix(in srgb, var(--gnn-admin-accent) 88%, #000);
+	background: color-mix(in srgb, var(--gnn-admin-accent) 82%, #fff); border-color: color-mix(in srgb, var(--gnn-admin-accent) 82%, #fff);
 }
 
 /* ---------------------------------------------------------------------------
  * Slider admin
  * ------------------------------------------------------------------------- */
 .gnn-slider-settings { display: flex; gap: 32px; align-items: flex-end; background: #fff; border: 1px solid var(--gnn-admin-line); border-radius: 14px; padding: 16px 24px; margin-bottom: 20px; }
-.gnn-slide-row { background: #fff; border: 1px solid var(--gnn-admin-line); border-left: 4px solid #6366f1; border-radius: 10px; padding: 12px 24px 20px; margin-bottom: 16px; }
+.gnn-slide-row { background: #fff; border: 1px solid var(--gnn-admin-line); border-left: 4px solid var(--gnn-admin-accent, #000); border-radius: 10px; padding: 12px 24px 20px; margin-bottom: 16px; }
 .gnn-slide-row__head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f1; padding-bottom: 8px; margin-bottom: 12px; }
 .gnn-slide-row__num { font-weight: 700; }
 .gnn-slide-remove { color: #b32d2e; text-decoration: none; }

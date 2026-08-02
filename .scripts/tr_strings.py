@@ -363,9 +363,16 @@ TRANSLATIONS = {
         'Tema kendi arayüzü için satır içi SVG ikonlar kullanır. Sayfa içeriğinde ve menülerde kullanılmak üzere Google Material Symbols de yüklenebilir.',
     'Theme update settings saved.': 'Tema güncelleme ayarları kaydedildi.',
     'Theme updates (GitHub)': 'Tema güncellemeleri (GitHub)',
+    'Check for updates': 'Güncellemeleri kontrol et',
     'Update available: version %s.': 'Güncelleme mevcut: sürüm %s.',
     'Update check complete.': 'Güncelleme kontrolü tamamlandı.',
     'Update now': 'Şimdi güncelle',
+    'Update to %s': '%s sürümüne güncelle',
+    'The check-for-updates / update button now lives at the top of this panel, under the version number.':
+        'Güncelleme kontrolü / güncelleme butonu artık bu panelin en üstünde, sürüm numarasının altında yer alıyor.',
+    'Gutenberg only.': 'Sadece Gutenberg.',
+    'This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the "GNN Ana Sayfa" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page.':
+        'Bu slider yalnızca varsayılan (Gutenberg tabanlı) ön sayfa şablonunda görüntülenir. Ön sayfa Elementor ile oluşturulmuş veya değiştirilmişse — "GNN Ana Sayfa" Elementor şablonu dahil — slider orada görünmez, çünkü Elementor içeriği tüm ön sayfayı devralır.',
     'Use it in content with e.g. %s': 'İçerikte örneğin şöyle kullanın: %s',
     'You are running the latest version.': 'En güncel sürümü kullanıyorsunuz.',
     'Every theme color lives here. Type a hex code directly, or use the small swatch to pick one visually.':
