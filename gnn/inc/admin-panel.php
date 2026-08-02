@@ -13,17 +13,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the admin menu.
+ * Register the admin menu: a single top-level "GNN" parent with "Theme"
+ * (this panel) and "Slider" (gnn_slide CPT, see inc/slider.php) as its two
+ * submenu items, instead of two separate top-level menus.
  */
 function gnn_panel_menu() {
 	add_menu_page(
 		__( 'GNN Theme Panel', 'gnn' ),
-		__( 'GNN Theme', 'gnn' ),
+		'GNN',
 		'manage_options',
 		'gnn-panel',
 		'gnn_panel_render',
 		'dashicons-shield-alt',
 		59
+	);
+	// Renames the auto-added first submenu item (same slug as the parent)
+	// from "GNN" to "Theme" instead of adding a duplicate entry.
+	add_submenu_page(
+		'gnn-panel',
+		__( 'GNN Theme Panel', 'gnn' ),
+		__( 'Theme', 'gnn' ),
+		'manage_options',
+		'gnn-panel',
+		'gnn_panel_render'
 	);
 }
 add_action( 'admin_menu', 'gnn_panel_menu' );

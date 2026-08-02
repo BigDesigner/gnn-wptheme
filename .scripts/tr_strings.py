@@ -93,6 +93,7 @@ TRANSLATIONS = {
     'Mobile navigation': 'Mobil gezinme',
     'Scroll to top': 'Yukarı çık',
     'Theme': 'Tema',
+    'Slider': 'Slider',
     'We are performing scheduled maintenance. Please check back soon.': 'Planlı bakım çalışması yapıyoruz. Lütfen kısa süre sonra tekrar bakın.',
     # --- Panel (Faz A) + pattern titles ---
     'Global': 'Genel',
