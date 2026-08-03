@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.14
+Stable tag: 1.3.15
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,13 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.3.15 =
+* Fix: clicking the top-level "GNN" menu link landed on the Slider list
+  instead of the Theme panel. WordPress registers the Slider CPT's
+  submenu before our own menu callback runs, so it was claiming the slot
+  WordPress uses as the top-level link's target. The Theme entry is now
+  force-ordered first, regardless of registration order.
 
 = 1.3.14 =
 * Governance: GNN Tema's admin-menu-position registry slot renamed from

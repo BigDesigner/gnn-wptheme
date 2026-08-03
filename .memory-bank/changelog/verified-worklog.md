@@ -47,3 +47,6 @@
 
 ## [2026-08-02] Menu-position registry format consistency (v1.3.14)
 - Renamed GNN Tema's registry slot from the bare `'59'` to `'59.100'` so every entry in the registry (this theme's anchor slot included) shares the same 3-digit-suffix format — avoids a mix of bare-integer and decimal entries as more GNN products are added. Updated in code (`gnn_panel_menu()`), `.specs/constitution.md` rule 7, and ADR 0009.
+
+## [2026-08-02] Fix wrong top-level menu landing page (v1.3.15)
+- User-reported bug: clicking the top-level "GNN" menu link landed on the Slider list, not the Theme panel. Root cause: WordPress registers CPT submenus in `wp-admin/menu.php` before the `admin_menu` action fires, so the Slider CPT's submenu claimed array index 0 under `gnn-panel` ahead of our own `gnn_panel_menu()` callback, and WordPress uses that first submenu entry as the top-level link's target. Fixed with `gnn_panel_menu_reorder()`, a late (`priority 999`) `admin_menu` hook that force-sorts `$submenu['gnn-panel']` so the Theme entry is always first, independent of core's registration order. See bug #36.
