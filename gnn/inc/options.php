@@ -114,6 +114,47 @@ function gnn_option_defaults() {
 		'typo_h6_weight'               => '400',
 		'typo_p_family'                => '',
 		'typo_p_weight'                => '400',
+		// Button styles (6 fixed slots, see inc/button-styles.php).
+		'btn_style_1_label'            => '',
+		'btn_style_1_bg'               => '',
+		'btn_style_1_text'             => '',
+		'btn_style_1_border'           => '',
+		'btn_style_2_label'            => '',
+		'btn_style_2_bg'               => '',
+		'btn_style_2_text'             => '',
+		'btn_style_2_border'           => '',
+		'btn_style_3_label'            => '',
+		'btn_style_3_bg'               => '',
+		'btn_style_3_text'             => '',
+		'btn_style_3_border'           => '',
+		'btn_style_4_label'            => '',
+		'btn_style_4_bg'               => '',
+		'btn_style_4_text'             => '',
+		'btn_style_4_border'           => '',
+		'btn_style_5_label'            => '',
+		'btn_style_5_bg'               => '',
+		'btn_style_5_text'             => '',
+		'btn_style_5_border'           => '',
+		'btn_style_6_label'            => '',
+		'btn_style_6_bg'               => '',
+		'btn_style_6_text'             => '',
+		'btn_style_6_border'           => '',
+		// Colors: Dark/Light pairs for the theme's existing design tokens
+		// (empty = keep main.css's own hardcoded default for that mode).
+		'accent_ink_dark'              => '',
+		'accent_ink_light'             => '',
+		'color_bg_dark'                => '',
+		'color_bg_light'               => '',
+		'color_bg2_dark'               => '',
+		'color_bg2_light'              => '',
+		'color_bg3_dark'               => '',
+		'color_bg3_light'              => '',
+		'color_fg_dark'                => '',
+		'color_fg_light'               => '',
+		'color_fg2_dark'               => '',
+		'color_fg2_light'              => '',
+		'color_line_dark'              => '',
+		'color_line_light'             => '',
 		// Performance.
 		'disable_emoji'                => 1,
 		'disable_oembed'               => 1,
@@ -249,6 +290,58 @@ function gnn_the_footer_logo() {
 	echo '</a>';
 	return true;
 }
+
+// ----- Color tokens (Dark/Light pairs, GNN Panel → Colors) ----------------------------------------------------------
+
+/**
+ * Map of {option key prefix => CSS custom property} for every Dark/Light
+ * color pair exposed in the panel (see gnn_field_color_pair() calls in
+ * inc/admin-panel.php's Colors tab).
+ *
+ * @return array<string,string>
+ */
+function gnn_color_token_map() {
+	return array(
+		'accent_ink' => '--accent-ink',
+		'color_bg'   => '--bg',
+		'color_bg2'  => '--bg2',
+		'color_bg3'  => '--bg3',
+		'color_fg'   => '--fg',
+		'color_fg2'  => '--fg2',
+		'color_line' => '--line',
+	);
+}
+
+/**
+ * Inline CSS for any Dark/Light color pair an admin has actually set.
+ * Unset pairs are omitted entirely, so main.css's own hardcoded :root /
+ * [data-theme="light"] defaults keep applying untouched.
+ */
+function gnn_color_tokens_inline_css() {
+	$dark_css  = '';
+	$light_css = '';
+	foreach ( gnn_color_token_map() as $key => $var ) {
+		$dark = trim( (string) gnn_option( "{$key}_dark" ) );
+		if ( '' !== $dark ) {
+			$dark_css .= $var . ':' . esc_html( $dark ) . ';';
+		}
+		$light = trim( (string) gnn_option( "{$key}_light" ) );
+		if ( '' !== $light ) {
+			$light_css .= $var . ':' . esc_html( $light ) . ';';
+		}
+	}
+	$css = '';
+	if ( '' !== $dark_css ) {
+		$css .= ':root{' . $dark_css . '}';
+	}
+	if ( '' !== $light_css ) {
+		$css .= '[data-theme="light"]{' . $light_css . '}';
+	}
+	if ( '' !== $css ) {
+		wp_add_inline_style( 'gnn-main', $css );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'gnn_color_tokens_inline_css', 15 );
 
 // ----- Layout switches → body classes ----------------------------------------------------------
 

@@ -180,6 +180,23 @@
 
 .gnn-group-note { max-width: 640px; margin: 8px 0 16px; color: var(--gnn-admin-muted); font-size: 13px; }
 
+/* Colors tab: Dark/Light paired fields (gnn_field_color_pair()). */
+.gnn-color-pair { max-width: 640px; }
+.gnn-color-pair__row { display: flex; gap: 24px; margin-top: 6px; }
+.gnn-color-pair__item { display: flex; align-items: center; gap: 8px; }
+.gnn-color-pair__tag { width: 42px; flex-shrink: 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--gnn-admin-muted); }
+
+/* Button Styles tab: one card per fixed slot (1-6). */
+.gnn-btn-styles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+.gnn-btn-style-card { border: 1px solid var(--gnn-admin-line); border-radius: 10px; padding: 16px; }
+.gnn-btn-style-card__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.gnn-btn-style-card__class { font-size: 11px; color: var(--gnn-admin-muted); background: color-mix(in srgb, var(--gnn-admin-accent) 6%, #fff); padding: 3px 8px; border-radius: 6px; }
+.gnn-btn-style-card__colors { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.gnn-btn-style-card__colors .gnn-field { margin: 0; max-width: none; }
+.gnn-btn-style-card__colors .gnn-field__label { display: none; }
+.gnn-btn-style-card__preview { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gnn-admin-line); text-align: center; }
+.gnn-btn-style-card__preview .gnn-btn { border: none; cursor: default; }
+
 /* Typography tab: one row per element (H1-H6, paragraph). */
 .gnn-typo-grid { max-width: 640px; margin: 12px 0; }
 .gnn-typo-row { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
