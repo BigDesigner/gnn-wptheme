@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.3.15
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,21 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.4.0 =
+* Add Button Styles (GNN Panel → Button Styles): define up to 6 named
+  button variants (background, text and border color), each generating a
+  `.gnn-btn-style-N` class to apply from Gutenberg's or Elementor's
+  "Additional CSS Class(es)" field. Unused slots cost nothing.
+* Colors tab reorganized into grouped sections (Accent, Surfaces, Text &
+  Borders, Top bar), each color now settable independently for Dark and
+  Light mode — including a new "Text on accent" pair, fixing a latent
+  contrast issue where button text color on the accent background was
+  hardcoded regardless of a custom accent choice.
+* Fix: "Show the dark/light toggle" only hid the toggle button — a
+  visitor's stale remembered choice (localStorage) could still override
+  the site's Default mode. Turning the toggle off now truly locks the
+  whole site to a single style for every visitor.
 
 = 1.3.15 =
 * Fix: clicking the top-level "GNN" menu link landed on the Slider list

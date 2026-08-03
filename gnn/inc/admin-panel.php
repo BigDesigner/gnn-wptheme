@@ -146,7 +146,24 @@ function gnn_options_sanitize( $input ) {
 	}
 
 	// --- Optional colors (empty = fall back to the theme's own tokens). ---
-	foreach ( array( 'topbar_bg', 'topbar_text_color' ) as $key ) {
+	foreach ( array(
+		'topbar_bg',
+		'topbar_text_color',
+		'accent_ink_dark',
+		'accent_ink_light',
+		'color_bg_dark',
+		'color_bg_light',
+		'color_bg2_dark',
+		'color_bg2_light',
+		'color_bg3_dark',
+		'color_bg3_light',
+		'color_fg_dark',
+		'color_fg_light',
+		'color_fg2_dark',
+		'color_fg2_light',
+		'color_line_dark',
+		'color_line_light',
+	) as $key ) {
 		if ( ! isset( $input[ $key ] ) ) {
 			continue;
 		}
@@ -213,6 +230,22 @@ function gnn_options_sanitize( $input ) {
 		$wt_key = "typo_{$gnn_typo_role}_weight";
 		if ( isset( $input[ $wt_key ] ) && in_array( $input[ $wt_key ], gnn_typography_weights(), true ) ) {
 			$out[ $wt_key ] = $input[ $wt_key ];
+		}
+	}
+
+	// --- Button styles: a label + 3 optional colors per fixed slot. ---
+	foreach ( gnn_button_style_slots() as $gnn_btn_slot ) {
+		$label_key = "btn_style_{$gnn_btn_slot}_label";
+		if ( isset( $input[ $label_key ] ) ) {
+			$out[ $label_key ] = substr( sanitize_text_field( (string) $input[ $label_key ] ), 0, 40 );
+		}
+		foreach ( array( 'bg', 'text', 'border' ) as $gnn_btn_part ) {
+			$color_key = "btn_style_{$gnn_btn_slot}_{$gnn_btn_part}";
+			if ( ! isset( $input[ $color_key ] ) ) {
+				continue;
+			}
+			$val               = trim( (string) $input[ $color_key ] );
+			$out[ $color_key ] = ( '' === $val ) ? '' : (string) sanitize_hex_color( $val );
 		}
 	}
 
@@ -440,6 +473,47 @@ function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hi
 	);
 }
 
+/**
+ * Render a Dark/Light color pair (two gnn_field_color()-style inputs side
+ * by side, writing to "{$key}_dark" / "{$key}_light"). Both empty = keep
+ * the theme's own hardcoded default for that mode — used for the Colors
+ * tab's design-token groups (Surfaces, Text & Borders, Accent).
+ *
+ * @param string $key           Option key prefix (without _dark/_light).
+ * @param string $label         Label text.
+ * @param string $dark_default  Swatch fallback shown while the dark value is empty.
+ * @param string $light_default Swatch fallback shown while the light value is empty.
+ * @param string $hint          Optional description.
+ */
+function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hint = '' ) {
+	$dark  = (string) gnn_option( "{$key}_dark" );
+	$light = (string) gnn_option( "{$key}_light" );
+	?>
+	<div class="gnn-field gnn-color-pair">
+		<span class="gnn-field__label"><?php echo esc_html( $label ); ?></span>
+		<div class="gnn-color-pair__row">
+			<div class="gnn-color-pair__item">
+				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
+				<div class="gnn-color-field">
+					<input type="color" class="gnn-color-swatch" value="<?php echo esc_attr( $dark ? $dark : $dark_default ); ?>" aria-hidden="true" tabindex="-1">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark ); ?>" class="gnn-hex-input" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+				</div>
+			</div>
+			<div class="gnn-color-pair__item">
+				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
+				<div class="gnn-color-field">
+					<input type="color" class="gnn-color-swatch" value="<?php echo esc_attr( $light ? $light : $light_default ); ?>" aria-hidden="true" tabindex="-1">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light ); ?>" class="gnn-hex-input" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+				</div>
+			</div>
+		</div>
+		<?php if ( $hint ) : ?>
+			<p class="description"><?php echo esc_html( $hint ); ?></p>
+		<?php endif; ?>
+	</div>
+	<?php
+}
+
 // ----- Page render ----------------------------------------------------------
 
 /**
@@ -456,6 +530,7 @@ function gnn_panel_render() {
 		'footer'     => __( 'Footer', 'gnn' ),
 		'pages'      => __( 'Pages Layout', 'gnn' ),
 		'colors'     => __( 'Colors', 'gnn' ),
+		'buttons'    => __( 'Button Styles', 'gnn' ),
 		'typography' => __( 'Typography', 'gnn' ),
 		'icons'      => __( 'Icons', 'gnn' ),
 		'code'       => __( 'Custom Code', 'gnn' ),
@@ -468,6 +543,7 @@ function gnn_panel_render() {
 		'footer'     => 'arrow-down-alt2',
 		'pages'      => 'admin-page',
 		'colors'     => 'art',
+		'buttons'    => 'admin-customizer',
 		'typography' => 'editor-textcolor',
 		'icons'      => 'star-filled',
 		'code'       => 'editor-code',
@@ -551,8 +627,8 @@ function gnn_panel_render() {
 					<label><input type="radio" name="gnn_options[default_mode]" value="dark" <?php checked( get_theme_mod( 'gnn_default_theme', 'dark' ), 'dark' ); ?>> <?php esc_html_e( 'Dark', 'gnn' ); ?></label>
 					<label><input type="radio" name="gnn_options[default_mode]" value="light" <?php checked( get_theme_mod( 'gnn_default_theme', 'dark' ), 'light' ); ?>> <?php esc_html_e( 'Light', 'gnn' ); ?></label>
 				</div>
-				<?php gnn_field_checkbox( 'show_toggle', __( 'Show the dark/light toggle in the header', 'gnn' ) ); ?>
-				<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice (localStorage)', 'gnn' ) ); ?>
+				<?php gnn_field_checkbox( 'show_toggle', __( 'Show the dark/light toggle in the header', 'gnn' ), __( 'Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice).', 'gnn' ) ); ?>
+				<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice (localStorage)', 'gnn' ), __( 'Only applies while the toggle above is visible.', 'gnn' ) ); ?>
 				<?php gnn_field_media( 'site_icon', __( 'Favicon (site icon, 512×512)', 'gnn' ), (int) get_option( 'site_icon', 0 ) ); ?>
 
 				<h3><?php esc_html_e( 'Interactions', 'gnn' ); ?></h3>
@@ -757,15 +833,42 @@ function gnn_panel_render() {
 
 			<section id="gnn-tab-colors" class="gnn-tab">
 				<h2><span class="dashicons dashicons-art" aria-hidden="true"></span><?php esc_html_e( 'Colors', 'gnn' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Every theme color lives here. Type a hex code directly, or use the small swatch to pick one visually.', 'gnn' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Every theme color lives here, grouped by area. Type a hex code directly, or use the small swatch to pick one visually. Each Dark/Light pair defaults to the theme\'s own built-in color for that mode — leave a field empty to keep it.', 'gnn' ); ?></p>
+
+				<h3><?php esc_html_e( 'Accent', 'gnn' ); ?></h3>
 				<?php
 				gnn_field_color(
 					'accent',
 					__( 'Accent color', 'gnn' ),
 					get_theme_mod( 'gnn_accent_color', '#34d399' ),
 					'#34d399',
-					__( 'Used for buttons, links and highlights across the theme (and the Elementor color palette).', 'gnn' )
+					__( 'Used for buttons, links and highlights across the theme (and the Elementor color palette). Same in both modes.', 'gnn' )
 				);
+				gnn_field_color_pair(
+					'accent_ink',
+					__( 'Text on accent', 'gnn' ),
+					'#062416',
+					'#04150c',
+					__( 'The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast.', 'gnn' )
+				);
+				?>
+
+				<h3><?php esc_html_e( 'Surfaces', 'gnn' ); ?></h3>
+				<?php
+				gnn_field_color_pair( 'color_bg', __( 'Page background', 'gnn' ), '#0a0a0b', '#fafafa' );
+				gnn_field_color_pair( 'color_bg2', __( 'Card / panel background', 'gnn' ), '#121214', '#ffffff' );
+				gnn_field_color_pair( 'color_bg3', __( 'Alternate surface background', 'gnn' ), '#1b1b1f', '#efeff1' );
+				?>
+
+				<h3><?php esc_html_e( 'Text & Borders', 'gnn' ); ?></h3>
+				<?php
+				gnn_field_color_pair( 'color_fg', __( 'Primary text', 'gnn' ), '#f5f5f4', '#101013' );
+				gnn_field_color_pair( 'color_fg2', __( 'Muted text', 'gnn' ), '#9d9da4', '#5c5c64' );
+				gnn_field_color_pair( 'color_line', __( 'Borders / dividers', 'gnn' ), '#232328', '#e5e5e9' );
+				?>
+
+				<h3><?php esc_html_e( 'Top bar', 'gnn' ); ?></h3>
+				<?php
 				gnn_field_color(
 					'topbar_bg',
 					__( 'Top bar background color', 'gnn' ),
@@ -783,6 +886,54 @@ function gnn_panel_render() {
 					true
 				);
 				?>
+			</section>
+
+			<section id="gnn-tab-buttons" class="gnn-tab">
+				<h2><span class="dashicons dashicons-admin-customizer" aria-hidden="true"></span><?php esc_html_e( 'Button Styles', 'gnn' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its "Additional CSS Class(es)" field (Advanced panel) using the class name shown under each style. Leave a style\'s name empty to skip it.', 'gnn' ); ?></p>
+				<div class="gnn-btn-styles">
+					<?php foreach ( gnn_button_style_slots() as $gnn_btn_slot ) : ?>
+						<?php
+						$gnn_btn_label  = (string) gnn_option( "btn_style_{$gnn_btn_slot}_label" );
+						$gnn_btn_class  = gnn_button_style_class( $gnn_btn_slot );
+						$gnn_btn_bg     = (string) gnn_option( "btn_style_{$gnn_btn_slot}_bg" );
+						$gnn_btn_text   = (string) gnn_option( "btn_style_{$gnn_btn_slot}_text" );
+						$gnn_btn_border = (string) gnn_option( "btn_style_{$gnn_btn_slot}_border" );
+						$gnn_btn_preview_style = '';
+						if ( '' !== $gnn_btn_bg ) {
+							$gnn_btn_preview_style .= 'background:' . $gnn_btn_bg . ';';
+						}
+						if ( '' !== $gnn_btn_text ) {
+							$gnn_btn_preview_style .= 'color:' . $gnn_btn_text . ';';
+						}
+						if ( '' !== $gnn_btn_border ) {
+							$gnn_btn_preview_style .= 'border:1px solid ' . $gnn_btn_border . ';';
+						}
+						?>
+						<div class="gnn-btn-style-card">
+							<div class="gnn-btn-style-card__head">
+								<span class="gnn-field__label">
+								<?php
+								/* translators: %d: slot number (1-6). */
+								printf( esc_html__( 'Style %d', 'gnn' ), (int) $gnn_btn_slot );
+								?>
+								</span>
+								<code class="gnn-btn-style-card__class"><?php echo esc_html( '.' . $gnn_btn_class ); ?></code>
+							</div>
+							<input type="text" name="gnn_options[btn_style_<?php echo esc_attr( $gnn_btn_slot ); ?>_label]" value="<?php echo esc_attr( $gnn_btn_label ); ?>" placeholder="<?php esc_attr_e( 'Name (e.g. Primary) — leave empty to skip', 'gnn' ); ?>" class="regular-text">
+							<div class="gnn-btn-style-card__colors">
+								<?php gnn_field_color( "btn_style_{$gnn_btn_slot}_bg", __( 'Background', 'gnn' ), $gnn_btn_bg, '#34d399', '', true ); ?>
+								<?php gnn_field_color( "btn_style_{$gnn_btn_slot}_text", __( 'Text', 'gnn' ), $gnn_btn_text, '#062416', '', true ); ?>
+								<?php gnn_field_color( "btn_style_{$gnn_btn_slot}_border", __( 'Border', 'gnn' ), $gnn_btn_border, '#232328', '', true ); ?>
+							</div>
+							<?php if ( '' !== $gnn_btn_label ) : ?>
+								<div class="gnn-btn-style-card__preview">
+									<button type="button" class="gnn-btn <?php echo esc_attr( $gnn_btn_class ); ?>" style="<?php echo esc_attr( $gnn_btn_preview_style ); ?>"><?php echo esc_html( $gnn_btn_label ); ?></button>
+								</div>
+							<?php endif; ?>
+						</div>
+					<?php endforeach; ?>
+				</div>
 			</section>
 
 			<section id="gnn-tab-typography" class="gnn-tab">

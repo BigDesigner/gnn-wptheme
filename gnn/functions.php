@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '1.3.15' );
+define( 'GNN_VERSION', '1.4.0' );
 
 /**
  * Theme setup.
@@ -170,17 +170,25 @@ add_filter( 'script_loader_tag', 'gnn_defer_scripts', 10, 2 );
  *
  * The tiny inline script runs before first paint so the persisted
  * (localStorage) or Customizer-default mode is applied without a flash.
+ *
+ * When the toggle is hidden (show_toggle off), a visitor's OWN choice can
+ * no longer be recorded going forward — but a STALE gnn-theme value saved
+ * from before the toggle was hidden would otherwise still override the
+ * chosen Default mode, defeating a single-style lock. So localStorage is
+ * only consulted while the toggle is actually visible.
  */
 function gnn_head_bootstrap() {
 	$default = 'light' === get_theme_mod( 'gnn_default_theme', 'dark' ) ? 'light' : 'dark';
+	$locked  = ! gnn_option( 'show_toggle' );
 	?>
 	<script id="gnn-theme-mode">
 	(function () {
-		var mode, remember = <?php echo gnn_option( 'remember_mode' ) ? 'true' : 'false'; ?>;
-		if (remember) { try { mode = localStorage.getItem('gnn-theme'); } catch (e) {} }
+		var mode, locked = <?php echo $locked ? 'true' : 'false'; ?>,
+			remember = <?php echo gnn_option( 'remember_mode' ) ? 'true' : 'false'; ?>;
+		if (remember && !locked) { try { mode = localStorage.getItem('gnn-theme'); } catch (e) {} }
 		if (mode !== 'dark' && mode !== 'light') { mode = '<?php echo esc_js( $default ); ?>'; }
 		document.documentElement.setAttribute('data-theme', mode);
-		window.gnnThemeRemember = remember;
+		window.gnnThemeRemember = remember && !locked;
 	})();
 	</script>
 	<?php
@@ -199,6 +207,7 @@ add_action( 'wp_head', 'gnn_pingback_header' );
 
 require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/typography.php';
+require get_template_directory() . '/inc/button-styles.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-panel.php';
 	require get_template_directory() . '/inc/updater.php';

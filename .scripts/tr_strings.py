@@ -179,6 +179,32 @@ TRANSLATIONS = {
     'Large header over cover (left text)': 'Kapak üzerinde büyük başlık (sol metin)',
     'Two images side by side': 'Yan yana iki görsel',
     'Accent color': 'Vurgu rengi',
+    'Accent': 'Vurgu',
+    'Alternate surface background': 'Alternatif yüzey arka planı',
+    'Background': 'Arka plan',
+    'Border': 'Kenarlık',
+    'Borders / dividers': 'Kenarlıklar / ayırıcılar',
+    'Button Styles': 'Buton Stilleri',
+    'Card / panel background': 'Kart / panel arka planı',
+    'Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its "Additional CSS Class(es)" field (Advanced panel) using the class name shown under each style. Leave a style\'s name empty to skip it.':
+        'Burada en fazla 6 buton varyasyonu tanımlayın, ardından her stilin altında gösterilen sınıf adını kullanarak herhangi bir Gutenberg veya Elementor butonuna "Ek CSS Sınıf(lar)ı" alanından (Gelişmiş panel) uygulayın. Kullanılmayacak bir stili boş bırakmanız yeterlidir.',
+    "Every theme color lives here, grouped by area. Type a hex code directly, or use the small swatch to pick one visually. Each Dark/Light pair defaults to the theme's own built-in color for that mode — leave a field empty to keep it.":
+        'Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunur. Doğrudan hex kod yazabilir ya da küçük renk örneğiyle görsel olarak seçebilirsiniz. Her Koyu/Açık çifti, o mod için temanın kendi yerleşik rengini kullanır — bir alanı boş bırakmanız o rengi korur.',
+    'Muted text': 'Soluk metin',
+    'Name (e.g. Primary) — leave empty to skip': 'İsim (ör. Birincil) — atlamak için boş bırakın',
+    'Only applies while the toggle above is visible.': 'Yalnızca yukarıdaki düğme görünürken geçerlidir.',
+    'Page background': 'Sayfa arka planı',
+    'Primary text': 'Birincil metin',
+    'Style %d': 'Stil %d',
+    'Surfaces': 'Yüzeyler',
+    'Text & Borders': 'Metin ve Kenarlıklar',
+    'Text on accent': 'Vurgu üzerindeki metin',
+    'The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast.':
+        'Vurgu renginin üzerine uygulanan metin/ikon rengi (ör. buton etiketleri). Parlak bir özel vurgu rengi seçerseniz, okunabilir kontrast için bunu ayarlayın.',
+    'Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice).':
+        'Tüm siteyi tek bir stile kilitlemek için bunu kapatın — yukarıda seçilen Varsayılan mod, her ziyaretçinin göreceği tek stil olur, geçiş yapma imkanı kalmaz (bu ayrıca daha önce hatırlanan ziyaretçi bazlı seçimleri de kaldırır).',
+    'Used for buttons, links and highlights across the theme (and the Elementor color palette). Same in both modes.':
+        'Tema genelinde butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde). Her iki modda da aynıdır.',
     'Add to cart': 'Sepete ekle',
     'After <body> HTML': '<body> sonrası HTML',
     'Appears in the footer widget area.': 'Footer bileşen alanında görünür.',

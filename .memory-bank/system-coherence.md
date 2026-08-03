@@ -4,7 +4,7 @@
 - **Project Name:** GNN WordPress Theme (`gnn-wptheme`)
 - **Repository URL:** https://github.com/BigDesigner/gnn-wptheme.git
 - **Type:** WordPress Classic PHP Theme (Dark-by-default, corporate IT / cybersecurity focus)
-- **Version:** 1.3.15
+- **Version:** 1.4.0
 - **Ecosystem:** PHP 7.4+, WordPress 6.0+, Elementor Free API, WooCommerce
 
 ---
@@ -35,6 +35,7 @@ gnn/
     ├── admin-panel.php            # GNN Theme Panel 9-tab settings interface (CodeMirror-enhanced Custom Code tab)
     ├── options.php                # Option defaults, getters (gnn_option), logo helpers, shared Google Fonts preconnect
     ├── typography.php              # Optional per-element (H1-H6, paragraph) Google Fonts — off by default, self-hosted fonts otherwise
+    ├── button-styles.php            # 6 fixed, panel-defined button style slots (.gnn-btn-style-N classes)
     ├── frontend.php                # Topbar, dock, scroll-to-top, preloader, badge hooks
     ├── page-layouts.php            # Page layout renderer (full, boxed, right, left)
     ├── page-meta.php                # Per-page display options metabox (_gnn_hide_title, _gnn_hide_breadcrumb)
