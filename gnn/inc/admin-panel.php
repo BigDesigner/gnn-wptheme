@@ -47,6 +47,38 @@ function gnn_panel_menu() {
 add_action( 'admin_menu', 'gnn_panel_menu' );
 
 /**
+ * Force "Theme" to be the FIRST submenu item under "GNN".
+ *
+ * WordPress wires up post type submenus (wp-admin/menu.php's loop over
+ * registered post types) before the 'admin_menu' action even fires, so the
+ * Slider CPT's submenu claims array index 0 under 'gnn-panel' ahead of our
+ * own gnn_panel_menu() callback above. Clicking the top-level "GNN" link
+ * itself then landed on Slider instead of Theme, since WordPress uses
+ * that first submenu entry as the top-level link's target. Reordering
+ * here (after everything has registered) fixes both the click target and
+ * keeps the visible order Theme, then Slider.
+ */
+function gnn_panel_menu_reorder() {
+	global $submenu;
+	if ( empty( $submenu['gnn-panel'] ) ) {
+		return;
+	}
+	usort(
+		$submenu['gnn-panel'],
+		function ( $a, $b ) {
+			if ( 'gnn-panel' === $a[2] ) {
+				return -1;
+			}
+			if ( 'gnn-panel' === $b[2] ) {
+				return 1;
+			}
+			return 0;
+		}
+	);
+}
+add_action( 'admin_menu', 'gnn_panel_menu_reorder', 999 );
+
+/**
  * Register the setting.
  */
 function gnn_panel_settings() {
