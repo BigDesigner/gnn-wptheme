@@ -65,6 +65,13 @@ function gnn_option_defaults() {
 		'post_featured_image_height'   => 500,
 		'post_featured_image_fit'      => 'cover',
 		'post_featured_image_position' => 'center',
+		// Title overlay: page title rendered centered inside the featured
+		// image instead of in the normal content flow. Off by default,
+		// per-page overridable — see inc/page-meta.php.
+		'title_overlay_enable'         => 0,
+		'title_overlay_font_size'      => 40,
+		'title_overlay_bg'             => '#000000',
+		'title_overlay_bg_opacity'     => 55,
 		'excerpt_length'               => 24,
 		'shop_columns'                 => 4,
 		'shop_per_page'                => 8,

@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.5
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,14 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.5.0 =
+* Add "Title over featured image" (GNN Panel → Pages Layout): the page
+  title can render centered inside the featured image itself — with a
+  configurable font size and a semi-transparent background box — instead
+  of above the content. Off by default, theme-wide; any individual page
+  can force it on or off from its own GNN Display Options box regardless
+  of the theme-wide setting.
 
 = 1.4.5 =
 * Fix: on sidebar page templates (Left/Right Sidebar), the sidebar sat

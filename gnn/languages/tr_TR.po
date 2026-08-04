@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.4.3\n"
+"Project-Id-Version: GNN 1.4.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 23:32+0000\n"
-"PO-Revision-Date: 2026-08-04 23:32+0000\n"
+"POT-Creation-Date: 2026-08-05 00:24+0000\n"
+"PO-Revision-Date: 2026-08-05 00:24+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -458,6 +458,12 @@ msgstr "Alt bölüm menü hizalama"
 msgid "Footer tagline"
 msgstr "Alt bölüm sloganı"
 
+msgid "Force off for this page"
+msgstr "Bu sayfa için devre dışı bırak"
+
+msgid "Force on for this page"
+msgstr "Bu sayfa için etkinleştir"
+
 msgid "Frequently Asked Questions"
 msgstr "Sıkça Sorulan Sorular"
 
@@ -752,6 +758,9 @@ msgstr "Bulunamadı"
 msgid "Nothing here yet"
 msgstr "Henüz içerik yok"
 
+msgid "Off by default. Replaces the normal title above the content with a centered title overlaid on the featured image itself. Any page can override this individually — see \"Title over featured image\" in its GNN Display Options box."
+msgstr "Varsayılan olarak kapalıdır. İçeriğin üstündeki normal başlığın yerine, öne çıkarılan görselin üzerinde ortalanmış bir başlık gösterir. Her sayfa bunu kendi \"GNN Görüntüleme Seçenekleri\" kutusundaki \"Öne çıkarılan görsel üzerinde başlık\" ile ayrı ayrı geçersiz kılabilir."
+
 msgid "Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font."
 msgstr "Varsayılan olarak kapalıdır. Açıldığında, aşağıda yazı tipi adı girilen her öğe o Google Font'u yükler; boş bırakılan öğeler hızlı, sunucuda barındırılan varsayılanı kullanmaya devam eder. Seçtiğiniz tüm yazı tipleri tek bir stil dosyası isteğinde birleştirilir, asla yazı tipi başına ayrı istek yapılmaz."
 
@@ -763,6 +772,15 @@ msgstr "Açık alanlar"
 
 msgid "Outlined"
 msgstr "Çizgili"
+
+msgid "Overlay title background color"
+msgstr "Kaplama başlığı arka plan rengi"
+
+msgid "Overlay title background opacity (%)"
+msgstr "Kaplama başlığı arka plan opaklığı (%)"
+
+msgid "Overlay title font size (px)"
+msgstr "Kaplama başlığı yazı boyutu (px)"
 
 msgid "Page"
 msgstr "Sayfa"
@@ -953,6 +971,9 @@ msgstr "Sepet bağlantısını göster (WooCommerce)"
 msgid "Show the dark/light toggle in the header"
 msgstr "Üst bölümde koyu/açık düğmesini göster"
 
+msgid "Show the page title centered inside the featured image"
+msgstr "Sayfa başlığını öne çıkarılan görselin içinde ortalanmış göster"
+
 msgid "Show the search icon"
 msgstr "Arama ikonunu göster"
 
@@ -1049,6 +1070,9 @@ msgstr "Tema Modu"
 msgid "Theme default"
 msgstr "Tema varsayılanı"
 
+msgid "Theme default (currently %s)"
+msgstr "Tema varsayılanı (şu an %s)"
+
 msgid "Theme update settings saved."
 msgstr "Tema güncelleme ayarları kaydedildi."
 
@@ -1057,6 +1081,9 @@ msgstr "Tema güncellemeleri (GitHub)"
 
 msgid "This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the \"GNN Ana Sayfa\" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page."
 msgstr "Bu slider yalnızca varsayılan (Gutenberg tabanlı) ön sayfa şablonunda görüntülenir. Ön sayfa Elementor ile oluşturulmuş veya değiştirilmişse — \"GNN Ana Sayfa\" Elementor şablonu dahil — slider orada görünmez, çünkü Elementor içeriği tüm ön sayfayı devralır."
+
+msgid "Title over featured image"
+msgstr "Öne çıkarılan görsel üzerinde başlık"
 
 msgid "Toggle dark / light mode"
 msgstr "Koyu / açık modu değiştir"
@@ -1136,6 +1163,9 @@ msgstr "Ziyaretçiler yine de değiştirebilir; seçim tarayıcıda saklanır."
 msgid "We are performing scheduled maintenance. Please check back soon."
 msgstr "Planlı bakım çalışması yapıyoruz. Lütfen kısa süre sonra tekrar bakın."
 
+msgid "When on, the title renders centered inside the featured image instead of above the content. Set the look (size/background) in GNN Panel → Pages Layout."
+msgstr "Açıkken başlık, içeriğin üstünde değil öne çıkarılan görselin içinde ortalanmış olarak görünür. Görünümü (boyut/arka plan) GNN Panel → Sayfa Düzeni içinden ayarlayın."
+
 msgid "Which part of the image stays visible when it gets cropped."
 msgstr "Kırpıldığında görselin hangi kısmının görünür kalacağı."
 
@@ -1153,6 +1183,12 @@ msgstr "Yorumunuz onay bekliyor."
 
 msgid "hello!"
 msgstr "merhaba!"
+
+msgid "off"
+msgstr "kapalı"
+
+msgid "on"
+msgstr "açık"
 
 msgid "© %1$s %2$s. All rights reserved."
 msgstr "© %1$s %2$s. Tüm hakları saklıdır."
