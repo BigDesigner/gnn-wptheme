@@ -149,6 +149,7 @@ function gnn_options_sanitize( $input ) {
 	foreach ( array(
 		'topbar_bg',
 		'topbar_text_color',
+		'accent_light',
 		'accent_ink_dark',
 		'accent_ink_light',
 		'color_bg_dark',
@@ -460,17 +461,20 @@ function gnn_field_number( $key, $label, $min = 0, $max = 9999, $hint = '' ) {
  */
 function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hint = '', $allow_empty = false ) {
 	$value = (string) $value;
+	// Show the effective color (the theme's own default) when nothing is
+	// saved yet, instead of a blank field — the panel should always show
+	// what the site currently looks like.
+	$display = '' !== $value ? $value : $default_swatch;
 	printf(
 		'<div class="gnn-field"><label class="gnn-field__label" for="gnn-%1$s">%2$s</label>' .
 		'<div class="gnn-color-field">' .
-		'<input type="text" id="gnn-%1$s" name="gnn_options[%1$s]" value="%3$s" class="gnn-color-picker" data-default-color="%4$s" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="%5$s">' .
-		'%6$s' .
-		'</div>%7$s</div>',
+		'<input type="text" id="gnn-%1$s" name="gnn_options[%1$s]" value="%3$s" class="gnn-color-picker" data-default-color="%4$s" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">' .
+		'%5$s' .
+		'</div>%6$s</div>',
 		esc_attr( $key ),
 		esc_html( $label ),
-		esc_attr( $value ),
+		esc_attr( $display ),
 		esc_attr( $default_swatch ),
-		esc_attr( $allow_empty ? __( 'Theme default', 'gnn' ) : $default_swatch ),
 		$allow_empty ? sprintf( '<button type="button" class="button gnn-color-clear" data-target="gnn-%1$s">%2$s</button>', esc_attr( $key ), esc_html__( 'Clear', 'gnn' ) ) : '',
 		$hint ? '<p class="description">' . esc_html( $hint ) . '</p>' : ''
 	);
@@ -489,8 +493,10 @@ function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hi
  * @param string $hint          Optional description.
  */
 function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hint = '' ) {
-	$dark  = (string) gnn_option( "{$key}_dark" );
-	$light = (string) gnn_option( "{$key}_light" );
+	$dark          = (string) gnn_option( "{$key}_dark" );
+	$light         = (string) gnn_option( "{$key}_light" );
+	$dark_display  = '' !== $dark ? $dark : $dark_default;
+	$light_display = '' !== $light ? $light : $light_default;
 	?>
 	<div class="gnn-field gnn-color-pair">
 		<span class="gnn-field__label"><?php echo esc_html( $label ); ?></span>
@@ -498,14 +504,14 @@ function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hin
 			<div class="gnn-color-pair__item">
 				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
 				<div class="gnn-color-field">
-					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark_display ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
 					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				</div>
 			</div>
 			<div class="gnn-color-pair__item">
 				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
 				<div class="gnn-color-field">
-					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light_display ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
 					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_light" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				</div>
 			</div>
@@ -532,10 +538,8 @@ function gnn_panel_render() {
 		'header'     => __( 'Header', 'gnn' ),
 		'footer'     => __( 'Footer', 'gnn' ),
 		'pages'      => __( 'Pages Layout', 'gnn' ),
-		'colors'     => __( 'Colors', 'gnn' ),
-		'buttons'    => __( 'Button Styles', 'gnn' ),
+		'styles'     => __( 'Styles', 'gnn' ),
 		'typography' => __( 'Typography', 'gnn' ),
-		'icons'      => __( 'Icons', 'gnn' ),
 		'code'       => __( 'Custom Code', 'gnn' ),
 		'advanced'   => __( 'Advanced', 'gnn' ),
 	);
@@ -545,10 +549,8 @@ function gnn_panel_render() {
 		'header'     => 'align-center',
 		'footer'     => 'arrow-down-alt2',
 		'pages'      => 'admin-page',
-		'colors'     => 'art',
-		'buttons'    => 'admin-customizer',
+		'styles'     => 'art',
 		'typography' => 'editor-textcolor',
-		'icons'      => 'star-filled',
 		'code'       => 'editor-code',
 		'advanced'   => 'admin-tools',
 	);
@@ -627,8 +629,18 @@ function gnn_panel_render() {
 				<h2><span class="dashicons dashicons-admin-generic" aria-hidden="true"></span><?php esc_html_e( 'Global', 'gnn' ); ?></h2>
 				<div class="gnn-field">
 					<span class="gnn-field__label"><?php esc_html_e( 'Default mode', 'gnn' ); ?></span>
-					<label><input type="radio" name="gnn_options[default_mode]" value="dark" <?php checked( get_theme_mod( 'gnn_default_theme', 'dark' ), 'dark' ); ?>> <?php esc_html_e( 'Dark', 'gnn' ); ?></label>
-					<label><input type="radio" name="gnn_options[default_mode]" value="light" <?php checked( get_theme_mod( 'gnn_default_theme', 'dark' ), 'light' ); ?>> <?php esc_html_e( 'Light', 'gnn' ); ?></label>
+					<div class="gnn-radio-cards">
+						<label class="gnn-radio-card">
+							<input type="radio" name="gnn_options[default_mode]" value="dark" <?php checked( get_theme_mod( 'gnn_default_theme', 'dark' ), 'dark' ); ?>>
+							<span class="dashicons dashicons-moon" aria-hidden="true"></span>
+							<span><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
+						</label>
+						<label class="gnn-radio-card">
+							<input type="radio" name="gnn_options[default_mode]" value="light" <?php checked( get_theme_mod( 'gnn_default_theme', 'dark' ), 'light' ); ?>>
+							<span class="dashicons dashicons-lightbulb" aria-hidden="true"></span>
+							<span><?php esc_html_e( 'Light', 'gnn' ); ?></span>
+						</label>
+					</div>
 				</div>
 				<?php gnn_field_checkbox( 'show_toggle', __( 'Show the dark/light toggle in the header', 'gnn' ), __( 'Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice).', 'gnn' ) ); ?>
 				<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice (localStorage)', 'gnn' ), __( 'Only applies while the toggle above is visible.', 'gnn' ) ); ?>
@@ -834,19 +846,35 @@ function gnn_panel_render() {
 				<?php gnn_field_media( 'error404_image', __( '404 image', 'gnn' ), (int) gnn_option( 'error404_image' ) ); ?>
 			</section>
 
-			<section id="gnn-tab-colors" class="gnn-tab">
-				<h2><span class="dashicons dashicons-art" aria-hidden="true"></span><?php esc_html_e( 'Colors', 'gnn' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Every theme color lives here, grouped by area. Type a hex code directly, or use the small swatch to pick one visually. Each Dark/Light pair defaults to the theme\'s own built-in color for that mode — leave a field empty to keep it.', 'gnn' ); ?></p>
+			<section id="gnn-tab-styles" class="gnn-tab">
+				<h2><span class="dashicons dashicons-art" aria-hidden="true"></span><?php esc_html_e( 'Styles', 'gnn' ); ?></h2>
+				<p class="description"><?php esc_html_e( 'Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme\'s own current color for that mode — change it, or use Clear to go back to that default.', 'gnn' ); ?></p>
 
 				<h3><?php esc_html_e( 'Accent', 'gnn' ); ?></h3>
 				<?php
-				gnn_field_color(
-					'accent',
-					__( 'Accent color', 'gnn' ),
-					get_theme_mod( 'gnn_accent_color', '#34d399' ),
-					'#34d399',
-					__( 'Used for buttons, links and highlights across the theme (and the Elementor color palette). Same in both modes.', 'gnn' )
-				);
+				$gnn_accent_dark  = (string) get_theme_mod( 'gnn_accent_color', '#34d399' );
+				$gnn_accent_light = (string) gnn_option( 'accent_light' );
+				?>
+				<div class="gnn-field gnn-color-pair">
+					<span class="gnn-field__label"><?php esc_html_e( 'Accent color', 'gnn' ); ?></span>
+					<div class="gnn-color-pair__row">
+						<div class="gnn-color-pair__item">
+							<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
+							<div class="gnn-color-field">
+								<input type="text" id="gnn-accent" name="gnn_options[accent]" value="<?php echo esc_attr( $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="#34d399" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+							</div>
+						</div>
+						<div class="gnn-color-pair__item">
+							<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
+							<div class="gnn-color-field">
+								<input type="text" id="gnn-accent_light" name="gnn_options[accent_light]" value="<?php echo esc_attr( '' !== $gnn_accent_light ? $gnn_accent_light : $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $gnn_accent_dark ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+								<button type="button" class="button gnn-color-clear" data-target="gnn-accent_light"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
+							</div>
+						</div>
+					</div>
+					<p class="description"><?php esc_html_e( 'Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching.', 'gnn' ); ?></p>
+				</div>
+				<?php
 				gnn_field_color_pair(
 					'accent_ink',
 					__( 'Text on accent', 'gnn' ),
@@ -889,10 +917,8 @@ function gnn_panel_render() {
 					true
 				);
 				?>
-			</section>
 
-			<section id="gnn-tab-buttons" class="gnn-tab">
-				<h2><span class="dashicons dashicons-admin-customizer" aria-hidden="true"></span><?php esc_html_e( 'Button Styles', 'gnn' ); ?></h2>
+				<h3><?php esc_html_e( 'Button Styles', 'gnn' ); ?></h3>
 				<p class="description"><?php esc_html_e( 'Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its "Additional CSS Class(es)" field (Advanced panel) using the class name shown under each style. Leave a style\'s name empty to skip it.', 'gnn' ); ?></p>
 				<div class="gnn-btn-styles">
 					<?php foreach ( gnn_button_style_slots() as $gnn_btn_slot ) : ?>
@@ -964,10 +990,8 @@ function gnn_panel_render() {
 						</div>
 					<?php endforeach; ?>
 				</div>
-			</section>
 
-			<section id="gnn-tab-icons" class="gnn-tab">
-				<h2><span class="dashicons dashicons-star-filled" aria-hidden="true"></span><?php esc_html_e( 'Icons', 'gnn' ); ?></h2>
+				<h3><?php esc_html_e( 'Icons', 'gnn' ); ?></h3>
 				<p class="description"><?php esc_html_e( 'The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus.', 'gnn' ); ?></p>
 				<?php gnn_field_checkbox( 'google_material_icons', __( 'Load Google Material Symbols', 'gnn' ), __( 'Adds the font stylesheet site-wide so .material-symbols-* classes render.', 'gnn' ) ); ?>
 				<?php

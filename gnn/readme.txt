@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,24 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.4.2 =
+* GNN Panel restructured: Icons moved into the Typography tab, and Button
+  Styles merged into the Colors tab (renamed "Styles") — fewer tabs,
+  related settings grouped together.
+* Fix: empty color fields showed blank instead of the theme's actual
+  current color. Every color field now pre-fills with the theme's own
+  default (or the effective inherited value) so the panel always shows
+  what the site currently looks like; a "Clear" button reverts explicitly
+  set colors back to that default.
+* Add a separate Light-mode accent color (previously the accent was
+  always identical in both modes) — Light automatically matches Dark
+  until you set your own value.
+* Fix: color-picker "Clear"/swatch buttons could overflow narrow Button
+  Style cards; picker buttons now match the panel's monochrome style
+  instead of WordPress core's default blue border/focus ring.
+* "Default mode" (Dark/Light) now renders as two equal-width selectable
+  cards instead of plain radio buttons.
 
 = 1.4.1 =
 * Color fields in GNN Panel (Colors + Button Styles tabs) now use

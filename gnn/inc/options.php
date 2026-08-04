@@ -141,6 +141,9 @@ function gnn_option_defaults() {
 		'btn_style_6_border'           => '',
 		// Colors: Dark/Light pairs for the theme's existing design tokens
 		// (empty = keep main.css's own hardcoded default for that mode).
+		// Accent's dark value is the pre-existing gnn_accent_color theme_mod
+		// (Customizer, rule 1 backward compat); this is only the Light half.
+		'accent_light'                 => '',
 		'accent_ink_dark'              => '',
 		'accent_ink_light'             => '',
 		'color_bg_dark'                => '',
@@ -329,6 +332,13 @@ function gnn_color_tokens_inline_css() {
 		if ( '' !== $light ) {
 			$light_css .= $var . ':' . esc_html( $light ) . ';';
 		}
+	}
+	// Accent's dark value already comes from the gnn_accent_color theme_mod
+	// (see gnn_scripts() in functions.php) — only the Light override lives
+	// here, alongside the rest of the token pairs.
+	$accent_light = sanitize_hex_color( (string) gnn_option( 'accent_light' ) );
+	if ( $accent_light ) {
+		$light_css .= '--accent:' . esc_html( $accent_light ) . ';';
 	}
 	$css = '';
 	if ( '' !== $dark_css ) {
