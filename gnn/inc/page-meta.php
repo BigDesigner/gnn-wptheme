@@ -162,15 +162,39 @@ function gnn_save_page_meta( $post_id ) {
 add_action( 'save_post', 'gnn_save_page_meta' );
 
 /**
+ * Whether this entry's title has been explicitly hidden: the "Hide the
+ * page title" checkbox, or Elementor's own Document Settings → Hide Title
+ * toggle (`_elementor_page_settings['hide_title']`). This is the hard
+ * override both the normal in-flow title AND the featured-image overlay
+ * must respect — hiding the title means hiding it everywhere, not just
+ * repositioning it.
+ *
+ * @return bool
+ */
+function gnn_title_explicitly_hidden() {
+	if ( ! is_singular() ) {
+		return false;
+	}
+	$post_id = get_the_ID();
+	if ( '1' === get_post_meta( $post_id, '_gnn_hide_title', true ) ) {
+		return true;
+	}
+	$elementor_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
+	return is_array( $elementor_settings ) && ! empty( $elementor_settings['hide_title'] ) && 'yes' === $elementor_settings['hide_title'];
+}
+
+/**
  * Whether the current singular entry renders its title centered inside the
- * featured image instead of in the normal content flow. Per-page override
- * (`_gnn_title_overlay`: '' = theme default, '1' = force on, '0' = force
- * off) wins over the theme-wide `title_overlay_enable` panel setting.
+ * featured image instead of in the normal content flow. Never true when
+ * the title is explicitly hidden (see gnn_title_explicitly_hidden()) —
+ * that always wins. Otherwise the per-page override (`_gnn_title_overlay`:
+ * '' = theme default, '1' = force on, '0' = force off) wins over the
+ * theme-wide `title_overlay_enable` panel setting.
  *
  * @return bool
  */
 function gnn_title_overlay_active() {
-	if ( ! is_singular() ) {
+	if ( ! is_singular() || gnn_title_explicitly_hidden() ) {
 		return false;
 	}
 	$override = get_post_meta( get_the_ID(), '_gnn_title_overlay', true );
@@ -184,29 +208,15 @@ function gnn_title_overlay_active() {
 }
 
 /**
- * Whether the current singular entry hides its title.
- *
- * Also honors Elementor's own Document Settings → Hide Title toggle
- * (`_elementor_page_settings['hide_title']`), so pages built in Elementor
- * don't end up with the theme's H1 still showing above Elementor content.
+ * Whether the current singular entry hides its title from the normal
+ * in-flow position above the content — either because it's explicitly
+ * hidden everywhere, or because the featured-image overlay is showing it
+ * there instead.
  *
  * @return bool
  */
 function gnn_hide_title() {
-	if ( ! is_singular() ) {
-		return false;
-	}
-	// The overlay renders its own title inside the featured image, so the
-	// normal in-flow H1 above the content must stay suppressed.
-	if ( gnn_title_overlay_active() ) {
-		return true;
-	}
-	$post_id = get_the_ID();
-	if ( '1' === get_post_meta( $post_id, '_gnn_hide_title', true ) ) {
-		return true;
-	}
-	$elementor_settings = get_post_meta( $post_id, '_elementor_page_settings', true );
-	return is_array( $elementor_settings ) && ! empty( $elementor_settings['hide_title'] ) && 'yes' === $elementor_settings['hide_title'];
+	return gnn_title_explicitly_hidden() || gnn_title_overlay_active();
 }
 
 /**
