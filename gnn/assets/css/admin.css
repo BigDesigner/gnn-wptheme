@@ -195,9 +195,12 @@
 .gnn-color-field { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
 .gnn-color-field .wp-color-result,
 .gnn-color-clear {
-	width: 100px !important; text-align: center; box-sizing: border-box;
+	/* flex:1 shares the row equally without overriding WP's own width/
+	   height/padding math — forcing those broke the swatch's internal
+	   color-chip positioning (color only showed at the button's edges). */
+	flex: 1 1 0; min-width: 0; text-align: center;
 	border: 1px solid var(--gnn-admin-line) !important; border-radius: 8px !important;
-	box-shadow: none !important; font-size: 12px !important; height: 30px !important; line-height: 28px !important; padding: 0 10px !important;
+	box-shadow: none !important;
 }
 .gnn-color-field .wp-color-result:hover,
 .gnn-color-field .wp-color-result:focus,
@@ -231,8 +234,6 @@
 /* Stack the picker button above "Clear" instead of side by side — cards
    are too narrow to fit both on one line without risking overflow. */
 .gnn-btn-style-card__colors .gnn-color-field { flex-direction: column; align-items: stretch; }
-.gnn-btn-style-card__colors .wp-color-result,
-.gnn-btn-style-card__colors .gnn-color-clear { width: 100% !important; }
 .gnn-btn-style-card__colors .gnn-field { margin: 0; max-width: none; }
 .gnn-btn-style-card__colors .gnn-field__label { display: none; }
 .gnn-btn-style-card__preview { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gnn-admin-line); text-align: center; }

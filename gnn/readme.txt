@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,13 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.4.3 =
+* Fix: color-picker swatch buttons showed color only at their left/right
+  edges (white in the middle) — a fixed width/height CSS override was
+  fighting WordPress core's own internal color-chip positioning. Equal
+  sizing for the picker and "Clear" buttons is now done with `flex: 1`
+  instead, without touching WP's own sizing math.
 
 = 1.4.2 =
 * GNN Panel restructured: Icons moved into the Typography tab, and Button
