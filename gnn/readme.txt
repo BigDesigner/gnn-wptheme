@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.3
+Stable tag: 1.4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,19 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.4.4 =
+* Color pickers: removed the redundant "Select Color" text label — the
+  colored swatch button itself is the whole control now (still fully
+  accessible to screen readers, just visually hidden).
+* Fix: Button Styles' name field used WP core's `.regular-text` (25em),
+  far wider than its 260px-minimum card, and overflowed. Narrowed to
+  the card's own width without touching `.regular-text` anywhere else
+  in the panel.
+* Fix: the Button Styles preview showed a bare, unstyled gray button
+  regardless of its configured colors — `main.css` (where the pill
+  shape/padding/weight actually live) isn't loaded in wp-admin, so the
+  preview needed its own copy of that base styling.
 
 = 1.4.3 =
 * Fix: color-picker swatch buttons showed color only at their left/right
