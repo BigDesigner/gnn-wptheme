@@ -1,6 +1,8 @@
 /**
- * GNN Panel — tabs + media pickers. Vanilla JS, no dependencies
- * (wp.media comes from core's media library).
+ * GNN Panel — tabs, media pickers, and color pickers. Vanilla JS except
+ * for the color picker init below, which uses WordPress core's own
+ * wp-color-picker (jQuery + Iris, already loaded by wp_enqueue_style/
+ * script( 'wp-color-picker' ) — see gnn_panel_assets()).
  */
 ( function () {
 	'use strict';
@@ -62,19 +64,32 @@
 		}
 	} );
 
-	/* Color fields: keep the hex text input and the picker swatch in sync. */
-	var HEX_RE = /^#[0-9a-fA-F]{6}$/;
-	document.addEventListener( 'input', function ( e ) {
-		var field = e.target.closest( '.gnn-color-field' );
-		if ( ! field ) {
+	/* Color pickers: WordPress core's own Iris widget (same as Customizer)
+	   instead of the browser's native OS color dialog. Default `hide`
+	   behavior: a single swatch button collapsed by default, opening the
+	   picker (with its own typeable hex field) on click. */
+	if ( window.jQuery && jQuery.fn.wpColorPicker ) {
+		jQuery( '.gnn-color-picker' ).wpColorPicker( { palettes: false } );
+	}
+
+	/* "Clear" buttons on fields where an empty value means "theme default". */
+	document.addEventListener( 'click', function ( e ) {
+		var btn = e.target.closest( '.gnn-color-clear' );
+		if ( ! btn ) {
 			return;
 		}
-		var swatch = field.querySelector( '.gnn-color-swatch' );
-		var hex = field.querySelector( '.gnn-hex-input' );
-		if ( e.target === swatch ) {
-			hex.value = swatch.value;
-		} else if ( e.target === hex && HEX_RE.test( hex.value ) ) {
-			swatch.value = hex.value;
+		e.preventDefault();
+		var input = document.getElementById( btn.dataset.target );
+		if ( ! input ) {
+			return;
+		}
+		/* Set the underlying input directly and let Iris's own change
+		   listener pick it up — more reliable than the widget's color()
+		   method, which isn't documented to handle an empty string. */
+		if ( window.jQuery ) {
+			jQuery( input ).val( '' ).trigger( 'change' );
+		} else {
+			input.value = '';
 		}
 	} );
 } )();

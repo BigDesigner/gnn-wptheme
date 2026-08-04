@@ -278,8 +278,9 @@ function gnn_panel_assets( $hook ) {
 		return;
 	}
 	wp_enqueue_media();
-	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array(), GNN_VERSION );
-	wp_enqueue_script( 'gnn-admin', get_template_directory_uri() . '/assets/js/admin.js', array(), GNN_VERSION, true );
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array( 'wp-color-picker' ), GNN_VERSION );
+	wp_enqueue_script( 'gnn-admin', get_template_directory_uri() . '/assets/js/admin.js', array( 'wp-color-picker' ), GNN_VERSION, true );
 	gnn_panel_code_editors();
 }
 add_action( 'admin_enqueue_scripts', 'gnn_panel_assets' );
@@ -444,15 +445,16 @@ function gnn_field_number( $key, $label, $min = 0, $max = 9999, $hint = '' ) {
 }
 
 /**
- * Render a color field: a text input for the hex value (the primary,
- * readable control) paired with a small native color-picker swatch as a
- * visual shortcut. Avoids relying solely on the browser's native color
- * dialog for reading/typing a value.
+ * Render a color field using WordPress core's own Iris color picker (the
+ * same widget behind Customizer color controls) instead of the browser's
+ * native OS color dialog. Collapsed to a single swatch button by default
+ * (see admin.js); clicking it opens the picker, which has its own
+ * typeable hex field inside.
  *
  * @param string $key            Option key.
  * @param string $label          Label text.
  * @param string $value          Current stored value ('' allowed when $allow_empty).
- * @param string $default_swatch Fallback color for the picker when $value is empty.
+ * @param string $default_swatch Color the picker's swatch button shows while $value is empty.
  * @param string $hint           Optional description.
  * @param bool   $allow_empty    Whether an empty value (theme default) is valid.
  */
@@ -461,28 +463,29 @@ function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hi
 	printf(
 		'<div class="gnn-field"><label class="gnn-field__label" for="gnn-%1$s">%2$s</label>' .
 		'<div class="gnn-color-field">' .
-		'<input type="color" class="gnn-color-swatch" value="%3$s" aria-hidden="true" tabindex="-1">' .
-		'<input type="text" id="gnn-%1$s" name="gnn_options[%1$s]" value="%4$s" class="gnn-hex-input" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="%5$s">' .
-		'</div>%6$s</div>',
+		'<input type="text" id="gnn-%1$s" name="gnn_options[%1$s]" value="%3$s" class="gnn-color-picker" data-default-color="%4$s" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="%5$s">' .
+		'%6$s' .
+		'</div>%7$s</div>',
 		esc_attr( $key ),
 		esc_html( $label ),
-		esc_attr( $value ? $value : $default_swatch ),
 		esc_attr( $value ),
+		esc_attr( $default_swatch ),
 		esc_attr( $allow_empty ? __( 'Theme default', 'gnn' ) : $default_swatch ),
+		$allow_empty ? sprintf( '<button type="button" class="button gnn-color-clear" data-target="gnn-%1$s">%2$s</button>', esc_attr( $key ), esc_html__( 'Clear', 'gnn' ) ) : '',
 		$hint ? '<p class="description">' . esc_html( $hint ) . '</p>' : ''
 	);
 }
 
 /**
- * Render a Dark/Light color pair (two gnn_field_color()-style inputs side
+ * Render a Dark/Light color pair (two gnn_field_color()-style pickers side
  * by side, writing to "{$key}_dark" / "{$key}_light"). Both empty = keep
  * the theme's own hardcoded default for that mode — used for the Colors
  * tab's design-token groups (Surfaces, Text & Borders, Accent).
  *
  * @param string $key           Option key prefix (without _dark/_light).
  * @param string $label         Label text.
- * @param string $dark_default  Swatch fallback shown while the dark value is empty.
- * @param string $light_default Swatch fallback shown while the light value is empty.
+ * @param string $dark_default  Swatch color shown while the dark value is empty.
+ * @param string $light_default Swatch color shown while the light value is empty.
  * @param string $hint          Optional description.
  */
 function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hint = '' ) {
@@ -495,15 +498,15 @@ function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hin
 			<div class="gnn-color-pair__item">
 				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
 				<div class="gnn-color-field">
-					<input type="color" class="gnn-color-swatch" value="<?php echo esc_attr( $dark ? $dark : $dark_default ); ?>" aria-hidden="true" tabindex="-1">
-					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark ); ?>" class="gnn-hex-input" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				</div>
 			</div>
 			<div class="gnn-color-pair__item">
 				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
 				<div class="gnn-color-field">
-					<input type="color" class="gnn-color-swatch" value="<?php echo esc_attr( $light ? $light : $light_default ); ?>" aria-hidden="true" tabindex="-1">
-					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light ); ?>" class="gnn-hex-input" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>">
+					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_light" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				</div>
 			</div>
 		</div>

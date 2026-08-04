@@ -336,6 +336,7 @@ TRANSLATIONS = {
     'Ready to secure your stack?': 'Altyapınızı güvenceye almaya hazır mısınız?',
     "Remember each visitor's choice (localStorage)": 'Her ziyaretçinin seçimini hatırla (localStorage)',
     'Remove': 'Kaldır',
+    'Clear': 'Temizle',
     'Remove jQuery Migrate (front-end)': 'jQuery Migrate’i kaldır (ön yüz)',
     'Remove oEmbed discovery links': 'oEmbed keşif bağlantılarını kaldır',
     'Right': 'Sağ',
