@@ -210,6 +210,14 @@
 	box-shadow: 0 0 0 2px color-mix(in srgb, var(--gnn-admin-accent) 20%, transparent) !important;
 	outline: none !important;
 }
+/* "Select Color" is redundant once the button itself is a color swatch —
+   visually hide the label (screen-reader-text pattern, not display:none,
+   so it stays available to assistive tech) so clicking the color chip
+   itself is the whole interaction. */
+.gnn-color-field .wp-color-result-text {
+	position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+	overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
 
 .gnn-media-box { margin: 6px 0 10px; }
 .gnn-media-box:empty { display: none; }
@@ -236,8 +244,21 @@
 .gnn-btn-style-card__colors .gnn-color-field { flex-direction: column; align-items: stretch; }
 .gnn-btn-style-card__colors .gnn-field { margin: 0; max-width: none; }
 .gnn-btn-style-card__colors .gnn-field__label { display: none; }
+/* The name input uses WP core's .regular-text (25em) — far wider than a
+   260px-minimum grid card. Scoped to this card only, so the shared
+   .regular-text class (used elsewhere in the panel) stays untouched. */
+.gnn-btn-style-card input.regular-text { width: 100%; max-width: 100%; box-sizing: border-box; }
 .gnn-btn-style-card__preview { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gnn-admin-line); text-align: center; }
-.gnn-btn-style-card__preview .gnn-btn { border: none; cursor: default; }
+/* main.css (where .gnn-btn's real pill/padding/weight rules live) isn't
+   loaded in wp-admin, so without this the preview is a bare, unstyled
+   native <button> — any inline background/color from the saved style
+   barely reads as a button at all. Mirror .gnn-btn's shape here; the
+   per-style inline `style` attribute still wins for actual colors. */
+.gnn-btn-style-card__preview .gnn-btn {
+	display: inline-block; border: none; border-radius: 999px;
+	padding: 14px 30px; font-size: 15px; font-weight: 800;
+	background: var(--gnn-admin-accent); color: #fff; cursor: default;
+}
 
 /* Typography tab: one row per element (H1-H6, paragraph). */
 .gnn-typo-grid { max-width: 640px; margin: 12px 0; }
