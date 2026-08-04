@@ -165,15 +165,13 @@
 .gnn-field input[type="radio"] {
 	accent-color: var(--gnn-admin-accent); width: 16px; height: 16px; margin: 0 6px 0 0;
 }
-.gnn-field input[type="color"] { width: 56px; height: 34px; padding: 2px; border-radius: 8px; cursor: pointer; }
-
-.gnn-color-field { display: flex; align-items: center; gap: 10px; }
-.gnn-color-field .gnn-color-swatch {
-	width: 36px; height: 34px; padding: 2px; border-radius: 8px; cursor: pointer; flex-shrink: 0;
-}
-.gnn-color-field .gnn-hex-input {
-	width: 110px; font-family: Consolas, Menlo, Monaco, monospace; text-transform: lowercase;
-}
+/* Color fields: WordPress core's own Iris color picker (wp-color-picker),
+   not the browser's native OS dialog. Left at WP core's own default
+   layout/behavior for .wp-picker-container (a collapsed swatch button
+   that opens the picker on click) — only spacing our own "Clear" button
+   next to it here, nothing about the widget's internals. */
+.gnn-color-field { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.gnn-color-clear { font-size: 12px !important; padding: 0 10px !important; height: 30px !important; line-height: 28px !important; }
 
 .gnn-media-box { margin: 6px 0 10px; }
 .gnn-media-box:empty { display: none; }

@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,13 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.4.1 =
+* Color fields in GNN Panel (Colors + Button Styles tabs) now use
+  WordPress core's own color picker (the same one behind Customizer
+  color controls) instead of the browser's native OS color dialog —
+  a collapsed swatch button that opens a proper palette/hex popover
+  on click.
 
 = 1.4.0 =
 * Add Button Styles (GNN Panel → Button Styles): define up to 6 named
