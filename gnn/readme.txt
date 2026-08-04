@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,12 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.5.1 =
+* Fix: "Title over featured image" ignored the "Hide the page title"
+  setting — a page with its title explicitly hidden could still show
+  the overlay title if the theme-wide overlay setting was on. Hiding
+  the title now always wins, everywhere.
 
 = 1.5.0 =
 * Add "Title over featured image" (GNN Panel → Pages Layout): the page
