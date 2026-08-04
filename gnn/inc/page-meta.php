@@ -1,11 +1,13 @@
 <?php
 /**
  * Per-page display options: hide the page title and/or the breadcrumb
- * ("Home / Current"). Shown as a meta box on the page/post editor.
+ * ("Home / Current"), and override the title-overlay-on-featured-image
+ * setting. Shown as a meta box on the page/post editor.
  *
  * Stored as post meta:
  *   _gnn_hide_title       '1' to hide the entry title.
  *   _gnn_hide_breadcrumb  '1' to hide the breadcrumb navigation.
+ *   _gnn_title_overlay    '' theme default, '1' force on, '0' force off.
  *
  * @package GNN
  */
@@ -33,6 +35,19 @@ function gnn_register_page_meta() {
 			)
 		);
 	}
+	register_post_meta(
+		'',
+		'_gnn_title_overlay',
+		array(
+			'type'              => 'string',
+			'single'            => true,
+			'show_in_rest'      => true,
+			'sanitize_callback' => 'gnn_sanitize_tristate_meta',
+			'auth_callback'     => function () {
+				return current_user_can( 'edit_posts' );
+			},
+		)
+	);
 }
 add_action( 'init', 'gnn_register_page_meta' );
 
@@ -44,6 +59,17 @@ add_action( 'init', 'gnn_register_page_meta' );
  */
 function gnn_sanitize_bool_meta( $value ) {
 	return $value ? '1' : '';
+}
+
+/**
+ * Sanitize a "Theme default / Force on / Force off" meta value.
+ *
+ * @param mixed $value Raw value.
+ * @return string '', '1', or '0'.
+ */
+function gnn_sanitize_tristate_meta( $value ) {
+	$value = (string) $value;
+	return in_array( $value, array( '1', '0' ), true ) ? $value : '';
 }
 
 /**
@@ -70,6 +96,7 @@ function gnn_render_page_meta_box( $post ) {
 	wp_nonce_field( 'gnn_page_meta', 'gnn_page_meta_nonce' );
 	$hide_title = get_post_meta( $post->ID, '_gnn_hide_title', true );
 	$hide_bc    = get_post_meta( $post->ID, '_gnn_hide_breadcrumb', true );
+	$overlay    = get_post_meta( $post->ID, '_gnn_title_overlay', true );
 	?>
 	<p>
 		<label>
@@ -82,6 +109,29 @@ function gnn_render_page_meta_box( $post ) {
 			<input type="checkbox" name="gnn_hide_breadcrumb" value="1" <?php checked( $hide_bc, '1' ); ?>>
 			<?php esc_html_e( 'Hide the breadcrumb (Home / …)', 'gnn' ); ?>
 		</label>
+	</p>
+	<p>
+		<label for="gnn_title_overlay"><?php esc_html_e( 'Title over featured image', 'gnn' ); ?></label><br>
+		<select id="gnn_title_overlay" name="gnn_title_overlay" style="width:100%;">
+			<?php
+			$gnn_overlay_default_state = gnn_option( 'title_overlay_enable' ) ? __( 'on', 'gnn' ) : __( 'off', 'gnn' );
+			$gnn_overlay_choices       = array(
+				/* translators: %s: "on" or "off", the current theme-wide default. */
+				'' => sprintf( __( 'Theme default (currently %s)', 'gnn' ), $gnn_overlay_default_state ),
+				'1' => __( 'Force on for this page', 'gnn' ),
+				'0' => __( 'Force off for this page', 'gnn' ),
+			);
+			foreach ( $gnn_overlay_choices as $gnn_overlay_value => $gnn_overlay_label ) {
+				printf(
+					'<option value="%1$s" %2$s>%3$s</option>',
+					esc_attr( $gnn_overlay_value ),
+					selected( $overlay, $gnn_overlay_value, false ),
+					esc_html( $gnn_overlay_label )
+				);
+			}
+			?>
+		</select>
+		<span class="description"><?php esc_html_e( 'When on, the title renders centered inside the featured image instead of above the content. Set the look (size/background) in GNN Panel → Pages Layout.', 'gnn' ); ?></span>
 	</p>
 	<?php
 }
@@ -105,8 +155,33 @@ function gnn_save_page_meta( $post_id ) {
 
 	update_post_meta( $post_id, '_gnn_hide_title', empty( $_POST['gnn_hide_title'] ) ? '' : '1' );
 	update_post_meta( $post_id, '_gnn_hide_breadcrumb', empty( $_POST['gnn_hide_breadcrumb'] ) ? '' : '1' );
+	if ( isset( $_POST['gnn_title_overlay'] ) ) {
+		update_post_meta( $post_id, '_gnn_title_overlay', gnn_sanitize_tristate_meta( wp_unslash( $_POST['gnn_title_overlay'] ) ) );
+	}
 }
 add_action( 'save_post', 'gnn_save_page_meta' );
+
+/**
+ * Whether the current singular entry renders its title centered inside the
+ * featured image instead of in the normal content flow. Per-page override
+ * (`_gnn_title_overlay`: '' = theme default, '1' = force on, '0' = force
+ * off) wins over the theme-wide `title_overlay_enable` panel setting.
+ *
+ * @return bool
+ */
+function gnn_title_overlay_active() {
+	if ( ! is_singular() ) {
+		return false;
+	}
+	$override = get_post_meta( get_the_ID(), '_gnn_title_overlay', true );
+	if ( '1' === $override ) {
+		return true;
+	}
+	if ( '0' === $override ) {
+		return false;
+	}
+	return (bool) gnn_option( 'title_overlay_enable' );
+}
 
 /**
  * Whether the current singular entry hides its title.
@@ -120,6 +195,11 @@ add_action( 'save_post', 'gnn_save_page_meta' );
 function gnn_hide_title() {
 	if ( ! is_singular() ) {
 		return false;
+	}
+	// The overlay renders its own title inside the featured image, so the
+	// normal in-flow H1 above the content must stay suppressed.
+	if ( gnn_title_overlay_active() ) {
+		return true;
 	}
 	$post_id = get_the_ID();
 	if ( '1' === get_post_meta( $post_id, '_gnn_hide_title', true ) ) {

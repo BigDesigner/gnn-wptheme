@@ -33,6 +33,19 @@ function gnn_page_featured_image( $layout ) {
 	}
 	printf( '<div class="gnn-page-thumb gnn-page-thumb--%s">', esc_attr( $layout ) );
 	the_post_thumbnail( 'gnn-cover', array( 'class' => 'gnn-page-thumb__img' ) );
+	if ( function_exists( 'gnn_title_overlay_active' ) && gnn_title_overlay_active() ) {
+		$size    = max( 16, min( 120, (int) gnn_option( 'title_overlay_font_size' ) ) );
+		$bg      = sanitize_hex_color( (string) gnn_option( 'title_overlay_bg' ) );
+		$bg      = $bg ? $bg : '#000000';
+		$opacity = max( 0, min( 100, (int) gnn_option( 'title_overlay_bg_opacity' ) ) );
+		printf(
+			'<div class="gnn-page-thumb__overlay"><h1 class="entry-title gnn-page-thumb__title" style="font-size:%1$dpx;background:color-mix(in srgb, %2$s %3$d%%, transparent);">%4$s</h1></div>',
+			$size,
+			esc_attr( $bg ),
+			$opacity,
+			esc_html( get_the_title() )
+		);
+	}
 	echo '</div>';
 }
 

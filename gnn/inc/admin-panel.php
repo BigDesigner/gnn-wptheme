@@ -149,6 +149,7 @@ function gnn_options_sanitize( $input ) {
 	foreach ( array(
 		'topbar_bg',
 		'topbar_text_color',
+		'title_overlay_bg',
 		'accent_light',
 		'accent_ink_dark',
 		'accent_ink_light',
@@ -211,6 +212,8 @@ function gnn_options_sanitize( $input ) {
 		'logo_max_height_mobile'     => array( 12, 200 ),
 		'footer_logo_height'         => array( 12, 300 ),
 		'slider_interval'            => array( 2, 30 ),
+		'title_overlay_font_size'    => array( 16, 120 ),
+		'title_overlay_bg_opacity'   => array( 0, 100 ),
 	) as $key => $range ) {
 		if ( isset( $input[ $key ] ) ) {
 			$out[ $key ] = min( $range[1], max( $range[0], absint( $input[ $key ] ) ) );
@@ -218,7 +221,7 @@ function gnn_options_sanitize( $input ) {
 	}
 
 	// --- Checkboxes (a submitted form turns unchecked boxes off). ---
-	foreach ( array( 'show_toggle', 'remember_mode', 'sticky_header', 'show_search', 'show_cart', 'disable_emoji', 'disable_oembed', 'disable_migrate', 'heartbeat_slow', 'woo_scope', 'font_preload', 'mobile_dock', 'topbar_enable', 'smooth_scroll', 'scroll_top', 'scroll_anim', 'preloader', 'loading_screen', 'maintenance_mode', 'error404_search', 'slider_autoplay', 'slider_full_height', 'google_material_icons', 'typography_google_enable' ) as $key ) {
+	foreach ( array( 'show_toggle', 'remember_mode', 'sticky_header', 'show_search', 'show_cart', 'disable_emoji', 'disable_oembed', 'disable_migrate', 'heartbeat_slow', 'woo_scope', 'font_preload', 'mobile_dock', 'topbar_enable', 'smooth_scroll', 'scroll_top', 'scroll_anim', 'preloader', 'loading_screen', 'maintenance_mode', 'error404_search', 'slider_autoplay', 'slider_full_height', 'google_material_icons', 'typography_google_enable', 'title_overlay_enable' ) as $key ) {
 		$out[ $key ] = empty( $input[ $key ] ) ? 0 : 1;
 	}
 
@@ -806,6 +809,18 @@ function gnn_panel_render() {
 					),
 					__( 'Which part of the image stays visible when it gets cropped.', 'gnn' )
 				);
+				?>
+
+				<h3><?php esc_html_e( 'Title over featured image', 'gnn' ); ?></h3>
+				<?php
+				gnn_field_checkbox(
+					'title_overlay_enable',
+					__( 'Show the page title centered inside the featured image', 'gnn' ),
+					__( 'Off by default. Replaces the normal title above the content with a centered title overlaid on the featured image itself. Any page can override this individually — see "Title over featured image" in its GNN Display Options box.', 'gnn' )
+				);
+				gnn_field_number( 'title_overlay_font_size', __( 'Overlay title font size (px)', 'gnn' ), 16, 120 );
+				gnn_field_color( 'title_overlay_bg', __( 'Overlay title background color', 'gnn' ), (string) gnn_option( 'title_overlay_bg' ), '#000000' );
+				gnn_field_number( 'title_overlay_bg_opacity', __( 'Overlay title background opacity (%)', 'gnn' ), 0, 100 );
 				?>
 
 				<p class="description"><?php esc_html_e( 'Blog: single post pages.', 'gnn' ); ?></p>
