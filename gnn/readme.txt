@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.4.4
+Stable tag: 1.4.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,14 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.4.5 =
+* Fix: on sidebar page templates (Left/Right Sidebar), the sidebar sat
+  visibly higher than the main content — `.site-main`'s own fixed
+  padding was stacking on top of the GNN Panel's configurable content
+  top/bottom spacing, instead of that spacing being the only source of
+  truth. Content and sidebar now always top-align, at any configured
+  spacing value, with no hardcoded pixel amount needed.
 
 = 1.4.4 =
 * Color pickers: removed the redundant "Select Color" text label — the

@@ -865,6 +865,12 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
    content_bottom_padding: content-to-footer gap. Both set via GNN Panel →
    Pages Layout (see inc/options.php gnn_output_layout_vars()). */
 .gnn-page { padding-top: var(--gnn-content-top-pad, 50px); padding-bottom: var(--gnn-content-bottom-pad, 64px); }
+/* .site-main's own base padding (§7 above) would otherwise stack on top of
+   this — .gnn-page's own padding must be the single source of truth so
+   the sidebar (a plain grid sibling with no padding of its own) and the
+   content column stay top-aligned regardless of the configured value,
+   mirroring the same fix already applied to .content-sidebar-layout. */
+.gnn-page > .site-main { padding-top: 0; padding-bottom: 0; }
 
 /* Featured image banner: full-bleed, sits above the sidebar/content grid
    entirely so it's never squeezed into one column. */
