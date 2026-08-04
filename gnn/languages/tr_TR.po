@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.4.0\n"
+"Project-Id-Version: GNN 1.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-04 07:46+0000\n"
-"PO-Revision-Date: 2026-08-04 07:46+0000\n"
+"POT-Creation-Date: 2026-08-04 08:05+0000\n"
+"PO-Revision-Date: 2026-08-04 08:05+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -236,9 +236,6 @@ msgstr "Güncellemeleri kontrol et"
 msgid "Clear"
 msgstr "Temizle"
 
-msgid "Colors"
-msgstr "Renkler"
-
 msgid "Comments are closed."
 msgstr "Yorumlar kapalı."
 
@@ -362,8 +359,8 @@ msgstr "Ve diğerleri"
 msgid "Events analyzed daily"
 msgstr "Günlük analiz edilen olay"
 
-msgid "Every theme color lives here, grouped by area. Type a hex code directly, or use the small swatch to pick one visually. Each Dark/Light pair defaults to the theme's own built-in color for that mode — leave a field empty to keep it."
-msgstr "Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunur. Doğrudan hex kod yazabilir ya da küçük renk örneğiyle görsel olarak seçebilirsiniz. Her Koyu/Açık çifti, o mod için temanın kendi yerleşik rengini kullanır — bir alanı boş bırakmanız o rengi korur."
+msgid "Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme's own current color for that mode — change it, or use Clear to go back to that default."
+msgstr "Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunur. Doğrudan hex kod yazabilir ya da swatch butonuyla görsel olarak seçebilirsiniz. Her Koyu/Açık çifti o mod için temanın mevcut rengini gösterir — değiştirin, ya da Temizle ile o varsayılana geri dönün."
 
 msgid "Excerpt length (words)"
 msgstr "Özet uzunluğu (kelime)"
@@ -1004,6 +1001,9 @@ msgstr "Sabit üst bölüm"
 msgid "Style %d"
 msgstr "Stil %d"
 
+msgid "Styles"
+msgstr "Stiller"
+
 msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
 msgstr "Önerilen: #34d399, #22d3ee, #fb923c, #a78bfa"
 
@@ -1124,8 +1124,8 @@ msgstr "İçerikte örneğin şöyle kullanın: %s"
 msgid "Used by the mobile dock's Contact link (and anywhere else the theme links to \"get in touch\"). Auto-detect looks for a page slugged \"contact\" or \"iletisim\"."
 msgstr "Mobil dock’taki İletişim bağlantısı için kullanılır (temanın “bize ulaşın” bağlantısı verdiği her yerde). Otomatik algılama “contact” veya “iletisim” slug’lı bir sayfa arar."
 
-msgid "Used for buttons, links and highlights across the theme (and the Elementor color palette). Same in both modes."
-msgstr "Tema genelinde butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde). Her iki modda da aynıdır."
+msgid "Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching."
+msgstr "Tema genelinde butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde). Farklı bir değer belirlemediğiniz sürece Açık, Koyu ile otomatik eşleşir — eşleşmeye geri dönmek için Temizle'yi kullanın."
 
 msgid "View all"
 msgstr "Tümünü gör"

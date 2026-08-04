@@ -125,6 +125,26 @@
 .gnn-field label + label { margin-left: 16px; }
 .gnn-field .description { color: var(--gnn-admin-muted); font-size: 12px; margin-top: 6px; }
 
+/* Radio "cards" (Default mode: Dark/Light) — equal-width selectable
+   boxes instead of plain radio circles + label text. */
+.gnn-radio-cards { display: flex; gap: 12px; max-width: 320px; }
+.gnn-radio-cards label + label { margin-left: 0; }
+.gnn-radio-card {
+	flex: 1 1 0; display: flex; align-items: center; justify-content: center; gap: 8px;
+	border: 1px solid var(--gnn-admin-line); border-radius: 10px;
+	padding: 12px; margin: 0; cursor: pointer; font-weight: 600; font-size: 13px;
+	color: var(--gnn-admin-muted); transition: border-color .15s, color .15s, background .15s;
+}
+.gnn-radio-card input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; }
+.gnn-radio-card .dashicons { font-size: 16px; width: 16px; height: 16px; }
+.gnn-radio-card:has(input:checked) {
+	border-color: var(--gnn-admin-accent); color: var(--gnn-admin-ink);
+	background: color-mix(in srgb, var(--gnn-admin-accent) 6%, #fff);
+}
+.gnn-radio-card:has(input:focus-visible) {
+	box-shadow: 0 0 0 3px color-mix(in srgb, var(--gnn-admin-accent) 20%, transparent);
+}
+
 /* Toggle switches (replace native checkboxes throughout the panel). */
 .gnn-field--switch { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 12px 0; max-width: none; }
 .gnn-switch { position: relative; display: inline-flex; flex-shrink: 0; cursor: pointer; line-height: 0; }
@@ -169,9 +189,24 @@
    not the browser's native OS dialog. Left at WP core's own default
    layout/behavior for .wp-picker-container (a collapsed swatch button
    that opens the picker on click) — only spacing our own "Clear" button
-   next to it here, nothing about the widget's internals. */
+   next to it here, nothing about the widget's internals. Border/shadow
+   (not background — that's the swatch's own color preview) overridden to
+   match the panel's monochrome palette instead of WP core's default blue. */
 .gnn-color-field { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-.gnn-color-clear { font-size: 12px !important; padding: 0 10px !important; height: 30px !important; line-height: 28px !important; }
+.gnn-color-field .wp-color-result,
+.gnn-color-clear {
+	width: 100px !important; text-align: center; box-sizing: border-box;
+	border: 1px solid var(--gnn-admin-line) !important; border-radius: 8px !important;
+	box-shadow: none !important; font-size: 12px !important; height: 30px !important; line-height: 28px !important; padding: 0 10px !important;
+}
+.gnn-color-field .wp-color-result:hover,
+.gnn-color-field .wp-color-result:focus,
+.gnn-color-clear:hover,
+.gnn-color-clear:focus {
+	border-color: var(--gnn-admin-accent) !important;
+	box-shadow: 0 0 0 2px color-mix(in srgb, var(--gnn-admin-accent) 20%, transparent) !important;
+	outline: none !important;
+}
 
 .gnn-media-box { margin: 6px 0 10px; }
 .gnn-media-box:empty { display: none; }
@@ -184,12 +219,20 @@
 .gnn-color-pair__item { display: flex; align-items: center; gap: 8px; }
 .gnn-color-pair__tag { width: 42px; flex-shrink: 0; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--gnn-admin-muted); }
 
-/* Button Styles tab: one card per fixed slot (1-6). */
+/* Button Styles tab: one card per fixed slot (1-6). min-width:0 is the
+   classic CSS Grid fix — without it a grid item won't shrink below its
+   content's natural width, so wide children (the color picker's button
+   row) push past the card border instead of wrapping. */
 .gnn-btn-styles { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
-.gnn-btn-style-card { border: 1px solid var(--gnn-admin-line); border-radius: 10px; padding: 16px; }
+.gnn-btn-style-card { border: 1px solid var(--gnn-admin-line); border-radius: 10px; padding: 16px; min-width: 0; }
 .gnn-btn-style-card__head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .gnn-btn-style-card__class { font-size: 11px; color: var(--gnn-admin-muted); background: color-mix(in srgb, var(--gnn-admin-accent) 6%, #fff); padding: 3px 8px; border-radius: 6px; }
 .gnn-btn-style-card__colors { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+/* Stack the picker button above "Clear" instead of side by side — cards
+   are too narrow to fit both on one line without risking overflow. */
+.gnn-btn-style-card__colors .gnn-color-field { flex-direction: column; align-items: stretch; }
+.gnn-btn-style-card__colors .wp-color-result,
+.gnn-btn-style-card__colors .gnn-color-clear { width: 100% !important; }
 .gnn-btn-style-card__colors .gnn-field { margin: 0; max-width: none; }
 .gnn-btn-style-card__colors .gnn-field__label { display: none; }
 .gnn-btn-style-card__preview { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--gnn-admin-line); text-align: center; }

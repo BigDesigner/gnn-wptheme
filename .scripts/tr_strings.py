@@ -420,6 +420,11 @@ TRANSLATIONS = {
     'You are running the latest version.': 'En güncel sürümü kullanıyorsunuz.',
     'Every theme color lives here. Type a hex code directly, or use the small swatch to pick one visually.':
         'Temanın tüm renkleri burada. Doğrudan hex kod yazabilir ya da küçük renk örneğiyle görsel olarak seçebilirsiniz.',
+    "Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme's own current color for that mode — change it, or use Clear to go back to that default.":
+        'Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunur. Doğrudan hex kod yazabilir ya da swatch butonuyla görsel olarak seçebilirsiniz. Her Koyu/Açık çifti o mod için temanın mevcut rengini gösterir — değiştirin, ya da Temizle ile o varsayılana geri dönün.',
+    'Styles': 'Stiller',
+    'Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching.':
+        'Tema genelinde butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde). Farklı bir değer belirlemediğiniz sürece Açık, Koyu ile otomatik eşleşir — eşleşmeye geri dönmek için Temizle\'yi kullanın.',
     'Leave empty to match the theme automatically.': 'Otomatik olarak temayla eşleşmesi için boş bırakın.',
     'Theme default': 'Tema varsayılanı',
     'Top bar colors have moved to the Colors tab, alongside every other theme color.':
