@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,30 @@ Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 font CDN is contacted.
 
 == Changelog ==
+
+= 1.6.0 =
+* Fix (important): with "Title over featured image" on, the title could
+  disappear completely — on every blog post (the overlay was only ever
+  rendered by the page templates), and on any page or post with no
+  featured image (nothing to overlay onto). The overlay now renders on
+  single posts too, and switches itself off when there is no image to
+  sit on, so the normal title takes over.
+* Fix: "Logo max height — mobile" did nothing — the mobile size was
+  hardcoded in CSS. It now applies (and can only shrink the logo
+  relative to the desktop height, never enlarge it).
+* Fix: the estimated reading time over-counted words in Turkish and any
+  other non-ASCII language, inflating the "N min read" figure.
+* Add layout width settings (GNN Panel → Pages Layout → Layout widths):
+  sidebar column width, Boxed template max width, Full Width template
+  max width.
+* The block editor's "Accent" color swatch now follows the panel's
+  accent color instead of staying on the shipped default.
+* Theme updates: WordPress's "enable auto-updates" link now appears for
+  the theme while it is up to date.
+* Fix: pressing Escape in a sub-menu dropped keyboard focus out of the
+  navigation entirely; focus now stays on the parent link.
+* RTL: added the components introduced since the last RTL pass (mobile
+  dock, top bar, sidebar page templates, title overlay, button styles).
 
 = 1.5.1 =
 * Fix: "Title over featured image" ignored the "Hide the page title"

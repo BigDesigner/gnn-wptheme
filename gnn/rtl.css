@@ -22,3 +22,21 @@ input, textarea, select { text-align: right; }
 /* Hero arrows swap sides visually via flex; keep glyph direction. */
 .gnn-hero__arrow--prev { right: 24px; left: auto; }
 .gnn-hero__arrow--next { left: 24px; right: auto; }
+
+/* Page templates (.gnn-page grid, see inc/page-layouts.php). The grid flows
+   right-to-left on its own once direction:rtl is set, so a "right sidebar"
+   correctly lands on the left — only the explicit ordering of the left-sidebar
+   variant has to be undone, or it would double-flip back to the right. */
+.gnn-page.has-sidebar.sidebar-left > .content-area { order: 0; }
+
+/* Top bar + mobile dock are flex rows and mirror automatically; only the
+   fixed-position affordances need their side pinned explicitly. */
+.gnn-topbar__inner, .gnn-dock { direction: rtl; }
+.gnn-scrolltop { left: 22px; right: auto; }
+
+/* Title overlay is centered on both axes — nothing to mirror, but keep the
+   text direction correct for RTL titles. */
+.gnn-title-overlay { direction: rtl; }
+
+/* Button styles (GNN Panel → Styles) inherit the button's own centering. */
+.gnn-btn { direction: rtl; }

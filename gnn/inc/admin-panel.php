@@ -214,6 +214,9 @@ function gnn_options_sanitize( $input ) {
 		'slider_interval'            => array( 2, 30 ),
 		'title_overlay_font_size'    => array( 16, 120 ),
 		'title_overlay_bg_opacity'   => array( 0, 100 ),
+		'sidebar_width'              => array( 200, 500 ),
+		'boxed_width'                => array( 600, 1600 ),
+		'full_width'                 => array( 900, 1920 ),
 	) as $key => $range ) {
 		if ( isset( $input[ $key ] ) ) {
 			$out[ $key ] = min( $range[1], max( $range[0], absint( $input[ $key ] ) ) );
@@ -785,6 +788,11 @@ function gnn_panel_render() {
 				?>
 				<?php gnn_field_number( 'content_top_padding', __( 'Content top spacing (px)', 'gnn' ), 0, 200, __( 'Gap between the header and the page content — or between the featured image and the content, when the page has one.', 'gnn' ) ); ?>
 				<?php gnn_field_number( 'content_bottom_padding', __( 'Content bottom spacing (px)', 'gnn' ), 0, 300, __( 'Gap between the page content and the footer.', 'gnn' ) ); ?>
+
+				<h3><?php esc_html_e( 'Layout widths', 'gnn' ); ?></h3>
+				<?php gnn_field_number( 'sidebar_width', __( 'Sidebar width (px)', 'gnn' ), 200, 500, __( 'Width of the sidebar column on the Left/Right Sidebar page templates.', 'gnn' ) ); ?>
+				<?php gnn_field_number( 'boxed_width', __( 'Boxed template max width (px)', 'gnn' ), 600, 1600 ); ?>
+				<?php gnn_field_number( 'full_width', __( 'Full Width template max width (px)', 'gnn' ), 900, 1920 ); ?>
 
 				<h3><?php esc_html_e( 'Featured image', 'gnn' ); ?></h3>
 				<p class="description"><?php esc_html_e( 'Pages: Default, Boxed, Left Sidebar and Right Sidebar templates.', 'gnn' ); ?></p>

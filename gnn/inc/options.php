@@ -72,6 +72,10 @@ function gnn_option_defaults() {
 		'title_overlay_font_size'      => 40,
 		'title_overlay_bg'             => '#000000',
 		'title_overlay_bg_opacity'     => 55,
+		// Layout widths (emitted as CSS vars by gnn_scripts()).
+		'sidebar_width'                => 320,
+		'boxed_width'                  => 1200,
+		'full_width'                   => 1520,
 		'excerpt_length'               => 24,
 		'shop_columns'                 => 4,
 		'shop_per_page'                => 8,
@@ -251,8 +255,9 @@ function gnn_the_logo() {
 		$on_dark_1x  = $dark ? $dark : $light;
 		$on_dark_2x  = $dark ? $dark_2x : $light_2x;
 
-		$height = max( 12, (int) gnn_option( 'logo_max_height' ) );
-		echo '<a class="site-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '" style="--gnn-logo-h:' . esc_attr( $height ) . 'px">';
+		$height        = max( 12, (int) gnn_option( 'logo_max_height' ) );
+		$height_mobile = max( 12, (int) gnn_option( 'logo_max_height_mobile' ) );
+		echo '<a class="site-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '" style="--gnn-logo-h:' . esc_attr( $height ) . 'px;--gnn-logo-h-mobile:' . esc_attr( $height_mobile ) . 'px">';
 		echo gnn_logo_img( $on_dark_1x, $on_dark_2x, 'gnn-logo--on-dark' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper.
 		if ( $on_light_1x !== $on_dark_1x || $on_light_2x !== $on_dark_2x ) {
 			echo gnn_logo_img( $on_light_1x, $on_light_2x, 'gnn-logo--on-light' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper.
