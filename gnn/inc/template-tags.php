@@ -74,8 +74,16 @@ if ( ! function_exists( 'gnn_entry_meta' ) ) :
 	 * Post-card meta line: date — reading time.
 	 */
 	function gnn_entry_meta() {
-		$words   = str_word_count( wp_strip_all_tags( get_post_field( 'post_content', get_the_ID() ) ) );
-		$minutes = max( 1, (int) ceil( $words / 220 ) );
+		// str_word_count() is byte-based: it treats the bytes of multibyte
+		// letters (ğ ı ş ö ü ç, Cyrillic, CJK, …) as word separators and badly
+		// over-counts non-ASCII content. Count Unicode letter/number runs
+		// instead so the estimate holds in any language.
+		$gnn_text  = wp_strip_all_tags( (string) get_post_field( 'post_content', get_the_ID() ) );
+		$gnn_words = preg_match_all( '/[\p{L}\p{N}]+/u', $gnn_text );
+		if ( false === $gnn_words ) {
+			$gnn_words = str_word_count( $gnn_text ); // PCRE without UTF-8 support.
+		}
+		$minutes = max( 1, (int) ceil( $gnn_words / 220 ) );
 		printf(
 			'<div class="entry-meta"><time class="entry-date published" datetime="%1$s">%2$s</time> — %3$s</div>',
 			esc_attr( get_the_date( DATE_W3C ) ),
@@ -104,6 +112,12 @@ if ( ! function_exists( 'gnn_post_thumbnail' ) ) :
 		if ( has_post_thumbnail() ) {
 			echo '<div class="post-thumbnail">';
 			the_post_thumbnail( $size );
+			// Singular views only (the helper checks is_singular() itself), so
+			// card grids never get an overlay — and a single post whose title
+			// the overlay suppressed always gets it rendered back here.
+			if ( function_exists( 'gnn_title_overlay_html' ) ) {
+				echo gnn_title_overlay_html(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the helper.
+			}
 			echo '</div>';
 		} elseif ( $placeholder && ! gnn_is_wc_utility_page() ) {
 			// Card grids only: a placeholder keeps card heights consistent.

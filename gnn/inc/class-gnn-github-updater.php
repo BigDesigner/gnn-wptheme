@@ -155,10 +155,24 @@ class GNN_GitHub_Updater {
 			return $transient;
 		}
 		$local = wp_get_theme( $this->theme_slug )->get( 'Version' );
-		if ( $local && version_compare( $release->version, $local, '>' ) ) {
+		if ( ! $local ) {
+			return $transient;
+		}
+		if ( version_compare( $release->version, $local, '>' ) ) {
 			$transient->response[ $this->theme_slug ] = array(
 				'theme'       => $this->theme_slug,
 				'new_version' => $release->version,
+				'url'         => $release->html_url,
+				'package'     => $release->download_url,
+			);
+			unset( $transient->no_update[ $this->theme_slug ] );
+		} else {
+			// WordPress only offers the "enable auto-updates" link for themes
+			// present in `no_update`; without this the theme silently opts out
+			// of the auto-update UI whenever it's already current.
+			$transient->no_update[ $this->theme_slug ] = array(
+				'theme'       => $this->theme_slug,
+				'new_version' => $local,
 				'url'         => $release->html_url,
 				'package'     => $release->download_url,
 			);

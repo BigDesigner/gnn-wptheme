@@ -197,6 +197,14 @@ function gnn_title_overlay_active() {
 	if ( ! is_singular() || gnn_title_explicitly_hidden() ) {
 		return false;
 	}
+	// The overlay needs a featured image to sit on. Without one there is
+	// nothing to render it into — and since an active overlay suppresses the
+	// normal in-flow title, saying "yes" here would leave the entry with no
+	// title at all. These are the same guards the two renderers use
+	// (gnn_page_featured_image() and gnn_post_thumbnail()).
+	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		return false;
+	}
 	$override = get_post_meta( get_the_ID(), '_gnn_title_overlay', true );
 	if ( '1' === $override ) {
 		return true;
@@ -205,6 +213,33 @@ function gnn_title_overlay_active() {
 		return false;
 	}
 	return (bool) gnn_option( 'title_overlay_enable' );
+}
+
+/**
+ * Ready-to-echo markup for the title overlay, or '' when it isn't active.
+ *
+ * Shared by both featured-image renderers — gnn_page_featured_image()
+ * (page templates) and gnn_post_thumbnail() (single posts) — so the
+ * overlay can never be suppressed-but-not-rendered in one of them.
+ *
+ * @return string Escaped HTML, or '' when the overlay is off.
+ */
+function gnn_title_overlay_html() {
+	if ( ! gnn_title_overlay_active() ) {
+		return '';
+	}
+	$size    = max( 16, min( 120, (int) gnn_option( 'title_overlay_font_size' ) ) );
+	$bg      = sanitize_hex_color( (string) gnn_option( 'title_overlay_bg' ) );
+	$bg      = $bg ? $bg : '#000000';
+	$opacity = max( 0, min( 100, (int) gnn_option( 'title_overlay_bg_opacity' ) ) );
+
+	return sprintf(
+		'<div class="gnn-title-overlay"><h1 class="entry-title gnn-title-overlay__title" style="font-size:%1$dpx;background:color-mix(in srgb, %2$s %3$d%%, transparent);">%4$s</h1></div>',
+		$size,
+		esc_attr( $bg ),
+		$opacity,
+		esc_html( get_the_title() )
+	);
 }
 
 /**

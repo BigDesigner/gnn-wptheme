@@ -63,10 +63,23 @@
 		});
 		item.addEventListener('keydown', function (event) {
 			if (event.key === 'Escape') {
+				/* Close the sub-menu but KEEP focus on its parent link — a
+				   blur() here would drop the user out of the navigation
+				   entirely. .is-closed suppresses the CSS :focus-within
+				   rule that would otherwise re-open it; it clears as soon
+				   as focus leaves the item. */
 				link.setAttribute('aria-expanded', 'false');
+				item.classList.add('is-closed');
 				link.focus();
-				link.blur();
 			}
 		});
+		item.addEventListener('focusout', function () {
+			setTimeout(function () {
+				if (!item.contains(document.activeElement)) {
+					item.classList.remove('is-closed');
+				}
+			}, 0);
+		});
+		item.addEventListener('mouseleave', function () { item.classList.remove('is-closed'); });
 	});
 })();

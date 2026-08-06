@@ -277,6 +277,12 @@ TRANSLATIONS = {
     'GNN Display Options': 'GNN Görüntü Seçenekleri',
     'Hide the page title': 'Sayfa başlığını gizle',
     'Title over featured image': 'Öne çıkarılan görsel üzerinde başlık',
+    'Layout widths': 'Yerleşim genişlikleri',
+    'Sidebar width (px)': 'Kenar çubuğu genişliği (px)',
+    'Width of the sidebar column on the Left/Right Sidebar page templates.':
+        'Sol/Sağ Kenar Çubuğu sayfa şablonlarındaki kenar çubuğu sütununun genişliği.',
+    'Boxed template max width (px)': 'Kutulu şablon maksimum genişliği (px)',
+    'Full Width template max width (px)': 'Tam Genişlik şablonu maksimum genişliği (px)',
     'Show the page title centered inside the featured image': 'Sayfa başlığını öne çıkarılan görselin içinde ortalanmış göster',
     'Overlay title font size (px)': 'Kaplama başlığı yazı boyutu (px)',
     'Overlay title background color': 'Kaplama başlığı arka plan rengi',

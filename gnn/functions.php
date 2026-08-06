@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '1.5.1' );
+define( 'GNN_VERSION', '1.6.0' );
 
 /**
  * Theme setup.
@@ -118,11 +118,16 @@ function gnn_scripts() {
 	$gnn_post_thumb_fit = in_array( gnn_option( 'post_featured_image_fit' ), array( 'cover', 'contain', 'fill' ), true ) ? gnn_option( 'post_featured_image_fit' ) : 'cover';
 	$gnn_post_thumb_pos = in_array( gnn_option( 'post_featured_image_position' ), array( 'top', 'center', 'bottom' ), true ) ? gnn_option( 'post_featured_image_position' ) : 'center';
 
+	$gnn_sidebar_w = max( 200, min( 500, (int) gnn_option( 'sidebar_width' ) ) );
+	$gnn_boxed_w   = max( 600, min( 1600, (int) gnn_option( 'boxed_width' ) ) );
+	$gnn_full_w    = max( 900, min( 1920, (int) gnn_option( 'full_width' ) ) );
+
 	wp_add_inline_style(
 		'gnn-main',
 		':root{--accent:' . esc_html( $gnn_accent ) . ';--gnn-content-top-pad:' . $gnn_top_pad . 'px;--gnn-content-bottom-pad:' . $gnn_bot_pad . 'px;' .
 		'--gnn-page-thumb-h:' . $gnn_page_thumb_h . 'px;--gnn-page-thumb-fit:' . esc_html( $gnn_page_thumb_fit ) . ';--gnn-page-thumb-pos:' . esc_html( $gnn_page_thumb_pos ) . ';' .
-		'--gnn-post-thumb-h:' . $gnn_post_thumb_h . 'px;--gnn-post-thumb-fit:' . esc_html( $gnn_post_thumb_fit ) . ';--gnn-post-thumb-pos:' . esc_html( $gnn_post_thumb_pos ) . ';}'
+		'--gnn-post-thumb-h:' . $gnn_post_thumb_h . 'px;--gnn-post-thumb-fit:' . esc_html( $gnn_post_thumb_fit ) . ';--gnn-post-thumb-pos:' . esc_html( $gnn_post_thumb_pos ) . ';' .
+		'--gnn-sidebar-w:' . $gnn_sidebar_w . 'px;--gnn-boxed-width:' . $gnn_boxed_w . 'px;--gnn-full-width:' . $gnn_full_w . 'px;}'
 	);
 
 	if ( class_exists( 'WooCommerce' ) ) {
@@ -194,6 +199,48 @@ function gnn_head_bootstrap() {
 	<?php
 }
 add_action( 'wp_head', 'gnn_head_bootstrap', 0 );
+
+/**
+ * Keep the block editor's "Accent" palette swatch in sync with the panel's
+ * accent color. theme.json can only carry a static value, so the editor
+ * would otherwise keep offering the shipped default long after the site's
+ * accent changed. Reads the real palette back out of theme.json and swaps
+ * only the accent entry, so the other colors stay defined in one place.
+ *
+ * `wp_theme_json_data_theme` needs WP 6.1+; on 6.0 the filter simply never
+ * fires and the static theme.json value applies, as before.
+ *
+ * @param WP_Theme_JSON_Data $theme_json Theme's theme.json data.
+ * @return WP_Theme_JSON_Data
+ */
+function gnn_sync_editor_accent( $theme_json ) {
+	$accent = sanitize_hex_color( (string) get_theme_mod( 'gnn_accent_color', '#34d399' ) );
+	if ( ! $accent ) {
+		return $theme_json;
+	}
+	$data    = $theme_json->get_data();
+	$palette = isset( $data['settings']['color']['palette'] ) ? $data['settings']['color']['palette'] : array();
+	if ( ! $palette ) {
+		return $theme_json;
+	}
+	$changed = false;
+	foreach ( $palette as $i => $color ) {
+		if ( isset( $color['slug'] ) && 'accent' === $color['slug'] ) {
+			$palette[ $i ]['color'] = $accent;
+			$changed                = true;
+		}
+	}
+	if ( ! $changed ) {
+		return $theme_json;
+	}
+	return $theme_json->update_with(
+		array(
+			'version'  => 2,
+			'settings' => array( 'color' => array( 'palette' => $palette ) ),
+		)
+	);
+}
+add_filter( 'wp_theme_json_data_theme', 'gnn_sync_editor_accent' );
 
 /**
  * Add a pingback url auto-discovery header for single posts.

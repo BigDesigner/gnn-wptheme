@@ -263,6 +263,8 @@ input[type="submit"].gnn-btn,
 }
 .main-navigation li:hover > .sub-menu,
 .main-navigation li:focus-within > .sub-menu { display: flex; }
+/* Escape closes the sub-menu while focus stays on its parent link (theme.js). */
+.main-navigation li.is-closed:focus-within > .sub-menu { display: none; }
 .main-navigation .sub-menu li a {
 	display: block;
 	padding: 10px 12px;
@@ -688,7 +690,8 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 .entry-author-row__name { font-weight: 700; font-size: 14px; }
 .entry-author-row .entry-meta { margin-top: 2px; }
 
-.single-article > .post-thumbnail { margin-bottom: 40px; }
+/* position:relative anchors the optional title overlay (see .gnn-title-overlay). */
+.single-article > .post-thumbnail { margin-bottom: 40px; position: relative; }
 .single-article > .post-thumbnail img,
 .single-article > .post-thumbnail--empty {
 	height: var(--gnn-post-thumb-h, 500px);
@@ -886,15 +889,17 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 .gnn-page-thumb--boxed { max-width: var(--gnn-boxed-width, 1200px); margin-left: auto; margin-right: auto; }
 
 /* Title overlay: centered on all sides over the featured image, replacing
-   the normal in-flow H1 (see gnn_hide_title() / gnn_title_overlay_active()
-   in inc/page-meta.php). Font size and background color+opacity are set
-   inline per-render from the panel's global setting (or per-page override). */
-.gnn-page-thumb__overlay {
+   the normal in-flow H1 (see gnn_title_overlay_html() in inc/page-meta.php).
+   Used in two containers — .gnn-page-thumb (page templates) and
+   .post-thumbnail (single posts) — so both get position:relative below.
+   Font size and background color+opacity are set inline per-render from
+   the panel's global setting (or the per-page override). */
+.gnn-title-overlay {
 	position: absolute; inset: 0;
 	display: flex; align-items: center; justify-content: center;
 	text-align: center; padding: 24px;
 }
-.gnn-page-thumb__title {
+.gnn-title-overlay__title {
 	margin: 0; max-width: 100%;
 	color: #fff; line-height: 1.15;
 	padding: 0.35em 0.7em; border-radius: 12px;
@@ -1216,9 +1221,11 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 }
 :root[data-theme="dark"] .gnn-logo--on-light { display: none; }
 :root[data-theme="light"] .gnn-logo--on-dark { display: none; }
-/* On small screens keep the logo from crowding the toggle/menu. */
+/* On small screens the panel's own mobile height applies (GNN Panel →
+   Header → "Logo max height — mobile"), capped by the desktop height so a
+   mobile value can only ever shrink the logo, never enlarge it. */
 @media (max-width: 599px) {
-	.site-logo .gnn-logo { max-height: min(var(--gnn-logo-h, 40px), 34px); }
+	.site-logo .gnn-logo { max-height: min(var(--gnn-logo-h, 40px), var(--gnn-logo-h-mobile, 34px)); }
 }
 
 /* Sticky header off. */
