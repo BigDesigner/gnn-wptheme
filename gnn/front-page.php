@@ -1,6 +1,6 @@
 <?php
 /**
- * The front page: hero slider (Customizer-managed) + page content.
+ * The static front page: managed hero slider + page content.
  *
  * All sections live in the front page's own content (Gutenberg blocks or
  * Elementor) — the theme hardcodes no content. See the demo WXR for the
@@ -8,6 +8,12 @@
  *
  * @package GNN
  */
+
+// front-page.php takes precedence over home.php even in latest-posts mode.
+if ( 'posts' === get_option( 'show_on_front' ) ) {
+	get_template_part( 'home' );
+	return;
+}
 
 get_header();
 ?>
@@ -17,9 +23,7 @@ get_header();
 	<?php get_template_part( 'template-parts/hero-slider' ); ?>
 
 	<?php
-	// Only render page content when a static front page is set; when the
-	// front shows latest posts the main query holds posts, which belong
-	// to home.php, not here.
+	// The latest-posts path has already delegated to the blog template.
 	if ( 'page' === get_option( 'show_on_front' ) ) :
 		while ( have_posts() ) :
 			the_post();

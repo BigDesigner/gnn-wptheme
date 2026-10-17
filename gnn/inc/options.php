@@ -568,12 +568,16 @@ function gnn_scope_woo_assets() {
 	if ( is_woocommerce() || is_cart() || is_checkout() || is_account_page() ) {
 		return;
 	}
-	$post = get_post();
-	$uses = $post && ( has_shortcode( (string) $post->post_content, 'products' )
-		|| false !== strpos( (string) $post->post_content, 'add-to-cart' )
-		|| has_block( 'woocommerce/all-products', $post )
-		|| has_block( 'woocommerce/cart', $post )
-		|| has_block( 'woocommerce/checkout', $post ) );
+	global $wp_query;
+	$posts = isset( $wp_query->posts ) ? $wp_query->posts : array( get_post() );
+	$uses  = gnn_woocommerce_widgets_active();
+	foreach ( $posts as $post ) {
+		if ( $post instanceof WP_Post && ( gnn_content_uses_woocommerce( $post->post_content )
+			|| 'builder' === get_post_meta( $post->ID, '_elementor_edit_mode', true ) ) ) {
+			$uses = true;
+			break;
+		}
+	}
 	if ( $uses || apply_filters( 'gnn_page_uses_woocommerce', false ) ) {
 		return;
 	}
@@ -582,10 +586,90 @@ function gnn_scope_woo_assets() {
 		wp_dequeue_style( $style );
 	}
 	foreach ( array( 'wc-cart-fragments', 'woocommerce', 'wc-add-to-cart', 'sourcebuster-js', 'wc-order-attribution' ) as $script ) {
+		if ( 'wc-cart-fragments' === $script && ( gnn_option( 'show_cart' ) || gnn_option( 'mobile_dock' ) ) ) {
+			wp_enqueue_script( $script );
+			continue;
+		}
 		wp_dequeue_script( $script );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'gnn_scope_woo_assets', 99 );
+
+/**
+ * Detect Woo content, including referenced blocks, without rendering it.
+ *
+ * @param string $content Raw content.
+ * @param array $seen Referenced block IDs already inspected.
+ * @return bool
+ */
+function gnn_content_uses_woocommerce( $content, $seen = array() ) {
+	if ( false !== strpos( $content, 'wp:woocommerce/' ) || false !== strpos( $content, 'add-to-cart' ) ) {
+		return true;
+	}
+	$shortcodes = array( 'products', 'product', 'product_page', 'product_category', 'product_categories',
+		'add_to_cart', 'add_to_cart_url', 'recent_products', 'featured_products', 'sale_products',
+		'best_selling_products', 'top_rated_products', 'product_attribute', 'related_products',
+		'shop_messages', 'woocommerce_messages', 'woocommerce_cart', 'woocommerce_checkout',
+		'woocommerce_my_account', 'woocommerce_order_tracking' );
+	foreach ( $shortcodes as $shortcode ) {
+		// Detection must also work before a plugin registers its shortcode callback.
+		if ( preg_match( '/\[(?!\[)\s*' . preg_quote( $shortcode, '/' ) . '(?=[\s\]\/])/', $content ) ) {
+			return true;
+		}
+	}
+	$blocks = parse_blocks( $content );
+	while ( $blocks ) {
+		$block = array_pop( $blocks );
+		if ( in_array( $block['blockName'], array( 'core/template-part', 'core/pattern', 'core/post-content', 'core/query' ), true ) ) {
+			return true; // Dynamic content cannot be ruled out before it is rendered.
+		}
+		if ( 'core/block' === $block['blockName'] && ! empty( $block['attrs']['ref'] ) ) {
+			$id = absint( $block['attrs']['ref'] );
+			if ( ! in_array( $id, $seen, true ) ) {
+				$reference = get_post( $id );
+				if ( ! $reference || count( $seen ) >= 20 ) {
+					return true;
+				}
+				if ( gnn_content_uses_woocommerce( $reference->post_content, array_merge( $seen, array( $id ) ) ) ) {
+					return true;
+				}
+			}
+		}
+		$blocks = array_merge( $blocks, $block['innerBlocks'] );
+	}
+	return false;
+}
+
+/**
+ * Keep assets for active Woo widgets and widget-hosted product content.
+ *
+ * @return bool
+ */
+function gnn_woocommerce_widgets_active() {
+	global $wp_registered_widgets;
+	foreach ( wp_get_sidebars_widgets() as $sidebar => $widgets ) {
+		if ( 'wp_inactive_widgets' === $sidebar || ! is_array( $widgets ) ) {
+			continue;
+		}
+		foreach ( $widgets as $id ) {
+			$callback = $wp_registered_widgets[ $id ]['callback'] ?? null;
+			if ( is_array( $callback ) && is_object( $callback[0] ) ) {
+				$class = get_class( $callback[0] );
+				if ( 0 === strpos( $class, 'WC_Widget_' ) || false !== strpos( $class, 'WooCommerce' ) || false !== strpos( $class, 'Elementor' ) ) {
+					return true;
+				}
+			}
+			if ( preg_match( '/^(block|text|custom_html)-(\d+)$/', $id, $matches ) ) {
+				$settings = get_option( 'widget_' . $matches[1], array() );
+				$row      = $settings[ (int) $matches[2] ] ?? array();
+				if ( gnn_content_uses_woocommerce( (string) ( $row['content'] ?? $row['text'] ?? '' ) ) ) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
+}
 
 /**
  * Preload the two primary font files (latin subsets).

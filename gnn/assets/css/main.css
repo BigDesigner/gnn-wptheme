@@ -526,6 +526,14 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 	padding: 0;
 }
 .gnn-hero__dot.is-active { width: 28px; background: var(--accent); }
+.gnn-hero__rotation {
+	position: absolute; bottom: 20px; left: 20px; z-index: 2;
+	max-width: 38%; padding: 8px 12px; border: 1px solid var(--line);
+	border-radius: 8px; color: var(--fg); background: var(--bg2);
+	font: inherit; font-size: 12px; cursor: pointer;
+}
+.gnn-hero__controls[hidden], .gnn-hero__rotation[hidden] { display: none; }
+.gnn-hero__controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 /* ---------------------------------------------------------------------------
  * 6. Front-page sections

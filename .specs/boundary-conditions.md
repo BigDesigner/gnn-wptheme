@@ -16,3 +16,13 @@
    - All metaboxes and form submissions MUST verify nonces (`check_admin_referer()` / `wp_verify_nonce()`).
 5. **No Main Loop Blocking:**
    - No heavy operations or external HTTP requests on synchronous `wp_head` or `wp_footer` hooks.
+6. **Generated Content Preservation:**
+   - Library refreshes MUST preserve stable template IDs, user edits and trash decisions.
+   - Unknown legacy baselines MUST NOT be overwritten. Failed template post insert/update operations MUST NOT mark a migration complete.
+7. **Update Package Boundary:**
+   - Offer only the configured GitHub repository's exact versioned theme release asset.
+   - Repository source archives are not installable theme packages and MUST NOT be fallback updates.
+   - Validate extracted source before replacing installed files; preserve incoming errors and unrelated upgrades.
+8. **Packaging Semantics:**
+   - Packaged CSS MUST be byte-identical to source; regex whitespace rewriting is prohibited.
+   - Release labels MUST match every shipped version declaration before a package is published.

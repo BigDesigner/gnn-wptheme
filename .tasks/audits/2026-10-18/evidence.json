@@ -1,0 +1,209 @@
+{
+  "scope": "Source lint, isolated function probes, disposable package builds; no live WordPress/browser test",
+  "commit": "0ac1688e937f07fe2ff637a8daf9e37bc510ca98",
+  "runtimes": {
+    "php": {
+      "exit_code": 0,
+      "output": "PHP 8.5.8 (cli) (built: Jul  1 2026 04:03:04) (NTS Visual C++ 2022 x64)\nCopyright (c) The PHP Group\nBuilt by The PHP Group\nZend Engine v4.5.8, Copyright (c) Zend Technologies\n    with Zend OPcache v8.5.8, Copyright (c), by Zend Technologies"
+    },
+    "node": {
+      "exit_code": 0,
+      "output": "v24.14.0"
+    },
+    "python": {
+      "exit_code": 0,
+      "output": "Python 3.14.3"
+    }
+  },
+  "php_lint": {
+    "files": 60,
+    "failures": {}
+  },
+  "js_syntax": {
+    "files": 5,
+    "failures": {}
+  },
+  "json": {
+    "gnn\\theme.json": true,
+    "gnn\\demo\\customizer.json": true
+  },
+  "demo_xml_root": "rss",
+  "mo_catalog_entries": 406,
+  "probes": {
+    "php_behavior": {
+      "exit_code": 0,
+      "observations": {
+        "latest_posts_front_page": {
+          "loop_checks": 0,
+          "parts": [
+            [
+              "template-parts/hero-slider"
+            ]
+          ]
+        },
+        "woo_[products limit=\"4\"]": [],
+        "woo_[product_category category=\"hardware\"]": [
+          "woocommerce-general",
+          "woocommerce-layout",
+          "woocommerce-smallscreen",
+          "wc-blocks-style",
+          "brands-styles",
+          "gnn-woocommerce",
+          "wc-cart-fragments",
+          "woocommerce",
+          "wc-add-to-cart",
+          "sourcebuster-js",
+          "wc-order-attribution"
+        ],
+        "woo_[add_to_cart id=\"42\"]": [
+          "woocommerce-general",
+          "woocommerce-layout",
+          "woocommerce-smallscreen",
+          "wc-blocks-style",
+          "brands-styles",
+          "gnn-woocommerce",
+          "wc-cart-fragments",
+          "woocommerce",
+          "wc-add-to-cart",
+          "sourcebuster-js",
+          "wc-order-attribution"
+        ],
+        "woo_<!-- wp:woocommerce/product-collection {} /-->": [
+          "woocommerce-general",
+          "woocommerce-layout",
+          "woocommerce-smallscreen",
+          "wc-blocks-style",
+          "brands-styles",
+          "gnn-woocommerce",
+          "wc-cart-fragments",
+          "woocommerce",
+          "wc-add-to-cart",
+          "sourcebuster-js",
+          "wc-order-attribution"
+        ],
+        "unrelated_upgrade_error_preserved": false,
+        "failed_move": {
+          "result": {
+            "destination": "/themes/gnn"
+          },
+          "error_returned": false,
+          "calls": [
+            [
+              "/themes/extracted",
+              "/themes/gnn"
+            ]
+          ]
+        },
+        "current_release_keeps_stale_update": true,
+        "elementor_on_version_change": {
+          "force_deleted": [
+            [
+              42,
+              true
+            ]
+          ],
+          "new_ids": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114
+          ],
+          "installed_flag": "1.6.0"
+        }
+      }
+    },
+    "non_admin_bootstrap": {
+      "exit_code": 0,
+      "observations": {
+        "admin": false,
+        "updater_loaded": false,
+        "update_filter_registered": false
+      }
+    },
+    "admin_bootstrap": {
+      "exit_code": 0,
+      "observations": {
+        "admin": true,
+        "updater_loaded": true,
+        "update_filter_registered": true
+      }
+    },
+    "slider": {
+      "exit_code": 0,
+      "observations": {
+        "autoplayStarts": 1,
+        "autoplayStopsAfterFocus": 0,
+        "focusPauseHandler": false,
+        "transformAfterTick": "translateX(-100%)",
+        "slideAttributes": [
+          {},
+          {}
+        ],
+        "slideInert": [
+          null,
+          null
+        ]
+      }
+    }
+  },
+  "source_archive": {
+    "root_style_css": false,
+    "nested_style_css": true,
+    "top_level_entries": [
+      ".github",
+      ".gitignore",
+      ".memory-bank",
+      ".scripts",
+      ".specs",
+      ".tasks",
+      "gnn"
+    ]
+  },
+  "existing_packages": {
+    "gnn-wporg.zip": {
+      "version": "1.0.0",
+      "bytes": 162331
+    },
+    "gnn.zip": {
+      "version": "1.6.0",
+      "bytes": 256565
+    }
+  },
+  "builds": {
+    "gnn.zip": {
+      "exit_code": 0,
+      "files": 85,
+      "bytes": 256565,
+      "crc_error": null,
+      "root_theme_present": true,
+      "demo_present": true,
+      "packed_js_failures": {}
+    },
+    "gnn-wporg.zip": {
+      "exit_code": 0,
+      "files": 83,
+      "bytes": 247133,
+      "crc_error": null,
+      "root_theme_present": true,
+      "demo_present": false,
+      "packed_js_failures": {}
+    }
+  },
+  "minifier_selector_probe": {
+    "input": ".editor-styles-wrapper ::selection { background: var(--accent); }",
+    "output": ".editor-styles-wrapper::selection{background:var(--accent)}"
+  },
+  "dependency_manifests": [],
+  "phpcs_on_path": null
+}

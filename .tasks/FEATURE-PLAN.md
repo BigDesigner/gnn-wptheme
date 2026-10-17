@@ -1,5 +1,7 @@
 # GNN Theme — Gelişmiş Özellikler Gereksinim ve Spesifikasyon Dokümanı (PRD)
 
+> Historical PRD. The active audit remediation is completed in `audit-remediation-plan.md`; verification is recorded in `../.memory-bank/audits/remediation-1.6.1.md`. Historical acceptance checkboxes and original design constraints below are not the current backlog.
+
 > **Amaç:** Bu doküman, GNN WordPress temasına eklenecek yeni dinamik özellikler ve özelleştirme taleplerinin **AI Agent (Claude Code) tarafından en net ve doğru şekilde anlaşılabilmesi için** hazırlanmış teknik gereksinim spesifikasyonudur.
 >
 > 🔄 **Proje Geçmişi ve Devir Notu (Claude Code İçin Önemli Bağlam):**

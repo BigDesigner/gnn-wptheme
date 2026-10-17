@@ -1,5 +1,25 @@
 # Bug List & Issues Tracking
 
+## Audit Backlog — 2026-10-18
+
+Historical entries are retained. Audit findings 47–56 were fixed and verified in 1.6.1; see `.memory-bank/audits/remediation-1.6.1.md`.
+
+| ID | Audit | Issue | Status |
+|---|---|---|---|
+| 47 | A01 | Latest-posts homepage omits posts | Fixed — verified in 1.6.1 |
+| 48 | A02 | Elementor reinstall permanently deletes generated templates | Fixed — verified in 1.6.1 |
+| 49 | A03 | Updater hooks absent outside admin/cron bootstrap | Fixed — verified in 1.6.1 |
+| 50 | A04 | Install callback drops errors and ignores failed moves | Fixed — verified in 1.6.1 |
+| 51 | A05 | Repository zipball fallback has wrong theme root | Fixed — verified in 1.6.1 |
+| 52 | A06 | Woo asset scoping misses shortcodes/blocks | Fixed — verified in 1.6.1 |
+| 53 | A07 | Slider rotation/focus and inactive content accessibility | Fixed — verified in 1.6.1 |
+| 54 | A08 | Release override disagrees with installed version | Fixed — verified in 1.6.1 |
+| 55 | A09 | Reset-all UI leaves shared theme mods | Fixed — verified in 1.6.1 |
+| 56 | A10 | CSS minifier removes meaningful selector whitespace | Fixed — verified in 1.6.1 |
+
+WordPress.org package maintenance is excluded by user instruction.
+
+
 All entries below were found and fixed in the same working session (real production
 reports and code-review findings, not hypothetical). PRD Phase 1's 19 items remain
 independently verified clean.

@@ -1,5 +1,18 @@
 # Verified Worklog
 
+## [2026-10-18] Audit remediation completed (v1.6.1)
+
+- Closed A01–A10 / bugs 47–56: homepage routing, non-destructive Elementor library refresh, cron-safe validated GitHub updates, release/source version checks, Woo asset detection, accessible slider, explicit reset scope and lossless CSS packaging.
+- Added ADRs 0014–0016 and predecessor links; refreshed architecture, specs, plan, pipeline, historical PRD pointers, readme/translations and handoff.
+- User distribution decision: GitHub/private ZIP only. WordPress.org packaging is retired; its old ignored ZIP is excluded.
+- Real WordPress 7.1.3 / PHP 8.2.33 / Elementor 4.3.5 / WooCommerce 11.2.1: 54 integration + 14 Chromium checks passed.
+- Minimum WordPress 6.0.17 / PHP 7.4.33 without optional plugins: 24 integration + 14 Chromium checks passed.
+- Static/package checks: 88/88 passed. All CSS bytes match source; package version declarations agree at 1.6.1.
+- Coverage remains unmeasured; hosted Actions, live updates, MySQL, Elementor Pro, screen-reader operation and production performance are not certified.
+- The first 64/68 result is retained. Four test setup defects were corrected without weakening assertions; the final full run is 68/68.
+- The final normal ZIP is 268,583 bytes, SHA-256 `69acab483635570b31f2513baba15f7509ca2295954e2b2c8addb2c7bbcbe0dc`.
+- Full report: `.memory-bank/audits/remediation-1.6.1.md`. No staging, commit, push, GitHub release or production deployment was performed.
+
 ## [2026-08-01] Sentinel Memory Bank Initialization
 - Initialized Sentinel Agent Memory Bank version 1.1.0.
 - Established `.memory-bank/`, `.specs/`, `.agents/`, `.tasks/` documentation system.

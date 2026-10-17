@@ -1,5 +1,24 @@
 # Task Pipeline & Roadmap
 
+## Completed: Audit Remediation (2026-10-18)
+
+User authorized completing A01–A10. The active plan is
+`audit-remediation-plan.md`; baseline evidence is under `audits/2026-10-18/`.
+
+- [x] A01: Latest-posts homepage.
+- [x] A02: Preserve Elementor library IDs and user edits.
+- [x] A03–A05: Cron-safe updater, error handling and validated release assets.
+- [x] A08: Source/release version consistency.
+- [x] A06: WooCommerce asset detection.
+- [x] A07: Accessible slider rotation and focus handling.
+- [x] A09: Explicit reset scope.
+- [x] A10: Lossless CSS packaging.
+- [x] Verification, version 1.6.1, translations and normal ZIP.
+
+Distribution: GitHub/private ZIP. WordPress.org publishing and the stale
+`gnn-wporg.zip` are excluded by explicit user instruction.
+
+
 ## Completed Features (PRD Phase 1: Items 1-19)
 - [x] **Item 1:** Logo max height controls (Desktop & Mobile).
 - [x] **Item 2:** Header & Footer menu alignment (Left / Right).

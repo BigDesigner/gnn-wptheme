@@ -1,0 +1,448 @@
+{
+  "type": "Static / package checks (not WordPress integration)",
+  "total": 88,
+  "passed": 88,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "PHP syntax: gnn\\404.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\archive.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\author.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\category.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\comments.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\footer.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\front-page.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\functions.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\header.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\home.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\index.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\page.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\search.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\searchform.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\sidebar.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\single.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\tag.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\admin-panel.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\button-styles.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\class-gnn-github-updater.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\class-gnn-walker-comment.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\class-gnn-walker-nav-menu.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\customizer.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\demo-import.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\elementor-templates.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\elementor.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\frontend.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\options.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\page-layouts.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\page-meta.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\patterns.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\slider.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\template-tags.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\typography.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\updater.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\woocommerce.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\page-templates\\tpl-blank.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\page-templates\\tpl-boxed.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\page-templates\\tpl-left-sidebar.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\page-templates\\tpl-right-sidebar.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\template-parts\\content-archive.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\template-parts\\content-none.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\template-parts\\content-page.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\template-parts\\content-search.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\template-parts\\hero-slider.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\woocommerce\\content-product.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\bold-heading-button.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\contact-social.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\cover-heading-button-center.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\cover-heading-button-left.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\cover-large-header-left.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\cover-poster-left.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\cover-two-tone-image.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\dark-banner-heading.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\faqs.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\gallery-two-images.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\heading-paragraph-image.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\headline-links-gradient.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\media-text-left.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "PHP syntax: gnn\\inc\\pattern-parts\\media-text-right.php",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: gnn\\assets\\js\\admin.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: gnn\\assets\\js\\features.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: gnn\\assets\\js\\slider-admin.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: gnn\\assets\\js\\slider.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JavaScript syntax: gnn\\assets\\js\\theme.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Release validation: source",
+      "pass_": true,
+      "detail": "1.6.1"
+    },
+    {
+      "name": "Release validation: 1.6.1",
+      "pass_": true,
+      "detail": "1.6.1"
+    },
+    {
+      "name": "Release validation: 999.0.0",
+      "pass_": true,
+      "detail": "Release validation failed: Release override '999.0.0' differs from source 1.6.1"
+    },
+    {
+      "name": "Release validation: $(echo invalid)",
+      "pass_": true,
+      "detail": "Release validation failed: Release override '$(echo invalid)' differs from source 1.6.1"
+    },
+    {
+      "name": "Release validation: 1.6.1;echo invalid",
+      "pass_": true,
+      "detail": "Release validation failed: Release override '1.6.1;echo invalid' differs from source 1.6.1"
+    },
+    {
+      "name": "Normal theme ZIP build",
+      "pass_": true,
+      "detail": "gnn.zip: 268583 bytes"
+    },
+    {
+      "name": "ZIP CRC integrity",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "ZIP contains exactly the theme tree",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "ZIP carries source version",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Lossless packaged CSS: gnn/rtl.css",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Lossless packaged CSS: gnn/style.css",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Lossless packaged CSS: gnn/assets/css/admin.css",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Lossless packaged CSS: gnn/assets/css/editor.css",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Lossless packaged CSS: gnn/assets/css/main.css",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Lossless packaged CSS: gnn/assets/css/woocommerce.css",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Packaged JavaScript syntax: gnn/assets/js/admin.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Packaged JavaScript syntax: gnn/assets/js/features.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Packaged JavaScript syntax: gnn/assets/js/slider-admin.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Packaged JavaScript syntax: gnn/assets/js/slider.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Packaged JavaScript syntax: gnn/assets/js/theme.js",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON: gnn\\theme.json",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "JSON: gnn\\demo\\customizer.json",
+      "pass_": true,
+      "detail": ""
+    },
+    {
+      "name": "Turkish slider labels compiled",
+      "pass_": true,
+      "detail": ""
+    }
+  ]
+}

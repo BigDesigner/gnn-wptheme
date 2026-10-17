@@ -19,7 +19,9 @@ $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 <section class="gnn-hero<?php echo $gnn_full_height ? ' gnn-hero--full-height' : ''; ?>" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Highlights', 'gnn' ); ?>">
 	<div class="gnn-hero__track">
 		<?php foreach ( $gnn_slides as $gnn_index => $gnn_slide ) : ?>
-			<div class="gnn-hero__slide<?php echo 0 === $gnn_index ? ' is-active' : ''; ?>" role="group" aria-roledescription="slide">
+			<div class="gnn-hero__slide<?php echo 0 === $gnn_index ? ' is-active' : ''; ?>" role="group" aria-roledescription="slide"
+				aria-label="<?php echo esc_attr( sprintf( /* translators: 1: current slide, 2: total slides. */ __( '%1$d of %2$d', 'gnn' ), $gnn_index + 1, count( $gnn_slides ) ) ); ?>"
+				<?php echo 0 !== $gnn_index ? 'aria-hidden="true" inert' : ''; ?>>
 				<?php if ( ! empty( $gnn_slide['image'] ) ) : ?>
 					<div class="gnn-hero__bg gnn-hero__bg--fit-<?php echo esc_attr( $gnn_slide['fit'] ); ?>">
 						<?php
@@ -63,13 +65,16 @@ $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 	</div>
 
 	<?php if ( count( $gnn_slides ) > 1 ) : ?>
-		<button class="gnn-hero__arrow gnn-hero__arrow--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'gnn' ); ?>">&lsaquo;</button>
-		<button class="gnn-hero__arrow gnn-hero__arrow--next" aria-label="<?php esc_attr_e( 'Next slide', 'gnn' ); ?>">&rsaquo;</button>
-		<div class="gnn-hero__dots" role="tablist">
+		<div class="gnn-hero__controls" hidden>
+		<button type="button" class="gnn-hero__rotation" data-start="<?php esc_attr_e( 'Start slide rotation', 'gnn' ); ?>" data-stop="<?php esc_attr_e( 'Stop slide rotation', 'gnn' ); ?>"><?php esc_html_e( 'Stop slide rotation', 'gnn' ); ?></button>
+		<button type="button" class="gnn-hero__arrow gnn-hero__arrow--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'gnn' ); ?>">&lsaquo;</button>
+		<button type="button" class="gnn-hero__arrow gnn-hero__arrow--next" aria-label="<?php esc_attr_e( 'Next slide', 'gnn' ); ?>">&rsaquo;</button>
+		<div class="gnn-hero__dots" role="group" aria-label="<?php esc_attr_e( 'Choose a slide', 'gnn' ); ?>">
 			<?php foreach ( $gnn_slides as $gnn_index => $gnn_slide ) : ?>
-				<button class="gnn-hero__dot<?php echo 0 === $gnn_index ? ' is-active' : ''; ?>" role="tab"
+				<button type="button" class="gnn-hero__dot<?php echo 0 === $gnn_index ? ' is-active' : ''; ?>"
 					aria-label="<?php echo esc_attr( sprintf( /* translators: %d: slide number. */ __( 'Go to slide %d', 'gnn' ), $gnn_index + 1 ) ); ?>"></button>
 			<?php endforeach; ?>
+		</div>
 		</div>
 	<?php endif; ?>
 </section>

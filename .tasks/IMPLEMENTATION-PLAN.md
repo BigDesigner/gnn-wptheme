@@ -1,5 +1,7 @@
 # GNN Tema — Sayfa Düzeni, Öne Çıkarılan Görsel, Sidebar, Dinamik Boşluk ve Google Icons Spesifikasyonu (PRD & Implementation Plan)
 
+> Historical PRD. The active audit remediation is completed in `audit-remediation-plan.md`; verification is recorded in `../.memory-bank/audits/remediation-1.6.1.md`. Historical acceptance checkboxes and original design constraints below are not the current backlog.
+
 > **Amaç:** Bu doküman, GNN WordPress temasına eklenecek/düzenlenecek yeni sayfa düzeni, Elementor başlık/breadcrumb entegrasyonu, öne çıkarılan görsel yerleşimi (Sidebar ve içerik üstünde), sidebar dikey hizalaması, dinamik içerik üst/alt boşluğu ve **Google Material Symbols / Icons (fonts.google.com/icons) entegrasyonunun** AI Agent (Claude Code) tarafından eksiksiz uygulanabilmesi için hazırlanmış teknik spesifikasyondur.
 
 ---

@@ -1,0 +1,340 @@
+{
+  "runtime": {
+    "wordpress": "7.1.3",
+    "php": "8.2.33",
+    "elementor": "4.3.5",
+    "woocommerce": "11.2.1"
+  },
+  "integration": [
+    {
+      "name": "A03 updater registered outside admin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 unsafe post-install filter removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 exact release asset accepted and cached",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A03 newer release offered exclusively",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 stale update removed for current version",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject no-asset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject foreign-host",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject wrong-name",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject prerelease",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject invalid-tag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 missing asset clears stale offers",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 network error negatively cached",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 previous WP_Error preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 unrelated theme source unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 invalid extracted package rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 valid source retained before install",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 occupied rename target returns error and preserves files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 extracted path cannot escape root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A03 disabled updater registers no filter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 actual Elementor runtime loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 initial library saved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 expected library size",
+      "pass": true,
+      "detail": 15
+    },
+    {
+      "name": "A02 user title/data and ID survive migration",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 untouched template refreshed in place",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 unknown legacy payload preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 trash decision preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 missing entry healed without replacing siblings",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 failed insert does not mark migration complete",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 failed migration can retry successfully",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A02 anonymous request cannot migrate templates",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 actual WooCommerce loaded",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode products",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode product_category",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode product_categories",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode add_to_cart",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode add_to_cart_url",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode product_page",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode woocommerce_cart",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 detect shortcode woocommerce_order_tracking",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 nested product collection detected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 referenced block detected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 cyclic reference terminates",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 plain article is eligible for scoping",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 product block widget retains assets",
+      "pass": false,
+      "detail": ""
+    },
+    {
+      "name": "A06 inactive product widget ignored",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 actual queued assets retained for product page",
+      "pass": false,
+      "detail": ""
+    },
+    {
+      "name": "A06 actual assets removed for ordinary page",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A06 header cart fragments preserved",
+      "pass": false,
+      "detail": ""
+    },
+    {
+      "name": "A06 dynamic Elementor content retains assets",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 panel option removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 shared brand settings reset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 unrelated site/update settings preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 reset nonce bound to action",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 anonymous user lacks reset capability",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "browser": [
+    {
+      "name": "A01 latest-posts homepage displays posts",
+      "pass": true
+    },
+    {
+      "name": "A01 pagination displays next posts",
+      "pass": true
+    },
+    {
+      "name": "A01 static content and hero retained",
+      "pass": true
+    },
+    {
+      "name": "A07 inactive slides excluded from focus",
+      "pass": true
+    },
+    {
+      "name": "A07 autoplay rotates while unfocused",
+      "pass": false,
+      "detail": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n'true' !== 'false'\n\n    at file:///C:/Users/bigde/.antigravity/gnn-wptheme/.scripts/tests/browser.mjs:41:10\n    at async record (file:///C:/Users/bigde/.antigravity/gnn-wptheme/.scripts/tests/browser.mjs:7:9)\n    at async testBrowser (file:///C:/Users/bigde/.antigravity/gnn-wptheme/.scripts/tests/browser.mjs:39:2)\n    at async file:///C:/Users/bigde/.antigravity/gnn-wptheme/.scripts/test-wordpress.mjs:50:18"
+    },
+    {
+      "name": "A07 focus pauses until explicit restart",
+      "pass": true
+    },
+    {
+      "name": "A07 ordinary dot buttons select and expose current slide",
+      "pass": true
+    },
+    {
+      "name": "A07 reduced motion stops and hides rotation control",
+      "pass": true
+    },
+    {
+      "name": "A07 RTL slide translation follows flex direction",
+      "pass": true
+    },
+    {
+      "name": "A07 mobile layout remains within viewport",
+      "pass": true
+    },
+    {
+      "name": "A07 no JavaScript keeps first slide and hides unusable controls",
+      "pass": true
+    },
+    {
+      "name": "A07 single slide has no rotation controls",
+      "pass": true
+    },
+    {
+      "name": "A01 empty blog displays its empty state",
+      "pass": true
+    },
+    {
+      "name": "No browser JavaScript exceptions",
+      "pass": true
+    }
+  ],
+  "coverage": "unmeasured: no PHP coverage extension/instrumented browser coverage configured"
+}

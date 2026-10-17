@@ -34,3 +34,7 @@
      - **Plugins** → `'78.xyz'`–`'79.xyz'` (next to Settings/Ayarlar).
    - A product with more than one admin screen registers ONE top-level menu and nests the rest as `add_submenu_page()` entries under it — never multiple top-level menus for one product (see `gnn_panel_menu()` in `gnn/inc/admin-panel.php`, which nests the Slider CPT this way).
    - The full slot registry lives in [ADR 0009](../.memory-bank/adr/0009-gnn-product-family-menu-position-registry.md) — check it before assigning a new position, and add a row there for every new GNN product.
+8. **Distribution and Verification (2026-10-18 user decision):**
+   - Distribute through GitHub/private ZIP only. WordPress.org publishing and the legacy WP.org ZIP are outside scope.
+   - `.scripts/check-release.py` MUST pass before packaging; an override may only confirm the source version.
+   - Release verification must distinguish syntax/package checks from real WordPress/browser results and explicitly identify unmeasured coverage.
