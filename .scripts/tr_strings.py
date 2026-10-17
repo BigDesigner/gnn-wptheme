@@ -16,6 +16,17 @@ PLURALS = {
 }
 
 TRANSLATIONS = {
+    'Refresh Elementor templates': 'Elementor şablonlarını yenile',
+    'Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved.': 'Değiştirilmemiş GNN kayıtlı şablonlarını yeniler ve eksik bölümleri ekler. Düzenlediğiniz şablonlar ve kimlikleri korunur. Başlangıç kaydı bulunmayan eski şablonlar korunur.',
+    'Elementor templates refreshed. Edited templates were preserved.': 'Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu.',
+    'Some Elementor templates could not be saved. Please retry.': 'Bazı Elementor şablonları kaydedilemedi. Lütfen tekrar deneyin.',
+    '%1$d of %2$d': '%1$d / %2$d',
+    'Start slide rotation': 'Slayt geçişini başlat',
+    'Stop slide rotation': 'Slayt geçişini durdur',
+    'Choose a slide': 'Slayt seç',
+    'The update does not contain an installable GNN theme.': 'Güncelleme kurulabilir bir GNN teması içermiyor.',
+    'The update package could not be prepared. The installed theme has not been changed.': 'Güncelleme paketi hazırlanamadı. Kurulu tema değiştirilmedi.',
+    'Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone.': 'Panel ayarlarını, vurgu rengini, varsayılan modu ve alt bilgi yasal metnini sıfırlar. Site simgesi ve güncelleme tercihleri korunur. Bu işlem geri alınamaz.',
     # --- Elementor Saved Templates library ---
     'Elementor templates': 'Elementor şablonları',
     'Elementor templates rebuilt.': 'Elementor şablonları yeniden oluşturuldu.',

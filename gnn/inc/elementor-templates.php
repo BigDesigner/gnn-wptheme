@@ -16,6 +16,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Change only when the generated library changes, independently of theme releases.
+define( 'GNN_ELEMENTOR_LIBRARY_VERSION', '1' );
+
 /**
  * Generate an Elementor-style element id (7 hex chars).
  *
@@ -1217,20 +1220,21 @@ function gnn_elementor_library() {
 }
 
 /**
- * Create (or re-create) the Elementor local templates. Runs once per theme
- * activation and once whenever "Rebuild Elementor templates" is used from
- * the panel's Advanced tab (e.g. after changing the accent color).
+ * Refresh the generated library without replacing IDs or user modifications.
+ * Legacy records without a baseline are preserved and adopted conservatively.
+ *
+ * @return bool Whether every template could be saved.
  */
 function gnn_install_elementor_templates() {
 	if ( ! post_type_exists( 'elementor_library' ) ) {
-		return;
+		return false;
 	}
 
-	// Remove any previously generated set first, so re-runs don't duplicate.
+	// Include trashed entries: a user's deletion must not silently be reversed.
 	$existing = get_posts(
 		array(
 			'post_type'      => 'elementor_library',
-			'post_status'    => 'any',
+			'post_status'    => array_merge( array_keys( get_post_stati() ), array( 'trash' ) ),
 			'posts_per_page' => -1,
 			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- rare, admin-triggered, small result set (theme templates only).
 				array( 'key' => '_gnn_elementor_template' ),
@@ -1238,19 +1242,38 @@ function gnn_install_elementor_templates() {
 			'fields'         => 'ids',
 		)
 	);
+	$by_slug = array();
 	foreach ( $existing as $post_id ) {
-		wp_delete_post( $post_id, true );
+		$slug = get_post_meta( $post_id, '_gnn_elementor_template', true );
+		if ( ! isset( $by_slug[ $slug ] ) ) {
+			$by_slug[ $slug ] = $post_id;
+		}
 	}
+	$complete = true;
 
 	foreach ( gnn_elementor_library() as $slug => $tpl ) {
-		$post_id = wp_insert_post(
-			array(
-				'post_type'   => 'elementor_library',
-				'post_title'  => $tpl['title'],
-				'post_status' => 'publish',
-			)
-		);
-		if ( ! $post_id || is_wp_error( $post_id ) ) {
+		$post_id = isset( $by_slug[ $slug ] ) ? $by_slug[ $slug ] : 0;
+		if ( $post_id ) {
+			$baseline = get_post_meta( $post_id, '_gnn_elementor_baseline', true );
+			$current  = gnn_elementor_template_fingerprint( $post_id );
+			// Unknown legacy baselines and user edits are never overwritten.
+			if ( ! $baseline || ! hash_equals( $baseline, $current ) || 'trash' === get_post_status( $post_id ) ) {
+				continue;
+			}
+			$saved = wp_update_post( array( 'ID' => $post_id, 'post_title' => $tpl['title'] ), true );
+		} else {
+			$saved = wp_insert_post(
+				array(
+					'post_type'   => 'elementor_library',
+					'post_title'  => $tpl['title'],
+					'post_status' => 'publish',
+				),
+				true
+			);
+			$post_id = $saved;
+		}
+		if ( ! $saved || is_wp_error( $saved ) ) {
+			$complete = false;
 			continue;
 		}
 		update_post_meta( $post_id, '_elementor_edit_mode', 'builder' );
@@ -1262,9 +1285,29 @@ function gnn_install_elementor_templates() {
 		update_post_meta( $post_id, '_elementor_data', wp_slash( wp_json_encode( $sections ) ) );
 		update_post_meta( $post_id, '_gnn_elementor_template', $slug );
 		wp_set_object_terms( $post_id, 'section', 'elementor_library_type' );
+		update_post_meta( $post_id, '_gnn_elementor_baseline', gnn_elementor_template_fingerprint( $post_id ) );
 	}
 
-	update_option( 'gnn_elementor_templates_installed', GNN_VERSION );
+	if ( $complete ) {
+		update_option( 'gnn_elementor_templates_installed', GNN_ELEMENTOR_LIBRARY_VERSION );
+	}
+	return $complete;
+}
+
+/**
+ * Fingerprint the editable template payload, title and status.
+ *
+ * @param int $post_id Template ID.
+ * @return string
+ */
+function gnn_elementor_template_fingerprint( $post_id ) {
+	return hash( 'sha256', wp_json_encode( array(
+		get_post_field( 'post_title', $post_id ),
+		get_post_field( 'post_content', $post_id ),
+		get_post_status( $post_id ),
+		get_post_meta( $post_id, '_elementor_data', true ),
+		get_post_meta( $post_id, '_elementor_page_settings', true ),
+	) ) );
 }
 
 /**
@@ -1274,31 +1317,35 @@ function gnn_install_elementor_templates() {
  * without a full admin request ever completing, so it can be missed.
  *
  * Re-runs when either:
- * - The stored "installed" version doesn't match GNN_VERSION (a theme
- *   update may have added/changed templates), or
- * - No GNN-authored templates actually exist any more (e.g. someone
- *   deleted them from Templates → Saved Templates) — checking the version
- *   flag alone isn't enough here, since the flag survives post deletion.
+ * - The stored library version doesn't match its independent version, or
+ * - A generated library entry is missing. Trashed entries count as intentional
+ *   user removals and are left in the trash.
  */
 function gnn_maybe_install_elementor_templates() {
 	if ( ! post_type_exists( 'elementor_library' ) ) {
 		return;
 	}
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return;
+	}
 
-	$version_synced = get_option( 'gnn_elementor_templates_installed' ) === GNN_VERSION;
-	$has_templates  = ! empty(
-		get_posts(
-			array(
-				'post_type'      => 'elementor_library',
-				'post_status'    => 'any',
-				'posts_per_page' => 1,
-				'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin-only, LIMIT 1, indexed meta key.
-					array( 'key' => '_gnn_elementor_template' ),
-				),
-				'fields'         => 'ids',
-			)
+	$version_synced = get_option( 'gnn_elementor_templates_installed' ) === GNN_ELEMENTOR_LIBRARY_VERSION;
+	$existing       = get_posts(
+		array(
+			'post_type'      => 'elementor_library',
+			'post_status'    => array_keys( get_post_stati() ),
+			'posts_per_page' => -1,
+			'meta_query'     => array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- admin-only, generated library is small.
+				array( 'key' => '_gnn_elementor_template' ),
+			),
+			'fields'         => 'ids',
 		)
 	);
+	$slugs = array();
+	foreach ( $existing as $post_id ) {
+		$slugs[] = get_post_meta( $post_id, '_gnn_elementor_template', true );
+	}
+	$has_templates = ! array_diff( array_keys( gnn_elementor_library() ), $slugs );
 
 	if ( ! $version_synced || ! $has_templates ) {
 		gnn_install_elementor_templates();

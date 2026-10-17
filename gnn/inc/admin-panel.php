@@ -1086,7 +1086,7 @@ function gnn_panel_advanced_tab() {
 
 		<div class="gnn-field">
 			<span class="gnn-field__label"><?php esc_html_e( 'Reset settings', 'gnn' ); ?></span>
-			<p class="description"><?php esc_html_e( 'Restore all GNN Theme settings to their defaults. This cannot be undone.', 'gnn' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone.', 'gnn' ); ?></p>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return confirm('<?php echo esc_js( __( 'Reset all GNN Theme settings to defaults?', 'gnn' ) ); ?>');" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_reset_settings">
 				<?php wp_nonce_field( 'gnn_reset_settings' ); ?>
@@ -1097,11 +1097,11 @@ function gnn_panel_advanced_tab() {
 		<?php if ( defined( 'ELEMENTOR_VERSION' ) ) : ?>
 			<div class="gnn-field">
 				<span class="gnn-field__label"><?php esc_html_e( 'Elementor templates', 'gnn' ); ?></span>
-				<p class="description"><?php esc_html_e( 'GNN\'s designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match.', 'gnn' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved.', 'gnn' ); ?></p>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_rebuild_elementor_templates">
 					<?php wp_nonce_field( 'gnn_rebuild_elementor_templates' ); ?>
-					<?php submit_button( __( 'Rebuild Elementor templates', 'gnn' ), 'secondary', 'submit', false ); ?>
+					<?php submit_button( __( 'Refresh Elementor templates', 'gnn' ), 'secondary', 'submit', false ); ?>
 				</form>
 			</div>
 		<?php endif; ?>
@@ -1234,10 +1234,20 @@ function gnn_handle_reset_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_reset_settings' ) ) {
 		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
 	}
-	delete_option( 'gnn_options' );
+	gnn_reset_panel_settings();
 	gnn_panel_redirect( 'reset_ok' );
 }
 add_action( 'admin_post_gnn_reset_settings', 'gnn_handle_reset_settings' );
+
+/**
+ * Reset settings owned by the panel, preserving site-wide/update preferences.
+ */
+function gnn_reset_panel_settings() {
+	delete_option( 'gnn_options' );
+	foreach ( gnn_exportable_theme_mods() as $mod ) {
+		remove_theme_mod( $mod );
+	}
+}
 
 /**
  * Handle: rebuild the Elementor Saved Templates library.
@@ -1247,7 +1257,9 @@ function gnn_handle_rebuild_elementor_templates() {
 		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
 	}
 	if ( function_exists( 'gnn_install_elementor_templates' ) ) {
-		gnn_install_elementor_templates();
+		if ( ! gnn_install_elementor_templates() ) {
+			gnn_panel_redirect( 'elementor_error' );
+		}
 	}
 	gnn_panel_redirect( 'elementor_rebuilt' );
 }
@@ -1261,6 +1273,7 @@ function gnn_handle_save_updater_settings() {
 		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
 	}
 	update_option( 'gnn_github_updates_enable', empty( $_POST['gnn_updates_enable'] ) ? 0 : 1 );
+	delete_site_transient( 'update_themes' );
 	gnn_panel_redirect( 'updater_saved' );
 }
 add_action( 'admin_post_gnn_save_updater_settings', 'gnn_handle_save_updater_settings' );
@@ -1273,7 +1286,7 @@ function gnn_handle_check_theme_update() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_check_theme_update' ) ) {
 		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
 	}
-	delete_transient( 'gnn_github_update_check' );
+	delete_transient( 'gnn_github_update_check_v2' );
 	delete_site_transient( 'update_themes' );
 	gnn_panel_redirect( 'updater_checked' );
 }
@@ -1295,7 +1308,8 @@ function gnn_panel_admin_notices() {
 		'import_ok'         => array( 'success', __( 'Settings imported successfully.', 'gnn' ) ),
 		'import_error'      => array( 'error', __( 'Import failed: the file is not a valid GNN settings export.', 'gnn' ) ),
 		'reset_ok'          => array( 'success', __( 'Settings reset to defaults.', 'gnn' ) ),
-		'elementor_rebuilt' => array( 'success', __( 'Elementor templates rebuilt.', 'gnn' ) ),
+		'elementor_rebuilt' => array( 'success', __( 'Elementor templates refreshed. Edited templates were preserved.', 'gnn' ) ),
+		'elementor_error'   => array( 'error', __( 'Some Elementor templates could not be saved. Please retry.', 'gnn' ) ),
 		'updater_saved'     => array( 'success', __( 'Theme update settings saved.', 'gnn' ) ),
 		'updater_checked'   => array( 'success', __( 'Update check complete.', 'gnn' ) ),
 	);

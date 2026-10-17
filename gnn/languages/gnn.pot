@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.6.0\n"
+"Project-Id-Version: GNN 1.6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-06 04:36+0000\n"
-"PO-Revision-Date: 2026-08-06 04:36+0000\n"
+"POT-Creation-Date: 2026-10-18 01:21+0000\n"
+"PO-Revision-Date: 2026-10-18 01:21+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -11,6 +11,10 @@ msgstr ""
 "X-Generator: gen-i18n.py\n"
 "Language: \n"
 
+
+#: template-parts/hero-slider.php:23
+msgid "%1$d of %2$d"
+msgstr ""
 
 #: search.php:24
 msgid "%1$s result for “%2$s”"
@@ -58,19 +62,19 @@ msgstr ""
 msgid "404 title"
 msgstr ""
 
-#: inc/elementor-templates.php:569
+#: inc/elementor-templates.php:572
 msgid "A bold headline goes here"
 msgstr ""
 
-#: inc/elementor-templates.php:621
+#: inc/elementor-templates.php:624
 msgid "A centered bold headline goes here"
 msgstr ""
 
-#: inc/elementor-templates.php:541
+#: inc/elementor-templates.php:544
 msgid "A new collection"
 msgstr ""
 
-#: inc/elementor-templates.php:301
+#: inc/elementor-templates.php:304
 msgid "About the event"
 msgstr ""
 
@@ -92,11 +96,11 @@ msgstr ""
 msgid "Add Slide"
 msgstr ""
 
-#: inc/elementor-templates.php:495
+#: inc/elementor-templates.php:498
 msgid "Add a short supporting paragraph here to describe the offer, product or story. Replace with your own copy."
 msgstr ""
 
-#: inc/elementor-templates.php:722
+#: inc/elementor-templates.php:725
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr ""
 
@@ -104,7 +108,7 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
-#: inc/elementor-templates.php:237
+#: inc/elementor-templates.php:240
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
 msgstr ""
 
@@ -137,9 +141,9 @@ msgstr ""
 msgid "Announcement text"
 msgstr ""
 
-#: inc/elementor-templates.php:326
-#: inc/elementor-templates.php:331
-#: inc/elementor-templates.php:336
+#: inc/elementor-templates.php:329
+#: inc/elementor-templates.php:334
+#: inc/elementor-templates.php:339
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr ""
 
@@ -172,7 +176,7 @@ msgstr ""
 msgid "Autoplay interval (seconds)"
 msgstr ""
 
-#: inc/elementor-templates.php:525
+#: inc/elementor-templates.php:528
 msgid "BRAND."
 msgstr ""
 
@@ -198,7 +202,7 @@ msgstr ""
 msgid "Badge (e.g. New, Hot, Sale)"
 msgstr ""
 
-#: inc/elementor-templates.php:467
+#: inc/elementor-templates.php:470
 msgid "Big bold headline"
 msgstr ""
 
@@ -227,7 +231,7 @@ msgstr ""
 msgid "Blog: single post pages."
 msgstr ""
 
-#: inc/elementor-templates.php:461
+#: inc/elementor-templates.php:464
 #: inc/patterns.php:117
 msgid "Bold heading, paragraph & button"
 msgstr ""
@@ -287,8 +291,8 @@ msgstr ""
 msgid "Cart"
 msgstr ""
 
-#: inc/elementor-templates.php:676
-#: inc/elementor-templates.php:693
+#: inc/elementor-templates.php:679
+#: inc/elementor-templates.php:696
 msgid "Case study ↗"
 msgstr ""
 
@@ -322,6 +326,10 @@ msgstr ""
 msgid "Check for updates"
 msgstr ""
 
+#: template-parts/hero-slider.php:72
+msgid "Choose a slide"
+msgstr ""
+
 #: inc/admin-panel.php:484
 #: inc/admin-panel.php:514
 #: inc/admin-panel.php:521
@@ -340,7 +348,7 @@ msgstr ""
 msgid "Contact page"
 msgstr ""
 
-#: inc/elementor-templates.php:355
+#: inc/elementor-templates.php:358
 #: inc/patterns.php:115
 msgid "Contact with social links"
 msgstr ""
@@ -395,17 +403,17 @@ msgstr ""
 msgid "Cover — top"
 msgstr ""
 
-#: inc/elementor-templates.php:615
+#: inc/elementor-templates.php:618
 #: inc/patterns.php:120
 msgid "Cover: heading & button (centered)"
 msgstr ""
 
-#: inc/elementor-templates.php:563
+#: inc/elementor-templates.php:566
 #: inc/patterns.php:119
 msgid "Cover: heading & button (left)"
 msgstr ""
 
-#: inc/elementor-templates.php:215
+#: inc/elementor-templates.php:218
 #: inc/patterns.php:111
 msgid "Cover: poster left, text right"
 msgstr ""
@@ -437,7 +445,7 @@ msgstr ""
 msgid "Dark"
 msgstr ""
 
-#: inc/elementor-templates.php:417
+#: inc/elementor-templates.php:420
 #: inc/patterns.php:116
 msgid "Dark banner, top-left heading"
 msgstr ""
@@ -476,8 +484,8 @@ msgstr ""
 msgid "Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1298
-msgid "Elementor templates rebuilt."
+#: inc/admin-panel.php:1311
+msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr ""
 
 #: inc/admin-panel.php:723
@@ -496,7 +504,7 @@ msgstr ""
 msgid "Enterprise clients"
 msgstr ""
 
-#: inc/elementor-templates.php:269
+#: inc/elementor-templates.php:272
 msgid "Etcetera"
 msgstr ""
 
@@ -512,8 +520,8 @@ msgstr ""
 msgid "Excerpt length (words)"
 msgstr ""
 
-#: inc/elementor-templates.php:582
-#: inc/elementor-templates.php:635
+#: inc/elementor-templates.php:585
+#: inc/elementor-templates.php:638
 msgid "Explore"
 msgstr ""
 
@@ -529,7 +537,7 @@ msgstr ""
 msgid "Extra <head> HTML (meta/verification tags)"
 msgstr ""
 
-#: inc/elementor-templates.php:312
+#: inc/elementor-templates.php:315
 #: inc/patterns.php:114
 msgid "FAQs"
 msgstr ""
@@ -649,7 +657,7 @@ msgstr ""
 msgid "Force on for this page"
 msgstr ""
 
-#: inc/elementor-templates.php:317
+#: inc/elementor-templates.php:320
 msgid "Frequently Asked Questions"
 msgstr ""
 
@@ -700,10 +708,6 @@ msgstr ""
 msgid "GNN Theme Panel"
 msgstr ""
 
-#: inc/admin-panel.php:1100
-msgid "GNN's designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match."
-msgstr ""
-
 #: inc/admin-panel.php:789
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr ""
@@ -721,7 +725,7 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: template-parts/hero-slider.php:71
+#: template-parts/hero-slider.php:75
 msgid "Go to slide %d"
 msgstr ""
 
@@ -733,7 +737,7 @@ msgstr ""
 msgid "Google Tag Manager ID"
 msgstr ""
 
-#: inc/elementor-templates.php:361
+#: inc/elementor-templates.php:364
 msgid "Got questions? Feel free to reach out."
 msgstr ""
 
@@ -798,21 +802,21 @@ msgstr ""
 msgid "Header right"
 msgstr ""
 
-#: inc/elementor-templates.php:295
+#: inc/elementor-templates.php:298
 #: inc/patterns.php:113
 msgid "Heading & paragraph with image"
 msgstr ""
 
-#: inc/elementor-templates.php:519
+#: inc/elementor-templates.php:522
 #: inc/patterns.php:118
 msgid "Headline with links, gradient background"
 msgstr ""
 
-#: inc/elementor-templates.php:711
+#: inc/elementor-templates.php:714
 msgid "Headline."
 msgstr ""
 
-#: inc/elementor-templates.php:302
+#: inc/elementor-templates.php:305
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr ""
 
@@ -869,7 +873,7 @@ msgstr ""
 msgid "Import JSON"
 msgstr ""
 
-#: inc/admin-panel.php:1296
+#: inc/admin-panel.php:1309
 msgid "Import failed: the file is not a valid GNN settings export."
 msgstr ""
 
@@ -893,7 +897,7 @@ msgstr ""
 msgid "Kicker"
 msgstr ""
 
-#: inc/elementor-templates.php:705
+#: inc/elementor-templates.php:708
 #: inc/patterns.php:123
 msgid "Large header over cover (left text)"
 msgstr ""
@@ -906,12 +910,12 @@ msgstr ""
 msgid "Layout widths"
 msgstr ""
 
-#: inc/elementor-templates.php:542
+#: inc/elementor-templates.php:545
 msgid "Learn More →"
 msgstr ""
 
-#: inc/elementor-templates.php:239
-#: inc/elementor-templates.php:497
+#: inc/elementor-templates.php:242
+#: inc/elementor-templates.php:500
 msgid "Learn more"
 msgstr ""
 
@@ -988,12 +992,12 @@ msgstr ""
 msgid "Mean incident response"
 msgstr ""
 
-#: inc/elementor-templates.php:669
+#: inc/elementor-templates.php:672
 #: inc/patterns.php:121
 msgid "Media & text (image left)"
 msgstr ""
 
-#: inc/elementor-templates.php:687
+#: inc/elementor-templates.php:690
 #: inc/patterns.php:122
 msgid "Media & text (image right)"
 msgstr ""
@@ -1038,7 +1042,7 @@ msgstr ""
 msgid "Newer comments →"
 msgstr ""
 
-#: template-parts/hero-slider.php:67
+#: template-parts/hero-slider.php:71
 msgid "Next slide"
 msgstr ""
 
@@ -1079,8 +1083,8 @@ msgstr ""
 msgid "Only applies while the toggle above is visible."
 msgstr ""
 
-#: inc/elementor-templates.php:675
-#: inc/elementor-templates.php:692
+#: inc/elementor-templates.php:678
+#: inc/elementor-templates.php:695
 msgid "Open spaces"
 msgstr ""
 
@@ -1190,7 +1194,7 @@ msgstr ""
 msgid "Preload theme fonts"
 msgstr ""
 
-#: template-parts/hero-slider.php:66
+#: template-parts/hero-slider.php:70
 msgid "Previous slide"
 msgstr ""
 
@@ -1214,19 +1218,19 @@ msgstr ""
 msgid "Products per page"
 msgstr ""
 
-#: inc/elementor-templates.php:340
+#: inc/elementor-templates.php:343
 msgid "Question four goes here?"
 msgstr ""
 
-#: inc/elementor-templates.php:325
+#: inc/elementor-templates.php:328
 msgid "Question one goes here?"
 msgstr ""
 
-#: inc/elementor-templates.php:335
+#: inc/elementor-templates.php:338
 msgid "Question three goes here?"
 msgstr ""
 
-#: inc/elementor-templates.php:330
+#: inc/elementor-templates.php:333
 msgid "Question two goes here?"
 msgstr ""
 
@@ -1239,7 +1243,11 @@ msgid "Ready to secure your stack?"
 msgstr ""
 
 #: inc/admin-panel.php:1104
-msgid "Rebuild Elementor templates"
+msgid "Refresh Elementor templates"
+msgstr ""
+
+#: inc/admin-panel.php:1100
+msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr ""
 
 #: inc/admin-panel.php:652
@@ -1272,7 +1280,7 @@ msgid "Reset to defaults"
 msgstr ""
 
 #: inc/admin-panel.php:1089
-msgid "Restore all GNN Theme settings to their defaults. This cannot be undone."
+msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
 msgstr ""
 
 #: inc/admin-panel.php:711
@@ -1289,7 +1297,7 @@ msgstr ""
 msgid "Rounded"
 msgstr ""
 
-#: inc/elementor-templates.php:221
+#: inc/elementor-templates.php:224
 msgid "Sample title"
 msgstr ""
 
@@ -1336,11 +1344,11 @@ msgstr ""
 msgid "Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens)."
 msgstr ""
 
-#: inc/admin-panel.php:1295
+#: inc/admin-panel.php:1308
 msgid "Settings imported successfully."
 msgstr ""
 
-#: inc/admin-panel.php:1297
+#: inc/admin-panel.php:1310
 msgid "Settings reset to defaults."
 msgstr ""
 
@@ -1420,8 +1428,16 @@ msgstr ""
 msgid "Smooth scroll for anchor links"
 msgstr ""
 
+#: inc/admin-panel.php:1312
+msgid "Some Elementor templates could not be saved. Please retry."
+msgstr ""
+
 #: inc/admin-panel.php:700
 msgid "Standard (logo left, menu right)"
+msgstr ""
+
+#: template-parts/hero-slider.php:69
+msgid "Start slide rotation"
 msgstr ""
 
 #: inc/patterns.php:71
@@ -1430,6 +1446,11 @@ msgstr ""
 
 #: inc/admin-panel.php:715
 msgid "Sticky header"
+msgstr ""
+
+#: template-parts/hero-slider.php:69
+#: template-parts/hero-slider.php:69
+msgid "Stop slide rotation"
 msgstr ""
 
 #: inc/admin-panel.php:970
@@ -1490,6 +1511,15 @@ msgstr ""
 msgid "The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus."
 msgstr ""
 
+#: inc/class-gnn-github-updater.php:260
+#: inc/class-gnn-github-updater.php:264
+msgid "The update does not contain an installable GNN theme."
+msgstr ""
+
+#: inc/class-gnn-github-updater.php:269
+msgid "The update package could not be prepared. The installed theme has not been changed."
+msgstr ""
+
 #: inc/admin-panel.php:41
 #: inc/frontend.php:220
 msgid "Theme"
@@ -1507,7 +1537,7 @@ msgstr ""
 msgid "Theme default (currently %s)"
 msgstr ""
 
-#: inc/admin-panel.php:1299
+#: inc/admin-panel.php:1313
 msgid "Theme update settings saved."
 msgstr ""
 
@@ -1571,12 +1601,12 @@ msgstr ""
 msgid "Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice)."
 msgstr ""
 
-#: inc/elementor-templates.php:748
+#: inc/elementor-templates.php:751
 #: inc/patterns.php:124
 msgid "Two images side by side"
 msgstr ""
 
-#: inc/elementor-templates.php:261
+#: inc/elementor-templates.php:264
 #: inc/patterns.php:112
 msgid "Two-tone background, centered image"
 msgstr ""
@@ -1594,7 +1624,7 @@ msgstr ""
 msgid "Update available: version %s."
 msgstr ""
 
-#: inc/admin-panel.php:1300
+#: inc/admin-panel.php:1314
 msgid "Update check complete."
 msgstr ""
 
@@ -1663,7 +1693,7 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: inc/elementor-templates.php:423
+#: inc/elementor-templates.php:426
 msgid "hello!"
 msgstr ""
 
@@ -1679,7 +1709,7 @@ msgstr ""
 msgid "© %1$s %2$s. All rights reserved."
 msgstr ""
 
-#: inc/elementor-templates.php:479
+#: inc/elementor-templates.php:482
 msgid "— second line"
 msgstr ""
 

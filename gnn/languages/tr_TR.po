@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.6.0\n"
+"Project-Id-Version: GNN 1.6.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-06 04:36+0000\n"
-"PO-Revision-Date: 2026-08-06 04:36+0000\n"
+"POT-Creation-Date: 2026-10-18 01:21+0000\n"
+"PO-Revision-Date: 2026-10-18 01:21+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,6 +12,9 @@ msgstr ""
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+
+msgid "%1$d of %2$d"
+msgstr "%1$d / %2$d"
 
 msgid "%1$s result for “%2$s”"
 msgid_plural "%1$s results for “%2$s”"
@@ -236,6 +239,9 @@ msgstr "Yakında tekrar bakın — yeni içerik yolda."
 msgid "Check for updates"
 msgstr "Güncellemeleri kontrol et"
 
+msgid "Choose a slide"
+msgstr "Slayt seç"
+
 msgid "Clear"
 msgstr "Temizle"
 
@@ -341,8 +347,8 @@ msgstr "Elementor"
 msgid "Elementor templates"
 msgstr "Elementor şablonları"
 
-msgid "Elementor templates rebuilt."
-msgstr "Elementor şablonları yeniden oluşturuldu."
+msgid "Elementor templates refreshed. Edited templates were preserved."
+msgstr "Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu."
 
 msgid "Email"
 msgstr "E-posta"
@@ -502,9 +508,6 @@ msgstr "GNN Tema Seçenekleri"
 
 msgid "GNN Theme Panel"
 msgstr "GNN Tema Paneli"
-
-msgid "GNN's designed sections as Elementor Saved Templates (Templates → Insert Template in the editor). Rebuild after changing the accent color so the templates match."
-msgstr "GNN’in tasarlanmış bölümleri Elementor Kayıtlı Şablonlar olarak (editörde Şablonlar → Şablon Ekle). Vurgu rengini değiştirdikten sonra şablonların eşleşmesi için yeniden oluşturun."
 
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr "Üst bölüm ile sayfa içeriği arasındaki boşluk — sayfada öne çıkarılan görsel varsa, görsel ile içerik arasındaki boşluk."
@@ -890,8 +893,11 @@ msgstr "Ham JS; <head> içinde <script> etiketiyle basılır. unfiltered_html ye
 msgid "Ready to secure your stack?"
 msgstr "Altyapınızı güvenceye almaya hazır mısınız?"
 
-msgid "Rebuild Elementor templates"
-msgstr "Elementor şablonlarını yeniden oluştur"
+msgid "Refresh Elementor templates"
+msgstr "Elementor şablonlarını yenile"
+
+msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
+msgstr "Değiştirilmemiş GNN kayıtlı şablonlarını yeniler ve eksik bölümleri ekler. Düzenlediğiniz şablonlar ve kimlikleri korunur. Başlangıç kaydı bulunmayan eski şablonlar korunur."
 
 msgid "Remember each visitor's choice (localStorage)"
 msgstr "Her ziyaretçinin seçimini hatırla (localStorage)"
@@ -914,8 +920,8 @@ msgstr "Ayarları sıfırla"
 msgid "Reset to defaults"
 msgstr "Varsayılana sıfırla"
 
-msgid "Restore all GNN Theme settings to their defaults. This cannot be undone."
-msgstr "Tüm GNN Tema ayarlarını varsayılana döndürür. Bu işlem geri alınamaz."
+msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
+msgstr "Panel ayarlarını, vurgu rengini, varsayılan modu ve alt bilgi yasal metnini sıfırlar. Site simgesi ve güncelleme tercihleri korunur. Bu işlem geri alınamaz."
 
 msgid "Right"
 msgstr "Sağ"
@@ -1022,14 +1028,23 @@ msgstr "Heartbeat API’yi 60 sn’ye yavaşlat"
 msgid "Smooth scroll for anchor links"
 msgstr "Çapa bağlantıları için yumuşak kaydırma"
 
+msgid "Some Elementor templates could not be saved. Please retry."
+msgstr "Bazı Elementor şablonları kaydedilemedi. Lütfen tekrar deneyin."
+
 msgid "Standard (logo left, menu right)"
 msgstr "Standart (logo solda, menü sağda)"
+
+msgid "Start slide rotation"
+msgstr "Slayt geçişini başlat"
 
 msgid "Statistics cards"
 msgstr "İstatistik kartları"
 
 msgid "Sticky header"
 msgstr "Sabit üst bölüm"
+
+msgid "Stop slide rotation"
+msgstr "Slayt geçişini durdur"
 
 msgid "Style %d"
 msgstr "Stil %d"
@@ -1072,6 +1087,12 @@ msgstr "Tema, sunucuda barındırılan Space Grotesk (başlıklar) ve Manrope (g
 
 msgid "The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus."
 msgstr "Tema kendi arayüzü için satır içi SVG ikonlar kullanır. Sayfa içeriğinde ve menülerde kullanılmak üzere Google Material Symbols de yüklenebilir."
+
+msgid "The update does not contain an installable GNN theme."
+msgstr "Güncelleme kurulabilir bir GNN teması içermiyor."
+
+msgid "The update package could not be prepared. The installed theme has not been changed."
+msgstr "Güncelleme paketi hazırlanamadı. Kurulu tema değiştirilmedi."
 
 msgid "Theme"
 msgstr "Tema"

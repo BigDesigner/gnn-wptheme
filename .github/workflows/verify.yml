@@ -1,0 +1,38 @@
+name: Verify theme
+on:
+  push:
+  pull_request:
+  workflow_call:
+permissions:
+  contents: read
+jobs:
+  static-and-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          coverage: none
+      - run: python .scripts/verify.py
+  wordpress-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.18.0'
+      - run: npm install --prefix .temp/qa-tools --ignore-scripts --no-audit --no-fund @wp-playground/cli@3.1.58 playwright@1.64.1
+      - run: .temp/qa-tools/node_modules/.bin/playwright install --with-deps chromium
+      - run: node .scripts/test-wordpress.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: wordpress-verification
+          path: .memory-bank/audits/verification-*/

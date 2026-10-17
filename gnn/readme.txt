@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,8 +17,8 @@ GNN is a classic (PHP-template) WordPress theme:
 
 * Dark by default with a light mode — visitors toggle it in the header; their
   choice persists in the browser. Default mode is a Customizer setting.
-* Full-screen 3-slide hero slider on the front page (Customizer-managed:
-  image, kicker, title, text, CTA per slide; autoplay toggle).
+* Hero slider on a static front page, managed in GNN → Slider: unlimited
+  slides, images, title, copy and CTA. Rotation and sizing live in the panel.
 * Accent color Customizer setting (suggested: #34d399, #22d3ee, #fb923c, #a78bfa).
 * Mega menu: give a top-level menu item the CSS class `mega-menu-parent`
   (Appearance → Menus → Screen Options → CSS Classes). Its second-level items
@@ -36,22 +36,41 @@ GNN is a classic (PHP-template) WordPress theme:
 1. Appearance → Menus: create a menu, assign to "Primary Menu".
    For the mega menu, add the `mega-menu-parent` class to a parent item.
 2. Settings → Reading: set a static Front page and a Posts page ("Blog").
-3. Appearance → Customize → GNN Theme Options: accent color, default mode,
-   hero slides.
+3. GNN → Theme: branding, colors, default mode and slider behavior.
+   GNN → Slider: create and order the slides.
 4. Appearance → Widgets: add Search / Categories / Recent Posts / Tag Cloud
    to "Sidebar" to reproduce the designed archive sidebar.
-5. Optional: import the bundled demo content (gnn-demo-content.xml) via
+5. Optional: import demo/gnn-demo-content.xml from the theme package via
    Tools → Import → WordPress.
-6. The front page shows designed default sections until you give the front
-   page its own content (e.g. with Elementor) — then your content replaces them.
+6. Add static front-page content with blocks or Elementor. Latest-posts mode
+   uses the blog listing. Designed sections are available as block patterns
+   and Elementor Saved Templates; no demo sections are inserted into pages automatically.
 
 == Fonts ==
 
 Space Grotesk and Manrope are bundled as self-hosted variable WOFF2 files
 (assets/fonts/), licensed under the SIL Open Font License 1.1. No external
-font CDN is contacted.
+font CDN is needed for these bundled fonts. Optional Material Icons and Google
+Fonts typography settings can enable Google font requests.
+
+== Distribution ==
+
+Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locally.
+This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 1.6.1 =
+* Fix the latest-posts homepage and preserve static front-page content.
+* Preserve Elementor Saved Template IDs and user edits during library refreshes.
+* Register GitHub update checks for cron; validate named release assets and the
+  extracted theme before installation; preserve failures and clear stale updates.
+* Preserve WooCommerce assets for product shortcodes, nested/reusable blocks,
+  Elementor content and active product widgets.
+* Make slider rotation keyboard-safe with explicit start/stop and inactive-slide
+  focus isolation; respect reduced motion and RTL navigation.
+* Reset shared brand settings with panel preferences and explain preserved options.
+* Preserve CSS exactly during packaging and validate source/release versions.
 
 = 1.6.0 =
 * Fix (important): with "Title over featured image" on, the title could

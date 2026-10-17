@@ -7,11 +7,15 @@ import os
 import struct
 import zipfile
 import zlib
+import subprocess
+import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 THEME = os.path.join(ROOT, 'gnn')
 BUILD = os.path.join(ROOT, '.build')
+# Refuse mislabeled release artifacts before writing any package.
+subprocess.run([sys.executable, os.path.join(HERE, 'check-release.py')], check=True)
 os.makedirs(BUILD, exist_ok=True)
 
 
@@ -68,21 +72,13 @@ if not os.path.exists(shot):
     make_screenshot(shot)
 
 import shutil
-import sys
-WPORG = '--wporg' in sys.argv
-if not WPORG and os.path.exists(os.path.join(ROOT, 'gnn-demo-content.xml')):
+if '--wporg' in sys.argv:
+    raise SystemExit('WordPress.org packaging is retired. Use the normal gnn.zip build.')
+if os.path.exists(os.path.join(ROOT, 'gnn-demo-content.xml')):
     shutil.copyfile(os.path.join(ROOT, 'gnn-demo-content.xml'),
                     os.path.join(THEME, 'demo', 'gnn-demo-content.xml'))
 
 import re
-
-
-def minify_css(text):
-    """Safe CSS minify: strip comments, collapse whitespace."""
-    text = re.sub(r'/\*.*?\*/', '', text, flags=re.S)
-    text = re.sub(r'\s+', ' ', text)
-    text = re.sub(r'\s*([{};:,>])\s*', r'\1', text)
-    return text.replace(';}', '}').strip()
 
 
 def minify_js(text):
@@ -98,19 +94,14 @@ def minify_js(text):
     return '\n'.join(lines)
 
 
-zip_name = 'gnn-wporg.zip' if WPORG else 'gnn.zip'
+zip_name = 'gnn.zip'
 zip_path = os.path.join(BUILD, zip_name)
 with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as z:
     for root, dirs, files in os.walk(THEME):
-        if WPORG:
-            dirs[:] = [d for d in dirs if d != 'demo']
         for f in sorted(files):
             p = os.path.join(root, f)
             arc = os.path.relpath(p, ROOT).replace(os.sep, '/')
-            if f.endswith('.css') and f != 'style.css':
-                with open(p, encoding='utf-8') as fh:
-                    z.writestr(arc, minify_css(fh.read()))
-            elif f.endswith('.js'):
+            if f.endswith('.js'):
                 with open(p, encoding='utf-8') as fh:
                     z.writestr(arc, minify_js(fh.read()))
             else:
