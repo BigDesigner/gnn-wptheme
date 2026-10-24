@@ -119,7 +119,8 @@ export async function testHardeningBrowser({browser,server,php,out,modules}) {
   const reader=await browser.newContext();
   try{const p=await reader.newPage();await p.goto(server.serverUrl+'/wp-login.php');
    await p.locator('#user_login').fill('gnn-qa-reader');await p.locator('#user_pass').fill('gnn-qa-local-only');
-   await Promise.all([p.waitForURL('**/wp-admin/**'),p.locator('#wp-submit').click()]);
+   await Promise.all([p.waitForURL(url=>url.pathname!=='/wp-login.php'),p.locator('#wp-submit').click()]);
+   assert.ok((await reader.cookies()).some(cookie=>cookie.name.startsWith('wordpress_logged_in_')),'Subscriber must be authenticated before checking access');
    for(const action of ['gnn_import_settings','gnn_export_settings'])assert.equal((await p.request.post(server.serverUrl+'/wp-admin/admin-post.php',{form:{action},maxRedirects:0})).status(),403);
   }finally{await reader.close();}
  });

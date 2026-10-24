@@ -1,3 +1,11 @@
+<?php
+/**
+ * GNN block-pattern markup, output-buffered by inc/patterns.php.
+ *
+ * @package GNN
+ */
+
+?>
 <!-- wp:group {"metadata":{"name":"Centered link and social links"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"},"blockGap":"var:preset|spacing|50","margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80)"><!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
 <div class="wp-block-group alignwide"><!-- wp:paragraph {"align":"center","style":{"typography":{"fontStyle":"normal","fontWeight":"400","fontSize":"40px","lineHeight":"1.2"}}} -->

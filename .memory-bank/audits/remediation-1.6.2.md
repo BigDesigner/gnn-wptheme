@@ -88,9 +88,9 @@ GitHub üzerinde henüz yürütülmüş kabul edilmez.
 
 ## Paket
 
-`.build/gnn.zip`: **86 dosya, 272059 bayt**.
+`.build/gnn.zip`: **86 dosya, 272324 bayt**.
 
-SHA-256: `58cfde9ba7f9822b68920f3ac946220788e9e3a33455860e1d140fec8d27c136`.
+SHA-256: `d8b1e4657928dab5d0fb96a322ab6020aee565bb108f6f0a3585db0534ad0bf2`.
 
 Çalışma ağacı 1.6.2 olarak hazırdır; bu rapor üretim dağıtımı veya yayımlanmış
 GitHub 1.6.2 sürümü bildirimi değildir. İstenen geliştirme ve yerel doğrulama

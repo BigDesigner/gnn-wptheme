@@ -1,3 +1,11 @@
+<?php
+/**
+ * GNN block-pattern markup, output-buffered by inc/patterns.php.
+ *
+ * @package GNN
+ */
+
+?>
 <!-- wp:cover {"customOverlayColor":"#d1362a","isUserOverlayColor":true,"metadata":{"name":"Bold Heading on Left, Paragraph and Button on bottom right"},"align":"full","style":{"spacing":{"padding":{"top":"5vw","right":"5vw","bottom":"5vw","left":"5vw"},"margin":{"top":"0"}}}} -->
 <div class="wp-block-cover alignfull" style="margin-top:0;padding-top:5vw;padding-right:5vw;padding-bottom:5vw;padding-left:5vw"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:#d1362a"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"blockGap":"48px"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"bottom"}} -->
 <div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"default"}} -->

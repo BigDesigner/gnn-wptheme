@@ -1,0 +1,314 @@
+{
+  "totals": {
+    "errors": 0,
+    "warnings": 0,
+    "fixable": 0
+  },
+  "files": {
+    "gnn\\404.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\archive.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\author.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\category.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\comments.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\footer.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\front-page.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\functions.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\header.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\home.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\admin-panel.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\button-styles.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\class-gnn-github-updater.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\class-gnn-walker-comment.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\class-gnn-walker-nav-menu.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\customizer.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\demo-import.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\elementor-templates.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\elementor.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\frontend.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\options.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\page-layouts.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\page-meta.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\bold-heading-button.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\contact-social.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\cover-heading-button-center.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\cover-heading-button-left.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\cover-large-header-left.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\cover-poster-left.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\cover-two-tone-image.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\dark-banner-heading.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\faqs.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\gallery-two-images.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\heading-paragraph-image.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\headline-links-gradient.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\media-text-left.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\pattern-parts\\media-text-right.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\patterns.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\settings-transfer.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\slider.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\template-tags.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\typography.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\updater.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\inc\\woocommerce.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\index.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\page-templates\\tpl-blank.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\page-templates\\tpl-boxed.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\page-templates\\tpl-left-sidebar.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\page-templates\\tpl-right-sidebar.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\page.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\search.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\searchform.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\sidebar.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\single.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\tag.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\template-parts\\content-archive.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\template-parts\\content-none.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\template-parts\\content-page.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\template-parts\\content-search.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\template-parts\\hero-slider.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    },
+    "gnn\\woocommerce\\content-product.php": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": []
+    }
+  }
+}

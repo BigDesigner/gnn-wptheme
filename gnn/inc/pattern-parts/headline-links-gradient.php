@@ -1,3 +1,11 @@
+<?php
+/**
+ * GNN block-pattern markup, output-buffered by inc/patterns.php.
+ *
+ * @package GNN
+ */
+
+?>
 <!-- wp:cover {"customGradient":"linear-gradient(180deg,rgb(0,0,0) 39%,rgb(83,80,123) 39%)","isDark":false,"metadata":{"name":"Fullwidth headline with links and gradient offset background"},"align":"full","style":{"spacing":{"padding":{"top":"48px","right":"5vw","bottom":"48px","left":"5vw"},"margin":{"top":"0"}}}} -->
 <div class="wp-block-cover alignfull is-light" style="margin-top:0;padding-top:48px;padding-right:5vw;padding-bottom:48px;padding-left:5vw"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim has-background-gradient" style="background:linear-gradient(180deg,rgb(0,0,0) 39%,rgb(83,80,123) 39%)"></span><div class="wp-block-cover__inner-container"><!-- wp:spacer -->
 <div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
