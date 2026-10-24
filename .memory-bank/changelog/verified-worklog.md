@@ -1,5 +1,16 @@
 # Verified Worklog
 
+## [2026-10-24] 1.6.2 closure, CI repair, publication and full memory sync
+
+- `9140a32` / `fda9916` are committed and pushed to `main`; settings/JSON security, legacy logos, menu metadata, no-JS visibility, keyboard focus, RTL and Turkish catalog follow-ups are complete.
+- Local real WordPress/PHP no-plugin matrices passed 89/89 each; static/package 90/90; WPCS 0 errors/warnings; 408 gettext source strings validated. Dev Composer tooling now exists outside the distributable theme.
+- Initial remote CI failed on HTML-only PHP fragments and WooCommerce's subscriber redirect. Added normal PHP package headers and authenticated-cookie checking without weakening either 403 assertion.
+- [Remote verification](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839) passed **119/119** integration/browser scenarios and **90/90** static/package checks; optional plugins were installed.
+- [Manual release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813) succeeded; GitHub `v1.6.2` published 2026-10-24 03:43:54 Europe/Istanbul at `fda9916`. Published asset metadata is separate from the local ZIP metadata.
+- FAZ 1.34.2 acceptance remains user-confirmed; WooCommerce user-site visual/checkout acceptance remains last/deferred. Publishing does not prove production installation.
+- Updated session schema/baselines, architecture notes, ADR implementation evidence, pipeline, handoff, bug/test reports, memory index and Turkish onboarding brief. Prior historical evidence remains intact.
+- Memory-only edits require no theme version bump; this sync does not itself commit or push.
+
 ## [2026-10-18] Audit remediation completed (v1.6.1)
 
 - Closed A01–A10 / bugs 47–56: homepage routing, non-destructive Elementor library refresh, cron-safe validated GitHub updates, release/source version checks, Woo asset detection, accessible slider, explicit reset scope and lossless CSS packaging.

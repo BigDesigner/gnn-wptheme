@@ -1,5 +1,15 @@
 # Bug List & Issues Tracking
 
+## CI follow-up — 1.6.2 (2026-10-24)
+
+| ID | Issue | Status | Evidence |
+|---|---|---|---|
+| 66 | Linux PHPCS warns on four HTML-only PHP pattern fragments | Fixed | Standard PHP package headers; WPCS passes on Linux in run 40045204839 |
+| 67 | Subscriber test assumes wp-admin redirect, but WooCommerce redirects to my-account | Fixed | Authenticated-session cookie checked before requiring both handler responses to be 403; 119/119 CI passes |
+
+Commit `fda9916`; [successful remote verification](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839). No active non-WooCommerce
+product issue remains. User-site WooCommerce acceptance is deferred, not failed.
+
 ## Theme follow-up — 1.6.2 (2026-10-24)
 
 | ID | Issue | Status | Evidence |
@@ -14,7 +24,7 @@
 | 65 | Special-character anchor can throw a selector error | Fixed | Named-anchor DOM lookup and browser error assertion |
 
 Evidence: `.memory-bank/audits/remediation-1.6.2.md`; both WordPress/PHP matrices
-pass 88/88 without WooCommerce. Coding, catalog and package checks are separate.
+pass 89/89 without WooCommerce. Coding, catalog and package checks are separate.
 
 ## Production Incident — 2026-10-18
 

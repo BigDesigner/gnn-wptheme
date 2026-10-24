@@ -19,3 +19,6 @@ Sonuç: iki WordPress/PHP matrisinde 89/89, statik/paket 90/90, WPCS 0/0;
 Doğrulama: gerçek WordPress/SQLite ve tarayıcı; negatif JSON ve yetki senaryoları,
 axe erişilebilirlik taraması, ölçülmüş yerel gezinme/CLS değerleri, WPCS ve
 statik/paket kontrolleri. Üretim performans sonuçları yerel ölçümden türetilmez.
+
+GitHub follow-up: `fda9916`, [CI](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839) 119/119 + 90/90;
+[release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813) successful; `v1.6.2` published.

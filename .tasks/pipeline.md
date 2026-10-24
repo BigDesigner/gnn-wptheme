@@ -1,5 +1,17 @@
 # Task Pipeline & Roadmap
 
+## Verified release state — 2026-10-24
+
+- [x] `9140a32`: 1.6.2 non-WooCommerce hardening, committed and pushed.
+- [x] `fda9916`: Linux PHPCS and WooCommerce login-redirect test corrections, pushed.
+- [x] [Verify theme](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839): 119/119 integration/browser and 90/90 static/package checks.
+- [x] [Manual Release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813): completed successfully; GitHub `v1.6.2` is published.
+- [x] FAZ 1.34.2 live-site acceptance remains user-confirmed.
+
+Only deferred user-site WooCommerce visual/checkout acceptance remains. Automated
+WooCommerce CI passed; it does not replace that site acceptance. No production
+installation of 1.6.2 is inferred from GitHub publication.
+
 ## Completed: Non-WooCommerce Follow-up — 1.6.2 (2026-10-24)
 
 User authorized completing all six follow-up scopes. Evidence:

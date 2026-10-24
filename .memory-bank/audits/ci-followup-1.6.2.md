@@ -13,6 +13,7 @@ https://github.com/BigDesigner/gnn-wptheme/actions/runs/40043429653
 
 Local verification: PHPCS with `short_open_tag=0` reports zero errors/warnings;
 static/package checks pass 90/90. Package metadata was refreshed. Theme remains
-1.6.2; these changes complete its CI verification. The next GitHub Actions run
-is the authoritative remote verification; its result is available in Actions.
+1.6.2; these changes complete its CI verification. [GitHub Actions run 40045204839](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839) completed successfully at commit
+`fda9916`: 119/119 integration/browser scenarios and 90/90 static/package checks.
+[Manual Release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813) subsequently succeeded and published `v1.6.2`.
 User-site WooCommerce visual/checkout acceptance remains deferred.

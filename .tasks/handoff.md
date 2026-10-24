@@ -1,5 +1,19 @@
 # Handoff Log
 
+## Session 2026-10-24 — 1.6.2 published, CI green, memory synchronized
+
+- Read `.memory-bank/state-of-the-union.md` first, then `active-session.json` and `.tasks/pipeline.md`.
+- Source/released version: **1.6.2**; `main` and `origin/main` point to `fda9916` at sync time.
+- `9140a32` implements non-WooCommerce closure; `fda9916` fixes remote CI portability.
+- [Verify theme](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839) passed 119/119 integration/browser and 90/90 static/package checks, with Elementor 4.3.5 and WooCommerce 11.2.1 installed.
+- Local no-plugin matrices: WordPress 7.1.3/PHP 8.2.33 and WordPress 6.0.17/PHP 7.4.33, each 89/89. WPCS zero errors/warnings, 408 catalog strings validated.
+- [Manual Release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813) succeeded. `v1.6.2` points to `fda9916`; asset `gnn-1.6.2.zip` metadata/digest lives in `audits/verification-1.6.2/github-release.json`.
+- Audit A01–A10, bugs 47–65 and FAZ 1.34.2 acceptance are closed. CI follow-up issues are also closed.
+- Distribution: GitHub/private ZIP only; WordPress.org and its old ZIP are excluded.
+- **Next product task:** user-site WooCommerce visual/checkout acceptance, explicitly last and deferred. Do not reopen historical PRD checkboxes as active scope.
+- GitHub publication is confirmed; production installation/acceptance of 1.6.2 is not confirmed. Preserve test limitations in the reports.
+- This full memory sync modifies documentation only; it has not itself been committed/pushed. Older entries below are historical snapshots, not current instructions.
+
 ## Session 2026-10-18 — Audit Remediation Complete
 
 - Theme source/package: **1.6.1**, local modifications on `main`; last committed baseline remains `0ac1688`.

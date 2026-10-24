@@ -67,7 +67,7 @@ and `minimum-no-woo/`.
   review; zero automated violations is not complete WCAG certification.
 - Optional third-party fonts/icons were disabled in the measured local fixture.
 - PHP/browser percentage coverage is unmeasured; Node engine warning is noted
-  in the main report. CI definitions were updated but not executed on GitHub here.
+  in the main report. Subsequent hosted verification at `fda9916` passed; see the follow-up below.
 
 ## Evidence and teardown
 
@@ -83,3 +83,13 @@ The exact reviewable staging inventory is `.tasks/files-to-stage-1.6.2.txt`.
 It also includes earlier uncommitted FAZ acceptance/documentation updates carried
 forward in this chat. The user authorized versioning, commit and push after
 successful verification; the resulting commit is recorded in Git history.
+
+## Hosted follow-up and release — 2026-10-24
+
+Commit `9140a32` was pushed; `fda9916` corrected Linux PHPCS markup detection and
+the WooCommerce subscriber-login redirect assumption. [Hosted CI](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839) passed
+119/119 integration/browser cases plus 90/90 static/package checks. Runtime:
+WP 7.1.3/PHP 8.2.33, Elementor 4.3.5, WooCommerce 11.2.1. [Manual Release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813)
+succeeded and published `v1.6.2`. Local 89/89 matrices above remain separate
+evidence. Neither publication nor automated WooCommerce tests imply production
+installation or the deferred user-site checkout acceptance.

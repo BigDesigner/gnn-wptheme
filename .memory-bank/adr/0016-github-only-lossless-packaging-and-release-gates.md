@@ -32,8 +32,8 @@ Development test dependencies live outside the distributable theme.
 
 - Source and packaged CSS have identical semantics and bytes.
 - Invalid or mismatched version declarations fail before publication.
-- GitHub Actions release creation waits for verification; CI definitions still
-  require actual GitHub execution to prove hosted-runner compatibility.
+- GitHub Actions release creation waits for verification. Hosted-runner compatibility
+  is verified for 1.6.2 by successful runs 40045204839 and 40046157813 at `fda9916`.
 - Browser/WordPress tests add development download/runtime cost but no shipped
   runtime dependencies. Coverage is reported separately from pass counts.
 - ZIP compression remains active; CSS source text is no longer regex-minified.

@@ -68,3 +68,12 @@ Real WordPress tests cover panel HTTP uploads/capabilities, legacy logo handling
 RTL, axe WCAG automation and measured local asset/layout budgets. Evidence and
 limits are in `.memory-bank/audits/remediation-1.6.2.md`. Only the deferred
 user-site WooCommerce acceptance remains in the active backlog.
+
+## Verified Release and Session State — 2026-10-24
+
+- Current source and GitHub release: **1.6.2**, `main` / tag `v1.6.2` at `fda9916`.
+- [Verify theme](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839): passed 119/119 WordPress/Chromium checks with Elementor/WooCommerce, and 90/90 static/package checks; WPCS clean.
+- [Manual Release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813): success; published asset `gnn-1.6.2.zip`, 271454 bytes. Digest and URLs: `audits/verification-1.6.2/github-release.json`.
+- Local matrices without optional plugins each pass 89/89 (WP 7.1.3/PHP 8.2.33; WP 6.0.17/PHP 7.4.33).
+- FAZ 1.34.2 live acceptance is closed. Only user-site WooCommerce visual/checkout acceptance remains deferred.
+- No production installation of 1.6.2 is inferred. Start future sessions with `state-of-the-union.md`; historical plans/worklog entries are snapshots.

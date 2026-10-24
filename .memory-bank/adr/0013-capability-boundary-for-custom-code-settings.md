@@ -24,7 +24,9 @@ action-specific nonce checks for custom import/export/reset/update handlers.
 Additionally require `unfiltered_html` when changing `custom_js_head`,
 `custom_js_footer`, `head_html`, or `body_html` in `gnn_options_sanitize()`. Preserve
 the previously stored value and emit a settings error when that capability is
-absent. The options import path also invokes this sanitizer.
+absent. The options import path also invokes this sanitizer. Since 1.6.2, preflight
+validation rejects the entire import before writes when changed custom-code
+fields lack `unfiltered_html`; ordinary partial imports remain allowed.
 
 Treat accepted custom script/HTML fields as trusted operator code and render them
 at their designated head/body/footer hooks without ordinary HTML text escaping.
@@ -43,8 +45,9 @@ HTML tags from custom CSS, use text sanitizers for plain text, and use
 - Import, future REST endpoints, and additional save paths must preserve the same
   capability boundary rather than storing raw fields independently.
 - Operator code may affect all visitors; these fields are intentionally privileged.
-- Verification is based on the source paths, not live role/multisite integration
-  tests. Existing escaping rules in the boundary specification remain applicable
+- 1.6.2 real WordPress/HTTP tests verify subscriber denial, restricted-admin
+  custom-code rejection, malformed uploads and CSRF checks. This does not certify
+  every production multisite configuration. Existing escaping rules remain applicable
   to ordinary output; this documents the narrow trusted-code exception.
 - This complements ADR 0002 and ADR 0010; neither predecessor is superseded.
 

@@ -217,5 +217,39 @@
     ".js": 10783,
     ".css": 59485,
     ".woff2": 62244
+  },
+  "hostedVerification": {
+    "url": "https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839",
+    "conclusion": "success",
+    "integration_browser_passed": 119,
+    "integration_browser_total": 119,
+    "static_passed": 90,
+    "static_total": 90
+  },
+  "githubRelease": {
+    "tag": "v1.6.2",
+    "commit": "fda99166fe32e4555e36e5f503b5b6e1392099bc",
+    "url": "https://github.com/BigDesigner/gnn-wptheme/releases/tag/v1.6.2",
+    "published_at": "2026-10-24T00:43:54Z",
+    "published_at_istanbul": "2026-10-24T03:43:54+03:00",
+    "asset": {
+      "name": "gnn-1.6.2.zip",
+      "bytes": 271454,
+      "sha256": "0eee8e2397cd815af2f2c41bc1a8bfd91476383e052b7057947b855b7728e70c",
+      "url": "https://github.com/BigDesigner/gnn-wptheme/releases/download/v1.6.2/gnn-1.6.2.zip"
+    },
+    "workflow": {
+      "url": "https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813",
+      "conclusion": "success"
+    },
+    "verification": {
+      "url": "https://github.com/BigDesigner/gnn-wptheme/actions/runs/40045204839",
+      "conclusion": "success",
+      "integration_browser_passed": 119,
+      "integration_browser_total": 119,
+      "static_passed": 90,
+      "static_total": 90
+    },
+    "evidence_source": "Read-only gh release view, gh run view and Git tag API; asset digest from GitHub metadata; no production deployment inferred."
   }
 }

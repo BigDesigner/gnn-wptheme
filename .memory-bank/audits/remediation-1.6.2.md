@@ -83,8 +83,8 @@ veya manuel ekran okuyucu testi değildir. Sonraki kullanıcı renkleri/içerikl
 üretim CDN/önbelleği, MySQL/MariaDB ve Elementor Pro bu testin sonucu değildir.
 PHP satır/dal kapsamı ölçülmedi; WASM ortamında kapsam uzantısı yoktur.
 Yerel Node 24.14.0 ile çalıştırıldı; paket motor eşiği nedeniyle CI/geliştirme
-talimatı Node 24.18.0+ olarak kalır. Yeni CI tanımı bu yerel çalışmadan sonra
-GitHub üzerinde henüz yürütülmüş kabul edilmez.
+talimatı Node 24.18.0+ olarak kalır. Sonraki GitHub doğrulaması `fda9916` üzerinde başarılıdır: 119/119
+entegrasyon/tarayıcı ve 90/90 statik/paket kontrolü. CI takip raporu ayrıntıları içerir.
 
 ## Paket
 
@@ -92,6 +92,9 @@ GitHub üzerinde henüz yürütülmüş kabul edilmez.
 
 SHA-256: `d8b1e4657928dab5d0fb96a322ab6020aee565bb108f6f0a3585db0534ad0bf2`.
 
-Çalışma ağacı 1.6.2 olarak hazırdır; bu rapor üretim dağıtımı veya yayımlanmış
-GitHub 1.6.2 sürümü bildirimi değildir. İstenen geliştirme ve yerel doğrulama
-kapsamı tamamlandı. WooCommerce kabulü kullanıcı kararıyla en sonda kalır.
+GitHub `v1.6.2`, `fda9916` commit'inden yayımlandı; [yayın iş akışı](https://github.com/BigDesigner/gnn-wptheme/actions/runs/40046157813)
+başarılıdır. Yayımlanan `gnn-1.6.2.zip` 271454 bayttır; GitHub bildirimi SHA-256:
+`0eee8e2397cd815af2f2c41bc1a8bfd91476383e052b7057947b855b7728e70c`.
+Yukarıdaki yerel ZIP özeti ile GitHub varlık özeti ayrı artefakt kayıtlarıdır;
+bayt eşitliği iddia edilmez. Üretime kurulumu kullanıcı henüz teyit etmedi.
+Geliştirme ve doğrulama tamamlandı. WooCommerce site kabulü en sonda kalır.
