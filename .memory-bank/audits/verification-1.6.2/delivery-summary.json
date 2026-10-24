@@ -1,0 +1,221 @@
+{
+  "version": "1.6.2",
+  "matrices": [
+    {
+      "label": "current-no-woo",
+      "runtime": {
+        "wordpress": "7.1.3",
+        "php": "8.2.33",
+        "elementor": null,
+        "woocommerce": null
+      },
+      "integration": 61,
+      "browser": 28,
+      "passed": 89,
+      "failed": 0,
+      "axeViolations": 0,
+      "axeManualReview": [
+        {
+          "name": "dark desktop",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  ".site-title"
+                ],
+                [
+                  ":root"
+                ],
+                [
+                  "h1"
+                ],
+                [
+                  ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "light desktop",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  ".site-title"
+                ],
+                [
+                  ":root"
+                ],
+                [
+                  ".header-actions > .theme-toggle[aria-label=\"Koyu / açık modu değiştir\"] > .theme-toggle__icon--moon.theme-toggle__icon[aria-hidden=\"true\"]"
+                ],
+                [
+                  "h1"
+                ],
+                [
+                  ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "mobile",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  ".site-title"
+                ],
+                [
+                  "h1"
+                ],
+                [
+                  ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RTL mobile",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  "h1"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "localLcpMedianMs": 1444,
+      "localClsMax": 0
+    },
+    {
+      "label": "minimum-no-woo",
+      "runtime": {
+        "wordpress": "6.0.17",
+        "php": "7.4.33",
+        "elementor": null,
+        "woocommerce": null
+      },
+      "integration": 61,
+      "browser": 28,
+      "passed": 89,
+      "failed": 0,
+      "axeViolations": 0,
+      "axeManualReview": [
+        {
+          "name": "dark desktop",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  ".site-title"
+                ],
+                [
+                  ":root"
+                ],
+                [
+                  "h1"
+                ],
+                [
+                  ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "light desktop",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  ".site-title"
+                ],
+                [
+                  ":root"
+                ],
+                [
+                  ".header-actions > .theme-toggle[aria-label=\"Koyu / açık modu değiştir\"] > .theme-toggle__icon--moon.theme-toggle__icon[aria-hidden=\"true\"]"
+                ],
+                [
+                  "h1"
+                ],
+                [
+                  ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "mobile",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  ".site-title"
+                ],
+                [
+                  "h1"
+                ],
+                [
+                  ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "name": "RTL mobile",
+          "incomplete": [
+            {
+              "id": "color-contrast",
+              "nodes": [
+                [
+                  "h1"
+                ]
+              ]
+            }
+          ]
+        }
+      ],
+      "localLcpMedianMs": 1280,
+      "localClsMax": 0.0002829129898726968
+    }
+  ],
+  "wpcs": {
+    "errors": 0,
+    "warnings": 0,
+    "fixable": 0
+  },
+  "static": {
+    "total": 90,
+    "passed": 90,
+    "failed": 0
+  },
+  "package": {
+    "version": "1.6.2",
+    "path": "C:\\Users\\bigde\\.antigravity\\gnn-wptheme\\.build\\gnn.zip",
+    "bytes": 272059,
+    "sha256": "58cfde9ba7f9822b68920f3ac946220788e9e3a33455860e1d140fec8d27c136",
+    "files": 86
+  },
+  "localThemeBytes": {
+    ".js": 10783,
+    ".css": 59485,
+    ".woff2": 62244
+  }
+}

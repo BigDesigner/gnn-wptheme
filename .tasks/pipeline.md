@@ -1,5 +1,43 @@
 # Task Pipeline & Roadmap
 
+## Completed: Non-WooCommerce Follow-up — 1.6.2 (2026-10-24)
+
+User authorized completing all six follow-up scopes. Evidence:
+`.memory-bank/audits/remediation-1.6.2.md` and `theme-hardening-plan.md`.
+
+- [x] Panel/handler security and bounded JSON validation before writes.
+- [x] Real HTTP export/import, malformed/partial files and capability boundaries.
+- [x] Legacy logo IDs/URLs, panel re-save, single-logo modes and explicit removal.
+- [x] Composer-locked WPCS: zero errors/warnings; CI gate configured.
+- [x] Local performance budgets and dark/light/mobile/RTL axe checks.
+- [x] Turkish catalog, printf placeholders, RTL loading and keyboard navigation.
+- [x] WordPress 7.1.3/PHP 8.2.33 and 6.0.17/PHP 7.4.33: 89/89 each, no WooCommerce.
+- [x] Theme 1.6.2 package, synchronized metadata and 90/90 static checks.
+
+Only the user-site WooCommerce visual/checkout acceptance remains in the active
+backlog. Older PRD checklists are historical reference, as stated in those files.
+
+## Completed: FAZ Cookie Manager Incident (2026-10-19)
+
+- [x] Reproduce the loading freeze using the public homepage HTML.
+- [x] Isolate the FAZ runtime and confirm official 1.34.2 fixes its insertion loop.
+- [x] User enabled the update and confirmed live-site acceptance.
+
+Evidence: `.memory-bank/audits/live-loading-2026-10-18.md`.
+Production acceptance is user-confirmed. WooCommerce remains last.
+The subsequent theme follow-up scopes are completed above in 1.6.2.
+
+## Post-release Acceptance and Next Candidates (2026-10-18)
+
+- [x] User confirmed the real update to 1.6.1 completed without problems.
+- [x] GitHub verification and manual release workflows completed successfully.
+- [ ] WooCommerce visual/checkout acceptance: deferred until the end at the user's
+  request; WooCommerce is not installed on their current site.
+
+The original audit backlog and all six subsequently authorized non-WooCommerce
+follow-up scopes are complete. See the 1.6.2 evidence above.
+
+
 ## Completed: Audit Remediation (2026-10-18)
 
 User authorized completing A01–A10. The active plan is

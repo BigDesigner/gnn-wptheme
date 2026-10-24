@@ -1,0 +1,133 @@
+{
+  "runtime": {
+    "wordpress": "7.1.3",
+    "php": "8.2.33",
+    "elementor": null,
+    "woocommerce": null
+  },
+  "integration": [
+    {
+      "name": "A03 updater registered outside admin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 unsafe post-install filter removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 exact release asset accepted and cached",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A03 newer release offered exclusively",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 stale update removed for current version",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject no-asset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject foreign-host",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject wrong-name",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject prerelease",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject invalid-tag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 missing asset clears stale offers",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 network error negatively cached",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 previous WP_Error preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 unrelated theme source unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 invalid extracted package rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 valid source retained before install",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 occupied rename target returns error and preserves files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 extracted path cannot escape root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A03 disabled updater registers no filter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 panel option removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 shared brand settings reset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 unrelated site/update settings preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 reset nonce bound to action",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 anonymous user lacks reset capability",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "browser": [],
+  "coverage": "unmeasured: no PHP coverage extension/instrumented browser coverage configured",
+  "environmentError": "Error: PHP.run() failed with exit code 255. \n\n=== Stdout ===\n <br />\n<b>Fatal error</b>:  Uncaught Error: Call to undefined function add_settings_error() in /wordpress/wp-content/themes/gnn/inc/admin-panel.php:110\nStack trace:\n#0 /gnn-qa/hardening.php(39): gnn_options_sanitize(Array)\n#1 /internal/eval.php(1): require('/gnn-qa/hardeni...')\n#2 {main}\n  thrown in <b>/wordpress/wp-content/themes/gnn/inc/admin-panel.php</b> on line <b>110</b><br />\n<!DOCTYPE html>\n<html lang=\"en-US\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='max-image-preview:large, noindex, follow' />\n\t<title>WordPress &rsaquo; Error</title>\n\t<style>\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif;\n\t\t\tmargin: 2em auto;\n\t\t\tpadding: 1em 2em;\n\t\t\tmax-width: 700px;\n\t\t\t-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);\n\t\t\tbox-shadow: 0 1px 1px rgba(0, 0, 0, .04);\n\t\t}\n\t\th1 {\n\t\t\tborder-bottom: 1px solid #dadada;\n\t\t\tclear: both;\n\t\t\tcolor: #666;\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 30px 0 0 0;\n\t\t\tpadding: 0;\n\t\t\tpadding-bottom: 7px;\n\t\t}\n\t\t#error-page {\n\t\t\tmargin-top: 50px;\n\t\t}\n\t\t#error-page p,\n\t\t#error-page .wp-die-message {\n\t\t\tfont-size: 14px;\n\t\t\tline-height: 1.5;\n\t\t\tmargin: 25px 0 20px;\n\t\t}\n\t\t#error-page code {\n\t\t\tfont-family: Consolas, Monaco, monospace;\n\t\t}\n\t\tul li {\n\t\t\tmargin-bottom: 10px;\n\t\t\tfont-size: 14px ;\n\t\t}\n\t\ta {\n\t\t\tcolor: #3858e9;\n\t\t}\n\t\ta:hover,\n\t\ta:active {\n\t\t\tcolor: #183ad6;\n\t\t}\n\t\ta:focus {\n\t\t\tcolor: #183ad6;\n\t\t\tbox-shadow: 0 0 0 var(--wp-admin-border-width-focus, 1.5px) var(--wp-admin-theme-color, #3858e9);\n\t\t\toutline: 2px solid transparent;\n\t\t}\n\t\t.button {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder: 1px solid #016087;\n\t\t\tcolor: #016087;\n\t\t\tdisplay: inline-block;\n\t\t\ttext-decoration: none;\n\t\t\tfont-size: 13px;\n\t\t\tline-height: 2;\n\t\t\theight: 28px;\n\t\t\tmargin: 0;\n\t\t\tpadding: 0 10px 1px;\n\t\t\tcursor: pointer;\n\t\t\t-webkit-border-radius: 3px;\n\t\t\t-webkit-appearance: none;\n\t\t\tborder-radius: 3px;\n\t\t\twhite-space: nowrap;\n\t\t\t-webkit-box-sizing: border-box;\n\t\t\t-moz-box-sizing:    border-box;\n\t\t\tbox-sizing:         border-box;\n\n\t\t\tvertical-align: top;\n\t\t}\n\n\t\t.button.button-large {\n\t\t\tline-height: 2.30769231;\n\t\t\tmin-height: 32px;\n\t\t\tpadding: 0 12px;\n\t\t}\n\n\t\t.button:hover,\n\t\t.button:focus {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\n\t\t.button:focus {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder-color: #007cba;\n\t\t\t-webkit-box-shadow: 0 0 0 1px #007cba;\n\t\t\tbox-shadow: 0 0 0 1px #007cba;\n\t\t\tcolor: #016087;\n\t\t\toutline: 2px solid transparent;\n\t\t\toutline-offset: 0;\n\t\t}\n\n\t\t.button:active {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder-color: #7e8993;\n\t\t\t-webkit-box-shadow: none;\n\t\t\tbox-shadow: none;\n\t\t}\n\n\t\t\t</style>\n</head>\n<body id=\"error-page\">\n\t<div class=\"wp-die-message\"><p>There has been a critical error on this website. Please check your site admin email inbox for instructions. If you continue to have problems, please try the <a href=\"https://wordpress.org/support/forums/\">support forums</a>.</p><p><a href=\"https://wordpress.org/documentation/article/faq-troubleshooting/\">Learn more about troubleshooting WordPress.</a></p></div></body>\n</html>\n\t\n\n=== Stderr ===\n \n    at PHP.run (file:///C:/Users/bigde/.antigravity/gnn-wptheme/.temp/qa-tools/node_modules/@php-wasm/universal/index.js:1476:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async F.run (file:///C:/Users/bigde/.antigravity/gnn-wptheme/.temp/qa-tools/node_modules/@php-wasm/universal/index.js:468:14)"
+}

@@ -4,7 +4,7 @@
 - **Project Name:** GNN WordPress Theme (`gnn-wptheme`)
 - **Repository URL:** https://github.com/BigDesigner/gnn-wptheme.git
 - **Type:** WordPress Classic PHP Theme (Dark-by-default, corporate IT / cybersecurity focus)
-- **Version:** 1.6.1
+- **Version:** 1.6.2
 - **Ecosystem:** PHP 7.4+, WordPress 6.0+, Elementor Free API, WooCommerce
 
 ---
@@ -12,7 +12,7 @@
 ## Architectural Principles
 1. **Zero External Framework Dependency in Admin:** The GNN Theme Panel is built strictly using pure WordPress Settings API (`register_setting()`, `add_menu_page()`, `settings_fields()`).
 2. **Dynamic Styling & Toggle Governance:** Every theme feature, animation, top bar, dock, and preloader can be toggled on/off and configured via GNN Theme Panel.
-3. **Backwards Compatibility:** Legacy theme mods (`logo_light`, `logo_light_2x`, `logo_dark`, `logo_dark_2x`, `gnn_accent_color`) are preserved and synchronized between Customizer and GNN Panel.
+3. **Backwards Compatibility:** Legacy logo theme mods (attachment IDs or HTTP(S) URLs) remain fallbacks; explicit panel values, including removal, take precedence. Shared accent/mode/legal values remain theme_mods used by both interfaces.
 4. **Performance & Light Footprint:** Assets are loaded conditionally; WooCommerce content, dynamic builder/widget content and shared header cart fragments retain the assets they need. Space Grotesk/Manrope WOFF2 fonts are self-hosted. Google Fonts typography is opt-in; Material Icons is independently toggleable and enabled by default in the current option defaults.
 5. **No Hardcoded Texts:** All user-facing strings are translatable via WordPress i18n (`gnn` textdomain) or configurable via theme settings.
 
@@ -33,6 +33,7 @@ gnn/
 │   └── fonts/             # Space Grotesk & Manrope variable WOFF2 fonts
 └── inc/
     ├── admin-panel.php            # GNN Theme Panel 9-tab settings interface (CodeMirror-enhanced Custom Code tab)
+    ├── settings-transfer.php      # Bounded JSON schema validation, portable export and partial-import merge
     ├── options.php                # Option defaults, getters (gnn_option), logo helpers, shared Google Fonts preconnect
     ├── typography.php              # Optional per-element (H1-H6, paragraph) Google Fonts — off by default, self-hosted fonts otherwise
     ├── button-styles.php            # 6 fixed, panel-defined button style slots (.gnn-btn-style-N classes)
@@ -61,3 +62,9 @@ version declarations before packaging; release overrides must match the source.
 `.github/workflows/verify.yml` provides static/package and real WordPress/browser
 checks; the manual release workflow depends on it. See ADR 0014–0016 for updater,
 Elementor persistence and release topology decisions.
+
+1.6.2 adds Composer-locked WPCS and complete Turkish-catalog checks to verification.
+Real WordPress tests cover panel HTTP uploads/capabilities, legacy logo handling,
+RTL, axe WCAG automation and measured local asset/layout budgets. Evidence and
+limits are in `.memory-bank/audits/remediation-1.6.2.md`. Only the deferred
+user-site WooCommerce acceptance remains in the active backlog.

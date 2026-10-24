@@ -26,3 +26,13 @@
 8. **Packaging Semantics:**
    - Packaged CSS MUST be byte-identical to source; regex whitespace rewriting is prohibited.
    - Release labels MUST match every shipped version declaration before a package is published.
+9. **Settings Import Boundary:**
+   - Read only verified temporary JSON uploads, at most 1 MiB and bounded depth.
+   - Validate the entire document before writes; reject unknown fields, nested
+     values and invalid shared color/mode values. Preserve omitted partial fields.
+   - Require manage_options plus a nonce; changing code/HTML also requires
+     unfiltered_html. Export/import must preserve multiline strings and legacy logos.
+10. **Progressive Enhancement and Locale:**
+   - Reading content must not depend on an animation script or loading overlay.
+   - Load RTL overrides explicitly and retain visible keyboard focus.
+   - Validate the Turkish compiled catalog and printf placeholders in CI.

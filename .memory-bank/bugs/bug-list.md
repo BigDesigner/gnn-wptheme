@@ -1,5 +1,27 @@
 # Bug List & Issues Tracking
 
+## Theme follow-up — 1.6.2 (2026-10-24)
+
+| ID | Issue | Status | Evidence |
+|---|---|---|---|
+| 58 | Import lacks resource/type bounds and accepts invalid shared values | Fixed | 1 MiB/depth/schema checks and real HTTP negative uploads |
+| 59 | Partial import turns absent checkboxes off | Fixed | Merge before sanitization; omitted values retained |
+| 60 | Legacy logo mods not consumed; old URL could be lost on panel re-save | Fixed | IDs/URLs, actual media field, save and export/import checks |
+| 61 | Single logo hidden in light mode; missing attachment leaves empty brand | Fixed | Shared logo class and site-title fallback; browser mode test |
+| 62 | Menu badge hook treats menu ID as item ID | Fixed | Two hook arguments and actual WordPress menu update assertion |
+| 63 | RTL stylesheet not explicitly enqueued; physical offsets unmirrored | Fixed | Arabic WordPress page, CSS request, control position and overflow checks |
+| 64 | Loading overlay/scroll reveal can hide content with unavailable JavaScript | Fixed | Progressive enhancement, CSS overlay expiry and no-JS browser check |
+| 65 | Special-character anchor can throw a selector error | Fixed | Named-anchor DOM lookup and browser error assertion |
+
+Evidence: `.memory-bank/audits/remediation-1.6.2.md`; both WordPress/PHP matrices
+pass 88/88 without WooCommerce. Coding, catalog and package checks are separate.
+
+## Production Incident — 2026-10-18
+
+| ID | Issue | Status | Evidence / Next action |
+|---|---|---|---|
+| 57 | Homepage renderer freezes during FAZ Cookie Manager banner initialization, leaving the GNN loading overlay visible | Resolved — user enabled/accepted the FAZ 1.34.2 update on the live site | Official 1.34.2 runtime resolves the reproduced freeze; user confirmed live acceptance. See `.memory-bank/audits/live-loading-2026-10-18.md`. |
+
 ## Audit Backlog — 2026-10-18
 
 Historical entries are retained. Audit findings 47–56 were fixed and verified in 1.6.1; see `.memory-bank/audits/remediation-1.6.1.md`.

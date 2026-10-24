@@ -117,7 +117,7 @@ function gnn_render_page_meta_box( $post ) {
 			$gnn_overlay_default_state = gnn_option( 'title_overlay_enable' ) ? __( 'on', 'gnn' ) : __( 'off', 'gnn' );
 			$gnn_overlay_choices       = array(
 				/* translators: %s: "on" or "off", the current theme-wide default. */
-				'' => sprintf( __( 'Theme default (currently %s)', 'gnn' ), $gnn_overlay_default_state ),
+				''  => sprintf( __( 'Theme default (currently %s)', 'gnn' ), $gnn_overlay_default_state ),
 				'1' => __( 'Force on for this page', 'gnn' ),
 				'0' => __( 'Force off for this page', 'gnn' ),
 			);
@@ -143,6 +143,7 @@ function gnn_render_page_meta_box( $post ) {
  */
 function gnn_save_page_meta( $post_id ) {
 	if ( ! isset( $_POST['gnn_page_meta_nonce'] )
+		|| ! is_string( $_POST['gnn_page_meta_nonce'] )
 		|| ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['gnn_page_meta_nonce'] ) ), 'gnn_page_meta' ) ) {
 		return;
 	}
@@ -155,8 +156,8 @@ function gnn_save_page_meta( $post_id ) {
 
 	update_post_meta( $post_id, '_gnn_hide_title', empty( $_POST['gnn_hide_title'] ) ? '' : '1' );
 	update_post_meta( $post_id, '_gnn_hide_breadcrumb', empty( $_POST['gnn_hide_breadcrumb'] ) ? '' : '1' );
-	if ( isset( $_POST['gnn_title_overlay'] ) ) {
-		update_post_meta( $post_id, '_gnn_title_overlay', gnn_sanitize_tristate_meta( wp_unslash( $_POST['gnn_title_overlay'] ) ) );
+	if ( isset( $_POST['gnn_title_overlay'] ) && is_string( $_POST['gnn_title_overlay'] ) ) {
+		update_post_meta( $post_id, '_gnn_title_overlay', gnn_sanitize_tristate_meta( sanitize_key( wp_unslash( $_POST['gnn_title_overlay'] ) ) ) );
 	}
 }
 add_action( 'save_post', 'gnn_save_page_meta' );

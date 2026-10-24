@@ -1,0 +1,280 @@
+{
+  "runtime": {
+    "wordpress": "7.1.3",
+    "php": "8.2.33",
+    "elementor": null,
+    "woocommerce": null
+  },
+  "integration": [
+    {
+      "name": "A03 updater registered outside admin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 unsafe post-install filter removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 exact release asset accepted and cached",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A03 newer release offered exclusively",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 stale update removed for current version",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject no-asset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject foreign-host",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject wrong-name",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject prerelease",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 reject invalid-tag",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 missing asset clears stale offers",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A05 network error negatively cached",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 previous WP_Error preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 unrelated theme source unchanged",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 invalid extracted package rejected",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 valid source retained before install",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 occupied rename target returns error and preserves files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A04 extracted path cannot escape root",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A03 disabled updater registers no filter",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 panel option removed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 shared brand settings reset",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 unrelated site/update settings preserved",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 reset nonce bound to action",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "A09 anonymous user lacks reset capability",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Fresh-site export can be imported",
+      "pass": true
+    },
+    {
+      "name": "Complete export/import succeeds",
+      "pass": true
+    },
+    {
+      "name": "Complete option round trip preserves values",
+      "pass": true
+    },
+    {
+      "name": "Shared brand round trip",
+      "pass": true
+    },
+    {
+      "name": "Partial import accepted",
+      "pass": true
+    },
+    {
+      "name": "Absent checkbox remains on in partial import",
+      "pass": true
+    },
+    {
+      "name": "Reject broken JSON without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject array root without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject missing marker without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject nested field without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject object field without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject null field without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject unknown option without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject unknown mod without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject invalid color without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject invalid mode without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject invalid number without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject unsafe legacy logo without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject oversize document without any state change",
+      "pass": true
+    },
+    {
+      "name": "Reject deep JSON without any state change",
+      "pass": true
+    },
+    {
+      "name": "Malformed settings form returns current values",
+      "pass": true
+    },
+    {
+      "name": "Subscriber import denied and data retained",
+      "pass": true
+    },
+    {
+      "name": "Restricted admin cannot import a changed custom-code field",
+      "pass": true
+    },
+    {
+      "name": "Restricted admin cannot replace custom code",
+      "pass": true
+    },
+    {
+      "name": "Restricted admin may import ordinary settings",
+      "pass": true
+    },
+    {
+      "name": "Malformed form preserves sparse storage and legacy fallback",
+      "pass": true
+    },
+    {
+      "name": "Legacy logo URL still renders",
+      "pass": true
+    },
+    {
+      "name": "One logo uses a shared mode class",
+      "pass": true
+    },
+    {
+      "name": "Legacy logo survives export/import",
+      "pass": true
+    },
+    {
+      "name": "Legacy URL remains in the actual panel media field",
+      "pass": true
+    },
+    {
+      "name": "Saving the panel preserves a legacy URL",
+      "pass": true
+    },
+    {
+      "name": "Legacy URL stored in panel options can round trip",
+      "pass": true
+    },
+    {
+      "name": "Explicit panel removal overrides legacy logo",
+      "pass": true
+    },
+    {
+      "name": "Legacy attachment ID remains supported",
+      "pass": true
+    },
+    {
+      "name": "Missing logo attachment falls back to site title",
+      "pass": true
+    },
+    {
+      "name": "Explicit reset clears legacy logo too",
+      "pass": true
+    },
+    {
+      "name": "Real menu hook saves badge to item ID",
+      "pass": true
+    }
+  ],
+  "browser": [],
+  "coverage": "unmeasured: no PHP coverage extension/instrumented browser coverage configured"
+}

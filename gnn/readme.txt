@@ -2,9 +2,9 @@
 Contributors: bigdesigner
 Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, full-width-template
 Requires at least: 6.0
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,11 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 1.6.2 =
+* Validate settings imports before writes; preserve partial imports and legacy logos.
+* Fix menu badge saves, RTL assets, keyboard navigation and no-JavaScript content.
+* Add reproducible WordPress coding, accessibility and performance verification.
 
 = 1.6.1 =
 * Fix the latest-posts homepage and preserve static front-page content.

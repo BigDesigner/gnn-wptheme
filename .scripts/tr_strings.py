@@ -16,6 +16,8 @@ PLURALS = {
 }
 
 TRANSLATIONS = {
+    'Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values.': 'GNN ayarları JSON dosyasını yükleyin (en fazla 1 MB). Dosyada bulunmayan alanlar mevcut değerlerini korur.',
+    'Settings were not saved: a field has an invalid value type.': 'Ayarlar kaydedilmedi: bir alanın değer türü geçersiz.',
     'Refresh Elementor templates': 'Elementor şablonlarını yenile',
     'Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved.': 'Değiştirilmemiş GNN kayıtlı şablonlarını yeniler ve eksik bölümleri ekler. Düzenlediğiniz şablonlar ve kimlikleri korunur. Başlangıç kaydı bulunmayan eski şablonlar korunur.',
     'Elementor templates refreshed. Edited templates were preserved.': 'Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu.',

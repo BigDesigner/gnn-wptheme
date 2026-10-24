@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-18",
+  "url": "https://www.gnn.tr/",
+  "environment": "Chromium replay of downloaded public HTML; non-GET requests blocked; remote image cross-origin limitations",
+  "productionModified": false,
+  "variants": [
+    {
+      "variant": "baseline",
+      "error": "Error: Renderer unresponsive",
+      "readyState": null,
+      "overlayPresent": null,
+      "homepageTextPresent": null
+    },
+    {
+      "variant": "no-faz",
+      "error": null,
+      "readyState": "complete",
+      "overlayPresent": false,
+      "homepageTextPresent": false
+    },
+    {
+      "variant": "no-faz-runtime",
+      "error": null,
+      "readyState": "complete",
+      "overlayPresent": false,
+      "homepageTextPresent": true
+    },
+    {
+      "variant": "upstream-runtime",
+      "error": null,
+      "readyState": "complete",
+      "overlayPresent": false,
+      "homepageTextPresent": true
+    },
+    {
+      "variant": "decode-template",
+      "error": "Error: Renderer unresponsive",
+      "readyState": null,
+      "overlayPresent": null,
+      "homepageTextPresent": null
+    },
+    {
+      "variant": "theme-160",
+      "scope": "theme.js, features.js and slider.js only; not a complete old-theme rollback",
+      "error": "Error: Renderer unresponsive"
+    },
+    {
+      "variant": "theme-151",
+      "scope": "1.5.1 theme JavaScript/CSS with historical CSS packaging; current HTML; not a complete old-theme rollback",
+      "error": "Error: Renderer unresponsive"
+    }
+  ],
+  "officialRelease": "v1.34.1",
+  "releaseRuntimeEqualsTestedSource": true,
+  "releaseRuntimeSha256": "03c806b343aebe24c3bc6d3c5f8c7691f4a58b07f72264a6292bbd20a98d78b8",
+  "servedRuntimeSha256": "b9459357d44006bf1beb8a69eae0e359b01b834f34764de18757db44878239f8",
+  "userReportedTrigger": "Immediately after theme upgrade from 1.5.1 to 1.6.1; full causality not established"
+}

@@ -1,0 +1,152 @@
+{
+  "accessibility": [
+    {
+      "name": "dark desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              ".site-title"
+            ],
+            [
+              ":root"
+            ],
+            [
+              "h1"
+            ],
+            [
+              ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "passes": 23
+    },
+    {
+      "name": "light desktop",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              ".site-title"
+            ],
+            [
+              ":root"
+            ],
+            [
+              ".header-actions > .theme-toggle[aria-label=\"Koyu / açık modu değiştir\"] > .theme-toggle__icon--moon.theme-toggle__icon[aria-hidden=\"true\"]"
+            ],
+            [
+              "h1"
+            ],
+            [
+              ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "passes": 23
+    },
+    {
+      "name": "mobile",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              ".site-title"
+            ],
+            [
+              "h1"
+            ],
+            [
+              ".gnn-scrolltop > span[aria-hidden=\"true\"]"
+            ]
+          ]
+        }
+      ],
+      "passes": 21
+    },
+    {
+      "name": "RTL mobile",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            [
+              "h1"
+            ]
+          ]
+        }
+      ],
+      "passes": 21
+    }
+  ],
+  "navigation": [
+    {
+      "cls": 0,
+      "lcp": 1512,
+      "domContentLoadedMs": 1504.5,
+      "loadMs": 1532.5,
+      "resources": 10,
+      "bytes": 132512
+    },
+    {
+      "cls": 0,
+      "lcp": 1444,
+      "domContentLoadedMs": 1432.4000000003725,
+      "loadMs": 1448.300000000745,
+      "resources": 10,
+      "bytes": 132512
+    },
+    {
+      "cls": 0,
+      "lcp": 1380,
+      "domContentLoadedMs": 1363.7000000001863,
+      "loadMs": 1368.7999999998137,
+      "resources": 10,
+      "bytes": 132512
+    }
+  ],
+  "scope": "Local WordPress/SQLite, Chromium; not production Web Vitals. INP and manual screen-reader use unmeasured.",
+  "themeResources": [
+    {
+      "url": "/wp-content/themes/gnn/assets/fonts/manrope-latin.woff2",
+      "bytes": 24836
+    },
+    {
+      "url": "/wp-content/themes/gnn/assets/fonts/space-grotesk-latin.woff2",
+      "bytes": 22288
+    },
+    {
+      "url": "/wp-content/themes/gnn/style.css",
+      "bytes": 1224
+    },
+    {
+      "url": "/wp-content/themes/gnn/assets/css/main.css",
+      "bytes": 58261
+    },
+    {
+      "url": "/wp-content/themes/gnn/assets/js/theme.js",
+      "bytes": 3680
+    },
+    {
+      "url": "/wp-content/themes/gnn/assets/js/slider.js",
+      "bytes": 4377
+    },
+    {
+      "url": "/wp-content/themes/gnn/assets/js/features.js",
+      "bytes": 2726
+    },
+    {
+      "url": "/wp-content/themes/gnn/assets/fonts/manrope-latin-ext.woff2",
+      "bytes": 15120
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.6.1\n"
+"Project-Id-Version: GNN 1.6.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-18 01:21+0000\n"
-"PO-Revision-Date: 2026-10-18 01:21+0000\n"
+"POT-Creation-Date: 2026-10-24 03:04+0000\n"
+"PO-Revision-Date: 2026-10-24 03:04+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -971,6 +971,9 @@ msgstr "Ayarlar başarıyla içe aktarıldı."
 msgid "Settings reset to defaults."
 msgstr "Ayarlar varsayılana sıfırlandı."
 
+msgid "Settings were not saved: a field has an invalid value type."
+msgstr "Ayarlar kaydedilmedi: bir alanın değer türü geçersiz."
+
 msgid "Sharp"
 msgstr "Keskin"
 
@@ -1172,8 +1175,8 @@ msgstr "Güncelleme kontrolü tamamlandı."
 msgid "Update to %s"
 msgstr "%s sürümüne güncelle"
 
-msgid "Upload a previously exported GNN settings JSON file."
-msgstr "Daha önce dışa aktarılmış bir GNN ayar JSON dosyası yükleyin."
+msgid "Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values."
+msgstr "GNN ayarları JSON dosyasını yükleyin (en fazla 1 MB). Dosyada bulunmayan alanlar mevcut değerlerini korur."
 
 msgid "Use Google Fonts instead"
 msgstr "Bunun yerine Google Fonts kullan"

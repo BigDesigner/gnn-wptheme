@@ -52,6 +52,32 @@ for root, dirs, files in os.walk(THEME):
                     entry['plural'] = match.group(2).replace("\\'", "'")
                     entry['refs'].append(f'{rel}:{lineno}')
 
+from tr_strings import TRANSLATIONS, PLURALS  # noqa: E402
+
+if '--check' in sys.argv:
+    import gettext
+    from collections import Counter
+    failures = []
+    with open(os.path.join(LANG, 'tr_TR.mo'), 'rb') as handle:
+        compiled = gettext.GNUTranslations(handle)
+    signature = lambda value: Counter(re.findall(r'%(?:[0-9]+\$)?[sdf]', value))
+    for mid, entry in entries.items():
+        forms = PLURALS.get(mid, ()) if entry['plural'] else (TRANSLATIONS.get(mid, ''),)
+        if not forms or not all(forms):
+            failures.append('Missing translation: ' + mid)
+            continue
+        for index, translated in enumerate(forms):
+            source = entry['plural'] if index else mid
+            if signature(source) != signature(translated):
+                failures.append('Format placeholders: ' + mid)
+            actual = compiled.ngettext(mid, entry['plural'], index + 1) if entry['plural'] else compiled.gettext(mid)
+            if actual != translated:
+                failures.append('Compiled catalog differs: ' + mid)
+    for failure in failures:
+        print(failure)
+    print('Turkish catalog:', len(entries), 'source strings,', len(failures), 'failures')
+    sys.exit(bool(failures))
+
 if '--list' in sys.argv:
     for mid in sorted(entries):
         mark = ' [PLURAL: %s]' % entries[mid]['plural'] if entries[mid]['plural'] else ''
@@ -98,8 +124,6 @@ print('gnn.pot:', len(entries), 'strings')
 
 # --- Turkish translations ---
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from tr_strings import TRANSLATIONS, PLURALS  # noqa: E402
-
 missing = [m for m in entries if m not in TRANSLATIONS and not entries[m]['plural']]
 missing += [m for m in entries if entries[m]['plural'] and m not in PLURALS]
 if missing:

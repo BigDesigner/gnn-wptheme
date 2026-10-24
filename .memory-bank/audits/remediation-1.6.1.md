@@ -6,6 +6,22 @@ The user authorized documenting the backlog, completing the fixes in order and
 verifying them. WordPress.org publishing and `gnn-wporg.zip` maintenance were
 explicitly excluded. Only the normal GitHub/private theme ZIP is maintained.
 
+## Subsequent Acceptance — 2026-10-18
+
+The implementation/verification sections below retain their original local-run
+snapshot. Subsequent events:
+
+- Commit `9e72354` was pushed to `main` at the user's request.
+- [Verify theme](https://github.com/BigDesigner/gnn-wptheme/actions/runs/39076284690)
+  and [Manual Release](https://github.com/BigDesigner/gnn-wptheme/actions/runs/39076562858)
+  completed successfully for that commit.
+- [v1.6.1](https://github.com/BigDesigner/gnn-wptheme/releases/tag/v1.6.1) is published
+  with the named `gnn-1.6.1.zip` asset.
+- The user reports a successful real update without problems. No further claims
+  about their site's data or production behavior are inferred from that report.
+- User-site WooCommerce visual/checkout checks are deferred until the end; that
+  plugin is currently absent from their site.
+
 ## Finding Closure
 
 | Audit / bug | Priority | Change | Verification |

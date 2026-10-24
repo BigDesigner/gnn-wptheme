@@ -53,3 +53,14 @@ audit evidence under `.tasks/audits/2026-10-18/`; record new verification separa
 - Static/package verification: 88/88 passed. Coverage remains unmeasured.
 - Detailed evidence: `.memory-bank/audits/remediation-1.6.1.md`.
 - No commit, push, production deployment or GitHub release was executed.
+
+## Post-report Follow-up — 2026-10-18
+
+- Changes were subsequently committed and pushed as `9e72354` to `main` following
+  explicit user authorization.
+- GitHub Verify theme and Manual Release workflows completed successfully;
+  `v1.6.1` and its `gnn-1.6.1.zip` asset were verified on GitHub.
+- The user confirmed that their real update completed without problems. This is
+  user-reported acceptance, not an additional agent-observed environment test.
+- User-site WooCommerce acceptance is deferred until the end because that plugin
+  is currently absent. Prior isolated WooCommerce test results remain valid.

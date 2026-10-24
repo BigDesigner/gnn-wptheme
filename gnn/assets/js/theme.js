@@ -33,6 +33,15 @@
 		});
 
 		/* Close the drawer when resizing up past the breakpoint. */
+		mobileNav.addEventListener('keydown', function (event) {
+			if (event.key === 'Escape') {
+				toggle.setAttribute('aria-expanded', 'false');
+				mobileNav.hidden = true;
+				if (mainNav) { mainNav.classList.remove('toggled'); }
+				document.body.classList.remove('mobile-nav-open');
+				toggle.focus();
+			}
+		});
 		window.addEventListener('resize', function () {
 			if (window.innerWidth >= 900 && !mobileNav.hidden) {
 				toggle.setAttribute('aria-expanded', 'false');
