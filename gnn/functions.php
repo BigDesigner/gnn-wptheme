@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '1.6.1' );
+define( 'GNN_VERSION', '1.6.2' );
 
 /**
  * Theme setup.
@@ -101,6 +101,9 @@ add_action( 'widgets_init', 'gnn_widgets_init' );
 function gnn_scripts() {
 	wp_enqueue_style( 'gnn-main', get_template_directory_uri() . '/assets/css/main.css', array(), GNN_VERSION );
 	wp_enqueue_style( 'gnn-style', get_stylesheet_uri(), array( 'gnn-main' ), GNN_VERSION );
+	if ( is_rtl() ) {
+		wp_enqueue_style( 'gnn-rtl', get_template_directory_uri() . '/rtl.css', array( 'gnn-style' ), GNN_VERSION );
+	}
 
 	// Accent color override. wp_add_inline_style() guarantees this prints
 	// immediately after gnn-main in the DOM, so it always wins the cascade
@@ -188,6 +191,7 @@ function gnn_head_bootstrap() {
 	?>
 	<script id="gnn-theme-mode">
 	(function () {
+		document.documentElement.classList.add('gnn-js');
 		var mode, locked = <?php echo $locked ? 'true' : 'false'; ?>,
 			remember = <?php echo gnn_option( 'remember_mode' ) ? 'true' : 'false'; ?>;
 		if (remember && !locked) { try { mode = localStorage.getItem('gnn-theme'); } catch (e) {} }

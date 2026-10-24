@@ -101,8 +101,17 @@ add_action( 'admin_init', 'gnn_panel_settings' );
  * @return array Stored option array.
  */
 function gnn_options_sanitize( $input ) {
-	$input = (array) $input;
-	$out   = wp_parse_args( (array) get_option( 'gnn_options', array() ), gnn_option_defaults() );
+	$saved = (array) get_option( 'gnn_options', array() );
+	$out   = wp_parse_args( $saved, gnn_option_defaults() );
+	if ( ! is_array( $input ) ) {
+		return $saved;
+	}
+	foreach ( $input as $value ) {
+		if ( ! is_scalar( $value ) ) {
+			add_settings_error( 'gnn_options', 'gnn_value_type', __( 'Settings were not saved: a field has an invalid value type.', 'gnn' ) );
+			return $saved;
+		}
+	}
 
 	// --- Shared theme_mods (not stored in the option). ---
 	if ( isset( $input['accent'] ) && preg_match( '/^#[0-9a-fA-F]{6}$/', $input['accent'] ) ) {
@@ -123,7 +132,7 @@ function gnn_options_sanitize( $input ) {
 	// --- Media ids. ---
 	foreach ( array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x', 'footer_logo_light', 'footer_logo_light_2x', 'footer_logo_dark', 'footer_logo_dark_2x', 'error404_image' ) as $key ) {
 		if ( isset( $input[ $key ] ) ) {
-			$out[ $key ] = absint( $input[ $key ] );
+			$out[ $key ] = gnn_is_legacy_logo_url( $key, $input[ $key ] ) ? $input[ $key ] : absint( $input[ $key ] );
 		}
 	}
 
@@ -244,7 +253,7 @@ function gnn_options_sanitize( $input ) {
 	foreach ( gnn_button_style_slots() as $gnn_btn_slot ) {
 		$label_key = "btn_style_{$gnn_btn_slot}_label";
 		if ( isset( $input[ $label_key ] ) ) {
-			$out[ $label_key ] = substr( sanitize_text_field( (string) $input[ $label_key ] ), 0, 40 );
+			$out[ $label_key ] = wp_html_excerpt( sanitize_text_field( (string) $input[ $label_key ] ), 40, '' );
 		}
 		foreach ( array( 'bg', 'text', 'border' ) as $gnn_btn_part ) {
 			$color_key = "btn_style_{$gnn_btn_slot}_{$gnn_btn_part}";
@@ -305,7 +314,7 @@ function gnn_panel_code_editors() {
 		'gnn-head_html'        => 'text/html',
 		'gnn-body_html'        => 'text/html',
 	);
-	$init = '';
+	$init   = '';
 	foreach ( $fields as $id => $mime ) {
 		$settings = wp_enqueue_code_editor( array( 'type' => $mime ) );
 		if ( false === $settings ) {
@@ -344,22 +353,25 @@ function gnn_field_checkbox( $key, $label, $hint = '' ) {
 /**
  * Render a media-picker field.
  *
- * @param string $key   Option key.
- * @param string $label Label text.
- * @param int    $value Attachment ID.
+ * @param string     $key   Option key.
+ * @param string     $label Label text.
+ * @param int|string $value Attachment ID or legacy logo URL.
  */
 function gnn_field_media( $key, $label, $value ) {
 	$img = $value ? wp_get_attachment_image( $value, 'medium', false, array( 'class' => 'gnn-media-preview' ) ) : '';
+	if ( gnn_is_legacy_logo_url( $key, $value ) ) {
+		$img = gnn_logo_img( $value, 0, 'gnn-media-preview' );
+	}
 	printf(
 		'<div class="gnn-field gnn-field--media"><span class="gnn-field__label">%1$s</span>' .
 		'<div class="gnn-media-box" data-target="%2$s">%3$s</div>' .
-		'<input type="hidden" id="gnn-media-%2$s" name="gnn_options[%2$s]" value="%4$d">' .
+		'<input type="hidden" id="gnn-media-%2$s" name="gnn_options[%2$s]" value="%4$s">' .
 		'<button type="button" class="button gnn-media-pick" data-target="%2$s">%5$s</button> ' .
 		'<button type="button" class="button gnn-media-clear" data-target="%2$s">%6$s</button></div>',
 		esc_html( $label ),
 		esc_attr( $key ),
-		$img, // phpcs:ignore WordPress.Security.EscapeOutput -- wp_get_attachment_image().
-		(int) $value,
+		$img, // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in wp_get_attachment_image/gnn_logo_img.
+		esc_attr( $value ),
 		esc_html__( 'Select image', 'gnn' ),
 		esc_html__( 'Remove', 'gnn' )
 	);
@@ -946,11 +958,11 @@ function gnn_panel_render() {
 				<div class="gnn-btn-styles">
 					<?php foreach ( gnn_button_style_slots() as $gnn_btn_slot ) : ?>
 						<?php
-						$gnn_btn_label  = (string) gnn_option( "btn_style_{$gnn_btn_slot}_label" );
-						$gnn_btn_class  = gnn_button_style_class( $gnn_btn_slot );
-						$gnn_btn_bg     = (string) gnn_option( "btn_style_{$gnn_btn_slot}_bg" );
-						$gnn_btn_text   = (string) gnn_option( "btn_style_{$gnn_btn_slot}_text" );
-						$gnn_btn_border = (string) gnn_option( "btn_style_{$gnn_btn_slot}_border" );
+						$gnn_btn_label         = (string) gnn_option( "btn_style_{$gnn_btn_slot}_label" );
+						$gnn_btn_class         = gnn_button_style_class( $gnn_btn_slot );
+						$gnn_btn_bg            = (string) gnn_option( "btn_style_{$gnn_btn_slot}_bg" );
+						$gnn_btn_text          = (string) gnn_option( "btn_style_{$gnn_btn_slot}_text" );
+						$gnn_btn_border        = (string) gnn_option( "btn_style_{$gnn_btn_slot}_border" );
 						$gnn_btn_preview_style = '';
 						if ( '' !== $gnn_btn_bg ) {
 							$gnn_btn_preview_style .= 'background:' . $gnn_btn_bg . ';';
@@ -1075,7 +1087,7 @@ function gnn_panel_advanced_tab() {
 
 		<div class="gnn-field">
 			<span class="gnn-field__label"><?php esc_html_e( 'Import settings', 'gnn' ); ?></span>
-			<p class="description"><?php esc_html_e( 'Upload a previously exported GNN settings JSON file.', 'gnn' ); ?></p>
+			<p class="description"><?php esc_html_e( 'Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values.', 'gnn' ); ?></p>
 			<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_import_settings">
 				<?php wp_nonce_field( 'gnn_import_settings' ); ?>
@@ -1156,7 +1168,7 @@ function gnn_panel_advanced_tab() {
  * @return string[]
  */
 function gnn_exportable_theme_mods() {
-	return array( 'gnn_accent_color', 'gnn_default_theme', 'gnn_footer_legal' );
+	return array( 'gnn_accent_color', 'gnn_default_theme', 'gnn_footer_legal', 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x' );
 }
 
 /**
@@ -1174,17 +1186,9 @@ function gnn_panel_redirect( $status ) {
  */
 function gnn_handle_export_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_export_settings' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
-	$mods = array();
-	foreach ( gnn_exportable_theme_mods() as $mod ) {
-		$mods[ $mod ] = get_theme_mod( $mod );
-	}
-	$payload = array(
-		'_gnn_export' => GNN_VERSION,
-		'options'     => (array) get_option( 'gnn_options', array() ),
-		'theme_mods'  => $mods,
-	);
+	$payload = gnn_settings_export_payload();
 
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );
@@ -1199,40 +1203,37 @@ add_action( 'admin_post_gnn_export_settings', 'gnn_handle_export_settings' );
  */
 function gnn_handle_import_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_import_settings' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
-	if ( empty( $_FILES['gnn_import_file']['tmp_name'] ) || ! is_uploaded_file( sanitize_text_field( wp_unslash( $_FILES['gnn_import_file']['tmp_name'] ) ) ) ) {
+	// The upload is temporary and is never copied into public media storage.
+	if ( ! isset( $_FILES['gnn_import_file'] ) || ! is_array( $_FILES['gnn_import_file'] ) ) {
 		gnn_panel_redirect( 'import_error' );
 	}
-
-	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- reading an uploaded temp file.
-	$raw  = file_get_contents( sanitize_text_field( wp_unslash( $_FILES['gnn_import_file']['tmp_name'] ) ) );
-	$data = json_decode( (string) $raw, true );
-	if ( ! is_array( $data ) || empty( $data['_gnn_export'] ) ) {
+	$file = $_FILES['gnn_import_file']; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- upload metadata is validated below.
+	if ( ! isset( $file['tmp_name'], $file['name'], $file['error'], $file['size'] )
+		|| ! is_string( $file['tmp_name'] ) || ! is_string( $file['name'] )
+		|| UPLOAD_ERR_OK !== (int) $file['error'] || (int) $file['size'] > 1048576
+		|| 'json' !== strtolower( pathinfo( $file['name'], PATHINFO_EXTENSION ) )
+		|| ! is_uploaded_file( $file['tmp_name'] ) ) {
 		gnn_panel_redirect( 'import_error' );
 	}
-
-	if ( isset( $data['options'] ) && is_array( $data['options'] ) ) {
-		// Run through the same sanitizer as the settings form.
-		update_option( 'gnn_options', gnn_options_sanitize( $data['options'] ) );
-	}
-	if ( isset( $data['theme_mods'] ) && is_array( $data['theme_mods'] ) ) {
-		foreach ( gnn_exportable_theme_mods() as $mod ) {
-			if ( isset( $data['theme_mods'][ $mod ] ) ) {
-				set_theme_mod( $mod, sanitize_text_field( (string) $data['theme_mods'][ $mod ] ) );
-			}
-		}
+	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- bounded read of a verified temporary upload.
+	$raw = file_get_contents( $file['tmp_name'], false, null, 0, 1048577 );
+	if ( false === $raw || is_wp_error( gnn_import_panel_settings( $raw ) ) ) {
+		gnn_panel_redirect( 'import_error' );
 	}
 	gnn_panel_redirect( 'import_ok' );
 }
 add_action( 'admin_post_gnn_import_settings', 'gnn_handle_import_settings' );
+
+require_once get_template_directory() . '/inc/settings-transfer.php';
 
 /**
  * Handle: reset settings to defaults.
  */
 function gnn_handle_reset_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_reset_settings' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
 	gnn_reset_panel_settings();
 	gnn_panel_redirect( 'reset_ok' );
@@ -1254,7 +1255,7 @@ function gnn_reset_panel_settings() {
  */
 function gnn_handle_rebuild_elementor_templates() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_rebuild_elementor_templates' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
 	if ( function_exists( 'gnn_install_elementor_templates' ) ) {
 		if ( ! gnn_install_elementor_templates() ) {
@@ -1270,7 +1271,7 @@ add_action( 'admin_post_gnn_rebuild_elementor_templates', 'gnn_handle_rebuild_el
  */
 function gnn_handle_save_updater_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_save_updater_settings' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
 	update_option( 'gnn_github_updates_enable', empty( $_POST['gnn_updates_enable'] ) ? 0 : 1 );
 	delete_site_transient( 'update_themes' );
@@ -1284,7 +1285,7 @@ add_action( 'admin_post_gnn_save_updater_settings', 'gnn_handle_save_updater_set
  */
 function gnn_handle_check_theme_update() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_check_theme_update' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ) );
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
 	delete_transient( 'gnn_github_update_check_v2' );
 	delete_site_transient( 'update_themes' );

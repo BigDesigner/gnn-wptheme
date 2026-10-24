@@ -3,6 +3,7 @@
 .build/
 .claude/
 .temp/
+vendor/
 
 # Zip outputs & archives
 *.zip

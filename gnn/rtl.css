@@ -40,3 +40,12 @@ input, textarea, select { text-align: right; }
 
 /* Button styles (GNN Panel → Styles) inherit the button's own centering. */
 .gnn-btn { direction: rtl; }
+
+/* Physical offsets in the base stylesheet need an explicit RTL counterpart. */
+.header-actions { margin-left: 0; margin-right: auto; }
+.search-result-row__arrow { margin-left: 0; margin-right: auto; }
+.entry-content ul, .entry-content ol { padding-left: 0; padding-right: 22px; }
+.entry-content blockquote { border-left: 0; border-right: 3px solid var(--accent); }
+.comment-list .children { margin-left: 0; margin-right: 60px; padding-left: 0; padding-right: 20px; border-left: 0; border-right: 2px solid var(--line); }
+.skip-link { left: auto; right: -9999px; }
+.skip-link:focus { left: auto; right: 0; }

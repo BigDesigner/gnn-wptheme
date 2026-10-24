@@ -19,9 +19,12 @@
 		} );
 	}
 	if ( cfg.preloader || cfg.loading ) {
-		window.addEventListener( 'load', hideOverlays );
-		// Safety net in case load already fired.
-		setTimeout( hideOverlays, 4000 );
+		if ( document.readyState === 'complete' ) {
+			hideOverlays();
+		} else {
+			window.addEventListener( 'load', hideOverlays, { once: true } );
+			setTimeout( hideOverlays, 4000 );
+		}
 	}
 
 	/* Smooth scroll for same-page anchor links. */
@@ -36,7 +39,7 @@
 			}
 			var id = url.slice( url.indexOf( '#' ) + 1 );
 			if ( ! id ) { return; }
-			var target = document.getElementById( id ) || document.querySelector( '[name="' + id + '"]' );
+			var target = document.getElementById( id ) || document.getElementsByName( id )[0];
 			if ( ! target ) { return; }
 			e.preventDefault();
 			target.scrollIntoView( { behavior: 'smooth', block: 'start' } );
@@ -70,8 +73,11 @@
 						io.unobserve( entry.target );
 					}
 				} );
-			}, { threshold: 0.15 } );
-			items.forEach( function ( el ) { io.observe( el ); } );
+			}, { threshold: 0 } );
+			items.forEach( function ( el ) {
+				el.classList.add( 'gnn-anim--pending' );
+				io.observe( el );
+			} );
 		}
 	}
 } )();

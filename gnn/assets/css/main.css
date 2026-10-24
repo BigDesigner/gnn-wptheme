@@ -1429,9 +1429,11 @@ body.gnn-has-dock .gnn-dock {
 .gnn-preloader.is-done { opacity: 0; transition: opacity .4s; }
 @keyframes gnn-pre { 0% { width: 0; } 50% { width: 70%; } 100% { width: 100%; } }
 .gnn-loading {
-	position: fixed; inset: 0; z-index: 99; display: flex; align-items: center; justify-content: center;
-	background: var(--bg); transition: opacity .5s;
+	position: fixed; inset: 0; z-index: 99; display: none; align-items: center; justify-content: center;
+	background: var(--bg); transition: opacity .5s; animation: gnn-overlay-expire 0s 6s forwards;
 }
+.gnn-js .gnn-loading { display: flex; }
+@keyframes gnn-overlay-expire { to { visibility: hidden; pointer-events: none; opacity: 0; } }
 .gnn-loading.is-done { opacity: 0; pointer-events: none; }
 .gnn-loading__spinner { width: 40px; height: 40px; border: 3px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: gnn-spin .8s linear infinite; }
 @keyframes gnn-spin { to { transform: rotate(360deg); } }
@@ -1447,12 +1449,16 @@ body.gnn-has-dock .gnn-dock {
 .gnn-maintenance__msg { font-size: 18px; color: var(--fg2); line-height: 1.7; }
 
 /* Scroll-in animations */
-.gnn-anim { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+.gnn-anim--pending { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
 .gnn-anim.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
 	.gnn-anim { opacity: 1; transform: none; transition: none; }
 	.gnn-preloader__bar, .gnn-loading__spinner { animation: none; }
 }
+
+/* Keyboard focus must remain visible on links and native controls. */
+:where(a, button, input, textarea, select, summary):focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+.search-submit:focus { position: static; clip-path: none; width: auto; height: auto; }
 
 /* ---------------------------------------------------------------------------
  * 20. Device visibility utilities (add as an "Additional CSS class" in the

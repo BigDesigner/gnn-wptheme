@@ -118,7 +118,7 @@ class GNN_GitHub_Updater {
 		}
 
 		$download_url = '';
-		$version = $matches[1];
+		$version      = $matches[1];
 		if ( ! empty( $body->assets ) && is_array( $body->assets ) ) {
 			foreach ( $body->assets as $asset ) {
 				if ( isset( $asset->name, $asset->browser_download_url ) && 'gnn-' . $version . '.zip' === $asset->name
@@ -161,10 +161,14 @@ class GNN_GitHub_Updater {
 			&& 'https' === $parts['scheme'] && 'github.com' === $parts['host']
 			&& ! isset( $parts['user'] ) && ! isset( $parts['pass'] ) && ! isset( $parts['port'] )
 			&& ! isset( $parts['query'] ) && ! isset( $parts['fragment'] )
-			&& in_array( $parts['path'], array(
-				'/' . $this->repo . '/releases/download/v' . $version . '/gnn-' . $version . '.zip',
-				'/' . $this->repo . '/releases/download/' . $version . '/gnn-' . $version . '.zip',
-			), true );
+			&& in_array(
+				$parts['path'],
+				array(
+					'/' . $this->repo . '/releases/download/v' . $version . '/gnn-' . $version . '.zip',
+					'/' . $this->repo . '/releases/download/' . $version . '/gnn-' . $version . '.zip',
+				),
+				true
+			);
 	}
 
 	/**
@@ -243,9 +247,9 @@ class GNN_GitHub_Updater {
 	 * Validate the extracted theme before WordPress touches the installed theme.
 	 *
 	 * @param string|WP_Error $source Extracted source directory.
-	 * @param string $remote_source Temporary extraction root.
-	 * @param WP_Upgrader $upgrader Upgrader instance (unused).
-	 * @param array $hook_extra Current upgrade context.
+	 * @param string          $remote_source Temporary extraction root.
+	 * @param WP_Upgrader     $upgrader Upgrader instance (unused).
+	 * @param array           $hook_extra Current upgrade context.
 	 * @return string|WP_Error
 	 */
 	public function validate_source( $source, $remote_source, $upgrader, $hook_extra ) {
@@ -276,7 +280,7 @@ class GNN_GitHub_Updater {
 	 * Clear release data after this theme has been updated.
 	 *
 	 * @param WP_Upgrader $upgrader Upgrader instance (unused).
-	 * @param array $options Upgrade context.
+	 * @param array       $options Upgrade context.
 	 */
 	public function clear_update_cache( $upgrader, $options ) {
 		$themes = isset( $options['themes'] ) ? (array) $options['themes'] : array();

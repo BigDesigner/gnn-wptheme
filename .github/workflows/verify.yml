@@ -19,7 +19,11 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: '7.4'
+          extensions: mbstring, xml
+          tools: composer
           coverage: none
+      - run: composer install --no-interaction --prefer-dist
+      - run: composer lint
       - run: python .scripts/verify.py
   wordpress-integration:
     runs-on: ubuntu-latest
@@ -28,7 +32,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24.18.0'
-      - run: npm install --prefix .temp/qa-tools --ignore-scripts --no-audit --no-fund @wp-playground/cli@3.1.58 playwright@1.64.1
+      - run: npm install --prefix .temp/qa-tools --ignore-scripts --no-audit --no-fund @wp-playground/cli@3.1.58 playwright@1.64.1 axe-core@4.11.0
       - run: .temp/qa-tools/node_modules/.bin/playwright install --with-deps chromium
       - run: node .scripts/test-wordpress.mjs
       - uses: actions/upload-artifact@v4

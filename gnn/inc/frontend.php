@@ -176,10 +176,17 @@ add_action( 'wp_nav_menu_item_custom_fields', 'gnn_menu_item_badge_field', 10, 1
 /**
  * Save the menu item badge field.
  *
+ * @param int $menu_id      Navigation menu ID.
  * @param int $menu_item_id Menu item post ID.
  */
-function gnn_save_menu_item_badge( $menu_item_id ) {
+function gnn_save_menu_item_badge( $menu_id, $menu_item_id ) {
+	if ( ! current_user_can( 'edit_theme_options' ) ) {
+		return;
+	}
 	if ( ! isset( $_POST['menu-item-gnn-badge'][ $menu_item_id ] ) ) {
+		return;
+	}
+	if ( ! is_scalar( $_POST['menu-item-gnn-badge'][ $menu_item_id ] ) ) {
 		return;
 	}
 	check_admin_referer( 'update-nav_menu', 'update-nav-menu-nonce' );
@@ -190,7 +197,7 @@ function gnn_save_menu_item_badge( $menu_item_id ) {
 		delete_post_meta( $menu_item_id, '_gnn_menu_badge' );
 	}
 }
-add_action( 'wp_update_nav_menu_item', 'gnn_save_menu_item_badge' );
+add_action( 'wp_update_nav_menu_item', 'gnn_save_menu_item_badge', 10, 2 );
 
 /**
  * Mobile bottom app dock.

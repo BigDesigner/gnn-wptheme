@@ -13,6 +13,7 @@ export async function testBrowser({browser,server,php,out}) {
  await page.clock.install({time:new Date('2026-10-18T00:00:00Z')});
  await page.clock.pauseAt(new Date('2026-10-18T00:00:00Z'));
  const errors=[];
+ const rotationStartLabel=await php("echo __('Start slide rotation','gnn');");
  page.on('pageerror',error=>errors.push(String(error)));
  await record('A01 latest-posts homepage displays posts',async()=>{
   await page.goto(server.serverUrl,{waitUntil:'networkidle'});
@@ -46,7 +47,7 @@ export async function testBrowser({browser,server,php,out}) {
   const before=await page.locator('.gnn-hero__track').getAttribute('style');
   await page.clock.runFor(5000);
   assert.equal(await page.locator('.gnn-hero__track').getAttribute('style'),before);
-  assert.equal(await page.locator('.gnn-hero__rotation').textContent(),'Start slide rotation');
+  assert.equal(await page.locator('.gnn-hero__rotation').textContent(),rotationStartLabel);
   await page.locator('.gnn-hero__rotation').focus();
   await page.keyboard.press('Enter');
   await page.mouse.move(0,0);

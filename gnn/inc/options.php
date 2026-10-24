@@ -186,11 +186,35 @@ function gnn_option_defaults() {
  * @return mixed
  */
 function gnn_option( $key ) {
-	static $options = null;
-	if ( null === $options ) {
-		$options = wp_parse_args( (array) get_option( 'gnn_options', array() ), gnn_option_defaults() );
+	static $defaults = null;
+	if ( null === $defaults ) {
+		$defaults = gnn_option_defaults();
 	}
-	return $options[ $key ] ?? null;
+	$options = (array) get_option( 'gnn_options', array() );
+	if ( array_key_exists( $key, $options ) ) {
+		return $options[ $key ];
+	}
+	// An explicit panel value of 0 takes precedence over the old theme_mod.
+	if ( in_array( $key, array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x' ), true ) ) {
+		$legacy = get_theme_mod( $key, 0 );
+		if ( is_scalar( $legacy ) && $legacy ) {
+			return is_numeric( $legacy ) ? absint( $legacy ) : esc_url_raw( $legacy, array( 'http', 'https' ) );
+		}
+	}
+	return $defaults[ $key ] ?? null;
+}
+
+/**
+ * Accept historical HTTP(S) logo URLs as well as modern attachment IDs.
+ *
+ * @param string $key   Option or theme_mod key.
+ * @param mixed  $value Candidate URL.
+ * @return bool Whether this is a supported legacy logo URL.
+ */
+function gnn_is_legacy_logo_url( $key, $value ) {
+	return in_array( $key, array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x' ), true )
+		&& is_string( $value ) && preg_match( '#^https?://#i', $value )
+		&& wp_parse_url( $value, PHP_URL_HOST ) && esc_url_raw( $value ) === $value;
 }
 
 // ----- Branding: light/dark logo pair (falls back to core custom logo / title) ----------------------------------------------------------
@@ -208,21 +232,20 @@ function gnn_option( $key ) {
  * @return string HTML, or '' when no 1x id.
  */
 function gnn_logo_img( $id_1x, $id_2x, $css_class ) {
-	$id_1x = (int) $id_1x;
 	if ( ! $id_1x ) {
 		return '';
 	}
-	$src = wp_get_attachment_image_url( $id_1x, 'full' );
+	$src = is_numeric( $id_1x ) ? wp_get_attachment_image_url( (int) $id_1x, 'full' ) : esc_url_raw( $id_1x, array( 'http', 'https' ) );
 	if ( ! $src ) {
 		return '';
 	}
-	$meta   = wp_get_attachment_metadata( $id_1x );
+	$meta   = is_numeric( $id_1x ) ? wp_get_attachment_metadata( (int) $id_1x ) : array();
 	$width  = ! empty( $meta['width'] ) ? (int) $meta['width'] : null;
 	$height = ! empty( $meta['height'] ) ? (int) $meta['height'] : null;
 	$alt    = get_bloginfo( 'name' );
 
 	$srcset = '';
-	$src_2x = $id_2x ? wp_get_attachment_image_url( (int) $id_2x, 'full' ) : '';
+	$src_2x = $id_2x ? ( is_numeric( $id_2x ) ? wp_get_attachment_image_url( (int) $id_2x, 'full' ) : esc_url_raw( $id_2x, array( 'http', 'https' ) ) ) : '';
 	if ( $src_2x ) {
 		$srcset = ' srcset="' . esc_url( $src ) . ' 1x, ' . esc_url( $src_2x ) . ' 2x"';
 	}
@@ -243,25 +266,17 @@ function gnn_logo_img( $id_1x, $id_2x, $css_class ) {
  * with retina (2x) variants.
  */
 function gnn_the_logo() {
-	$light    = (int) gnn_option( 'logo_light' );
-	$light_2x = (int) gnn_option( 'logo_light_2x' );
-	$dark     = (int) gnn_option( 'logo_dark' );
-	$dark_2x  = (int) gnn_option( 'logo_dark_2x' );
+	$light    = gnn_option( 'logo_light' );
+	$light_2x = gnn_option( 'logo_light_2x' );
+	$dark     = gnn_option( 'logo_dark' );
+	$dark_2x  = gnn_option( 'logo_dark_2x' );
 
-	if ( $light || $dark ) {
-		// With only one mode uploaded, it serves both.
-		$on_light_1x = $light ? $light : $dark;
-		$on_light_2x = $light ? $light_2x : $dark_2x;
-		$on_dark_1x  = $dark ? $dark : $light;
-		$on_dark_2x  = $dark ? $dark_2x : $light_2x;
-
+	$markup = gnn_logo_pair( $light, $light_2x, $dark, $dark_2x );
+	if ( '' !== $markup ) {
 		$height        = max( 12, (int) gnn_option( 'logo_max_height' ) );
 		$height_mobile = max( 12, (int) gnn_option( 'logo_max_height_mobile' ) );
 		echo '<a class="site-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '" style="--gnn-logo-h:' . esc_attr( $height ) . 'px;--gnn-logo-h-mobile:' . esc_attr( $height_mobile ) . 'px">';
-		echo gnn_logo_img( $on_dark_1x, $on_dark_2x, 'gnn-logo--on-dark' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper.
-		if ( $on_light_1x !== $on_dark_1x || $on_light_2x !== $on_dark_2x ) {
-			echo gnn_logo_img( $on_light_1x, $on_light_2x, 'gnn-logo--on-light' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper.
-		}
+		echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in gnn_logo_pair/gnn_logo_img.
 		echo '</a>';
 		return;
 	}
@@ -276,6 +291,25 @@ function gnn_the_logo() {
 }
 
 /**
+ * Render valid mode logos, or one shared image visible in both color modes.
+ *
+ * @param int|string $light    Light-mode logo.
+ * @param int|string $light_2x Light-mode retina logo.
+ * @param int|string $dark     Dark-mode logo.
+ * @param int|string $dark_2x  Dark-mode retina logo.
+ * @param string     $extra    Additional image classes.
+ * @return string Escaped markup, or empty when no source resolves.
+ */
+function gnn_logo_pair( $light, $light_2x, $dark, $dark_2x, $extra = '' ) {
+	$light_markup = gnn_logo_img( $light, $light_2x, 'gnn-logo--on-light ' . $extra );
+	$dark_markup  = gnn_logo_img( $dark, $dark_2x, 'gnn-logo--on-dark ' . $extra );
+	if ( '' === $light_markup || '' === $dark_markup || ( $light === $dark && $light_2x === $dark_2x ) ) {
+		return str_replace( array( 'gnn-logo--on-light', 'gnn-logo--on-dark' ), 'gnn-logo--shared', $dark_markup ? $dark_markup : $light_markup );
+	}
+	return $dark_markup . $light_markup;
+}
+
+/**
  * Output the footer logo pair (light/dark, retina) at the panel-set width.
  * Returns false when no footer logo is configured.
  *
@@ -287,21 +321,15 @@ function gnn_the_footer_logo() {
 	$dark     = (int) gnn_option( 'footer_logo_dark' );
 	$dark_2x  = (int) gnn_option( 'footer_logo_dark_2x' );
 
-	if ( ! $light && ! $dark ) {
+	$markup = gnn_logo_pair( $light, $light_2x, $dark, $dark_2x, 'gnn-footer-logo' );
+	if ( '' === $markup ) {
 		return false;
 	}
-	$on_light_1x = $light ? $light : $dark;
-	$on_light_2x = $light ? $light_2x : $dark_2x;
-	$on_dark_1x  = $dark ? $dark : $light;
-	$on_dark_2x  = $dark ? $dark_2x : $light_2x;
 
 	$height = max( 12, (int) gnn_option( 'footer_logo_height' ) );
 
 	echo '<a class="footer-logo-link" href="' . esc_url( home_url( '/' ) ) . '" rel="home" style="--gnn-footer-logo-h:' . esc_attr( $height ) . 'px;">';
-	echo gnn_logo_img( $on_dark_1x, $on_dark_2x, 'gnn-logo--on-dark gnn-footer-logo' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper.
-	if ( $on_light_1x !== $on_dark_1x || $on_light_2x !== $on_dark_2x ) {
-		echo gnn_logo_img( $on_light_1x, $on_light_2x, 'gnn-logo--on-light gnn-footer-logo' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in helper.
-	}
+	echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in gnn_logo_pair/gnn_logo_img.
 	echo '</a>';
 	return true;
 }
@@ -599,18 +627,35 @@ add_action( 'wp_enqueue_scripts', 'gnn_scope_woo_assets', 99 );
  * Detect Woo content, including referenced blocks, without rendering it.
  *
  * @param string $content Raw content.
- * @param array $seen Referenced block IDs already inspected.
+ * @param array  $seen Referenced block IDs already inspected.
  * @return bool
  */
 function gnn_content_uses_woocommerce( $content, $seen = array() ) {
 	if ( false !== strpos( $content, 'wp:woocommerce/' ) || false !== strpos( $content, 'add-to-cart' ) ) {
 		return true;
 	}
-	$shortcodes = array( 'products', 'product', 'product_page', 'product_category', 'product_categories',
-		'add_to_cart', 'add_to_cart_url', 'recent_products', 'featured_products', 'sale_products',
-		'best_selling_products', 'top_rated_products', 'product_attribute', 'related_products',
-		'shop_messages', 'woocommerce_messages', 'woocommerce_cart', 'woocommerce_checkout',
-		'woocommerce_my_account', 'woocommerce_order_tracking' );
+	$shortcodes = array(
+		'products',
+		'product',
+		'product_page',
+		'product_category',
+		'product_categories',
+		'add_to_cart',
+		'add_to_cart_url',
+		'recent_products',
+		'featured_products',
+		'sale_products',
+		'best_selling_products',
+		'top_rated_products',
+		'product_attribute',
+		'related_products',
+		'shop_messages',
+		'woocommerce_messages',
+		'woocommerce_cart',
+		'woocommerce_checkout',
+		'woocommerce_my_account',
+		'woocommerce_order_tracking',
+	);
 	foreach ( $shortcodes as $shortcode ) {
 		// Detection must also work before a plugin registers its shortcode callback.
 		if ( preg_match( '/\[(?!\[)\s*' . preg_quote( $shortcode, '/' ) . '(?=[\s\]\/])/', $content ) ) {

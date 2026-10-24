@@ -184,6 +184,7 @@ function gnn_render_slide_meta_box( $post ) {
  */
 function gnn_save_slide_meta( $post_id ) {
 	if ( ! isset( $_POST['gnn_slide_meta_nonce'] )
+		|| ! is_string( $_POST['gnn_slide_meta_nonce'] )
 		|| ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['gnn_slide_meta_nonce'] ) ), 'gnn_slide_meta' ) ) {
 		return;
 	}
@@ -207,7 +208,10 @@ function gnn_save_slide_meta( $post_id ) {
 		if ( ! isset( $_POST[ $field ] ) ) {
 			continue;
 		}
-		$raw   = wp_unslash( $_POST[ $field ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized dynamically via $sanitizers on the next line.
+		$raw = wp_unslash( $_POST[ $field ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized dynamically via $sanitizers on the next line.
+		if ( ! is_scalar( $raw ) ) {
+			continue;
+		}
 		$clean = call_user_func( $sanitizers[ $meta_key ], $raw );
 		update_post_meta( $post_id, $meta_key, $clean );
 	}

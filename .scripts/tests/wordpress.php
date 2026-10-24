@@ -8,6 +8,8 @@ function gnn_qa_check( $name, $condition, $detail = '' ) {
 wp_set_current_user( 1 );
 
 if ( 'updater' === $suite ) {
+	$qa_parts = explode( '.', GNN_VERSION );
+	$qa_next = $qa_parts[0] . '.' . $qa_parts[1] . '.' . ( (int) $qa_parts[2] + 1 );
 	$updater = gnn_updater();
 	gnn_qa_check( 'A03 updater registered outside admin', false !== has_filter( 'pre_set_site_transient_update_themes', array( $updater, 'check_for_update' ) ) && ! is_admin() );
 	gnn_qa_check( 'A04 unsafe post-install filter removed', false === has_filter( 'upgrader_post_install', array( $updater, 'after_install' ) ) );
@@ -25,11 +27,11 @@ if ( 'updater' === $suite ) {
 			'browser_download_url' => 'https://github.com/BigDesigner/gnn-wptheme/releases/download/v' . $version . '/gnn-' . $version . '.zip' ) ),
 			'html_url' => 'https://github.com/BigDesigner/gnn-wptheme/releases/tag/v' . $version );
 	};
-	$qa_release = $good( '1.6.2' );
+	$qa_release = $good( $qa_next );
 	delete_transient( $key );
 	$release = $updater->get_remote_release();
 	$updater->get_remote_release();
-	gnn_qa_check( 'A05 exact release asset accepted and cached', is_object( $release ) && '1.6.2' === $release->version && 1 === $qa_requests );
+	gnn_qa_check( 'A05 exact release asset accepted and cached', is_object( $release ) && $qa_next === $release->version && 1 === $qa_requests );
 	$transient = (object) array( 'checked' => array( 'gnn' => GNN_VERSION ), 'response' => array(), 'no_update' => array( 'gnn' => array() ) );
 	$transient = $updater->check_for_update( $transient );
 	gnn_qa_check( 'A03 newer release offered exclusively', isset( $transient->response['gnn'] ) && ! isset( $transient->no_update['gnn'] ) );
@@ -37,7 +39,7 @@ if ( 'updater' === $suite ) {
 	$transient = $updater->check_for_update( $transient );
 	gnn_qa_check( 'A04 stale update removed for current version', ! isset( $transient->response['gnn'] ) && isset( $transient->no_update['gnn'] ) );
 	foreach ( array( 'no-asset', 'foreign-host', 'wrong-name', 'prerelease', 'invalid-tag' ) as $case ) {
-		$qa_release = $good( '1.6.2' );
+		$qa_release = $good( $qa_next );
 		if ( 'no-asset' === $case ) { $qa_release['assets'] = array(); $qa_release['zipball_url'] = 'https://api.github.com/repos/BigDesigner/gnn-wptheme/zipball/v1.6.2'; }
 		if ( 'foreign-host' === $case ) { $qa_release['assets'][0]['browser_download_url'] = 'https://example.invalid/gnn-1.6.2.zip'; }
 		if ( 'wrong-name' === $case ) { $qa_release['assets'][0]['name'] = 'source.zip'; }
@@ -63,7 +65,7 @@ if ( 'updater' === $suite ) {
 	$qa_root = trailingslashit( get_temp_dir() ) . 'gnn-qa-update-' . wp_rand() . '/';
 	wp_mkdir_p( $qa_root . 'gnn' );
 	gnn_qa_check( 'A04 invalid extracted package rejected', is_wp_error( $updater->validate_source( $qa_root . 'gnn/', $qa_root, null, array( 'theme' => 'gnn' ) ) ) );
-	file_put_contents( $qa_root . 'gnn/style.css', "/*\nTheme Name: GNN\nVersion: 1.6.2\n*/" );
+	file_put_contents( $qa_root . 'gnn/style.css', "/*\nTheme Name: GNN\nVersion: {$qa_next}\n*/" );
 	file_put_contents( $qa_root . 'gnn/index.php', '<?php' );
 	gnn_qa_check( 'A04 valid source retained before install', $qa_root . 'gnn/' === $updater->validate_source( $qa_root . 'gnn/', $qa_root, null, array( 'theme' => 'gnn' ) ) );
 	wp_mkdir_p( $qa_root . 'different' );
