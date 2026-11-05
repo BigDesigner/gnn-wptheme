@@ -33,6 +33,7 @@ jobs:
             .build/gnn-*.zip
             .build/gnn-*-manifest.json
           if-no-files-found: error
+          include-hidden-files: true
   wordpress-integration:
     runs-on: ubuntu-latest
     steps:
