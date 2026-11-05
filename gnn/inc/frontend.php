@@ -56,9 +56,9 @@ function gnn_render_topbar() {
 	if ( ! gnn_option( 'topbar_enable' ) ) {
 		return;
 	}
-	$text  = trim( (string) gnn_option( 'topbar_text' ) );
-	$email = trim( (string) gnn_option( 'topbar_email' ) );
-	$phone = trim( (string) gnn_option( 'topbar_phone' ) );
+	$text  = trim( (string) gnn_translated_option( 'topbar_text' ) );
+	$email = trim( (string) gnn_translated_option( 'topbar_email' ) );
+	$phone = trim( (string) gnn_translated_option( 'topbar_phone' ) );
 	if ( '' === $text && '' === $email && '' === $phone ) {
 		return;
 	}
@@ -203,6 +203,8 @@ add_action( 'wp_update_nav_menu_item', 'gnn_save_menu_item_badge', 10, 2 );
  * Mobile bottom app dock.
  */
 function gnn_render_mobile_dock() {
+	if ( gnn_render_configured_actions() ) {
+		return; }
 	$cart_url = class_exists( 'WooCommerce' ) ? wc_get_cart_url() : gnn_contact_url();
 	$cart_lbl = class_exists( 'WooCommerce' ) ? __( 'Cart', 'gnn' ) : __( 'Contact', 'gnn' );
 	// Same Feather-style outline SVGs as the header (gnn-icon class), so the

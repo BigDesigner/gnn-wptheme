@@ -31,7 +31,7 @@ if ( ! function_exists( 'gnn_apply_demo_setup' ) ) :
 		// Static front page + posts page.
 		$home = get_page_by_path( 'home' );
 		$blog = get_page_by_path( 'blog' );
-		if ( $home && $blog ) {
+		if ( $home && $blog && ! get_option( 'page_on_front' ) && ! get_option( 'page_for_posts' ) ) {
 			update_option( 'show_on_front', 'page' );
 			update_option( 'page_on_front', $home->ID );
 			update_option( 'page_for_posts', $blog->ID );
@@ -50,7 +50,7 @@ if ( ! function_exists( 'gnn_apply_demo_setup' ) ) :
 			}
 		}
 		if ( $locations ) {
-			set_theme_mod( 'nav_menu_locations', $locations );
+			set_theme_mod( 'nav_menu_locations', array_replace( $locations, (array) get_theme_mod( 'nav_menu_locations', array() ) ) );
 		}
 
 		// Customizer demo values (footer legal) from demo data.

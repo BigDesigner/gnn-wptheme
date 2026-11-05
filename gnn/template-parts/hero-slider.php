@@ -6,6 +6,8 @@
  * @package GNN
  */
 
+if ( 'none' === gnn_layout_value( 'hero_style' ) ) {
+	return; }
 $gnn_slides = gnn_get_slides();
 
 if ( empty( $gnn_slides ) ) {

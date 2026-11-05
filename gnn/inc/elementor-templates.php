@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Change only when the generated library changes, independently of theme releases.
-define( 'GNN_ELEMENTOR_LIBRARY_VERSION', '1' );
+define( 'GNN_ELEMENTOR_LIBRARY_VERSION', '2' );
 
 /**
  * Generate an Elementor-style element id (7 hex chars).
@@ -184,18 +184,18 @@ function gnn_el_image( $url, $extra = array() ) {
  * @return array
  */
 function gnn_elementor_library() {
-	$accent = get_theme_mod( 'gnn_accent_color', '#34d399' );
-	$ink    = '#062416';
-	$fg     = '#f5f5f4';
-	$muted  = '#9d9da4';
+	$accent = 'var(--accent)';
+	$ink    = 'var(--accent-ink)';
+	$fg     = 'var(--fg)';
+	$muted  = 'var(--fg2)';
 	$ph     = get_theme_file_uri( 'assets/img/placeholder-cover.svg' );
 
 	// Home page template — matches the theme's own dark tokens exactly
 	// (see :root in main.css) so it blends seamlessly, plus fixed accent
 	// companions, one per GNN sub-brand, for visual identity.
-	$bg     = '#0a0a0b';
-	$bg2    = '#121214';
-	$line   = '#232328';
+	$bg     = 'var(--bg)';
+	$bg2    = 'var(--bg2)';
+	$line   = 'var(--line)';
 	$cyan   = '#22d3ee';
 	$purple = '#a78bfa';
 	$amber  = '#fb923c';

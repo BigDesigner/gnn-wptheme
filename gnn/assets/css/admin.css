@@ -97,12 +97,12 @@
 /* ---------------------------------------------------------------------------
  * Tab panels — modern cards
  * ------------------------------------------------------------------------- */
-.gnn-tab {
+.gnn-panel.gnn-admin-ready .gnn-tab {
 	display: none; background: var(--gnn-admin-bg);
 	border: 1px solid var(--gnn-admin-line); border-radius: 14px;
 	padding: 26px 28px 28px;
 }
-.gnn-tab.is-active { display: block; }
+.gnn-panel.gnn-admin-ready .gnn-tab.is-active { display: block; }
 
 .gnn-tab h2 {
 	display: flex; align-items: center; gap: 10px;
@@ -308,3 +308,9 @@
 .gnn-logo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 32px; }
 @media (max-width: 782px) { .gnn-logo-grid { grid-template-columns: 1fr; } }
 .gnn-media-preview { max-width: 220px; height: auto; border: 1px solid var(--gnn-admin-line); border-radius: 8px; padding: 6px; background: repeating-conic-gradient(#f0f0f1 0% 25%, #fff 0% 50%) 50% / 20px 20px; }
+
+.gnn-btn-style-card code { color: #454b55; }
+.gnn-save-status { padding: 8px 0; font-weight: 600; }
+.gnn-panel label { cursor: pointer; }
+
+.gnn-panel.gnn-searching .gnn-tab{display:block}.gnn-field[hidden]{display:none}.gnn-action-row{display:grid;grid-template-columns:1fr 1fr 2fr;gap:8px;margin:8px 0}.gnn-workspace-action{padding:10px 0}.gnn-workspace-action label{display:block;margin-bottom:6px}@media(max-width:782px){.gnn-action-row{grid-template-columns:1fr;}}

@@ -7,6 +7,8 @@
 ( function () {
 	'use strict';
 
+	var panel = document.querySelector('.gnn-panel');
+	if (panel) panel.classList.add('gnn-admin-ready');
 	/* Tabs (hash-persistent). */
 	var tabs = document.querySelectorAll( '.gnn-tabs .nav-tab' );
 	var panes = document.querySelectorAll( '.gnn-tab' );
@@ -14,6 +16,7 @@
 	function activate( id ) {
 		tabs.forEach( function ( t ) {
 			t.classList.toggle( 'nav-tab-active', t.dataset.tab === id );
+			if(t.dataset.tab === id) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current');
 		} );
 		panes.forEach( function ( p ) {
 			p.classList.toggle( 'is-active', p.id === 'gnn-tab-' + id );
@@ -30,9 +33,35 @@
 
 	var initial = ( location.hash || '' ).replace( '#gnn-tab-', '' );
 	activate( document.getElementById( 'gnn-tab-' + initial ) ? initial : 'global' );
+ if(window.gnnAdminText && gnnAdminText.invalidField){
+  var invalid=document.getElementById('gnn-'+gnnAdminText.invalidField);
+  if(invalid){var invalidPane=invalid.closest('.gnn-tab');if(invalidPane)activate(invalidPane.id.replace('gnn-tab-',''));invalid.setAttribute('aria-invalid','true');invalid.focus();invalid.scrollIntoView({block:'center'});}
+ }
 
+
+	var form = document.querySelector('form[action="options.php"]') || document.querySelector('form:has(input[value="brand"])');
+	var dirty = false;
+	if(form){
+		var status = document.createElement('p'); status.className='gnn-save-status';status.setAttribute('role','status');form.prepend(status);
+		form.addEventListener('input',function(){dirty=true;status.textContent=window.gnnAdminText ? gnnAdminText.unsaved : 'Unsaved changes';});
+		form.addEventListener('change',function(){dirty=true;});
+		form.addEventListener('submit',function(){
+			document.querySelectorAll('.gnn-action-editor').forEach(function(editor){var items=[];editor.querySelectorAll('.gnn-action-row').forEach(function(row){var label=row.querySelector('[data-action-label]').value.trim();if(label)items.push({type:row.querySelector('[data-action-type]').value,label:label,url:row.querySelector('[data-action-url]').value});});editor.querySelector('[data-action-payload]').value=JSON.stringify(items);});
+			dirty=false;
+		});
+		window.addEventListener('beforeunload',function(event){if(dirty){event.preventDefault();event.returnValue='';}});
+	}
+	var search=document.getElementById('gnn-settings-search');
+	if(search)search.addEventListener('input',function(){var term=search.value.trim().toLowerCase();document.querySelectorAll('.gnn-field').forEach(function(field){field.hidden=!!term&&!field.textContent.toLowerCase().includes(term);});if(panel)panel.classList.toggle('gnn-searching',!!term);});
 	/* Media pickers. */
 	document.addEventListener( 'click', function ( e ) {
+		var font = e.target.closest('.gnn-font-pick');
+		if (font && window.wp && wp.media) {
+			e.preventDefault();
+			var fonts = wp.media({title:font.textContent,multiple:false,library:{type:'font/woff2'}});
+			fonts.on('select',function(){var input=document.getElementById(font.dataset.target);input.value=fonts.state().get('selection').first().toJSON().id;input.dispatchEvent(new Event('change',{bubbles:true}));});
+			fonts.open();return;
+		}
 		var pick = e.target.closest( '.gnn-media-pick' );
 		var clear = e.target.closest( '.gnn-media-clear' );
 

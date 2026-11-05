@@ -103,6 +103,14 @@ class GNN_GitHub_Updater {
 			$args['headers']['Authorization'] = 'token ' . $this->access_token;
 		}
 
+		update_option(
+			'gnn_update_status',
+			array(
+				'checked' => gmdate( 'c' ),
+				'status'  => 'unavailable',
+			),
+			false
+		);
 		$response = wp_remote_get( $url, $args );
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			set_transient( $this->transient_key, 'no-release', 300 );
@@ -141,6 +149,15 @@ class GNN_GitHub_Updater {
 			'html_url'     => isset( $body->html_url ) ? $body->html_url : '',
 		);
 
+		update_option(
+			'gnn_update_status',
+			array(
+				'checked' => gmdate( 'c' ),
+				'status'  => 'available',
+				'version' => $version,
+			),
+			false
+		);
 		set_transient( $this->transient_key, $release, $this->cache_duration );
 		return $release;
 	}

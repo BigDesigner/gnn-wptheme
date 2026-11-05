@@ -108,3 +108,31 @@ with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as z:
                 z.write(p, arc)
             print('  +', arc)
 print(f'{zip_name}: {os.path.getsize(zip_path)} bytes')
+
+# Publish only installable product packages and their integrity manifest.
+import hashlib
+import json
+from pathlib import Path
+
+version = re.search(r'^Version:\s*(\S+)', Path(THEME, 'style.css').read_text(encoding='utf-8'), re.M).group(1)
+release_files = []
+versioned_theme = Path(BUILD, f'gnn-{version}.zip')
+shutil.copyfile(zip_path, versioned_theme)
+release_files.append(versioned_theme)
+for slug in ('gnn-child', 'gnn-content'):
+    package = Path(ROOT, 'packages', slug)
+    if not package.is_dir():
+        raise SystemExit(f'Missing product package: {slug}')
+    destination = Path(BUILD, f'{slug}-{version}.zip')
+    with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
+        for source in sorted(package.rglob('*')):
+            if source.is_file():
+                archive.write(source, slug + '/' + source.relative_to(package).as_posix())
+    release_files.append(destination)
+manifest = {'version': version, 'packages': []}
+for package in release_files:
+    with zipfile.ZipFile(package) as archive:
+        files = [{'path': name, 'sha256': hashlib.sha256(archive.read(name)).hexdigest()} for name in archive.namelist()]
+    manifest['packages'].append({'file': package.name, 'bytes': package.stat().st_size,
+                                'sha256': hashlib.sha256(package.read_bytes()).hexdigest(), 'files': files})
+Path(BUILD, f'gnn-{version}-manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')

@@ -4,12 +4,12 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.6.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Dark-by-default corporate IT / cybersecurity theme with light mode, full-screen
-hero slider, mega menu, WooCommerce support and Elementor compatibility.
+Configurable corporate theme with shared design controls, reusable native-block
+layouts, client workspaces, draft starters and optional commerce integrations.
 
 == Description ==
 
@@ -20,7 +20,8 @@ GNN is a classic (PHP-template) WordPress theme:
 * Hero slider on a static front page, managed in GNN → Slider: unlimited
   slides, images, title, copy and CTA. Rotation and sizing live in the panel.
 * Accent color Customizer setting (suggested: #34d399, #22d3ee, #fb923c, #a78bfa).
-* Mega menu: give a top-level menu item the CSS class `mega-menu-parent`
+* Mega menu: choose Menu layout in Appearance → Menus, or give a top-level
+  menu item the CSS class `mega-menu-parent`
   (Appearance → Menus → Screen Options → CSS Classes). Its second-level items
   become columns; a second-level item with class `mega-featured` renders as a
   featured card (Title Attribute = kicker, Description = card text).
@@ -28,13 +29,13 @@ GNN is a classic (PHP-template) WordPress theme:
   fully styled; header cart badge updates via AJAX.
 * Elementor: theme locations registered; "Full Width" page template is
   canvas-friendly.
-* Widget areas: Sidebar (archives + pages), Footer Columns 1–3.
-* Menu locations: Primary, Mobile (falls back to Primary), Footer Columns 1–3.
+* Widget areas: Sidebar (archives + pages), Footer Columns 1–4.
+* Menu locations: Primary, Mobile (falls back to Primary), Footer Columns 1–4.
 
 == Setup after install ==
 
 1. Appearance → Menus: create a menu, assign to "Primary Menu".
-   For the mega menu, add the `mega-menu-parent` class to a parent item.
+   Choose a mega-menu layout on the parent item; existing CSS classes also work.
 2. Settings → Reading: set a static Front page and a Posts page ("Blog").
 3. GNN → Theme: branding, colors, default mode and slider behavior.
    GNN → Slider: create and order the slides.
@@ -45,6 +46,65 @@ GNN is a classic (PHP-template) WordPress theme:
 6. Add static front-page content with blocks or Elementor. Latest-posts mode
    uses the blog listing. Designed sections are available as block patterns
    and Elementor Saved Templates; no demo sections are inserted into pages automatically.
+
+== Site workspace and configuration ==
+
+GNN → Workspace separates operational settings from ordinary design saves.
+Four profiles change design without replacing identity, tracking or custom code.
+Starter installation only adds missing DRAFT pages; review and publish them yourself.
+Reusable layouts use the native block editor. Select published header/footer layouts
+site-wide, for blog/archive contexts, or on individual pages and posts. Explicit
+page choices take precedence; missing or draft layouts fall back to the theme.
+
+Optional GNN Client, GNN Designer and GNN Support roles can be assigned in Users.
+Client users edit assigned public brand/contact fields. Designers also manage design
+and reusable layouts. Support receives a masked diagnostic summary. Import, reset,
+updates and operational settings remain administrator operations; restoring snapshots
+with custom code also requires unfiltered_html. Roles are never assigned automatically.
+
+A stale settings form cannot overwrite a newer configuration. Reload and reapply
+edits after a conflict. The last ten local configuration snapshots can be restored;
+this only restores theme settings, owned brand mods and the site icon, not pages,
+orders or the full database. Use off-site database/files backups before upgrading.
+Administrators can explicitly delete local recovery history when handing over a site.
+
+Design-profile export excludes customer identity, selected media/page IDs, tracking
+and executable custom code. Full site-configuration exports are private. Preview
+imports first, resolve foreign references explicitly, then confirm. Imported options
+merge with existing settings; this is not a full content/media/menu backup tool.
+
+== Consent and optional integrations ==
+
+Native blocks work without a page builder. Elementor Free handles content;
+Elementor Pro theme locations are an optional fallback behind explicit native layouts.
+The theme supports optional Contact Form 7, Polylang and Yoast SEO integrations.
+Configure and test mail delivery, spam controls and translated content per site.
+No form submission is sent or configured by a theme starter.
+
+GA4/GTM identifiers alone do not load tags before consent. Configure your CMP to
+provide WP Consent API statistics consent, call GNNConsent.setAnalyticsConsent(true
+or false), or dispatch the gnn:consent document event with detail.analytics true/false.
+Without an affirmative signal the theme leaves analytics disabled. When both IDs
+are present GTM wins, preventing a second theme-managed GA loader. Tag/container
+contents and third-party tracking plugins require their own consent configuration.
+Choose external delivery when a separate integration owns tracking. Turning off the
+theme loader does not remove tags installed outside the theme.
+
+== Updating and client customizations ==
+
+Install the parent theme normally; the optional gnn-child ZIP is the supported place
+for client PHP/CSS overrides. Activate it after the parent. Existing child settings
+are preserved, with missing parent brand and menu choices copied on first activation.
+Do not edit the parent theme directly. The optional GNN Content Continuity plugin
+keeps slides and reusable layout records editable after changing themes; it does not
+make another theme render GNN layouts. Neither package is required for a normal install.
+
+Test an upgrade on a staging copy with the same PHP, plugins and cache settings.
+Back up both files and database, clear page/CDN caches after updating and verify
+navigation, forms, consent, mobile views and orders where applicable. Roll back the
+parent ZIP and restore the matching database backup if needed. Configuration snapshots
+alone are not a theme/database rollback. PHP 7.4 is a legacy compatibility floor;
+use a maintained PHP version for production.
 
 == Fonts ==
 
@@ -59,6 +119,14 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.0.0 =
+* Revision-protected settings, recovery snapshots and accessible administration.
+* Shared design tokens, local typography, configurable layouts and reusable block regions.
+* Design-only profiles, reference-safe configuration transfer and draft starter pages.
+* Delegated client/design roles, masked diagnostics and consent-first analytics.
+* Existing option keys, logo fallbacks and edited customer templates remain supported.
+
 
 = 1.6.2 =
 * Validate settings imports before writes; preserve partial imports and legacy logos.

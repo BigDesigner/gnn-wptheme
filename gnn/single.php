@@ -28,7 +28,10 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 				<?php if ( ! ( function_exists( 'gnn_hide_title' ) && gnn_hide_title() ) ) : ?>
 					<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 				<?php endif; ?>
-				<div class="entry-author-row">
+				<?php
+				if ( gnn_option( 'blog_author' ) ) :
+					?>
+					<div class="entry-author-row">
 					<?php echo get_avatar( get_the_author_meta( 'ID' ), 42, '', '', array( 'class' => 'entry-author-row__avatar' ) ); ?>
 					<div>
 						<div class="entry-author-row__name">
@@ -37,7 +40,7 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 						<?php gnn_entry_meta(); ?>
 					</div>
 				</div>
-			</header>
+			<?php endif; ?></header>
 
 			<?php gnn_post_thumbnail( 'gnn-cover', false ); // No empty placeholder on single posts. ?>
 
@@ -56,7 +59,10 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 			<footer class="entry-footer">
 				<?php the_tags( '<div class="entry-tags">', '', '</div>' ); ?>
 
-				<div class="author-box">
+				<?php
+				if ( gnn_option( 'blog_author' ) ) :
+					?>
+					<div class="author-box">
 					<?php echo get_avatar( get_the_author_meta( 'ID' ), 64, '', '', array( 'class' => 'author-box__avatar' ) ); ?>
 					<div class="author-box__body">
 						<span class="author-box__kicker"><?php esc_html_e( 'Written by', 'gnn' ); ?></span>
@@ -67,12 +73,16 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 					</div>
 				</div>
 
-				<nav class="post-navigation" aria-label="<?php esc_attr_e( 'Posts', 'gnn' ); ?>">
+				<?php endif; ?>
+				<?php
+				if ( gnn_option( 'blog_navigation' ) ) :
+					?>
+					<nav class="post-navigation" aria-label="<?php esc_attr_e( 'Posts', 'gnn' ); ?>">
 					<?php
 					previous_post_link( '<div class="post-nav-card post-nav-card--prev"><span class="post-nav-card__label">' . esc_html__( '← Previous', 'gnn' ) . '</span>%link</div>', '%title' );
 					next_post_link( '<div class="post-nav-card post-nav-card--next"><span class="post-nav-card__label">' . esc_html__( 'Next →', 'gnn' ) . '</span>%link</div>', '%title' );
 					?>
-				</nav>
+				</nav><?php endif; ?>
 			</footer>
 
 			<?php

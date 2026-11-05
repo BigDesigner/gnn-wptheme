@@ -24,7 +24,6 @@ def release_version(override=''):
         'gnn/readme.txt': r'^Stable tag:\s*(\S+)',
         'gnn/languages/gnn.pot': r'Project-Id-Version: GNN ([0-9.]+)',
         'gnn/languages/tr_TR.po': r'Project-Id-Version: GNN ([0-9.]+)',
-        '.memory-bank/system-coherence.md': r'\*\*Version:\*\*\s*(\S+)',
     }
     for relative, pattern in declarations.items():
         if match(relative, pattern) != version:

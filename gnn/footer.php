@@ -8,7 +8,7 @@
 ?>
 	<?php
 	// Elementor Pro Theme Builder: a "footer" template replaces the theme footer.
-	if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'footer' ) ) :
+	if ( ! gnn_render_layout_region( 'footer' ) && ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'footer' ) ) ) :
 		?>
 	<footer id="colophon" class="site-footer">
 		<div class="site-footer__widgets">
@@ -27,12 +27,16 @@
 					if ( 'text' === $gnn_fbrand || 'both' === $gnn_fbrand || ! $gnn_footer_logo_shown ) :
 						?>
 						<div class="footer-brand">
-							<?php bloginfo( 'name' ); ?><span class="site-title__dot">.</span>
+							<?php bloginfo( 'name' ); ?>
+							<?php
+							if ( gnn_option( 'brand_dot' ) ) :
+								?>
+								<span class="site-title__dot">.</span><?php endif; ?>
 						</div>
 					<?php endif; ?>
 
 					<?php
-					$gnn_ftag = trim( (string) gnn_option( 'footer_tagline' ) );
+					$gnn_ftag = trim( (string) gnn_translated_option( 'footer_tagline' ) );
 					if ( '' === $gnn_ftag ) {
 						$gnn_ftag = (string) get_bloginfo( 'description' );
 					}
@@ -43,7 +47,8 @@
 				</div>
 			<?php endif; ?>
 
-			<?php for ( $i = 1; $i <= 3; $i++ ) : ?>
+			<?php $gnn_footer_columns = (int) gnn_option( 'footer_columns' ); ?>
+			<?php for ( $i = 1; $i <= $gnn_footer_columns; $i++ ) : ?>
 				<?php if ( is_active_sidebar( 'footer-' . $i ) ) : ?>
 					<div class="footer-column widget-area">
 						<?php dynamic_sidebar( 'footer-' . $i ); ?>
@@ -64,12 +69,12 @@
 					</div>
 				<?php endif; ?>
 			<?php endfor; ?>
-		</div><!-- .site-footer__widgets -->
+		<?php gnn_footer_company_details(); ?></div><!-- .site-footer__widgets -->
 
 		<div class="site-footer__bottom">
 			<span class="site-copyright">
 				<?php
-				$gnn_copy = trim( (string) gnn_option( 'footer_copyright' ) );
+				$gnn_copy = trim( (string) gnn_translated_option( 'footer_copyright' ) );
 				if ( '' !== $gnn_copy ) {
 					// Panel text with %year% / %site% placeholders.
 					echo esc_html( str_replace( array( '%year%', '%site%' ), array( gmdate( 'Y' ), get_bloginfo( 'name' ) ), $gnn_copy ) );

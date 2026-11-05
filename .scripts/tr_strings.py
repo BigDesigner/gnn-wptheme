@@ -507,3 +507,405 @@ TRANSLATIONS = {
     '← Prev': '← Önceki',
     '← Previous': '← Önceki',
 }
+
+
+# Site platform strings.
+TRANSLATIONS.update({'A design profile must not include site identity, tracking, code or media references.': 'Tasarım profili '
+                                                                                         'site kimliği, '
+                                                                                         'izleme, kod veya '
+                                                                                         'medya referansları '
+                                                                                         'içermemelidir.',
+ 'A link action needs a valid URL.': 'Bağlantı işlemi için geçerli bir URL gereklidir.',
+ 'A mobile action is invalid.': 'Mobil işlemlerden biri geçersiz.',
+ 'About': 'Hakkımızda',
+ 'Action %d type': '%d. işlem türü',
+ 'Action URL': 'İşlem URL’si',
+ 'Action editing requires JavaScript. Existing actions are preserved.': 'İşlemleri düzenlemek JavaScript '
+                                                                        'gerektirir. Mevcut işlemler '
+                                                                        'korunur.',
+ 'Action label': 'İşlem etiketi',
+ 'Add missing draft pages': 'Eksik taslak sayfaları ekle',
+ 'Add reusable layout': 'Yeniden kullanılabilir yerleşim ekle',
+ 'Add your own verified information here.': 'Doğrulanmış bilgilerinizi buraya ekleyin.',
+ 'Add your public phone, email, location and a tested contact form before publishing.': 'Yayımlamadan önce '
+                                                                                        'iletişim '
+                                                                                        'telefonunuzu, '
+                                                                                        'e-postanızı, '
+                                                                                        'adresinizi ve test '
+                                                                                        'edilmiş iletişim '
+                                                                                        'formunu ekleyin.',
+ 'Address': 'Adres',
+ 'After analytics consent': 'Analiz izninden sonra',
+ 'All slides': 'Tüm slaytlar',
+ 'Analytics delivery': 'Analiz kodlarının yüklenmesi',
+ 'Another settings operation is in progress. Reload and try again.': 'Başka bir ayar işlemi devam ediyor. '
+                                                                     'Sayfayı yenileyip tekrar deneyin.',
+ 'Apply design profile': 'Tasarım profilini uygula',
+ 'Apply operational settings': 'İşletim ayarlarını uygula',
+ 'Apply the reviewed changes and create a recovery snapshot.': 'İncelenen değişiklikleri uygula ve kurtarma '
+                                                               'kaydı oluştur.',
+ 'Archive footer override': 'Arşiv altbilgi tercihi',
+ 'Archive header override': 'Arşiv üstbilgi tercihi',
+ 'Assign the client or designer role instead of sharing an administrator account.': 'Yönetici hesabını '
+                                                                                    'paylaşmak yerine '
+                                                                                    'müşteri veya tasarımcı '
+                                                                                    'rolü atayın.',
+ 'Balanced columns': 'Dengeli sütunlar',
+ 'Blog columns on desktop': 'Masaüstü blog sütun sayısı',
+ 'Body': 'Gövde',
+ 'Body font size': 'Gövde yazı boyutu',
+ 'Body line height (%)': 'Gövde satır yüksekliği (%)',
+ 'Built for demanding projects.': 'Zorlu projeler için tasarlandı.',
+ 'Business segment': 'İşletme alanı',
+ 'Button corner radius': 'Düğme köşe yuvarlaklığı',
+ 'Button vertical padding': 'Düğmenin dikey iç boşluğu',
+ 'Call': 'Ara',
+ 'Call to action': 'Eylem çağrısı',
+ 'Card and image corner radius': 'Kart ve görsel köşe yuvarlaklığı',
+ 'Centered': 'Ortalanmış',
+ 'Choose a reference on this site': 'Bu siteden bir referans seçin',
+ 'Choose at most six valid mobile actions.': 'En fazla altı geçerli mobil işlem seçin.',
+ 'Classic': 'Klasik',
+ 'Clear solutions. Reliable service.': 'Açık çözümler. Güvenilir hizmet.',
+ 'Compact': 'Kompakt',
+ 'Compact banner': 'Kompakt bant',
+ 'Company name': 'Firma adı',
+ 'Configure and test form delivery, consent, SEO and language integrations.': 'Form gönderimini, izin, SEO '
+                                                                              've dil entegrasyonlarını '
+                                                                              'yapılandırıp test edin.',
+ 'Confirm import': 'İçe aktarmayı onayla',
+ 'Contact Form 7 not active': 'Contact Form 7 etkin değil',
+ 'Contact information': 'İletişim bilgileri',
+ 'Contact us': 'Bize ulaşın',
+ 'Create an off-site database/files backup, rehearse upgrade and recovery on staging.': 'Veritabanı ve '
+                                                                                        'dosyaların site '
+                                                                                        'dışı yedeğini alın; '
+                                                                                        'test ortamında '
+                                                                                        'güncelleme ve geri '
+                                                                                        'dönüşü deneyin.',
+ 'Create configuration snapshot': 'Yapılandırma kurtarma kaydı oluştur',
+ 'Creative agency': 'Yaratıcı ajans',
+ 'Custom link': 'Özel bağlantı',
+ 'Delete local recovery history': 'Yerel kurtarma geçmişini sil',
+ 'Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus.': 'Tasarım '
+                                                                                                                                                                  'değişiklikleri '
+                                                                                                                                                                  'kimliği '
+                                                                                                                                                                  've '
+                                                                                                                                                                  'içeriği '
+                                                                                                                                                                  'korur. '
+                                                                                                                                                                  'Başlangıç '
+                                                                                                                                                                  'kurulumu '
+                                                                                                                                                                  'yalnızca '
+                                                                                                                                                                  'eksik '
+                                                                                                                                                                  'taslak '
+                                                                                                                                                                  'sayfaları '
+                                                                                                                                                                  'ekler; '
+                                                                                                                                                                  'bunları '
+                                                                                                                                                                  'yayımlamaz, '
+                                                                                                                                                                  'ana '
+                                                                                                                                                                  'sayfanızı '
+                                                                                                                                                                  'veya '
+                                                                                                                                                                  'menülerinizi '
+                                                                                                                                                                  'değiştirmez.',
+ 'Design profiles and draft starter pages': 'Tasarım profilleri ve başlangıç taslakları',
+ 'Diagnostics and integration status': 'Tanılama ve entegrasyon durumu',
+ 'Disabled': 'Devre dışı',
+ 'Download masked support summary': 'Maskelenmiş destek özetini indir',
+ 'Enable maintenance mode for visitors': 'Ziyaretçiler için bakım modunu etkinleştir',
+ 'Enable theme updates': 'Tema güncellemelerini etkinleştir',
+ 'Existing layout': 'Mevcut yerleşim',
+ 'Experience and credentials': 'Deneyim ve yetkinlikler',
+ 'Experience you can rely on.': 'Güvenebileceğiniz deneyim.',
+ 'Export scope': 'Dışa aktarma kapsamı',
+ 'External consent bridge required when analytics is used': 'Analiz kullanıldığında harici izin bağlantısı '
+                                                            'gerekir',
+ 'Feature the first blog post': 'İlk blog yazısını öne çıkar',
+ 'Find a setting': 'Ayar ara',
+ 'Follow us': 'Bizi takip edin',
+ 'Font family': 'Yazı tipi ailesi',
+ 'Font weight': 'Yazı kalınlığı',
+ 'Footer style': 'Altbilgi stili',
+ 'Footer widget columns': 'Altbilgi bileşen sütunları',
+ 'General services': 'Genel hizmetler',
+ 'Global container width': 'Genel içerik alanı genişliği',
+ 'Header action URL': 'Üstbilgi işlem URL’si',
+ 'Header action label': 'Üstbilgi işlem etiketi',
+ 'Header height': 'Üstbilgi yüksekliği',
+ 'Header style': 'Üstbilgi stili',
+ 'Heading': 'Başlık',
+ 'Heading letter spacing (hundredths of em)': 'Başlık harf aralığı (em’in yüzde biri)',
+ 'Heading line height (%)': 'Başlık satır yüksekliği (%)',
+ 'Hero layout': 'Vitrin yerleşimi',
+ 'I reviewed the scope. A recovery snapshot will be created before configuration changes.': 'Kapsamı '
+                                                                                            'inceledim. '
+                                                                                            'Yapılandırma '
+                                                                                            'değişmeden önce '
+                                                                                            'kurtarma kaydı '
+                                                                                            'oluşturulacak.',
+ 'I understand the impact. Save a recovery snapshot and apply these operational settings.': 'Etkisini '
+                                                                                            'anlıyorum. '
+                                                                                            'Kurtarma kaydı '
+                                                                                            'oluştur ve bu '
+                                                                                            'işletim '
+                                                                                            'ayarlarını '
+                                                                                            'uygula.',
+ 'Ideas shaped into meaningful experiences.': 'Anlamlı deneyimlere dönüşen fikirler.',
+ 'Industrial and B2B': 'Endüstri ve B2B',
+ 'Inherit': 'Varsayılanı kullan',
+ 'Inherit / native theme layout': 'Varsayılan / yerel tema yerleşimi',
+ 'Invalid field value type. No settings were changed.': 'Alan değeri türü geçersiz. Hiçbir ayar '
+                                                        'değiştirilmedi.',
+ 'Invalid operational field.': 'İşletim alanı geçersiz.',
+ 'Invalid starter profile.': 'Başlangıç profili geçersiz.',
+ 'Invalid value for %s. No settings were changed.': '%s için geçersiz değer. Hiçbir ayar değiştirilmedi.',
+ 'Launch checklist': 'Yayına geçiş kontrol listesi',
+ 'Left aligned': 'Sola hizalı',
+ 'Local WOFF2 font attachment ID': 'Yerel WOFF2 yazı tipi medya kimliği',
+ 'Local body font': 'Yerel gövde yazı tipi',
+ 'Local heading font': 'Yerel başlık yazı tipi',
+ 'Maintenance and compatibility': 'Bakım ve uyumluluk',
+ 'Maintenance and compatibility settings are managed in the protected site workspace.': 'Bakım ve uyumluluk '
+                                                                                        'ayarları korumalı '
+                                                                                        'site çalışma '
+                                                                                        'alanından '
+                                                                                        'yönetilir.',
+ 'Managed entirely outside the theme': 'Tamamen tema dışında yönetiliyor',
+ 'Map the reference for %s on this site before importing. No settings were changed.': 'İçe aktarmadan önce '
+                                                                                      '%s referansını bu '
+                                                                                      'sitede eşleyin. '
+                                                                                      'Hiçbir ayar '
+                                                                                      'değiştirilmedi.',
+ 'Maximum H1 size': 'En büyük H1 boyutu',
+ 'Minimal': 'Sade',
+ 'Mobile H1 size': 'Mobil H1 boyutu',
+ 'Mobile actions': 'Mobil işlemler',
+ 'Mobile actions in display order (leave labels empty to use the existing dock)': 'Görünüm sırasına göre '
+                                                                                  'mobil işlemler (mevcut '
+                                                                                  'çubuğu kullanmak için '
+                                                                                  'etiketleri boş bırakın)',
+ 'Native theme / builder fallback': 'Yerel tema / sayfa oluşturucu yerleşimi',
+ 'News': 'Haberler',
+ 'No settings have been changed. Review the affected keys and select references belonging to this site. Private values are not displayed.': 'Hiçbir '
+                                                                                                                                            'ayar '
+                                                                                                                                            'değiştirilmedi. '
+                                                                                                                                            'Etkilenen '
+                                                                                                                                            'alanları '
+                                                                                                                                            'inceleyip '
+                                                                                                                                            'bu '
+                                                                                                                                            'siteye '
+                                                                                                                                            'ait '
+                                                                                                                                            'referansları '
+                                                                                                                                            'seçin. '
+                                                                                                                                            'Özel '
+                                                                                                                                            'değerler '
+                                                                                                                                            'gösterilmez.',
+ 'No theme slider': 'Tema slayt gösterisi yok',
+ 'None': 'Yok',
+ 'Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator.': 'Burada '
+                                                                                                                                              'yalnızca '
+                                                                                                                                              'rolünüze '
+                                                                                                                                              'atanmış '
+                                                                                                                                              'alanları '
+                                                                                                                                              'değiştirebilirsiniz. '
+                                                                                                                                              'Kod, '
+                                                                                                                                              'içe '
+                                                                                                                                              'aktarma, '
+                                                                                                                                              'sıfırlama '
+                                                                                                                                              've '
+                                                                                                                                              'güncelleme '
+                                                                                                                                              'işlemleri '
+                                                                                                                                              'site '
+                                                                                                                                              'yöneticisine '
+                                                                                                                                              'ayrılmıştır.',
+ 'Opening hours': 'Çalışma saatleri',
+ 'Portable design profile (no site identity or code)': 'Taşınabilir tasarım profili (site kimliği veya kod '
+                                                       'içermez)',
+ 'Prefer third-party plugin compatibility': 'Üçüncü taraf eklenti uyumluluğuna öncelik ver',
+ 'Preview import': 'İçe aktarmayı önizle',
+ 'Professional services': 'Profesyonel hizmetler',
+ 'Profiles, recovery and diagnostics': 'Profiller, kurtarma ve tanılama',
+ 'Project overview': 'Proje tanıtımı',
+ 'Public email': 'İletişim e-postası',
+ 'Public phone number': 'İletişim telefonu',
+ 'Recent configuration changes': 'Son yapılandırma değişiklikleri',
+ 'Recovery snapshots': 'Kurtarma kayıtları',
+ 'Release abandoned settings lock': 'Eski ayar kilidini kaldır',
+ 'Replace draft/demo content, choose logos and verify contact links.': 'Taslak/örnek içeriği değiştirin, '
+                                                                       'logoları seçin ve iletişim '
+                                                                       'bağlantılarını doğrulayın.',
+ 'Replace this introductory content with your own services, expertise and project information.': 'Bu giriş '
+                                                                                                 'içeriğini '
+                                                                                                 'kendi '
+                                                                                                 'hizmetleriniz, '
+                                                                                                 'uzmanlığınız '
+                                                                                                 've proje '
+                                                                                                 'bilgilerinizle '
+                                                                                                 'değiştirin.',
+ 'Restore this configuration': 'Bu yapılandırmayı geri yükle',
+ 'Reusable footer': 'Yeniden kullanılabilir altbilgi',
+ 'Reusable header': 'Yeniden kullanılabilir üstbilgi',
+ 'Reusable layouts': 'Yeniden kullanılabilir yerleşimler',
+ 'Review and confirm the operation first.': 'Önce işlemi inceleyip onaylayın.',
+ 'Review mobile navigation, keyboard operation and brand contrast.': 'Mobil gezinmeyi, klavye kullanımını ve '
+                                                                     'marka renklerinin kontrastını '
+                                                                     'inceleyin.',
+ 'Review settings import': 'Ayarları içe aktarmayı incele',
+ 'Save assigned settings': 'Atanan ayarları kaydet',
+ 'Scope WooCommerce assets to pages that need them': 'WooCommerce dosyalarını yalnızca gereken sayfalarda '
+                                                     'yükle',
+ 'Section spacing': 'Bölüm boşluğu',
+ 'Sensitive field values are never included in the change log or support summary.': 'Hassas alan değerleri '
+                                                                                    'değişiklik günlüğüne '
+                                                                                    'veya destek özetine '
+                                                                                    'dahil edilmez.',
+ 'Services': 'Hizmetler',
+ 'Services overview': 'Hizmetlerin tanıtımı',
+ 'Settings JSON file': 'JSON ayar dosyası',
+ 'Settings changed after the preview. Preview the file again.': 'Önizlemeden sonra ayarlar değişti. Dosyayı '
+                                                                'yeniden önizleyin.',
+ 'Settings changed after this form was opened. Your changes were not applied. Reload the latest settings before trying again.': 'Bu '
+                                                                                                                                'form '
+                                                                                                                                'açıldıktan '
+                                                                                                                                'sonra '
+                                                                                                                                'ayarlar '
+                                                                                                                                'değişti. '
+                                                                                                                                'Değişiklikleriniz '
+                                                                                                                                'uygulanmadı. '
+                                                                                                                                'Tekrar '
+                                                                                                                                'denemeden '
+                                                                                                                                'önce '
+                                                                                                                                'güncel '
+                                                                                                                                'ayarları '
+                                                                                                                                'yükleyin.',
+ 'Settings exceed the 1 MB limit. Nothing was changed.': 'Ayarlar 1 MB sınırını aşıyor. Hiçbir şey '
+                                                         'değiştirilmedi.',
+ 'Show author information': 'Yazar bilgilerini göster',
+ 'Show contact information in the header': 'Üstbilgide iletişim bilgilerini göster',
+ 'Show post date and reading time': 'Yazı tarihini ve okuma süresini göster',
+ 'Show previous and next posts': 'Önceki ve sonraki yazıları göster',
+ 'Show the decorative dot after the text logo': 'Metin logosundan sonra dekoratif noktayı göster',
+ 'Show the language switcher when supported': 'Desteklendiğinde dil seçiciyi göster',
+ 'Single language': 'Tek dil',
+ 'Single post footer override': 'Tekil yazı altbilgi tercihi',
+ 'Single post header override': 'Tekil yazı üstbilgi tercihi',
+ 'Site layout overrides': 'Site yerleşimi istisnaları',
+ 'Site platform': 'Site altyapısı',
+ 'Site settings (includes private configuration)': 'Site ayarları (özel yapılandırmayı içerir)',
+ 'Site workspace': 'Site çalışma alanı',
+ 'Slider group': 'Slayt grubu',
+ 'Slider groups': 'Slayt grupları',
+ 'Social profile URL': 'Sosyal profil URL’si',
+ 'Soft': 'Hafif',
+ 'Stacked': 'İki satırlı',
+ 'Start with a design profile, configure layouts and integrations, test the site, then hand over the safe content workspace.': 'Bir '
+                                                                                                                               'tasarım '
+                                                                                                                               'profiliyle '
+                                                                                                                               'başlayın; '
+                                                                                                                               'yerleşimleri '
+                                                                                                                               've '
+                                                                                                                               'entegrasyonları '
+                                                                                                                               'yapılandırıp '
+                                                                                                                               'siteyi '
+                                                                                                                               'test '
+                                                                                                                               'edin. '
+                                                                                                                               'Sonra '
+                                                                                                                               'güvenli '
+                                                                                                                               'içerik '
+                                                                                                                               'çalışma '
+                                                                                                                               'alanını '
+                                                                                                                               'müşteriye '
+                                                                                                                               'devredin.',
+ 'Strong': 'Belirgin',
+ 'Surface shadow': 'Yüzey gölgesi',
+ 'System fonts': 'Sistem yazı tipleri',
+ 'Team introduction': 'Ekip tanıtımı',
+ 'The analytics ID is invalid. No settings were changed.': 'Analiz kimliği geçersiz. Hiçbir ayar '
+                                                           'değiştirilmedi.',
+ 'The export scope is invalid.': 'Dışa aktarma kapsamı geçersiz.',
+ 'The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages.': 'Son '
+                                                                                                                                                                  'on '
+                                                                                                                                                                  'yerel '
+                                                                                                                                                                  'yapılandırma '
+                                                                                                                                                                  'kaydı '
+                                                                                                                                                                  'saklanır. '
+                                                                                                                                                                  'Bu '
+                                                                                                                                                                  'kayıtlar '
+                                                                                                                                                                  'veritabanı '
+                                                                                                                                                                  've '
+                                                                                                                                                                  'dosya '
+                                                                                                                                                                  'yedeğinin '
+                                                                                                                                                                  'yerine '
+                                                                                                                                                                  'geçmez. '
+                                                                                                                                                                  'Kurtarma, '
+                                                                                                                                                                  'müşteri '
+                                                                                                                                                                  'sayfalarını '
+                                                                                                                                                                  'silmez '
+                                                                                                                                                                  'veya '
+                                                                                                                                                                  'geri '
+                                                                                                                                                                  'almaz.',
+ 'The reference mapping is invalid.': 'Referans eşlemesi geçersiz.',
+ 'The requested snapshot is no longer available.': 'İstenen kurtarma kaydı artık mevcut değil.',
+ 'The selected reference has the wrong content type.': 'Seçilen referansın içerik türü yanlış.',
+ 'The selected reference is not a WOFF2 font.': 'Seçilen referans WOFF2 yazı tipi değil.',
+ 'The selected slider group does not exist.': 'Seçilen slayt grubu mevcut değil.',
+ 'These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls.': 'Bu '
+                                                                                                                                                 'ayarlar '
+                                                                                                                                                 'ziyaretçi '
+                                                                                                                                                 'erişimini '
+                                                                                                                                                 'veya '
+                                                                                                                                                 'üçüncü '
+                                                                                                                                                 'taraf '
+                                                                                                                                                 'eklentileri '
+                                                                                                                                                 'etkiler. '
+                                                                                                                                                 'Önce '
+                                                                                                                                                 'test '
+                                                                                                                                                 'ortamında '
+                                                                                                                                                 'deneyin. '
+                                                                                                                                                 'Normal '
+                                                                                                                                                 'tasarım '
+                                                                                                                                                 'kayıtları '
+                                                                                                                                                 'bu '
+                                                                                                                                                 'ayarları '
+                                                                                                                                                 'değiştirmez.',
+ 'This preview expired or was not confirmed. Preview the file again.': 'Bu önizlemenin süresi doldu veya '
+                                                                       'onaylanmadı. Dosyayı yeniden '
+                                                                       'önizleyin.',
+ 'This profile is not available.': 'Bu profil kullanılamıyor.',
+ 'This role cannot change the submitted fields.': 'Bu rol gönderilen alanları değiştiremez.',
+ 'This settings schema is not supported. No changes were made.': 'Bu ayar şeması desteklenmiyor. Hiçbir '
+                                                                 'değişiklik yapılmadı.',
+ 'Transparent': 'Şeffaf',
+ 'Unsaved changes': 'Kaydedilmemiş değişiklikler',
+ 'Upload a trusted WOFF2 file in Media, then choose its attachment ID. No remote font URL is used.': 'Ortam '
+                                                                                                     'bölümüne '
+                                                                                                     'güvenilir '
+                                                                                                     'bir '
+                                                                                                     'WOFF2 '
+                                                                                                     'dosyası '
+                                                                                                     'yükleyip '
+                                                                                                     'medya '
+                                                                                                     'kimliğini '
+                                                                                                     'seçin. '
+                                                                                                     'Harici '
+                                                                                                     'yazı '
+                                                                                                     'tipi '
+                                                                                                     'URL’si '
+                                                                                                     'kullanılmaz.',
+ 'Uploaded local font': 'Yüklenen yerel yazı tipi',
+ 'WordPress defaults': 'WordPress varsayılanları',
+ 'Workspace': 'Çalışma alanı',
+ 'You are not allowed to restore configuration snapshots.': 'Yapılandırma kayıtlarını geri yükleme yetkiniz '
+                                                            'yok.'})
+
+TRANSLATIONS.update({
+ 'Choose local WOFF2 font': 'Yerel WOFF2 yazı tipi seç',
+ 'Featured card (second level)': 'Öne çıkan kart (ikinci düzey)',
+ 'Featured card image attachment ID': 'Öne çıkan kart görselinin medya kimliği',
+ 'Mega menu parent (top level)': 'Mega menü üst öğesi (en üst düzey)',
+ 'Menu layout': 'Menü düzeni',
+ 'Outline': 'Çerçeveli',
+ 'Secondary': 'İkincil',
+ 'Standard menu item': 'Standart menü öğesi',
+})
+
+TRANSLATIONS['Footer Column 4'] = 'Alt bölüm sütun 4'

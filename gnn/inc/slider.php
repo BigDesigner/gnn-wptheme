@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * instead of its own separate top-level menu.
  */
 function gnn_register_slide_cpt() {
+	if ( post_type_exists( 'gnn_slide' ) ) {
+		return; }
 	register_post_type(
 		'gnn_slide',
 		array(
@@ -242,12 +244,21 @@ add_action( 'admin_enqueue_scripts', 'gnn_slide_admin_assets' );
 function gnn_get_slides() {
 	$query = new WP_Query(
 		array(
-			'post_type'      => 'gnn_slide',
-			'post_status'    => 'publish',
-			'posts_per_page' => -1,
-			'orderby'        => 'menu_order',
-			'order'          => 'ASC',
-			'no_found_rows'  => true,
+			'post_type'        => 'gnn_slide',
+			'suppress_filters' => false,
+			// phpcs:ignore WordPress.DB.SlowDBQuery -- bounded explicit configuration/import query, not an unbounded visitor search.
+			'tax_query'        => gnn_layout_value( 'hero_group' ) ? array(
+				array(
+					'taxonomy' => 'gnn_slide_group',
+					'field'    => 'term_id',
+					'terms'    => absint( gnn_layout_value( 'hero_group' ) ),
+				),
+			) : array(),
+			'post_status'      => 'publish',
+			'posts_per_page'   => -1,
+			'orderby'          => 'menu_order',
+			'order'            => 'ASC',
+			'no_found_rows'    => true,
 		)
 	);
 

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.6.2\n"
+"Project-Id-Version: GNN 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 03:04+0000\n"
-"PO-Revision-Date: 2026-10-24 03:04+0000\n"
+"POT-Creation-Date: 2026-11-05 21:04+0000\n"
+"PO-Revision-Date: 2026-11-05 21:04+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Language: \n"
 
 
-#: template-parts/hero-slider.php:23
+#: template-parts/hero-slider.php:25
 msgid "%1$d of %2$d"
 msgstr ""
 
@@ -22,7 +22,7 @@ msgid_plural "%1$s results for “%2$s”"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/template-tags.php:92
+#: inc/template-tags.php:96
 msgid "%d min read"
 msgid_plural "%d min read"
 msgstr[0] ""
@@ -46,19 +46,19 @@ msgid_plural "%s comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/admin-panel.php:878
+#: inc/admin-panel.php:910
 msgid "404 description"
 msgstr ""
 
-#: inc/admin-panel.php:881
+#: inc/admin-panel.php:913
 msgid "404 image"
 msgstr ""
 
-#: inc/admin-panel.php:876
+#: inc/admin-panel.php:908
 msgid "404 page"
 msgstr ""
 
-#: inc/admin-panel.php:877
+#: inc/admin-panel.php:909
 msgid "404 title"
 msgstr ""
 
@@ -70,29 +70,61 @@ msgstr ""
 msgid "A centered bold headline goes here"
 msgstr ""
 
+#: inc/portability.php:84
+msgid "A design profile must not include site identity, tracking, code or media references."
+msgstr ""
+
+#: inc/platform.php:220
+msgid "A link action needs a valid URL."
+msgstr ""
+
+#: inc/platform.php:217
+msgid "A mobile action is invalid."
+msgstr ""
+
 #: inc/elementor-templates.php:544
 msgid "A new collection"
+msgstr ""
+
+#: inc/starters.php:129
+msgid "About"
 msgstr ""
 
 #: inc/elementor-templates.php:304
 msgid "About the event"
 msgstr ""
 
-#: inc/admin-panel.php:888
+#: inc/admin-panel.php:921
 msgid "Accent"
 msgstr ""
 
-#: inc/admin-panel.php:616
-#: inc/admin-panel.php:894
+#: inc/admin-panel.php:648
+#: inc/admin-panel.php:927
 #: inc/customizer.php:59
 msgid "Accent color"
 msgstr ""
 
-#: inc/slider.php:30
+#: inc/platform.php:370
+msgid "Action %d type"
+msgstr ""
+
+#: inc/platform.php:373
+msgid "Action URL"
+msgstr ""
+
+#: inc/platform.php:375
+msgid "Action editing requires JavaScript. Existing actions are preserved."
+msgstr ""
+
+#: inc/platform.php:373
+msgid "Action label"
+msgstr ""
+
+#: inc/slider.php:32
 msgid "Add New Slide"
 msgstr ""
 
-#: inc/slider.php:29
+#: inc/slider.php:31
 msgid "Add Slide"
 msgstr ""
 
@@ -104,6 +136,14 @@ msgstr ""
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr ""
 
+#: inc/workspace.php:114
+msgid "Add missing draft pages"
+msgstr ""
+
+#: inc/layout-system.php:20
+msgid "Add reusable layout"
+msgstr ""
+
 #: inc/woocommerce.php:120
 msgid "Add to cart"
 msgstr ""
@@ -112,33 +152,61 @@ msgstr ""
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
 msgstr ""
 
-#: inc/admin-panel.php:670
+#: inc/starters.php:178
+msgid "Add your own verified information here."
+msgstr ""
+
+#: inc/starters.php:141
+msgid "Add your public phone, email, location and a tested contact form before publishing."
+msgstr ""
+
+#: inc/platform.php:15
+msgid "Address"
+msgstr ""
+
+#: inc/admin-panel.php:709
 msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
 msgstr ""
 
-#: inc/admin-panel.php:1031
+#: inc/admin-panel.php:1065
 msgid "Adds the font stylesheet site-wide so .material-symbols-* classes render."
 msgstr ""
 
-#: inc/admin-panel.php:562
-#: inc/admin-panel.php:1076
+#: inc/admin-panel.php:594
+#: inc/admin-panel.php:1112
 msgid "Advanced"
 msgstr ""
 
-#: inc/admin-panel.php:1056
+#: inc/admin-panel.php:1091
 msgid "After <body> HTML"
 msgstr ""
 
-#: inc/slider.php:32
+#: inc/platform.php:132
+msgid "After analytics consent"
+msgstr ""
+
+#: inc/slider.php:34
 msgid "All Slides"
 msgstr ""
 
-#: inc/admin-panel.php:926
+#: inc/platform.php:323
+msgid "All slides"
+msgstr ""
+
+#: inc/admin-panel.php:959
 msgid "Alternate surface background"
 msgstr ""
 
-#: inc/admin-panel.php:734
+#: inc/platform.php:126
+msgid "Analytics delivery"
+msgstr ""
+
+#: inc/admin-panel.php:764
 msgid "Announcement text"
+msgstr ""
+
+#: inc/configuration.php:50
+msgid "Another settings operation is in progress. Reload and try again."
 msgstr ""
 
 #: inc/elementor-templates.php:329
@@ -147,16 +215,40 @@ msgstr ""
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr ""
 
-#: functions.php:87
+#: functions.php:88
 msgid "Appears in the footer widget area."
 msgstr ""
 
-#: functions.php:73
+#: functions.php:74
 msgid "Appears on archives and pages with a sidebar."
+msgstr ""
+
+#: inc/workspace.php:113
+msgid "Apply design profile"
+msgstr ""
+
+#: inc/workspace.php:48
+msgid "Apply operational settings"
+msgstr ""
+
+#: inc/import-preview.php:80
+msgid "Apply the reviewed changes and create a recovery snapshot."
 msgstr ""
 
 #: archive.php:47
 msgid "Archive"
+msgstr ""
+
+#: inc/platform.php:56
+msgid "Archive footer override"
+msgstr ""
+
+#: inc/platform.php:55
+msgid "Archive header override"
+msgstr ""
+
+#: inc/workspace.php:108
+msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr ""
 
 #: archive.php:25
@@ -164,15 +256,15 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-#: inc/admin-panel.php:790
+#: inc/admin-panel.php:822
 msgid "Auto-detect (default)"
 msgstr ""
 
-#: inc/admin-panel.php:674
+#: inc/admin-panel.php:713
 msgid "Autoplay"
 msgstr ""
 
-#: inc/admin-panel.php:675
+#: inc/admin-panel.php:714
 msgid "Autoplay interval (seconds)"
 msgstr ""
 
@@ -181,25 +273,29 @@ msgid "BRAND."
 msgstr ""
 
 #: 404.php:18
-#: inc/admin-panel.php:880
+#: inc/admin-panel.php:912
 #: template-parts/content-none.php:33
 msgid "Back to Home"
 msgstr ""
 
-#: inc/admin-panel.php:989
+#: inc/admin-panel.php:1022
 msgid "Background"
 msgstr ""
 
-#: inc/slider.php:35
+#: inc/slider.php:37
 msgid "Background image (1×)"
 msgstr ""
 
-#: inc/slider.php:136
+#: inc/slider.php:138
 msgid "Background image (2× retina)"
 msgstr ""
 
 #: inc/frontend.php:165
 msgid "Badge (e.g. New, Hot, Sale)"
+msgstr ""
+
+#: inc/platform.php:49
+msgid "Balanced columns"
 msgstr ""
 
 #: inc/elementor-templates.php:470
@@ -211,24 +307,40 @@ msgid "Blank Canvas (no header/footer)"
 msgstr ""
 
 #: home.php:17
-#: inc/template-tags.php:56
+#: inc/template-tags.php:58
 msgid "Blog"
 msgstr ""
 
-#: inc/admin-panel.php:860
+#: inc/platform.php:110
+msgid "Blog columns on desktop"
+msgstr ""
+
+#: inc/admin-panel.php:892
 msgid "Blog image alignment"
 msgstr ""
 
-#: inc/admin-panel.php:851
+#: inc/admin-panel.php:883
 msgid "Blog image fit"
 msgstr ""
 
-#: inc/admin-panel.php:847
+#: inc/admin-panel.php:879
 msgid "Blog image height (px)"
 msgstr ""
 
-#: inc/admin-panel.php:846
+#: inc/admin-panel.php:878
 msgid "Blog: single post pages."
+msgstr ""
+
+#: inc/design-system.php:214
+msgid "Body"
+msgstr ""
+
+#: inc/platform.php:85
+msgid "Body font size"
+msgstr ""
+
+#: inc/platform.php:88
+msgid "Body line height (%)"
 msgstr ""
 
 #: inc/elementor-templates.php:464
@@ -236,16 +348,16 @@ msgstr ""
 msgid "Bold heading, paragraph & button"
 msgstr ""
 
-#: inc/admin-panel.php:991
+#: inc/admin-panel.php:1024
 msgid "Border"
 msgstr ""
 
-#: inc/admin-panel.php:933
+#: inc/admin-panel.php:966
 msgid "Borders / dividers"
 msgstr ""
 
-#: inc/admin-panel.php:828
-#: inc/admin-panel.php:864
+#: inc/admin-panel.php:860
+#: inc/admin-panel.php:896
 msgid "Bottom"
 msgstr ""
 
@@ -253,7 +365,7 @@ msgstr ""
 msgid "Boxed (max 1200px)"
 msgstr ""
 
-#: inc/admin-panel.php:806
+#: inc/admin-panel.php:838
 msgid "Boxed template max width (px)"
 msgstr ""
 
@@ -261,33 +373,63 @@ msgstr ""
 msgid "Brand"
 msgstr ""
 
-#: inc/template-tags.php:38
+#: inc/integrations.php:145
+#: inc/template-tags.php:40
 #: inc/woocommerce.php:107
 msgid "Breadcrumb"
 msgstr ""
 
-#: inc/admin-panel.php:956
+#: inc/starters.php:36
+msgid "Built for demanding projects."
+msgstr ""
+
+#: inc/platform.php:137
+msgid "Business segment"
+msgstr ""
+
+#: inc/admin-panel.php:989
 msgid "Button Styles"
 msgstr ""
 
-#: inc/slider.php:156
+#: inc/slider.php:158
 msgid "Button URL"
 msgstr ""
 
-#: inc/slider.php:152
+#: inc/platform.php:92
+msgid "Button corner radius"
+msgstr ""
+
+#: inc/slider.php:154
 msgid "Button label"
+msgstr ""
+
+#: inc/platform.php:93
+msgid "Button vertical padding"
+msgstr ""
+
+#: inc/platform.php:357
+msgid "Call"
+msgstr ""
+
+#: inc/starters.php:170
+msgid "Call to action"
 msgstr ""
 
 #: inc/patterns.php:89
 msgid "Call-to-action band"
 msgstr ""
 
-#: inc/admin-panel.php:925
+#: inc/admin-panel.php:958
 msgid "Card / panel background"
 msgstr ""
 
-#: header.php:115
-#: inc/frontend.php:207
+#: inc/platform.php:91
+msgid "Card and image corner radius"
+msgstr ""
+
+#: header.php:116
+#: inc/frontend.php:209
+#: inc/platform.php:360
 msgid "Cart"
 msgstr ""
 
@@ -300,21 +442,27 @@ msgstr ""
 msgid "Category"
 msgstr ""
 
-#: inc/admin-panel.php:722
-#: inc/admin-panel.php:768
-#: inc/admin-panel.php:827
+#: inc/admin-panel.php:752
+#: inc/admin-panel.php:799
+#: inc/admin-panel.php:859
 msgid "Center"
 msgstr ""
 
-#: inc/admin-panel.php:713
+#: inc/platform.php:30
+#: inc/platform.php:50
+#: inc/platform.php:117
+msgid "Centered"
+msgstr ""
+
+#: inc/admin-panel.php:743
 msgid "Centered (logo center, split menus)"
 msgstr ""
 
-#: inc/admin-panel.php:715
+#: inc/admin-panel.php:745
 msgid "Centered layout uses the Header Left and Header Right menu locations."
 msgstr ""
 
-#: inc/admin-panel.php:1155
+#: inc/admin-panel.php:1197
 msgid "Check GitHub for new releases"
 msgstr ""
 
@@ -322,30 +470,84 @@ msgstr ""
 msgid "Check back soon — new content is on the way."
 msgstr ""
 
-#: inc/admin-panel.php:603
+#: inc/admin-panel.php:635
 msgid "Check for updates"
 msgstr ""
 
-#: template-parts/hero-slider.php:72
+#: inc/import-preview.php:55
+msgid "Choose a reference on this site"
+msgstr ""
+
+#: template-parts/hero-slider.php:74
 msgid "Choose a slide"
 msgstr ""
 
-#: inc/admin-panel.php:496
-#: inc/admin-panel.php:526
-#: inc/admin-panel.php:533
+#: inc/platform.php:213
+msgid "Choose at most six valid mobile actions."
+msgstr ""
+
+#: inc/platform.php:340
+msgid "Choose local WOFF2 font"
+msgstr ""
+
+#: inc/platform.php:29
+msgid "Classic"
+msgstr ""
+
+#: inc/admin-panel.php:528
+#: inc/admin-panel.php:558
+#: inc/admin-panel.php:565
 msgid "Clear"
+msgstr ""
+
+#: inc/starters.php:20
+msgid "Clear solutions. Reliable service."
 msgstr ""
 
 #: comments.php:46
 msgid "Comments are closed."
 msgstr ""
 
-#: inc/frontend.php:207
+#: inc/platform.php:48
+msgid "Compact"
+msgstr ""
+
+#: inc/platform.php:119
+msgid "Compact banner"
+msgstr ""
+
+#: inc/platform.php:14
+msgid "Company name"
+msgstr ""
+
+#: inc/workspace.php:108
+msgid "Configure and test form delivery, consent, SEO and language integrations."
+msgstr ""
+
+#: inc/import-preview.php:80
+msgid "Confirm import"
+msgstr ""
+
+#: inc/frontend.php:209
+#: inc/platform.php:356
+#: inc/starters.php:127
 msgid "Contact"
 msgstr ""
 
-#: inc/admin-panel.php:796
+#: inc/integrations.php:156
+msgid "Contact Form 7 not active"
+msgstr ""
+
+#: inc/starters.php:169
+msgid "Contact information"
+msgstr ""
+
+#: inc/admin-panel.php:828
 msgid "Contact page"
+msgstr ""
+
+#: inc/starters.php:148
+msgid "Contact us"
 msgstr ""
 
 #: inc/elementor-templates.php:358
@@ -353,45 +555,45 @@ msgstr ""
 msgid "Contact with social links"
 msgstr ""
 
-#: inc/slider.php:165
+#: inc/slider.php:167
 msgid "Contain (fit, no crop)"
 msgstr ""
 
-#: inc/admin-panel.php:818
-#: inc/admin-panel.php:854
+#: inc/admin-panel.php:850
+#: inc/admin-panel.php:886
 msgid "Contain (show the whole image)"
 msgstr ""
 
-#: inc/admin-panel.php:802
+#: inc/admin-panel.php:834
 msgid "Content bottom spacing (px)"
 msgstr ""
 
-#: inc/admin-panel.php:801
+#: inc/admin-panel.php:833
 msgid "Content top spacing (px)"
 msgstr ""
 
-#: inc/admin-panel.php:760
+#: inc/admin-panel.php:791
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr ""
 
-#: inc/admin-panel.php:1147
+#: inc/admin-panel.php:1189
 msgid "Could not reach GitHub to check for updates."
 msgstr ""
 
-#: inc/admin-panel.php:817
-#: inc/admin-panel.php:853
+#: inc/admin-panel.php:849
+#: inc/admin-panel.php:885
 msgid "Cover (fill and crop)"
 msgstr ""
 
-#: inc/slider.php:164
+#: inc/slider.php:166
 msgid "Cover (fill, cropped)"
 msgstr ""
 
-#: inc/slider.php:167
+#: inc/slider.php:169
 msgid "Cover — bottom"
 msgstr ""
 
-#: inc/slider.php:168
+#: inc/slider.php:170
 msgid "Cover — centered"
 msgstr ""
 
@@ -399,7 +601,7 @@ msgstr ""
 msgid "Cover — gradient text"
 msgstr ""
 
-#: inc/slider.php:166
+#: inc/slider.php:168
 msgid "Cover — top"
 msgstr ""
 
@@ -418,30 +620,47 @@ msgstr ""
 msgid "Cover: poster left, text right"
 msgstr ""
 
-#: inc/admin-panel.php:1050
+#: inc/workspace.php:108
+msgid "Create an off-site database/files backup, rehearse upgrade and recovery on staging."
+msgstr ""
+
+#: inc/workspace.php:159
+msgid "Create configuration snapshot"
+msgstr ""
+
+#: inc/platform.php:145
+#: inc/starters.php:39
+msgid "Creative agency"
+msgstr ""
+
+#: inc/admin-panel.php:1085
 msgid "Custom CSS"
 msgstr ""
 
-#: inc/admin-panel.php:561
-#: inc/admin-panel.php:1049
+#: inc/admin-panel.php:593
+#: inc/admin-panel.php:1084
 msgid "Custom Code"
 msgstr ""
 
-#: inc/admin-panel.php:1054
+#: inc/admin-panel.php:1089
 msgid "Custom JavaScript — footer"
 msgstr ""
 
-#: inc/admin-panel.php:1053
+#: inc/admin-panel.php:1088
 msgid "Custom JavaScript — head"
 msgstr ""
 
-#: inc/admin-panel.php:279
-#: inc/settings-transfer.php:124
+#: inc/platform.php:359
+msgid "Custom link"
+msgstr ""
+
+#: inc/admin-panel.php:297
+#: inc/settings-transfer.php:128
 msgid "Custom script fields were not saved: your account lacks the unfiltered_html capability."
 msgstr ""
 
-#: inc/admin-panel.php:523
-#: inc/admin-panel.php:622
+#: inc/admin-panel.php:555
+#: inc/admin-panel.php:557
 #: inc/admin-panel.php:654
 msgid "Dark"
 msgstr ""
@@ -451,54 +670,83 @@ msgstr ""
 msgid "Dark banner, top-left heading"
 msgstr ""
 
-#: inc/admin-panel.php:623
-#: inc/admin-panel.php:649
+#: inc/admin-panel.php:655
+#: inc/admin-panel.php:688
 #: inc/customizer.php:101
 msgid "Default mode"
 msgstr ""
 
-#: inc/admin-panel.php:783
+#: inc/admin-panel.php:815
 msgid "Default sidebar position"
 msgstr ""
 
-#: inc/admin-panel.php:957
+#: inc/admin-panel.php:990
 msgid "Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its \"Additional CSS Class(es)\" field (Advanced panel) using the class name shown under each style. Leave a style's name empty to skip it."
 msgstr ""
 
-#: inc/admin-panel.php:685
+#: inc/workspace.php:155
+msgid "Delete local recovery history"
+msgstr ""
+
+#: inc/workspace.php:112
+msgid "Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus."
+msgstr ""
+
+#: inc/workspace.php:110
+msgid "Design profiles and draft starter pages"
+msgstr ""
+
+#: inc/workspace.php:146
+msgid "Diagnostics and integration status"
+msgstr ""
+
+#: inc/workspace.php:36
 msgid "Disable the emoji script"
 msgstr ""
 
-#: inc/admin-panel.php:1080
+#: inc/platform.php:131
+msgid "Disabled"
+msgstr ""
+
+#: inc/admin-panel.php:1116
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr ""
 
-#: inc/slider.php:31
+#: inc/workspace.php:150
+msgid "Download masked support summary"
+msgstr ""
+
+#: inc/slider.php:33
 msgid "Edit Slide"
 msgstr ""
 
-#: inc/admin-panel.php:629
+#: inc/admin-panel.php:661
 msgid "Elementor"
 msgstr ""
 
-#: inc/admin-panel.php:1111
+#: inc/admin-panel.php:1153
 msgid "Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1312
+#: inc/admin-panel.php:1360
 msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr ""
 
-#: inc/admin-panel.php:735
+#: inc/admin-panel.php:765
+#: inc/platform.php:358
 msgid "Email"
 msgstr ""
 
-#: inc/admin-panel.php:681
-msgid "Enable maintenance mode (logged-out visitors only)"
+#: inc/workspace.php:35
+msgid "Enable maintenance mode for visitors"
 msgstr ""
 
-#: inc/admin-panel.php:733
+#: inc/admin-panel.php:763
 msgid "Enable the top announcement bar"
+msgstr ""
+
+#: inc/admin-panel.php:1197
+msgid "Enable theme updates"
 msgstr ""
 
 #: inc/patterns.php:73
@@ -513,12 +761,25 @@ msgstr ""
 msgid "Events analyzed daily"
 msgstr ""
 
-#: inc/admin-panel.php:886
+#: inc/admin-panel.php:919
 msgid "Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme's own current color for that mode — change it, or use Clear to go back to that default."
 msgstr ""
 
-#: inc/admin-panel.php:870
+#: inc/admin-panel.php:902
 msgid "Excerpt length (words)"
+msgstr ""
+
+#: inc/platform.php:28
+#: inc/platform.php:47
+msgid "Existing layout"
+msgstr ""
+
+#: inc/starters.php:171
+msgid "Experience and credentials"
+msgstr ""
+
+#: inc/starters.php:28
+msgid "Experience you can rely on."
 msgstr ""
 
 #: inc/elementor-templates.php:585
@@ -526,15 +787,23 @@ msgstr ""
 msgid "Explore"
 msgstr ""
 
-#: inc/admin-panel.php:1084
+#: inc/admin-panel.php:1120
 msgid "Export JSON"
 msgstr ""
 
-#: inc/admin-panel.php:1079
+#: inc/admin-panel.php:1118
+msgid "Export scope"
+msgstr ""
+
+#: inc/admin-panel.php:1115
 msgid "Export settings"
 msgstr ""
 
-#: inc/admin-panel.php:1055
+#: inc/integrations.php:159
+msgid "External consent bridge required when analytics is used"
+msgstr ""
+
+#: inc/admin-panel.php:1090
 msgid "Extra <head> HTML (meta/verification tags)"
 msgstr ""
 
@@ -543,7 +812,7 @@ msgstr ""
 msgid "FAQs"
 msgstr ""
 
-#: inc/admin-panel.php:665
+#: inc/admin-panel.php:704
 msgid "Favicon (site icon, 512×512)"
 msgstr ""
 
@@ -555,11 +824,23 @@ msgstr ""
 msgid "Feature description goes here."
 msgstr ""
 
+#: inc/platform.php:106
+msgid "Feature the first blog post"
+msgstr ""
+
 #: inc/patterns.php:85
 msgid "Feature title"
 msgstr ""
 
-#: inc/admin-panel.php:809
+#: inc/menu-controls.php:22
+msgid "Featured card (second level)"
+msgstr ""
+
+#: inc/menu-controls.php:32
+msgid "Featured card image attachment ID"
+msgstr ""
+
+#: inc/admin-panel.php:841
 msgid "Featured image"
 msgstr ""
 
@@ -575,25 +856,41 @@ msgstr ""
 msgid "Featured — %s"
 msgstr ""
 
-#: inc/admin-panel.php:819
-#: inc/admin-panel.php:855
+#: inc/admin-panel.php:851
+#: inc/admin-panel.php:887
 msgid "Fill (stretch)"
 msgstr ""
 
-#: inc/admin-panel.php:1040
+#: inc/admin-panel.php:1074
 msgid "Filled"
 msgstr ""
 
-#: inc/admin-panel.php:1013
+#: inc/admin-panel.php:669
+msgid "Find a setting"
+msgstr ""
+
+#: inc/integrations.php:67
+msgid "Follow us"
+msgstr ""
+
+#: inc/admin-panel.php:1053
+msgid "Font family"
+msgstr ""
+
+#: inc/admin-panel.php:1054
+msgid "Font weight"
+msgstr ""
+
+#: inc/admin-panel.php:1047
 msgid "Fonts by element"
 msgstr ""
 
-#: inc/admin-panel.php:557
-#: inc/admin-panel.php:741
+#: inc/admin-panel.php:589
+#: inc/admin-panel.php:772
 msgid "Footer"
 msgstr ""
 
-#: functions.php:85
+#: functions.php:86
 msgid "Footer Column %d"
 msgstr ""
 
@@ -609,45 +906,57 @@ msgstr ""
 msgid "Footer Column 3"
 msgstr ""
 
-#: inc/admin-panel.php:745
+#: functions.php:46
+msgid "Footer Column 4"
+msgstr ""
+
+#: inc/admin-panel.php:776
 msgid "Footer brand"
 msgstr ""
 
-#: inc/admin-panel.php:773
+#: inc/admin-panel.php:804
 msgid "Footer copyright line"
 msgstr ""
 
-#: inc/admin-panel.php:774
+#: inc/admin-panel.php:805
 #: inc/customizer.php:76
 msgid "Footer legal text"
 msgstr ""
 
-#: inc/admin-panel.php:760
+#: inc/admin-panel.php:791
 msgid "Footer logo max height (px)"
 msgstr ""
 
-#: inc/admin-panel.php:757
+#: inc/admin-panel.php:788
 msgid "Footer logo — dark mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:758
+#: inc/admin-panel.php:789
 msgid "Footer logo — dark mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:755
+#: inc/admin-panel.php:786
 msgid "Footer logo — light mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:756
+#: inc/admin-panel.php:787
 msgid "Footer logo — light mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:765
+#: inc/admin-panel.php:796
 msgid "Footer menu alignment"
 msgstr ""
 
-#: inc/admin-panel.php:761
+#: inc/platform.php:42
+msgid "Footer style"
+msgstr ""
+
+#: inc/admin-panel.php:792
 msgid "Footer tagline"
+msgstr ""
+
+#: inc/platform.php:53
+msgid "Footer widget columns"
 msgstr ""
 
 #: inc/page-meta.php:122
@@ -662,15 +971,15 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: inc/admin-panel.php:807
+#: inc/admin-panel.php:839
 msgid "Full Width template max width (px)"
 msgstr ""
 
-#: inc/admin-panel.php:676
+#: inc/admin-panel.php:715
 msgid "Full-height slider (fills the screen below the header)"
 msgstr ""
 
-#: inc/admin-panel.php:678
+#: inc/admin-panel.php:717
 msgid "Full-screen loading overlay"
 msgstr ""
 
@@ -690,7 +999,7 @@ msgstr ""
 msgid "GNN Pill"
 msgstr ""
 
-#: inc/slider.php:27
+#: inc/slider.php:29
 msgid "GNN Slider"
 msgstr ""
 
@@ -703,38 +1012,47 @@ msgstr ""
 msgid "GNN Theme Options"
 msgstr ""
 
-#: inc/admin-panel.php:28
-#: inc/admin-panel.php:40
-#: inc/admin-panel.php:581
+#: inc/admin-panel.php:31
+#: inc/admin-panel.php:43
+#: inc/admin-panel.php:613
 msgid "GNN Theme Panel"
 msgstr ""
 
-#: inc/admin-panel.php:801
+#: inc/admin-panel.php:833
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr ""
 
-#: inc/admin-panel.php:802
+#: inc/admin-panel.php:834
 msgid "Gap between the page content and the footer."
+msgstr ""
+
+#: inc/platform.php:142
+#: inc/starters.php:15
+msgid "General services"
 msgstr ""
 
 #: inc/patterns.php:91
 msgid "Get a Quote"
 msgstr ""
 
-#: inc/admin-panel.php:555
-#: inc/admin-panel.php:647
+#: inc/admin-panel.php:587
+#: inc/admin-panel.php:686
 msgid "Global"
 msgstr ""
 
-#: template-parts/hero-slider.php:75
+#: inc/platform.php:21
+msgid "Global container width"
+msgstr ""
+
+#: template-parts/hero-slider.php:77
 msgid "Go to slide %d"
 msgstr ""
 
-#: inc/admin-panel.php:1051
+#: inc/admin-panel.php:1086
 msgid "Google Analytics 4 ID"
 msgstr ""
 
-#: inc/admin-panel.php:1052
+#: inc/admin-panel.php:1087
 msgid "Google Tag Manager ID"
 msgstr ""
 
@@ -742,11 +1060,11 @@ msgstr ""
 msgid "Got questions? Feel free to reach out."
 msgstr ""
 
-#: inc/admin-panel.php:629
+#: inc/admin-panel.php:661
 msgid "Gutenberg"
 msgstr ""
 
-#: inc/slider.php:119
+#: inc/slider.php:121
 msgid "Gutenberg only."
 msgstr ""
 
@@ -774,12 +1092,12 @@ msgstr ""
 msgid "H6"
 msgstr ""
 
-#: inc/admin-panel.php:761
+#: inc/admin-panel.php:792
 msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
 msgstr ""
 
-#: inc/admin-panel.php:556
-#: inc/admin-panel.php:694
+#: inc/admin-panel.php:588
+#: inc/admin-panel.php:724
 msgid "Header"
 msgstr ""
 
@@ -791,21 +1109,49 @@ msgstr ""
 msgid "Header Right (centered layout)"
 msgstr ""
 
-#: inc/admin-panel.php:710
+#: inc/platform.php:37
+msgid "Header action URL"
+msgstr ""
+
+#: inc/platform.php:36
+msgid "Header action label"
+msgstr ""
+
+#: inc/platform.php:20
+msgid "Header height"
+msgstr ""
+
+#: inc/admin-panel.php:740
 msgid "Header layout"
 msgstr ""
 
-#: header.php:42
+#: header.php:43
 msgid "Header left"
 msgstr ""
 
-#: header.php:60
+#: header.php:61
 msgid "Header right"
+msgstr ""
+
+#: inc/platform.php:23
+msgid "Header style"
+msgstr ""
+
+#: inc/design-system.php:219
+msgid "Heading"
 msgstr ""
 
 #: inc/elementor-templates.php:298
 #: inc/patterns.php:113
 msgid "Heading & paragraph with image"
+msgstr ""
+
+#: inc/platform.php:90
+msgid "Heading letter spacing (hundredths of em)"
+msgstr ""
+
+#: inc/platform.php:89
+msgid "Heading line height (%)"
 msgstr ""
 
 #: inc/elementor-templates.php:522
@@ -821,11 +1167,15 @@ msgstr ""
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr ""
 
-#: inc/admin-panel.php:672
+#: inc/platform.php:112
+msgid "Hero layout"
+msgstr ""
+
+#: inc/admin-panel.php:711
 msgid "Hero slider"
 msgstr ""
 
-#: inc/admin-panel.php:750
+#: inc/admin-panel.php:781
 msgid "Hide"
 msgstr ""
 
@@ -841,61 +1191,101 @@ msgstr ""
 msgid "Hide the page title"
 msgstr ""
 
-#: template-parts/hero-slider.php:19
+#: template-parts/hero-slider.php:21
 msgid "Highlights"
 msgstr ""
 
-#: inc/frontend.php:217
-#: inc/template-tags.php:39
+#: inc/frontend.php:219
+#: inc/platform.php:354
+#: inc/starters.php:130
 msgid "Home"
 msgstr ""
 
-#: inc/admin-panel.php:1035
+#: inc/workspace.php:93
+msgid "I reviewed the scope. A recovery snapshot will be created before configuration changes."
+msgstr ""
+
+#: inc/workspace.php:47
+msgid "I understand the impact. Save a recovery snapshot and apply these operational settings."
+msgstr ""
+
+#: inc/admin-panel.php:1069
 msgid "Icon style"
 msgstr ""
 
-#: inc/admin-panel.php:1029
+#: inc/admin-panel.php:1063
 msgid "Icons"
 msgstr ""
 
-#: inc/admin-panel.php:749
+#: inc/starters.php:44
+msgid "Ideas shaped into meaningful experiences."
+msgstr ""
+
+#: inc/admin-panel.php:780
 msgid "Image + text"
 msgstr ""
 
-#: inc/slider.php:160
+#: inc/slider.php:162
 msgid "Image fit"
 msgstr ""
 
-#: inc/admin-panel.php:748
+#: inc/admin-panel.php:779
 msgid "Image logo"
 msgstr ""
 
-#: inc/admin-panel.php:1095
-msgid "Import JSON"
-msgstr ""
-
-#: inc/admin-panel.php:1310
-#: inc/settings-transfer.php:40
+#: inc/admin-panel.php:1358
+#: inc/settings-transfer.php:42
 msgid "Import failed: the file is not a valid GNN settings export."
 msgstr ""
 
-#: inc/admin-panel.php:1089
+#: inc/admin-panel.php:1125
 msgid "Import settings"
+msgstr ""
+
+#: inc/platform.php:144
+#: inc/starters.php:31
+msgid "Industrial and B2B"
+msgstr ""
+
+#: inc/layout-system.php:127
+#: inc/layout-system.php:144
+#: inc/workspace.php:130
+msgid "Inherit"
+msgstr ""
+
+#: inc/platform.php:309
+msgid "Inherit / native theme layout"
 msgstr ""
 
 #: inc/demo-import.php:127
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr ""
 
-#: inc/admin-panel.php:1132
+#: inc/admin-panel.php:1174
 msgid "Installed version: %s"
 msgstr ""
 
-#: inc/admin-panel.php:667
+#: inc/admin-panel.php:706
 msgid "Interactions"
 msgstr ""
 
-#: inc/slider.php:144
+#: inc/platform.php:173
+msgid "Invalid field value type. No settings were changed."
+msgstr ""
+
+#: inc/workspace.php:206
+msgid "Invalid operational field."
+msgstr ""
+
+#: inc/starters.php:122
+msgid "Invalid starter profile."
+msgstr ""
+
+#: inc/platform.php:193
+msgid "Invalid value for %s. No settings were changed."
+msgstr ""
+
+#: inc/slider.php:146
 msgid "Kicker"
 msgstr ""
 
@@ -904,11 +1294,16 @@ msgstr ""
 msgid "Large header over cover (left text)"
 msgstr ""
 
-#: inc/admin-panel.php:706
+#: inc/workspace.php:107
+msgid "Launch checklist"
+msgstr ""
+
+#: inc/admin-panel.php:736
+#: inc/layout-system.php:19
 msgid "Layout"
 msgstr ""
 
-#: inc/admin-panel.php:804
+#: inc/admin-panel.php:836
 msgid "Layout widths"
 msgstr ""
 
@@ -925,14 +1320,14 @@ msgstr ""
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/admin-panel.php:943
-#: inc/admin-panel.php:951
+#: inc/admin-panel.php:976
+#: inc/admin-panel.php:984
 msgid "Leave empty to match the theme automatically."
 msgstr ""
 
-#: inc/admin-panel.php:721
-#: inc/admin-panel.php:767
-#: inc/admin-panel.php:786
+#: inc/admin-panel.php:751
+#: inc/admin-panel.php:798
+#: inc/admin-panel.php:818
 msgid "Left"
 msgstr ""
 
@@ -940,54 +1335,82 @@ msgstr ""
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/admin-panel.php:530
-#: inc/admin-panel.php:622
-#: inc/admin-panel.php:659
+#: inc/platform.php:118
+msgid "Left aligned"
+msgstr ""
+
+#: inc/admin-panel.php:562
+#: inc/admin-panel.php:564
+#: inc/admin-panel.php:654
 msgid "Light"
 msgstr ""
 
-#: inc/admin-panel.php:696
+#: inc/admin-panel.php:726
 msgid "Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both."
 msgstr ""
 
-#: inc/admin-panel.php:1031
+#: inc/admin-panel.php:1065
 msgid "Load Google Material Symbols"
 msgstr ""
 
-#: inc/admin-panel.php:689
-msgid "Load WooCommerce assets only on shop pages"
+#: inc/platform.php:84
+msgid "Local WOFF2 font attachment ID"
 msgstr ""
 
-#: inc/admin-panel.php:703
+#: inc/platform.php:61
+msgid "Local body font"
+msgstr ""
+
+#: inc/platform.php:73
+msgid "Local heading font"
+msgstr ""
+
+#: inc/admin-panel.php:733
 msgid "Logo max height — desktop (px)"
 msgstr ""
 
-#: inc/admin-panel.php:704
+#: inc/admin-panel.php:734
 msgid "Logo max height — mobile (px)"
 msgstr ""
 
-#: inc/admin-panel.php:700
+#: inc/admin-panel.php:730
 msgid "Logo — dark mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:701
+#: inc/admin-panel.php:731
 msgid "Logo — dark mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:698
+#: inc/admin-panel.php:728
 msgid "Logo — light mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:699
+#: inc/admin-panel.php:729
 msgid "Logo — light mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:680
-msgid "Maintenance / Coming soon"
+#: inc/workspace.php:31
+msgid "Maintenance and compatibility"
 msgstr ""
 
-#: inc/admin-panel.php:682
+#: inc/admin-panel.php:719
+msgid "Maintenance and compatibility settings are managed in the protected site workspace."
+msgstr ""
+
+#: inc/workspace.php:46
 msgid "Maintenance message"
+msgstr ""
+
+#: inc/platform.php:133
+msgid "Managed entirely outside the theme"
+msgstr ""
+
+#: inc/portability.php:121
+msgid "Map the reference for %s on this site before importing. No settings were changed."
+msgstr ""
+
+#: inc/platform.php:86
+msgid "Maximum H1 size"
 msgstr ""
 
 #: inc/patterns.php:73
@@ -1004,36 +1427,65 @@ msgstr ""
 msgid "Media & text (image right)"
 msgstr ""
 
-#: header.php:37
+#: inc/menu-controls.php:21
+msgid "Mega menu parent (top level)"
+msgstr ""
+
+#: header.php:38
 msgid "Menu"
 msgstr ""
 
-#: inc/admin-panel.php:719
+#: inc/admin-panel.php:749
 msgid "Menu alignment"
 msgstr ""
 
-#: header.php:123
+#: inc/menu-controls.php:28
+msgid "Menu layout"
+msgstr ""
+
+#: inc/platform.php:33
+msgid "Minimal"
+msgstr ""
+
+#: header.php:124
 msgid "Mobile"
+msgstr ""
+
+#: inc/platform.php:87
+msgid "Mobile H1 size"
 msgstr ""
 
 #: functions.php:42
 msgid "Mobile Menu"
 msgstr ""
 
-#: inc/admin-panel.php:730
+#: inc/integrations.php:86
+#: inc/platform.php:124
+msgid "Mobile actions"
+msgstr ""
+
+#: inc/platform.php:352
+msgid "Mobile actions in display order (leave labels empty to use the existing dock)"
+msgstr ""
+
+#: inc/admin-panel.php:760
 msgid "Mobile bottom app dock (≤600px)"
 msgstr ""
 
-#: inc/frontend.php:214
+#: inc/frontend.php:216
 msgid "Mobile navigation"
 msgstr ""
 
-#: inc/admin-panel.php:932
+#: inc/admin-panel.php:965
 msgid "Muted text"
 msgstr ""
 
-#: inc/admin-panel.php:987
+#: inc/admin-panel.php:1020
 msgid "Name (e.g. Primary) — leave empty to skip"
+msgstr ""
+
+#: inc/layout-system.php:129
+msgid "Native theme / builder fallback"
 msgstr ""
 
 #: inc/class-gnn-walker-nav-menu.php:108
@@ -1044,12 +1496,16 @@ msgstr ""
 msgid "Newer comments →"
 msgstr ""
 
-#: template-parts/hero-slider.php:71
+#: inc/starters.php:131
+msgid "News"
+msgstr ""
+
+#: template-parts/hero-slider.php:73
 msgid "Next slide"
 msgstr ""
 
-#: single.php:73
-#: inc/template-tags.php:138
+#: single.php:83
+#: inc/template-tags.php:142
 msgid "Next →"
 msgstr ""
 
@@ -1057,15 +1513,27 @@ msgstr ""
 msgid "No results found"
 msgstr ""
 
-#: inc/admin-panel.php:787
+#: inc/import-preview.php:41
+msgid "No settings have been changed. Review the affected keys and select references belonging to this site. Private values are not displayed."
+msgstr ""
+
+#: inc/admin-panel.php:819
 msgid "No sidebar"
 msgstr ""
 
-#: inc/slider.php:34
+#: inc/slider.php:36
 msgid "No slides yet."
 msgstr ""
 
-#: inc/template-tags.php:64
+#: inc/platform.php:120
+msgid "No theme slider"
+msgstr ""
+
+#: inc/platform.php:101
+msgid "None"
+msgstr ""
+
+#: inc/template-tags.php:66
 msgid "Not found"
 msgstr ""
 
@@ -1073,16 +1541,20 @@ msgstr ""
 msgid "Nothing here yet"
 msgstr ""
 
-#: inc/admin-panel.php:839
+#: inc/admin-panel.php:871
 msgid "Off by default. Replaces the normal title above the content with a centered title overlaid on the featured image itself. Any page can override this individually — see \"Title over featured image\" in its GNN Display Options box."
 msgstr ""
 
-#: inc/admin-panel.php:1010
+#: inc/admin-panel.php:1044
 msgid "Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font."
 msgstr ""
 
-#: inc/admin-panel.php:664
+#: inc/admin-panel.php:703
 msgid "Only applies while the toggle above is visible."
+msgstr ""
+
+#: inc/workspace.php:119
+msgid "Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator."
 msgstr ""
 
 #: inc/elementor-templates.php:678
@@ -1090,19 +1562,27 @@ msgstr ""
 msgid "Open spaces"
 msgstr ""
 
-#: inc/admin-panel.php:1037
+#: inc/platform.php:16
+msgid "Opening hours"
+msgstr ""
+
+#: inc/design-system.php:245
+msgid "Outline"
+msgstr ""
+
+#: inc/admin-panel.php:1071
 msgid "Outlined"
 msgstr ""
 
-#: inc/admin-panel.php:842
+#: inc/admin-panel.php:874
 msgid "Overlay title background color"
 msgstr ""
 
-#: inc/admin-panel.php:843
+#: inc/admin-panel.php:875
 msgid "Overlay title background opacity (%)"
 msgstr ""
 
-#: inc/admin-panel.php:841
+#: inc/admin-panel.php:873
 msgid "Overlay title font size (px)"
 msgstr ""
 
@@ -1110,50 +1590,46 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: inc/admin-panel.php:924
+#: inc/admin-panel.php:957
 msgid "Page background"
 msgstr ""
 
-#: inc/admin-panel.php:630
+#: inc/admin-panel.php:662
 msgid "Page builder"
 msgstr ""
 
-#: inc/admin-panel.php:824
+#: inc/admin-panel.php:856
 msgid "Page image alignment"
 msgstr ""
 
-#: inc/admin-panel.php:815
+#: inc/admin-panel.php:847
 msgid "Page image fit"
 msgstr ""
 
-#: inc/admin-panel.php:811
+#: inc/admin-panel.php:843
 msgid "Page image height (px)"
 msgstr ""
 
 #: 404.php:16
-#: inc/admin-panel.php:877
+#: inc/admin-panel.php:909
 msgid "Page not found"
 msgstr ""
 
-#: inc/admin-panel.php:558
-#: inc/admin-panel.php:779
+#: inc/admin-panel.php:590
+#: inc/admin-panel.php:811
 msgid "Pages Layout"
 msgstr ""
 
-#: inc/admin-panel.php:689
-msgid "Pages using [products] or Woo blocks are detected automatically."
-msgstr ""
-
-#: single.php:49
+#: single.php:52
 #: template-parts/content-page.php:34
 msgid "Pages:"
 msgstr ""
 
-#: inc/admin-panel.php:810
+#: inc/admin-panel.php:842
 msgid "Pages: Default, Boxed, Left Sidebar and Right Sidebar templates."
 msgstr ""
 
-#: inc/admin-panel.php:582
+#: inc/admin-panel.php:614
 msgid "Panel-controlled theme settings — no code required."
 msgstr ""
 
@@ -1161,21 +1637,17 @@ msgstr ""
 msgid "Paragraph (body text)"
 msgstr ""
 
-#: inc/admin-panel.php:684
-msgid "Performance"
-msgstr ""
-
-#: inc/admin-panel.php:1189
-#: inc/admin-panel.php:1206
-#: inc/admin-panel.php:1236
+#: inc/admin-panel.php:1231
+#: inc/admin-panel.php:1249
+#: inc/admin-panel.php:1281
 msgid "Permission denied."
 msgstr ""
 
-#: inc/admin-panel.php:736
+#: inc/admin-panel.php:766
 msgid "Phone"
 msgstr ""
 
-#: inc/admin-panel.php:773
+#: inc/admin-panel.php:804
 msgid "Placeholders: %year% and %site%. Leave empty for the default."
 msgstr ""
 
@@ -1183,24 +1655,38 @@ msgstr ""
 msgid "Platform uptime SLA"
 msgstr ""
 
+#: inc/admin-panel.php:1118
+msgid "Portable design profile (no site identity or code)"
+msgstr ""
+
 #: home.php:37
 #: template-parts/content-search.php:9
 msgid "Post"
 msgstr ""
 
-#: single.php:70
+#: single.php:80
 msgid "Posts"
 msgstr ""
 
-#: inc/admin-panel.php:690
+#: inc/platform.php:148
+#: inc/workspace.php:42
+msgid "Prefer third-party plugin compatibility"
+msgstr ""
+
+#: inc/workspace.php:41
 msgid "Preload theme fonts"
 msgstr ""
 
-#: template-parts/hero-slider.php:70
+#: inc/admin-panel.php:1134
+msgid "Preview import"
+msgstr ""
+
+#: template-parts/hero-slider.php:72
 msgid "Previous slide"
 msgstr ""
 
-#: header.php:82
+#: header.php:83
+#: inc/design-system.php:243
 msgid "Primary"
 msgstr ""
 
@@ -1208,7 +1694,7 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/admin-panel.php:931
+#: inc/admin-panel.php:964
 msgid "Primary text"
 msgstr ""
 
@@ -1216,8 +1702,29 @@ msgstr ""
 msgid "Product"
 msgstr ""
 
-#: inc/admin-panel.php:873
+#: inc/admin-panel.php:905
 msgid "Products per page"
+msgstr ""
+
+#: inc/platform.php:143
+#: inc/starters.php:23
+msgid "Professional services"
+msgstr ""
+
+#: inc/admin-panel.php:669
+msgid "Profiles, recovery and diagnostics"
+msgstr ""
+
+#: inc/starters.php:168
+msgid "Project overview"
+msgstr ""
+
+#: inc/platform.php:18
+msgid "Public email"
+msgstr ""
+
+#: inc/platform.php:17
+msgid "Public phone number"
 msgstr ""
 
 #: inc/elementor-templates.php:343
@@ -1236,7 +1743,7 @@ msgstr ""
 msgid "Question two goes here?"
 msgstr ""
 
-#: inc/admin-panel.php:1053
+#: inc/admin-panel.php:1088
 msgid "Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_html capability."
 msgstr ""
 
@@ -1244,50 +1751,99 @@ msgstr ""
 msgid "Ready to secure your stack?"
 msgstr ""
 
-#: inc/admin-panel.php:1116
+#: inc/workspace.php:163
+msgid "Recent configuration changes"
+msgstr ""
+
+#: inc/workspace.php:154
+msgid "Recovery snapshots"
+msgstr ""
+
+#: inc/admin-panel.php:1158
 msgid "Refresh Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1112
+#: inc/admin-panel.php:1154
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr ""
 
-#: inc/admin-panel.php:664
+#: inc/workspace.php:158
+msgid "Release abandoned settings lock"
+msgstr ""
+
+#: inc/admin-panel.php:703
 msgid "Remember each visitor's choice (localStorage)"
 msgstr ""
 
-#: inc/admin-panel.php:376
-#: inc/slider.php:140
+#: inc/admin-panel.php:408
+#: inc/slider.php:142
 msgid "Remove"
 msgstr ""
 
-#: inc/admin-panel.php:687
+#: inc/workspace.php:38
 msgid "Remove jQuery Migrate (front-end)"
 msgstr ""
 
-#: inc/admin-panel.php:686
+#: inc/workspace.php:37
 msgid "Remove oEmbed discovery links"
 msgstr ""
 
-#: inc/admin-panel.php:1102
+#: inc/workspace.php:108
+msgid "Replace draft/demo content, choose logos and verify contact links."
+msgstr ""
+
+#: inc/starters.php:141
+msgid "Replace this introductory content with your own services, expertise and project information."
+msgstr ""
+
+#: inc/admin-panel.php:1141
 msgid "Reset all GNN Theme settings to defaults?"
 msgstr ""
 
-#: inc/admin-panel.php:1100
+#: inc/admin-panel.php:1139
 msgid "Reset settings"
 msgstr ""
 
-#: inc/admin-panel.php:1105
+#: inc/admin-panel.php:1147
 msgid "Reset to defaults"
 msgstr ""
 
-#: inc/admin-panel.php:1101
+#: inc/admin-panel.php:1140
 msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
 msgstr ""
 
-#: inc/admin-panel.php:723
-#: inc/admin-panel.php:769
-#: inc/admin-panel.php:785
+#: inc/workspace.php:162
+msgid "Restore this configuration"
+msgstr ""
+
+#: inc/platform.php:54
+msgid "Reusable footer"
+msgstr ""
+
+#: inc/platform.php:40
+msgid "Reusable header"
+msgstr ""
+
+#: inc/layout-system.php:18
+msgid "Reusable layouts"
+msgstr ""
+
+#: inc/workspace.php:201
+msgid "Review and confirm the operation first."
+msgstr ""
+
+#: inc/workspace.php:108
+msgid "Review mobile navigation, keyboard operation and brand contrast."
+msgstr ""
+
+#: inc/import-preview.php:41
+#: inc/import-preview.php:41
+msgid "Review settings import"
+msgstr ""
+
+#: inc/admin-panel.php:753
+#: inc/admin-panel.php:800
+#: inc/admin-panel.php:817
 msgid "Right"
 msgstr ""
 
@@ -1295,7 +1851,7 @@ msgstr ""
 msgid "Right Sidebar"
 msgstr ""
 
-#: inc/admin-panel.php:1038
+#: inc/admin-panel.php:1072
 msgid "Rounded"
 msgstr ""
 
@@ -1303,23 +1859,31 @@ msgstr ""
 msgid "Sample title"
 msgstr ""
 
-#: inc/admin-panel.php:1156
+#: inc/admin-panel.php:1198
 msgid "Save"
 msgstr ""
 
-#: inc/admin-panel.php:1059
+#: inc/admin-panel.php:1095
 msgid "Save Settings"
+msgstr ""
+
+#: inc/workspace.php:142
+msgid "Save assigned settings"
+msgstr ""
+
+#: inc/workspace.php:40
+msgid "Scope WooCommerce assets to pages that need them"
 msgstr ""
 
 #: inc/frontend.php:120
 msgid "Scroll to top"
 msgstr ""
 
-#: inc/admin-panel.php:670
+#: inc/admin-panel.php:709
 msgid "Scroll-in animations for blocks/images"
 msgstr ""
 
-#: header.php:101
+#: header.php:102
 #: search.php:14
 #: searchform.php:14
 msgid "Search"
@@ -1333,138 +1897,260 @@ msgstr ""
 msgid "Search products, posts, pages…"
 msgstr ""
 
-#: inc/admin-panel.php:375
-#: inc/slider.php:139
+#: inc/design-system.php:244
+msgid "Secondary"
+msgstr ""
+
+#: inc/platform.php:94
+msgid "Section spacing"
+msgstr ""
+
+#: inc/admin-panel.php:407
+#: inc/slider.php:141
 msgid "Select image"
 msgstr ""
 
-#: inc/slider.php:36
+#: inc/workspace.php:166
+msgid "Sensitive field values are never included in the change log or support summary."
+msgstr ""
+
+#: inc/starters.php:128
+msgid "Services"
+msgstr ""
+
+#: inc/starters.php:166
+msgid "Services overview"
+msgstr ""
+
+#: inc/slider.php:38
 msgid "Set background image"
 msgstr ""
 
-#: inc/slider.php:133
+#: inc/slider.php:135
 msgid "Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens)."
 msgstr ""
 
-#: inc/admin-panel.php:1309
+#: inc/admin-panel.php:1133
+msgid "Settings JSON file"
+msgstr ""
+
+#: inc/import-preview.php:102
+msgid "Settings changed after the preview. Preview the file again."
+msgstr ""
+
+#: inc/configuration.php:62
+msgid "Settings changed after this form was opened. Your changes were not applied. Reload the latest settings before trying again."
+msgstr ""
+
+#: inc/platform.php:167
+msgid "Settings exceed the 1 MB limit. Nothing was changed."
+msgstr ""
+
+#: inc/admin-panel.php:1357
 msgid "Settings imported successfully."
 msgstr ""
 
-#: inc/admin-panel.php:1311
+#: inc/admin-panel.php:1359
 msgid "Settings reset to defaults."
 msgstr ""
 
-#: inc/admin-panel.php:111
+#: inc/admin-panel.php:114
 msgid "Settings were not saved: a field has an invalid value type."
 msgstr ""
 
-#: inc/admin-panel.php:1039
+#: inc/admin-panel.php:1073
 msgid "Sharp"
 msgstr ""
 
-#: inc/admin-panel.php:872
+#: inc/admin-panel.php:904
 msgid "Shop columns"
 msgstr ""
 
-#: inc/admin-panel.php:879
+#: inc/admin-panel.php:911
 msgid "Show a search box on the 404 page"
 msgstr ""
 
-#: inc/admin-panel.php:729
+#: inc/platform.php:108
+msgid "Show author information"
+msgstr ""
+
+#: inc/platform.php:38
+msgid "Show contact information in the header"
+msgstr ""
+
+#: inc/platform.php:107
+msgid "Show post date and reading time"
+msgstr ""
+
+#: inc/platform.php:109
+msgid "Show previous and next posts"
+msgstr ""
+
+#: inc/admin-panel.php:759
 msgid "Show the cart link (WooCommerce)"
 msgstr ""
 
-#: inc/admin-panel.php:663
+#: inc/admin-panel.php:702
 msgid "Show the dark/light toggle in the header"
 msgstr ""
 
-#: inc/admin-panel.php:838
+#: inc/platform.php:59
+msgid "Show the decorative dot after the text logo"
+msgstr ""
+
+#: inc/platform.php:39
+msgid "Show the language switcher when supported"
+msgstr ""
+
+#: inc/admin-panel.php:870
 msgid "Show the page title centered inside the featured image"
 msgstr ""
 
-#: inc/admin-panel.php:728
+#: inc/admin-panel.php:758
 msgid "Show the search icon"
 msgstr ""
 
-#: inc/admin-panel.php:669
+#: inc/admin-panel.php:708
 msgid "Show the “Scroll to top” button"
 msgstr ""
 
-#: inc/admin-panel.php:774
+#: inc/admin-panel.php:805
 msgid "Shown bottom-right in the footer. Leave empty to hide."
 msgstr ""
 
-#: functions.php:71
+#: functions.php:72
 msgid "Sidebar"
 msgstr ""
 
-#: inc/admin-panel.php:805
+#: inc/admin-panel.php:837
 msgid "Sidebar width (px)"
+msgstr ""
+
+#: inc/integrations.php:157
+msgid "Single language"
+msgstr ""
+
+#: inc/platform.php:58
+msgid "Single post footer override"
+msgstr ""
+
+#: inc/platform.php:57
+msgid "Single post header override"
+msgstr ""
+
+#: inc/layout-system.php:110
+msgid "Site layout overrides"
+msgstr ""
+
+#: inc/platform.php:294
+msgid "Site platform"
+msgstr ""
+
+#: inc/admin-panel.php:1118
+msgid "Site settings (includes private configuration)"
+msgstr ""
+
+#: inc/workspace.php:55
+#: inc/workspace.php:58
+#: inc/workspace.php:104
+msgid "Site workspace"
 msgstr ""
 
 #: header.php:21
 msgid "Skip to content"
 msgstr ""
 
-#: inc/slider.php:28
+#: inc/slider.php:30
 msgid "Slide"
 msgstr ""
 
-#: inc/slider.php:105
+#: inc/slider.php:107
 msgid "Slide Details"
 msgstr ""
 
-#: inc/slider.php:176
+#: inc/slider.php:178
 msgid "Slide order: set the \"Order\" field under Page Attributes (lower = earlier). An empty title hides the slide from the front page."
 msgstr ""
 
-#: inc/slider.php:33
+#: inc/slider.php:35
 msgid "Slider"
 msgstr ""
 
-#: inc/admin-panel.php:673
-msgid "Slides are managed under GNN Slider in the admin menu (unlimited slides)."
+#: inc/platform.php:123
+msgid "Slider group"
 msgstr ""
 
-#: inc/admin-panel.php:688
-msgid "Slow the Heartbeat API to 60s"
-msgstr ""
-
-#: inc/admin-panel.php:668
-msgid "Smooth scroll for anchor links"
-msgstr ""
-
-#: inc/admin-panel.php:1313
-msgid "Some Elementor templates could not be saved. Please retry."
+#: inc/layout-system.php:38
+msgid "Slider groups"
 msgstr ""
 
 #: inc/admin-panel.php:712
+msgid "Slides are managed under GNN Slider in the admin menu (unlimited slides)."
+msgstr ""
+
+#: inc/workspace.php:39
+msgid "Slow the Heartbeat API to 60s"
+msgstr ""
+
+#: inc/admin-panel.php:707
+msgid "Smooth scroll for anchor links"
+msgstr ""
+
+#: inc/platform.php:19
+msgid "Social profile URL"
+msgstr ""
+
+#: inc/platform.php:102
+msgid "Soft"
+msgstr ""
+
+#: inc/admin-panel.php:1361
+msgid "Some Elementor templates could not be saved. Please retry."
+msgstr ""
+
+#: inc/platform.php:31
+msgid "Stacked"
+msgstr ""
+
+#: inc/admin-panel.php:742
 msgid "Standard (logo left, menu right)"
 msgstr ""
 
-#: template-parts/hero-slider.php:69
+#: inc/menu-controls.php:20
+msgid "Standard menu item"
+msgstr ""
+
+#: template-parts/hero-slider.php:71
 msgid "Start slide rotation"
+msgstr ""
+
+#: inc/workspace.php:106
+msgid "Start with a design profile, configure layouts and integrations, test the site, then hand over the safe content workspace."
 msgstr ""
 
 #: inc/patterns.php:71
 msgid "Statistics cards"
 msgstr ""
 
-#: inc/admin-panel.php:727
+#: inc/admin-panel.php:757
 msgid "Sticky header"
 msgstr ""
 
-#: template-parts/hero-slider.php:69
-#: template-parts/hero-slider.php:69
+#: template-parts/hero-slider.php:71
+#: template-parts/hero-slider.php:71
 msgid "Stop slide rotation"
 msgstr ""
 
-#: inc/admin-panel.php:982
+#: inc/platform.php:103
+msgid "Strong"
+msgstr ""
+
+#: inc/admin-panel.php:1015
 msgid "Style %d"
 msgstr ""
 
-#: inc/admin-panel.php:559
-#: inc/admin-panel.php:885
+#: inc/admin-panel.php:591
+#: inc/admin-panel.php:918
 msgid "Styles"
 msgstr ""
 
@@ -1472,62 +2158,109 @@ msgstr ""
 msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
 msgstr ""
 
-#: inc/admin-panel.php:922
+#: inc/platform.php:96
+msgid "Surface shadow"
+msgstr ""
+
+#: inc/admin-panel.php:955
 msgid "Surfaces"
+msgstr ""
+
+#: inc/platform.php:68
+#: inc/platform.php:80
+msgid "System fonts"
 msgstr ""
 
 #: archive.php:45
 msgid "Tag"
 msgstr ""
 
-#: inc/admin-panel.php:990
-#: inc/slider.php:148
+#: inc/starters.php:167
+msgid "Team introduction"
+msgstr ""
+
+#: inc/admin-panel.php:1023
+#: inc/design-system.php:246
+#: inc/slider.php:150
 msgid "Text"
 msgstr ""
 
-#: inc/admin-panel.php:929
+#: inc/admin-panel.php:962
 msgid "Text & Borders"
 msgstr ""
 
-#: inc/admin-panel.php:747
+#: inc/admin-panel.php:778
 msgid "Text (site title)"
 msgstr ""
 
-#: inc/admin-panel.php:915
+#: inc/admin-panel.php:948
 msgid "Text on accent"
 msgstr ""
 
-#: inc/admin-panel.php:1158
+#: inc/platform.php:200
+msgid "The analytics ID is invalid. No settings were changed."
+msgstr ""
+
+#: inc/admin-panel.php:1200
 msgid "The check-for-updates / update button now lives at the top of this panel, under the version number."
+msgstr ""
+
+#: inc/portability.php:81
+msgid "The export scope is invalid."
+msgstr ""
+
+#: inc/workspace.php:154
+msgid "The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages."
 msgstr ""
 
 #: 404.php:17
 msgid "The page you’re looking for was moved, renamed or never existed."
 msgstr ""
 
-#: inc/admin-panel.php:918
+#: inc/import-preview.php:98
+msgid "The reference mapping is invalid."
+msgstr ""
+
+#: inc/configuration.php:138
+msgid "The requested snapshot is no longer available."
+msgstr ""
+
+#: inc/portability.php:128
+msgid "The selected reference has the wrong content type."
+msgstr ""
+
+#: inc/portability.php:130
+msgid "The selected reference is not a WOFF2 font."
+msgstr ""
+
+#: inc/portability.php:124
+msgid "The selected slider group does not exist."
+msgstr ""
+
+#: inc/admin-panel.php:951
 msgid "The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast."
 msgstr ""
 
-#: inc/admin-panel.php:1005
+#: inc/admin-panel.php:1039
 msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body) — fast, and used by default with zero extra requests."
 msgstr ""
 
-#: inc/admin-panel.php:1030
+#: inc/admin-panel.php:1064
 msgid "The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus."
 msgstr ""
 
-#: inc/class-gnn-github-updater.php:264
-#: inc/class-gnn-github-updater.php:268
+#: inc/class-gnn-github-updater.php:281
+#: inc/class-gnn-github-updater.php:285
 msgid "The update does not contain an installable GNN theme."
 msgstr ""
 
-#: inc/class-gnn-github-updater.php:273
+#: inc/class-gnn-github-updater.php:290
 msgid "The update package could not be prepared. The installed theme has not been changed."
 msgstr ""
 
-#: inc/admin-panel.php:41
-#: inc/frontend.php:227
+#: inc/admin-panel.php:44
+#: inc/frontend.php:229
+#: inc/platform.php:361
 msgid "Theme"
 msgstr ""
 
@@ -1535,7 +2268,7 @@ msgstr ""
 msgid "Theme Mode"
 msgstr ""
 
-#: inc/admin-panel.php:1019
+#: inc/admin-panel.php:1053
 msgid "Theme default"
 msgstr ""
 
@@ -1543,52 +2276,76 @@ msgstr ""
 msgid "Theme default (currently %s)"
 msgstr ""
 
-#: inc/admin-panel.php:1314
+#: inc/admin-panel.php:1362
 msgid "Theme update settings saved."
 msgstr ""
 
-#: inc/admin-panel.php:1128
+#: inc/admin-panel.php:1170
 msgid "Theme updates (GitHub)"
 msgstr ""
 
-#: inc/slider.php:120
+#: inc/workspace.php:31
+msgid "These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls."
+msgstr ""
+
+#: inc/import-preview.php:92
+msgid "This preview expired or was not confirmed. Preview the file again."
+msgstr ""
+
+#: inc/starters.php:57
+msgid "This profile is not available."
+msgstr ""
+
+#: inc/workspace.php:187
+msgid "This role cannot change the submitted fields."
+msgstr ""
+
+#: inc/portability.php:79
+msgid "This settings schema is not supported. No changes were made."
+msgstr ""
+
+#: inc/slider.php:122
 msgid "This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the \"GNN Ana Sayfa\" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page."
 msgstr ""
 
-#: inc/admin-panel.php:834
+#: inc/admin-panel.php:866
 #: inc/page-meta.php:114
 msgid "Title over featured image"
 msgstr ""
 
-#: header.php:107
-#: inc/frontend.php:224
+#: header.php:108
+#: inc/frontend.php:226
 msgid "Toggle dark / light mode"
 msgstr ""
 
-#: inc/admin-panel.php:826
-#: inc/admin-panel.php:862
+#: inc/admin-panel.php:858
+#: inc/admin-panel.php:894
 msgid "Top"
 msgstr ""
 
-#: inc/admin-panel.php:732
-#: inc/admin-panel.php:936
+#: inc/admin-panel.php:762
+#: inc/admin-panel.php:969
 msgid "Top bar"
 msgstr ""
 
-#: inc/admin-panel.php:940
+#: inc/admin-panel.php:973
 msgid "Top bar background color"
 msgstr ""
 
-#: inc/admin-panel.php:737
+#: inc/admin-panel.php:767
 msgid "Top bar colors have moved to the Colors tab, alongside every other theme color."
 msgstr ""
 
-#: inc/admin-panel.php:948
+#: inc/admin-panel.php:981
 msgid "Top bar text color"
 msgstr ""
 
-#: inc/admin-panel.php:677
+#: inc/admin-panel.php:716
 msgid "Top loading progress bar"
+msgstr ""
+
+#: inc/platform.php:32
+msgid "Transparent"
 msgstr ""
 
 #: inc/patterns.php:67
@@ -1603,7 +2360,7 @@ msgstr ""
 msgid "Try a different search term, or browse the catalog and blog from the menu."
 msgstr ""
 
-#: inc/admin-panel.php:663
+#: inc/admin-panel.php:702
 msgid "Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice)."
 msgstr ""
 
@@ -1617,44 +2374,57 @@ msgstr ""
 msgid "Two-tone background, centered image"
 msgstr ""
 
-#: inc/admin-panel.php:1014
+#: inc/admin-panel.php:1048
 msgid "Type the exact name from fonts.google.com (e.g. \"Poppins\", \"IBM Plex Sans\"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it."
 msgstr ""
 
-#: inc/admin-panel.php:560
-#: inc/admin-panel.php:1004
+#: inc/admin-panel.php:592
+#: inc/admin-panel.php:1038
 msgid "Typography"
 msgstr ""
 
-#: inc/admin-panel.php:1141
+#: inc/admin-panel.php:329
+msgid "Unsaved changes"
+msgstr ""
+
+#: inc/admin-panel.php:1183
 msgid "Update available: version %s."
 msgstr ""
 
-#: inc/admin-panel.php:1315
+#: inc/admin-panel.php:1363
 msgid "Update check complete."
 msgstr ""
 
-#: inc/admin-panel.php:596
+#: inc/admin-panel.php:628
 msgid "Update to %s"
 msgstr ""
 
-#: inc/admin-panel.php:1090
+#: inc/admin-panel.php:1126
 msgid "Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values."
 msgstr ""
 
-#: inc/admin-panel.php:1009
-msgid "Use Google Fonts instead"
+#: inc/platform.php:339
+msgid "Upload a trusted WOFF2 file in Media, then choose its attachment ID. No remote font URL is used."
+msgstr ""
+
+#: inc/platform.php:69
+#: inc/platform.php:81
+msgid "Uploaded local font"
 msgstr ""
 
 #: inc/admin-panel.php:1043
+msgid "Use Google Fonts instead"
+msgstr ""
+
+#: inc/admin-panel.php:1077
 msgid "Use it in content with e.g. %s"
 msgstr ""
 
-#: inc/admin-panel.php:798
+#: inc/admin-panel.php:830
 msgid "Used by the mobile dock's Contact link (and anywhere else the theme links to \"get in touch\"). Auto-detect looks for a page slugged \"contact\" or \"iletisim\"."
 msgstr ""
 
-#: inc/admin-panel.php:910
+#: inc/admin-panel.php:943
 msgid "Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching."
 msgstr ""
 
@@ -1666,7 +2436,7 @@ msgstr ""
 msgid "Visitors can still toggle; their choice persists in the browser."
 msgstr ""
 
-#: inc/frontend.php:258
+#: inc/frontend.php:260
 msgid "We are performing scheduled maintenance. Please check back soon."
 msgstr ""
 
@@ -1674,8 +2444,8 @@ msgstr ""
 msgid "When on, the title renders centered inside the featured image instead of above the content. Set the look (size/background) in GNN Panel → Pages Layout."
 msgstr ""
 
-#: inc/admin-panel.php:830
-#: inc/admin-panel.php:866
+#: inc/admin-panel.php:862
+#: inc/admin-panel.php:898
 msgid "Which part of the image stays visible when it gets cropped."
 msgstr ""
 
@@ -1683,15 +2453,27 @@ msgstr ""
 msgid "Why us"
 msgstr ""
 
-#: inc/admin-panel.php:805
+#: inc/admin-panel.php:837
 msgid "Width of the sidebar column on the Left/Right Sidebar page templates."
 msgstr ""
 
-#: single.php:62
+#: inc/integrations.php:158
+msgid "WordPress defaults"
+msgstr ""
+
+#: inc/workspace.php:55
+msgid "Workspace"
+msgstr ""
+
+#: single.php:68
 msgid "Written by"
 msgstr ""
 
-#: inc/admin-panel.php:1145
+#: inc/configuration.php:119
+msgid "You are not allowed to restore configuration snapshots."
+msgstr ""
+
+#: inc/admin-panel.php:1187
 msgid "You are running the latest version."
 msgstr ""
 
@@ -1711,7 +2493,7 @@ msgstr ""
 msgid "on"
 msgstr ""
 
-#: footer.php:78
+#: footer.php:83
 msgid "© %1$s %2$s. All rights reserved."
 msgstr ""
 
@@ -1719,7 +2501,7 @@ msgstr ""
 msgid "— second line"
 msgstr ""
 
-#: inc/admin-panel.php:880
+#: inc/admin-panel.php:912
 msgid "“Back to home” button text"
 msgstr ""
 
@@ -1727,10 +2509,10 @@ msgstr ""
 msgid "← Older comments"
 msgstr ""
 
-#: inc/template-tags.php:137
+#: inc/template-tags.php:141
 msgid "← Prev"
 msgstr ""
 
-#: single.php:72
+#: single.php:82
 msgid "← Previous"
 msgstr ""
