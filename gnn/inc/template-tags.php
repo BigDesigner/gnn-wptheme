@@ -34,6 +34,9 @@ if ( ! function_exists( 'gnn_breadcrumb' ) ) :
 		if ( function_exists( 'gnn_hide_breadcrumb' ) && gnn_hide_breadcrumb() ) {
 			return;
 		}
+		if ( gnn_provider_breadcrumb() ) {
+			return;
+		}
 
 		echo '<nav class="gnn-breadcrumb" aria-label="' . esc_attr__( 'Breadcrumb', 'gnn' ) . '">';
 		echo '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'gnn' ) . '</a>';
@@ -74,6 +77,8 @@ if ( ! function_exists( 'gnn_entry_meta' ) ) :
 	 * Post-card meta line: date — reading time.
 	 */
 	function gnn_entry_meta() {
+		if ( ! gnn_option( 'blog_meta' ) ) {
+			return; }
 		// str_word_count() is byte-based: it treats the bytes of multibyte
 		// letters (ğ ı ş ö ü ç, Cyrillic, CJK, …) as word separators and badly
 		// over-counts non-ASCII content. Count Unicode letter/number runs

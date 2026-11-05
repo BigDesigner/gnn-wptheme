@@ -20,162 +20,165 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return array
  */
 function gnn_option_defaults() {
-	return array(
-		// Brand / logo (existing — do not remove).
-		'logo_light'                   => 0,
-		'logo_light_2x'                => 0,
-		'logo_dark'                    => 0,
-		'logo_dark_2x'                 => 0,
-		'logo_max_height'              => 40,
-		'logo_max_height_mobile'       => 34,
-		'footer_copyright'             => '',
-		// Theme mode.
-		'show_toggle'                  => 1,
-		'remember_mode'                => 1,
-		// Header.
-		'sticky_header'                => 1,
-		'show_search'                  => 1,
-		'show_cart'                    => 1,
-		'header_layout'                => 'standard', // standard | centered.
-		'header_menu_align'            => 'right',    // left | center | right.
-		'mobile_dock'                  => 0,
-		'topbar_enable'                => 0,
-		'topbar_text'                  => '',
-		'topbar_email'                 => '',
-		'topbar_phone'                 => '',
-		'topbar_bg'                    => '',
-		'topbar_text_color'            => '',
-		// Footer.
-		'footer_brand_type'            => 'text',     // text | image | both | none.
-		'footer_logo_light'            => 0,
-		'footer_logo_light_2x'         => 0,
-		'footer_logo_dark'             => 0,
-		'footer_logo_dark_2x'          => 0,
-		'footer_logo_height'           => 40,
-		'footer_tagline'               => '',
-		'footer_menu_align'            => 'left',
-		// Blog / shop.
-		'sidebar_position'             => 'right',
-		'contact_page_id'              => 0, // 0 = auto-detect (see gnn_contact_url()).
-		'content_top_padding'          => 50,
-		'content_bottom_padding'       => 64,
-		'page_featured_image_height'   => 250,
-		'page_featured_image_fit'      => 'cover',  // cover | contain | fill.
-		'page_featured_image_position' => 'center', // top | center | bottom.
-		'post_featured_image_height'   => 500,
-		'post_featured_image_fit'      => 'cover',
-		'post_featured_image_position' => 'center',
-		// Title overlay: page title rendered centered inside the featured
-		// image instead of in the normal content flow. Off by default,
-		// per-page overridable — see inc/page-meta.php.
-		'title_overlay_enable'         => 0,
-		'title_overlay_font_size'      => 40,
-		'title_overlay_bg'             => '#000000',
-		'title_overlay_bg_opacity'     => 55,
-		// Layout widths (emitted as CSS vars by gnn_scripts()).
-		'sidebar_width'                => 320,
-		'boxed_width'                  => 1200,
-		'full_width'                   => 1520,
-		'excerpt_length'               => 24,
-		'shop_columns'                 => 4,
-		'shop_per_page'                => 8,
-		// 404.
-		'error404_title'               => '',
-		'error404_text'                => '',
-		'error404_search'              => 1,
-		'error404_button'              => '',
-		'error404_image'               => 0,
-		// UX toggles.
-		'smooth_scroll'                => 1,
-		'scroll_top'                   => 1,
-		'scroll_anim'                  => 0,
-		'preloader'                    => 0,
-		'loading_screen'               => 0,
-		// Maintenance.
-		'maintenance_mode'             => 0,
-		'maintenance_message'          => '',
-		// Slider.
-		'slider_autoplay'              => 1,
-		'slider_interval'              => 5,
-		'slider_full_height'           => 0,
-		// Custom code.
-		'custom_css'                   => '',
-		'custom_js_head'               => '',
-		'custom_js_footer'             => '',
-		'ga4_id'                       => '',
-		'gtm_id'                       => '',
-		'head_html'                    => '',
-		'body_html'                    => '',
-		// Icons.
-		'google_material_icons'        => 1,
-		'material_icons_style'         => 'outlined', // outlined | rounded | sharp | filled.
+	return array_merge(
+		gnn_platform_defaults(),
+		array(
+			// Brand / logo (existing — do not remove).
+			'logo_light'                   => 0,
+			'logo_light_2x'                => 0,
+			'logo_dark'                    => 0,
+			'logo_dark_2x'                 => 0,
+			'logo_max_height'              => 40,
+			'logo_max_height_mobile'       => 34,
+			'footer_copyright'             => '',
+			// Theme mode.
+			'show_toggle'                  => 1,
+			'remember_mode'                => 1,
+			// Header.
+			'sticky_header'                => 1,
+			'show_search'                  => 1,
+			'show_cart'                    => 1,
+			'header_layout'                => 'standard', // standard | centered.
+			'header_menu_align'            => 'right',    // left | center | right.
+			'mobile_dock'                  => 0,
+			'topbar_enable'                => 0,
+			'topbar_text'                  => '',
+			'topbar_email'                 => '',
+			'topbar_phone'                 => '',
+			'topbar_bg'                    => '',
+			'topbar_text_color'            => '',
+			// Footer.
+			'footer_brand_type'            => 'text',     // text | image | both | none.
+			'footer_logo_light'            => 0,
+			'footer_logo_light_2x'         => 0,
+			'footer_logo_dark'             => 0,
+			'footer_logo_dark_2x'          => 0,
+			'footer_logo_height'           => 40,
+			'footer_tagline'               => '',
+			'footer_menu_align'            => 'left',
+			// Blog / shop.
+			'sidebar_position'             => 'right',
+			'contact_page_id'              => 0, // 0 = auto-detect (see gnn_contact_url()).
+			'content_top_padding'          => 50,
+			'content_bottom_padding'       => 64,
+			'page_featured_image_height'   => 250,
+			'page_featured_image_fit'      => 'cover',  // cover | contain | fill.
+			'page_featured_image_position' => 'center', // top | center | bottom.
+			'post_featured_image_height'   => 500,
+			'post_featured_image_fit'      => 'cover',
+			'post_featured_image_position' => 'center',
+			// Title overlay: page title rendered centered inside the featured
+			// image instead of in the normal content flow. Off by default,
+			// per-page overridable — see inc/page-meta.php.
+			'title_overlay_enable'         => 0,
+			'title_overlay_font_size'      => 40,
+			'title_overlay_bg'             => '#000000',
+			'title_overlay_bg_opacity'     => 55,
+			// Layout widths (emitted as CSS vars by gnn_scripts()).
+			'sidebar_width'                => 320,
+			'boxed_width'                  => 1200,
+			'full_width'                   => 1520,
+			'excerpt_length'               => 24,
+			'shop_columns'                 => 4,
+			'shop_per_page'                => 8,
+			// 404.
+			'error404_title'               => '',
+			'error404_text'                => '',
+			'error404_search'              => 1,
+			'error404_button'              => '',
+			'error404_image'               => 0,
+			// UX toggles.
+			'smooth_scroll'                => 1,
+			'scroll_top'                   => 1,
+			'scroll_anim'                  => 0,
+			'preloader'                    => 0,
+			'loading_screen'               => 0,
+			// Maintenance.
+			'maintenance_mode'             => 0,
+			'maintenance_message'          => '',
+			// Slider.
+			'slider_autoplay'              => 1,
+			'slider_interval'              => 5,
+			'slider_full_height'           => 0,
+			// Custom code.
+			'custom_css'                   => '',
+			'custom_js_head'               => '',
+			'custom_js_footer'             => '',
+			'ga4_id'                       => '',
+			'gtm_id'                       => '',
+			'head_html'                    => '',
+			'body_html'                    => '',
+			// Icons.
+			'google_material_icons'        => 0,
+			'material_icons_style'         => 'outlined', // outlined | rounded | sharp | filled.
 		// Typography (Google Fonts, per element — off by default, see inc/typography.php).
-		'typography_google_enable'     => 0,
-		'typo_h1_family'               => '',
-		'typo_h1_weight'               => '400',
-		'typo_h2_family'               => '',
-		'typo_h2_weight'               => '400',
-		'typo_h3_family'               => '',
-		'typo_h3_weight'               => '400',
-		'typo_h4_family'               => '',
-		'typo_h4_weight'               => '400',
-		'typo_h5_family'               => '',
-		'typo_h5_weight'               => '400',
-		'typo_h6_family'               => '',
-		'typo_h6_weight'               => '400',
-		'typo_p_family'                => '',
-		'typo_p_weight'                => '400',
-		// Button styles (6 fixed slots, see inc/button-styles.php).
-		'btn_style_1_label'            => '',
-		'btn_style_1_bg'               => '',
-		'btn_style_1_text'             => '',
-		'btn_style_1_border'           => '',
-		'btn_style_2_label'            => '',
-		'btn_style_2_bg'               => '',
-		'btn_style_2_text'             => '',
-		'btn_style_2_border'           => '',
-		'btn_style_3_label'            => '',
-		'btn_style_3_bg'               => '',
-		'btn_style_3_text'             => '',
-		'btn_style_3_border'           => '',
-		'btn_style_4_label'            => '',
-		'btn_style_4_bg'               => '',
-		'btn_style_4_text'             => '',
-		'btn_style_4_border'           => '',
-		'btn_style_5_label'            => '',
-		'btn_style_5_bg'               => '',
-		'btn_style_5_text'             => '',
-		'btn_style_5_border'           => '',
-		'btn_style_6_label'            => '',
-		'btn_style_6_bg'               => '',
-		'btn_style_6_text'             => '',
-		'btn_style_6_border'           => '',
-		// Colors: Dark/Light pairs for the theme's existing design tokens
-		// (empty = keep main.css's own hardcoded default for that mode).
-		// Accent's dark value is the pre-existing gnn_accent_color theme_mod
-		// (Customizer, rule 1 backward compat); this is only the Light half.
-		'accent_light'                 => '',
-		'accent_ink_dark'              => '',
-		'accent_ink_light'             => '',
-		'color_bg_dark'                => '',
-		'color_bg_light'               => '',
-		'color_bg2_dark'               => '',
-		'color_bg2_light'              => '',
-		'color_bg3_dark'               => '',
-		'color_bg3_light'              => '',
-		'color_fg_dark'                => '',
-		'color_fg_light'               => '',
-		'color_fg2_dark'               => '',
-		'color_fg2_light'              => '',
-		'color_line_dark'              => '',
-		'color_line_light'             => '',
-		// Performance.
-		'disable_emoji'                => 1,
-		'disable_oembed'               => 1,
-		'disable_migrate'              => 1,
-		'heartbeat_slow'               => 1,
-		'woo_scope'                    => 1,
-		'font_preload'                 => 1,
+			'typography_google_enable'     => 0,
+			'typo_h1_family'               => '',
+			'typo_h1_weight'               => '400',
+			'typo_h2_family'               => '',
+			'typo_h2_weight'               => '400',
+			'typo_h3_family'               => '',
+			'typo_h3_weight'               => '400',
+			'typo_h4_family'               => '',
+			'typo_h4_weight'               => '400',
+			'typo_h5_family'               => '',
+			'typo_h5_weight'               => '400',
+			'typo_h6_family'               => '',
+			'typo_h6_weight'               => '400',
+			'typo_p_family'                => '',
+			'typo_p_weight'                => '400',
+			// Button styles (6 fixed slots, see inc/button-styles.php).
+			'btn_style_1_label'            => '',
+			'btn_style_1_bg'               => '',
+			'btn_style_1_text'             => '',
+			'btn_style_1_border'           => '',
+			'btn_style_2_label'            => '',
+			'btn_style_2_bg'               => '',
+			'btn_style_2_text'             => '',
+			'btn_style_2_border'           => '',
+			'btn_style_3_label'            => '',
+			'btn_style_3_bg'               => '',
+			'btn_style_3_text'             => '',
+			'btn_style_3_border'           => '',
+			'btn_style_4_label'            => '',
+			'btn_style_4_bg'               => '',
+			'btn_style_4_text'             => '',
+			'btn_style_4_border'           => '',
+			'btn_style_5_label'            => '',
+			'btn_style_5_bg'               => '',
+			'btn_style_5_text'             => '',
+			'btn_style_5_border'           => '',
+			'btn_style_6_label'            => '',
+			'btn_style_6_bg'               => '',
+			'btn_style_6_text'             => '',
+			'btn_style_6_border'           => '',
+			// Colors: Dark/Light pairs for the theme's existing design tokens
+			// (empty = keep main.css's own hardcoded default for that mode).
+			// Accent's dark value is the pre-existing gnn_accent_color theme_mod
+			// (Customizer, rule 1 backward compat); this is only the Light half.
+			'accent_light'                 => '',
+			'accent_ink_dark'              => '',
+			'accent_ink_light'             => '',
+			'color_bg_dark'                => '',
+			'color_bg_light'               => '',
+			'color_bg2_dark'               => '',
+			'color_bg2_light'              => '',
+			'color_bg3_dark'               => '',
+			'color_bg3_light'              => '',
+			'color_fg_dark'                => '',
+			'color_fg_light'               => '',
+			'color_fg2_dark'               => '',
+			'color_fg2_light'              => '',
+			'color_line_dark'              => '',
+			'color_line_light'             => '',
+			// Performance.
+			'disable_emoji'                => 1,
+			'disable_oembed'               => 1,
+			'disable_migrate'              => 1,
+			'heartbeat_slow'               => 1,
+			'woo_scope'                    => 1,
+			'font_preload'                 => 1,
+		)
 	);
 }
 
@@ -285,7 +288,11 @@ function gnn_the_logo() {
 	// registered — logos live in GNN Theme Panel → Brand).
 	?>
 	<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<?php bloginfo( 'name' ); ?><span class="site-title__dot">.</span>
+		<?php bloginfo( 'name' ); ?>
+		<?php
+		if ( gnn_option( 'brand_dot' ) ) :
+			?>
+			<span class="site-title__dot">.</span><?php endif; ?>
 	</a>
 	<?php
 }
@@ -430,7 +437,7 @@ add_filter( 'body_class', 'gnn_option_body_classes' );
  * @return string
  */
 function gnn_contact_url() {
-	$page_id = (int) gnn_option( 'contact_page_id' );
+	$page_id = gnn_translated_post_id( (int) gnn_option( 'contact_page_id' ) );
 	if ( $page_id && 'publish' === get_post_status( $page_id ) ) {
 		return get_permalink( $page_id );
 	}
@@ -480,19 +487,6 @@ add_action( 'wp_enqueue_scripts', 'gnn_output_custom_css', 20 );
  * GA4 / GTM / extra head HTML / head JS output.
  */
 function gnn_output_head_code() {
-	$ga4 = trim( (string) gnn_option( 'ga4_id' ) );
-	if ( preg_match( '/^G-[A-Z0-9]{4,}$/i', $ga4 ) ) {
-		$ga4 = esc_js( $ga4 );
-		echo "<script async src=\"https://www.googletagmanager.com/gtag/js?id={$ga4}\"></script>\n"; // phpcs:ignore
-		echo "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{$ga4}');</script>\n"; // phpcs:ignore
-	}
-
-	$gtm = trim( (string) gnn_option( 'gtm_id' ) );
-	if ( preg_match( '/^GTM-[A-Z0-9]{4,}$/i', $gtm ) ) {
-		$gtm = esc_js( $gtm );
-		echo "<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{$gtm}');</script>\n"; // phpcs:ignore
-	}
-
 	$head_html = (string) gnn_option( 'head_html' );
 	if ( '' !== trim( $head_html ) ) {
 		echo $head_html . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput -- gated by unfiltered_html on save.
@@ -509,10 +503,6 @@ add_action( 'wp_head', 'gnn_output_head_code', 20 );
  * GTM noscript + after-<body> HTML output.
  */
 function gnn_output_body_open_code() {
-	$gtm = trim( (string) gnn_option( 'gtm_id' ) );
-	if ( preg_match( '/^GTM-[A-Z0-9]{4,}$/i', $gtm ) ) {
-		echo '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=' . esc_attr( $gtm ) . '" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>' . "\n";
-	}
 	$body_html = (string) gnn_option( 'body_html' );
 	if ( '' !== trim( $body_html ) ) {
 		echo $body_html . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput -- gated by unfiltered_html on save.
@@ -548,7 +538,7 @@ function gnn_perf_boot() {
 		add_filter( 'emoji_svg_url', '__return_false' );
 	}
 
-	if ( gnn_option( 'disable_oembed' ) ) {
+	if ( gnn_option( 'disable_oembed' ) && ! gnn_option( 'compatibility_mode' ) ) {
 		remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
 		remove_action( 'wp_head', 'wp_oembed_add_host_js' );
 	}
@@ -574,7 +564,7 @@ function gnn_perf_scripts() {
 	}
 
 	// jQuery Migrate off (front-end only).
-	if ( gnn_option( 'disable_migrate' ) ) {
+	if ( gnn_option( 'disable_migrate' ) && ! gnn_option( 'compatibility_mode' ) ) {
 		global $wp_scripts;
 		if ( isset( $wp_scripts->registered['jquery'] ) ) {
 			$deps = &$wp_scripts->registered['jquery']->deps;

@@ -20,12 +20,13 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'gnn' ); ?></a>
 
-	<?php gnn_render_topbar(); // Top announcement bar (panel toggle). ?>
+
 
 	<?php
 	// Elementor Pro Theme Builder: a "header" template replaces the theme header.
-	if ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) :
-		$gnn_centered = 'centered' === gnn_option( 'header_layout' );
+	if ( ! gnn_render_layout_region( 'header' ) && ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) ) :
+		gnn_render_topbar();
+		$gnn_centered = 'centered' === gnn_layout_value( 'header_preset' ) || ( 'legacy' === gnn_layout_value( 'header_preset' ) && 'centered' === gnn_option( 'header_layout' ) );
 		?>
 	<header id="masthead" class="site-header">
 		<div class="site-header__inner">
@@ -96,7 +97,7 @@
 
 			<?php endif; ?>
 
-			<div class="header-actions">
+			<div class="header-actions"><?php gnn_header_components(); ?>
 				<?php if ( gnn_option( 'show_search' ) ) : ?>
 					<a class="header-search-link" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" aria-label="<?php esc_attr_e( 'Search', 'gnn' ); ?>">
 						<svg class="gnn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>

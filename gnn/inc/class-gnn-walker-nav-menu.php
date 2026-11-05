@@ -108,7 +108,8 @@ class GNN_Walker_Nav_Menu extends Walker_Nav_Menu {
 			$kicker       = ! empty( $item->attr_title ) ? $item->attr_title : __( 'New', 'gnn' );
 			$description  = ! empty( $item->description ) ? $item->description : '';
 			$item_output  = '<a class="mega-menu__card"' . $attributes . '>';
-			$item_output .= '<span class="mega-menu__card-media" aria-hidden="true"></span>';
+			$image        = (int) get_post_meta( $item->ID, '_gnn_menu_image', true );
+			$item_output .= '<span class="mega-menu__card-media" aria-hidden="true">' . ( $image ? wp_get_attachment_image( $image, 'medium', false, array( 'alt' => '' ) ) : '' ) . '</span>';
 			$item_output .= '<span class="mega-menu__card-body">';
 			$item_output .= '<span class="mega-menu__card-kicker">' . esc_html( $kicker ) . '</span>';
 			$item_output .= '<span class="mega-menu__card-title">' . esc_html( $title ) . '</span>';

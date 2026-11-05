@@ -1,0 +1,14 @@
+<wpml-config>
+ <custom-types>
+  <custom-type translate="1">gnn_layout</custom-type>
+  <custom-type translate="1">gnn_slide</custom-type>
+ </custom-types>
+ <taxonomies><taxonomy translate="1">gnn_slide_group</taxonomy></taxonomies>
+ <custom-fields>
+  <custom-field action="translate">_gnn_slide_kicker</custom-field>
+  <custom-field action="translate">_gnn_slide_text</custom-field>
+  <custom-field action="translate">_gnn_slide_cta_label</custom-field>
+  <custom-field action="translate">_gnn_slide_cta_url</custom-field>
+  <custom-field action="copy">_gnn_slide_fit</custom-field>
+ </custom-fields>
+</wpml-config>

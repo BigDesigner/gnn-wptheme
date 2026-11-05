@@ -24,7 +24,7 @@ get_header();
 
 	<?php if ( have_posts() ) : ?>
 
-		<?php if ( ! is_paged() ) : // Feature the newest post on page 1. ?>
+		<?php if ( ! is_paged() && gnn_option( 'blog_featured' ) ) : // Feature the newest post on page 1. ?>
 			<?php the_post(); ?>
 			<article <?php post_class( 'featured-post-card' ); ?>>
 				<a class="featured-post-card__media" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">

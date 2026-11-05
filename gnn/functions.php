@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '1.6.2' );
+define( 'GNN_VERSION', '2.0.0' );
 
 /**
  * Theme setup.
@@ -43,6 +43,7 @@ function gnn_setup() {
 			'footer-1' => __( 'Footer Column 1', 'gnn' ),
 			'footer-2' => __( 'Footer Column 2', 'gnn' ),
 			'footer-3' => __( 'Footer Column 3', 'gnn' ),
+			'footer-4' => __( 'Footer Column 4', 'gnn' ),
 		)
 	);
 
@@ -78,7 +79,7 @@ function gnn_widgets_init() {
 		)
 	);
 
-	for ( $i = 1; $i <= 3; $i++ ) {
+	for ( $i = 1; $i <= 4; $i++ ) {
 		register_sidebar(
 			array(
 				/* translators: %d: footer column number. */
@@ -111,8 +112,8 @@ function gnn_scripts() {
 	// (even at priority 0) can print BEFORE main.css and get overridden by it.
 	$gnn_accent  = sanitize_hex_color( get_theme_mod( 'gnn_accent_color', '#34d399' ) );
 	$gnn_accent  = $gnn_accent ? $gnn_accent : '#34d399';
-	$gnn_top_pad = max( 0, min( 200, (int) gnn_option( 'content_top_padding' ) ) );
-	$gnn_bot_pad = max( 0, min( 300, (int) gnn_option( 'content_bottom_padding' ) ) );
+	$gnn_top_pad = max( 0, min( 200, (int) gnn_layout_value( 'content_top_padding' ) ) );
+	$gnn_bot_pad = max( 0, min( 300, (int) gnn_layout_value( 'content_bottom_padding' ) ) );
 
 	$gnn_page_thumb_h   = max( 80, min( 600, (int) gnn_option( 'page_featured_image_height' ) ) );
 	$gnn_page_thumb_fit = in_array( gnn_option( 'page_featured_image_fit' ), array( 'cover', 'contain', 'fill' ), true ) ? gnn_option( 'page_featured_image_fit' ) : 'cover';
@@ -256,16 +257,26 @@ function gnn_pingback_header() {
 }
 add_action( 'wp_head', 'gnn_pingback_header' );
 
+require get_template_directory() . '/inc/platform.php';
+require get_template_directory() . '/inc/layout-system.php';
+require get_template_directory() . '/inc/design-system.php';
+require get_template_directory() . '/inc/integrations.php';
+require get_template_directory() . '/inc/starters.php';
+require get_template_directory() . '/inc/configuration.php';
+require get_template_directory() . '/inc/portability.php';
 require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/typography.php';
 require get_template_directory() . '/inc/button-styles.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-panel.php';
+	require get_template_directory() . '/inc/workspace.php';
+	require get_template_directory() . '/inc/import-preview.php';
 }
 // Theme updates are also checked by WP-Cron and WP-CLI outside wp-admin.
 require get_template_directory() . '/inc/updater.php';
 require get_template_directory() . '/inc/template-tags.php';
 require get_template_directory() . '/inc/frontend.php';
+require get_template_directory() . '/inc/menu-controls.php';
 require get_template_directory() . '/inc/page-layouts.php';
 require get_template_directory() . '/inc/class-gnn-walker-nav-menu.php';
 require get_template_directory() . '/inc/class-gnn-walker-comment.php';

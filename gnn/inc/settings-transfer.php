@@ -12,9 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Build the document used by the download handler.
  *
+ * @param string $scope Export scope or CSS selector.
  * @return array Export payload with effective shared defaults.
  */
-function gnn_settings_export_payload() {
+function gnn_settings_export_payload( $scope = 'site' ) {
 	$mods = array(
 		'gnn_accent_color'  => get_theme_mod( 'gnn_accent_color', '#34d399' ),
 		'gnn_default_theme' => get_theme_mod( 'gnn_default_theme', 'dark' ),
@@ -23,11 +24,12 @@ function gnn_settings_export_payload() {
 	foreach ( array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x' ) as $key ) {
 		$mods[ $key ] = get_theme_mod( $key, 0 );
 	}
-	return array(
+	$payload = array(
 		'_gnn_export' => GNN_VERSION,
 		'options'     => (object) array_intersect_key( (array) get_option( 'gnn_options', array() ), gnn_option_defaults() ),
 		'theme_mods'  => (object) $mods,
 	);
+	return gnn_prepare_export_payload( $payload, $scope );
 }
 
 /**
@@ -74,8 +76,8 @@ function gnn_decode_settings_import( $raw ) {
 				}
 				if ( is_int( $defaults[ $key ] ) && ! is_bool( $value )
 					&& ! gnn_is_legacy_logo_url( $key, $value )
-					&& ! ( is_int( $value ) && $value >= 0 )
-					&& ! ( is_string( $value ) && ctype_digit( $value ) ) ) {
+					&& ! ( is_int( $value ) && ( $value >= 0 || ( 'heading_tracking' === $key && $value >= -8 ) ) )
+					&& ! ( is_string( $value ) && ( ctype_digit( $value ) || ( 'heading_tracking' === $key && preg_match( '/^-?[0-9]+$/D', $value ) && (int) $value >= -8 ) ) ) ) {
 					return $error;
 				}
 				if ( is_string( $defaults[ $key ] ) && ! is_string( $value ) ) {
@@ -101,16 +103,18 @@ function gnn_decode_settings_import( $raw ) {
 			$result[ $group ][ $key ] = $value;
 		}
 	}
-	return $result;
+	return gnn_resolve_import_references( $result, $data );
 }
 
 /**
  * Apply a validated import, preserving values absent from a partial export.
  *
  * @param string $raw JSON file contents.
+ *
+ * @param string $revision Expected configuration revision.
  * @return true|WP_Error Success or validation/authorization error.
  */
-function gnn_import_panel_settings( $raw ) {
+function gnn_import_panel_settings( $raw, $revision = '' ) {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		return new WP_Error( 'gnn_import_permission', __( 'Permission denied.', 'gnn' ) );
 	}
@@ -125,6 +129,12 @@ function gnn_import_panel_settings( $raw ) {
 			}
 		}
 	}
+	$validation = gnn_validate_platform_input( $data['options'] );
+	if ( is_wp_error( $validation ) ) {
+		return $validation; }
+	$started = gnn_configuration_begin( 'import', $revision ? $revision : gnn_configuration_form_revision() );
+	if ( is_wp_error( $started ) ) {
+		return $started; }
 	if ( $data['options'] ) {
 		$current = wp_parse_args( (array) get_option( 'gnn_options', array() ), gnn_option_defaults() );
 		update_option( 'gnn_options', gnn_options_sanitize( array_replace( $current, $data['options'] ) ) );

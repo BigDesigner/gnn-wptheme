@@ -24,6 +24,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * and a bare float literal can silently lose trailing zeros at parse time.
  */
 function gnn_panel_menu() {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return;
+	}
 	add_menu_page(
 		__( 'GNN Theme Panel', 'gnn' ),
 		'GNN',
@@ -111,6 +114,16 @@ function gnn_options_sanitize( $input ) {
 			add_settings_error( 'gnn_options', 'gnn_value_type', __( 'Settings were not saved: a field has an invalid value type.', 'gnn' ) );
 			return $saved;
 		}
+	}
+
+	$validation = gnn_validate_platform_input( $input );
+	if ( is_wp_error( $validation ) ) {
+		add_settings_error( 'gnn_options', $validation->get_error_code(), $validation->get_error_message() );
+		return $saved; }
+	$started = gnn_configuration_begin( 'save', gnn_configuration_form_revision() );
+	if ( is_wp_error( $started ) ) {
+		add_settings_error( 'gnn_options', $started->get_error_code(), $started->get_error_message() );
+		return $saved;
 	}
 
 	// --- Shared theme_mods (not stored in the option). ---
@@ -232,6 +245,11 @@ function gnn_options_sanitize( $input ) {
 		}
 	}
 
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Settings API checks the form nonce.
+	if ( isset( $_POST['gnn_form_scope'] ) && 'design' === $_POST['gnn_form_scope'] ) {
+		foreach ( gnn_operation_keys() as $key ) {
+			$input[ $key ] = $saved[ $key ] ?? gnn_option_defaults()[ $key ]; }
+	}
 	// --- Checkboxes (a submitted form turns unchecked boxes off). ---
 	foreach ( array( 'show_toggle', 'remember_mode', 'sticky_header', 'show_search', 'show_cart', 'disable_emoji', 'disable_oembed', 'disable_migrate', 'heartbeat_slow', 'woo_scope', 'font_preload', 'mobile_dock', 'topbar_enable', 'smooth_scroll', 'scroll_top', 'scroll_anim', 'preloader', 'loading_screen', 'maintenance_mode', 'error404_search', 'slider_autoplay', 'slider_full_height', 'google_material_icons', 'typography_google_enable', 'title_overlay_enable' ) as $key ) {
 		$out[ $key ] = empty( $input[ $key ] ) ? 0 : 1;
@@ -281,7 +299,7 @@ function gnn_options_sanitize( $input ) {
 		}
 	}
 
-	return $out;
+	return gnn_sanitize_platform_options( $out, $input );
 }
 
 /**
@@ -298,6 +316,20 @@ function gnn_panel_assets( $hook ) {
 	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array( 'wp-color-picker' ), GNN_VERSION );
 	wp_enqueue_script( 'gnn-admin', get_template_directory_uri() . '/assets/js/admin.js', array( 'wp-color-picker' ), GNN_VERSION, true );
 	gnn_panel_code_editors();
+	$invalid = '';
+	foreach ( get_settings_errors( 'gnn_options' ) as $error ) {
+		if ( 0 === strpos( $error['code'], 'gnn_field_' ) ) {
+			$invalid = substr( $error['code'], 10 );
+			break; }
+	}
+	wp_localize_script(
+		'gnn-admin',
+		'gnnAdminText',
+		array(
+			'unsaved'      => __( 'Unsaved changes', 'gnn' ),
+			'invalidField' => $invalid,
+		)
+	);
 }
 add_action( 'admin_enqueue_scripts', 'gnn_panel_assets' );
 
@@ -342,7 +374,7 @@ function gnn_panel_code_editors() {
  */
 function gnn_field_checkbox( $key, $label, $hint = '' ) {
 	printf(
-		'<div class="gnn-field gnn-field--switch"><label class="gnn-switch"><input type="checkbox" name="gnn_options[%1$s]" value="1" %2$s><span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span></label><span class="gnn-switch__label">%3$s</span></div>%4$s',
+		'<div class="gnn-field gnn-field--switch"><label class="gnn-switch"><input type="checkbox" aria-label="%3$s" name="gnn_options[%1$s]" value="1" %2$s><span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span></label><span class="gnn-switch__label">%3$s</span></div>%4$s',
 		esc_attr( $key ),
 		checked( (bool) gnn_option( $key ), true, false ),
 		esc_html( $label ),
@@ -482,7 +514,7 @@ function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hi
 	// Show the effective color (the theme's own default) when nothing is
 	// saved yet, instead of a blank field — the panel should always show
 	// what the site currently looks like.
-	$display = '' !== $value ? $value : $default_swatch;
+	$display = $value;
 	printf(
 		'<div class="gnn-field"><label class="gnn-field__label" for="gnn-%1$s">%2$s</label>' .
 		'<div class="gnn-color-field">' .
@@ -513,8 +545,8 @@ function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hi
 function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hint = '' ) {
 	$dark          = (string) gnn_option( "{$key}_dark" );
 	$light         = (string) gnn_option( "{$key}_light" );
-	$dark_display  = '' !== $dark ? $dark : $dark_default;
-	$light_display = '' !== $light ? $light : $light_default;
+	$dark_display  = $dark;
+	$light_display = $light;
 	?>
 	<div class="gnn-field gnn-color-pair">
 		<span class="gnn-field__label"><?php echo esc_html( $label ); ?></span>
@@ -522,14 +554,14 @@ function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hin
 			<div class="gnn-color-pair__item">
 				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
 				<div class="gnn-color-field">
-					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark_display ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" aria-label="<?php echo esc_attr( $label . ' — ' . __( 'Dark', 'gnn' ) ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark_display ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
 					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				</div>
 			</div>
 			<div class="gnn-color-pair__item">
 				<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
 				<div class="gnn-color-field">
-					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light_display ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+					<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" aria-label="<?php echo esc_attr( $label . ' — ' . __( 'Light', 'gnn' ) ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light_display ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
 					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_light" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				</div>
 			</div>
@@ -634,14 +666,21 @@ function gnn_panel_render() {
 
 		<?php settings_errors( 'gnn_options' ); ?>
 
-		<nav class="nav-tab-wrapper gnn-tabs">
+		<p><a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=gnn-workspace' ) ); ?>"><?php esc_html_e( 'Profiles, recovery and diagnostics', 'gnn' ); ?></a></p><label for="gnn-settings-search"><?php esc_html_e( 'Find a setting', 'gnn' ); ?></label> <input type="search" id="gnn-settings-search" autocomplete="off"><nav class="nav-tab-wrapper gnn-tabs">
 			<?php foreach ( $tabs as $id => $label ) : ?>
 				<a href="#gnn-tab-<?php echo esc_attr( $id ); ?>" class="nav-tab" data-tab="<?php echo esc_attr( $id ); ?>"><span class="dashicons dashicons-<?php echo esc_attr( $tab_icons[ $id ] ); ?>" aria-hidden="true"></span><?php echo esc_html( $label ); ?></a>
 			<?php endforeach; ?>
 		</nav>
 
 		<form method="post" action="options.php">
-			<?php settings_fields( 'gnn_options_group' ); ?>
+			<?php
+			settings_fields( 'gnn_options_group' );
+			?>
+			<input type="hidden" name="gnn_form_scope" value="design">
+			<?php
+			gnn_configuration_revision_field();
+			?>
+			<input type="hidden" name="gnn_options[platform_fields_present]" value="1">
 
 			<section id="gnn-tab-global" class="gnn-tab">
 				<h2><span class="dashicons dashicons-admin-generic" aria-hidden="true"></span><?php esc_html_e( 'Global', 'gnn' ); ?></h2>
@@ -677,17 +716,8 @@ function gnn_panel_render() {
 				<?php gnn_field_checkbox( 'preloader', __( 'Top loading progress bar', 'gnn' ) ); ?>
 				<?php gnn_field_checkbox( 'loading_screen', __( 'Full-screen loading overlay', 'gnn' ) ); ?>
 
-				<h3><?php esc_html_e( 'Maintenance / Coming soon', 'gnn' ); ?></h3>
-				<?php gnn_field_checkbox( 'maintenance_mode', __( 'Enable maintenance mode (logged-out visitors only)', 'gnn' ) ); ?>
-				<?php gnn_field_textarea( 'maintenance_message', __( 'Maintenance message', 'gnn' ), (string) gnn_option( 'maintenance_message' ), 3 ); ?>
-
-				<h3><?php esc_html_e( 'Performance', 'gnn' ); ?></h3>
-				<?php gnn_field_checkbox( 'disable_emoji', __( 'Disable the emoji script', 'gnn' ) ); ?>
-				<?php gnn_field_checkbox( 'disable_oembed', __( 'Remove oEmbed discovery links', 'gnn' ) ); ?>
-				<?php gnn_field_checkbox( 'disable_migrate', __( 'Remove jQuery Migrate (front-end)', 'gnn' ) ); ?>
-				<?php gnn_field_checkbox( 'heartbeat_slow', __( 'Slow the Heartbeat API to 60s', 'gnn' ) ); ?>
-				<?php gnn_field_checkbox( 'woo_scope', __( 'Load WooCommerce assets only on shop pages', 'gnn' ), __( 'Pages using [products] or Woo blocks are detected automatically.', 'gnn' ) ); ?>
-				<?php gnn_field_checkbox( 'font_preload', __( 'Preload theme fonts', 'gnn' ) ); ?>
+				<p><?php esc_html_e( 'Maintenance and compatibility settings are managed in the protected site workspace.', 'gnn' ); ?></p>
+			<?php gnn_platform_fields( 'global' ); ?>
 			</section>
 
 			<section id="gnn-tab-header" class="gnn-tab">
@@ -735,6 +765,7 @@ function gnn_panel_render() {
 				<?php gnn_field_text( 'topbar_email', __( 'Email', 'gnn' ), (string) gnn_option( 'topbar_email' ) ); ?>
 				<?php gnn_field_text( 'topbar_phone', __( 'Phone', 'gnn' ), (string) gnn_option( 'topbar_phone' ) ); ?>
 				<p class="description"><?php esc_html_e( 'Top bar colors have moved to the Colors tab, alongside every other theme color.', 'gnn' ); ?></p>
+			<?php gnn_platform_fields( 'header' ); ?>
 			</section>
 
 			<section id="gnn-tab-footer" class="gnn-tab">
@@ -773,6 +804,7 @@ function gnn_panel_render() {
 				gnn_field_text( 'footer_copyright', __( 'Footer copyright line', 'gnn' ), (string) gnn_option( 'footer_copyright' ), '© %year% %site%. All rights reserved.', __( 'Placeholders: %year% and %site%. Leave empty for the default.', 'gnn' ) );
 				gnn_field_text( 'footer_legal', __( 'Footer legal text', 'gnn' ), (string) get_theme_mod( 'gnn_footer_legal', '' ), 'Privacy — Terms', __( 'Shown bottom-right in the footer. Leave empty to hide.', 'gnn' ) );
 				?>
+			<?php gnn_platform_fields( 'footer' ); ?>
 			</section>
 
 			<section id="gnn-tab-pages" class="gnn-tab">
@@ -879,6 +911,7 @@ function gnn_panel_render() {
 				<?php gnn_field_checkbox( 'error404_search', __( 'Show a search box on the 404 page', 'gnn' ) ); ?>
 				<?php gnn_field_text( 'error404_button', __( '“Back to home” button text', 'gnn' ), (string) gnn_option( 'error404_button' ), __( 'Back to Home', 'gnn' ) ); ?>
 				<?php gnn_field_media( 'error404_image', __( '404 image', 'gnn' ), (int) gnn_option( 'error404_image' ) ); ?>
+			<?php gnn_platform_fields( 'pages' ); ?>
 			</section>
 
 			<section id="gnn-tab-styles" class="gnn-tab">
@@ -998,6 +1031,7 @@ function gnn_panel_render() {
 						</div>
 					<?php endforeach; ?>
 				</div>
+			<?php gnn_platform_fields( 'styles' ); ?>
 			</section>
 
 			<section id="gnn-tab-typography" class="gnn-tab">
@@ -1016,8 +1050,8 @@ function gnn_panel_render() {
 					<?php foreach ( gnn_typography_roles() as $gnn_typo_role => $gnn_typo_label ) : ?>
 						<div class="gnn-typo-row">
 							<span class="gnn-typo-row__label"><?php echo esc_html( $gnn_typo_label ); ?></span>
-							<input type="text" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_family]" value="<?php echo esc_attr( (string) gnn_option( "typo_{$gnn_typo_role}_family" ) ); ?>" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>" class="regular-text">
-							<select name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_weight]">
+							<input type="text" aria-label="<?php echo esc_attr( $gnn_typo_label . ' — ' . __( 'Font family', 'gnn' ) ); ?>" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_family]" value="<?php echo esc_attr( (string) gnn_option( "typo_{$gnn_typo_role}_family" ) ); ?>" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>" class="regular-text">
+							<select aria-label="<?php echo esc_attr( $gnn_typo_label . ' — ' . __( 'Font weight', 'gnn' ) ); ?>" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_weight]">
 								<?php foreach ( gnn_typography_weights() as $gnn_typo_weight ) : ?>
 									<option value="<?php echo esc_attr( $gnn_typo_weight ); ?>" <?php selected( (string) gnn_option( "typo_{$gnn_typo_role}_weight" ), $gnn_typo_weight ); ?>><?php echo esc_html( $gnn_typo_weight ); ?></option>
 								<?php endforeach; ?>
@@ -1043,6 +1077,7 @@ function gnn_panel_render() {
 					sprintf( __( 'Use it in content with e.g. %s', 'gnn' ), '<code>&lt;span class="material-symbols-outlined"&gt;search&lt;/span&gt;</code>' )
 				);
 				?>
+			<?php gnn_platform_fields( 'typography' ); ?>
 			</section>
 
 			<section id="gnn-tab-code" class="gnn-tab">
@@ -1054,6 +1089,7 @@ function gnn_panel_render() {
 				<?php gnn_field_textarea( 'custom_js_footer', __( 'Custom JavaScript — footer', 'gnn' ), (string) gnn_option( 'custom_js_footer' ), 5 ); ?>
 				<?php gnn_field_textarea( 'head_html', __( 'Extra <head> HTML (meta/verification tags)', 'gnn' ), (string) gnn_option( 'head_html' ), 4 ); ?>
 				<?php gnn_field_textarea( 'body_html', __( 'After <body> HTML', 'gnn' ), (string) gnn_option( 'body_html' ), 4 ); ?>
+			<?php gnn_platform_fields( 'code' ); ?>
 			</section>
 
 			<?php submit_button( __( 'Save Settings', 'gnn' ) ); ?>
@@ -1079,7 +1115,7 @@ function gnn_panel_advanced_tab() {
 			<span class="gnn-field__label"><?php esc_html_e( 'Export settings', 'gnn' ); ?></span>
 			<p class="description"><?php esc_html_e( 'Download all GNN Theme settings as a JSON file for backup or transfer.', 'gnn' ); ?></p>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
-				<input type="hidden" name="action" value="gnn_export_settings">
+				<input type="hidden" name="action" value="gnn_export_settings"><label><?php esc_html_e( 'Export scope', 'gnn' ); ?><select name="gnn_export_scope"><option value="design"><?php esc_html_e( 'Portable design profile (no site identity or code)', 'gnn' ); ?></option><option value="site"><?php esc_html_e( 'Site settings (includes private configuration)', 'gnn' ); ?></option></select></label>
 				<?php wp_nonce_field( 'gnn_export_settings' ); ?>
 				<?php submit_button( __( 'Export JSON', 'gnn' ), 'secondary', 'submit', false ); ?>
 			</form>
@@ -1090,9 +1126,12 @@ function gnn_panel_advanced_tab() {
 			<p class="description"><?php esc_html_e( 'Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values.', 'gnn' ); ?></p>
 			<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_import_settings">
-				<?php wp_nonce_field( 'gnn_import_settings' ); ?>
-				<input type="file" name="gnn_import_file" accept="application/json,.json" required>
-				<?php submit_button( __( 'Import JSON', 'gnn' ), 'secondary', 'submit', false ); ?>
+				<?php
+				wp_nonce_field( 'gnn_import_settings' );
+				gnn_configuration_revision_field();
+				?>
+				<input type="file" aria-label="<?php esc_attr_e( 'Settings JSON file', 'gnn' ); ?>" name="gnn_import_file" accept="application/json,.json" required>
+				<button type="submit" class="button button-secondary" name="gnn_preview" value="1"><?php esc_html_e( 'Preview import', 'gnn' ); ?></button>
 			</form>
 		</div>
 
@@ -1101,7 +1140,10 @@ function gnn_panel_advanced_tab() {
 				<p class="description"><?php esc_html_e( 'Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone.', 'gnn' ); ?></p>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return confirm('<?php echo esc_js( __( 'Reset all GNN Theme settings to defaults?', 'gnn' ) ); ?>');" class="gnn-inline-form">
 				<input type="hidden" name="action" value="gnn_reset_settings">
-				<?php wp_nonce_field( 'gnn_reset_settings' ); ?>
+				<?php
+				wp_nonce_field( 'gnn_reset_settings' );
+				gnn_configuration_revision_field();
+				?>
 				<?php submit_button( __( 'Reset to defaults', 'gnn' ), 'delete', 'submit', false ); ?>
 			</form>
 		</div>
@@ -1152,7 +1194,7 @@ function gnn_panel_advanced_tab() {
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_save_updater_settings">
 					<?php wp_nonce_field( 'gnn_save_updater_settings' ); ?>
-					<label class="gnn-switch"><input type="checkbox" name="gnn_updates_enable" value="1" <?php checked( $gnn_updates_on ); ?>><span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span></label> <span class="gnn-switch__label"><?php esc_html_e( 'Check GitHub for new releases', 'gnn' ); ?></span>
+					<label class="gnn-switch"><input type="checkbox" aria-label="<?php esc_attr_e( 'Enable theme updates', 'gnn' ); ?>" name="gnn_updates_enable" value="1" <?php checked( $gnn_updates_on ); ?>><span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span></label> <span class="gnn-switch__label"><?php esc_html_e( 'Check GitHub for new releases', 'gnn' ); ?></span>
 					<?php submit_button( __( 'Save', 'gnn' ), 'secondary', 'submit', false ); ?>
 				</form>
 				<p class="description"><?php esc_html_e( 'The check-for-updates / update button now lives at the top of this panel, under the version number.', 'gnn' ); ?></p>
@@ -1188,7 +1230,8 @@ function gnn_handle_export_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_export_settings' ) ) {
 		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
-	$payload = gnn_settings_export_payload();
+	$scope   = isset( $_POST['gnn_export_scope'] ) && 'site' === $_POST['gnn_export_scope'] ? 'site' : 'design'; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
+	$payload = gnn_settings_export_payload( $scope );
 
 	nocache_headers();
 	header( 'Content-Type: application/json; charset=utf-8' );
@@ -1219,6 +1262,8 @@ function gnn_handle_import_settings() {
 	}
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- bounded read of a verified temporary upload.
 	$raw = file_get_contents( $file['tmp_name'], false, null, 0, 1048577 );
+	if ( false !== $raw && ! empty( $_POST['gnn_preview'] ) ) {
+		gnn_render_import_preview( $raw ); }
 	if ( false === $raw || is_wp_error( gnn_import_panel_settings( $raw ) ) ) {
 		gnn_panel_redirect( 'import_error' );
 	}
@@ -1235,6 +1280,9 @@ function gnn_handle_reset_settings() {
 	if ( ! current_user_can( 'manage_options' ) || ! check_admin_referer( 'gnn_reset_settings' ) ) {
 		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
 	}
+	$started = gnn_configuration_begin( 'reset', gnn_configuration_form_revision() );
+	if ( is_wp_error( $started ) ) {
+		wp_die( esc_html( $started->get_error_message() ), '', array( 'response' => 409 ) ); }
 	gnn_reset_panel_settings();
 	gnn_panel_redirect( 'reset_ok' );
 }

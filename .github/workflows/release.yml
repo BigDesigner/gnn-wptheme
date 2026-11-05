@@ -43,16 +43,18 @@ jobs:
         id: asset
         run: |
           mkdir -p dist
-          ZIP_NAME="gnn-${{ steps.version.outputs.version }}.zip"
-          cp .build/gnn.zip "dist/$ZIP_NAME"
-          echo "zip_name=$ZIP_NAME" >> "$GITHUB_OUTPUT"
+          VERSION="${{ steps.version.outputs.version }}"
+          cp ".build/gnn-$VERSION.zip" "dist/"
+          cp ".build/gnn-child-$VERSION.zip" "dist/"
+          cp ".build/gnn-content-$VERSION.zip" "dist/"
+          cp ".build/gnn-$VERSION-manifest.json" "dist/"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v3
         with:
           tag_name: v${{ steps.version.outputs.version }}
           name: Release v${{ steps.version.outputs.version }}
-          files: dist/${{ steps.asset.outputs.zip_name }}
+          files: dist/*
           draft: false
           prerelease: false
         env:

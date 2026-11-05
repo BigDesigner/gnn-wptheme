@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 1.6.2\n"
+"Project-Id-Version: GNN 2.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-24 03:04+0000\n"
-"PO-Revision-Date: 2026-10-24 03:04+0000\n"
+"POT-Creation-Date: 2026-11-05 21:04+0000\n"
+"PO-Revision-Date: 2026-11-05 21:04+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,8 +59,20 @@ msgstr "Kalın bir başlık buraya gelir"
 msgid "A centered bold headline goes here"
 msgstr "Ortalanmış kalın bir başlık buraya gelir"
 
+msgid "A design profile must not include site identity, tracking, code or media references."
+msgstr "Tasarım profili site kimliği, izleme, kod veya medya referansları içermemelidir."
+
+msgid "A link action needs a valid URL."
+msgstr "Bağlantı işlemi için geçerli bir URL gereklidir."
+
+msgid "A mobile action is invalid."
+msgstr "Mobil işlemlerden biri geçersiz."
+
 msgid "A new collection"
 msgstr "Yeni bir koleksiyon"
+
+msgid "About"
+msgstr "Hakkımızda"
 
 msgid "About the event"
 msgstr "Etkinlik hakkında"
@@ -70,6 +82,18 @@ msgstr "Vurgu"
 
 msgid "Accent color"
 msgstr "Vurgu rengi"
+
+msgid "Action %d type"
+msgstr "%d. işlem türü"
+
+msgid "Action URL"
+msgstr "İşlem URL’si"
+
+msgid "Action editing requires JavaScript. Existing actions are preserved."
+msgstr "İşlemleri düzenlemek JavaScript gerektirir. Mevcut işlemler korunur."
+
+msgid "Action label"
+msgstr "İşlem etiketi"
 
 msgid "Add New Slide"
 msgstr "Yeni Slayt Ekle"
@@ -83,11 +107,26 @@ msgstr "Teklifi, ürünü ya da hikayeyi anlatan kısa bir destekleyici paragraf
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr "Etkileyici kısa bir giriş buraya ekleyin. Bu örnek metni bölümü, ürünü ya da hikayeyi anlatan kendi içeriğinizle değiştirin."
 
+msgid "Add missing draft pages"
+msgstr "Eksik taslak sayfaları ekle"
+
+msgid "Add reusable layout"
+msgstr "Yeniden kullanılabilir yerleşim ekle"
+
 msgid "Add to cart"
 msgstr "Sepete ekle"
 
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
 msgstr "Giriş metninizi buraya ekleyin. Öne çıkarmak istediğiniz özelliği, ürünü ya da hikayeyi birkaç kısa cümleyle anlatın."
+
+msgid "Add your own verified information here."
+msgstr "Doğrulanmış bilgilerinizi buraya ekleyin."
+
+msgid "Add your public phone, email, location and a tested contact form before publishing."
+msgstr "Yayımlamadan önce iletişim telefonunuzu, e-postanızı, adresinizi ve test edilmiş iletişim formunu ekleyin."
+
+msgid "Address"
+msgstr "Adres"
 
 msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
 msgstr "gnn-anim sınıflı öğelere kaydırınca beliren efekt ekler (reduced-motion desteği dahil)."
@@ -101,14 +140,26 @@ msgstr "Gelişmiş"
 msgid "After <body> HTML"
 msgstr "<body> sonrası HTML"
 
+msgid "After analytics consent"
+msgstr "Analiz izninden sonra"
+
 msgid "All Slides"
 msgstr "Tüm Slaytlar"
+
+msgid "All slides"
+msgstr "Tüm slaytlar"
 
 msgid "Alternate surface background"
 msgstr "Alternatif yüzey arka planı"
 
+msgid "Analytics delivery"
+msgstr "Analiz kodlarının yüklenmesi"
+
 msgid "Announcement text"
 msgstr "Duyuru metni"
+
+msgid "Another settings operation is in progress. Reload and try again."
+msgstr "Başka bir ayar işlemi devam ediyor. Sayfayı yenileyip tekrar deneyin."
 
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr "Cevabı buraya yazın. Bu örnek metni kendi içeriğinizle değiştirin."
@@ -119,8 +170,26 @@ msgstr "Footer bileşen alanında görünür."
 msgid "Appears on archives and pages with a sidebar."
 msgstr "Arşivlerde ve kenar çubuklu sayfalarda görünür."
 
+msgid "Apply design profile"
+msgstr "Tasarım profilini uygula"
+
+msgid "Apply operational settings"
+msgstr "İşletim ayarlarını uygula"
+
+msgid "Apply the reviewed changes and create a recovery snapshot."
+msgstr "İncelenen değişiklikleri uygula ve kurtarma kaydı oluştur."
+
 msgid "Archive"
 msgstr "Arşiv"
+
+msgid "Archive footer override"
+msgstr "Arşiv altbilgi tercihi"
+
+msgid "Archive header override"
+msgstr "Arşiv üstbilgi tercihi"
+
+msgid "Assign the client or designer role instead of sharing an administrator account."
+msgstr "Yönetici hesabını paylaşmak yerine müşteri veya tasarımcı rolü atayın."
 
 msgid "Author"
 msgstr "Yazar"
@@ -152,6 +221,9 @@ msgstr "Arka plan görseli (2× retina)"
 msgid "Badge (e.g. New, Hot, Sale)"
 msgstr "Rozet (ör. Yeni, Popüler, İndirim)"
 
+msgid "Balanced columns"
+msgstr "Dengeli sütunlar"
+
 msgid "Big bold headline"
 msgstr "Büyük kalın başlık"
 
@@ -160,6 +232,9 @@ msgstr "Boş Tuval (başlık/altbilgi yok)"
 
 msgid "Blog"
 msgstr "Blog"
+
+msgid "Blog columns on desktop"
+msgstr "Masaüstü blog sütun sayısı"
 
 msgid "Blog image alignment"
 msgstr "Blog görseli hizalaması"
@@ -172,6 +247,15 @@ msgstr "Blog görseli yüksekliği (px)"
 
 msgid "Blog: single post pages."
 msgstr "Blog: tekil yazı sayfaları."
+
+msgid "Body"
+msgstr "Gövde"
+
+msgid "Body font size"
+msgstr "Gövde yazı boyutu"
+
+msgid "Body line height (%)"
+msgstr "Gövde satır yüksekliği (%)"
 
 msgid "Bold heading, paragraph & button"
 msgstr "Kalın başlık, paragraf ve düğme"
@@ -197,20 +281,41 @@ msgstr "Marka"
 msgid "Breadcrumb"
 msgstr "İçerik yolu"
 
+msgid "Built for demanding projects."
+msgstr "Zorlu projeler için tasarlandı."
+
+msgid "Business segment"
+msgstr "İşletme alanı"
+
 msgid "Button Styles"
 msgstr "Buton Stilleri"
 
 msgid "Button URL"
 msgstr "Düğme URL’si"
 
+msgid "Button corner radius"
+msgstr "Düğme köşe yuvarlaklığı"
+
 msgid "Button label"
 msgstr "Düğme etiketi"
+
+msgid "Button vertical padding"
+msgstr "Düğmenin dikey iç boşluğu"
+
+msgid "Call"
+msgstr "Ara"
+
+msgid "Call to action"
+msgstr "Eylem çağrısı"
 
 msgid "Call-to-action band"
 msgstr "Eylem çağrısı bandı"
 
 msgid "Card / panel background"
 msgstr "Kart / panel arka planı"
+
+msgid "Card and image corner radius"
+msgstr "Kart ve görsel köşe yuvarlaklığı"
 
 msgid "Cart"
 msgstr "Sepet"
@@ -223,6 +328,9 @@ msgstr "Kategori"
 
 msgid "Center"
 msgstr "Orta"
+
+msgid "Centered"
+msgstr "Ortalanmış"
 
 msgid "Centered (logo center, split menus)"
 msgstr "Ortalı (logo ortada, bölünmüş menüler)"
@@ -239,20 +347,59 @@ msgstr "Yakında tekrar bakın — yeni içerik yolda."
 msgid "Check for updates"
 msgstr "Güncellemeleri kontrol et"
 
+msgid "Choose a reference on this site"
+msgstr "Bu siteden bir referans seçin"
+
 msgid "Choose a slide"
 msgstr "Slayt seç"
+
+msgid "Choose at most six valid mobile actions."
+msgstr "En fazla altı geçerli mobil işlem seçin."
+
+msgid "Choose local WOFF2 font"
+msgstr "Yerel WOFF2 yazı tipi seç"
+
+msgid "Classic"
+msgstr "Klasik"
 
 msgid "Clear"
 msgstr "Temizle"
 
+msgid "Clear solutions. Reliable service."
+msgstr "Açık çözümler. Güvenilir hizmet."
+
 msgid "Comments are closed."
 msgstr "Yorumlar kapalı."
+
+msgid "Compact"
+msgstr "Kompakt"
+
+msgid "Compact banner"
+msgstr "Kompakt bant"
+
+msgid "Company name"
+msgstr "Firma adı"
+
+msgid "Configure and test form delivery, consent, SEO and language integrations."
+msgstr "Form gönderimini, izin, SEO ve dil entegrasyonlarını yapılandırıp test edin."
+
+msgid "Confirm import"
+msgstr "İçe aktarmayı onayla"
 
 msgid "Contact"
 msgstr "İletişim"
 
+msgid "Contact Form 7 not active"
+msgstr "Contact Form 7 etkin değil"
+
+msgid "Contact information"
+msgstr "İletişim bilgileri"
+
 msgid "Contact page"
 msgstr "İletişim sayfası"
+
+msgid "Contact us"
+msgstr "Bize ulaşın"
 
 msgid "Contact with social links"
 msgstr "Sosyal bağlantılı iletişim"
@@ -302,6 +449,15 @@ msgstr "Kapak: başlık ve düğme (sol)"
 msgid "Cover: poster left, text right"
 msgstr "Kapak: solda afiş, sağda metin"
 
+msgid "Create an off-site database/files backup, rehearse upgrade and recovery on staging."
+msgstr "Veritabanı ve dosyaların site dışı yedeğini alın; test ortamında güncelleme ve geri dönüşü deneyin."
+
+msgid "Create configuration snapshot"
+msgstr "Yapılandırma kurtarma kaydı oluştur"
+
+msgid "Creative agency"
+msgstr "Yaratıcı ajans"
+
 msgid "Custom CSS"
 msgstr "Özel CSS"
 
@@ -313,6 +469,9 @@ msgstr "Özel JavaScript — footer"
 
 msgid "Custom JavaScript — head"
 msgstr "Özel JavaScript — head"
+
+msgid "Custom link"
+msgstr "Özel bağlantı"
 
 msgid "Custom script fields were not saved: your account lacks the unfiltered_html capability."
 msgstr "Özel script alanları kaydedilmedi: hesabınızda unfiltered_html yetkisi yok."
@@ -332,11 +491,29 @@ msgstr "Varsayılan kenar çubuğu konumu"
 msgid "Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its \"Additional CSS Class(es)\" field (Advanced panel) using the class name shown under each style. Leave a style's name empty to skip it."
 msgstr "Burada en fazla 6 buton varyasyonu tanımlayın, ardından her stilin altında gösterilen sınıf adını kullanarak herhangi bir Gutenberg veya Elementor butonuna \"Ek CSS Sınıf(lar)ı\" alanından (Gelişmiş panel) uygulayın. Kullanılmayacak bir stili boş bırakmanız yeterlidir."
 
+msgid "Delete local recovery history"
+msgstr "Yerel kurtarma geçmişini sil"
+
+msgid "Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus."
+msgstr "Tasarım değişiklikleri kimliği ve içeriği korur. Başlangıç kurulumu yalnızca eksik taslak sayfaları ekler; bunları yayımlamaz, ana sayfanızı veya menülerinizi değiştirmez."
+
+msgid "Design profiles and draft starter pages"
+msgstr "Tasarım profilleri ve başlangıç taslakları"
+
+msgid "Diagnostics and integration status"
+msgstr "Tanılama ve entegrasyon durumu"
+
 msgid "Disable the emoji script"
 msgstr "Emoji script’ini devre dışı bırak"
 
+msgid "Disabled"
+msgstr "Devre dışı"
+
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr "Tüm GNN Tema ayarlarını yedek veya aktarım için JSON dosyası olarak indirin."
+
+msgid "Download masked support summary"
+msgstr "Maskelenmiş destek özetini indir"
 
 msgid "Edit Slide"
 msgstr "Slaytı Düzenle"
@@ -353,11 +530,14 @@ msgstr "Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu."
 msgid "Email"
 msgstr "E-posta"
 
-msgid "Enable maintenance mode (logged-out visitors only)"
-msgstr "Bakım modunu etkinleştir (yalnız oturum açmamış ziyaretçiler)"
+msgid "Enable maintenance mode for visitors"
+msgstr "Ziyaretçiler için bakım modunu etkinleştir"
 
 msgid "Enable the top announcement bar"
 msgstr "Üst duyuru çubuğunu etkinleştir"
+
+msgid "Enable theme updates"
+msgstr "Tema güncellemelerini etkinleştir"
 
 msgid "Enterprise clients"
 msgstr "Kurumsal müşteri"
@@ -374,14 +554,29 @@ msgstr "Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunu
 msgid "Excerpt length (words)"
 msgstr "Özet uzunluğu (kelime)"
 
+msgid "Existing layout"
+msgstr "Mevcut yerleşim"
+
+msgid "Experience and credentials"
+msgstr "Deneyim ve yetkinlikler"
+
+msgid "Experience you can rely on."
+msgstr "Güvenebileceğiniz deneyim."
+
 msgid "Explore"
 msgstr "Keşfet"
 
 msgid "Export JSON"
 msgstr "JSON’a Aktar"
 
+msgid "Export scope"
+msgstr "Dışa aktarma kapsamı"
+
 msgid "Export settings"
 msgstr "Ayarları dışa aktar"
+
+msgid "External consent bridge required when analytics is used"
+msgstr "Analiz kullanıldığında harici izin bağlantısı gerekir"
 
 msgid "Extra <head> HTML (meta/verification tags)"
 msgstr "Ek <head> HTML (meta/doğrulama etiketleri)"
@@ -398,8 +593,17 @@ msgstr "Özellik bandı (görsel + maddeler)"
 msgid "Feature description goes here."
 msgstr "Özellik açıklaması buraya gelir."
 
+msgid "Feature the first blog post"
+msgstr "İlk blog yazısını öne çıkar"
+
 msgid "Feature title"
 msgstr "Özellik başlığı"
+
+msgid "Featured card (second level)"
+msgstr "Öne çıkan kart (ikinci düzey)"
+
+msgid "Featured card image attachment ID"
+msgstr "Öne çıkan kart görselinin medya kimliği"
 
 msgid "Featured image"
 msgstr "Öne çıkarılan görsel"
@@ -419,6 +623,18 @@ msgstr "Doldur (uzat)"
 msgid "Filled"
 msgstr "Dolu"
 
+msgid "Find a setting"
+msgstr "Ayar ara"
+
+msgid "Follow us"
+msgstr "Bizi takip edin"
+
+msgid "Font family"
+msgstr "Yazı tipi ailesi"
+
+msgid "Font weight"
+msgstr "Yazı kalınlığı"
+
 msgid "Fonts by element"
 msgstr "Öğeye göre yazı tipleri"
 
@@ -436,6 +652,9 @@ msgstr "Footer Kolonu 2"
 
 msgid "Footer Column 3"
 msgstr "Footer Kolonu 3"
+
+msgid "Footer Column 4"
+msgstr "Alt bölüm sütun 4"
 
 msgid "Footer brand"
 msgstr "Alt bölüm markası"
@@ -464,8 +683,14 @@ msgstr "Alt bölüm logosu — açık mod (2× retina)"
 msgid "Footer menu alignment"
 msgstr "Alt bölüm menü hizalama"
 
+msgid "Footer style"
+msgstr "Altbilgi stili"
+
 msgid "Footer tagline"
 msgstr "Alt bölüm sloganı"
+
+msgid "Footer widget columns"
+msgstr "Altbilgi bileşen sütunları"
 
 msgid "Force off for this page"
 msgstr "Bu sayfa için devre dışı bırak"
@@ -515,11 +740,17 @@ msgstr "Üst bölüm ile sayfa içeriği arasındaki boşluk — sayfada öne ç
 msgid "Gap between the page content and the footer."
 msgstr "Sayfa içeriği ile alt bölüm arasındaki boşluk."
 
+msgid "General services"
+msgstr "Genel hizmetler"
+
 msgid "Get a Quote"
 msgstr "Teklif Alın"
 
 msgid "Global"
 msgstr "Genel"
+
+msgid "Global container width"
+msgstr "Genel içerik alanı genişliği"
 
 msgid "Go to slide %d"
 msgstr "%d. slayta git"
@@ -569,6 +800,15 @@ msgstr "Üst Bölüm Sol (ortalı düzen)"
 msgid "Header Right (centered layout)"
 msgstr "Üst Bölüm Sağ (ortalı düzen)"
 
+msgid "Header action URL"
+msgstr "Üstbilgi işlem URL’si"
+
+msgid "Header action label"
+msgstr "Üstbilgi işlem etiketi"
+
+msgid "Header height"
+msgstr "Üstbilgi yüksekliği"
+
 msgid "Header layout"
 msgstr "Üst bölüm düzeni"
 
@@ -578,8 +818,20 @@ msgstr "Üst bölüm sol"
 msgid "Header right"
 msgstr "Üst bölüm sağ"
 
+msgid "Header style"
+msgstr "Üstbilgi stili"
+
+msgid "Heading"
+msgstr "Başlık"
+
 msgid "Heading & paragraph with image"
 msgstr "Başlık + paragraf, görselli"
+
+msgid "Heading letter spacing (hundredths of em)"
+msgstr "Başlık harf aralığı (em’in yüzde biri)"
+
+msgid "Heading line height (%)"
+msgstr "Başlık satır yüksekliği (%)"
 
 msgid "Headline with links, gradient background"
 msgstr "Bağlantılı başlık, degrade arka plan"
@@ -589,6 +841,9 @@ msgstr "Başlık."
 
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr "Bir hafta sonu boyunca süren etkinlik; sergiler, atölyeler ve panel tartışmalarından oluşuyor. Bu metni kendi içeriğinizle değiştirin."
+
+msgid "Hero layout"
+msgstr "Vitrin yerleşimi"
 
 msgid "Hero slider"
 msgstr "Hero slider"
@@ -611,11 +866,20 @@ msgstr "Öne çıkanlar"
 msgid "Home"
 msgstr "Ana Sayfa"
 
+msgid "I reviewed the scope. A recovery snapshot will be created before configuration changes."
+msgstr "Kapsamı inceledim. Yapılandırma değişmeden önce kurtarma kaydı oluşturulacak."
+
+msgid "I understand the impact. Save a recovery snapshot and apply these operational settings."
+msgstr "Etkisini anlıyorum. Kurtarma kaydı oluştur ve bu işletim ayarlarını uygula."
+
 msgid "Icon style"
 msgstr "İkon stili"
 
 msgid "Icons"
 msgstr "İkonlar"
+
+msgid "Ideas shaped into meaningful experiences."
+msgstr "Anlamlı deneyimlere dönüşen fikirler."
 
 msgid "Image + text"
 msgstr "Görsel + metin"
@@ -626,14 +890,20 @@ msgstr "Görsel sığdırma"
 msgid "Image logo"
 msgstr "Görsel logo"
 
-msgid "Import JSON"
-msgstr "JSON İçe Aktar"
-
 msgid "Import failed: the file is not a valid GNN settings export."
 msgstr "İçe aktarma başarısız: dosya geçerli bir GNN ayar dışa aktarımı değil."
 
 msgid "Import settings"
 msgstr "Ayarları içe aktar"
+
+msgid "Industrial and B2B"
+msgstr "Endüstri ve B2B"
+
+msgid "Inherit"
+msgstr "Varsayılanı kullan"
+
+msgid "Inherit / native theme layout"
+msgstr "Varsayılan / yerel tema yerleşimi"
 
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i kurup etkinleştirin."
@@ -644,11 +914,26 @@ msgstr "Kurulu sürüm: %s"
 msgid "Interactions"
 msgstr "Etkileşimler"
 
+msgid "Invalid field value type. No settings were changed."
+msgstr "Alan değeri türü geçersiz. Hiçbir ayar değiştirilmedi."
+
+msgid "Invalid operational field."
+msgstr "İşletim alanı geçersiz."
+
+msgid "Invalid starter profile."
+msgstr "Başlangıç profili geçersiz."
+
+msgid "Invalid value for %s. No settings were changed."
+msgstr "%s için geçersiz değer. Hiçbir ayar değiştirilmedi."
+
 msgid "Kicker"
 msgstr "Üst başlık"
 
 msgid "Large header over cover (left text)"
 msgstr "Kapak üzerinde büyük başlık (sol metin)"
+
+msgid "Launch checklist"
+msgstr "Yayına geçiş kontrol listesi"
 
 msgid "Layout"
 msgstr "Düzen"
@@ -674,6 +959,9 @@ msgstr "Sol"
 msgid "Left Sidebar"
 msgstr "Sol Kenar Çubuğu"
 
+msgid "Left aligned"
+msgstr "Sola hizalı"
+
 msgid "Light"
 msgstr "Açık"
 
@@ -683,8 +971,14 @@ msgstr "Açık mod koyu renk çizimi, koyu mod açık renk çizimi kullanır. Re
 msgid "Load Google Material Symbols"
 msgstr "Google Material Symbols’ı yükle"
 
-msgid "Load WooCommerce assets only on shop pages"
-msgstr "WooCommerce varlıklarını yalnız mağaza sayfalarında yükle"
+msgid "Local WOFF2 font attachment ID"
+msgstr "Yerel WOFF2 yazı tipi medya kimliği"
+
+msgid "Local body font"
+msgstr "Yerel gövde yazı tipi"
+
+msgid "Local heading font"
+msgstr "Yerel başlık yazı tipi"
 
 msgid "Logo max height — desktop (px)"
 msgstr "Logo en fazla yükseklik — masaüstü (px)"
@@ -704,11 +998,23 @@ msgstr "Logo — açık mod (1×)"
 msgid "Logo — light mode (2× retina)"
 msgstr "Logo — açık mod (2× retina)"
 
-msgid "Maintenance / Coming soon"
-msgstr "Bakım / Çok yakında"
+msgid "Maintenance and compatibility"
+msgstr "Bakım ve uyumluluk"
+
+msgid "Maintenance and compatibility settings are managed in the protected site workspace."
+msgstr "Bakım ve uyumluluk ayarları korumalı site çalışma alanından yönetilir."
 
 msgid "Maintenance message"
 msgstr "Bakım mesajı"
+
+msgid "Managed entirely outside the theme"
+msgstr "Tamamen tema dışında yönetiliyor"
+
+msgid "Map the reference for %s on this site before importing. No settings were changed."
+msgstr "İçe aktarmadan önce %s referansını bu sitede eşleyin. Hiçbir ayar değiştirilmedi."
+
+msgid "Maximum H1 size"
+msgstr "En büyük H1 boyutu"
 
 msgid "Mean incident response"
 msgstr "Ortalama olay müdahalesi"
@@ -719,17 +1025,35 @@ msgstr "Görsel ve metin (solda görsel)"
 msgid "Media & text (image right)"
 msgstr "Görsel ve metin (sağda görsel)"
 
+msgid "Mega menu parent (top level)"
+msgstr "Mega menü üst öğesi (en üst düzey)"
+
 msgid "Menu"
 msgstr "Menü"
 
 msgid "Menu alignment"
 msgstr "Menü hizalama"
 
+msgid "Menu layout"
+msgstr "Menü düzeni"
+
+msgid "Minimal"
+msgstr "Sade"
+
 msgid "Mobile"
 msgstr "Mobil"
 
+msgid "Mobile H1 size"
+msgstr "Mobil H1 boyutu"
+
 msgid "Mobile Menu"
 msgstr "Mobil Menü"
+
+msgid "Mobile actions"
+msgstr "Mobil işlemler"
+
+msgid "Mobile actions in display order (leave labels empty to use the existing dock)"
+msgstr "Görünüm sırasına göre mobil işlemler (mevcut çubuğu kullanmak için etiketleri boş bırakın)"
 
 msgid "Mobile bottom app dock (≤600px)"
 msgstr "Mobil alt uygulama çubuğu (≤600px)"
@@ -743,11 +1067,17 @@ msgstr "Soluk metin"
 msgid "Name (e.g. Primary) — leave empty to skip"
 msgstr "İsim (ör. Birincil) — atlamak için boş bırakın"
 
+msgid "Native theme / builder fallback"
+msgstr "Yerel tema / sayfa oluşturucu yerleşimi"
+
 msgid "New"
 msgstr "Yeni"
 
 msgid "Newer comments →"
 msgstr "Yeni yorumlar →"
+
+msgid "News"
+msgstr "Haberler"
 
 msgid "Next slide"
 msgstr "Sonraki slayt"
@@ -758,11 +1088,20 @@ msgstr "Sonraki →"
 msgid "No results found"
 msgstr "Sonuç bulunamadı"
 
+msgid "No settings have been changed. Review the affected keys and select references belonging to this site. Private values are not displayed."
+msgstr "Hiçbir ayar değiştirilmedi. Etkilenen alanları inceleyip bu siteye ait referansları seçin. Özel değerler gösterilmez."
+
 msgid "No sidebar"
 msgstr "Kenar çubuğu yok"
 
 msgid "No slides yet."
 msgstr "Henüz slayt yok."
+
+msgid "No theme slider"
+msgstr "Tema slayt gösterisi yok"
+
+msgid "None"
+msgstr "Yok"
 
 msgid "Not found"
 msgstr "Bulunamadı"
@@ -779,8 +1118,17 @@ msgstr "Varsayılan olarak kapalıdır. Açıldığında, aşağıda yazı tipi 
 msgid "Only applies while the toggle above is visible."
 msgstr "Yalnızca yukarıdaki düğme görünürken geçerlidir."
 
+msgid "Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator."
+msgstr "Burada yalnızca rolünüze atanmış alanları değiştirebilirsiniz. Kod, içe aktarma, sıfırlama ve güncelleme işlemleri site yöneticisine ayrılmıştır."
+
 msgid "Open spaces"
 msgstr "Açık alanlar"
+
+msgid "Opening hours"
+msgstr "Çalışma saatleri"
+
+msgid "Outline"
+msgstr "Çerçeveli"
 
 msgid "Outlined"
 msgstr "Çizgili"
@@ -818,9 +1166,6 @@ msgstr "Sayfa bulunamadı"
 msgid "Pages Layout"
 msgstr "Sayfa Düzeni"
 
-msgid "Pages using [products] or Woo blocks are detected automatically."
-msgstr "[products] veya Woo blokları kullanan sayfalar otomatik algılanır."
-
 msgid "Pages:"
 msgstr "Sayfalar:"
 
@@ -832,9 +1177,6 @@ msgstr "Panelden yönetilen tema ayarları — kod gerekmez."
 
 msgid "Paragraph (body text)"
 msgstr "Paragraf (gövde metni)"
-
-msgid "Performance"
-msgstr "Performans"
 
 msgid "Permission denied."
 msgstr "İzin reddedildi."
@@ -848,14 +1190,23 @@ msgstr "Yer tutucular: %year% ve %site%. Varsayılan için boş bırakın."
 msgid "Platform uptime SLA"
 msgstr "Platform çalışma süresi SLA"
 
+msgid "Portable design profile (no site identity or code)"
+msgstr "Taşınabilir tasarım profili (site kimliği veya kod içermez)"
+
 msgid "Post"
 msgstr "Yazı"
 
 msgid "Posts"
 msgstr "Yazılar"
 
+msgid "Prefer third-party plugin compatibility"
+msgstr "Üçüncü taraf eklenti uyumluluğuna öncelik ver"
+
 msgid "Preload theme fonts"
 msgstr "Tema fontlarını önden yükle"
+
+msgid "Preview import"
+msgstr "İçe aktarmayı önizle"
 
 msgid "Previous slide"
 msgstr "Önceki slayt"
@@ -875,6 +1226,21 @@ msgstr "Ürün"
 msgid "Products per page"
 msgstr "Sayfa başına ürün"
 
+msgid "Professional services"
+msgstr "Profesyonel hizmetler"
+
+msgid "Profiles, recovery and diagnostics"
+msgstr "Profiller, kurtarma ve tanılama"
+
+msgid "Project overview"
+msgstr "Proje tanıtımı"
+
+msgid "Public email"
+msgstr "İletişim e-postası"
+
+msgid "Public phone number"
+msgstr "İletişim telefonu"
+
 msgid "Question four goes here?"
 msgstr "Dördüncü soru buraya gelir?"
 
@@ -893,11 +1259,20 @@ msgstr "Ham JS; <head> içinde <script> etiketiyle basılır. unfiltered_html ye
 msgid "Ready to secure your stack?"
 msgstr "Altyapınızı güvenceye almaya hazır mısınız?"
 
+msgid "Recent configuration changes"
+msgstr "Son yapılandırma değişiklikleri"
+
+msgid "Recovery snapshots"
+msgstr "Kurtarma kayıtları"
+
 msgid "Refresh Elementor templates"
 msgstr "Elementor şablonlarını yenile"
 
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr "Değiştirilmemiş GNN kayıtlı şablonlarını yeniler ve eksik bölümleri ekler. Düzenlediğiniz şablonlar ve kimlikleri korunur. Başlangıç kaydı bulunmayan eski şablonlar korunur."
+
+msgid "Release abandoned settings lock"
+msgstr "Eski ayar kilidini kaldır"
 
 msgid "Remember each visitor's choice (localStorage)"
 msgstr "Her ziyaretçinin seçimini hatırla (localStorage)"
@@ -911,6 +1286,12 @@ msgstr "jQuery Migrate’i kaldır (ön yüz)"
 msgid "Remove oEmbed discovery links"
 msgstr "oEmbed keşif bağlantılarını kaldır"
 
+msgid "Replace draft/demo content, choose logos and verify contact links."
+msgstr "Taslak/örnek içeriği değiştirin, logoları seçin ve iletişim bağlantılarını doğrulayın."
+
+msgid "Replace this introductory content with your own services, expertise and project information."
+msgstr "Bu giriş içeriğini kendi hizmetleriniz, uzmanlığınız ve proje bilgilerinizle değiştirin."
+
 msgid "Reset all GNN Theme settings to defaults?"
 msgstr "Tüm GNN Tema ayarları varsayılana sıfırlansın mı?"
 
@@ -922,6 +1303,27 @@ msgstr "Varsayılana sıfırla"
 
 msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
 msgstr "Panel ayarlarını, vurgu rengini, varsayılan modu ve alt bilgi yasal metnini sıfırlar. Site simgesi ve güncelleme tercihleri korunur. Bu işlem geri alınamaz."
+
+msgid "Restore this configuration"
+msgstr "Bu yapılandırmayı geri yükle"
+
+msgid "Reusable footer"
+msgstr "Yeniden kullanılabilir altbilgi"
+
+msgid "Reusable header"
+msgstr "Yeniden kullanılabilir üstbilgi"
+
+msgid "Reusable layouts"
+msgstr "Yeniden kullanılabilir yerleşimler"
+
+msgid "Review and confirm the operation first."
+msgstr "Önce işlemi inceleyip onaylayın."
+
+msgid "Review mobile navigation, keyboard operation and brand contrast."
+msgstr "Mobil gezinmeyi, klavye kullanımını ve marka renklerinin kontrastını inceleyin."
+
+msgid "Review settings import"
+msgstr "Ayarları içe aktarmayı incele"
 
 msgid "Right"
 msgstr "Sağ"
@@ -941,6 +1343,12 @@ msgstr "Kaydet"
 msgid "Save Settings"
 msgstr "Ayarları Kaydet"
 
+msgid "Save assigned settings"
+msgstr "Atanan ayarları kaydet"
+
+msgid "Scope WooCommerce assets to pages that need them"
+msgstr "WooCommerce dosyalarını yalnızca gereken sayfalarda yükle"
+
 msgid "Scroll to top"
 msgstr "Yukarı çık"
 
@@ -956,14 +1364,41 @@ msgstr "Şunu ara:"
 msgid "Search products, posts, pages…"
 msgstr "Ürün, yazı, sayfa arayın…"
 
+msgid "Secondary"
+msgstr "İkincil"
+
+msgid "Section spacing"
+msgstr "Bölüm boşluğu"
+
 msgid "Select image"
 msgstr "Görsel seç"
+
+msgid "Sensitive field values are never included in the change log or support summary."
+msgstr "Hassas alan değerleri değişiklik günlüğüne veya destek özetine dahil edilmez."
+
+msgid "Services"
+msgstr "Hizmetler"
+
+msgid "Services overview"
+msgstr "Hizmetlerin tanıtımı"
 
 msgid "Set background image"
 msgstr "Arka plan görseli seç"
 
 msgid "Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens)."
 msgstr "Standart arka planı Öne Çıkan Görsel kutusundan ayarlayın. Aşağıdaki 2× görsel isteğe bağlıdır (Retina / yüksek yoğunluklu ekranlarda kullanılır)."
+
+msgid "Settings JSON file"
+msgstr "JSON ayar dosyası"
+
+msgid "Settings changed after the preview. Preview the file again."
+msgstr "Önizlemeden sonra ayarlar değişti. Dosyayı yeniden önizleyin."
+
+msgid "Settings changed after this form was opened. Your changes were not applied. Reload the latest settings before trying again."
+msgstr "Bu form açıldıktan sonra ayarlar değişti. Değişiklikleriniz uygulanmadı. Tekrar denemeden önce güncel ayarları yükleyin."
+
+msgid "Settings exceed the 1 MB limit. Nothing was changed."
+msgstr "Ayarlar 1 MB sınırını aşıyor. Hiçbir şey değiştirilmedi."
 
 msgid "Settings imported successfully."
 msgstr "Ayarlar başarıyla içe aktarıldı."
@@ -983,11 +1418,29 @@ msgstr "Mağaza kolon sayısı"
 msgid "Show a search box on the 404 page"
 msgstr "404 sayfasında arama kutusu göster"
 
+msgid "Show author information"
+msgstr "Yazar bilgilerini göster"
+
+msgid "Show contact information in the header"
+msgstr "Üstbilgide iletişim bilgilerini göster"
+
+msgid "Show post date and reading time"
+msgstr "Yazı tarihini ve okuma süresini göster"
+
+msgid "Show previous and next posts"
+msgstr "Önceki ve sonraki yazıları göster"
+
 msgid "Show the cart link (WooCommerce)"
 msgstr "Sepet bağlantısını göster (WooCommerce)"
 
 msgid "Show the dark/light toggle in the header"
 msgstr "Üst bölümde koyu/açık düğmesini göster"
+
+msgid "Show the decorative dot after the text logo"
+msgstr "Metin logosundan sonra dekoratif noktayı göster"
+
+msgid "Show the language switcher when supported"
+msgstr "Desteklendiğinde dil seçiciyi göster"
 
 msgid "Show the page title centered inside the featured image"
 msgstr "Sayfa başlığını öne çıkarılan görselin içinde ortalanmış göster"
@@ -1007,6 +1460,27 @@ msgstr "Kenar Çubuğu"
 msgid "Sidebar width (px)"
 msgstr "Kenar çubuğu genişliği (px)"
 
+msgid "Single language"
+msgstr "Tek dil"
+
+msgid "Single post footer override"
+msgstr "Tekil yazı altbilgi tercihi"
+
+msgid "Single post header override"
+msgstr "Tekil yazı üstbilgi tercihi"
+
+msgid "Site layout overrides"
+msgstr "Site yerleşimi istisnaları"
+
+msgid "Site platform"
+msgstr "Site altyapısı"
+
+msgid "Site settings (includes private configuration)"
+msgstr "Site ayarları (özel yapılandırmayı içerir)"
+
+msgid "Site workspace"
+msgstr "Site çalışma alanı"
+
 msgid "Skip to content"
 msgstr "İçeriğe geç"
 
@@ -1022,6 +1496,12 @@ msgstr "Slayt sırası: Sayfa Öznitelikleri altındaki \"Sıra\" alanını ayar
 msgid "Slider"
 msgstr "Slider"
 
+msgid "Slider group"
+msgstr "Slayt grubu"
+
+msgid "Slider groups"
+msgstr "Slayt grupları"
+
 msgid "Slides are managed under GNN Slider in the admin menu (unlimited slides)."
 msgstr "Slaytlar yönetim menüsündeki GNN Slider bölümünden yönetilir (sınırsız slayt)."
 
@@ -1031,14 +1511,29 @@ msgstr "Heartbeat API’yi 60 sn’ye yavaşlat"
 msgid "Smooth scroll for anchor links"
 msgstr "Çapa bağlantıları için yumuşak kaydırma"
 
+msgid "Social profile URL"
+msgstr "Sosyal profil URL’si"
+
+msgid "Soft"
+msgstr "Hafif"
+
 msgid "Some Elementor templates could not be saved. Please retry."
 msgstr "Bazı Elementor şablonları kaydedilemedi. Lütfen tekrar deneyin."
+
+msgid "Stacked"
+msgstr "İki satırlı"
 
 msgid "Standard (logo left, menu right)"
 msgstr "Standart (logo solda, menü sağda)"
 
+msgid "Standard menu item"
+msgstr "Standart menü öğesi"
+
 msgid "Start slide rotation"
 msgstr "Slayt geçişini başlat"
+
+msgid "Start with a design profile, configure layouts and integrations, test the site, then hand over the safe content workspace."
+msgstr "Bir tasarım profiliyle başlayın; yerleşimleri ve entegrasyonları yapılandırıp siteyi test edin. Sonra güvenli içerik çalışma alanını müşteriye devredin."
 
 msgid "Statistics cards"
 msgstr "İstatistik kartları"
@@ -1049,6 +1544,9 @@ msgstr "Sabit üst bölüm"
 msgid "Stop slide rotation"
 msgstr "Slayt geçişini durdur"
 
+msgid "Strong"
+msgstr "Belirgin"
+
 msgid "Style %d"
 msgstr "Stil %d"
 
@@ -1058,11 +1556,20 @@ msgstr "Stiller"
 msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
 msgstr "Önerilen: #34d399, #22d3ee, #fb923c, #a78bfa"
 
+msgid "Surface shadow"
+msgstr "Yüzey gölgesi"
+
 msgid "Surfaces"
 msgstr "Yüzeyler"
 
+msgid "System fonts"
+msgstr "Sistem yazı tipleri"
+
 msgid "Tag"
 msgstr "Etiket"
+
+msgid "Team introduction"
+msgstr "Ekip tanıtımı"
 
 msgid "Text"
 msgstr "Metin"
@@ -1076,11 +1583,35 @@ msgstr "Metin (site başlığı)"
 msgid "Text on accent"
 msgstr "Vurgu üzerindeki metin"
 
+msgid "The analytics ID is invalid. No settings were changed."
+msgstr "Analiz kimliği geçersiz. Hiçbir ayar değiştirilmedi."
+
 msgid "The check-for-updates / update button now lives at the top of this panel, under the version number."
 msgstr "Güncelleme kontrolü / güncelleme butonu artık bu panelin en üstünde, sürüm numarasının altında yer alıyor."
 
+msgid "The export scope is invalid."
+msgstr "Dışa aktarma kapsamı geçersiz."
+
+msgid "The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages."
+msgstr "Son on yerel yapılandırma kaydı saklanır. Bu kayıtlar veritabanı ve dosya yedeğinin yerine geçmez. Kurtarma, müşteri sayfalarını silmez veya geri almaz."
+
 msgid "The page you’re looking for was moved, renamed or never existed."
 msgstr "Aradığınız sayfa taşınmış, adı değişmiş ya da hiç var olmamış."
+
+msgid "The reference mapping is invalid."
+msgstr "Referans eşlemesi geçersiz."
+
+msgid "The requested snapshot is no longer available."
+msgstr "İstenen kurtarma kaydı artık mevcut değil."
+
+msgid "The selected reference has the wrong content type."
+msgstr "Seçilen referansın içerik türü yanlış."
+
+msgid "The selected reference is not a WOFF2 font."
+msgstr "Seçilen referans WOFF2 yazı tipi değil."
+
+msgid "The selected slider group does not exist."
+msgstr "Seçilen slayt grubu mevcut değil."
 
 msgid "The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast."
 msgstr "Vurgu renginin üzerine uygulanan metin/ikon rengi (ör. buton etiketleri). Parlak bir özel vurgu rengi seçerseniz, okunabilir kontrast için bunu ayarlayın."
@@ -1115,6 +1646,21 @@ msgstr "Tema güncelleme ayarları kaydedildi."
 msgid "Theme updates (GitHub)"
 msgstr "Tema güncellemeleri (GitHub)"
 
+msgid "These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls."
+msgstr "Bu ayarlar ziyaretçi erişimini veya üçüncü taraf eklentileri etkiler. Önce test ortamında deneyin. Normal tasarım kayıtları bu ayarları değiştirmez."
+
+msgid "This preview expired or was not confirmed. Preview the file again."
+msgstr "Bu önizlemenin süresi doldu veya onaylanmadı. Dosyayı yeniden önizleyin."
+
+msgid "This profile is not available."
+msgstr "Bu profil kullanılamıyor."
+
+msgid "This role cannot change the submitted fields."
+msgstr "Bu rol gönderilen alanları değiştiremez."
+
+msgid "This settings schema is not supported. No changes were made."
+msgstr "Bu ayar şeması desteklenmiyor. Hiçbir değişiklik yapılmadı."
+
 msgid "This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the \"GNN Ana Sayfa\" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page."
 msgstr "Bu slider yalnızca varsayılan (Gutenberg tabanlı) ön sayfa şablonunda görüntülenir. Ön sayfa Elementor ile oluşturulmuş veya değiştirilmişse — \"GNN Ana Sayfa\" Elementor şablonu dahil — slider orada görünmez, çünkü Elementor içeriği tüm ön sayfayı devralır."
 
@@ -1142,6 +1688,9 @@ msgstr "Üst çubuk metin rengi"
 msgid "Top loading progress bar"
 msgstr "Üstte yükleme ilerleme çubuğu"
 
+msgid "Transparent"
+msgstr "Şeffaf"
+
 msgid "Trusted by security teams at"
 msgstr "Güvenlik ekiplerinin tercihi:"
 
@@ -1166,6 +1715,9 @@ msgstr "fonts.google.com'daki tam adı yazın (ör. \"Poppins\", \"IBM Plex Sans
 msgid "Typography"
 msgstr "Tipografi"
 
+msgid "Unsaved changes"
+msgstr "Kaydedilmemiş değişiklikler"
+
 msgid "Update available: version %s."
 msgstr "Güncelleme mevcut: sürüm %s."
 
@@ -1177,6 +1729,12 @@ msgstr "%s sürümüne güncelle"
 
 msgid "Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values."
 msgstr "GNN ayarları JSON dosyasını yükleyin (en fazla 1 MB). Dosyada bulunmayan alanlar mevcut değerlerini korur."
+
+msgid "Upload a trusted WOFF2 file in Media, then choose its attachment ID. No remote font URL is used."
+msgstr "Ortam bölümüne güvenilir bir WOFF2 dosyası yükleyip medya kimliğini seçin. Harici yazı tipi URL’si kullanılmaz."
+
+msgid "Uploaded local font"
+msgstr "Yüklenen yerel yazı tipi"
 
 msgid "Use Google Fonts instead"
 msgstr "Bunun yerine Google Fonts kullan"
@@ -1211,8 +1769,17 @@ msgstr "Neden biz"
 msgid "Width of the sidebar column on the Left/Right Sidebar page templates."
 msgstr "Sol/Sağ Kenar Çubuğu sayfa şablonlarındaki kenar çubuğu sütununun genişliği."
 
+msgid "WordPress defaults"
+msgstr "WordPress varsayılanları"
+
+msgid "Workspace"
+msgstr "Çalışma alanı"
+
 msgid "Written by"
 msgstr "Yazan"
+
+msgid "You are not allowed to restore configuration snapshots."
+msgstr "Yapılandırma kayıtlarını geri yükleme yetkiniz yok."
 
 msgid "You are running the latest version."
 msgstr "En güncel sürümü kullanıyorsunuz."
