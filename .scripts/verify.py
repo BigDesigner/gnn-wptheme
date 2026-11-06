@@ -1,11 +1,16 @@
 """Static/package verification. Real integration/UI tests: node .scripts/test-wordpress.mjs."""
 from pathlib import Path
+import argparse
 import gettext
 import json
 import re
 import subprocess
 import sys
 import zipfile
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--package', action='store_true', help='Explicitly build and verify ZIPs; disabled by default.')
+args = parser.parse_args()
 
 ROOT = Path(__file__).resolve().parent.parent
 VERSION = re.search(r'^Version:\s*(\S+)', (ROOT/'gnn/style.css').read_text('utf-8'), re.M).group(1)
@@ -27,21 +32,22 @@ for kind, files, command in [
 for override in ['', VERSION, '999.0.0', '$(echo invalid)', VERSION + ';echo invalid']:
     code, output = run([sys.executable,'.scripts/check-release.py','--version-override',override])
     check(f'Release validation: {override or "source"}', (code == 0) == (override in ['', VERSION]), output)
-code, output = run([sys.executable,'.scripts/build-zip.py'])
-check('Normal theme ZIP build', code == 0, output.splitlines()[-1] if output else '')
-package = ROOT/'.build/gnn.zip'
-if code == 0:
-    with zipfile.ZipFile(package) as z:
-        check('ZIP CRC integrity', z.testzip() is None)
-        expected = sorted('gnn/' + p.relative_to(ROOT/'gnn').as_posix() for p in (ROOT/'gnn').rglob('*') if p.is_file())
-        check('ZIP contains exactly the theme tree', sorted(z.namelist()) == expected)
-        check('ZIP carries source version', ('Version: ' + VERSION).encode() in z.read('gnn/style.css'))
-        for entry in z.namelist():
-            if entry.endswith('.css'):
-                check('Lossless packaged CSS: ' + entry, z.read(entry) == (ROOT/entry).read_bytes())
-            if entry.endswith('.js'):
-                p = subprocess.run(['node','--check','--input-type=commonjs'], input=z.read(entry), capture_output=True)
-                check('Packaged JavaScript syntax: ' + entry, p.returncode == 0, p.stderr.decode('utf-8',errors='replace'))
+if args.package:
+    code, output = run([sys.executable,'.scripts/build-zip.py'])
+    check('Normal theme ZIP build', code == 0, output.splitlines()[-1] if output else '')
+    package = ROOT/'.build/gnn.zip'
+    if code == 0:
+        with zipfile.ZipFile(package) as z:
+            check('ZIP CRC integrity', z.testzip() is None)
+            expected = sorted('gnn/' + p.relative_to(ROOT/'gnn').as_posix() for p in (ROOT/'gnn').rglob('*') if p.is_file())
+            check('ZIP contains exactly the theme tree', sorted(z.namelist()) == expected)
+            check('ZIP carries source version', ('Version: ' + VERSION).encode() in z.read('gnn/style.css'))
+            for entry in z.namelist():
+                if entry.endswith('.css'):
+                    check('Lossless packaged CSS: ' + entry, z.read(entry) == (ROOT/entry).read_bytes())
+                if entry.endswith('.js'):
+                    p = subprocess.run(['node','--check','--input-type=commonjs'], input=z.read(entry), capture_output=True)
+                    check('Packaged JavaScript syntax: ' + entry, p.returncode == 0, p.stderr.decode('utf-8',errors='replace'))
 for file in (ROOT/'gnn').rglob('*.json'):
     try:
         json.loads(file.read_text('utf-8')); valid=True
@@ -53,10 +59,10 @@ with (ROOT/'gnn/languages/tr_TR.mo').open('rb') as file:
 check('Turkish slider labels compiled', catalog.gettext('Start slide rotation') == 'Slayt geçişini başlat')
 code, output = run([sys.executable, '.scripts/gen-i18n.py', '--check'])
 check('Complete Turkish catalog and printf placeholders', code == 0, output)
-result = {'type':'Static / package checks (not WordPress integration)',
+result = {'type':('Static / package checks' if args.package else 'Static checks') + ' (not WordPress integration)',
     'total':len(checks),'passed':sum(x['pass_'] for x in checks),
     'failed':sum(not x['pass_'] for x in checks),'checks':checks}
-(OUT/'static-package.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+(OUT/('static-package.json' if args.package else 'static.json')).write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps({k:v for k,v in result.items() if k!='checks'},ensure_ascii=False))
 for item in checks:
     if not item['pass_']:
