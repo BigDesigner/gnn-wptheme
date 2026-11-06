@@ -291,7 +291,16 @@ function gnn_sanitize_platform_options( $out, $input ) {
  * @param string $group Settings group.
  */
 function gnn_platform_fields( $group ) {
-	echo '<h3>' . esc_html__( 'Site platform', 'gnn' ) . '</h3>';
+	$titles = array(
+		'global'     => __( 'Business profile and hero', 'gnn' ),
+		'header'     => __( 'Company and header configuration', 'gnn' ),
+		'footer'     => __( 'Company and footer configuration', 'gnn' ),
+		'pages'      => __( 'Content and blog layout', 'gnn' ),
+		'styles'     => __( 'Design tokens', 'gnn' ),
+		'typography' => __( 'Local fonts and type scale', 'gnn' ),
+		'code'       => __( 'Tracking delivery', 'gnn' ),
+	);
+	echo '<article class="gnn-settings-card gnn-settings-card--wide"><h3>' . esc_html( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) ) . '</h3><div class="gnn-card-content">';
 	foreach ( gnn_platform_schema() as $key => $field ) {
 		if ( $field[3] !== $group ) {
 			continue; }
@@ -343,6 +352,7 @@ function gnn_platform_fields( $group ) {
 				gnn_field_text( $key, $field[0], (string) gnn_option( $key ) );
 		}
 	}
+	echo '</div></article>';
 }
 
 /** Action rows have a useful fallback when JavaScript is unavailable. */

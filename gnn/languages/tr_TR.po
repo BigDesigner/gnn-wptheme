@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.0.1\n"
+"Project-Id-Version: GNN 2.0.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 04:25+0000\n"
-"PO-Revision-Date: 2026-11-06 04:25+0000\n"
+"POT-Creation-Date: 2026-11-07 01:40+0000\n"
+"PO-Revision-Date: 2026-11-07 01:40+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,9 @@ msgid "%d min read"
 msgid_plural "%d min read"
 msgstr[0] "%d dk okuma"
 msgstr[1] "%d dk okuma"
+
+msgid "%d setting groups found"
+msgstr "%d ayar grubu bulundu"
 
 msgid "%s article"
 msgid_plural "%s articles"
@@ -83,6 +86,9 @@ msgstr "Vurgu"
 msgid "Accent color"
 msgstr "Vurgu rengi"
 
+msgid "Accent — light mode"
+msgstr "Vurgu — açık mod"
+
 msgid "Action %d type"
 msgstr "%d. işlem türü"
 
@@ -134,6 +140,9 @@ msgstr "gnn-anim sınıflı öğelere kaydırınca beliren efekt ekler (reduced-
 msgid "Adds the font stylesheet site-wide so .material-symbols-* classes render."
 msgstr "Site genelinde .material-symbols-* sınıflarının çalışması için font stil dosyasını ekler."
 
+msgid "Administration"
+msgstr "Yönetim"
+
 msgid "Advanced"
 msgstr "Gelişmiş"
 
@@ -146,11 +155,17 @@ msgstr "Analiz izninden sonra"
 msgid "All Slides"
 msgstr "Tüm Slaytlar"
 
+msgid "All groups"
+msgstr "Tüm gruplar"
+
 msgid "All slides"
 msgstr "Tüm slaytlar"
 
 msgid "Alternate surface background"
 msgstr "Alternatif yüzey arka planı"
+
+msgid "Analytics and consent"
+msgstr "Analitik ve onay"
 
 msgid "Analytics delivery"
 msgstr "Analiz kodlarının yüklenmesi"
@@ -163,6 +178,9 @@ msgstr "Başka bir ayar işlemi devam ediyor. Sayfayı yenileyip tekrar deneyin.
 
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr "Cevabı buraya yazın. Bu örnek metni kendi içeriğinizle değiştirin."
+
+msgid "Appearance and behavior"
+msgstr "Görünüm ve davranış"
 
 msgid "Appears in the footer widget area."
 msgstr "Footer bileşen alanında görünür."
@@ -190,6 +208,9 @@ msgstr "Arşiv üstbilgi tercihi"
 
 msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr "Yönetici hesabını paylaşmak yerine müşteri veya tasarımcı rolü atayın."
+
+msgid "Assigned site settings"
+msgstr "Atanan site ayarları"
 
 msgid "Author"
 msgstr "Yazar"
@@ -263,6 +284,9 @@ msgstr "Kalın başlık, paragraf ve düğme"
 msgid "Border"
 msgstr "Kenarlık"
 
+msgid "Borders"
+msgstr "Kenarlıklar"
+
 msgid "Borders / dividers"
 msgstr "Kenarlıklar / ayırıcılar"
 
@@ -278,11 +302,20 @@ msgstr "Kutulu şablon maksimum genişliği (px)"
 msgid "Brand"
 msgstr "Marka"
 
+msgid "Brand and appearance"
+msgstr "Marka ve görünüm"
+
+msgid "Brand assets"
+msgstr "Marka varlıkları"
+
 msgid "Breadcrumb"
 msgstr "İçerik yolu"
 
 msgid "Built for demanding projects."
 msgstr "Zorlu projeler için tasarlandı."
+
+msgid "Business profile and hero"
+msgstr "İşletme profili ve karşılama alanı"
 
 msgid "Business segment"
 msgstr "İşletme alanı"
@@ -338,6 +371,12 @@ msgstr "Ortalı (logo ortada, bölünmüş menüler)"
 msgid "Centered layout uses the Header Left and Header Right menu locations."
 msgstr "Ortalı düzen, Üst Bölüm Sol ve Üst Bölüm Sağ menü konumlarını kullanır."
 
+msgid "Change history"
+msgstr "Değişiklik geçmişi"
+
+msgid "Changed fields (%d)"
+msgstr "Değişen alanlar (%d)"
+
 msgid "Check GitHub for new releases"
 msgstr "Yeni sürümler için GitHub’u kontrol et"
 
@@ -377,8 +416,17 @@ msgstr "Kompakt"
 msgid "Compact banner"
 msgstr "Kompakt bant"
 
+msgid "Company and footer configuration"
+msgstr "Şirket ve alt bölüm yapılandırması"
+
+msgid "Company and header configuration"
+msgstr "Şirket ve üst bölüm yapılandırması"
+
 msgid "Company name"
 msgstr "Firma adı"
+
+msgid "Configuration revision"
+msgstr "Yapılandırma revizyonu"
 
 msgid "Configure and test form delivery, consent, SEO and language integrations."
 msgstr "Form gönderimini, izin, SEO ve dil entegrasyonlarını yapılandırıp test edin."
@@ -410,6 +458,9 @@ msgstr "Sığdır (kırpmadan)"
 msgid "Contain (show the whole image)"
 msgstr "Sığdır (görselin tamamını göster)"
 
+msgid "Content and blog layout"
+msgstr "İçerik ve blog düzeni"
+
 msgid "Content bottom spacing (px)"
 msgstr "İçerik alt boşluğu (px)"
 
@@ -418,6 +469,9 @@ msgstr "İçerik üst boşluğu (px)"
 
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr "En-boy oranını koruyarak logo yüksekliğini kontrol eder (varsayılan: 40px). Çok geniş, afiş tipi logolar, alt bölüm sütunu darsa biraz daha kısa görünebilir."
+
+msgid "Copyright text"
+msgstr "Telif hakkı metni"
 
 msgid "Could not reach GitHub to check for updates."
 msgstr "Güncellemeler kontrol edilirken GitHub’a ulaşılamadı."
@@ -497,8 +551,17 @@ msgstr "Yerel kurtarma geçmişini sil"
 msgid "Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus."
 msgstr "Tasarım değişiklikleri kimliği ve içeriği korur. Başlangıç kurulumu yalnızca eksik taslak sayfaları ekler; bunları yayımlamaz, ana sayfanızı veya menülerinizi değiştirmez."
 
+msgid "Design profiles"
+msgstr "Tasarım profilleri"
+
 msgid "Design profiles and draft starter pages"
 msgstr "Tasarım profilleri ve başlangıç taslakları"
+
+msgid "Design tokens"
+msgstr "Tasarım değerleri"
+
+msgid "Diagnostics"
+msgstr "Tanılama"
 
 msgid "Diagnostics and integration status"
 msgstr "Tanılama ve entegrasyon durumu"
@@ -518,14 +581,14 @@ msgstr "Maskelenmiş destek özetini indir"
 msgid "Edit Slide"
 msgstr "Slaytı Düzenle"
 
-msgid "Elementor"
-msgstr "Elementor"
-
 msgid "Elementor templates"
 msgstr "Elementor şablonları"
 
 msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr "Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu."
+
+msgid "Elevated surface"
+msgstr "Yükseltilmiş yüzey"
 
 msgid "Email"
 msgstr "E-posta"
@@ -538,6 +601,9 @@ msgstr "Üst duyuru çubuğunu etkinleştir"
 
 msgid "Enable theme updates"
 msgstr "Tema güncellemelerini etkinleştir"
+
+msgid "Enabled"
+msgstr "Etkin"
 
 msgid "Enterprise clients"
 msgstr "Kurumsal müşteri"
@@ -632,6 +698,9 @@ msgstr "Bizi takip edin"
 msgid "Font family"
 msgstr "Yazı tipi ailesi"
 
+msgid "Font loading"
+msgstr "Yazı tipi yükleme"
+
 msgid "Font weight"
 msgstr "Yazı kalınlığı"
 
@@ -658,6 +727,9 @@ msgstr "Alt bölüm sütun 4"
 
 msgid "Footer brand"
 msgstr "Alt bölüm markası"
+
+msgid "Footer branding"
+msgstr "Alt bölüm marka görünümü"
 
 msgid "Footer copyright line"
 msgstr "Footer telif satırı"
@@ -764,9 +836,6 @@ msgstr "Google Tag Manager kimliği"
 msgid "Got questions? Feel free to reach out."
 msgstr "Sorularınız mı var? Bize ulaşmaktan çekinmeyin."
 
-msgid "Gutenberg"
-msgstr "Gutenberg"
-
 msgid "Gutenberg only."
 msgstr "Sadece Gutenberg."
 
@@ -863,6 +932,9 @@ msgstr "Sayfa başlığını gizle"
 msgid "Highlights"
 msgstr "Öne çıkanlar"
 
+msgid "History management"
+msgstr "Geçmiş yönetimi"
+
 msgid "Home"
 msgstr "Ana Sayfa"
 
@@ -911,6 +983,9 @@ msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i k
 msgid "Installed version: %s"
 msgstr "Kurulu sürüm: %s"
 
+msgid "Integrations"
+msgstr "Entegrasyonlar"
+
 msgid "Interactions"
 msgstr "Etkileşimler"
 
@@ -926,11 +1001,17 @@ msgstr "Başlangıç profili geçersiz."
 msgid "Invalid value for %s. No settings were changed."
 msgstr "%s için geçersiz değer. Hiçbir ayar değiştirilmedi."
 
+msgid "JavaScript"
+msgstr "JavaScript"
+
 msgid "Kicker"
 msgstr "Üst başlık"
 
 msgid "Large header over cover (left text)"
 msgstr "Kapak üzerinde büyük başlık (sol metin)"
+
+msgid "Last update check"
+msgstr "Son güncelleme denetimi"
 
 msgid "Launch checklist"
 msgstr "Yayına geçiş kontrol listesi"
@@ -977,6 +1058,9 @@ msgstr "Yerel WOFF2 yazı tipi medya kimliği"
 msgid "Local body font"
 msgstr "Yerel gövde yazı tipi"
 
+msgid "Local fonts and type scale"
+msgstr "Yerel yazı tipleri ve yazı ölçeği"
+
 msgid "Local heading font"
 msgstr "Yerel başlık yazı tipi"
 
@@ -1006,6 +1090,12 @@ msgstr "Bakım ve uyumluluk ayarları korumalı site çalışma alanından yöne
 
 msgid "Maintenance message"
 msgstr "Bakım mesajı"
+
+msgid "Maintenance mode"
+msgstr "Bakım modu"
+
+msgid "Manage your site design, layout and integrations."
+msgstr "Sitenizin tasarımını, düzenini ve entegrasyonlarını yönetin."
 
 msgid "Managed entirely outside the theme"
 msgstr "Tamamen tema dışında yönetiliyor"
@@ -1061,6 +1151,9 @@ msgstr "Mobil alt uygulama çubuğu (≤600px)"
 msgid "Mobile navigation"
 msgstr "Mobil gezinme"
 
+msgid "Multisite"
+msgstr "Çoklu site"
+
 msgid "Muted text"
 msgstr "Soluk metin"
 
@@ -1085,11 +1178,17 @@ msgstr "Sonraki slayt"
 msgid "Next →"
 msgstr "Sonraki →"
 
+msgid "No pending changes"
+msgstr "Kaydedilmemiş değişiklik yok"
+
 msgid "No results found"
 msgstr "Sonuç bulunamadı"
 
 msgid "No settings have been changed. Review the affected keys and select references belonging to this site. Private values are not displayed."
 msgstr "Hiçbir ayar değiştirilmedi. Etkilenen alanları inceleyip bu siteye ait referansları seçin. Özel değerler gösterilmez."
+
+msgid "No settings match your search. Try another keyword."
+msgstr "Aramanızla eşleşen ayar bulunamadı. Başka bir sözcük deneyin."
 
 msgid "No sidebar"
 msgstr "Kenar çubuğu yok"
@@ -1142,14 +1241,14 @@ msgstr "Kaplama başlığı arka plan opaklığı (%)"
 msgid "Overlay title font size (px)"
 msgstr "Kaplama başlığı yazı boyutu (px)"
 
+msgid "PHP version"
+msgstr "PHP sürümü"
+
 msgid "Page"
 msgstr "Sayfa"
 
 msgid "Page background"
 msgstr "Sayfa arka planı"
-
-msgid "Page builder"
-msgstr "Sayfa oluşturucu"
 
 msgid "Page image alignment"
 msgstr "Sayfa görseli hizalaması"
@@ -1163,6 +1262,9 @@ msgstr "Sayfa görseli yüksekliği (px)"
 msgid "Page not found"
 msgstr "Sayfa bulunamadı"
 
+msgid "Page structure"
+msgstr "Sayfa yapısı"
+
 msgid "Pages Layout"
 msgstr "Sayfa Düzeni"
 
@@ -1171,9 +1273,6 @@ msgstr "Sayfalar:"
 
 msgid "Pages: Default, Boxed, Left Sidebar and Right Sidebar templates."
 msgstr "Sayfalar: Varsayılan, Kutulu, Sol Kenar Çubuğu ve Sağ Kenar Çubuğu şablonları."
-
-msgid "Panel-controlled theme settings — no code required."
-msgstr "Panelden yönetilen tema ayarları — kod gerekmez."
 
 msgid "Paragraph (body text)"
 msgstr "Paragraf (gövde metni)"
@@ -1229,6 +1328,9 @@ msgstr "Sayfa başına ürün"
 msgid "Professional services"
 msgstr "Profesyonel hizmetler"
 
+msgid "Profile actions"
+msgstr "Profil işlemleri"
+
 msgid "Profiles, recovery and diagnostics"
 msgstr "Profiller, kurtarma ve tanılama"
 
@@ -1261,6 +1363,9 @@ msgstr "Altyapınızı güvenceye almaya hazır mısınız?"
 
 msgid "Recent configuration changes"
 msgstr "Son yapılandırma değişiklikleri"
+
+msgid "Recovery actions"
+msgstr "Kurtarma işlemleri"
 
 msgid "Recovery snapshots"
 msgstr "Kurtarma kayıtları"
@@ -1346,6 +1451,9 @@ msgstr "Ayarları Kaydet"
 msgid "Save assigned settings"
 msgstr "Atanan ayarları kaydet"
 
+msgid "Saving settings…"
+msgstr "Ayarlar kaydediliyor…"
+
 msgid "Scope WooCommerce assets to pages that need them"
 msgstr "WooCommerce dosyalarını yalnızca gereken sayfalarda yükle"
 
@@ -1364,8 +1472,14 @@ msgstr "Şunu ara:"
 msgid "Search products, posts, pages…"
 msgstr "Ürün, yazı, sayfa arayın…"
 
+msgid "Search settings…"
+msgstr "Ayarlarda ara…"
+
 msgid "Secondary"
 msgstr "İkincil"
+
+msgid "Secondary text"
+msgstr "İkincil metin"
 
 msgid "Section spacing"
 msgstr "Bölüm boşluğu"
@@ -1387,6 +1501,9 @@ msgstr "Arka plan görseli seç"
 
 msgid "Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens)."
 msgstr "Standart arka planı Öne Çıkan Görsel kutusundan ayarlayın. Aşağıdaki 2× görsel isteğe bağlıdır (Retina / yüksek yoğunluklu ekranlarda kullanılır)."
+
+msgid "Setting groups"
+msgstr "Ayar grupları"
 
 msgid "Settings JSON file"
 msgstr "JSON ayar dosyası"
@@ -1472,11 +1589,20 @@ msgstr "Tekil yazı üstbilgi tercihi"
 msgid "Site layout overrides"
 msgstr "Site yerleşimi istisnaları"
 
+msgid "Site management"
+msgstr "Site yönetimi"
+
+msgid "Site operations, recovery and the settings assigned to your role."
+msgstr "Site işlemleri, kurtarma ve rolünüze atanan ayarlar."
+
 msgid "Site platform"
 msgstr "Site altyapısı"
 
 msgid "Site settings (includes private configuration)"
 msgstr "Site ayarları (özel yapılandırmayı içerir)"
+
+msgid "Site structure"
+msgstr "Site yapısı"
 
 msgid "Site workspace"
 msgstr "Site çalışma alanı"
@@ -1532,9 +1658,6 @@ msgstr "Standart menü öğesi"
 msgid "Start slide rotation"
 msgstr "Slayt geçişini başlat"
 
-msgid "Start with a design profile, configure layouts and integrations, test the site, then hand over the safe content workspace."
-msgstr "Bir tasarım profiliyle başlayın; yerleşimleri ve entegrasyonları yapılandırıp siteyi test edin. Sonra güvenli içerik çalışma alanını müşteriye devredin."
-
 msgid "Statistics cards"
 msgstr "İstatistik kartları"
 
@@ -1556,6 +1679,9 @@ msgstr "Stiller"
 msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
 msgstr "Önerilen: #34d399, #22d3ee, #fb923c, #a78bfa"
 
+msgid "Surface"
+msgstr "Yüzey"
+
 msgid "Surface shadow"
 msgstr "Yüzey gölgesi"
 
@@ -1570,6 +1696,9 @@ msgstr "Etiket"
 
 msgid "Team introduction"
 msgstr "Ekip tanıtımı"
+
+msgid "Technical details"
+msgstr "Teknik ayrıntılar"
 
 msgid "Text"
 msgstr "Metin"
@@ -1634,17 +1763,32 @@ msgstr "Tema"
 msgid "Theme Mode"
 msgstr "Tema Modu"
 
+msgid "Theme configuration"
+msgstr "Tema yapılandırması"
+
 msgid "Theme default"
 msgstr "Tema varsayılanı"
 
 msgid "Theme default (currently %s)"
 msgstr "Tema varsayılanı (şu an %s)"
 
+msgid "Theme sections"
+msgstr "Tema bölümleri"
+
+msgid "Theme settings"
+msgstr "Tema ayarları"
+
 msgid "Theme update settings saved."
 msgstr "Tema güncelleme ayarları kaydedildi."
 
+msgid "Theme updates"
+msgstr "Tema güncellemeleri"
+
 msgid "Theme updates (GitHub)"
 msgstr "Tema güncellemeleri (GitHub)"
+
+msgid "Theme version"
+msgstr "Tema sürümü"
 
 msgid "These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls."
 msgstr "Bu ayarlar ziyaretçi erişimini veya üçüncü taraf eklentileri etkiler. Önce test ortamında deneyin. Normal tasarım kayıtları bu ayarları değiştirmez."
@@ -1687,6 +1831,9 @@ msgstr "Üst çubuk metin rengi"
 
 msgid "Top loading progress bar"
 msgstr "Üstte yükleme ilerleme çubuğu"
+
+msgid "Tracking delivery"
+msgstr "İzleme kodlarının yüklenmesi"
 
 msgid "Transparent"
 msgstr "Şeffaf"
@@ -1748,8 +1895,14 @@ msgstr "Mobil dock’taki İletişim bağlantısı için kullanılır (temanın 
 msgid "Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching."
 msgstr "Tema genelinde butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde). Farklı bir değer belirlemediğiniz sürece Açık, Koyu ile otomatik eşleşir — eşleşmeye geri dönmek için Temizle'yi kullanın."
 
+msgid "Verification and custom markup"
+msgstr "Doğrulama ve özel işaretleme"
+
 msgid "View all"
 msgstr "Tümünü gör"
+
+msgid "View site"
+msgstr "Siteyi görüntüle"
 
 msgid "Visitors can still toggle; their choice persists in the browser."
 msgstr "Ziyaretçiler yine de değiştirebilir; seçim tarayıcıda saklanır."
@@ -1772,8 +1925,14 @@ msgstr "Sol/Sağ Kenar Çubuğu sayfa şablonlarındaki kenar çubuğu sütununu
 msgid "WordPress defaults"
 msgstr "WordPress varsayılanları"
 
+msgid "WordPress version"
+msgstr "WordPress sürümü"
+
 msgid "Workspace"
 msgstr "Çalışma alanı"
+
+msgid "Workspace sections"
+msgstr "Çalışma alanı bölümleri"
 
 msgid "Written by"
 msgstr "Yazan"

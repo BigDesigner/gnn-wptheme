@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -119,6 +119,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.0.2 =
+* Organize theme settings into category navigation, section tabs and responsive setting cards.
+* Add cross-section settings search, visible save status and persistent save controls.
+* Unify the role workspace with the theme panel, including profiles, diagnostics and recovery controls.
+* Preserve native WordPress form security, revision conflict checks and accessible keyboard navigation.
 
 = 2.0.1 =
 * Preserve WordPress/Elementor dependency order and consent styles under asset optimization.
