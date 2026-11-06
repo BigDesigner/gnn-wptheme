@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  static-and-package:
+  static-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -25,15 +25,6 @@ jobs:
       - run: composer install --no-interaction --prefer-dist
       - run: composer lint
       - run: python .scripts/verify.py
-      - name: Upload installable product packages
-        uses: actions/upload-artifact@v4
-        with:
-          name: gnn-packages-${{ github.sha }}
-          path: |
-            .build/gnn-*.zip
-            .build/gnn-*-manifest.json
-          if-no-files-found: error
-          include-hidden-files: true
   wordpress-integration:
     runs-on: ubuntu-latest
     steps:
