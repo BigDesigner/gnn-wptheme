@@ -28,7 +28,7 @@ function gnn_operation_keys() {
 
 /** High-impact operations require an explicit confirmation and revision. */
 function gnn_render_operation_controls() {
-	echo '<h2>' . esc_html__( 'Maintenance and compatibility', 'gnn' ) . '</h2><p>' . esc_html__( 'These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls.', 'gnn' ) . '</p><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="operations">';
+	echo '<h2>' . esc_html__( 'Maintenance and compatibility', 'gnn' ) . '</h2><p>' . esc_html__( 'These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls.', 'gnn' ) . '</p><form class="gnn-operations-form" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="operations">';
 	wp_nonce_field( 'gnn_workspace' );
 	gnn_configuration_revision_field();
 	$labels = array(
@@ -100,28 +100,78 @@ function gnn_workspace_page() {
 	$admin    = current_user_can( 'manage_options' );
 	$delegate = current_user_can( 'gnn_manage_design' ) || current_user_can( 'gnn_manage_brand' );
 	if ( ! $admin && ! $delegate && ! current_user_can( 'gnn_view_diagnostics' ) ) {
-		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) ); }
-	echo '<div class="wrap"><h1>' . esc_html__( 'Site workspace', 'gnn' ) . '</h1>';
+		wp_die( esc_html__( 'Permission denied.', 'gnn' ), '', array( 'response' => 403 ) );
+	}
+	$sections = array();
 	if ( $admin ) {
-		echo '<p>' . esc_html__( 'Start with a design profile, configure layouts and integrations, test the site, then hand over the safe content workspace.', 'gnn' ) . '</p>';
-		echo '<h2>' . esc_html__( 'Launch checklist', 'gnn' ) . '</h2><ul>';
-		foreach ( array( __( 'Replace draft/demo content, choose logos and verify contact links.', 'gnn' ), __( 'Configure and test form delivery, consent, SEO and language integrations.', 'gnn' ), __( 'Review mobile navigation, keyboard operation and brand contrast.', 'gnn' ), __( 'Create an off-site database/files backup, rehearse upgrade and recovery on staging.', 'gnn' ), __( 'Assign the client or designer role instead of sharing an administrator account.', 'gnn' ) ) as $item ) {
-			echo '<li>• ' . esc_html( $item ) . '</li>'; }
-		echo '</ul><h2>' . esc_html__( 'Design profiles and draft starter pages', 'gnn' ) . '</h2>';
-		foreach ( gnn_starter_profiles() as $slug => $profile ) {
-			echo '<section><h3>' . esc_html( $profile['label'] ) . '</h3><p>' . esc_html__( 'Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus.', 'gnn' ) . '</p>';
-			gnn_workspace_action_form( 'preset', __( 'Apply design profile', 'gnn' ), array( 'profile' => $slug ) );
-			gnn_workspace_action_form( 'starter', __( 'Add missing draft pages', 'gnn' ), array( 'profile' => $slug ) );
-			echo '</section>';
-		}
+		$sections['launch']   = __( 'Launch checklist', 'gnn' );
+		$sections['profiles'] = __( 'Design profiles', 'gnn' );
 	}
 	if ( $delegate && ! $admin ) {
-		echo '<p>' . esc_html__( 'Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator.', 'gnn' ) . '</p><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="brand">';
+		$sections['brand'] = __( 'Assigned site settings', 'gnn' ); }
+	if ( $admin || current_user_can( 'gnn_view_diagnostics' ) ) {
+		$sections['diagnostics'] = __( 'Diagnostics', 'gnn' ); }
+	if ( $admin ) {
+		$sections['operations'] = __( 'Maintenance and compatibility', 'gnn' );
+		$sections['recovery']   = __( 'Recovery snapshots', 'gnn' );
+		$sections['history']    = __( 'Change history', 'gnn' );
+	}
+	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel__header"><div class="gnn-panel__heading"><span class="gnn-panel__icon dashicons dashicons-dashboard" aria-hidden="true"></span><div><h1>' . esc_html__( 'Site workspace', 'gnn' ) . '</h1><p class="gnn-panel__subtitle">' . esc_html__( 'Site operations, recovery and the settings assigned to your role.', 'gnn' ) . '</p></div></div><div class="gnn-panel__header-actions"><span class="gnn-panel__badge">v' . esc_html( GNN_VERSION ) . '</span>';
+	if ( $admin ) {
+		echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-panel' ) ) . '">' . esc_html__( 'Theme settings', 'gnn' ) . '</a>'; }
+	echo '</div></header><hr class="wp-header-end"><div class="gnn-admin-layout"><aside class="gnn-sidebar"><p class="gnn-sidebar__title">' . esc_html__( 'Site management', 'gnn' ) . '</p><nav class="gnn-workspace-links" aria-label="' . esc_attr__( 'Workspace sections', 'gnn' ) . '">';
+	foreach ( $sections as $key => $label ) {
+		echo '<a href="#gnn-workspace-' . esc_attr( $key ) . '">' . esc_html( $label ) . '</a>'; }
+	echo '</nav></aside><div class="gnn-workspace-content">';
+	if ( $admin ) {
+		echo '<section id="gnn-workspace-launch" class="gnn-settings-card"><h2>' . esc_html__( 'Launch checklist', 'gnn' ) . '</h2><div class="gnn-workspace-section"><ol class="gnn-launch-list">';
+		foreach ( array( __( 'Replace draft/demo content, choose logos and verify contact links.', 'gnn' ), __( 'Configure and test form delivery, consent, SEO and language integrations.', 'gnn' ), __( 'Review mobile navigation, keyboard operation and brand contrast.', 'gnn' ), __( 'Create an off-site database/files backup, rehearse upgrade and recovery on staging.', 'gnn' ), __( 'Assign the client or designer role instead of sharing an administrator account.', 'gnn' ) ) as $item ) {
+			echo '<li>' . esc_html( $item ) . '</li>'; }
+		echo '</ol></div></section><section id="gnn-workspace-profiles"><h2 class="gnn-workspace-section-title">' . esc_html__( 'Design profiles and draft starter pages', 'gnn' ) . '</h2><p class="description">' . esc_html__( 'Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus.', 'gnn' ) . '</p><div class="gnn-workspace-grid">';
+		foreach ( gnn_starter_profiles() as $slug => $profile ) {
+			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p><details><summary>' . esc_html__( 'Profile actions', 'gnn' ) . '</summary>';
+			gnn_workspace_action_form( 'preset', __( 'Apply design profile', 'gnn' ), array( 'profile' => $slug ) );
+			gnn_workspace_action_form( 'starter', __( 'Add missing draft pages', 'gnn' ), array( 'profile' => $slug ) );
+			echo '</details></article>';
+		}
+		echo '</div></section>';
+	}
+	$legacy_labels = array(
+		'topbar_text'            => __( 'Announcement text', 'gnn' ),
+		'topbar_phone'           => __( 'Phone', 'gnn' ),
+		'topbar_email'           => __( 'Email', 'gnn' ),
+		'footer_tagline'         => __( 'Footer tagline', 'gnn' ),
+		'footer_copyright'       => __( 'Copyright text', 'gnn' ),
+		'logo_light'             => __( 'Logo — light mode (1×)', 'gnn' ),
+		'logo_light_2x'          => __( 'Logo — light mode (2× retina)', 'gnn' ),
+		'logo_dark'              => __( 'Logo — dark mode (1×)', 'gnn' ),
+		'logo_dark_2x'           => __( 'Logo — dark mode (2× retina)', 'gnn' ),
+		'footer_logo_light'      => __( 'Footer logo — light mode (1×)', 'gnn' ),
+		'footer_logo_dark'       => __( 'Footer logo — dark mode (1×)', 'gnn' ),
+		'accent'                 => __( 'Accent color', 'gnn' ),
+		'accent_light'           => __( 'Accent — light mode', 'gnn' ),
+		'logo_max_height'        => __( 'Logo max height — desktop (px)', 'gnn' ),
+		'logo_max_height_mobile' => __( 'Logo max height — mobile (px)', 'gnn' ),
+		'footer_logo_height'     => __( 'Footer logo max height (px)', 'gnn' ),
+	);
+	foreach ( array(
+		'color_bg'   => __( 'Background', 'gnn' ),
+		'color_bg2'  => __( 'Surface', 'gnn' ),
+		'color_bg3'  => __( 'Elevated surface', 'gnn' ),
+		'color_fg'   => __( 'Primary text', 'gnn' ),
+		'color_fg2'  => __( 'Secondary text', 'gnn' ),
+		'color_line' => __( 'Borders', 'gnn' ),
+	) as $key => $label ) {
+		$legacy_labels[ $key . '_dark' ]  = $label . ' — ' . __( 'Dark', 'gnn' );
+		$legacy_labels[ $key . '_light' ] = $label . ' — ' . __( 'Light', 'gnn' );
+	}
+	if ( $delegate && ! $admin ) {
+		echo '<section id="gnn-workspace-brand" class="gnn-settings-card"><h2>' . esc_html__( 'Assigned site settings', 'gnn' ) . '</h2><p class="gnn-workspace-section">' . esc_html__( 'Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator.', 'gnn' ) . '</p><form id="gnn-brand-form" class="gnn-card-content" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="brand">';
 		wp_nonce_field( 'gnn_workspace' );
 		gnn_configuration_revision_field();
 		$schema = gnn_platform_schema();
 		foreach ( gnn_delegated_keys() as $key ) {
-			$field = $schema[ $key ] ?? array( ucwords( str_replace( '_', ' ', $key ) ), 'text' );
+			$field = $schema[ $key ] ?? array( $legacy_labels[ $key ] ?? ucwords( str_replace( '_', ' ', $key ) ), 'text' );
 			if ( isset( $schema[ $key ] ) && 'select' === $field[1] ) {
 				gnn_field_select( $key, $field[0], $field[4] ); } elseif ( 'bool' === $field[1] ) {
 				gnn_field_checkbox( $key, $field[0] ); } elseif ( isset( $field[4], $field[5] ) && 'number' === $field[1] ) {
@@ -139,33 +189,61 @@ function gnn_workspace_page() {
 								gnn_field_media( $key, $field[0], gnn_option( $key ) ); } else {
 							gnn_field_text( $key, $field[0], 'accent' === $key ? get_theme_mod( 'gnn_accent_color', '#34d399' ) : (string) gnn_option( $key ) ); }
 		}
-		submit_button( __( 'Save assigned settings', 'gnn' ) );
-		echo '</form>';
+		echo '<div class="gnn-savebar"><p class="gnn-save-status" role="status">' . esc_html__( 'No pending changes', 'gnn' ) . '</p>';
+		submit_button( __( 'Save assigned settings', 'gnn' ), 'primary', 'submit', false );
+		echo '</div>';
+		echo '</form></section>';
 	}
 	if ( $admin || current_user_can( 'gnn_view_diagnostics' ) ) {
-		echo '<h2>' . esc_html__( 'Diagnostics and integration status', 'gnn' ) . '</h2><table class="widefat striped"><tbody>';
+		echo '<section id="gnn-workspace-diagnostics" class="gnn-settings-card"><h2>' . esc_html__( 'Diagnostics and integration status', 'gnn' ) . '</h2><div class="gnn-workspace-section"><table class="gnn-diagnostic-table"><tbody>';
+		$labels = array(
+			'theme'                  => __( 'Theme version', 'gnn' ),
+			'wordpress'              => __( 'WordPress version', 'gnn' ),
+			'php'                    => __( 'PHP version', 'gnn' ),
+			'multisite'              => __( 'Multisite', 'gnn' ),
+			'integrations'           => __( 'Integrations', 'gnn' ),
+			'history_entries'        => __( 'Recovery snapshots', 'gnn' ),
+			'maintenance'            => __( 'Maintenance mode', 'gnn' ),
+			'updates_enabled'        => __( 'Theme updates', 'gnn' ),
+			'update_check'           => __( 'Last update check', 'gnn' ),
+			'configuration_revision' => __( 'Configuration revision', 'gnn' ),
+		);
 		foreach ( gnn_support_summary() as $key => $value ) {
-			echo '<tr><th scope="row">' . esc_html( $key ) . '</th><td>' . esc_html( is_array( $value ) ? wp_json_encode( $value ) : (string) $value ) . '</td></tr>'; }
-		echo '</tbody></table>';
+			if ( 'configuration_revision' === $key || 'update_check' === $key ) {
+				continue; }
+			$display = is_bool( $value ) ? ( $value ? __( 'Enabled', 'gnn' ) : __( 'Disabled', 'gnn' ) ) : ( is_array( $value ) ? implode( ' · ', $value ) : (string) $value );
+			echo '<tr><th scope="row">' . esc_html( $labels[ $key ] ?? $key ) . '</th><td>' . esc_html( $display ) . '</td></tr>';
+		}
+		echo '</tbody></table><details><summary>' . esc_html__( 'Technical details', 'gnn' ) . '</summary>';
+		$summary = gnn_support_summary();
+		echo '<p class="description">' . esc_html( $labels['configuration_revision'] ) . '</p><code class="gnn-revision">' . esc_html( $summary['configuration_revision'] ) . '</code><p class="description">' . esc_html( $labels['update_check'] ) . '</p><code class="gnn-revision">' . esc_html( wp_json_encode( $summary['update_check'] ) ) . '</code></details>';
 		gnn_workspace_action_form( 'support', __( 'Download masked support summary', 'gnn' ) );
+		echo '</div></section>';
 	}
 	if ( $admin ) {
+		echo '<section id="gnn-workspace-operations" class="gnn-settings-card"><div class="gnn-workspace-section">';
 		gnn_render_operation_controls();
-		echo '<h2>' . esc_html__( 'Recovery snapshots', 'gnn' ) . '</h2><p>' . esc_html__( 'The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages.', 'gnn' ) . '</p>';
+		echo '</div></section><section id="gnn-workspace-recovery" class="gnn-settings-card"><h2>' . esc_html__( 'Recovery snapshots', 'gnn' ) . '</h2><div class="gnn-workspace-section"><p class="description">' . esc_html__( 'The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages.', 'gnn' ) . '</p>';
+		gnn_workspace_action_form( 'snapshot', __( 'Create configuration snapshot', 'gnn' ) );
+		foreach ( (array) get_option( 'gnn_configuration_history', array() ) as $item ) {
+			echo '<div class="gnn-recovery-item"><p><strong>' . esc_html( $item['at'] ) . '</strong><br>' . esc_html( $item['action'] . ' · #' . $item['user'] ) . '</p><details><summary>' . esc_html__( 'Recovery actions', 'gnn' ) . '</summary>';
+			gnn_workspace_action_form( 'restore', __( 'Restore this configuration', 'gnn' ), array( 'snapshot' => $item['id'] ) );
+			echo '</details></div>';
+		}
+		echo '<details><summary>' . esc_html__( 'History management', 'gnn' ) . '</summary>';
 		gnn_workspace_action_form( 'clear_history', __( 'Delete local recovery history', 'gnn' ) );
 		$lock = get_option( 'gnn_configuration_lock' );
 		if ( is_array( $lock ) && $lock['time'] < time() - 600 ) {
 			gnn_workspace_action_form( 'unlock', __( 'Release abandoned settings lock', 'gnn' ) ); }
-		gnn_workspace_action_form( 'snapshot', __( 'Create configuration snapshot', 'gnn' ) );
-		foreach ( (array) get_option( 'gnn_configuration_history', array() ) as $item ) {
-			echo '<p>' . esc_html( $item['at'] . ' · ' . $item['action'] . ' · #' . $item['user'] ) . '</p>';
-			gnn_workspace_action_form( 'restore', __( 'Restore this configuration', 'gnn' ), array( 'snapshot' => $item['id'] ) ); }
-		echo '<h2>' . esc_html__( 'Recent configuration changes', 'gnn' ) . '</h2><ul>';
+		echo '</details></div></section><section id="gnn-workspace-history" class="gnn-settings-card"><h2>' . esc_html__( 'Recent configuration changes', 'gnn' ) . '</h2><div class="gnn-workspace-section"><ul class="gnn-event-list">';
 		foreach ( array_slice( (array) get_option( 'gnn_configuration_events', array() ), 0, 20 ) as $event ) {
-			echo '<li>' . esc_html( $event['at'] . ' · #' . $event['user'] . ' · ' . implode( ', ', $event['keys'] ) ) . '</li>'; }
-		echo '</ul><p>' . esc_html__( 'Sensitive field values are never included in the change log or support summary.', 'gnn' ) . '</p>';
+			/* translators: %d: Number of changed configuration fields. */
+			$changed = sprintf( __( 'Changed fields (%d)', 'gnn' ), count( $event['keys'] ) );
+			echo '<li><strong>' . esc_html( $event['at'] . ' · #' . $event['user'] ) . '</strong><details><summary>' . esc_html( $changed ) . '</summary><p>' . esc_html( implode( ', ', $event['keys'] ) ) . '</p></details></li>';
+		}
+		echo '</ul><p class="description">' . esc_html__( 'Sensitive field values are never included in the change log or support summary.', 'gnn' ) . '</p></div></section>';
 	}
-	echo '</div>';
+	echo '</div></div></div>';
 }
 
 /** Every operation checks its own server-side capability and nonce. */
