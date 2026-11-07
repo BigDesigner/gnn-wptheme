@@ -328,6 +328,7 @@ function gnn_panel_assets( $hook ) {
 		array(
 			'unsaved'       => __( 'Unsaved changes', 'gnn' ),
 			'invalidField'  => $invalid,
+			'chooseColor'   => __( 'Choose color', 'gnn' ),
 			'ready'         => __( 'No pending changes', 'gnn' ),
 			'saving'        => __( 'Saving settings…', 'gnn' ),
 			'allGroups'     => __( 'All groups', 'gnn' ),
@@ -505,9 +506,8 @@ function gnn_field_number( $key, $label, $min = 0, $max = 9999, $hint = '' ) {
 /**
  * Render a color field using WordPress core's own Iris color picker (the
  * same widget behind Customizer color controls) instead of the browser's
- * native OS color dialog. Collapsed to a single swatch button by default
- * (see admin.js); clicking it opens the picker, which has its own
- * typeable hex field inside.
+ * native OS color dialog. The editable HEX field stays visible on its
+ * full-color background; the toggle opens the native picker beneath it.
  *
  * @param string $key            Option key.
  * @param string $label          Label text.
@@ -518,9 +518,8 @@ function gnn_field_number( $key, $label, $min = 0, $max = 9999, $hint = '' ) {
  */
 function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hint = '', $allow_empty = false ) {
 	$value = (string) $value;
-	// Show the effective color (the theme's own default) when nothing is
-	// saved yet, instead of a blank field — the panel should always show
-	// what the site currently looks like.
+	// Preserve empty inherited values; admin.js displays their effective
+	// color as a placeholder without changing the submitted value.
 	$display = $value;
 	printf(
 		'<div class="gnn-field"><label class="gnn-field__label" for="gnn-%1$s">%2$s</label>' .
