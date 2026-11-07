@@ -974,3 +974,107 @@ TRANSLATIONS.update({'%d setting groups found': '%d ayar grubu bulundu',
 TRANSLATIONS['Changed fields (%d)'] = 'Değişen alanlar (%d)'
 
 TRANSLATIONS['Choose color'] = 'Renk seç'
+
+TRANSLATIONS.update({'Aspect ratio': 'En-boy oranı',
+ 'Blog listing': 'Blog listesi',
+ 'Card image alignment': 'Kart görseli hizalaması',
+ 'Card image aspect ratio': 'Kart görseli en-boy oranı',
+ 'Card image fit': 'Kart görseli sığdırma yöntemi',
+ 'Card image fixed height (px)': 'Kart görseli sabit yüksekliği (px)',
+ 'Card image sizing': 'Kart görseli boyutlandırması',
+ 'Fixed height': 'Sabit yükseklik',
+ 'Fixed height uses the pixel height; Aspect ratio uses the selected ratio; Original proportions displays the complete original image. Post editor layout overrides take priority over these defaults. Elementor Pro templates control their own content geometry.': 'Sabit '
+                                                                                                                                                                                                                                                                     'yükseklik '
+                                                                                                                                                                                                                                                                     'piksel '
+                                                                                                                                                                                                                                                                     'değerini, '
+                                                                                                                                                                                                                                                                     'En-boy '
+                                                                                                                                                                                                                                                                     'oranı '
+                                                                                                                                                                                                                                                                     'seçilen '
+                                                                                                                                                                                                                                                                     'oranı '
+                                                                                                                                                                                                                                                                     'kullanır. '
+                                                                                                                                                                                                                                                                     'Orijinal '
+                                                                                                                                                                                                                                                                     'oranlar '
+                                                                                                                                                                                                                                                                     'görselin '
+                                                                                                                                                                                                                                                                     'tamamını '
+                                                                                                                                                                                                                                                                     'gösterir. '
+                                                                                                                                                                                                                                                                     'Yazı '
+                                                                                                                                                                                                                                                                     'düzenleyicisindeki '
+                                                                                                                                                                                                                                                                     'düzen '
+                                                                                                                                                                                                                                                                     'tercihleri '
+                                                                                                                                                                                                                                                                     'bu '
+                                                                                                                                                                                                                                                                     'varsayılanların '
+                                                                                                                                                                                                                                                                     'önüne '
+                                                                                                                                                                                                                                                                     'geçer. '
+                                                                                                                                                                                                                                                                     'Elementor '
+                                                                                                                                                                                                                                                                     'Pro '
+                                                                                                                                                                                                                                                                     'şablonları '
+                                                                                                                                                                                                                                                                     'kendi '
+                                                                                                                                                                                                                                                                     'içerik '
+                                                                                                                                                                                                                                                                     'düzenlerini '
+                                                                                                                                                                                                                                                                     'yönetir.',
+ 'Full viewport width': 'Tam ekran genişliği',
+ 'Grid': 'Izgara',
+ 'Hide image': 'Görseli gizle',
+ 'Independent image width (px)': 'Bağımsız görsel genişliği (px)',
+ 'Independent width': 'Bağımsız genişlik',
+ 'List': 'Liste',
+ 'Listing and single-post settings are independent. For 1000px text with a 1200px image, set the content width to 1000, choose Independent width and set the image width to 1200. Full viewport width reaches both screen edges. All widths shrink safely on mobile.': 'Listeleme '
+                                                                                                                                                                                                                                                                       've '
+                                                                                                                                                                                                                                                                       'tekil '
+                                                                                                                                                                                                                                                                       'yazı '
+                                                                                                                                                                                                                                                                       'ayarları '
+                                                                                                                                                                                                                                                                       'bağımsızdır. '
+                                                                                                                                                                                                                                                                       '1000 '
+                                                                                                                                                                                                                                                                       'px '
+                                                                                                                                                                                                                                                                       'metin '
+                                                                                                                                                                                                                                                                       've '
+                                                                                                                                                                                                                                                                       '1200 '
+                                                                                                                                                                                                                                                                       'px '
+                                                                                                                                                                                                                                                                       'görsel '
+                                                                                                                                                                                                                                                                       'için '
+                                                                                                                                                                                                                                                                       'içerik '
+                                                                                                                                                                                                                                                                       'genişliğini '
+                                                                                                                                                                                                                                                                       '1000 '
+                                                                                                                                                                                                                                                                       'yapın, '
+                                                                                                                                                                                                                                                                       'Bağımsız '
+                                                                                                                                                                                                                                                                       'genişlik '
+                                                                                                                                                                                                                                                                       'seçip '
+                                                                                                                                                                                                                                                                       'görsel '
+                                                                                                                                                                                                                                                                       'genişliğini '
+                                                                                                                                                                                                                                                                       '1200 '
+                                                                                                                                                                                                                                                                       'yapın. '
+                                                                                                                                                                                                                                                                       'Tam '
+                                                                                                                                                                                                                                                                       'ekran '
+                                                                                                                                                                                                                                                                       'genişliği '
+                                                                                                                                                                                                                                                                       'iki '
+                                                                                                                                                                                                                                                                       'ekran '
+                                                                                                                                                                                                                                                                       'kenarına '
+                                                                                                                                                                                                                                                                       'uzanır. '
+                                                                                                                                                                                                                                                                       'Tüm '
+                                                                                                                                                                                                                                                                       'genişlikler '
+                                                                                                                                                                                                                                                                       'mobilde '
+                                                                                                                                                                                                                                                                       'ekrana '
+                                                                                                                                                                                                                                                                       'uyarlanır.',
+ 'Listing content width (px, 0 = global container)': 'Liste içerik genişliği (px, 0 = genel '
+                                                     'kapsayıcı)',
+ 'Listing images': 'Liste görselleri',
+ 'Listing layout': 'Listeleme düzeni',
+ 'Match content width': 'İçerik genişliğiyle eşleştir',
+ 'Maximum columns on mobile': 'Mobilde en fazla sütun',
+ 'Maximum columns on tablet': 'Tablette en fazla sütun',
+ 'Original proportions': 'Orijinal oranlar',
+ 'Show card categories': 'Kart kategorilerini göster',
+ 'Show card excerpts': 'Kart özetlerini göster',
+ 'Show listing date and reading time': 'Listede tarih ve okuma bilgisini göster',
+ 'Show metadata on single posts': 'Tekil yazıda tarih ve okuma bilgisini göster',
+ 'Show post tags': 'Yazı etiketlerini göster',
+ 'Show the author biography box': 'Yazar biyografi kutusunu göster',
+ 'Show the comments section': 'Yorum bölümünü göster',
+ 'Show the featured image caption': 'Öne çıkan görselin açıklamasını göster',
+ 'Single featured image': 'Tekil yazı öne çıkan görseli',
+ 'Single featured image width': 'Tekil yazı görsel genişliği',
+ 'Single image aspect ratio': 'Tekil görsel en-boy oranı',
+ 'Single image sizing': 'Tekil görsel boyutlandırması',
+ 'Single post content width (px)': 'Tekil yazı içerik genişliği (px)',
+ 'Single post layout and details': 'Tekil yazı düzeni ve ayrıntılar',
+ 'Space between cards (px)': 'Kartlar arası boşluk (px)'})

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.0.4\n"
+"Project-Id-Version: GNN 2.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 03:12+0000\n"
-"PO-Revision-Date: 2026-11-07 03:12+0000\n"
+"POT-Creation-Date: 2026-11-07 05:15+0000\n"
+"PO-Revision-Date: 2026-11-07 05:15+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,6 +206,9 @@ msgstr "Arşiv altbilgi tercihi"
 msgid "Archive header override"
 msgstr "Arşiv üstbilgi tercihi"
 
+msgid "Aspect ratio"
+msgstr "En-boy oranı"
+
 msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr "Yönetici hesabını paylaşmak yerine müşteri veya tasarımcı rolü atayın."
 
@@ -266,8 +269,8 @@ msgstr "Blog görseli sığdırma"
 msgid "Blog image height (px)"
 msgstr "Blog görseli yüksekliği (px)"
 
-msgid "Blog: single post pages."
-msgstr "Blog: tekil yazı sayfaları."
+msgid "Blog listing"
+msgstr "Blog listesi"
 
 msgid "Body"
 msgstr "Gövde"
@@ -349,6 +352,21 @@ msgstr "Kart / panel arka planı"
 
 msgid "Card and image corner radius"
 msgstr "Kart ve görsel köşe yuvarlaklığı"
+
+msgid "Card image alignment"
+msgstr "Kart görseli hizalaması"
+
+msgid "Card image aspect ratio"
+msgstr "Kart görseli en-boy oranı"
+
+msgid "Card image fit"
+msgstr "Kart görseli sığdırma yöntemi"
+
+msgid "Card image fixed height (px)"
+msgstr "Kart görseli sabit yüksekliği (px)"
+
+msgid "Card image sizing"
+msgstr "Kart görseli boyutlandırması"
 
 msgid "Cart"
 msgstr "Sepet"
@@ -695,6 +713,12 @@ msgstr "Dolu"
 msgid "Find a setting"
 msgstr "Ayar ara"
 
+msgid "Fixed height"
+msgstr "Sabit yükseklik"
+
+msgid "Fixed height uses the pixel height; Aspect ratio uses the selected ratio; Original proportions displays the complete original image. Post editor layout overrides take priority over these defaults. Elementor Pro templates control their own content geometry."
+msgstr "Sabit yükseklik piksel değerini, En-boy oranı seçilen oranı kullanır. Orijinal oranlar görselin tamamını gösterir. Yazı düzenleyicisindeki düzen tercihleri bu varsayılanların önüne geçer. Elementor Pro şablonları kendi içerik düzenlerini yönetir."
+
 msgid "Follow us"
 msgstr "Bizi takip edin"
 
@@ -779,6 +803,9 @@ msgstr "Sıkça Sorulan Sorular"
 msgid "Full Width template max width (px)"
 msgstr "Tam Genişlik şablonu maksimum genişliği (px)"
 
+msgid "Full viewport width"
+msgstr "Tam ekran genişliği"
+
 msgid "Full-height slider (fills the screen below the header)"
 msgstr "Tam yükseklik slider (üst bölümün altında ekranı kaplar)"
 
@@ -838,6 +865,9 @@ msgstr "Google Tag Manager kimliği"
 
 msgid "Got questions? Feel free to reach out."
 msgstr "Sorularınız mı var? Bize ulaşmaktan çekinmeyin."
+
+msgid "Grid"
+msgstr "Izgara"
 
 msgid "Gutenberg only."
 msgstr "Sadece Gutenberg."
@@ -926,6 +956,9 @@ msgstr "Gizle"
 msgid "Hide Breadcrumb"
 msgstr "Breadcrumb’ı Gizle"
 
+msgid "Hide image"
+msgstr "Görseli gizle"
+
 msgid "Hide the breadcrumb (Home / …)"
 msgstr "İçerik yolunu gizle (Ana Sayfa / …)"
 
@@ -970,6 +1003,12 @@ msgstr "İçe aktarma başarısız: dosya geçerli bir GNN ayar dışa aktarım�
 
 msgid "Import settings"
 msgstr "Ayarları içe aktar"
+
+msgid "Independent image width (px)"
+msgstr "Bağımsız görsel genişliği (px)"
+
+msgid "Independent width"
+msgstr "Bağımsız genişlik"
 
 msgid "Industrial and B2B"
 msgstr "Endüstri ve B2B"
@@ -1052,6 +1091,21 @@ msgstr "Açık"
 msgid "Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both."
 msgstr "Açık mod koyu renk çizimi, koyu mod açık renk çizimi kullanır. Retina / yüksek yoğunluklu ekranlarda net görünmesi için her birinin 2× sürümünü de yükleyin. Yalnız bir modu doldurursanız ikisi için de o kullanılır."
 
+msgid "List"
+msgstr "Liste"
+
+msgid "Listing and single-post settings are independent. For 1000px text with a 1200px image, set the content width to 1000, choose Independent width and set the image width to 1200. Full viewport width reaches both screen edges. All widths shrink safely on mobile."
+msgstr "Listeleme ve tekil yazı ayarları bağımsızdır. 1000 px metin ve 1200 px görsel için içerik genişliğini 1000 yapın, Bağımsız genişlik seçip görsel genişliğini 1200 yapın. Tam ekran genişliği iki ekran kenarına uzanır. Tüm genişlikler mobilde ekrana uyarlanır."
+
+msgid "Listing content width (px, 0 = global container)"
+msgstr "Liste içerik genişliği (px, 0 = genel kapsayıcı)"
+
+msgid "Listing images"
+msgstr "Liste görselleri"
+
+msgid "Listing layout"
+msgstr "Listeleme düzeni"
+
 msgid "Load Google Material Symbols"
 msgstr "Google Material Symbols’ı yükle"
 
@@ -1106,8 +1160,17 @@ msgstr "Tamamen tema dışında yönetiliyor"
 msgid "Map the reference for %s on this site before importing. No settings were changed."
 msgstr "İçe aktarmadan önce %s referansını bu sitede eşleyin. Hiçbir ayar değiştirilmedi."
 
+msgid "Match content width"
+msgstr "İçerik genişliğiyle eşleştir"
+
 msgid "Maximum H1 size"
 msgstr "En büyük H1 boyutu"
+
+msgid "Maximum columns on mobile"
+msgstr "Mobilde en fazla sütun"
+
+msgid "Maximum columns on tablet"
+msgstr "Tablette en fazla sütun"
 
 msgid "Mean incident response"
 msgstr "Ortalama olay müdahalesi"
@@ -1228,6 +1291,9 @@ msgstr "Açık alanlar"
 
 msgid "Opening hours"
 msgstr "Çalışma saatleri"
+
+msgid "Original proportions"
+msgstr "Orijinal oranlar"
 
 msgid "Outline"
 msgstr "Çerçeveli"
@@ -1541,23 +1607,44 @@ msgstr "404 sayfasında arama kutusu göster"
 msgid "Show author information"
 msgstr "Yazar bilgilerini göster"
 
+msgid "Show card categories"
+msgstr "Kart kategorilerini göster"
+
+msgid "Show card excerpts"
+msgstr "Kart özetlerini göster"
+
 msgid "Show contact information in the header"
 msgstr "Üstbilgide iletişim bilgilerini göster"
 
-msgid "Show post date and reading time"
-msgstr "Yazı tarihini ve okuma süresini göster"
+msgid "Show listing date and reading time"
+msgstr "Listede tarih ve okuma bilgisini göster"
+
+msgid "Show metadata on single posts"
+msgstr "Tekil yazıda tarih ve okuma bilgisini göster"
+
+msgid "Show post tags"
+msgstr "Yazı etiketlerini göster"
 
 msgid "Show previous and next posts"
 msgstr "Önceki ve sonraki yazıları göster"
 
+msgid "Show the author biography box"
+msgstr "Yazar biyografi kutusunu göster"
+
 msgid "Show the cart link (WooCommerce)"
 msgstr "Sepet bağlantısını göster (WooCommerce)"
+
+msgid "Show the comments section"
+msgstr "Yorum bölümünü göster"
 
 msgid "Show the dark/light toggle in the header"
 msgstr "Üst bölümde koyu/açık düğmesini göster"
 
 msgid "Show the decorative dot after the text logo"
 msgstr "Metin logosundan sonra dekoratif noktayı göster"
+
+msgid "Show the featured image caption"
+msgstr "Öne çıkan görselin açıklamasını göster"
 
 msgid "Show the language switcher when supported"
 msgstr "Desteklendiğinde dil seçiciyi göster"
@@ -1580,14 +1667,32 @@ msgstr "Kenar Çubuğu"
 msgid "Sidebar width (px)"
 msgstr "Kenar çubuğu genişliği (px)"
 
+msgid "Single featured image"
+msgstr "Tekil yazı öne çıkan görseli"
+
+msgid "Single featured image width"
+msgstr "Tekil yazı görsel genişliği"
+
+msgid "Single image aspect ratio"
+msgstr "Tekil görsel en-boy oranı"
+
+msgid "Single image sizing"
+msgstr "Tekil görsel boyutlandırması"
+
 msgid "Single language"
 msgstr "Tek dil"
+
+msgid "Single post content width (px)"
+msgstr "Tekil yazı içerik genişliği (px)"
 
 msgid "Single post footer override"
 msgstr "Tekil yazı altbilgi tercihi"
 
 msgid "Single post header override"
 msgstr "Tekil yazı üstbilgi tercihi"
+
+msgid "Single post layout and details"
+msgstr "Tekil yazı düzeni ve ayrıntılar"
 
 msgid "Site layout overrides"
 msgstr "Site yerleşimi istisnaları"
@@ -1648,6 +1753,9 @@ msgstr "Hafif"
 
 msgid "Some Elementor templates could not be saved. Please retry."
 msgstr "Bazı Elementor şablonları kaydedilemedi. Lütfen tekrar deneyin."
+
+msgid "Space between cards (px)"
+msgstr "Kartlar arası boşluk (px)"
 
 msgid "Stacked"
 msgstr "İki satırlı"

@@ -62,7 +62,7 @@ add_filter( 'user_has_cap', 'gnn_layout_capabilities' );
 
 /** Supported override keys have the same type/bounds as the global schema. */
 function gnn_layout_override_keys() {
-	return array( 'header_template', 'footer_template', 'header_preset', 'hero_style', 'hero_group', 'content_top_padding', 'content_bottom_padding' );
+	return array( 'header_template', 'footer_template', 'header_preset', 'hero_style', 'hero_group', 'content_top_padding', 'content_bottom_padding', 'post_content_width', 'post_image_layout', 'post_image_width', 'post_image_height_mode', 'post_image_ratio', 'post_featured_image_height', 'post_featured_image_fit', 'post_featured_image_position' );
 }
 
 /**
@@ -120,6 +120,8 @@ function gnn_render_layout_meta_box( $post ) {
 	wp_nonce_field( 'gnn_layout', 'gnn_layout_nonce' );
 	$meta = (array) get_post_meta( $post->ID, '_gnn_layout', true );
 	foreach ( gnn_layout_override_keys() as $key ) {
+		if ( 0 === strpos( $key, 'post_' ) && 'post' !== $post->post_type ) {
+			continue; }
 		$schema = gnn_platform_schema();
 		$field  = $schema[ $key ] ?? array( ucwords( str_replace( '_', ' ', $key ) ), 'number', '', 'pages', 0, 300 );
 		echo '<p><label for="gnn-layout-' . esc_attr( $key ) . '">' . esc_html( $field[0] ) . '</label>';
@@ -141,7 +143,7 @@ function gnn_render_layout_meta_box( $post ) {
 				echo '<option value="' . esc_attr( $value ) . '" ' . selected( (string) ( $meta[ $key ] ?? '' ), (string) $value, false ) . '>' . esc_html( $label ) . '</option>'; }
 			echo '</select>';
 		} else {
-			echo '<input type="number" min="0" max="300" id="gnn-layout-' . esc_attr( $key ) . '" name="gnn_layout[' . esc_attr( $key ) . ']" placeholder="' . esc_attr__( 'Inherit', 'gnn' ) . '" value="' . esc_attr( $meta[ $key ] ?? '' ) . '">'; }
+			echo '<input type="number" min="' . esc_attr( $field[4] ?? 0 ) . '" max="' . esc_attr( $field[5] ?? 300 ) . '" id="gnn-layout-' . esc_attr( $key ) . '" name="gnn_layout[' . esc_attr( $key ) . ']" placeholder="' . esc_attr__( 'Inherit', 'gnn' ) . '" value="' . esc_attr( $meta[ $key ] ?? '' ) . '">'; }
 		echo '</p>';
 	}
 }
@@ -158,6 +160,8 @@ function gnn_save_layout_meta( $id ) {
 	$valid  = array();
 	$schema = gnn_platform_schema();
 	foreach ( gnn_layout_override_keys() as $key ) {
+		if ( 0 === strpos( $key, 'post_' ) && 'post' !== get_post_type( $id ) ) {
+			continue; }
 		if ( ! isset( $input[ $key ] ) || ! is_scalar( $input[ $key ] ) || '' === $input[ $key ] ) {
 			continue; }
 		if ( isset( $schema[ $key ] ) && 'select' === $schema[ $key ][1] ) {
@@ -167,7 +171,7 @@ function gnn_save_layout_meta( $id ) {
 			$value = absint( $input[ $key ] );
 			if ( false !== strpos( $key, '_template' ) && $value && 'gnn_layout' !== get_post_type( $value ) ) {
 				continue; }
-			$valid[ $key ] = false !== strpos( $key, 'padding' ) ? min( 300, $value ) : $value;
+			$valid[ $key ] = isset( $schema[ $key ] ) && 'number' === $schema[ $key ][1] ? max( $schema[ $key ][4], min( $schema[ $key ][5], $value ) ) : $value;
 		}
 	}
 	update_post_meta( $id, '_gnn_layout', $valid );

@@ -52,3 +52,17 @@ body .gnn-hero--full-height,body.gnn-has-topbar .gnn-hero--full-height,body.gnn-
 
 .gnn-btn--secondary:hover { color:var(--fg); }
 .gnn-btn--outline:hover,.gnn-btn--text:hover { color:var(--accent-text); }
+
+/* Equal side tracks center the brand independently from menu/action lengths. */
+.gnn-header-centered .site-header__inner{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;}
+.gnn-header-centered .site-branding--center{grid-column:2;grid-row:1;margin:0;min-width:0;max-width:min(40vw,420px);}
+.gnn-header-centered .main-navigation--left{grid-column:1;grid-row:1;min-width:0;margin:0;}
+.gnn-header-right-group{grid-column:3;grid-row:1;display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:16px;min-width:0;}
+.gnn-header-centered .main-navigation--right{min-width:0;margin:0;}
+.gnn-header-centered .main-navigation .menu{flex-wrap:wrap;}
+.gnn-header-centered .main-navigation--right .menu{justify-content:flex-end;}
+.gnn-header-centered .header-actions{margin:0;min-width:0;flex-wrap:wrap;justify-content:flex-end;gap:12px;}
+.gnn-header-centered .menu-toggle{grid-column:1;grid-row:1;justify-self:start;}
+@media(max-width:600px){.gnn-header-centered .header-cta,.gnn-header-centered .gnn-languages{display:none;}.gnn-header-centered .header-actions{gap:8px;}}
+
+.gnn-header-centered .site-branding--center .site-logo{max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center;}

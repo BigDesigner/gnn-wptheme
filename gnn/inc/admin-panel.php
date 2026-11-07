@@ -106,6 +106,8 @@ add_action( 'admin_init', 'gnn_panel_settings' );
 function gnn_options_sanitize( $input ) {
 	$saved = (array) get_option( 'gnn_options', array() );
 	$out   = wp_parse_args( $saved, gnn_option_defaults() );
+	if ( ! array_key_exists( 'post_meta', $saved ) && array_key_exists( 'blog_meta', $saved ) ) {
+		$out['post_meta'] = (int) (bool) $saved['blog_meta']; }
 	if ( ! is_array( $input ) ) {
 		return $saved;
 	}
@@ -594,6 +596,7 @@ function gnn_panel_render() {
 		'header'     => __( 'Header', 'gnn' ),
 		'footer'     => __( 'Footer', 'gnn' ),
 		'pages'      => __( 'Pages Layout', 'gnn' ),
+		'blog'       => __( 'Blog', 'gnn' ),
 		'styles'     => __( 'Styles', 'gnn' ),
 		'typography' => __( 'Typography', 'gnn' ),
 		'code'       => __( 'Custom Code', 'gnn' ),
@@ -605,6 +608,7 @@ function gnn_panel_render() {
 		'header'     => 'align-center',
 		'footer'     => 'arrow-down-alt2',
 		'pages'      => 'admin-page',
+		'blog'       => 'admin-post',
 		'styles'     => 'art',
 		'typography' => 'editor-textcolor',
 		'code'       => 'editor-code',
@@ -913,31 +917,6 @@ function gnn_panel_render() {
 				gnn_field_number( 'title_overlay_bg_opacity', __( 'Overlay title background opacity (%)', 'gnn' ), 0, 100 );
 				?>
 
-				<p class="description"><?php esc_html_e( 'Blog: single post pages.', 'gnn' ); ?></p>
-				<?php gnn_field_number( 'post_featured_image_height', __( 'Blog image height (px)', 'gnn' ), 80, 800 ); ?>
-				<?php
-				gnn_field_select(
-					'post_featured_image_fit',
-					__( 'Blog image fit', 'gnn' ),
-					array(
-						'cover'   => __( 'Cover (fill and crop)', 'gnn' ),
-						'contain' => __( 'Contain (show the whole image)', 'gnn' ),
-						'fill'    => __( 'Fill (stretch)', 'gnn' ),
-					)
-				);
-				gnn_field_select(
-					'post_featured_image_position',
-					__( 'Blog image alignment', 'gnn' ),
-					array(
-						'top'    => __( 'Top', 'gnn' ),
-						'center' => __( 'Center', 'gnn' ),
-						'bottom' => __( 'Bottom', 'gnn' ),
-					),
-					__( 'Which part of the image stays visible when it gets cropped.', 'gnn' )
-				);
-				?>
-
-				<?php gnn_field_number( 'excerpt_length', __( 'Excerpt length (words)', 'gnn' ), 5, 100 ); ?>
 				<?php if ( class_exists( 'WooCommerce' ) ) : ?>
 					<?php gnn_field_number( 'shop_columns', __( 'Shop columns', 'gnn' ), 2, 6 ); ?>
 					<?php gnn_field_number( 'shop_per_page', __( 'Products per page', 'gnn' ), 2, 48 ); ?>
@@ -956,7 +935,21 @@ function gnn_panel_render() {
 	<?php gnn_platform_fields( 'pages' ); ?></div>
 </section>
 
-			<section id="gnn-tab-styles" class="gnn-tab">
+			<section id="gnn-tab-blog" class="gnn-tab">
+<h2><span class="dashicons dashicons-admin-post" aria-hidden="true"></span><?php esc_html_e( 'Blog', 'gnn' ); ?></h2>
+<p class="description"><?php esc_html_e( 'Listing and single-post settings are independent. For 1000px text with a 1200px image, set the content width to 1000, choose Independent width and set the image width to 1200. Full viewport width reaches both screen edges. All widths shrink safely on mobile.', 'gnn' ); ?></p>
+<p class="description"><?php esc_html_e( 'Fixed height uses the pixel height; Aspect ratio uses the selected ratio; Original proportions displays the complete original image. Post editor layout overrides take priority over these defaults. Elementor Pro templates control their own content geometry.', 'gnn' ); ?></p>
+<div class="gnn-panel-grid">
+	<?php
+	gnn_platform_fields( 'blog_archive' );
+	gnn_platform_fields( 'blog_cards' );
+	gnn_platform_fields( 'blog_single' );
+	gnn_platform_fields( 'blog_media' );
+	?>
+</div>
+</section>
+
+<section id="gnn-tab-styles" class="gnn-tab">
 				<h2><span class="dashicons dashicons-art" aria-hidden="true"></span><?php esc_html_e( 'Styles', 'gnn' ); ?></h2>
 				<p class="description"><?php esc_html_e( 'Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme\'s own current color for that mode — change it, or use Clear to go back to that default.', 'gnn' ); ?></p>
 

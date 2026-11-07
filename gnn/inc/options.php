@@ -197,6 +197,8 @@ function gnn_option( $key ) {
 	if ( array_key_exists( $key, $options ) ) {
 		return $options[ $key ];
 	}
+	if ( 'post_meta' === $key && array_key_exists( 'blog_meta', $options ) ) {
+		return (int) (bool) $options['blog_meta']; }
 	// An explicit panel value of 0 takes precedence over the old theme_mod.
 	if ( in_array( $key, array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x' ), true ) ) {
 		$legacy = get_theme_mod( $key, 0 );
@@ -415,7 +417,8 @@ function gnn_option_body_classes( $classes ) {
 	if ( 'left' === gnn_option( 'sidebar_position' ) ) {
 		$classes[] = 'gnn-sidebar-left';
 	}
-	$classes[] = 'gnn-header-' . sanitize_html_class( (string) gnn_option( 'header_layout' ) );
+	if ( 'legacy' === gnn_layout_value( 'header_preset' ) ) {
+		$classes[] = 'gnn-header-' . sanitize_html_class( (string) gnn_option( 'header_layout' ) ); }
 	$classes[] = 'gnn-menu-' . sanitize_html_class( (string) gnn_option( 'header_menu_align' ) );
 	$classes[] = 'gnn-fmenu-' . sanitize_html_class( (string) gnn_option( 'footer_menu_align' ) );
 	if ( gnn_option( 'mobile_dock' ) ) {

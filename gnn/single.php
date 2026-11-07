@@ -37,12 +37,14 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 						<div class="entry-author-row__name">
 							<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>"><?php the_author(); ?></a>
 						</div>
-						<?php gnn_entry_meta(); ?>
+						<?php gnn_entry_meta( 'single' ); ?>
 					</div>
 				</div>
-			<?php endif; ?></header>
+			<?php else : ?>
+				<?php gnn_entry_meta( 'single' ); ?>
+<?php endif; ?></header>
 
-			<?php gnn_post_thumbnail( 'gnn-cover', false ); // No empty placeholder on single posts. ?>
+			<?php gnn_single_featured_image(); ?>
 
 			<div class="entry-content">
 				<?php
@@ -57,10 +59,13 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 			</div>
 
 			<footer class="entry-footer">
-				<?php the_tags( '<div class="entry-tags">', '', '</div>' ); ?>
+				<?php
+				if ( gnn_option( 'post_show_tags' ) ) {
+					the_tags( '<div class="entry-tags">', '', '</div>' ); }
+				?>
 
 				<?php
-				if ( gnn_option( 'blog_author' ) ) :
+				if ( gnn_option( 'blog_author' ) && gnn_option( 'post_author_box' ) ) :
 					?>
 					<div class="author-box">
 					<?php echo get_avatar( get_the_author_meta( 'ID' ), 64, '', '', array( 'class' => 'author-box__avatar' ) ); ?>
@@ -86,7 +91,7 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 			</footer>
 
 			<?php
-			if ( comments_open() || get_comments_number() ) {
+			if ( gnn_option( 'post_show_comments' ) && ( comments_open() || get_comments_number() ) ) {
 				comments_template();
 			}
 			?>
