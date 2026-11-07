@@ -183,4 +183,17 @@
 			input.value = '';
 		}
 	} );
+
+ /* Keep dependent blog controls understandable without discarding saved values. */
+ function syncBlogControls(){
+  function value(key){var el=panel.querySelector('#gnn-'+key);return el?el.value:'';}
+  function show(key,visible){var el=panel.querySelector('#gnn-'+key);if(!el)return;var field=el.closest('.gnn-field');if(field){field.classList.add('gnn-blog-conditional');field.hidden=!(visible||(search&&search.value.trim()));}}
+  var layout=value('post_image_layout'),height=value('post_image_height_mode'),card=value('blog_card_image_mode');
+  var image=layout!=='hidden';
+  show('post_image_width',layout==='wide');show('post_image_height_mode',image);show('post_image_ratio',image&&height==='ratio');
+  show('post_featured_image_height',image&&height==='fixed');show('post_featured_image_fit',image&&height!=='natural');show('post_featured_image_position',image&&height!=='natural');show('post_image_caption',image);
+  show('blog_card_image_ratio',card==='ratio');show('blog_card_image_height',card==='fixed');show('blog_card_image_fit',card==='ratio'||card==='fixed');show('blog_card_image_position',card==='ratio'||card==='fixed');
+  var author=panel.querySelector('#gnn-blog_author');if(author)show('post_author_box',author.checked);
+ }
+ panel.addEventListener('change',syncBlogControls);if(search)search.addEventListener('input',syncBlogControls);syncBlogControls();
 } )();

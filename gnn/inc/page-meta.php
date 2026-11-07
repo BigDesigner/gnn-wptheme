@@ -206,6 +206,8 @@ function gnn_title_overlay_active() {
 	if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
 		return false;
 	}
+	if ( is_singular( 'post' ) && 'hidden' === gnn_blog_value( 'post_image_layout' ) ) {
+		return false; }
 	$override = get_post_meta( get_the_ID(), '_gnn_title_overlay', true );
 	if ( '1' === $override ) {
 		return true;

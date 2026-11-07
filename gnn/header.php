@@ -58,7 +58,7 @@
 					<?php gnn_the_logo(); ?>
 				</div>
 
-				<nav class="main-navigation main-navigation--right" aria-label="<?php esc_attr_e( 'Header right', 'gnn' ); ?>">
+				<div class="gnn-header-right-group"><nav class="main-navigation main-navigation--right" aria-label="<?php esc_attr_e( 'Header right', 'gnn' ); ?>">
 					<?php
 					if ( has_nav_menu( 'header-right' ) ) {
 						wp_nav_menu(
@@ -118,6 +118,10 @@
 					</a>
 				<?php endif; ?>
 			</div><!-- .header-actions -->
+			<?php
+			if ( $gnn_centered ) :
+				?>
+				</div><?php endif; ?>
 
 		</div><!-- .site-header__inner -->
 

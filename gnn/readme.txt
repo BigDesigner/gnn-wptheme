@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.0.4
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,18 @@ contents and third-party tracking plugins require their own consent configuratio
 Choose external delivery when a separate integration owns tracking. Turning off the
 theme loader does not remove tags installed outside the theme.
 
+== Blog layouts ==
+
+GNN > Theme > Blog separates listing layout, listing images, single-post details
+and single featured images. For 1000px text with a 1200px image, set Single post
+content width to 1000, choose Independent width and set image width to 1200.
+Choose Full viewport width for an edge-to-edge image. Original proportions shows
+the complete image; ratio and fixed-height modes allow cropping or contain fit.
+The listing has independent grid/list, columns, image sizing and excerpt controls.
+Post editor > Site layout overrides can override the single-post geometry, or
+inherit site defaults. Widths shrink to the available mobile viewport. A builder's
+own Single/Archive templates control their content geometry instead.
+
 == Updating and client customizations ==
 
 Install the parent theme normally; the optional gnn-child ZIP is the supported place
@@ -119,6 +131,14 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.1.0 =
+* Add a dedicated Blog panel for independent listing, card image, single-post and featured-image settings.
+* Support custom reading widths, wider featured images, full-viewport images and per-post geometry overrides.
+* Offer natural proportions, ratios, fixed heights, crop alignment and uncropped responsive image sources.
+* Add responsive listing columns, grid/list views, excerpts and independent post detail controls.
+* Keep date and reading metadata visible when author information is disabled.
+* Center header branding with equal side tracks regardless of menu/action widths.
 
 = 2.0.4 =
 * Render loading indicators before page content to avoid late overlays on streamed responses.

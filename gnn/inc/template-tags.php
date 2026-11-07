@@ -75,9 +75,11 @@ endif;
 if ( ! function_exists( 'gnn_entry_meta' ) ) :
 	/**
 	 * Post-card meta line: date — reading time.
+	 *
+	 * @param string $context Archive or single post.
 	 */
-	function gnn_entry_meta() {
-		if ( ! gnn_option( 'blog_meta' ) ) {
+	function gnn_entry_meta( $context = 'archive' ) {
+		if ( ! gnn_option( 'single' === $context ? 'post_meta' : 'blog_meta' ) ) {
 			return; }
 		// str_word_count() is byte-based: it treats the bytes of multibyte
 		// letters (ğ ı ş ö ü ç, Cyrillic, CJK, …) as word separators and badly
@@ -109,14 +111,15 @@ if ( ! function_exists( 'gnn_post_thumbnail' ) ) :
 	 *
 	 * @param string $size        Registered image size.
 	 * @param bool   $placeholder Whether to output the fallback block. Default true.
+	 * @param array  $attributes  Responsive image attributes.
 	 */
-	function gnn_post_thumbnail( $size = 'gnn-wide', $placeholder = true ) {
+	function gnn_post_thumbnail( $size = 'gnn-wide', $placeholder = true, $attributes = array() ) {
 		if ( post_password_required() || is_attachment() ) {
 			return;
 		}
 		if ( has_post_thumbnail() ) {
 			echo '<div class="post-thumbnail">';
-			the_post_thumbnail( $size );
+			the_post_thumbnail( $size, $attributes );
 			// Singular views only (the helper checks is_singular() itself), so
 			// card grids never get an overlay — and a single post whose title
 			// the overlay suppressed always gets it rendered back here.
