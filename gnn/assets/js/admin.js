@@ -129,13 +129,39 @@
 		}
 	} );
 
-	/* Color pickers: WordPress core's own Iris widget (same as Customizer)
-	   instead of the browser's native OS color dialog. Default `hide`
-	   behavior: a single swatch button collapsed by default, opening the
-	   picker (with its own typeable hex field) on click. */
-	if ( window.jQuery && jQuery.fn.wpColorPicker ) {
-		jQuery( '.gnn-color-picker' ).wpColorPicker( { palettes: false } );
-	}
+ /* Full-color editable fields, using the bundled WordPress Iris picker. */
+ if(window.jQuery&&jQuery.fn.wpColorPicker){
+  jQuery('.gnn-color-picker').each(function(){
+   var input=this,$input=jQuery(input),wrap,initialValue=input.value;
+   function paint(value){
+    if(!wrap)return;
+    var color=/^#[0-9a-f]{6}$/i.test(value)?value:input.dataset.defaultColor;
+    if(input.id==='gnn-accent_light'&&!input.value)color=document.getElementById('gnn-accent').value;
+    if(!/^#[0-9a-f]{6}$/i.test(color))color='#ffffff';
+    var channels=[1,3,5].map(function(i){var c=parseInt(color.slice(i,i+2),16)/255;return c<=.04045?c/12.92:Math.pow((c+.055)/1.055,2.4);});
+    var luminance=.2126*channels[0]+.7152*channels[1]+.0722*channels[2];
+    wrap.style.setProperty('--gnn-picker-color',color);
+    wrap.style.setProperty('--gnn-picker-ink',luminance>.179?'#000000':'#ffffff');
+    input.placeholder=color;
+   }
+   $input.wpColorPicker({palettes:false,width:220,change:function(event,ui){paint(ui.color.toString());if(wrap)markDirty();},clear:function(){paint('');if(wrap)markDirty();}});
+   $input.iris('option','controls',{horiz:'s',vert:'v',strip:'h'});
+   $input.val(initialValue);
+   wrap=input.closest('.wp-picker-container');if(!wrap)return;
+   wrap.classList.add('gnn-picker');
+   var toggle=wrap.querySelector('.wp-color-result'),holder=wrap.querySelector('.wp-picker-holder'),reset=wrap.querySelector('.wp-picker-default,.wp-picker-clear');
+   var label=input.getAttribute('aria-label')||Array.from(input.labels||[]).map(function(l){return l.textContent.trim();}).filter(Boolean).join(' — ');
+   if(toggle){toggle.setAttribute('aria-label',(text.chooseColor||'Choose color')+' — '+label);toggle.querySelector('.wp-color-result-text').classList.add('screen-reader-text');var arrow=document.createElement('span');arrow.className='dashicons dashicons-arrow-down-alt2';arrow.setAttribute('aria-hidden','true');toggle.appendChild(arrow);}
+   holder.querySelectorAll('.iris-square-value').forEach(function(control){control.setAttribute('aria-label',(text.chooseColor||'Choose color')+' — '+label);});
+   if(reset){holder.appendChild(reset);jQuery(reset).on('click',function(){paint(input.value);input.dispatchEvent(new Event('change',{bubbles:true}));});}
+   $input.on('input change',function(){paint(input.value);if(input.id==='gnn-accent'){var light=document.getElementById('gnn-accent_light');if(light&&!light.value)jQuery(light).triggerHandler('input');}});
+   function showPicker(){if(!wrap.classList.contains('wp-picker-active'))$input.wpColorPicker('open');$input.iris('show');}
+   input.addEventListener('click',showPicker);
+   if(toggle)toggle.addEventListener('click',function(){if(wrap.classList.contains('wp-picker-active'))$input.iris('show');});
+   wrap.addEventListener('keydown',function(event){if(event.key==='Escape'&&wrap.classList.contains('wp-picker-active')){$input.wpColorPicker('close');input.focus();event.stopPropagation();}});
+   paint(input.value);
+  });
+ }
 
 	/* "Clear" buttons on fields where an empty value means "theme default". */
 	document.addEventListener( 'click', function ( e ) {

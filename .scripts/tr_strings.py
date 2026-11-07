@@ -972,3 +972,5 @@ TRANSLATIONS.update({'%d setting groups found': '%d ayar grubu bulundu',
  'Workspace sections': 'Çalışma alanı bölümleri'})
 
 TRANSLATIONS['Changed fields (%d)'] = 'Değişen alanlar (%d)'
+
+TRANSLATIONS['Choose color'] = 'Renk seç'
