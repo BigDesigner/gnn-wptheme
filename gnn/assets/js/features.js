@@ -75,6 +75,12 @@
 				} );
 			}, { threshold: 0 } );
 			items.forEach( function ( el ) {
+				var rect = el.getBoundingClientRect();
+				// A deferred script must never hide content already in view.
+				if ( el.classList.contains( 'is-in' ) || ( rect.top < window.innerHeight && rect.bottom > 0 ) ) {
+					el.classList.add( 'is-in' );
+					return;
+				}
 				el.classList.add( 'gnn-anim--pending' );
 				io.observe( el );
 			} );
