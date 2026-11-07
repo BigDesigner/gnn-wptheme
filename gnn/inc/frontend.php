@@ -102,17 +102,21 @@ function gnn_render_topbar() {
 }
 
 /**
- * Print the footer widgets: scroll-to-top, mobile dock, preloader/overlay.
+ * Render loading indicators before content can be painted.
+ * Footer insertion can cover content that is already visible on streamed pages.
  */
-function gnn_render_footer_extras() {
-	// Preloader / loading overlay.
+function gnn_render_loading_indicators() {
 	if ( gnn_option( 'preloader' ) ) {
 		echo '<div class="gnn-preloader" aria-hidden="true"><span class="gnn-preloader__bar"></span></div>';
 	}
 	if ( gnn_option( 'loading_screen' ) ) {
 		echo '<div class="gnn-loading" aria-hidden="true"><span class="gnn-loading__spinner"></span></div>';
 	}
+}
+add_action( 'wp_body_open', 'gnn_render_loading_indicators', 0 );
 
+/** Print footer controls: scroll-to-top and mobile dock. */
+function gnn_render_footer_extras() {
 	// Scroll to top.
 	if ( gnn_option( 'scroll_top' ) ) {
 		printf(
