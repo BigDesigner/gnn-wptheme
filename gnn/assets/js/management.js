@@ -62,7 +62,7 @@
      body.set('start', '1');
     }
     var response = await fetch(config.ajax, {method: 'POST', credentials: 'same-origin', body: body});
-    var result = await response.json();
+    var result = await response.json().catch(function () { return {success: false, data: {message: config.failure}}; });
     if (!response.ok || !result.success) { throw new Error(result.data && result.data.message || config.failure); }
     next = false;
     status.textContent = config.busy + ' (' + result.data.done + ')';
@@ -91,4 +91,70 @@
  if (resume) {
   resume.addEventListener('click', function () { wipe(false, null, document.querySelector('.gnn-wipe-status'), resume); });
  }
+
+ var dialog = document.getElementById('gnn-demo-confirm');
+ var demoForm = dialog && dialog.querySelector('.gnn-demo-form');
+ var demoRunning = false;
+ async function replaceDemo(button, status, job, form) {
+  if (demoRunning) { return; }
+  demoRunning = true;
+  button.disabled = true;
+  if (dialog) { dialog.querySelector('.gnn-demo-cancel').disabled = true; }
+  status.textContent = config.busy;
+  try {
+   for (;;) {
+    var body = new URLSearchParams({action: 'gnn_demo_replace', nonce: config.demoNonce});
+    if (job) {
+     body.set('job', job);
+    } else {
+     body.set('start', '1');
+     body.set('profile', form.elements.profile.value);
+     body.set('confirm_delete', '1');
+     body.set('revision', form.elements.gnn_revision.value);
+    }
+    var response = await fetch(config.ajax, {method: 'POST', credentials: 'same-origin', body: body});
+    var result = await response.json().catch(function () { return {success: false, data: {message: config.failure}}; });
+    if (!response.ok || !result.success) { throw new Error(result.data && result.data.message || config.failure); }
+    job = result.data.job;
+    button.dataset.job = job;
+    if (result.data.phase === 'complete') {
+     status.textContent = config.done;
+     window.location.assign(result.data.redirect);
+     return;
+    }
+    status.textContent = (result.data.phase === 'import' ? config.installing : config.deleting) + ' (' + result.data.done + ')';
+    await new Promise(function (resolve) { window.setTimeout(resolve, 50); });
+   }
+  } catch (error) {
+   status.textContent = error.message || config.failure;
+   button.textContent = config.retry;
+   button.disabled = false;
+   if (dialog) { dialog.querySelector('.gnn-demo-cancel').textContent = config.close; }
+  } finally {
+   demoRunning = false;
+   if (dialog) { dialog.querySelector('.gnn-demo-cancel').disabled = false; }
+  }
+ }
+ if (dialog && demoForm) {
+  document.querySelectorAll('.gnn-demo-open').forEach(function (button) {
+   button.addEventListener('click', function () {
+    demoForm.elements.profile.value = button.dataset.profile;
+    dialog.querySelector('#gnn-demo-title').textContent = button.dataset.label;
+    dialog.showModal();
+   });
+  });
+  dialog.addEventListener('cancel', function (event) { if (demoRunning) { event.preventDefault(); } });
+  dialog.querySelector('.gnn-demo-cancel').addEventListener('click', function () { if (!demoRunning) { dialog.close(); if (demoForm.dataset.attempted) { window.location.assign(config.setup); } } });
+  demoForm.addEventListener('submit', function (event) {
+   event.preventDefault();
+   demoForm.dataset.attempted = '1';
+   var button = demoForm.querySelector('.gnn-demo-submit');
+   replaceDemo(button, demoForm.querySelector('.gnn-demo-status'), button.dataset.job || '', demoForm);
+  });
+ }
+ document.querySelectorAll('.gnn-demo-resume').forEach(function (button) {
+  button.addEventListener('click', function () {
+   replaceDemo(button, button.parentNode.querySelector('.gnn-demo-status'), button.dataset.job, null);
+  });
+ });
 })();

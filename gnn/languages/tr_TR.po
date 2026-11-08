@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.5.0\n"
+"Project-Id-Version: GNN 2.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 17:26+0000\n"
-"PO-Revision-Date: 2026-11-08 17:26+0000\n"
+"POT-Creation-Date: 2026-11-08 18:17+0000\n"
+"PO-Revision-Date: 2026-11-08 18:17+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -227,6 +227,9 @@ msgstr "Teklifi, ürünü ya da hikayeyi anlatan kısa bir destekleyici paragraf
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr "Etkileyici kısa bir giriş buraya ekleyin. Bu örnek metni bölümü, ürünü ya da hikayeyi anlatan kendi içeriğinizle değiştirin."
 
+msgid "Add draft pages"
+msgstr "Taslak sayfaları ekle"
+
 msgid "Add grid layout"
 msgstr "Izgara düzeni ekle"
 
@@ -301,6 +304,9 @@ msgstr "Tüm içerikler, siparişler, medya dosyaları, diğer kullanıcılar ve
 
 msgid "All groups"
 msgstr "Tüm gruplar"
+
+msgid "All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed."
+msgstr "Tüm sayfalar, yazılar, projeler, galeriler, slaytlar, menüler, yorumlar, siparişler ve medya dosyaları kalıcı olarak silinecek. Aktif tema, eklentiler ve kullanıcı hesapları korunacak. Seçilen demo kurulacak."
 
 msgid "All projects"
 msgstr "Tüm projeler"
@@ -611,6 +617,9 @@ msgstr "Eylem çağrısı"
 msgid "Call-to-action band"
 msgstr "Eylem çağrısı bandı"
 
+msgid "Cancel"
+msgstr "Vazgeç"
+
 msgid "Canopy Residences"
 msgstr "Gölgelik Konutları"
 
@@ -779,9 +788,6 @@ msgstr "Şirket ve üst bölüm yapılandırması"
 msgid "Company name"
 msgstr "Firma adı"
 
-msgid "Complete demo site"
-msgstr "Tam demo site"
-
 msgid "Completed."
 msgstr "Tamamlandı."
 
@@ -796,6 +802,9 @@ msgstr "Yapılandırma revizyonu"
 
 msgid "Configure and test form delivery, consent, SEO and language integrations."
 msgstr "Form gönderimini, izin, SEO ve dil entegrasyonlarını yapılandırıp test edin."
+
+msgid "Confirm content deletion to apply this demo."
+msgstr "Demoyu uygulamak için içeriklerin silinmesini onaylayın."
 
 msgid "Confirm import"
 msgstr "İçe aktarmayı onayla"
@@ -842,14 +851,26 @@ msgstr "İçerik ve blog düzeni"
 msgid "Content bottom spacing (px)"
 msgstr "İçerik alt boşluğu (px)"
 
+msgid "Content could not be deleted. Check the server and retry."
+msgstr "İçerik silinemedi. Sunucuyu kontrol edip yeniden deneyin."
+
+msgid "Content replacement is unavailable for this database."
+msgstr "Bu veritabanında içerik sıfırlanamıyor."
+
 msgid "Content top spacing (px)"
 msgstr "İçerik üst boşluğu (px)"
 
 msgid "Context first. People always."
 msgstr "Önce bağlam. Daima insan."
 
+msgid "Continue installation"
+msgstr "Kuruluma devam et"
+
 msgid "Continue reset"
 msgstr "Sıfırlamaya devam et"
+
+msgid "Continue the demo installation from Setup wizard."
+msgstr "Demo kurulumuna Kurulum Sihirbazı’ndan devam edin."
 
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr "En-boy oranını koruyarak logo yüksekliğini kontrol eder (varsayılan: 40px). Çok geniş, afiş tipi logolar, alt bölüm sütunu darsa biraz daha kısa görünebilir."
@@ -974,11 +995,17 @@ msgstr "Varsayılan kenar çubuğu konumu"
 msgid "Define the specification, coordinate the work and document the handover."
 msgstr "Gereksinimleri belirleyin, çalışmayı koordine edin ve teslimatı belgeleyin."
 
+msgid "Delete and apply"
+msgstr "Sil ve uygula"
+
 msgid "Delete local recovery history"
 msgstr "Yerel kurtarma geçmişini sil"
 
 msgid "Delete the listed data and reset WordPress."
 msgstr "Belirtilen verileri sil ve WordPress’i sıfırla."
+
+msgid "Deleting site content…"
+msgstr "Site içerikleri siliniyor…"
 
 msgid "Deliver"
 msgstr "Hayata geçir"
@@ -988,6 +1015,9 @@ msgstr "Teslim et ve değerlendir"
 
 msgid "Delivery information"
 msgstr "Teslimat bilgileri"
+
+msgid "Demo installation"
+msgstr "Demo kurulumu"
 
 msgid "Describe the scope, who it helps and what a client can expect. Add your own process and relevant examples."
 msgstr "Kapsamı, kimlere yarar sağladığını ve müşterinin ne bekleyebileceğini açıklayın. Kendi sürecinizi ve ilgili örneklerinizi ekleyin."
@@ -1064,9 +1094,6 @@ msgstr "Maskelenmiş destek özetini indir"
 msgid "Download support summary"
 msgstr "Destek özetini indir"
 
-msgid "Draft pages only"
-msgstr "Yalnız taslak sayfalar"
-
 msgid "Edit Slide"
 msgstr "Slaytı Düzenle"
 
@@ -1105,6 +1132,9 @@ msgstr "Yükseltilmiş yüzey"
 
 msgid "Email"
 msgstr "E-posta"
+
+msgid "Enable JavaScript to install a demo."
+msgstr "Demo yüklemek için JavaScript’i etkinleştirin."
 
 msgid "Enable maintenance mode for visitors"
 msgstr "Ziyaretçiler için bakım modunu etkinleştir"
@@ -1637,9 +1667,6 @@ msgstr "Görsel oranı"
 msgid "Image sizes"
 msgstr "Görsel boyutları"
 
-msgid "Import"
-msgstr "İçe aktar"
-
 msgid "Import Elementor starter pages"
 msgstr "Elementor başlangıç sayfalarını içe aktar"
 
@@ -1691,8 +1718,14 @@ msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i k
 msgid "Install demo site"
 msgstr "Demo siteyi yükle"
 
+msgid "Installation stopped. Check the server and retry."
+msgstr "Kurulum durdu. Sunucuyu kontrol edip yeniden deneyin."
+
 msgid "Installed version: %s"
 msgstr "Kurulu sürüm: %s"
+
+msgid "Installing demo…"
+msgstr "Demo yükleniyor…"
 
 msgid "Integrations"
 msgstr "Entegrasyonlar"
@@ -2093,6 +2126,9 @@ msgstr "Sürekli iş ortaklığı"
 msgid "Only applies while the toggle above is visible."
 msgstr "Yalnızca yukarıdaki düğme görünürken geçerlidir."
 
+msgid "Only the administrator who started this installation can continue."
+msgstr "Yalnızca kurulumu başlatan yönetici devam edebilir."
+
 msgid "Only the administrator who started this reset can continue."
 msgstr "Yalnızca sıfırlamayı başlatan yönetici devam edebilir."
 
@@ -2185,9 +2221,6 @@ msgstr "Sayfalar"
 
 msgid "Pages Layout"
 msgstr "Sayfa Düzeni"
-
-msgid "Pages are added as drafts. Existing pages, menus and your homepage stay unchanged."
-msgstr "Sayfalar taslak olarak eklenir. Mevcut sayfalar, menüler ve ana sayfanız korunur."
 
 msgid "Pages:"
 msgstr "Sayfalar:"
@@ -2372,12 +2405,6 @@ msgstr "İletişim telefonu"
 msgid "Public spaces"
 msgstr "Kamusal alanlar"
 
-msgid "Publish the demo and apply its homepage, menus and design."
-msgstr "Demoyu yayımla; ana sayfasını, menülerini ve görünümünü uygula."
-
-msgid "Publishes pages, projects, galleries, slides and journal posts. Sets the homepage, menus and design settings. Existing content is kept."
-msgstr "Sayfalar, projeler, galeriler, slaytlar ve blog yazıları yayımlanır. Ana sayfa, menüler ve görünüm ayarlanır. Mevcut içerikler korunur."
-
 msgid "Question four goes here?"
 msgstr "Dördüncü soru buraya gelir?"
 
@@ -2459,9 +2486,6 @@ msgstr "WordPress’i sıfırla"
 msgid "Reset all GNN Theme settings to defaults?"
 msgstr "Tüm GNN Tema ayarları varsayılana sıfırlansın mı?"
 
-msgid "Reset design settings first"
-msgstr "Önce tasarım ayarlarını sıfırla"
-
 msgid "Reset initialization failed. Continue after checking the database."
 msgstr "Sıfırlama tamamlanamadı. Veritabanını kontrol edip devam edin."
 
@@ -2476,12 +2500,6 @@ msgstr "Önce görünüm ayarlarını varsayılana döndür"
 
 msgid "Reset presentation settings when applying a new profile. Identity, integrations, customer code and central content are preserved. A configuration snapshot is created first."
 msgstr "Yeni profil uygularken görünüm ayarlarını sıfırlayabilirsiniz. Kimlik, entegrasyonlar, özel kod ve merkezi içerikler korunur. Önce yapılandırma yedeği oluşturulur."
-
-msgid "Reset requires a local, standard uploads folder."
-msgstr "Sıfırlama için standart, yerel medya klasörü gerekli."
-
-msgid "Reset requires standard uploads and no must-use plugins."
-msgstr "Sıfırlama için standart medya yolu gerekli; zorunlu eklentiler bulunmamalı."
 
 msgid "Reset settings"
 msgstr "Ayarları sıfırla"
@@ -2528,14 +2546,8 @@ msgstr "Yeniden kullanılabilir altbilgi"
 msgid "Reusable header"
 msgstr "Yeniden kullanılabilir üstbilgi"
 
-msgid "Review"
-msgstr "İncele"
-
 msgid "Review and confirm the operation first."
 msgstr "Önce işlemi inceleyip onaylayın."
-
-msgid "Review design"
-msgstr "Tasarımı incele"
 
 msgid "Review imported demo drafts"
 msgstr "İçe aktarılan örnek taslakları incele"
@@ -2656,6 +2668,9 @@ msgstr "Önizlemeden sonra ayarlar değişti. Dosyayı yeniden önizleyin."
 
 msgid "Settings changed after this form was opened. Your changes were not applied. Reload the latest settings before trying again."
 msgstr "Bu form açıldıktan sonra ayarlar değişti. Değişiklikleriniz uygulanmadı. Tekrar denemeden önce güncel ayarları yükleyin."
+
+msgid "Settings changed. Reload and try again."
+msgstr "Ayarlar değişti. Sayfayı yenileyip yeniden deneyin."
 
 msgid "Settings exceed the 1 MB limit. Nothing was changed."
 msgstr "Ayarlar 1 MB sınırını aşıyor. Hiçbir şey değiştirilmedi."
@@ -3017,8 +3032,17 @@ msgstr "Fikir"
 msgid "The idea behind the space."
 msgstr "Mekânın ardındaki fikir."
 
+msgid "The installation has not finished. Continue from where it stopped."
+msgstr "Kurulum tamamlanmadı. Kaldığı yerden devam edin."
+
 msgid "The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages."
 msgstr "Son on yerel yapılandırma kaydı saklanır. Bu kayıtlar veritabanı ve dosya yedeğinin yerine geçmez. Kurtarma, müşteri sayfalarını silmez veya geri almaz."
+
+msgid "The media folder must be a local directory inside wp-content."
+msgstr "Medya klasörü wp-content içinde yerel bir klasör olmalı."
+
+msgid "The media folder overlaps theme or plugin files."
+msgstr "Medya klasörü tema veya eklenti dosyalarıyla çakışıyor."
 
 msgid "The operation stopped. Retry to continue."
 msgstr "İşlem durdu. Devam etmek için yeniden deneyin."
@@ -3088,6 +3112,9 @@ msgstr "Bu işlem geri alınamaz. Önce veritabanı ve dosya yedeği alın."
 
 msgid "This demo requires Elementor."
 msgstr "Bu demo için Elementor gerekli."
+
+msgid "This installation is not available."
+msgstr "Bu kuruluma erişilemiyor."
 
 msgid "This preview expired or was not confirmed. Preview the file again."
 msgstr "Bu önizlemenin süresi doldu veya onaylanmadı. Dosyayı yeniden önizleyin."

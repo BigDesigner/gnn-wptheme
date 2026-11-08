@@ -56,12 +56,17 @@ function gnn_management_assets( $hook ) {
 		'gnn-management',
 		'gnnManagement',
 		array(
-			'ajax'    => admin_url( 'admin-ajax.php' ),
-			'nonce'   => wp_create_nonce( 'gnn_wipe' ),
-			'busy'    => __( 'Working…', 'gnn' ),
-			'retry'   => __( 'Retry', 'gnn' ),
-			'done'    => __( 'Completed.', 'gnn' ),
-			'failure' => __( 'The operation stopped. Retry to continue.', 'gnn' ),
+			'ajax'       => admin_url( 'admin-ajax.php' ),
+			'nonce'      => wp_create_nonce( 'gnn_wipe' ),
+			'demoNonce'  => wp_create_nonce( 'gnn_demo_replace' ),
+			'close'      => __( 'Close', 'gnn' ),
+			'setup'      => admin_url( 'admin.php?page=gnn-workspace' ),
+			'deleting'   => __( 'Deleting site content…', 'gnn' ),
+			'installing' => __( 'Installing demo…', 'gnn' ),
+			'busy'       => __( 'Working…', 'gnn' ),
+			'retry'      => __( 'Retry', 'gnn' ),
+			'done'       => __( 'Completed.', 'gnn' ),
+			'failure'    => __( 'The operation stopped. Retry to continue.', 'gnn' ),
 		)
 	);
 }
@@ -74,6 +79,12 @@ function gnn_workspace_page() {
 		return;
 	}
 	gnn_management_open( __( 'Setup wizard', 'gnn' ) );
+	$job = get_option( 'gnn_wipe_job' );
+	if ( is_array( $job ) && 'demo' === ( $job['kind'] ?? '' ) ) {
+		gnn_demo_resume_screen( $job );
+		echo '</div>';
+		return;
+	}
 	$path = isset( $_GET['path'] ) && is_string( $_GET['path'] ) ? sanitize_key( wp_unslash( $_GET['path'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only step.
 	if ( ! in_array( $path, array( 'ready', 'scratch' ), true ) ) {
 		echo '<div class="gnn-choice-grid">';
@@ -86,7 +97,7 @@ function gnn_workspace_page() {
 		echo '</div></div>';
 		return;
 	}
-	echo '<ol class="gnn-steps"><li>' . esc_html__( 'Choose', 'gnn' ) . '</li><li>' . esc_html__( 'Review', 'gnn' ) . '</li><li>' . esc_html__( 'Apply', 'gnn' ) . '</li></ol>';
+
 	if ( 'scratch' === $path ) {
 		gnn_management_form_open( 'scratch' );
 		echo '<div class="gnn-settings-card gnn-card-content">';
@@ -100,36 +111,44 @@ function gnn_workspace_page() {
 		echo '</div></form></div>';
 		return;
 	}
-	$profile  = isset( $_GET['profile'] ) && is_string( $_GET['profile'] ) ? sanitize_key( wp_unslash( $_GET['profile'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only preview.
 	$profiles = gnn_starter_profiles();
-	if ( isset( $profiles[ $profile ] ) ) {
-		$item = $profiles[ $profile ];
-		echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html( $item['label'] ) . '</h2>';
-		gnn_plugin_cards( 'commerce' === $profile );
-		$ready = gnn_starter_elementor_available() && ( 'commerce' !== $profile || class_exists( 'WooCommerce' ) );
-		if ( 'architecture' === $profile ) {
-			echo '<h3>' . esc_html__( 'Complete demo site', 'gnn' ) . '</h3><p>' . esc_html__( 'Publishes pages, projects, galleries, slides and journal posts. Sets the homepage, menus and design settings. Existing content is kept.', 'gnn' ) . '</p>';
-			gnn_management_form_open( 'demo' );
-			echo '<input type="hidden" name="profile" value="' . esc_attr( $profile ) . '"><label><input type="checkbox" name="confirm_demo" value="1" required> ' . esc_html__( 'Publish the demo and apply its homepage, menus and design.', 'gnn' ) . '</label>';
-			submit_button( __( 'Install demo site', 'gnn' ), 'primary', 'submit', true, $ready ? array() : array( 'disabled' => 'disabled' ) );
-			echo '<p class="gnn-operation-status" role="status"></p></form><hr>';
+	$ready    = gnn_starter_elementor_available();
+	if ( ! $ready ) {
+		gnn_plugin_cards();
+	}
+	echo '<div class="gnn-choice-grid">';
+	foreach ( $profiles as $slug => $item ) {
+		$preview = 'architecture' === $slug ? 'demo/architecture/image-18.jpg' : 'profiles/' . $slug . '.svg';
+		echo '<article class="gnn-settings-card gnn-profile-card"><img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/' . $preview ) . '" alt="' . esc_attr( $item['label'] ) . '" width="1600" height="1100"><h2>' . esc_html( $item['label'] ) . '</h2>';
+		if ( 'architecture' === $slug ) {
+			echo '<button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $slug ) . '" data-label="' . esc_attr( $item['label'] ) . '"' . disabled( ! $ready, true, false ) . '>' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
+		} else {
+			gnn_management_form_open( 'import' );
+			echo '<input type="hidden" name="profile" value="' . esc_attr( $slug ) . '">';
+			submit_button( __( 'Add draft pages', 'gnn' ), 'secondary', 'submit', true, $ready && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) ) ? array() : array( 'disabled' => 'disabled' ) );
+			echo '<p class="gnn-operation-status" role="status"></p></form>';
 		}
-		echo '<h3>' . esc_html__( 'Draft pages only', 'gnn' ) . '</h3>';
-		echo '<p>' . esc_html__( 'Pages are added as drafts. Existing pages, menus and your homepage stay unchanged.', 'gnn' ) . '</p>';
-		gnn_management_form_open( 'import' );
-		echo '<input type="hidden" name="profile" value="' . esc_attr( $profile ) . '"><label><input type="checkbox" name="reset_design" value="1"> ' . esc_html__( 'Reset design settings first', 'gnn' ) . '</label>';
-		$ready = gnn_starter_elementor_available() && ( 'commerce' !== $profile || class_exists( 'WooCommerce' ) );
-		submit_button( __( 'Import', 'gnn' ), 'primary', 'submit', true, $ready ? array() : array( 'disabled' => 'disabled' ) );
-		echo '<p class="gnn-operation-status" role="status"></p></form></section>';
-	} else {
-		echo '<div class="gnn-choice-grid">';
-		foreach ( $profiles as $slug => $item ) {
-			$preview = 'architecture' === $slug ? 'architecture/courtyard.svg' : 'profiles/' . $slug . '.svg';
-			echo '<article class="gnn-settings-card gnn-profile-card"><img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/' . $preview ) . '" alt="' . esc_attr( $item['label'] ) . '" width="1600" height="1100"><h2>' . esc_html( $item['label'] ) . '</h2><a class="button button-primary" href="' . esc_url( admin_url( 'admin.php?page=gnn-workspace&path=ready&profile=' . $slug ) ) . '">' . esc_html__( 'Review', 'gnn' ) . '</a></article>';
-		}
-		echo '</div>';
+		echo '</article>';
 	}
 	echo '</div>';
+	gnn_demo_confirmation();
+	echo '</div>';
+}
+
+/** One explicit confirmation for replacing site content with a demo. */
+function gnn_demo_confirmation() {
+	echo '<dialog id="gnn-demo-confirm" class="gnn-demo-dialog" aria-labelledby="gnn-demo-title" aria-describedby="gnn-demo-scope"><h2 id="gnn-demo-title">' . esc_html__( 'Install demo site', 'gnn' ) . '</h2><p id="gnn-demo-scope">' . esc_html__( 'All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed.', 'gnn' ) . '</p><form class="gnn-demo-form"><input type="hidden" name="profile" value=""><input type="hidden" name="confirm_delete" value="1">';
+	gnn_configuration_revision_field();
+	echo '<p class="gnn-demo-status" role="status" aria-live="polite"></p><div class="gnn-demo-actions"><button type="button" class="button gnn-demo-cancel" autofocus>' . esc_html__( 'Cancel', 'gnn' ) . '</button><button type="submit" class="button button-primary gnn-demo-submit">' . esc_html__( 'Delete and apply', 'gnn' ) . '</button></div></form></dialog><noscript><p>' . esc_html__( 'Enable JavaScript to install a demo.', 'gnn' ) . '</p></noscript>';
+}
+
+/**
+ * Resume the existing installation without a second deletion confirmation.
+ *
+ * @param array $job Existing content replacement job.
+ */
+function gnn_demo_resume_screen( $job ) {
+	echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Demo installation', 'gnn' ) . '</h2><p>' . esc_html__( 'The installation has not finished. Continue from where it stopped.', 'gnn' ) . '</p><button type="button" class="button button-primary gnn-demo-resume" data-job="' . esc_attr( $job['id'] ) . '">' . esc_html__( 'Continue installation', 'gnn' ) . '</button><p class="gnn-demo-status" role="status"></p></section>';
 }
 
 /** Compact plugin cards use WordPress permission-checked actions.
@@ -344,7 +363,7 @@ function gnn_template_catalog() {
 		$home = gnn_starter_owned_page( $profile, 'elementor' );
 		$ids  = $home ? (array) get_post_meta( $home->ID, '_gnn_starter_pages', true ) : array();
 		if ( ! $ids ) {
-			echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-workspace&path=ready&profile=' . $profile ) ) . '">' . esc_html__( 'Review design', 'gnn' ) . '</a>';
+			echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-workspace&path=ready&profile=' . $profile ) ) . '">' . esc_html__( 'Setup wizard', 'gnn' ) . '</a>';
 		}
 		foreach ( $ids as $id ) {
 			if ( ! current_user_can( 'edit_post', $id ) || ! get_post( $id ) ) {
@@ -442,12 +461,7 @@ function gnn_management_handle() {
 	$operation = isset( $_POST['operation'] ) && is_string( $_POST['operation'] ) ? sanitize_key( wp_unslash( $_POST['operation'] ) ) : '';
 	$result    = new WP_Error( 'gnn_operation', __( 'Invalid operation.', 'gnn' ) );
 	$target    = 'gnn-workspace';
-	if ( 'demo' === $operation ) {
-		$profile   = isset( $_POST['profile'] ) && is_string( $_POST['profile'] ) ? sanitize_key( wp_unslash( $_POST['profile'] ) ) : '';
-		$confirmed = isset( $_POST['confirm_demo'] ) && '1' === $_POST['confirm_demo'];
-		$result    = gnn_import_demo_site( $profile, $confirmed, gnn_configuration_form_revision() );
-		$target    = 'gnn-workspace&path=ready&profile=' . rawurlencode( $profile );
-	} elseif ( 'import' === $operation ) {
+	if ( 'import' === $operation ) {
 		$profile = isset( $_POST['profile'] ) && is_string( $_POST['profile'] ) ? sanitize_key( wp_unslash( $_POST['profile'] ) ) : '';
 		$result  = gnn_configuration_begin( 'setup', gnn_configuration_form_revision() );
 		if ( ! is_wp_error( $result ) ) {
@@ -515,7 +529,7 @@ function gnn_management_handle() {
 	}
 	if ( 'import' === $operation && is_wp_error( $result ) && isset( $profile ) ) {
 		$target = 'gnn-workspace&path=ready&profile=' . rawurlencode( $profile ); }
-	if ( ! is_wp_error( $result ) && in_array( $operation, array( 'scratch', 'import', 'demo' ), true ) ) {
+	if ( ! is_wp_error( $result ) && in_array( $operation, array( 'scratch', 'import' ), true ) ) {
 		update_option( 'gnn_setup_completed', true, false );
 	}
 	if ( 'design' === $operation ) {
