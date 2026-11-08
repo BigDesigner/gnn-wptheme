@@ -1,12 +1,25 @@
-# Ignored local agent & development folders
+# Local agent, memory and specification folders
 .agents/
-.build/
+.memory-bank/
+.tasks/
+.specs/
 .claude/
 .temp/
+.build/
 vendor/
+node_modules/
 
 # Zip outputs & archives
 *.zip
+
+# Local developer & test files
+.scripts/tests/
+.scripts/*.mjs
+.scripts/audit-scan.py
+composer.lock
+composer.json
+.phpcs.xml.dist
+AGENTS.md
 
 # OS & IDE temporary files
 __pycache__/
@@ -15,3 +28,4 @@ __pycache__/
 Thumbs.db
 .vscode/
 .idea/
+
