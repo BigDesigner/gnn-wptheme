@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.5.1\n"
+"Project-Id-Version: GNN 2.5.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 18:17+0000\n"
-"PO-Revision-Date: 2026-11-08 18:17+0000\n"
+"POT-Creation-Date: 2026-11-09 02:02+0000\n"
+"PO-Revision-Date: 2026-11-09 02:02+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -128,7 +128,7 @@ msgstr ""
 msgid "A database table could not be reset."
 msgstr ""
 
-#: inc/demo-reset.php:104
+#: inc/demo-reset.php:115
 #: inc/demo-site.php:131
 msgid "A demo image is missing. Reinstall the theme."
 msgstr ""
@@ -236,7 +236,7 @@ msgid "Accent"
 msgstr ""
 
 #: inc/admin-panel.php:1207
-#: inc/admin-screens.php:108
+#: inc/admin-screens.php:110
 #: inc/customizer.php:59
 msgid "Accent color"
 msgstr ""
@@ -261,7 +261,7 @@ msgstr ""
 msgid "Action label"
 msgstr ""
 
-#: inc/admin-screens.php:172
+#: inc/admin-screens.php:174
 msgid "Activate"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgstr ""
 msgid "Activate WooCommerce to display the live product collection."
 msgstr ""
 
-#: inc/admin-screens.php:170
+#: inc/admin-screens.php:172
 msgid "Active"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgstr ""
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr ""
 
-#: inc/admin-screens.php:128
+#: inc/admin-screens.php:130
 msgid "Add draft pages"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgstr ""
 msgid "Add reusable block"
 msgstr ""
 
-#: inc/admin-screens.php:360
+#: inc/admin-screens.php:362
 msgid "Add template"
 msgstr ""
 
@@ -367,7 +367,7 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: inc/admin-screens.php:176
+#: inc/admin-screens.php:178
 msgid "Administrator access required."
 msgstr ""
 
@@ -407,7 +407,7 @@ msgstr ""
 msgid "All groups"
 msgstr ""
 
-#: inc/admin-screens.php:140
+#: inc/admin-screens.php:142
 msgid "All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed."
 msgstr ""
 
@@ -457,9 +457,9 @@ msgstr ""
 msgid "Announcement text"
 msgstr ""
 
-#: inc/demo-reset.php:112
-#: inc/demo-reset.php:118
-#: inc/demo-reset.php:149
+#: inc/demo-reset.php:123
+#: inc/demo-reset.php:129
+#: inc/demo-reset.php:163
 msgid "Another operation is running."
 msgstr ""
 
@@ -493,7 +493,7 @@ msgstr ""
 msgid "Appears on archives and pages with a sidebar."
 msgstr ""
 
-#: inc/admin-screens.php:110
+#: inc/admin-screens.php:112
 msgid "Apply"
 msgstr ""
 
@@ -540,6 +540,7 @@ msgstr ""
 msgid "Architecture / Interiors / Landscape"
 msgstr ""
 
+#: inc/demo-reset.php:298
 #: inc/demo-site.php:311
 msgid "Architecture / Selected projects"
 msgstr ""
@@ -656,7 +657,7 @@ msgstr ""
 msgid "Autoplay interval (seconds)"
 msgstr ""
 
-#: inc/admin-screens.php:444
+#: inc/admin-screens.php:446
 msgid "Available"
 msgstr ""
 
@@ -828,7 +829,7 @@ msgstr ""
 msgid "Button style"
 msgstr ""
 
-#: inc/admin-screens.php:270
+#: inc/admin-screens.php:272
 msgid "Button styles"
 msgstr ""
 
@@ -848,7 +849,7 @@ msgstr ""
 msgid "Call-to-action band"
 msgstr ""
 
-#: inc/admin-screens.php:142
+#: inc/admin-screens.php:144
 msgid "Cancel"
 msgstr ""
 
@@ -948,7 +949,7 @@ msgstr ""
 msgid "Changed fields (%d)"
 msgstr ""
 
-#: inc/admin-screens.php:551
+#: inc/admin-screens.php:553
 msgid "Changes saved."
 msgstr ""
 
@@ -977,7 +978,7 @@ msgstr ""
 msgid "Choose Gutenberg or Elementor."
 msgstr ""
 
-#: inc/admin-screens.php:483
+#: inc/admin-screens.php:485
 msgid "Choose a published block."
 msgstr ""
 
@@ -1111,7 +1112,7 @@ msgstr ""
 msgid "Configure and test form delivery, consent, SEO and language integrations."
 msgstr ""
 
-#: inc/demo-reset.php:92
+#: inc/demo-reset.php:103
 msgid "Confirm content deletion to apply this demo."
 msgstr ""
 
@@ -1181,14 +1182,14 @@ msgstr ""
 msgid "Content bottom spacing (px)"
 msgstr ""
 
-#: inc/demo-reset.php:236
-#: inc/demo-reset.php:256
+#: inc/demo-reset.php:258
+#: inc/demo-reset.php:281
 msgid "Content could not be deleted. Check the server and retry."
 msgstr ""
 
-#: inc/demo-reset.php:35
-#: inc/demo-reset.php:68
-#: inc/demo-reset.php:249
+#: inc/demo-reset.php:36
+#: inc/demo-reset.php:69
+#: inc/demo-reset.php:83
 msgid "Content replacement is unavailable for this database."
 msgstr ""
 
@@ -1200,7 +1201,7 @@ msgstr ""
 msgid "Context first. People always."
 msgstr ""
 
-#: inc/admin-screens.php:151
+#: inc/admin-screens.php:153
 msgid "Continue installation"
 msgstr ""
 
@@ -1294,7 +1295,7 @@ msgstr ""
 msgid "Create configuration snapshot"
 msgstr ""
 
-#: inc/admin-screens.php:408
+#: inc/admin-screens.php:410
 msgid "Create snapshot"
 msgstr ""
 
@@ -1372,7 +1373,7 @@ msgstr ""
 msgid "Daylight shapes how a room feels throughout the day. We begin with orientation, depth and the movement of the sun, then tune each opening to balance brightness, privacy and summer shade."
 msgstr ""
 
-#: inc/admin-screens.php:441
+#: inc/admin-screens.php:443
 msgid "Debug"
 msgstr ""
 
@@ -1389,7 +1390,7 @@ msgstr ""
 msgid "Define the specification, coordinate the work and document the handover."
 msgstr ""
 
-#: inc/admin-screens.php:142
+#: inc/admin-screens.php:144
 msgid "Delete and apply"
 msgstr ""
 
@@ -1418,7 +1419,7 @@ msgstr ""
 msgid "Delivery information"
 msgstr ""
 
-#: inc/admin-screens.php:151
+#: inc/admin-screens.php:153
 msgid "Demo installation"
 msgstr ""
 
@@ -1451,7 +1452,7 @@ msgid "Design replacement and cleanup"
 msgstr ""
 
 #: inc/admin-screens.php:19
-#: inc/admin-screens.php:389
+#: inc/admin-screens.php:391
 msgid "Design system"
 msgstr ""
 
@@ -1495,7 +1496,7 @@ msgstr ""
 msgid "Disable the emoji script"
 msgstr ""
 
-#: inc/admin-screens.php:441
+#: inc/admin-screens.php:443
 #: inc/platform.php:132
 #: inc/workspace.php:235
 msgid "Disabled"
@@ -1521,7 +1522,7 @@ msgstr ""
 msgid "Download masked support summary"
 msgstr ""
 
-#: inc/admin-screens.php:451
+#: inc/admin-screens.php:453
 msgid "Download support summary"
 msgstr ""
 
@@ -1537,11 +1538,11 @@ msgstr ""
 msgid "Edit project"
 msgstr ""
 
-#: inc/admin-screens.php:244
+#: inc/admin-screens.php:246
 msgid "Edit selected"
 msgstr ""
 
-#: inc/admin-screens.php:372
+#: inc/admin-screens.php:374
 #: inc/workspace.php:146
 msgid "Edit with Elementor"
 msgstr ""
@@ -1582,7 +1583,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: inc/admin-screens.php:142
+#: inc/admin-screens.php:144
 msgid "Enable JavaScript to install a demo."
 msgstr ""
 
@@ -1598,12 +1599,12 @@ msgstr ""
 msgid "Enable theme updates"
 msgstr ""
 
-#: inc/admin-screens.php:441
+#: inc/admin-screens.php:443
 #: inc/workspace.php:235
 msgid "Enabled"
 msgstr ""
 
-#: inc/admin-screens.php:515
+#: inc/admin-screens.php:517
 msgid "Enter a valid color."
 msgstr ""
 
@@ -1635,7 +1636,7 @@ msgstr ""
 msgid "Excerpt length (words)"
 msgstr ""
 
-#: inc/admin-screens.php:274
+#: inc/admin-screens.php:276
 msgid "Exclude from search"
 msgstr ""
 
@@ -1892,7 +1893,7 @@ msgstr ""
 msgid "Force on for this page"
 msgstr ""
 
-#: inc/admin-screens.php:269
+#: inc/admin-screens.php:271
 msgid "Form fields"
 msgstr ""
 
@@ -1944,7 +1945,7 @@ msgstr ""
 msgid "Full-stack security, one accountable partner."
 msgstr ""
 
-#: inc/admin-screens.php:393
+#: inc/admin-screens.php:395
 msgid "GNN"
 msgstr ""
 
@@ -2065,7 +2066,7 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: inc/admin-screens.php:271
+#: inc/admin-screens.php:273
 msgid "Global colors"
 msgstr ""
 
@@ -2106,7 +2107,7 @@ msgstr ""
 msgid "Grid layout ID"
 msgstr ""
 
-#: inc/admin-screens.php:273
+#: inc/admin-screens.php:275
 #: inc/shared-library.php:18
 msgid "Grid layouts"
 msgstr ""
@@ -2228,7 +2229,7 @@ msgstr ""
 
 #: inc/admin-panel.php:683
 #: inc/admin-panel.php:1078
-#: inc/admin-screens.php:219
+#: inc/admin-screens.php:221
 msgid "Hide"
 msgstr ""
 
@@ -2325,7 +2326,7 @@ msgstr ""
 msgid "Image ratio"
 msgstr ""
 
-#: inc/admin-screens.php:272
+#: inc/admin-screens.php:274
 msgid "Image sizes"
 msgstr ""
 
@@ -2371,13 +2372,13 @@ msgstr ""
 msgid "Industrial and B2B"
 msgstr ""
 
-#: inc/admin-screens.php:217
+#: inc/admin-screens.php:219
 #: inc/layout-system.php:140
 #: inc/layout-system.php:158
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin-screens.php:438
+#: inc/admin-screens.php:440
 msgid "Input variables"
 msgstr ""
 
@@ -2385,7 +2386,7 @@ msgstr ""
 msgid "Insights from the team"
 msgstr ""
 
-#: inc/admin-screens.php:174
+#: inc/admin-screens.php:176
 msgid "Install"
 msgstr ""
 
@@ -2397,12 +2398,12 @@ msgstr ""
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr ""
 
-#: inc/admin-screens.php:124
-#: inc/admin-screens.php:140
+#: inc/admin-screens.php:126
+#: inc/admin-screens.php:142
 msgid "Install demo site"
 msgstr ""
 
-#: inc/demo-reset.php:310
+#: inc/demo-reset.php:350
 msgid "Installation stopped. Check the server and retry."
 msgstr ""
 
@@ -2446,7 +2447,7 @@ msgstr ""
 msgid "Invalid field value type. No settings were changed."
 msgstr ""
 
-#: inc/admin-screens.php:462
+#: inc/admin-screens.php:464
 msgid "Invalid operation."
 msgstr ""
 
@@ -2498,7 +2499,7 @@ msgid "Launch checklist"
 msgstr ""
 
 #: inc/admin-panel.php:1033
-#: inc/admin-screens.php:267
+#: inc/admin-screens.php:269
 #: inc/layout-system.php:19
 msgid "Layout"
 msgstr ""
@@ -2512,7 +2513,7 @@ msgid "Layout widths"
 msgstr ""
 
 #: inc/admin-screens.php:18
-#: inc/admin-screens.php:388
+#: inc/admin-screens.php:390
 msgid "Layouts"
 msgstr ""
 
@@ -2658,7 +2659,7 @@ msgid "Lowercase"
 msgstr ""
 
 #: inc/admin-screens.php:22
-#: inc/admin-screens.php:391
+#: inc/admin-screens.php:393
 msgid "Maintenance"
 msgstr ""
 
@@ -2748,7 +2749,7 @@ msgstr ""
 msgid "Mega menu parent (top level)"
 msgstr ""
 
-#: inc/admin-screens.php:436
+#: inc/admin-screens.php:438
 msgid "Memory limit"
 msgstr ""
 
@@ -2813,7 +2814,7 @@ msgstr ""
 msgid "Mobile size"
 msgstr ""
 
-#: inc/admin-screens.php:440
+#: inc/admin-screens.php:442
 #: inc/workspace.php:224
 msgid "Multisite"
 msgstr ""
@@ -2851,7 +2852,7 @@ msgstr ""
 msgid "New ready-made sites use Elementor."
 msgstr ""
 
-#: inc/admin-screens.php:346
+#: inc/admin-screens.php:348
 msgid "New sizes apply to future uploads. Original files are kept."
 msgstr ""
 
@@ -2878,7 +2879,7 @@ msgstr ""
 msgid "Next →"
 msgstr ""
 
-#: inc/admin-screens.php:440
+#: inc/admin-screens.php:442
 msgid "No"
 msgstr ""
 
@@ -2909,7 +2910,7 @@ msgstr ""
 msgid "No results found"
 msgstr ""
 
-#: inc/admin-screens.php:109
+#: inc/admin-screens.php:111
 msgid "No sample content will be added."
 msgstr ""
 
@@ -2982,7 +2983,7 @@ msgstr ""
 msgid "Only applies while the toggle above is visible."
 msgstr ""
 
-#: inc/demo-reset.php:215
+#: inc/demo-reset.php:229
 msgid "Only the administrator who started this installation can continue."
 msgstr ""
 
@@ -3007,7 +3008,7 @@ msgstr ""
 msgid "Opening hours"
 msgstr ""
 
-#: inc/admin-screens.php:162
+#: inc/admin-screens.php:164
 msgid "Optional store"
 msgstr ""
 
@@ -3056,7 +3057,7 @@ msgid "Overlay title font size (px)"
 msgstr ""
 
 #: inc/admin-screens.php:16
-#: inc/admin-screens.php:385
+#: inc/admin-screens.php:387
 #: inc/architecture.php:230
 msgid "Overview"
 msgstr ""
@@ -3104,8 +3105,8 @@ msgid "Page template"
 msgstr ""
 
 #: inc/admin-screens.php:17
-#: inc/admin-screens.php:387
-#: inc/admin-screens.php:419
+#: inc/admin-screens.php:389
+#: inc/admin-screens.php:421
 msgid "Page templates"
 msgstr ""
 
@@ -3167,8 +3168,8 @@ msgid "Platform uptime SLA"
 msgstr ""
 
 #: inc/admin-screens.php:20
-#: inc/admin-screens.php:386
-#: inc/admin-screens.php:420
+#: inc/admin-screens.php:388
+#: inc/admin-screens.php:422
 msgid "Plugins"
 msgstr ""
 
@@ -3229,7 +3230,7 @@ msgstr ""
 msgid "Preload theme fonts"
 msgstr ""
 
-#: inc/admin-screens.php:372
+#: inc/admin-screens.php:374
 msgid "Preview"
 msgstr ""
 
@@ -3421,7 +3422,7 @@ msgstr ""
 msgid "Ready to secure your stack?"
 msgstr ""
 
-#: inc/admin-screens.php:92
+#: inc/admin-screens.php:94
 msgid "Ready-made site"
 msgstr ""
 
@@ -3481,11 +3482,11 @@ msgstr ""
 msgid "Replace draft/demo content, choose logos and verify contact links."
 msgstr ""
 
-#: inc/admin-screens.php:161
+#: inc/admin-screens.php:163
 msgid "Required for ready-made sites"
 msgstr ""
 
-#: inc/admin-screens.php:162
+#: inc/admin-screens.php:164
 msgid "Required for this design"
 msgstr ""
 
@@ -3548,7 +3549,7 @@ msgstr ""
 msgid "Residential towers"
 msgstr ""
 
-#: inc/admin-screens.php:411
+#: inc/admin-screens.php:413
 msgid "Restore"
 msgstr ""
 
@@ -3621,8 +3622,8 @@ msgid "Sample title"
 msgstr ""
 
 #: inc/admin-panel.php:1525
-#: inc/admin-screens.php:251
-#: inc/admin-screens.php:350
+#: inc/admin-screens.php:253
+#: inc/admin-screens.php:352
 msgid "Save"
 msgstr ""
 
@@ -3635,7 +3636,7 @@ msgstr ""
 msgid "Save assigned settings"
 msgstr ""
 
-#: inc/admin-screens.php:360
+#: inc/admin-screens.php:362
 msgid "Saved templates"
 msgstr ""
 
@@ -3724,6 +3725,14 @@ msgstr ""
 msgid "Sensitive field values are never included in the change log or support summary."
 msgstr ""
 
+#: inc/admin-screens.php:70
+msgid "Server busy. Waiting to continue…"
+msgstr ""
+
+#: inc/admin-screens.php:71
+msgid "Server connection interrupted. Retry to continue."
+msgstr ""
+
 #: inc/architecture.php:342
 #: inc/starter-editors.php:181
 #: inc/starter-editors.php:189
@@ -3750,7 +3759,7 @@ msgstr ""
 msgid "Settings JSON file"
 msgstr ""
 
-#: inc/admin-screens.php:407
+#: inc/admin-screens.php:409
 msgid "Settings backup"
 msgstr ""
 
@@ -3762,7 +3771,7 @@ msgstr ""
 msgid "Settings changed after this form was opened. Your changes were not applied. Reload the latest settings before trying again."
 msgstr ""
 
-#: inc/demo-reset.php:115
+#: inc/demo-reset.php:126
 msgid "Settings changed. Reload and try again."
 msgstr ""
 
@@ -3782,7 +3791,7 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: inc/admin-screens.php:407
+#: inc/admin-screens.php:409
 msgid "Settings snapshots do not include content or files."
 msgstr ""
 
@@ -3791,8 +3800,8 @@ msgid "Settings were not saved: a field has an invalid value type."
 msgstr ""
 
 #: inc/admin-panel.php:960
-#: inc/admin-screens.php:81
-#: inc/admin-screens.php:366
+#: inc/admin-screens.php:83
+#: inc/admin-screens.php:368
 msgid "Setup wizard"
 msgstr ""
 
@@ -3988,7 +3997,7 @@ msgstr ""
 msgid "Site structure"
 msgstr ""
 
-#: inc/admin-screens.php:285
+#: inc/admin-screens.php:287
 msgid "Size 0 inherits. Empty letter spacing inherits."
 msgstr ""
 
@@ -4079,7 +4088,7 @@ msgstr ""
 msgid "Start a project"
 msgstr ""
 
-#: inc/admin-screens.php:93
+#: inc/admin-screens.php:95
 msgid "Start from scratch"
 msgstr ""
 
@@ -4164,8 +4173,8 @@ msgid "System fonts"
 msgstr ""
 
 #: inc/admin-screens.php:21
-#: inc/admin-screens.php:390
-#: inc/admin-screens.php:421
+#: inc/admin-screens.php:392
+#: inc/admin-screens.php:423
 msgid "System status"
 msgstr ""
 
@@ -4265,7 +4274,7 @@ msgstr ""
 msgid "The idea behind the space."
 msgstr ""
 
-#: inc/admin-screens.php:151
+#: inc/admin-screens.php:153
 msgid "The installation has not finished. Continue from where it stopped."
 msgstr ""
 
@@ -4327,7 +4336,7 @@ msgstr ""
 msgid "The update package could not be prepared. The installed theme has not been changed."
 msgstr ""
 
-#: inc/admin-screens.php:433
+#: inc/admin-screens.php:435
 #: inc/frontend.php:233
 #: inc/platform.php:452
 msgid "Theme"
@@ -4338,8 +4347,8 @@ msgid "Theme Mode"
 msgstr ""
 
 #: inc/admin-panel.php:1334
-#: inc/admin-screens.php:218
-#: inc/admin-screens.php:237
+#: inc/admin-screens.php:220
+#: inc/admin-screens.php:239
 msgid "Theme default"
 msgstr ""
 
@@ -4377,12 +4386,12 @@ msgstr ""
 msgid "This cannot be undone. Take a database and files backup first."
 msgstr ""
 
-#: inc/demo-reset.php:95
+#: inc/demo-reset.php:106
 #: inc/demo-site.php:192
 msgid "This demo requires Elementor."
 msgstr ""
 
-#: inc/demo-reset.php:212
+#: inc/demo-reset.php:226
 msgid "This installation is not available."
 msgstr ""
 
@@ -4414,7 +4423,7 @@ msgstr ""
 msgid "Thoughtful architecture and interiors for the way we live, work and come together."
 msgstr ""
 
-#: inc/admin-screens.php:437
+#: inc/admin-screens.php:439
 msgid "Time limit"
 msgstr ""
 
@@ -4494,19 +4503,19 @@ msgid "Type the site address"
 msgstr ""
 
 #: inc/admin-panel.php:881
-#: inc/admin-screens.php:268
+#: inc/admin-screens.php:270
 msgid "Typography"
 msgstr ""
 
-#: inc/admin-screens.php:444
+#: inc/admin-screens.php:446
 msgid "Unavailable"
 msgstr ""
 
-#: inc/admin-screens.php:227
+#: inc/admin-screens.php:229
 msgid "Unavailable block"
 msgstr ""
 
-#: inc/demo-reset.php:184
+#: inc/demo-reset.php:198
 #: inc/site-reset.php:327
 msgid "Uncategorized"
 msgstr ""
@@ -4552,7 +4561,7 @@ msgstr ""
 msgid "Upload boundary changed. Reset stopped."
 msgstr ""
 
-#: inc/admin-screens.php:439
+#: inc/admin-screens.php:441
 msgid "Upload limit"
 msgstr ""
 
@@ -4561,7 +4570,7 @@ msgstr ""
 msgid "Uploaded local font"
 msgstr ""
 
-#: inc/demo-reset.php:130
+#: inc/demo-reset.php:141
 #: inc/site-reset.php:56
 #: inc/site-reset.php:207
 msgid "Uploads could not be read. Check file permissions."
@@ -4722,7 +4731,7 @@ msgstr ""
 msgid "Wipe"
 msgstr ""
 
-#: inc/admin-screens.php:434
+#: inc/admin-screens.php:436
 msgid "WordPress"
 msgstr ""
 
@@ -4751,7 +4760,7 @@ msgstr ""
 msgid "Written by"
 msgstr ""
 
-#: inc/admin-screens.php:440
+#: inc/admin-screens.php:442
 msgid "Yes"
 msgstr ""
 

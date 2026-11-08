@@ -2,6 +2,38 @@
 (function () {
  'use strict';
  var config = window.gnnManagement || {};
+ function pause(milliseconds) {
+  return new Promise(function (resolve) { window.setTimeout(resolve, milliseconds); });
+ }
+ async function demoRequest(body, status) {
+  for (var attempt = 0; ; attempt++) {
+   var response, result;
+   try {
+    response = await fetch(config.ajax, {method: 'POST', credentials: 'same-origin', body: body});
+    result = await response.json().catch(function () { return null; });
+   } catch (error) {
+    response = null;
+    result = null;
+   }
+   if (response && response.ok && result && result.success) { return result; }
+   // Application errors (including expired nonces) require user action.
+   if (result && !result.success) { throw new Error(result.data && result.data.message || config.failure); }
+   var transient = !response || [403, 429, 502, 503, 504].indexOf(response.status) !== -1;
+   if (!transient || attempt >= 3) {
+    throw new Error((config.connectionFailure || config.failure) + (response ? ' (HTTP ' + response.status + ')' : ''));
+   }
+   var delay = 15000 * Math.pow(2, attempt);
+   var retryAfter = response && response.headers.get('Retry-After');
+   if (retryAfter) {
+    var seconds = Number(retryAfter);
+    var requested = Number.isFinite(seconds) ? seconds * 1000 : Date.parse(retryAfter) - Date.now();
+    if (requested > 120000) { throw new Error(config.connectionFailure || config.failure); }
+    if (requested > delay) { delay = requested; }
+   }
+   status.textContent = config.waiting || config.busy;
+   await pause(delay);
+  }
+ }
  document.querySelectorAll('.gnn-management-form').forEach(function (form) {
   form.addEventListener('submit', function () {
    var status = form.querySelector('.gnn-operation-status');
@@ -71,6 +103,7 @@
      window.location.assign(result.data.redirect);
      break;
     }
+    await pause(2500);
    }
   } catch (error) {
    status.textContent = error.message || config.failure;
@@ -112,9 +145,7 @@
      body.set('confirm_delete', '1');
      body.set('revision', form.elements.gnn_revision.value);
     }
-    var response = await fetch(config.ajax, {method: 'POST', credentials: 'same-origin', body: body});
-    var result = await response.json().catch(function () { return {success: false, data: {message: config.failure}}; });
-    if (!response.ok || !result.success) { throw new Error(result.data && result.data.message || config.failure); }
+    var result = await demoRequest(body, status);
     job = result.data.job;
     button.dataset.job = job;
     if (result.data.phase === 'complete') {
@@ -123,7 +154,7 @@
      return;
     }
     status.textContent = (result.data.phase === 'import' ? config.installing : config.deleting) + ' (' + result.data.done + ')';
-    await new Promise(function (resolve) { window.setTimeout(resolve, 50); });
+    await pause(2500);
    }
   } catch (error) {
    status.textContent = error.message || config.failure;
