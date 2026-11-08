@@ -1653,3 +1653,29 @@ TRANSLATIONS.update({
 })
 
 TRANSLATIONS.update({"Read story": "Yazıyı oku", "From the journal": "Blogdan", "All stories": "Tüm yazılar"})
+
+TRANSLATIONS.update({
+'Deleting site content…': 'Site içerikleri siliniyor…',
+'Installing demo…': 'Demo yükleniyor…',
+'Add draft pages': 'Taslak sayfaları ekle',
+'All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed.': 'Tüm sayfalar, yazılar, projeler, galeriler, slaytlar, menüler, yorumlar, siparişler ve medya dosyaları kalıcı olarak silinecek. Aktif tema, eklentiler ve kullanıcı hesapları korunacak. Seçilen demo kurulacak.',
+'Delete and apply': 'Sil ve uygula',
+'Enable JavaScript to install a demo.': 'Demo yüklemek için JavaScript’i etkinleştirin.',
+'Demo installation': 'Demo kurulumu',
+'The installation has not finished. Continue from where it stopped.': 'Kurulum tamamlanmadı. Kaldığı yerden devam edin.',
+'Continue installation': 'Kuruluma devam et',
+'The media folder must be a local directory inside wp-content.': 'Medya klasörü wp-content içinde yerel bir klasör olmalı.',
+'The media folder overlaps theme or plugin files.': 'Medya klasörü tema veya eklenti dosyalarıyla çakışıyor.',
+'Continue the demo installation from Setup wizard.': 'Demo kurulumuna Kurulum Sihirbazı’ndan devam edin.'
+})
+
+TRANSLATIONS.update({
+'Cancel': 'Vazgeç',
+'Confirm content deletion to apply this demo.': 'Demoyu uygulamak için içeriklerin silinmesini onaylayın.',
+'Content could not be deleted. Check the server and retry.': 'İçerik silinemedi. Sunucuyu kontrol edip yeniden deneyin.',
+'Content replacement is unavailable for this database.': 'Bu veritabanında içerik sıfırlanamıyor.',
+'Installation stopped. Check the server and retry.': 'Kurulum durdu. Sunucuyu kontrol edip yeniden deneyin.',
+'Only the administrator who started this installation can continue.': 'Yalnızca kurulumu başlatan yönetici devam edebilir.',
+'Settings changed. Reload and try again.': 'Ayarlar değişti. Sayfayı yenileyip yeniden deneyin.',
+'This installation is not available.': 'Bu kuruluma erişilemiyor.'
+})

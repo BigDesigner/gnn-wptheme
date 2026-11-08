@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.5.0
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -83,8 +83,8 @@ login access, active theme and plugin/theme files; plugins are deactivated.
 Back up the database and files separately before confirming. Reset runs in short
 batches and can resume from the same administrator's session. Visitors receive
 503 during an unfinished reset. Shared/multisite databases, custom user tables,
-must-use plugins, persistent cache drop-ins and nonstandard/remote/symlinked uploads are unsupported and
-prevent reset. Core files and database connection configuration are preserved.
+persistent cache drop-ins and remote/symlinked uploads are unsupported and
+prevent reset. Local media folders inside wp-content are supported, excluding application directories. Core files and database connection configuration are preserved.
 
 Optional GNN Client, GNN Designer and GNN Support roles can be assigned in Users.
 Client users edit assigned public brand/contact fields. Designers also manage design
@@ -122,15 +122,15 @@ theme loader does not remove tags installed outside the theme.
 
 == Architecture starter ==
 
-Choose GNNarchitecture in Setup wizard. Install demo site publishes seven pages,
-three portfolio projects with galleries and categories, an independent album,
-three slides, three journal posts and a shared footer, using bundled photography.
-The confirmation applies the demo homepage, blog page, navigation and design.
-Existing customer content stays in place. A repeated completed installation keeps
-later edits and does not create another copy. Draft pages only remains available
-when you want starter pages without changing the published site.
-The complete-site option is currently available for GNNarchitecture; the other
-profiles provide draft starter pages.
+Choose GNNarchitecture under Setup wizard > Ready-made site and select Install
+demo site. Delete and apply permanently removes existing pages, posts, projects,
+albums, slides, menus, comments, orders and media files before installing the demo.
+Active theme, plugin activation/settings and user accounts remain in place.
+The job runs in short batches; Continue installation resumes an interrupted job.
+Seven pages, three projects with galleries, an independent album, three slides,
+three journal posts and a shared footer are published with bundled photography.
+The homepage, blog, menus and design are applied. Other profiles currently offer
+Add draft pages, which does not clear existing content.
 Manage real projects and their categories under Portfolio projects. Published
 projects appear automatically in portfolio/category queries and project navigation.
 Project galleries reference Media Library images; independent collections live
@@ -179,6 +179,11 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.5.1 =
+* Replaced the demo review flow with one explicit Delete and apply confirmation, content cleanup and resumable installation.
+* Preserved active theme, plugins, plugin settings and user accounts during demo replacement.
+* Removed the blanket must-use plugin restriction from WordPress reset and validated local custom media directories.
 
 = 2.5.0 =
 * Added an explicitly confirmed complete Architecture demo with published Elementor pages, portfolio projects, galleries, slides, journal posts and local images.

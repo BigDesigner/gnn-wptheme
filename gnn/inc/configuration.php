@@ -37,7 +37,7 @@ function gnn_configuration_revision() {
  * @param string $revision Expected configuration revision.
  */
 function gnn_configuration_begin( $action, $revision = '' ) {
-	if ( get_option( 'gnn_wipe_job' ) ) {
+	if ( get_option( 'gnn_wipe_job' ) && ! ( function_exists( 'gnn_demo_import_context' ) && gnn_demo_import_context() ) ) {
 		return new WP_Error( 'gnn_reset_busy', __( 'Finish the reset before changing settings.', 'gnn' ) ); }
 	static $owned = false;
 	if ( $owned ) {

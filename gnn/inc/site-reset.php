@@ -9,6 +9,58 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Resolve the configured local media directory without including application files.
+ *
+ * @return array|WP_Error Approved upload boundary.
+ */
+function gnn_reset_upload_boundary() {
+	$uploads = wp_upload_dir( null, false );
+	$actual  = wp_normalize_path( $uploads['basedir'] );
+	$content = wp_normalize_path( realpath( WP_CONTENT_DIR ) );
+	if ( $uploads['error'] || ! $content || ( file_exists( $actual ) && ! is_dir( $actual ) ) || is_link( $actual ) || 0 !== strpos( trailingslashit( $actual ), trailingslashit( $content ) ) || $actual === $content ) {
+		return new WP_Error( 'gnn_wipe_uploads', __( 'The media folder must be a local directory inside wp-content.', 'gnn' ) );
+	}
+	$protected = array( WP_PLUGIN_DIR, WPMU_PLUGIN_DIR, WP_CONTENT_DIR . '/themes', WP_CONTENT_DIR . '/languages', get_theme_root() );
+	foreach ( $protected as $directory ) {
+		$directory = wp_normalize_path( $directory );
+		if ( 0 === strpos( trailingslashit( $actual ), trailingslashit( $directory ) ) || 0 === strpos( trailingslashit( $directory ), trailingslashit( $actual ) ) ) {
+			return new WP_Error( 'gnn_wipe_uploads', __( 'The media folder overlaps theme or plugin files.', 'gnn' ) );
+		}
+	}
+	$ancestor = $actual;
+	while ( $ancestor !== $content && dirname( $ancestor ) !== $ancestor ) {
+		if ( is_link( $ancestor ) ) {
+			return new WP_Error( 'gnn_wipe_link', __( 'Remove upload folder symlinks before resetting.', 'gnn' ) );
+		}
+		$ancestor = dirname( $ancestor );
+	}
+	$parent = $actual;
+	while ( ! file_exists( $parent ) && dirname( $parent ) !== $parent ) {
+		$parent = dirname( $parent );
+	}
+	$resolved = wp_normalize_path( realpath( $parent ) );
+	if ( ! $resolved || ( $resolved !== $content && 0 !== strpos( trailingslashit( $resolved ), trailingslashit( $content ) ) ) ) {
+		return new WP_Error( 'gnn_wipe_uploads', __( 'The media folder must be a local directory inside wp-content.', 'gnn' ) );
+	}
+	try {
+		if ( is_dir( $actual ) ) {
+			$iterator = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $actual, FilesystemIterator::SKIP_DOTS ), RecursiveIteratorIterator::SELF_FIRST );
+			foreach ( $iterator as $entry ) {
+				if ( $entry->isLink() ) {
+					return new WP_Error( 'gnn_wipe_link', __( 'Remove upload folder symlinks before resetting.', 'gnn' ) );
+				}
+			}
+		}
+	} catch ( UnexpectedValueException $error ) {
+		return new WP_Error( 'gnn_wipe_read', __( 'Uploads could not be read. Check file permissions.', 'gnn' ) );
+	}
+	return array(
+		'uploads'   => $actual,
+		'root_real' => realpath( $actual ),
+	);
+}
+
 /** Inspect the exact database/upload boundary before offering a reset.
  *
  * @return array|WP_Error
@@ -24,24 +76,11 @@ function gnn_wipe_plan() {
 	if ( file_exists( WP_CONTENT_DIR . '/object-cache.php' ) || ( defined( 'WP_CACHE' ) && WP_CACHE && file_exists( WP_CONTENT_DIR . '/advanced-cache.php' ) ) ) {
 		return new WP_Error( 'gnn_wipe_cache', __( 'Disable persistent caching before resetting.', 'gnn' ) );
 	}
-	require_once ABSPATH . 'wp-admin/includes/plugin.php';
-	if ( get_mu_plugins() ) {
-		return new WP_Error( 'gnn_wipe_plugins', __( 'Reset requires standard uploads and no must-use plugins.', 'gnn' ) );
+	$boundary = gnn_reset_upload_boundary();
+	if ( is_wp_error( $boundary ) ) {
+		return $boundary;
 	}
-	$uploads  = wp_upload_dir( null, false );
-	$expected = wp_normalize_path( WP_CONTENT_DIR . '/uploads' );
-	$actual   = wp_normalize_path( $uploads['basedir'] );
-	if ( $uploads['error'] || $actual !== $expected || is_link( $actual ) || ( file_exists( $actual ) && realpath( $actual ) !== realpath( $expected ) ) ) {
-		return new WP_Error( 'gnn_wipe_uploads', __( 'Reset requires a local, standard uploads folder.', 'gnn' ) );
-	}
-	if ( is_dir( $actual ) ) {
-		$iterator = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $actual, FilesystemIterator::SKIP_DOTS ), RecursiveIteratorIterator::SELF_FIRST );
-		foreach ( $iterator as $entry ) {
-			if ( $entry->isLink() ) {
-				return new WP_Error( 'gnn_wipe_link', __( 'Remove upload folder symlinks before resetting.', 'gnn' ) );
-			}
-		}
-	}
+	$actual = $boundary['uploads'];
  // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- reset inventory must reflect the live database.
 	$tables = $wpdb->get_col( $wpdb->prepare( 'SHOW TABLES LIKE %s', $wpdb->esc_like( $wpdb->prefix ) . '%' ) );
 	if ( ! is_array( $tables ) || ! in_array( $wpdb->options, $tables, true ) ) {
@@ -66,6 +105,11 @@ function gnn_wipe_plan() {
 function gnn_wipe_screen() {
 	echo '<section class="gnn-settings-card gnn-card-content gnn-danger"><h2>' . esc_html__( 'Reset WordPress', 'gnn' ) . '</h2>';
 	$job = get_option( 'gnn_wipe_job' );
+	if ( is_array( $job ) && 'demo' === ( $job['kind'] ?? '' ) ) {
+		gnn_demo_resume_screen( $job );
+		echo '</section>';
+		return;
+	}
 	if ( is_array( $job ) ) {
 		echo '<p>' . esc_html__( 'A reset is in progress. Continue to finish it.', 'gnn' ) . '</p><button type="button" class="button button-primary gnn-wipe-resume">' . esc_html__( 'Continue reset', 'gnn' ) . '</button><p class="gnn-wipe-status" role="status"></p></section>';
 		return;
@@ -300,6 +344,10 @@ function gnn_wipe_ajax() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		wp_send_json_error( array( 'message' => __( 'Permission denied.', 'gnn' ) ), 403 );
 	}
+	$job = get_option( 'gnn_wipe_job' );
+	if ( is_array( $job ) && 'demo' === ( $job['kind'] ?? '' ) ) {
+		wp_send_json_error( array( 'message' => __( 'Continue the demo installation from Setup wizard.', 'gnn' ) ), 409 );
+	}
 	$lock = get_option( 'gnn_wipe_batch_lock' );
 	if ( $lock && (int) $lock < time() - 120 ) {
 		delete_option( 'gnn_wipe_batch_lock' );
@@ -330,17 +378,19 @@ add_action( 'wp_ajax_gnn_wipe', 'gnn_wipe_ajax' );
 
 /** Keep ordinary admin writes away from a partially reset installation. */
 function gnn_wipe_admin_gate() {
-	if ( ! get_option( 'gnn_wipe_job' ) ) {
+	$job = get_option( 'gnn_wipe_job' );
+	if ( ! $job ) {
 		return; }
 	if ( wp_doing_ajax() ) {
 		$action = isset( $_POST['action'] ) && is_string( $_POST['action'] ) ? sanitize_key( wp_unslash( $_POST['action'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- read-only maintenance routing; reset endpoint verifies its own nonce.
-		if ( 'gnn_wipe' === $action ) {
+		if ( ( 'demo' === ( $job['kind'] ?? '' ) && 'gnn_demo_replace' === $action ) || ( 'demo' !== ( $job['kind'] ?? '' ) && 'gnn_wipe' === $action ) ) {
 			return; }
 		wp_send_json_error( array( 'message' => __( 'Maintenance in progress.', 'gnn' ) ), 503 );
 	}
-	$page = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing.
-	if ( 'gnn-maintenance' !== $page ) {
-		wp_safe_redirect( admin_url( 'admin.php?page=gnn-maintenance' ) );
+	$page    = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing.
+	$allowed = 'demo' === ( $job['kind'] ?? '' ) ? 'gnn-workspace' : 'gnn-maintenance';
+	if ( $allowed !== $page ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=' . $allowed ) );
 		exit;
 	}
 }
