@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.1.0\n"
+"Project-Id-Version: GNN 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 05:15+0000\n"
-"PO-Revision-Date: 2026-11-07 05:15+0000\n"
+"POT-Creation-Date: 2026-11-08 04:17+0000\n"
+"PO-Revision-Date: 2026-11-08 04:17+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,6 +26,9 @@ msgid_plural "%d min read"
 msgstr[0] "%d dk okuma"
 msgstr[1] "%d dk okuma"
 
+msgid "%d projects shown"
+msgstr "%d proje gösteriliyor"
+
 msgid "%d setting groups found"
 msgstr "%d ayar grubu bulundu"
 
@@ -43,6 +46,9 @@ msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "%s yorum"
 msgstr[1] "%s yorum"
+
+msgid "1 project shown"
+msgstr "1 proje gösteriliyor"
 
 msgid "404 description"
 msgstr "404 açıklaması"
@@ -62,8 +68,26 @@ msgstr "Kalın bir başlık buraya gelir"
 msgid "A centered bold headline goes here"
 msgstr "Ortalanmış kalın bir başlık buraya gelir"
 
+msgid "A clear process. A shared direction."
+msgstr "Net bir süreç. Ortak bir yön."
+
+msgid "A compact urban study that balances density and privacy. Repeated openings, sheltered terraces and a clear structural rhythm give the facade its identity."
+msgstr "Yoğunluk ile mahremiyeti dengeleyen kompakt bir kent yapısı çalışması. Tekrarlayan açıklıklar, korunaklı teraslar ve belirgin taşıyıcı ritim cepheye kimlik kazandırıyor."
+
+msgid "A complete design perspective."
+msgstr "Bütüncül bir tasarım bakışı."
+
+msgid "A considered approach"
+msgstr "Özenli bir yaklaşım"
+
 msgid "A design profile must not include site identity, tracking, code or media references."
 msgstr "Tasarım profili site kimliği, izleme, kod veya medya referansları içermemelidir."
+
+msgid "A flexible scope for architecture practices, interior studios and construction teams."
+msgstr "Mimarlık ofisleri, iç mekân stüdyoları ve yapı ekipleri için esnek bir hizmet kapsamı."
+
+msgid "A flexible workplace shaped by natural light and tactile materials. A restrained palette supports focused work, informal meetings and everyday collaboration."
+msgstr "Doğal ışık ve dokunsal malzemelerle şekillenen esnek bir çalışma ortamı. Sade malzeme paleti odaklanmayı, rahat buluşmaları ve günlük iş birliğini destekliyor."
 
 msgid "A link action needs a valid URL."
 msgstr "Bağlantı işlemi için geçerli bir URL gereklidir."
@@ -73,6 +97,18 @@ msgstr "Mobil işlemlerden biri geçersiz."
 
 msgid "A new collection"
 msgstr "Yeni bir koleksiyon"
+
+msgid "A new conversation"
+msgstr "Yeni bir başlangıç"
+
+msgid "A quiet home organised around a planted courtyard. Deep thresholds connect shared rooms, protected outdoor space and changing daylight."
+msgstr "Bitkilendirilmiş bir avlu çevresinde düzenlenen sakin bir konut. Derin eşikler ortak yaşam alanlarını, korunaklı açık mekânı ve değişen gün ışığını birbirine bağlıyor."
+
+msgid "A studio shaped by curiosity."
+msgstr "Merakla şekillenen bir stüdyo."
+
+msgid "A visual notebook of form, atmosphere, material and detail."
+msgstr "Biçim, atmosfer, malzeme ve ayrıntılardan oluşan görsel bir not defteri."
 
 msgid "About"
 msgstr "Hakkımızda"
@@ -131,6 +167,9 @@ msgstr "Doğrulanmış bilgilerinizi buraya ekleyin."
 msgid "Add your public phone, email, location and a tested contact form before publishing."
 msgstr "Yayımlamadan önce iletişim telefonunuzu, e-postanızı, adresinizi ve test edilmiş iletişim formunu ekleyin."
 
+msgid "Add your studio’s public contact details and a contact form block before publishing."
+msgstr "Yayımlamadan önce stüdyonuzun iletişim bilgilerini ve bir iletişim formu bloğunu ekleyin."
+
 msgid "Address"
 msgstr "Adres"
 
@@ -158,11 +197,17 @@ msgstr "Tüm Slaytlar"
 msgid "All groups"
 msgstr "Tüm gruplar"
 
+msgid "All projects"
+msgstr "Tüm projeler"
+
 msgid "All slides"
 msgstr "Tüm slaytlar"
 
 msgid "Alternate surface background"
 msgstr "Alternatif yüzey arka planı"
+
+msgid "An open cultural building with a generous public edge. A simple roof brings exhibition rooms, a shaded colonnade and a shared gathering space together."
+msgstr "Kamusal alanla güçlü bağ kuran açık bir kültür yapısı. Sade bir çatı; sergi salonlarını, gölgeli revakı ve ortak buluşma alanını bir araya getiriyor."
 
 msgid "Analytics and consent"
 msgstr "Analitik ve onay"
@@ -196,6 +241,42 @@ msgstr "İşletim ayarlarını uygula"
 
 msgid "Apply the reviewed changes and create a recovery snapshot."
 msgstr "İncelenen değişiklikleri uygula ve kurtarma kaydı oluştur."
+
+msgid "Architectural material junction study"
+msgstr "Mimari malzeme birleşim çalışması"
+
+msgid "Architectural plan concept"
+msgstr "Mimari plan konsepti"
+
+msgid "Architecture"
+msgstr "Architecture"
+
+msgid "Architecture / Design / Construction"
+msgstr "Mimarlık / Tasarım / Yapı"
+
+msgid "Architecture Home"
+msgstr "Architecture Ana Sayfa"
+
+msgid "Architecture Showcase"
+msgstr "Mimarlık Vitrini"
+
+msgid "Architecture and construction: an editorial home, studio, services, two-column portfolio, gallery, contact and four linked project-detail drafts."
+msgstr "Mimarlık ve yapı şirketleri için ana sayfa, stüdyo, hizmetler, iki sütunlu portföy, galeri, iletişim ve birbirine bağlı dört proje detay taslağı."
+
+msgid "Architecture concept preview"
+msgstr "Mimarlık konsept tasarım önizlemesi"
+
+msgid "Architecture gallery"
+msgstr "Mimarlık galerisi"
+
+msgid "Architecture portfolio — two columns"
+msgstr "Mimarlık portföyü — iki sütun"
+
+msgid "Architecture services"
+msgstr "Mimarlık hizmetleri"
+
+msgid "Architecture with a sense of place"
+msgstr "Yerle bağ kuran mimarlık"
 
 msgid "Archive"
 msgstr "Arşiv"
@@ -314,6 +395,9 @@ msgstr "Marka varlıkları"
 msgid "Breadcrumb"
 msgstr "İçerik yolu"
 
+msgid "Bring documentation, specialist input and decisions together."
+msgstr "Proje belgelerini, uzman görüşlerini ve kararları ortak bir düzlemde birleştirin."
+
 msgid "Built for demanding projects."
 msgstr "Zorlu projeler için tasarlandı."
 
@@ -419,11 +503,17 @@ msgstr "Renk seç"
 msgid "Choose local WOFF2 font"
 msgstr "Yerel WOFF2 yazı tipi seç"
 
+msgid "Civic Gallery"
+msgstr "Kent Galerisi"
+
 msgid "Classic"
 msgstr "Klasik"
 
 msgid "Clear"
 msgstr "Temizle"
+
+msgid "Clear documentation and collaboration connect design intent with the teams responsible for delivery."
+msgstr "Açık proje belgeleri ve iş birliği, tasarım kararlarını uygulama ekiplerine doğru biçimde aktarıyor."
 
 msgid "Clear solutions. Reliable service."
 msgstr "Açık çözümler. Güvenilir hizmet."
@@ -445,6 +535,9 @@ msgstr "Şirket ve üst bölüm yapılandırması"
 
 msgid "Company name"
 msgstr "Firma adı"
+
+msgid "Concept study"
+msgstr "Konsept çalışması"
 
 msgid "Configuration revision"
 msgstr "Yapılandırma revizyonu"
@@ -488,14 +581,26 @@ msgstr "İçerik alt boşluğu (px)"
 msgid "Content top spacing (px)"
 msgstr "İçerik üst boşluğu (px)"
 
+msgid "Context first. People always."
+msgstr "Önce bağlam. Daima insan."
+
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr "En-boy oranını koruyarak logo yüksekliğini kontrol eder (varsayılan: 40px). Çok geniş, afiş tipi logolar, alt bölüm sütunu darsa biraz daha kısa görünebilir."
+
+msgid "Coordinate"
+msgstr "Koordine et"
 
 msgid "Copyright text"
 msgstr "Telif hakkı metni"
 
 msgid "Could not reach GitHub to check for updates."
 msgstr "Güncellemeler kontrol edilirken GitHub’a ulaşılamadı."
+
+msgid "Courtyard Residence"
+msgstr "Avlulu Konut"
+
+msgid "Courtyard residence concept illustration"
+msgstr "Avlulu konut konsept çizimi"
 
 msgid "Cover (fill and crop)"
 msgstr "Kapla (doldur ve kırp)"
@@ -569,8 +674,14 @@ msgstr "Burada en fazla 6 buton varyasyonu tanımlayın, ardından her stilin al
 msgid "Delete local recovery history"
 msgstr "Yerel kurtarma geçmişini sil"
 
+msgid "Deliver"
+msgstr "Hayata geçir"
+
 msgid "Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus."
 msgstr "Tasarım değişiklikleri kimliği ve içeriği korur. Başlangıç kurulumu yalnızca eksik taslak sayfaları ekler; bunları yayımlamaz, ana sayfanızı veya menülerinizi değiştirmez."
+
+msgid "Design focus"
+msgstr "Tasarım odağı"
 
 msgid "Design profiles"
 msgstr "Tasarım profilleri"
@@ -580,6 +691,9 @@ msgstr "Tasarım profilleri ve başlangıç taslakları"
 
 msgid "Design tokens"
 msgstr "Tasarım değerleri"
+
+msgid "Develop"
+msgstr "Geliştir"
 
 msgid "Diagnostics"
 msgstr "Tanılama"
@@ -593,6 +707,12 @@ msgstr "Emoji script’ini devre dışı bırak"
 msgid "Disabled"
 msgstr "Devre dışı"
 
+msgid "Discipline"
+msgstr "Alan"
+
+msgid "Discover"
+msgstr "Keşfet"
+
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr "Tüm GNN Tema ayarlarını yedek veya aktarım için JSON dosyası olarak indirin."
 
@@ -601,6 +721,9 @@ msgstr "Maskelenmiş destek özetini indir"
 
 msgid "Edit Slide"
 msgstr "Slaytı Düzenle"
+
+msgid "Edit starter home"
+msgstr "Başlangıç ana sayfasını düzenle"
 
 msgid "Elementor templates"
 msgstr "Elementor şablonları"
@@ -635,6 +758,9 @@ msgstr "Ve diğerleri"
 msgid "Events analyzed daily"
 msgstr "Günlük analiz edilen olay"
 
+msgid "Every commission has its own setting and ambitions. Our role is to turn these into a thoughtful, buildable and legible design."
+msgstr "Her projenin kendine özgü bir bağlamı ve hedefleri vardır. Görevimiz bunları özenli, uygulanabilir ve anlaşılır bir tasarıma dönüştürmek."
+
 msgid "Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme's own current color for that mode — change it, or use Clear to go back to that default."
 msgstr "Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunur. Doğrudan hex kod yazabilir ya da swatch butonuyla görsel olarak seçebilirsiniz. Her Koyu/Açık çifti o mod için temanın mevcut rengini gösterir — değiştirin, ya da Temizle ile o varsayılana geri dönün."
 
@@ -652,6 +778,12 @@ msgstr "Güvenebileceğiniz deneyim."
 
 msgid "Explore"
 msgstr "Keşfet"
+
+msgid "Explore project"
+msgstr "Projeyi incele"
+
+msgid "Explore residential, workplace and public-space concepts through their setting, material and spatial ideas."
+msgstr "Konut, çalışma ortamı ve kamusal alan konseptlerini bağlamları, malzemeleri ve mekânsal fikirleri üzerinden keşfedin."
 
 msgid "Export JSON"
 msgstr "JSON’a Aktar"
@@ -800,6 +932,12 @@ msgstr "Bu sayfa için etkinleştir"
 msgid "Frequently Asked Questions"
 msgstr "Sıkça Sorulan Sorular"
 
+msgid "From an idea to a place."
+msgstr "Bir fikirden bir mekâna."
+
+msgid "From the first site reading to a clear spatial concept, we shape buildings around their place and the people who use them."
+msgstr "İlk arazi incelemesinden mekânsal konsepte kadar yapıları bulundukları yere ve kullanıcılarına göre şekillendiriyoruz."
+
 msgid "Full Width template max width (px)"
 msgstr "Tam Genişlik şablonu maksimum genişliği (px)"
 
@@ -836,6 +974,9 @@ msgstr "GNN Tema Seçenekleri"
 msgid "GNN Theme Panel"
 msgstr "GNN Tema Paneli"
 
+msgid "Gallery"
+msgstr "Galeri"
+
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr "Üst bölüm ile sayfa içeriği arasındaki boşluk — sayfada öne çıkarılan görsel varsa, görsel ile içerik arasındaki boşluk."
 
@@ -856,6 +997,9 @@ msgstr "Genel içerik alanı genişliği"
 
 msgid "Go to slide %d"
 msgstr "%d. slayta git"
+
+msgid "Good buildings begin with good questions."
+msgstr "İyi yapılar doğru sorularla başlar."
 
 msgid "Google Analytics 4 ID"
 msgstr "Google Analytics 4 kimliği"
@@ -1031,6 +1175,15 @@ msgstr "Entegrasyonlar"
 msgid "Interactions"
 msgstr "Etkileşimler"
 
+msgid "Interior concept with natural materials and daylight"
+msgstr "Doğal malzemeler ve gün ışığıyla iç mekân konsepti"
+
+msgid "Interior design"
+msgstr "İç mekân tasarımı"
+
+msgid "Interior material and daylight study"
+msgstr "İç mekân malzeme ve gün ışığı çalışması"
+
 msgid "Invalid field value type. No settings were changed."
 msgstr "Alan değeri türü geçersiz. Hiçbir ayar değiştirilmedi."
 
@@ -1085,11 +1238,17 @@ msgstr "Sol Kenar Çubuğu"
 msgid "Left aligned"
 msgstr "Sola hizalı"
 
+msgid "Let’s talk about your project."
+msgstr "Projenizi konuşalım."
+
 msgid "Light"
 msgstr "Açık"
 
 msgid "Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both."
 msgstr "Açık mod koyu renk çizimi, koyu mod açık renk çizimi kullanır. Retina / yüksek yoğunluklu ekranlarda net görünmesi için her birinin 2× sürümünü de yükleyin. Yalnız bir modu doldurursanız ikisi için de o kullanılır."
+
+msgid "Light, material and proportion"
+msgstr "Işık, malzeme ve oran"
 
 msgid "List"
 msgstr "Liste"
@@ -1163,6 +1322,12 @@ msgstr "İçe aktarmadan önce %s referansını bu sitede eşleyin. Hiçbir ayar
 msgid "Match content width"
 msgstr "İçerik genişliğiyle eşleştir"
 
+msgid "Material, light and proportion work together to create interiors that feel considered, practical and enduring."
+msgstr "Malzeme, ışık ve oran birlikte çalışarak özenli, işlevsel ve kalıcı iç mekânlar oluşturuyor."
+
+msgid "Materials Studio"
+msgstr "Malzeme Stüdyosu"
+
 msgid "Maximum H1 size"
 msgstr "En büyük H1 boyutu"
 
@@ -1180,6 +1345,9 @@ msgstr "Görsel ve metin (solda görsel)"
 
 msgid "Media & text (image right)"
 msgstr "Görsel ve metin (sağda görsel)"
+
+msgid "Meet the studio"
+msgstr "Stüdyoyu tanıyın"
 
 msgid "Mega menu parent (top level)"
 msgstr "Mega menü üst öğesi (en üst düzey)"
@@ -1238,6 +1406,9 @@ msgstr "Yeni yorumlar →"
 msgid "News"
 msgstr "Haberler"
 
+msgid "Next project"
+msgstr "Sonraki proje"
+
 msgid "Next slide"
 msgstr "Sonraki slayt"
 
@@ -1264,6 +1435,9 @@ msgstr "Henüz slayt yok."
 
 msgid "No theme slider"
 msgstr "Tema slayt gösterisi yok"
+
+msgid "No unused Architecture page path is available."
+msgstr "Architecture için kullanılabilir bir sayfa adresi bulunamadı."
 
 msgid "None"
 msgstr "Yok"
@@ -1295,6 +1469,9 @@ msgstr "Çalışma saatleri"
 msgid "Original proportions"
 msgstr "Orijinal oranlar"
 
+msgid "Our interests span homes, workplaces, public buildings and interior environments. We value simple ideas, careful coordination and an honest use of materials."
+msgstr "Çalışma alanımız konutları, çalışma ortamlarını, kamu yapılarını ve iç mekânları kapsıyor. Sade fikirlere, dikkatli koordinasyona ve malzemelerin doğal kullanımına değer veriyoruz."
+
 msgid "Outline"
 msgstr "Çerçeveli"
 
@@ -1309,6 +1486,9 @@ msgstr "Kaplama başlığı arka plan opaklığı (%)"
 
 msgid "Overlay title font size (px)"
 msgstr "Kaplama başlığı yazı boyutu (px)"
+
+msgid "Overview"
+msgstr "Genel bakış"
 
 msgid "PHP version"
 msgstr "PHP sürümü"
@@ -1355,11 +1535,23 @@ msgstr "Telefon"
 msgid "Placeholders: %year% and %site%. Leave empty for the default."
 msgstr "Yer tutucular: %year% ve %site%. Varsayılan için boş bırakın."
 
+msgid "Places with purpose."
+msgstr "Anlam taşıyan mekânlar."
+
+msgid "Planning and feasibility"
+msgstr "Planlama ve fizibilite"
+
 msgid "Platform uptime SLA"
 msgstr "Platform çalışma süresi SLA"
 
 msgid "Portable design profile (no site identity or code)"
 msgstr "Taşınabilir tasarım profili (site kimliği veya kod içermez)"
+
+msgid "Portfolio"
+msgstr "Portföy"
+
+msgid "Portfolio / 2 Columns"
+msgstr "Portföy / 2 Sütun"
 
 msgid "Post"
 msgstr "Yazı"
@@ -1373,8 +1565,14 @@ msgstr "Üçüncü taraf eklenti uyumluluğuna öncelik ver"
 msgid "Preload theme fonts"
 msgstr "Tema fontlarını önden yükle"
 
+msgid "Preview Architecture home"
+msgstr "Architecture ana sayfasını önizle"
+
 msgid "Preview import"
 msgstr "İçe aktarmayı önizle"
+
+msgid "Previous project"
+msgstr "Önceki proje"
 
 msgid "Previous slide"
 msgstr "Önceki slayt"
@@ -1403,14 +1601,29 @@ msgstr "Profil işlemleri"
 msgid "Profiles, recovery and diagnostics"
 msgstr "Profiller, kurtarma ve tanılama"
 
+msgid "Project categories"
+msgstr "Proje kategorileri"
+
+msgid "Project coordination"
+msgstr "Proje koordinasyonu"
+
+msgid "Project enquiries"
+msgstr "Proje başvuruları"
+
 msgid "Project overview"
 msgstr "Proje tanıtımı"
+
+msgid "Project stage"
+msgstr "Proje aşaması"
 
 msgid "Public email"
 msgstr "İletişim e-postası"
 
 msgid "Public phone number"
 msgstr "İletişim telefonu"
+
+msgid "Public spaces"
+msgstr "Kamusal alanlar"
 
 msgid "Question four goes here?"
 msgstr "Dördüncü soru buraya gelir?"
@@ -1475,8 +1688,14 @@ msgstr "Ayarları sıfırla"
 msgid "Reset to defaults"
 msgstr "Varsayılana sıfırla"
 
+msgid "Residential"
+msgstr "Konut"
+
 msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
 msgstr "Panel ayarlarını, vurgu rengini, varsayılan modu ve alt bilgi yasal metnini sıfırlar. Site simgesi ve güncelleme tercihleri korunur. Bu işlem geri alınamaz."
+
+msgid "Restore the Architecture starter home from Trash before adding missing pages."
+msgstr "Eksik sayfaları eklemeden önce Architecture ana sayfasını çöp kutusundan geri yükleyin."
 
 msgid "Restore this configuration"
 msgstr "Bu yapılandırmayı geri yükle"
@@ -1555,6 +1774,9 @@ msgstr "Bölüm boşluğu"
 
 msgid "Select image"
 msgstr "Görsel seç"
+
+msgid "Selected work"
+msgstr "Seçili projeler"
 
 msgid "Sensitive field values are never included in the change log or support summary."
 msgstr "Hassas alan değerleri değişiklik günlüğüne veya destek özetine dahil edilmez."
@@ -1757,6 +1979,9 @@ msgstr "Bazı Elementor şablonları kaydedilemedi. Lütfen tekrar deneyin."
 msgid "Space between cards (px)"
 msgstr "Kartlar arası boşluk (px)"
 
+msgid "Space. Light. Life."
+msgstr "Mekân. Işık. Yaşam."
+
 msgid "Stacked"
 msgstr "İki satırlı"
 
@@ -1765,6 +1990,9 @@ msgstr "Standart (logo solda, menü sağda)"
 
 msgid "Standard menu item"
 msgstr "Standart menü öğesi"
+
+msgid "Start a conversation"
+msgstr "İletişime geçin"
 
 msgid "Start slide rotation"
 msgstr "Slayt geçişini başlat"
@@ -1781,6 +2009,9 @@ msgstr "Slayt geçişini durdur"
 msgid "Strong"
 msgstr "Belirgin"
 
+msgid "Studio"
+msgstr "Stüdyo"
+
 msgid "Style %d"
 msgstr "Stil %d"
 
@@ -1789,6 +2020,9 @@ msgstr "Stiller"
 
 msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
 msgstr "Önerilen: #34d399, #22d3ee, #fb923c, #a78bfa"
+
+msgid "Support a clear handover and review the completed work."
+msgstr "Açık bir teslim sürecini destekleyin ve tamamlanan çalışmayı değerlendirin."
 
 msgid "Surface"
 msgstr "Yüzey"
@@ -1811,6 +2045,12 @@ msgstr "Ekip tanıtımı"
 msgid "Technical details"
 msgstr "Teknik ayrıntılar"
 
+msgid "Tell us about your site, your brief and the possibilities you see."
+msgstr "Proje alanınızı, ihtiyaçlarınızı ve gördüğünüz olasılıkları bize anlatın."
+
+msgid "Test space, light, material and the design direction."
+msgstr "Mekânı, ışığı, malzemeyi ve tasarım yönünü sınayın."
+
 msgid "Text"
 msgstr "Metin"
 
@@ -1832,6 +2072,9 @@ msgstr "Güncelleme kontrolü / güncelleme butonu artık bu panelin en üstünd
 msgid "The export scope is invalid."
 msgstr "Dışa aktarma kapsamı geçersiz."
 
+msgid "The idea behind the space."
+msgstr "Mekânın ardındaki fikir."
+
 msgid "The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages."
 msgstr "Son on yerel yapılandırma kaydı saklanır. Bu kayıtlar veritabanı ve dosya yedeğinin yerine geçmez. Kurtarma, müşteri sayfalarını silmez veya geri almaz."
 
@@ -1852,6 +2095,9 @@ msgstr "Seçilen referans WOFF2 yazı tipi değil."
 
 msgid "The selected slider group does not exist."
 msgstr "Seçilen slayt grubu mevcut değil."
+
+msgid "The study explores how a clear structural order and a restrained material palette can create adaptable spaces with a distinct character."
+msgstr "Bu çalışma, belirgin bir taşıyıcı düzen ve sade malzeme paletiyle özgün kimlik taşıyan esnek mekânlar oluşturmayı araştırıyor."
 
 msgid "The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast."
 msgstr "Vurgu renginin üzerine uygulanan metin/ikon rengi (ör. buton etiketleri). Parlak bir özel vurgu rengi seçerseniz, okunabilir kontrast için bunu ayarlayın."
@@ -1919,6 +2165,9 @@ msgstr "Bu ayar şeması desteklenmiyor. Hiçbir değişiklik yapılmadı."
 msgid "This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the \"GNN Ana Sayfa\" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page."
 msgstr "Bu slider yalnızca varsayılan (Gutenberg tabanlı) ön sayfa şablonunda görüntülenir. Ön sayfa Elementor ile oluşturulmuş veya değiştirilmişse — \"GNN Ana Sayfa\" Elementor şablonu dahil — slider orada görünmez, çünkü Elementor içeriği tüm ön sayfayı devralır."
 
+msgid "Thoughtful architecture and interiors for the way we live, work and come together."
+msgstr "Yaşama, çalışma ve bir araya gelme biçimimiz için özenli mimarlık ve iç mekânlar."
+
 msgid "Title over featured image"
 msgstr "Öne çıkarılan görsel üzerinde başlık"
 
@@ -1973,6 +2222,9 @@ msgstr "fonts.google.com'daki tam adı yazın (ör. \"Poppins\", \"IBM Plex Sans
 msgid "Typography"
 msgstr "Tipografi"
 
+msgid "Understand the brief, the site and the priorities."
+msgstr "İhtiyaçları, alanı ve öncelikleri anlayın."
+
 msgid "Unsaved changes"
 msgstr "Kaydedilmemiş değişiklikler"
 
@@ -1994,6 +2246,9 @@ msgstr "Ortam bölümüne güvenilir bir WOFF2 dosyası yükleyip medya kimliği
 msgid "Uploaded local font"
 msgstr "Yüklenen yerel yazı tipi"
 
+msgid "Urban House"
+msgstr "Kent Evi"
+
 msgid "Use Google Fonts instead"
 msgstr "Bunun yerine Google Fonts kullan"
 
@@ -2012,14 +2267,38 @@ msgstr "Doğrulama ve özel işaretleme"
 msgid "View all"
 msgstr "Tümünü gör"
 
+msgid "View all projects"
+msgstr "Tüm projeleri görün"
+
+msgid "View selected work"
+msgstr "Seçili projeleri görün"
+
 msgid "View site"
 msgstr "Siteyi görüntüle"
 
 msgid "Visitors can still toggle; their choice persists in the browser."
 msgstr "Ziyaretçiler yine de değiştirebilir; seçim tarayıcıda saklanır."
 
+msgid "Warm architectural material study"
+msgstr "Sıcak tonlarda mimari malzeme çalışması"
+
 msgid "We are performing scheduled maintenance. Please check back soon."
 msgstr "Planlı bakım çalışması yapıyoruz. Lütfen kısa süre sonra tekrar bakın."
+
+msgid "We bring together observation, craft and a practical understanding of how spaces are made."
+msgstr "Gözlemi, ustalığı ve mekânın nasıl üretildiğine dair uygulama bilgisini bir araya getiriyoruz."
+
+msgid "We examine the brief, site constraints and development options to establish a sound foundation for the design."
+msgstr "Tasarım için sağlam bir temel oluşturmak üzere ihtiyaçları, alanın sınırlarını ve geliştirme seçeneklerini inceliyoruz."
+
+msgid "We listen to the brief, study the setting and test possibilities. The result is a clear relationship between architecture, landscape and everyday life."
+msgstr "İhtiyaçları dinliyor, bağlamı inceliyor ve olasılıkları deniyoruz. Böylece mimarlık, peyzaj ve günlük yaşam arasında açık bir ilişki kuruyoruz."
+
+msgid "What could your place become?"
+msgstr "Mekânınız neye dönüşebilir?"
+
+msgid "What guides the work."
+msgstr "Çalışmalarımıza yön verenler."
 
 msgid "When on, the title renders centered inside the featured image instead of above the content. Set the look (size/background) in GNN Panel → Pages Layout."
 msgstr "Açıkken başlık, içeriğin üstünde değil öne çıkarılan görselin içinde ortalanmış olarak görünür. Görünümü (boyut/arka plan) GNN Panel → Sayfa Düzeni içinden ayarlayın."
@@ -2044,6 +2323,9 @@ msgstr "Çalışma alanı"
 
 msgid "Workspace sections"
 msgstr "Çalışma alanı bölümleri"
+
+msgid "Workspaces"
+msgstr "Çalışma alanları"
 
 msgid "Written by"
 msgstr "Yazan"

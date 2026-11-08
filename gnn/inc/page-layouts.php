@@ -98,6 +98,7 @@ function gnn_render_page( $layout = 'full' ) {
  */
 function gnn_translate_page_templates( $templates ) {
 	$labels = array(
+		'page-templates/tpl-architecture.php'  => __( 'Architecture Showcase', 'gnn' ),
 		'page-templates/tpl-boxed.php'         => __( 'Boxed (max 1200px)', 'gnn' ),
 		'page-templates/tpl-right-sidebar.php' => __( 'Right Sidebar', 'gnn' ),
 		'page-templates/tpl-left-sidebar.php'  => __( 'Left Sidebar', 'gnn' ),

@@ -144,6 +144,7 @@ function gnn_platform_schema() {
 					'professional' => __( 'Professional services', 'gnn' ),
 					'industrial'   => __( 'Industrial and B2B', 'gnn' ),
 					'creative'     => __( 'Creative agency', 'gnn' ),
+					'architecture' => __( 'Architecture', 'gnn' ),
 				),
 			),
 			'compatibility_mode'      => array( __( 'Prefer third-party plugin compatibility', 'gnn' ), 'bool', 1, 'advanced' ),
