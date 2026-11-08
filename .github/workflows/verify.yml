@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 jobs:
-  verify:
+  static-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -23,3 +23,25 @@ jobs:
           coverage: none
       - name: Verify static integrity and syntax
         run: python .scripts/verify.py
+
+  wordpress-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install QA dependencies with pnpm
+        run: |
+          mkdir -p .temp/qa-tools
+          pnpm --dir .temp/qa-tools add --ignore-scripts @wp-playground/cli@3.1.58 playwright@1.64.1 axe-core@4.11.0
+      - name: Install Playwright Chromium
+        run: pnpm --dir .temp/qa-tools exec playwright install --with-deps chromium
+      - name: Run WordPress and browser integration tests
+        run: node .scripts/test-wordpress.mjs
+        env:
+          GNN_QA_WP: '7.1.4'

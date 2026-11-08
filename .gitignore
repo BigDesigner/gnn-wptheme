@@ -13,8 +13,8 @@ node_modules/
 *.zip
 
 # Local developer & test files
-.scripts/tests/
-.scripts/*.mjs
+.scripts/review-enterprise-panel.mjs
+.scripts/test-package-upgrade.mjs
 .scripts/audit-scan.py
 composer.lock
 composer.json
