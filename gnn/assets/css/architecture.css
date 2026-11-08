@@ -63,6 +63,13 @@
 .gnn-architecture .gnn-arch-gallery .wp-block-image{aspect-ratio:auto;}
 .gnn-architecture .gnn-arch-gallery .wp-block-image img{object-fit:contain;width:100%;height:auto;}
 .gnn-architecture-page{min-width:0;}
+.gnn-architecture .gnn-hero__content{background:color-mix(in srgb,var(--fg) 92%,transparent);padding:clamp(22px,4vw,44px);max-width:min(680px,84%);text-align:start;border-radius:var(--gnn-radius,0);}
+.gnn-architecture .gnn-hero__content :is(.gnn-hero__title,.gnn-hero__text,.entry-kicker){color:var(--bg);max-width:none;}
+.gnn-architecture .gnn-hero__content .gnn-hero__title{font-size:clamp(32px,4vw,58px);}
+.gnn-architecture .gnn-hero__content .gnn-hero__text{font-size:clamp(14px,1.4vw,18px);margin-top:20px;}
+.gnn-architecture .gnn-hero__content .gnn-hero__actions{justify-content:start;margin-top:24px;}
+.gnn-demo-footer .gnn-arch-services{gap:12px 24px;margin-top:24px;}
+.gnn-architecture .gnn-content-module .gnn-module-project-image img{display:block;width:100%;height:100%;aspect-ratio:var(--gnn-project-ratio,4/3);object-fit:var(--gnn-project-fit,cover);}
 .gnn-profile-preview{display:block;width:100%;height:150px;object-fit:cover;margin-block:14px;border:1px solid #dce3eb;}
 @media(max-width:1000px){.gnn-arch-hero{min-height:560px;gap:30px;}.gnn-architecture .gnn-arch-hero-title{font-size:clamp(72px,10vw,104px);}.gnn-arch-process{grid-template-columns:repeat(2,minmax(0,1fr));}.gnn-arch-statement{gap:24px 40px;padding-block:50px;}.gnn-architecture .gnn-arch-section{padding-block:56px;}}
 @media(max-width:700px){.gnn-arch-hero{grid-template-columns:1fr;min-height:0;}.gnn-architecture .gnn-arch-hero-title{max-width:12ch;font-size:clamp(64px,15vw,96px);}.gnn-arch-hero>.gnn-arch-image{aspect-ratio:4/3;}.gnn-arch-statement{grid-template-columns:1fr;}.gnn-arch-statement>h2,.gnn-arch-statement>.gnn-arch-lead,.gnn-arch-statement>.wp-block-buttons,.gnn-arch-statement>.gnn-arch-eyebrow{grid-column:1;grid-row:auto;}.gnn-arch-projects,.gnn-arch-services,.gnn-architecture .gnn-arch-split{grid-template-columns:1fr;}.gnn-arch-projects{gap:38px;}.gnn-architecture .gnn-arch-local-nav{gap:6px 20px;margin-bottom:36px;}.gnn-architecture .gnn-arch-facts{grid-template-columns:1fr;gap:24px;}.gnn-architecture .gnn-arch-callout{margin-top:56px;padding-block:40px;}.gnn-architecture .gnn-arch-gallery{--wp--style--unstable-gallery-gap:16px;gap:var(--wp--style--unstable-gallery-gap);}.gnn-architecture .gnn-arch-gallery .wp-block-image{width:calc(50% - 8px)!important;}}
