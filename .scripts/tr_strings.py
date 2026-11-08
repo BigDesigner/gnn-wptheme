@@ -1541,6 +1541,8 @@ TRANSLATIONS.update({
     'Tablet breakpoint': 'Tablet kırılma noktası', 'Tablet columns': 'Tablet sütunları', 'Tablet size': 'Tablet boyutu',
     'Tags': 'Etiketler', 'Text case': 'Harf biçimi', 'The administrator account is unavailable.': 'Yönetici hesabına erişilemiyor.',
     'The operation stopped. Retry to continue.': 'İşlem durdu. Devam etmek için yeniden deneyin.',
+    'Server busy. Waiting to continue…': 'Sunucu meşgul. Devam etmek için bekleniyor…',
+    'Server connection interrupted. Retry to continue.': 'Sunucu bağlantısı kesildi. Devam etmek için yeniden deneyin.',
     'This cannot be undone. Take a database and files backup first.': 'Bu işlem geri alınamaz. Önce veritabanı ve dosya yedeği alın.',
     'Time limit': 'Süre sınırı', 'Title bar': 'Başlık çubuğu', 'Type the site address': 'Site adresini yazın',
     'Unavailable': 'Kullanılamıyor', 'Uncategorized': 'Genel', 'Unsupported database prefix.': 'Desteklenmeyen veritabanı öneki.',
