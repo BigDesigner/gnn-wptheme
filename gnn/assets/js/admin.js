@@ -197,3 +197,6 @@
  }
  panel.addEventListener('change',syncBlogControls);if(search)search.addEventListener('input',syncBlogControls);syncBlogControls();
 } )();
+
+/* Cleanup requires a reviewed row; disabled controls are progressive enhancement only. */
+(function(){function ready(){document.querySelectorAll('form[data-gnn-cleanup]').forEach(function(form){var rows=Array.from(form.querySelectorAll('input[name^="cleanup["]')),button=form.querySelector('[type="submit"]');function sync(){button.disabled=!rows.some(function(row){return row.checked;});}form.addEventListener('change',sync);form.addEventListener('submit',function(event){if(!rows.some(function(row){return row.checked;})){event.preventDefault();form.querySelector('.gnn-cleanup-feedback').focus();}});var feedback=form.querySelector('.gnn-cleanup-feedback');if(feedback)feedback.tabIndex=-1;sync();});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ready);else ready();})();

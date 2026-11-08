@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.3.0\n"
+"Project-Id-Version: GNN 2.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 06:33+0000\n"
-"PO-Revision-Date: 2026-11-08 06:33+0000\n"
+"POT-Creation-Date: 2026-11-08 07:05+0000\n"
+"PO-Revision-Date: 2026-11-08 07:05+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1640,6 +1640,15 @@ msgstr "Sonraki slayt"
 msgid "Next →"
 msgstr "Sonraki →"
 
+msgid "No demo drafts selected. Select an eligible row; protected rows cannot be selected."
+msgstr "Örnek taslak seçilmedi. Temizlenebilir bir satır seçin; korunan satırlar seçilemez."
+
+msgid "No eligible demo drafts are available. Review the protection reasons below; resetting design settings does not require deleting pages."
+msgstr "Temizlenebilir örnek taslak yok. Listedeki koruma nedenlerini inceleyin; tasarım ayarlarını sıfırlamak için sayfa silmeniz gerekmez."
+
+msgid "No imported starter pages were found."
+msgstr "İçe aktarılmış başlangıç sayfası bulunamadı."
+
 msgid "No pending changes"
 msgstr "Kaydedilmemiş değişiklik yok"
 
@@ -1907,8 +1916,17 @@ msgstr "Proje yılı"
 msgid "Projects per page"
 msgstr "Sayfa başına proje"
 
-msgid "Protected: edited, referenced, published or unverified"
-msgstr "Korunuyor: düzenlenmiş, kullanılıyor, yayımlanmış veya doğrulanmamış"
+msgid "Protected: content or metadata differs from the imported version."
+msgstr "Korunuyor: içerik veya meta verileri içe aktarılan sürümden farklı."
+
+msgid "Protected: older import has no verification baseline. Review this page manually."
+msgstr "Korunuyor: eski içe aktarımın doğrulama kaydı yok. Sayfayı elle inceleyin."
+
+msgid "Protected: only draft pages can be cleaned automatically."
+msgstr "Korunuyor: otomatik temizlik yalnızca taslak sayfalarda kullanılabilir."
+
+msgid "Protected: used by site settings, navigation, a parent page or other content."
+msgstr "Korunuyor: site ayarları, menüler, alt sayfalar veya diğer içerikler tarafından kullanılıyor."
 
 msgid "Public email"
 msgstr "İletişim e-postası"
@@ -2095,6 +2113,9 @@ msgstr "Görselleri gösterim sırasıyla seçin. Seçimden çıkarmak dosyalar�
 
 msgid "Select reviewed, unchanged demo drafts first."
 msgstr "Önce incelediğiniz, değiştirilmemiş örnek taslakları seçin."
+
+msgid "Select the unchanged demo drafts you want to remove."
+msgstr "Kaldırmak istediğiniz değiştirilmemiş örnek taslakları seçin."
 
 msgid "Selected projects"
 msgstr "Seçili projeler"

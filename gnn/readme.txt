@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.3.0
+Stable tag: 2.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,11 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.3.1 =
+* Cleanup explains protection reasons and empty inventories, prevents empty selection, and returns empty requests to the workspace with a notice.
+* Reference checks paginate beyond 100 content records while preserving linked, edited, published and unverified pages.
+
 
 = 2.3.0 =
 * Four ready-made Elementor sites: GNNpro, GNNcommerce, GNNdesign and GNNarchitecture.

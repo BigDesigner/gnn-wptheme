@@ -66,29 +66,34 @@ function gnn_starter_is_referenced( $id ) {
 	) ) {
 		return true;
 	}
-	$types      = array_diff( array_unique( array_merge( get_post_types( array( 'public' => true ) ), array( 'gnn_layout', 'elementor_library' ) ) ), array( 'attachment' ) );
-	$references = new WP_Query(
-		array(
-			'post_type'      => $types,
-			'post_status'    => array( 'publish', 'private', 'draft', 'pending', 'future' ),
-			'posts_per_page' => 100,
-			'post__not_in'   => array( $id ),
-		)
-	);
-	if ( $references->found_posts > 100 ) {
-		// Large existing content inventories require manual review rather than partial proof of safety.
-		return true;
-	}
+	$types     = array_diff( array_unique( array_merge( get_post_types( array( 'public' => true ) ), array( 'gnn_layout', 'elementor_library' ) ) ), array( 'attachment' ) );
 	$permalink = get_permalink( $id );
-	foreach ( $references->posts as $record ) {
-		$baseline = get_post_meta( $record->ID, '_gnn_starter_baseline', true );
-		if ( 'draft' === $record->post_status && $baseline && hash_equals( $baseline, gnn_starter_fingerprint( $record->ID ) ) ) {
-			continue;
+	for ( $page = 1; ; ++$page ) {
+		$references = new WP_Query(
+			array(
+				'post_type'        => $types,
+				'post_status'      => array( 'publish', 'private', 'draft', 'pending', 'future' ),
+				'posts_per_page'   => 100,
+				'paged'            => $page,
+				'orderby'          => 'ID',
+				'order'            => 'ASC',
+				'post__not_in'     => array( $id ),
+				'no_found_rows'    => true,
+				'suppress_filters' => true,
+			)
+		);
+		foreach ( $references->posts as $record ) {
+			$baseline = get_post_meta( $record->ID, '_gnn_starter_baseline', true );
+			if ( 'draft' === $record->post_status && $baseline && hash_equals( $baseline, gnn_starter_fingerprint( $record->ID ) ) ) {
+				continue;
+			}
+			$text = str_replace( '\\/', '/', html_entity_decode( $record->post_content . (string) get_post_meta( $record->ID, '_elementor_data', true ), ENT_QUOTES, 'UTF-8' ) );
+			if ( preg_match( '/[?&](?:page_id|p)=' . absint( $id ) . '(?![0-9])/', $text ) || ( $permalink && preg_match( '/' . preg_quote( $permalink, '/' ) . '(?=[#?&"\'<>\s]|$)/', $text ) ) ) {
+				return true;
+			}
 		}
-		$text = $record->post_content . (string) get_post_meta( $record->ID, '_elementor_data', true );
-		$text = str_replace( '\\/', '/', html_entity_decode( $text, ENT_QUOTES, 'UTF-8' ) );
-		if ( preg_match( '/[?&](?:page_id|p)=' . absint( $id ) . '(?![0-9])/', $text ) || ( $permalink && false !== strpos( $text, $permalink ) ) ) {
-			return true;
+		if ( $references->post_count < 100 ) {
+			break;
 		}
 	}
 	$menus = wp_get_nav_menus();
@@ -117,12 +122,14 @@ function gnn_starter_cleanup_inventory() {
 	$rows = array();
 	foreach ( $posts as $post ) {
 		$baseline = get_post_meta( $post->ID, '_gnn_starter_baseline', true );
-		$safe     = 'draft' === $post->post_status && $baseline && hash_equals( $baseline, gnn_starter_fingerprint( $post->ID ) ) && ! gnn_starter_is_referenced( $post->ID );
+		$reason   = 'draft' !== $post->post_status ? 'status' : ( ! $baseline ? 'legacy' : ( ! hash_equals( $baseline, gnn_starter_fingerprint( $post->ID ) ) ? 'changed' : ( gnn_starter_is_referenced( $post->ID ) ? 'referenced' : 'safe' ) ) );
+		$safe     = 'safe' === $reason;
 		$rows[]   = array(
 			'id'          => $post->ID,
 			'title'       => $post->post_title,
 			'profile'     => get_post_meta( $post->ID, '_gnn_starter', true ),
 			'safe'        => (bool) $safe,
+			'reason'      => $reason,
 			'fingerprint' => gnn_starter_fingerprint( $post->ID ),
 		);
 	}
@@ -137,7 +144,13 @@ function gnn_starter_cleanup_inventory() {
  * @return true|WP_Error
  */
 function gnn_starter_cleanup( $selection, $permanent = false ) {
-	if ( ! current_user_can( 'manage_options' ) || ! is_array( $selection ) || count( $selection ) > 200 || ! $selection ) {
+	if ( ! current_user_can( 'manage_options' ) ) {
+		return new WP_Error( 'gnn_permission', __( 'Permission denied.', 'gnn' ) );
+	}
+	if ( is_array( $selection ) && ! $selection ) {
+		return new WP_Error( 'gnn_cleanup_empty', __( 'No demo drafts selected. Select an eligible row; protected rows cannot be selected.', 'gnn' ) );
+	}
+	if ( ! is_array( $selection ) || count( $selection ) > 200 ) {
 		return new WP_Error( 'gnn_cleanup', __( 'Select reviewed, unchanged demo drafts first.', 'gnn' ) );
 	}
 	$inventory = array_column( gnn_starter_cleanup_inventory(), null, 'id' );
@@ -164,18 +177,41 @@ function gnn_starter_cleanup( $selection, $permanent = false ) {
 
 /** Review first, then explicit destructive confirmation. Settings reset is a separate control. */
 function gnn_render_starter_maintenance() {
-	echo '<section class="gnn-settings-card"><h2>' . esc_html__( 'Design replacement and cleanup', 'gnn' ) . '</h2><div class="gnn-workspace-section"><p>' . esc_html__( 'Reset presentation settings when applying a new profile. Identity, integrations, customer code and central content are preserved. A configuration snapshot is created first.', 'gnn' ) . '</p><p>' . esc_html__( 'Cleanup only offers unchanged imported draft pages. Published, edited, referenced and older unverified records are protected. Projects, albums, slides and media are never deleted here. Remove child drafts first to unlock an unchanged parent on the next review.', 'gnn' ) . '</p><details><summary>' . esc_html__( 'Review imported demo drafts', 'gnn' ) . '</summary><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="starter_cleanup">';
+	$rows     = gnn_starter_cleanup_inventory();
+	$eligible = count(
+		array_filter(
+			$rows,
+			function ( $row ) {
+				return $row['safe'];
+			}
+		)
+	);
+	$notice   = isset( $_GET['gnn_cleanup_notice'] ) && is_string( $_GET['gnn_cleanup_notice'] ) && 'selection' === sanitize_key( wp_unslash( $_GET['gnn_cleanup_notice'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only fixed notice.
+	$reasons  = array(
+		'safe'       => __( 'Unchanged demo draft', 'gnn' ),
+		'status'     => __( 'Protected: only draft pages can be cleaned automatically.', 'gnn' ),
+		'legacy'     => __( 'Protected: older import has no verification baseline. Review this page manually.', 'gnn' ),
+		'changed'    => __( 'Protected: content or metadata differs from the imported version.', 'gnn' ),
+		'referenced' => __( 'Protected: used by site settings, navigation, a parent page or other content.', 'gnn' ),
+	);
+	if ( $notice ) {
+		echo '<div class="notice notice-warning"><p>' . esc_html__( 'No demo drafts selected. Select an eligible row; protected rows cannot be selected.', 'gnn' ) . '</p></div>';
+	}
+	echo '<section id="gnn-workspace-cleanup" class="gnn-settings-card"><h2>' . esc_html__( 'Design replacement and cleanup', 'gnn' ) . '</h2><div class="gnn-workspace-section"><p>' . esc_html__( 'Reset presentation settings when applying a new profile. Identity, integrations, customer code and central content are preserved. A configuration snapshot is created first.', 'gnn' ) . '</p><p>' . esc_html__( 'Cleanup only offers unchanged imported draft pages. Published, edited, referenced and older unverified records are protected. Projects, albums, slides and media are never deleted here. Remove child drafts first to unlock an unchanged parent on the next review.', 'gnn' ) . '</p><details' . ( $notice ? ' open' : '' ) . '><summary>' . esc_html__( 'Review imported demo drafts', 'gnn' ) . '</summary><form data-gnn-cleanup method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="starter_cleanup">';
 	wp_nonce_field( 'gnn_workspace' );
 	gnn_configuration_revision_field();
 	echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Select', 'gnn' ) . '</th><th>' . esc_html__( 'Page', 'gnn' ) . '</th><th>' . esc_html__( 'Status', 'gnn' ) . '</th></tr></thead><tbody>';
-	foreach ( gnn_starter_cleanup_inventory() as $row ) {
+	if ( ! $rows ) {
+		echo '<tr><td colspan="3">' . esc_html__( 'No imported starter pages were found.', 'gnn' ) . '</td></tr>';
+	}
+	foreach ( $rows as $row ) {
 		echo '<tr><td>';
 		if ( $row['safe'] ) {
 			echo '<input type="checkbox" name="cleanup[' . absint( $row['id'] ) . ']" value="' . esc_attr( $row['fingerprint'] ) . '" aria-label="' . esc_attr( $row['title'] ) . '">';
 		}
-		echo '</td><td>' . esc_html( $row['title'] . ' / ' . $row['profile'] ) . '</td><td>' . esc_html( $row['safe'] ? __( 'Unchanged demo draft', 'gnn' ) : __( 'Protected: edited, referenced, published or unverified', 'gnn' ) ) . '</td></tr>';
+		echo '</td><td><a href="' . esc_url( get_edit_post_link( $row['id'], 'raw' ) ) . '">' . esc_html( $row['title'] . ' / ' . $row['profile'] ) . '</a></td><td>' . esc_html( $reasons[ $row['reason'] ] ) . '</td></tr>';
 	}
-	echo '</tbody></table><p><label><input type="checkbox" name="permanent" value="1"> ' . esc_html__( 'Permanently delete selected demo drafts and their metadata instead of moving to Trash. This cannot be undone; a settings snapshot does not back up pages.', 'gnn' ) . '</label></p><p><label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the selected records and deletion method.', 'gnn' ) . '</label></p>';
-	submit_button( __( 'Clean selected demo drafts', 'gnn' ), 'secondary' );
+	echo '</tbody></table><p class="gnn-cleanup-feedback" role="status">' . esc_html( $eligible ? __( 'Select the unchanged demo drafts you want to remove.', 'gnn' ) : __( 'No eligible demo drafts are available. Review the protection reasons below; resetting design settings does not require deleting pages.', 'gnn' ) ) . '</p><p><label><input type="checkbox" name="permanent" value="1"> ' . esc_html__( 'Permanently delete selected demo drafts and their metadata instead of moving to Trash. This cannot be undone; a settings snapshot does not back up pages.', 'gnn' ) . '</label></p><p><label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the selected records and deletion method.', 'gnn' ) . '</label></p>';
+	submit_button( __( 'Clean selected demo drafts', 'gnn' ), 'secondary', 'submit', true, $eligible ? array() : array( 'disabled' => 'disabled' ) );
 	echo '</form></details><p><a href="' . esc_url( admin_url( 'admin.php?page=gnn-workspace#gnn-workspace-operations' ) ) . '">' . esc_html__( 'Visitor maintenance mode is controlled separately under Maintenance and compatibility.', 'gnn' ) . '</a></p></div></section>';
 }
