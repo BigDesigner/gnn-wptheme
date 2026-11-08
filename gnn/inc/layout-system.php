@@ -15,9 +15,9 @@ function gnn_register_layout_content() {
 			'gnn_layout',
 			array(
 				'labels'          => array(
-					'name'          => __( 'Reusable layouts', 'gnn' ),
+					'name'          => __( 'Reusable blocks', 'gnn' ),
 					'singular_name' => __( 'Layout', 'gnn' ),
-					'add_new_item'  => __( 'Add reusable layout', 'gnn' ),
+					'add_new_item'  => __( 'Add reusable block', 'gnn' ),
 				),
 				'public'          => false,
 				'show_ui'         => true,
@@ -62,7 +62,7 @@ add_filter( 'user_has_cap', 'gnn_layout_capabilities' );
 
 /** Supported override keys have the same type/bounds as the global schema. */
 function gnn_layout_override_keys() {
-	return array( 'header_template', 'footer_template', 'header_preset', 'hero_style', 'hero_group', 'content_top_padding', 'content_bottom_padding', 'post_content_width', 'post_image_layout', 'post_image_width', 'post_image_height_mode', 'post_image_ratio', 'post_featured_image_height', 'post_featured_image_fit', 'post_featured_image_position' );
+	return array( 'header_template', 'footer_template', 'titlebar_template', 'sidebar_template', 'content_template', 'header_preset', 'hero_style', 'hero_group', 'content_top_padding', 'content_bottom_padding', 'post_content_width', 'post_image_layout', 'post_image_width', 'post_image_height_mode', 'post_image_ratio', 'post_featured_image_height', 'post_featured_image_fit', 'post_featured_image_position' );
 }
 
 /**
@@ -71,6 +71,10 @@ function gnn_layout_override_keys() {
  * @param string $key Option key.
  */
 function gnn_layout_value( $key ) {
+	if ( in_array( $key, array( 'header_template', 'footer_template', 'titlebar_template', 'sidebar_template', 'content_template' ), true ) ) {
+		$assignment = gnn_region_assignment( str_replace( '_template', '', $key ) );
+		return $assignment['id'];
+	}
 	$id   = is_singular() ? get_queried_object_id() : 0;
 	$meta = $id ? (array) get_post_meta( $id, '_gnn_layout', true ) : array();
 	if ( isset( $meta[ $key ] ) && '' !== $meta[ $key ] ) {
@@ -91,23 +95,30 @@ function gnn_layout_value( $key ) {
  */
 function gnn_render_layout_region( $region ) {
 	static $rendering = false;
-	if ( $rendering || ! in_array( $region, array( 'header', 'footer' ), true ) ) {
+	if ( $rendering || ! isset( gnn_site_regions()[ $region ] ) ) {
 		return false; }
-	$id   = absint( apply_filters( 'gnn_layout_region_id', gnn_layout_value( $region . '_template' ), $region ) );
+	if ( -2 === (int) gnn_layout_value( $region . '_template' ) ) {
+		return true; }
+	$id = absint( apply_filters( 'gnn_layout_region_id', gnn_layout_value( $region . '_template' ), $region ) );
+	if ( ! $id ) {
+		return false; }
 	$post = get_post( gnn_translated_post_id( $id ) );
-	if ( ! $post || 'gnn_layout' !== $post->post_type || 'publish' !== $post->post_status || '' !== $post->post_password || '' === trim( $post->post_content ) ) {
+	if ( ! $post || 'gnn_layout' !== $post->post_type || 'publish' !== $post->post_status || '' !== $post->post_password ) {
 		return false; }
 	$rendering = true;
-	$content   = do_blocks( $post->post_content );
+	$content   = gnn_shared_content( $id );
 	$rendering = false;
-	$tag       = 'header' === $region ? 'header' : 'footer';
+	if ( '' === trim( $content ) ) {
+		return false;
+	}
+	$tag = in_array( $region, array( 'header', 'footer' ), true ) ? $region : 'div';
 	echo '<' . esc_html( $tag ) . ' class="gnn-layout-region gnn-layout-region--' . esc_attr( $region ) . '">' . $content . '</' . esc_html( $tag ) . '>'; // phpcs:ignore WordPress.Security.EscapeOutput -- native rendered blocks, authored under layout capabilities.
 	return true;
 }
 
 /** Page controls do not require Elementor Pro. */
 function gnn_layout_meta_box() {
-	add_meta_box( 'gnn-layout', __( 'Site layout overrides', 'gnn' ), 'gnn_render_layout_meta_box', array( 'page', 'post' ), 'side' );
+	add_meta_box( 'gnn-layout', __( 'Site layout overrides', 'gnn' ), 'gnn_render_layout_meta_box', array( 'page', 'post', 'gnn_project' ), 'side' );
 }
 add_action( 'add_meta_boxes', 'gnn_layout_meta_box' );
 
@@ -125,10 +136,11 @@ function gnn_render_layout_meta_box( $post ) {
 		$schema = gnn_platform_schema();
 		$field  = $schema[ $key ] ?? array( ucwords( str_replace( '_', ' ', $key ) ), 'number', '', 'pages', 0, 300 );
 		echo '<p><label for="gnn-layout-' . esc_attr( $key ) . '">' . esc_html( $field[0] ) . '</label>';
-		if ( in_array( $field[1], array( 'layout', 'select' ), true ) ) {
+		if ( in_array( $field[1], array( 'layout', 'region', 'select' ), true ) ) {
 			$choices = array( '' => __( 'Inherit', 'gnn' ) );
-			if ( 'layout' === $field[1] ) {
-				$choices[0] = __( 'Native theme / builder fallback', 'gnn' );
+			if ( in_array( $field[1], array( 'layout', 'region' ), true ) ) {
+				$choices[0]  = __( 'Native theme / builder fallback', 'gnn' );
+				$choices[-2] = __( 'Hide', 'gnn' );
 				foreach ( get_posts(
 					array(
 						'post_type'   => 'gnn_layout',
@@ -168,8 +180,8 @@ function gnn_save_layout_meta( $id ) {
 			if ( isset( $schema[ $key ][4][ $input[ $key ] ] ) ) {
 				$valid[ $key ] = $input[ $key ]; }
 		} else {
-			$value = absint( $input[ $key ] );
-			if ( false !== strpos( $key, '_template' ) && $value && 'gnn_layout' !== get_post_type( $value ) ) {
+			$value = false !== strpos( $key, '_template' ) ? max( -2, (int) $input[ $key ] ) : absint( $input[ $key ] );
+			if ( false !== strpos( $key, '_template' ) && $value > 0 && 'gnn_layout' !== get_post_type( $value ) ) {
 				continue; }
 			$valid[ $key ] = isset( $schema[ $key ] ) && 'number' === $schema[ $key ][1] ? max( $schema[ $key ][4], min( $schema[ $key ][5], $value ) ) : $value;
 		}

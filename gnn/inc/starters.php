@@ -82,7 +82,7 @@ function gnn_apply_design_preset( $name, $reset = false ) {
 	if ( is_wp_error( $started ) ) {
 		return $started; }
 	$profile = $profiles[ $name ];
-	$options = (array) get_option( 'gnn_options', array() );
+	$options = wp_parse_args( (array) get_option( 'gnn_options', array() ), gnn_option_defaults() );
 	if ( $reset ) {
 		$defaults = gnn_option_defaults();
 		foreach ( gnn_design_reset_keys() as $key ) {

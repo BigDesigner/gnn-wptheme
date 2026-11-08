@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.3.2' );
+define( 'GNN_VERSION', '2.4.0' );
 
 /**
  * Theme setup.
@@ -259,6 +259,8 @@ add_action( 'wp_head', 'gnn_pingback_header' );
 
 require get_template_directory() . '/inc/blog.php';
 require get_template_directory() . '/inc/platform.php';
+require get_template_directory() . '/inc/site-platform.php';
+require get_template_directory() . '/inc/shared-library.php';
 require get_template_directory() . '/inc/layout-system.php';
 require get_template_directory() . '/inc/design-system.php';
 require get_template_directory() . '/inc/integrations.php';
@@ -278,6 +280,8 @@ if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-panel.php';
 	require get_template_directory() . '/inc/workspace.php';
 	require get_template_directory() . '/inc/import-preview.php';
+	require get_template_directory() . '/inc/admin-screens.php';
+	require get_template_directory() . '/inc/site-reset.php';
 }
 // Theme updates are also checked by WP-Cron and WP-CLI outside wp-admin.
 require get_template_directory() . '/inc/updater.php';

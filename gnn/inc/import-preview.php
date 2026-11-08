@@ -48,9 +48,9 @@ function gnn_render_import_preview( $raw ) {
 	$same_site     = isset( $document->source_site ) && is_string( $document->source_site ) && hash_equals( gnn_site_fingerprint(), $document->source_site );
 	$source_values = array_replace( (array) ( $document->theme_mods ?? array() ), (array) ( $document->options ?? array() ) );
 	foreach ( array_intersect_key( $source_values, array_flip( gnn_site_specific_keys() ) ) as $key => $id ) {
-		$is_layout = false !== strpos( $key, '_template' );
+		$is_layout = false !== strpos( $key, '_template' ) || false !== strpos( $key, '_grid_layout' );
 		$is_media  = false !== strpos( $key, 'logo_' ) || in_array( $key, array( 'error404_image', 'local_font' ), true );
-		if ( $same_site || ! $id || ( ! $is_layout && ! $is_media && ! in_array( $key, array( 'contact_page_id', 'hero_group' ), true ) ) ) {
+		if ( $same_site || ( is_numeric( $id ) && (int) $id <= 0 ) || ( ! $is_layout && ! $is_media && ! in_array( $key, array( 'contact_page_id', 'hero_group' ), true ) ) ) {
 			continue; }
 		echo '<p><label for="map-' . esc_attr( $key ) . '">' . esc_html( $key ) . '</label><select id="map-' . esc_attr( $key ) . '" name="reference_map[' . esc_attr( $key ) . ']" required><option value="">' . esc_html__( 'Choose a reference on this site', 'gnn' ) . '</option>';
 		if ( 'hero_group' === $key ) {

@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GNN Content Continuity
  * Description: Keeps GNN slides, reusable layouts, portfolio projects, categories and gallery collections available when the presentation theme changes.
- * Version: 2.3.2
+ * Version: 2.4.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * License: GPL-2.0-or-later
@@ -35,6 +35,9 @@ function gnn_content_register_types() {
 	if ( ! post_type_exists( 'gnn_layout' ) ) {
 		register_post_type( 'gnn_layout', array( 'label' => __( 'Reusable layouts', 'gnn-content' ), 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'show_in_menu' => $gnn ? 'gnn-panel' : true, 'supports' => array( 'title', 'editor', 'revisions' ), 'capability_type' => array( 'gnn_layout', 'gnn_layouts' ), 'map_meta_cap' => true ) );
 	}
+ if ( ! $gnn && ! post_type_exists( 'gnn_grid' ) ) {
+  register_post_type( 'gnn_grid', array( 'label' => __( 'Grid layouts', 'gnn-content' ), 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'supports' => array( 'title', 'revisions', 'custom-fields' ), 'capability_type' => array( 'gnn_layout', 'gnn_layouts' ), 'map_meta_cap' => true ) );
+ }
 	if ( ! taxonomy_exists( 'gnn_slide_group' ) ) { register_taxonomy( 'gnn_slide_group', 'gnn_slide', array( 'label' => __( 'Slider groups', 'gnn-content' ), 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'hierarchical' => true ) ); }
 	foreach ( array( '_gnn_slide_kicker', '_gnn_slide_text', '_gnn_slide_cta_label', '_gnn_slide_cta_url', '_gnn_slide_fit' ) as $key ) {
 		register_post_meta( 'gnn_slide', $key, array( 'type' => 'string', 'single' => true, 'show_in_rest' => true, 'sanitize_callback' => '_gnn_slide_cta_url' === $key ? 'esc_url_raw' : 'sanitize_textarea_field', 'auth_callback' => function ( $allowed, $key, $id ) { return current_user_can( 'edit_post', $id ); } ) );

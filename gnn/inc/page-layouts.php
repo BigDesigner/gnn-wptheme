@@ -51,7 +51,7 @@ function gnn_render_page( $layout = 'full' ) {
 
 	// A sidebar only appears for the sidebar layouts, and never on the
 	// WooCommerce utility pages (cart/checkout/account) which bring their own.
-	$with_sidebar = in_array( $layout, array( 'right', 'left' ), true )
+	$with_sidebar = ( in_array( $layout, array( 'right', 'left' ), true ) || gnn_layout_value( 'sidebar_template' ) )
 		&& gnn_show_sidebar()
 		&& ! gnn_is_wc_utility_page();
 

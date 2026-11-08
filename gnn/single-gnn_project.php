@@ -8,7 +8,7 @@
 // phpcs:disable WordPress.Files.FileName -- WordPress template hierarchy requires the registered CPT/taxonomy key.
 get_header();
 ?>
-<main id="primary" class="gnn-project-single">
+<main id="primary" class="gnn-project-single<?php echo gnn_layout_value( 'sidebar_template' ) > 0 ? ' gnn-custom-sidebar' : ''; ?>">
 	<?php while ( have_posts() ) : ?>
 		<?php the_post(); ?>
 		<article class="gnn-project-canvas">
@@ -47,5 +47,9 @@ get_header();
 			<?php endif; ?>
 		</article>
 	<?php endwhile; ?>
+<?php
+if ( gnn_layout_value( 'sidebar_template' ) > 0 ) {
+	get_sidebar(); }
+?>
 </main>
 <?php get_footer(); ?>

@@ -13,7 +13,7 @@ function gnn_delegated_keys() {
 	$brand = array( 'company_name', 'company_address', 'company_hours', 'company_phone', 'company_email', 'company_social_url', 'header_cta_label', 'header_cta_url', 'topbar_text', 'topbar_email', 'topbar_phone', 'footer_tagline', 'footer_copyright', 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x', 'footer_logo_light', 'footer_logo_dark' );
 	if ( current_user_can( 'gnn_manage_design' ) ) {
 		foreach ( gnn_platform_schema() as $key => $field ) {
-			if ( ! in_array( $field[3], array( 'code', 'advanced' ), true ) ) {
+			if ( ! in_array( $field[3], array( 'code', 'advanced', 'internal' ), true ) ) {
 				$brand[] = $key; }
 		}
 		$brand = array_merge( $brand, array( 'accent', 'accent_light', 'color_bg_dark', 'color_bg_light', 'color_bg2_dark', 'color_bg2_light', 'color_bg3_dark', 'color_bg3_light', 'color_fg_dark', 'color_fg_light', 'color_fg2_dark', 'color_fg2_light', 'color_line_dark', 'color_line_light', 'logo_max_height', 'logo_max_height_mobile', 'footer_logo_height' ) );
@@ -28,7 +28,7 @@ function gnn_operation_keys() {
 
 /** High-impact operations require an explicit confirmation and revision. */
 function gnn_render_operation_controls() {
-	echo '<h2>' . esc_html__( 'Maintenance and compatibility', 'gnn' ) . '</h2><p>' . esc_html__( 'These settings affect visitor access or third-party plugins. Test them on staging first. Ordinary design saves do not change these controls.', 'gnn' ) . '</p><form class="gnn-operations-form" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="operations">';
+	echo '<h2>' . esc_html__( 'Maintenance and compatibility', 'gnn' ) . '</h2><p>' . esc_html__( 'Test compatibility changes before applying them.', 'gnn' ) . '</p><form class="gnn-operations-form" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="operations">';
 	wp_nonce_field( 'gnn_workspace' );
 	gnn_configuration_revision_field();
 	$labels = array(
@@ -44,8 +44,8 @@ function gnn_render_operation_controls() {
 	foreach ( $labels as $key => $label ) {
 		gnn_field_checkbox( $key, $label ); }
 	gnn_field_textarea( 'maintenance_message', __( 'Maintenance message', 'gnn' ), (string) gnn_option( 'maintenance_message' ), 3 );
-	echo '<p><label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I understand the impact. Save a recovery snapshot and apply these operational settings.', 'gnn' ) . '</label></p>';
-	submit_button( __( 'Apply operational settings', 'gnn' ) );
+	echo '<p><label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the changes.', 'gnn' ) . '</label></p>';
+	submit_button( __( 'Apply settings', 'gnn' ) );
 	echo '</form>';
 }
 
@@ -55,7 +55,7 @@ function gnn_workspace_menu() {
 		add_submenu_page( 'gnn-panel', __( 'Setup wizard', 'gnn' ), __( 'Setup wizard', 'gnn' ), 'manage_options', 'gnn-workspace', 'gnn_workspace_page' );
 	} elseif ( current_user_can( 'gnn_manage_design' ) || current_user_can( 'gnn_manage_brand' ) || current_user_can( 'gnn_view_diagnostics' ) ) {
 		$cap = current_user_can( 'gnn_manage_design' ) ? 'gnn_manage_design' : ( current_user_can( 'gnn_manage_brand' ) ? 'gnn_manage_brand' : 'gnn_view_diagnostics' );
-		add_menu_page( __( 'Setup wizard', 'gnn' ), 'GNN', $cap, 'gnn-panel', 'gnn_workspace_page', 'dashicons-admin-site-alt3', '59.100' );
+		add_menu_page( __( 'Assigned settings', 'gnn' ), 'GNN', $cap, 'gnn-panel', 'gnn_workspace_page', 'dashicons-admin-site-alt3', '59.100' );
 	}
 }
 add_action( 'admin_menu', 'gnn_workspace_menu', 20 );
@@ -102,7 +102,7 @@ function gnn_workspace_action_form( $action, $label, $extra = array() ) {
 }
 
 /** A task-oriented workspace complements the detailed design controls. */
-function gnn_workspace_page() {
+function gnn_workspace_legacy() {
 	$admin    = current_user_can( 'manage_options' );
 	$delegate = current_user_can( 'gnn_manage_design' ) || current_user_can( 'gnn_manage_brand' );
 	if ( ! $admin && ! $delegate && ! current_user_can( 'gnn_view_diagnostics' ) ) {
@@ -122,7 +122,7 @@ function gnn_workspace_page() {
 		$sections['recovery']   = __( 'Recovery snapshots', 'gnn' );
 		$sections['history']    = __( 'Change history', 'gnn' );
 	}
-	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel__header"><div class="gnn-panel__heading"><span class="gnn-panel__icon dashicons dashicons-dashboard" aria-hidden="true"></span><div><h1>' . esc_html__( 'Setup wizard', 'gnn' ) . '</h1><p class="gnn-panel__subtitle">' . esc_html__( 'Site operations, recovery and the settings assigned to your role.', 'gnn' ) . '</p></div></div><div class="gnn-panel__header-actions"><span class="gnn-panel__badge">v' . esc_html( GNN_VERSION ) . '</span>';
+	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel__header"><div class="gnn-panel__heading"><span class="gnn-panel__icon dashicons dashicons-dashboard" aria-hidden="true"></span><div><h1>' . esc_html__( 'Assigned settings', 'gnn' ) . '</h1><p class="gnn-panel__subtitle">' . esc_html__( 'Site operations, recovery and the settings assigned to your role.', 'gnn' ) . '</p></div></div><div class="gnn-panel__header-actions"><span class="gnn-panel__badge">v' . esc_html( GNN_VERSION ) . '</span>';
 	if ( $admin ) {
 		echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-panel' ) ) . '">' . esc_html__( 'Theme settings', 'gnn' ) . '</a>'; }
 	echo '</div></header><hr class="wp-header-end"><div class="gnn-admin-layout"><aside class="gnn-sidebar"><p class="gnn-sidebar__title">' . esc_html__( 'Site management', 'gnn' ) . '</p><nav class="gnn-workspace-links" aria-label="' . esc_attr__( 'Workspace sections', 'gnn' ) . '">';

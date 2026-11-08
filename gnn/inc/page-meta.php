@@ -173,6 +173,8 @@ add_action( 'save_post', 'gnn_save_page_meta' );
  * @return bool
  */
 function gnn_title_explicitly_hidden() {
+	if ( gnn_layout_value( 'titlebar_template' ) ) {
+		return true; }
 	if ( ! is_singular() ) {
 		return false;
 	}

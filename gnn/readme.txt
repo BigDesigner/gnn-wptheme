@@ -4,12 +4,12 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.3.2
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Configurable corporate theme with shared design controls, reusable native-block
-layouts, client workspaces, draft starters and optional commerce integrations.
+Configurable corporate theme with shared design controls, shared blocks,
+role-based settings, draft starters and optional commerce integrations.
 
 == Description ==
 
@@ -47,14 +47,44 @@ GNN is a classic (PHP-template) WordPress theme:
    uses the blog listing. Designed sections are available as block patterns
    and Elementor Saved Templates; no demo sections are inserted into pages automatically.
 
-== Site workspace and configuration ==
+== Setup and shared content ==
 
-GNN → Workspace separates operational settings from ordinary design saves.
-Four profiles change design without replacing identity, tracking or custom code.
-Starter installation only adds missing DRAFT pages; review and publish them yourself.
-Reusable layouts use the native block editor. Select published header/footer layouts
-site-wide, for blog/archive contexts, or on individual pages and posts. Explicit
-page choices take precedence; missing or draft layouts fall back to the theme.
+GNN > Setup wizard offers Ready-made site and Start from scratch.
+Ready-made sites use Elementor Free. Choose GNNpro, GNNcommerce, GNNdesign
+or GNNarchitecture. Review dependencies, then import only that design's draft
+pages. Existing content, homepage and menus are preserved. GNNcommerce needs
+WooCommerce and its published shop/cart/checkout/account pages.
+
+Start from scratch applies selected header/footer, fonts and accent settings
+without creating sample content. GNN > Plugins provides installation/activation
+links. GNN > Page templates lists imported pages and their preview/edit links.
+
+Reusable blocks are single shared records edited with Elementor Free or native
+blocks. Select them under Page and archive layouts, or use the GNN Shared Block
+widget / [gnn_block id="123"]. Published, non-password-protected blocks render
+where assigned; recursive references stop automatically. Used in lists direct
+consumers and global assignments. Legacy usage indexing continues in batches.
+
+Layout resolution is page override, specific content/archive context, then site.
+Inherit, Theme default and Hide are distinct choices. Existing layout IDs and
+native-block records are preserved. Grid layouts control collection geometry;
+select defaults under Design system, choose a widget's grid ID, or use
+[gnn_grid id="123" source="portfolio"] (also gallery, products or posts).
+
+Design system includes responsive type roles, named color variables
+--gnn-global-1 through --gnn-global-6, button states, form controls and additional
+image sizes. Additional image sizes apply to future uploads; original files are
+never deleted by a settings save.
+
+GNN > Maintenance and recovery contains operational controls, settings snapshots
+and Wipe. Wipe permanently deletes this installation's content, orders, uploaded
+files, other accounts and plugin settings. It retains the initiating administrator,
+login access, active theme and plugin/theme files; plugins are deactivated.
+Back up the database and files separately before confirming. Reset runs in short
+batches and can resume from the same administrator's session. Visitors receive
+503 during an unfinished reset. Shared/multisite databases, custom user tables,
+must-use plugins, persistent cache drop-ins and nonstandard/remote/symlinked uploads are unsupported and
+prevent reset. Core files and database connection configuration are preserved.
 
 Optional GNN Client, GNN Designer and GNN Support roles can be assigned in Users.
 Client users edit assigned public brand/contact fields. Designers also manage design
@@ -92,25 +122,14 @@ theme loader does not remove tags installed outside the theme.
 
 == Architecture starter ==
 
-GNN > Workspace > Design profiles and draft starter pages includes Architecture.
-Apply design profile sets its warm neutral palette, typography and design geometry.
-Add missing draft pages creates an isolated Architecture home with studio, services,
-Portfolio / 2 Columns, gallery, contact and four linked concept-project detail pages.
-Existing pages, edits, homepage and menu assignments are retained. The workspace
-provides a home preview/edit link after installation. Review and publish the pages,
-then assign the desired homepage and menu through WordPress.
-
-Text, illustrations, galleries, links and layouts are native editable blocks. Replace
-the bundled original concept illustrations with your own photography in Image blocks.
-Set real project facts and public contact details, and add/test a form before publishing.
-Portfolio category filters are optional block content; removing the filter group leaves
-all cards visible. Without JavaScript all projects remain readable. Gallery expansion
-uses the native WordPress Image lightbox when available. Architecture gallery, services
-and two-column portfolio sections are also available in the block pattern inserter.
-
-For another project, create a page with Architecture Showcase, copy a sample project's
-blocks, then add its image/title/link card to the portfolio. Per-page content is not
-rewritten by another starter installation. Trashed starter pages are not resurrected.
+Choose GNNarchitecture in Setup wizard for the studio, services, portfolio,
+gallery and contact pages. Replace concept illustrations with your photography.
+Manage real projects and their categories under Portfolio projects. Published
+projects appear automatically in portfolio/category queries and project navigation.
+Project galleries reference Media Library images; independent collections live
+under Gallery albums. Shared sliders remain under Slider. Edit imported page
+layout in Elementor; edit the underlying projects/albums/slides in their own lists.
+Existing native-block starter pages remain editable without conversion.
 
 == Blog layouts ==
 
@@ -153,6 +172,14 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.4.0 =
+* Added setup paths, template catalog, plugin management and system status.
+* Added shared Elementor blocks, layout assignments, usage tracking and grid layouts.
+* Added responsive typography, global colors, button states and field controls.
+* Added a confirmed, resumable WordPress reset with administrator and file protection.
+* Simplified panel copy and preserved existing content and option identifiers.
+* Fixed color-picker initialization inside collapsed setting groups.
 
 = 2.3.2 =
 * Rename the site workspace to Setup wizard and add a native WordPress Elementor install/activation shortcut.

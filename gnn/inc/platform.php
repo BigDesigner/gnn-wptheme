@@ -38,7 +38,7 @@ function gnn_platform_schema() {
 			'header_cta_url'          => array( __( 'Header action URL', 'gnn' ), 'url', '', 'header' ),
 			'header_contact'          => array( __( 'Show contact information in the header', 'gnn' ), 'bool', 0, 'header' ),
 			'header_language'         => array( __( 'Show the language switcher when supported', 'gnn' ), 'bool', 0, 'header' ),
-			'header_template'         => array( __( 'Reusable header', 'gnn' ), 'layout', 0, 'header' ),
+			'header_template'         => array( __( 'Reusable header', 'gnn' ), 'region', 0, 'header' ),
 			'footer_preset'           => array(
 				__( 'Footer style', 'gnn' ),
 				'select',
@@ -52,11 +52,11 @@ function gnn_platform_schema() {
 				),
 			),
 			'footer_columns'          => array( __( 'Footer widget columns', 'gnn' ), 'number', 3, 'footer', 1, 4 ),
-			'footer_template'         => array( __( 'Reusable footer', 'gnn' ), 'layout', 0, 'footer' ),
-			'archive_header_template' => array( __( 'Archive header override', 'gnn' ), 'layout', 0, 'header' ),
-			'archive_footer_template' => array( __( 'Archive footer override', 'gnn' ), 'layout', 0, 'footer' ),
-			'post_header_template'    => array( __( 'Single post header override', 'gnn' ), 'layout', 0, 'header' ),
-			'post_footer_template'    => array( __( 'Single post footer override', 'gnn' ), 'layout', 0, 'footer' ),
+			'footer_template'         => array( __( 'Reusable footer', 'gnn' ), 'region', 0, 'footer' ),
+			'archive_header_template' => array( __( 'Archive header override', 'gnn' ), 'region', -1, 'header' ),
+			'archive_footer_template' => array( __( 'Archive footer override', 'gnn' ), 'region', -1, 'footer' ),
+			'post_header_template'    => array( __( 'Single post header override', 'gnn' ), 'region', -1, 'header' ),
+			'post_footer_template'    => array( __( 'Single post footer override', 'gnn' ), 'region', -1, 'footer' ),
 			'brand_dot'               => array( __( 'Show the decorative dot after the text logo', 'gnn' ), 'bool', 1, 'header' ),
 			'body_font'               => array(
 				__( 'Local body font', 'gnn' ),
@@ -180,7 +180,8 @@ function gnn_platform_schema() {
 			'project_detail_width'    => array( __( 'Project detail maximum width', 'gnn' ), 'number', 1280, 'pages', 800, 1920 ),
 			'compatibility_mode'      => array( __( 'Prefer third-party plugin compatibility', 'gnn' ), 'bool', 1, 'advanced' ),
 		),
-		gnn_blog_schema()
+		gnn_blog_schema(),
+		function_exists( 'gnn_site_schema' ) ? gnn_site_schema() : array()
 	);
 }
 
@@ -209,6 +210,8 @@ function gnn_validate_platform_input( $input ) {
 		$invalid = ! is_scalar( $value ) || ( is_string( $value ) && strlen( $value ) > 65536 );
 		if ( 'select' === $field[1] && ! isset( $field[4][ $value ] ) ) {
 			$invalid = true; }
+		if ( 'optional_number' === $field[1] && '' !== $value && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field[4] || $value > $field[5] ) ) {
+			$invalid = true; }
 		if ( 'number' === $field[1] && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field[4] || $value > $field[5] ) ) {
 			$invalid = true; }
 		if ( 'email' === $field[1] && '' !== $value && ! is_email( $value ) ) {
@@ -217,6 +220,14 @@ function gnn_validate_platform_input( $input ) {
 			$invalid = true; }
 		if ( 'actions' === $field[1] && is_wp_error( gnn_sanitize_actions( (string) $value ) ) ) {
 			$invalid = true; }
+		if ( 'grid' === $field[1] && ( ! preg_match( '/^[0-9]+$/D', (string) $value ) || ( (int) $value > 0 && ( 'gnn_grid' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) ) ) {
+			$invalid = true; }
+		if ( 'hex' === $field[1] && '' !== $value && ! sanitize_hex_color( $value ) ) {
+			$invalid = true;
+		}
+		if ( 'region' === $field[1] && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || (int) $value < -2 || ( (int) $value > 0 && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) ) ) {
+			$invalid = true;
+		}
 		if ( in_array( $field[1], array( 'layout', 'font', 'slide_group' ), true ) && ! preg_match( '/^[0-9]+$/D', (string) $value ) ) {
 			$invalid = true; }
 		if ( ! $invalid && $value && 'layout' === $field[1] && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
@@ -271,14 +282,31 @@ function gnn_sanitize_actions( $raw ) {
 function gnn_sanitize_platform_options( $out, $input ) {
 	foreach ( gnn_platform_schema() as $key => $field ) {
 		if ( ! array_key_exists( $key, $input ) ) {
-			if ( 'bool' === $field[1] && isset( $input['platform_fields_present'] ) ) {
+			if ( 'bool' === $field[1] && isset( $input['platform_fields_present'] ) && ! isset( gnn_site_schema()[ $key ] ) ) {
 				$out[ $key ] = 0; }
 			continue;
 		}
 		$value = $input[ $key ];
 		switch ( $field[1] ) {
+			case 'grid':
+				$value = absint( $value );
+				if ( $value && ( 'gnn_grid' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
+					$value = 0; }
+				break;
+			case 'hex':
+				$value = sanitize_hex_color( $value );
+				break;
+			case 'region':
+				$value = max( -2, (int) $value );
+				if ( $value > 0 && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
+					$value = -1;
+				}
+				break;
 			case 'bool':
 				$value = empty( $value ) ? 0 : 1;
+				break;
+			case 'optional_number':
+				$value = '' === $value ? '' : (string) max( $field[4], min( $field[5], (int) $value ) );
 				break;
 			case 'number':
 				$value = max( $field[4], min( $field[5], (int) $value ) );
@@ -355,8 +383,12 @@ function gnn_platform_fields( $group ) {
 			case 'select':
 				gnn_field_select( $key, $field[0], $field[4] );
 				break;
+			case 'region':
 			case 'layout':
-				$choices = array( 0 => __( 'Inherit / native theme layout', 'gnn' ) );
+				$choices = array(
+					-1 => __( 'Inherit', 'gnn' ),
+					0  => __( 'Theme default', 'gnn' ),
+				);
 				foreach ( get_posts(
 					array(
 						'post_type'   => 'gnn_layout',
