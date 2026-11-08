@@ -342,6 +342,10 @@ function gnn_handle_workspace() {
 		if ( 'starter_cleanup' === $operation ) {
 			$selection = isset( $_POST['cleanup'] ) && is_array( $_POST['cleanup'] ) ? map_deep( wp_unslash( $_POST['cleanup'] ), 'sanitize_text_field' ) : array();
 			$result    = gnn_starter_cleanup( $selection, ! empty( $_POST['permanent'] ) );
+			if ( is_wp_error( $result ) && 'gnn_cleanup_empty' === $result->get_error_code() ) {
+				wp_safe_redirect( admin_url( 'admin.php?page=gnn-workspace&gnn_cleanup_notice=selection#gnn-workspace-cleanup' ) );
+				exit;
+			}
 		}
 		if ( 'restore' === $operation ) {
 			$id     = isset( $_POST['snapshot'] ) && is_string( $_POST['snapshot'] ) ? sanitize_text_field( wp_unslash( $_POST['snapshot'] ) ) : '';
