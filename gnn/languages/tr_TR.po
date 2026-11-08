@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.4.0\n"
+"Project-Id-Version: GNN 2.4.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 10:28+0000\n"
-"PO-Revision-Date: 2026-11-08 10:28+0000\n"
+"POT-Creation-Date: 2026-11-08 11:53+0000\n"
+"PO-Revision-Date: 2026-11-08 11:53+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -632,9 +632,6 @@ msgstr "Seç"
 msgid "Choose Gutenberg or Elementor."
 msgstr "Gutenberg veya Elementor seçin."
 
-msgid "Choose a logo for each mode. Retina versions are optional."
-msgstr "Her mod için logo seçin. Retina sürümleri isteğe bağlıdır."
-
 msgid "Choose a published block."
 msgstr "Yayımlanmış bir blok seçin."
 
@@ -896,9 +893,6 @@ msgstr "Varsayılan kenar çubuğu konumu"
 msgid "Define the specification, coordinate the work and document the handover."
 msgstr "Gereksinimleri belirleyin, çalışmayı koordine edin ve teslimatı belgeleyin."
 
-msgid "Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its \"Additional CSS Class(es)\" field (Advanced panel) using the class name shown under each style. Leave a style's name empty to skip it."
-msgstr "Burada en fazla 6 buton varyasyonu tanımlayın, ardından her stilin altında gösterilen sınıf adını kullanarak herhangi bir Gutenberg veya Elementor butonuna \"Ek CSS Sınıf(lar)ı\" alanından (Gelişmiş panel) uygulayın. Kullanılmayacak bir stili boş bırakmanız yeterlidir."
-
 msgid "Delete local recovery history"
 msgstr "Yerel kurtarma geçmişini sil"
 
@@ -1052,9 +1046,6 @@ msgstr "Günlük analiz edilen olay"
 msgid "Every commission has its own setting and ambitions. Our role is to turn these into a thoughtful, buildable and legible design."
 msgstr "Her projenin kendine özgü bir bağlamı ve hedefleri vardır. Görevimiz bunları özenli, uygulanabilir ve anlaşılır bir tasarıma dönüştürmek."
 
-msgid "Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme's own current color for that mode — change it, or use Clear to go back to that default."
-msgstr "Temanın tüm renkleri burada, alanlara göre gruplanmış olarak bulunur. Doğrudan hex kod yazabilir ya da swatch butonuyla görsel olarak seçebilirsiniz. Her Koyu/Açık çifti o mod için temanın mevcut rengini gösterir — değiştirin, ya da Temizle ile o varsayılana geri dönün."
-
 msgid "Excerpt length (words)"
 msgstr "Özet uzunluğu (kelime)"
 
@@ -1145,17 +1136,11 @@ msgstr "Doldur (uzat)"
 msgid "Filled"
 msgstr "Dolu"
 
-msgid "Find a setting"
-msgstr "Ayar ara"
-
 msgid "Finish the reset before changing settings."
 msgstr "Ayarları değiştirmeden önce sıfırlamayı tamamlayın."
 
 msgid "Fixed height"
 msgstr "Sabit yükseklik"
-
-msgid "Fixed height uses the pixel height; Aspect ratio uses the selected ratio; Original proportions displays the complete original image. Post editor layout overrides take priority over these defaults. Elementor Pro templates control their own content geometry."
-msgstr "Sabit yükseklik piksel değerini, En-boy oranı seçilen oranı kullanır. Orijinal oranlar görselin tamamını gösterir. Yazı düzenleyicisindeki düzen tercihleri bu varsayılanların önüne geçer. Elementor Pro şablonları kendi içerik düzenlerini yönetir."
 
 msgid "Focus width"
 msgstr "Odak kalınlığı"
@@ -1469,9 +1454,6 @@ msgstr "Yükseklik"
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr "Bir hafta sonu boyunca süren etkinlik; sergiler, atölyeler ve panel tartışmalarından oluşuyor. Bu metni kendi içeriğinizle değiştirin."
 
-msgid "Help"
-msgstr "Yardım"
-
 msgid "Hero layout"
 msgstr "Vitrin yerleşimi"
 
@@ -1709,9 +1691,6 @@ msgstr "Liste"
 msgid "Listen and define"
 msgstr "Dinle ve tanımla"
 
-msgid "Listing and single-post settings are independent. For 1000px text with a 1200px image, set the content width to 1000, choose Independent width and set the image width to 1200. Full viewport width reaches both screen edges. All widths shrink safely on mobile."
-msgstr "Listeleme ve tekil yazı ayarları bağımsızdır. 1000 px metin ve 1200 px görsel için içerik genişliğini 1000 yapın, Bağımsız genişlik seçip görsel genişliğini 1200 yapın. Tam ekran genişliği iki ekran kenarına uzanır. Tüm genişlikler mobilde ekrana uyarlanır."
-
 msgid "Listing content width (px, 0 = global container)"
 msgstr "Liste içerik genişliği (px, 0 = genel kapsayıcı)"
 
@@ -1763,9 +1742,6 @@ msgstr "Bakım"
 msgid "Maintenance and compatibility"
 msgstr "Bakım ve uyumluluk"
 
-msgid "Maintenance and compatibility settings are managed in the protected site workspace."
-msgstr "Bakım ve uyumluluk ayarları korumalı site çalışma alanından yönetilir."
-
 msgid "Maintenance and recovery"
 msgstr "Bakım ve kurtarma"
 
@@ -1777,12 +1753,6 @@ msgstr "Bakım mesajı"
 
 msgid "Maintenance mode"
 msgstr "Bakım modu"
-
-msgid "Manage slides under Slider."
-msgstr "Slaytları Slider bölümünden yönetin."
-
-msgid "Manage your site design, layout and integrations."
-msgstr "Sitenizin tasarımını, düzenini ve entegrasyonlarını yönetin."
 
 msgid "Managed entirely outside the theme"
 msgstr "Tamamen tema dışında yönetiliyor"
@@ -2083,9 +2053,6 @@ msgstr "Sayfalar taslak olarak eklenir. Mevcut sayfalar, menüler ve ana sayfan�
 
 msgid "Pages:"
 msgstr "Sayfalar:"
-
-msgid "Pages: Default, Boxed, Left Sidebar and Right Sidebar templates."
-msgstr "Sayfalar: Varsayılan, Kutulu, Sol Kenar Çubuğu ve Sağ Kenar Çubuğu şablonları."
 
 msgid "Paragraph (body text)"
 msgstr "Paragraf (gövde metni)"
@@ -2876,9 +2843,6 @@ msgstr "Yönetici hesabına erişilemiyor."
 msgid "The analytics ID is invalid. No settings were changed."
 msgstr "Analiz kimliği geçersiz. Hiçbir ayar değiştirilmedi."
 
-msgid "The check-for-updates / update button now lives at the top of this panel, under the version number."
-msgstr "Güncelleme kontrolü / güncelleme butonu artık bu panelin en üstünde, sürüm numarasının altında yer alıyor."
-
 msgid "The cleanup selection changed or contains protected content. Review the latest list."
 msgstr "Temizlik seçimi değişti veya korunan içerik barındırıyor. Güncel listeyi inceleyin."
 
@@ -2918,12 +2882,6 @@ msgstr "Bu çalışma, belirgin bir taşıyıcı düzen ve sade malzeme paletiyl
 msgid "The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast."
 msgstr "Vurgu renginin üzerine uygulanan metin/ikon rengi (ör. buton etiketleri). Parlak bir özel vurgu rengi seçerseniz, okunabilir kontrast için bunu ayarlayın."
 
-msgid "The theme ships self-hosted Space Grotesk (headings) and Manrope (body) — fast, and used by default with zero extra requests."
-msgstr "Tema, sunucuda barındırılan Space Grotesk (başlıklar) ve Manrope (gövde) yazı tipleriyle gelir — hızlıdır ve varsayılan olarak ekstra istek yapmadan kullanılır."
-
-msgid "The theme uses inline SVG icons for its own UI. Google Material Symbols can additionally be loaded for use in page content and menus."
-msgstr "Tema kendi arayüzü için satır içi SVG ikonlar kullanır. Sayfa içeriğinde ve menülerde kullanılmak üzere Google Material Symbols de yüklenebilir."
-
 msgid "The update does not contain an installable GNN theme."
 msgstr "Güncelleme kurulabilir bir GNN teması içermiyor."
 
@@ -2935,9 +2893,6 @@ msgstr "Tema"
 
 msgid "Theme Mode"
 msgstr "Tema Modu"
-
-msgid "Theme configuration"
-msgstr "Tema yapılandırması"
 
 msgid "Theme default"
 msgstr "Tema varsayılanı"
@@ -3008,9 +2963,6 @@ msgstr "Üst çubuk"
 msgid "Top bar background color"
 msgstr "Üst çubuk zemin rengi"
 
-msgid "Top bar colors have moved to the Colors tab, alongside every other theme color."
-msgstr "Üst çubuk renkleri, temanın diğer tüm renkleriyle birlikte Renkler sekmesine taşındı."
-
 msgid "Top bar text color"
 msgstr "Üst çubuk metin rengi"
 
@@ -3040,9 +2992,6 @@ msgstr "Yan yana iki görsel"
 
 msgid "Two-tone background, centered image"
 msgstr "İki tonlu arka plan, ortalanmış görsel"
-
-msgid "Type the exact name from fonts.google.com (e.g. \"Poppins\", \"IBM Plex Sans\"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it."
-msgstr "fonts.google.com'daki tam adı yazın (ör. \"Poppins\", \"IBM Plex Sans\"). O öğe için tema varsayılanını korumak üzere boş bırakın. Türkçe karakterler (ğ ı ş ö ü ç) için ayrı bir ayar gerekmez — Google Fonts ve tarayıcı, genişletilmiş karakter setini yalnızca sayfa gerçekten ihtiyaç duyduğunda otomatik olarak getirir."
 
 msgid "Type the site address"
 msgstr "Site adresini yazın"
@@ -3118,9 +3067,6 @@ msgstr "Bu sayfayı duyurular, kaynaklar ve seçili yazılar için kullanın. Ke
 
 msgid "Used by the mobile dock's Contact link (and anywhere else the theme links to \"get in touch\"). Auto-detect looks for a page slugged \"contact\" or \"iletisim\"."
 msgstr "Mobil dock’taki İletişim bağlantısı için kullanılır (temanın “bize ulaşın” bağlantısı verdiği her yerde). Otomatik algılama “contact” veya “iletisim” slug’lı bir sayfa arar."
-
-msgid "Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching."
-msgstr "Tema genelinde butonlar, bağlantılar ve vurgular için kullanılır (ve Elementor renk paletinde). Farklı bir değer belirlemediğiniz sürece Açık, Koyu ile otomatik eşleşir — eşleşmeye geri dönmek için Temizle'yi kullanın."
 
 msgid "Used in"
 msgstr "Şurada kullanıldı"

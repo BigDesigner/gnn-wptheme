@@ -369,10 +369,15 @@ function gnn_platform_fields( $group ) {
 		'blog_single'  => __( 'Single post layout and details', 'gnn' ),
 		'blog_media'   => __( 'Single featured image', 'gnn' ),
 	);
-	echo '<article class="gnn-settings-card gnn-settings-card--wide"><h3>' . esc_html( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) ) . '</h3><div class="gnn-card-content">';
+	if ( function_exists( 'gnn_section_bar' ) ) {
+		gnn_section_bar( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) );
+	} else {
+		echo '<div class="gnn-section-bar" aria-hidden="true"><span>' . esc_html( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) ) . '</span></div>';
+	}
 	foreach ( gnn_platform_schema() as $key => $field ) {
 		if ( $field[3] !== $group ) {
-			continue; }
+			continue;
+		}
 		switch ( $field[1] ) {
 			case 'bool':
 				gnn_field_checkbox( $key, $field[0] );
@@ -398,7 +403,8 @@ function gnn_platform_fields( $group ) {
 						'order'       => 'ASC',
 					)
 				) as $layout ) {
-					$choices[ $layout->ID ] = $layout->post_title; }
+					$choices[ $layout->ID ] = $layout->post_title;
+				}
 				gnn_field_select( $key, $field[0], $choices );
 				break;
 			case 'slide_group':
@@ -410,22 +416,24 @@ function gnn_platform_fields( $group ) {
 					)
 				) as $term ) {
 					if ( $term instanceof WP_Term ) {
-						$choices[ $term->term_id ] = $term->name; }
+						$choices[ $term->term_id ] = $term->name;
+					}
 				}
 				gnn_field_select( $key, $field[0], $choices );
 				break;
 			case 'actions':
+				echo '<div class="gnn-setting-row gnn-setting-row--actions"><div class="gnn-setting-label-col"><span class="gnn-setting-label">' . esc_html( $field[0] ) . '</span></div><div class="gnn-setting-control-col">';
 				gnn_mobile_action_fields();
+				echo '</div></div>';
 				break;
 			case 'font':
 				gnn_field_number( $key, $field[0], 0, PHP_INT_MAX, __( 'Upload a trusted WOFF2 file in Media, then choose its attachment ID. No remote font URL is used.', 'gnn' ) );
-				echo '<p><button type="button" class="button gnn-font-pick" data-target="gnn-' . esc_attr( $key ) . '">' . esc_html__( 'Choose local WOFF2 font', 'gnn' ) . '</button></p>';
+				echo '<div class="gnn-setting-row"><div class="gnn-setting-label-col"></div><div class="gnn-setting-control-col"><button type="button" class="button gnn-font-pick" data-target="gnn-' . esc_attr( $key ) . '">' . esc_html__( 'Choose local WOFF2 font', 'gnn' ) . '</button></div></div>';
 				break;
 			default:
 				gnn_field_text( $key, $field[0], (string) gnn_option( $key ) );
 		}
 	}
-	echo '</div></article>';
 }
 
 /** Action rows have a useful fallback when JavaScript is unavailable. */
