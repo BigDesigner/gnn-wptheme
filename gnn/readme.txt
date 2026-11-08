@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.4.1
+Stable tag: 2.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,8 +122,15 @@ theme loader does not remove tags installed outside the theme.
 
 == Architecture starter ==
 
-Choose GNNarchitecture in Setup wizard for the studio, services, portfolio,
-gallery and contact pages. Replace concept illustrations with your photography.
+Choose GNNarchitecture in Setup wizard. Install demo site publishes seven pages,
+three portfolio projects with galleries and categories, an independent album,
+three slides, three journal posts and a shared footer, using bundled photography.
+The confirmation applies the demo homepage, blog page, navigation and design.
+Existing customer content stays in place. A repeated completed installation keeps
+later edits and does not create another copy. Draft pages only remains available
+when you want starter pages without changing the published site.
+The complete-site option is currently available for GNNarchitecture; the other
+profiles provide draft starter pages.
 Manage real projects and their categories under Portfolio projects. Published
 projects appear automatically in portfolio/category queries and project navigation.
 Project galleries reference Media Library images; independent collections live
@@ -133,7 +140,7 @@ Existing native-block starter pages remain editable without conversion.
 
 == Blog layouts ==
 
-GNN > Theme > Blog separates listing layout, listing images, single-post details
+GNN > Theme settings > Blog separates listing layout, listing images, single-post details
 and single featured images. For 1000px text with a 1200px image, set Single post
 content width to 1000, choose Independent width and set image width to 1200.
 Choose Full viewport width for an edge-to-edge image. Original proportions shows
@@ -172,6 +179,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.5.0 =
+* Added an explicitly confirmed complete Architecture demo with published Elementor pages, portfolio projects, galleries, slides, journal posts and local images.
+* Connected demo homepage, menus, blog and shared footer; repeated installation preserves customer edits and avoids duplicate records.
+* Simplified administration navigation around the WordPress sidebar and aligned management page headers and setting rows across screen sizes.
+* Improved accessible control labels and localized save notifications.
 
 = 2.4.1 =
 * Modernized administration panel layout with section dividers, two-column setting rows, visual diagram option cards, and dual range sliders.

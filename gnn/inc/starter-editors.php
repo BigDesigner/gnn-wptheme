@@ -90,7 +90,7 @@ function gnn_starter_elementor_elements( $blocks ) {
 				$element['widgetType']                = 'image';
 				$element['settings']['image']         = array(
 					'url' => $src,
-					'id'  => 0,
+					'id'  => absint( $attrs['id'] ?? 0 ),
 					'alt' => gnn_starter_attribute( $html, 'alt' ),
 				);
 				$element['settings']['image_size']    = 'full';

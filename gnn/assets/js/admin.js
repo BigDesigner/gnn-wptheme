@@ -18,7 +18,7 @@
 	var text      = window.gnnAdminText || {};
 	var tabs      = Array.from( panel.querySelectorAll( '.gnn-tabs .nav-tab, .gnn-sidebar-nav .gnn-nav-item' ) );
 	var panes     = Array.from( panel.querySelectorAll( '.gnn-tab' ) );
-	var form      = panel.querySelector( '#gnn-settings-form' ) || panel.querySelector( 'form[action="options.php"]' );
+	var form      = panel.querySelector( '#gnn-settings-form, #gnn-brand-form' ) || panel.querySelector( 'form[action="options.php"]' );
 	var search    = panel.querySelector( '#gnn-settings-search' );
 	var feedback  = panel.querySelector( '.gnn-search-feedback' );
 	var pageTitle = document.getElementById( 'gnn-page-heading' );
@@ -50,11 +50,18 @@
 		toast.className = 'gnn-toast-alert' + ( isError ? ' gnn-toast--error' : '' );
 		toast.setAttribute( 'role', 'alert' );
 
-		var icon = isError ? 'warning' : 'yes-alt';
-		toast.innerHTML =
-			'<span class="dashicons dashicons-' + icon + ' gnn-toast-icon" aria-hidden="true"></span>' +
-			'<div class="gnn-toast-msg">' + message + '</div>' +
-			'<button type="button" class="gnn-toast-close" aria-label="Close">&times;</button>';
+		var icon = document.createElement( 'span' );
+		icon.className = 'dashicons dashicons-' + ( isError ? 'warning' : 'yes-alt' ) + ' gnn-toast-icon';
+		icon.setAttribute( 'aria-hidden', 'true' );
+		var messageElement = document.createElement( 'div' );
+		messageElement.className = 'gnn-toast-msg';
+		messageElement.textContent = message;
+		var close = document.createElement( 'button' );
+		close.type = 'button';
+		close.className = 'gnn-toast-close';
+		close.setAttribute( 'aria-label', text.close || 'Close' );
+		close.textContent = '\u00d7';
+		toast.append( icon, messageElement, close );
 
 		toast.querySelector( '.gnn-toast-close' ).addEventListener( 'click', function () {
 			toast.classList.add( 'gnn-toast--dismissing' );
@@ -85,8 +92,9 @@
 	}
 
 	// Trigger toast on successful settings update from query arg
-	if ( window.location.search.indexOf( 'settings-updated=true' ) !== -1 ) {
-		showToast( text.savedSuccess || 'Ayarlar başarıyla kaydedildi.', false );
+	var saved = new URLSearchParams( window.location.search ).get( 'settings-updated' );
+	if ( ( text.settingsUpdated || saved === 'true' || saved === '1' ) && ! panel.querySelector( '.notice-error, .error.settings-error' ) ) {
+		showToast( text.savedSuccess || 'Settings saved.', false );
 	}
 
 	// ==========================================================================

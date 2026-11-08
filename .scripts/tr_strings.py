@@ -1577,3 +1577,79 @@ TRANSLATIONS.update({'Unavailable block': 'Kullanılamayan blok'})
 TRANSLATIONS.update({'Disable persistent caching before resetting.': 'Sıfırlamadan önce kalıcı önbelleği devre dışı bırakın.'})
 
 TRANSLATIONS.update({'Size 0 inherits. Empty letter spacing inherits.': 'Boyut için 0, harf aralığı için boş değer tema ayarını kullanır.'})
+
+TRANSLATIONS.update({"Close": "Kapat", "Settings saved.": "Ayarlar kaydedildi."})
+
+TRANSLATIONS.update({
+'Complete demo site': 'Tam demo site',
+'Publishes pages, projects, galleries, slides and journal posts. Sets the homepage, menus and design settings. Existing content is kept.': 'Sayfalar, projeler, galeriler, slaytlar ve blog yazıları yayımlanır. Ana sayfa, menüler ve görünüm ayarlanır. Mevcut içerikler korunur.',
+'Publish the demo and apply its homepage, menus and design.': 'Demoyu yayımla; ana sayfasını, menülerini ve görünümünü uygula.',
+'Install demo site': 'Demo siteyi yükle',
+'Draft pages only': 'Yalnız taslak sayfalar',
+'A collection of places.': 'Yaşamın şekillendirdiği mekânlar.',
+'A courtyard as a shared room': 'Ortak yaşam alanı olarak avlu',
+'A demo image is missing. Reinstall the theme.': 'Demo görseli eksik. Temayı yeniden yükleyin.',
+'A garden residence shaped around outdoor living. Open family rooms, sheltered terraces and a restrained material palette connect the interior to a sequence of planted spaces.': 'Açık hava yaşamına odaklanan bahçeli bir konut. Geniş ortak alanlar, korunaklı teraslar ve yalın malzemeler iç mekânı yeşil alanlarla buluşturuyor.',
+'A new place starts with a conversation.': 'Yeni bir mekân, bir sohbetle başlar.',
+'A planted courtyard brings daylight and shared outdoor space into a compact urban residence. Timber screens, deep balconies and natural stone create a quiet transition between street and home.': 'Yeşil bir avlu, kent konutuna gün ışığı ve ortak bir açık alan kazandırıyor. Ahşap gölgelikler, derin balkonlar ve doğal taş, sokak ile ev arasında sakin bir geçiş oluşturuyor.',
+'A planted courtyard can become the social centre of a building. Clear thresholds, comfortable seating and views from the surrounding rooms help this outdoor space become part of daily life.': 'Yeşil bir avlu, yapının sosyal merkezine dönüşebilir. Belirgin geçişler, rahat oturma alanları ve çevresindeki odalardan açılan manzaralar, avluyu günlük yaşamın parçası yapar.',
+'A shared design process.': 'Birlikte şekillenen tasarım.',
+'A starter page was edited or removed. Review it before installing the complete site.': 'Bir başlangıç sayfası düzenlenmiş veya kaldırılmış. Tam demoyu yüklemeden önce sayfayı inceleyin.',
+'A vertical neighbourhood organised around generous terraces and shared spaces. The glazed facade frames distant views while shaded balconies create comfortable outdoor rooms on every level.': 'Geniş teraslar ve ortak alanlar çevresinde düzenlenmiş dikey bir mahalle. Cam cephe uzak manzaraları çerçevelerken gölgeli balkonlar her katta rahat açık alanlar oluşturuyor.',
+'Architects, interior designers and project coordinators work together from the first conversation. Each project grows through close dialogue with its users and a careful reading of its surroundings.': 'Mimarlar, iç mimarlar ve proje koordinatörleri ilk görüşmeden itibaren birlikte çalışır. Her proje, kullanıcılarıyla kurulan diyalog ve çevresinin dikkatli incelenmesiyle gelişir.',
+'Architecture / Interiors / Landscape': 'Mimarlık / İç Mimarlık / Peyzaj',
+'Architecture / Selected projects': 'Mimarlık / Seçili projeler',
+'Architecture and planning lead the spatial strategy; interior design develops materials and daily use; project coordination brings specialists and construction teams together.': 'Mimarlık ve planlama mekânı kurgular; iç mimarlık malzemeleri ve günlük kullanımı geliştirir; proje koordinasyonu uzmanları ve uygulama ekiplerini bir araya getirir.',
+'Architecture footer': 'Mimarlık alt bölümü',
+'Architecture highlights': 'Öne çıkan projeler',
+'Architecture navigation': 'Mimarlık menüsü',
+'Architecture studio: drawings, materials and places': 'Mimarlık stüdyosu: çizimler, malzemeler ve mekânlar',
+'Architecture, interiors and places for everyday life.': 'Günlük yaşam için mimarlık, iç mekân ve çevre tasarımı.',
+'Canopy Residences': 'Gölgelik Konutları',
+'Carefully placed openings bring natural light deep into the plan. Durable surfaces, tactile finishes and sheltered outdoor spaces support everyday use throughout the seasons.': 'Özenle konumlandırılan açıklıklar doğal ışığı yapının derinliklerine taşır. Dayanıklı yüzeyler, dokulu malzemeler ve korunaklı açık alanlar her mevsim kullanımı destekler.',
+'Concept location': 'Konsept konumu',
+'Curiosity. Clarity. Care.': 'Merak. Yalınlık. Özen.',
+'Daylight changes how a room feels. We begin with orientation, depth and the movement of the sun, then tune each opening to balance brightness, privacy and summer shade.': 'Gün ışığı, bir odanın hissini değiştirir. Yönlenme, derinlik ve güneşin hareketiyle başlar; aydınlık, mahremiyet ve yaz gölgesini dengelemek için her açıklığı düzenleriz.',
+'Designing around daylight': 'Gün ışığıyla tasarlamak',
+'Every brief begins with listening. We study the place, discuss the ways it will be used and develop a clear sequence of design decisions. Drawings, models and material samples keep the conversation grounded in the experience of the finished building.': 'Her proje dinlemekle başlar. Yeri inceler, kullanım biçimlerini konuşur ve tasarım kararlarını adım adım geliştiririz. Çizimler, maketler ve malzeme örnekleri, görüşmeleri yapının gelecekteki deneyimine bağlar.',
+'Explore our projects': 'Projelerimizi keşfedin',
+'From sketch to material': 'Eskizden malzemeye',
+'From the first sketch to the final detail.': 'İlk eskizden son detaya.',
+'Garden homes': 'Bahçeli konutlar',
+'Horizon Tower': 'Ufuk Kulesi',
+'How we work': 'Nasıl çalışırız',
+'In the details.': 'Detaylarda saklı.',
+'Journal': 'Blog',
+'Let’s shape your next space.': 'Yeni mekânınızı birlikte tasarlayalım.',
+'Listen to the brief. Understand the site. Test the possibilities. Develop the details. Follow the work through construction.': 'İhtiyaçları dinleriz. Yeri tanırız. Olasılıkları deneriz. Detayları geliştiririz. Uygulama boyunca işi takip ederiz.',
+'Material and light': 'Malzeme ve ışık',
+'Materials, rooms and landscape from our projects and studio.': 'Projelerimizden ve stüdyomuzdan malzemeler, mekânlar ve peyzaj.',
+'Olive Garden House': 'Zeytin Bahçesi Evi',
+'Our services': 'Hizmetlerimiz',
+'Our studio works across architecture, interior design and landscape. We stay close to each project through research, design development and coordination on site.': 'Stüdyomuz mimarlık, iç mimarlık ve peyzaj alanlarında çalışır. Araştırma, tasarım ve saha koordinasyonu boyunca her projeyi yakından takip ederiz.',
+'Our team': 'Ekibimiz',
+'Physical samples and working models connect an early idea to the finished space. Testing junctions, textures and proportions together helps the team make deliberate decisions before construction begins.': 'Fiziksel örnekler ve çalışma maketleri, ilk fikri tamamlanmış mekâna bağlar. Birleşimleri, dokuları ve oranları birlikte denemek, uygulama öncesinde bilinçli kararlar almayı sağlar.',
+'Residential architecture, interiors and shared spaces. Explore the projects by category.': 'Konut mimarisi, iç mekânlar ve ortak alanlar. Projeleri kategorilerine göre inceleyin.',
+'Residential towers': 'Yüksek konutlar',
+'Spaces for the way we live.': 'Yaşam biçimimize uygun mekânlar.',
+'Spaces, details and the work behind each project.': 'Mekânlar, detaylar ve her projenin ardındaki çalışma.',
+'Start a project': 'Projenizi konuşalım',
+'Studio Journal': 'Stüdyo Günlüğü',
+'The idea': 'Fikir',
+'This demo requires Elementor.': 'Bu demo için Elementor gerekli.',
+'Urban housing': 'Kent konutları',
+'View project': 'Projeyi incele',
+'We are a collaborative architecture studio interested in how places can support a better everyday life.': 'Mekânların günlük yaşamı nasıl iyileştirebileceğini araştıran bir mimarlık stüdyosuyuz.',
+'We connect thoughtful architecture with the life around it. From a private home to a shared neighbourhood, our work brings light, landscape and carefully chosen materials into balance.': 'Mimarlığı çevresindeki yaşamla buluşturuyoruz. Bir evden ortak bir mahalleye kadar ışığı, peyzajı ve özenle seçilmiş malzemeleri dengeliyoruz.'
+})
+
+TRANSLATIONS.update({
+'Confirm the complete site installation.': 'Tam demo kurulumunu onaylayın.',
+'Daylight shapes how a room feels throughout the day. We begin with orientation, depth and the movement of the sun, then tune each opening to balance brightness, privacy and summer shade.': 'Gün ışığı, gün boyunca mekânın hissini şekillendirir. Yönlenme, derinlik ve güneşin hareketiyle başlar; aydınlık, mahremiyet ve yaz gölgesini dengelemek için her açıklığı düzenleriz.',
+'Every project begins with a conversation.': 'Her proje bir sohbetle başlar.',
+'Studio visits by appointment.': 'Stüdyo ziyaretleri randevuludur.',
+'Tell us about the place, the people who will use it and what you would like to create. We welcome conversations about new homes, shared buildings and interior spaces.': 'Mekânı, onu kullanacak kişileri ve hayalinizdeki projeyi anlatın. Yeni konutlar, ortak yapılar ve iç mekânlar üzerine konuşalım.',
+'Visit the studio': 'Stüdyoyu ziyaret edin'
+})
+
+TRANSLATIONS.update({"Read story": "Yazıyı oku", "From the journal": "Blogdan", "All stories": "Tüm yazılar"})

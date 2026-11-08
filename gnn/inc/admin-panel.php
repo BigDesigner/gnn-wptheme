@@ -13,9 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Register the admin menu: a single top-level "GNN" parent with "Theme"
- * (this panel) and "Slider" (gnn_slide CPT, see inc/slider.php) as its two
- * submenu items, instead of two separate top-level menus.
+ * Register the shared GNN menu and theme settings screen.
  *
  * Position '59.100' is this theme's reserved slot in the GNN product
  * family's shared menu-position registry.
@@ -36,7 +34,7 @@ function gnn_panel_menu() {
 	add_submenu_page(
 		'gnn-panel',
 		__( 'GNN Theme Panel', 'gnn' ),
-		__( 'Theme', 'gnn' ),
+		__( 'Theme settings', 'gnn' ),
 		'manage_options',
 		'gnn-panel',
 		'gnn_panel_render'
@@ -45,23 +43,23 @@ function gnn_panel_menu() {
 add_action( 'admin_menu', 'gnn_panel_menu' );
 
 /**
- * Force "Theme" to be the FIRST submenu item under "GNN".
+ * Keep setup, configuration and maintenance in a consistent menu order.
  */
 function gnn_panel_menu_reorder() {
 	global $submenu;
 	if ( empty( $submenu['gnn-panel'] ) ) {
 		return;
 	}
+	$order = array_flip( array( 'gnn-overview', 'gnn-workspace', 'gnn-panel', 'gnn-templates', 'gnn-assignments', 'gnn-design', 'edit.php?post_type=gnn_layout', 'edit.php?post_type=gnn_grid', 'gnn-addons', 'gnn-system', 'gnn-maintenance' ) );
+	foreach ( $submenu['gnn-panel'] as $item ) {
+		if ( ! isset( $order[ $item[2] ] ) ) {
+			$order[ $item[2] ] = count( $order );
+		}
+	}
 	usort(
 		$submenu['gnn-panel'],
-		function ( $a, $b ) {
-			if ( 'gnn-panel' === $a[2] ) {
-				return -1;
-			}
-			if ( 'gnn-panel' === $b[2] ) {
-				return 1;
-			}
-			return 0;
+		function ( $a, $b ) use ( $order ) {
+			return $order[ $a[2] ] <=> $order[ $b[2] ];
 		}
 	);
 }
@@ -318,16 +316,19 @@ function gnn_panel_assets( $hook ) {
 		'gnn-admin',
 		'gnnAdminText',
 		array(
-			'unsaved'       => __( 'Unsaved changes', 'gnn' ),
-			'invalidField'  => $invalid,
-			'chooseColor'   => __( 'Choose color', 'gnn' ),
-			'ready'         => __( 'No pending changes', 'gnn' ),
-			'saving'        => __( 'Saving settings…', 'gnn' ),
-			'allGroups'     => __( 'All groups', 'gnn' ),
-			'groupsLabel'   => __( 'Setting groups', 'gnn' ),
+			'close'           => __( 'Close', 'gnn' ),
+			'savedSuccess'    => __( 'Settings saved.', 'gnn' ),
+			'settingsUpdated' => isset( $_GET['settings-updated'] ) && is_string( $_GET['settings-updated'] ) && in_array( wp_unslash( $_GET['settings-updated'] ), array( 'true', '1' ), true ), // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only WordPress save notice.
+			'unsaved'         => __( 'Unsaved changes', 'gnn' ),
+			'invalidField'    => $invalid,
+			'chooseColor'     => __( 'Choose color', 'gnn' ),
+			'ready'           => __( 'No pending changes', 'gnn' ),
+			'saving'          => __( 'Saving settings…', 'gnn' ),
+			'allGroups'       => __( 'All groups', 'gnn' ),
+			'groupsLabel'     => __( 'Setting groups', 'gnn' ),
 			/* translators: %d: Number of matching setting groups. */
-			'searchResults' => __( '%d setting groups found', 'gnn' ),
-			'noResults'     => __( 'No settings match your search. Try another keyword.', 'gnn' ),
+			'searchResults'   => __( '%d setting groups found', 'gnn' ),
+			'noResults'       => __( 'No settings match your search. Try another keyword.', 'gnn' ),
 		)
 	);
 }
@@ -613,7 +614,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 	}
 
 	$card_presets = array(
-		'header_layout'                => array(
+		'header_layout'           => array(
 			'standard' => array(
 				'label' => __( 'Standard (logo left, menu right)', 'gnn' ),
 				'type'  => 'header-standard',
@@ -623,7 +624,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 				'type'  => 'header-centered',
 			),
 		),
-		'sidebar_position'             => array(
+		'sidebar_position'        => array(
 			'right' => array(
 				'label' => __( 'Right', 'gnn' ),
 				'type'  => 'sidebar-right',
@@ -637,7 +638,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 				'type'  => 'sidebar-none',
 			),
 		),
-		'header_menu_align'            => array(
+		'header_menu_align'       => array(
 			'left'   => array(
 				'label' => __( 'Left', 'gnn' ),
 				'type'  => 'align-left',
@@ -651,7 +652,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 				'type'  => 'align-right',
 			),
 		),
-		'footer_menu_align'            => array(
+		'footer_menu_align'       => array(
 			'left'   => array(
 				'label' => __( 'Left', 'gnn' ),
 				'type'  => 'align-left',
@@ -665,7 +666,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 				'type'  => 'align-right',
 			),
 		),
-		'footer_brand_type'            => array(
+		'footer_brand_type'       => array(
 			'text'  => array(
 				'label' => __( 'Text (site title)', 'gnn' ),
 				'type'  => 'brand-text',
@@ -683,7 +684,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 				'type'  => 'brand-none',
 			),
 		),
-		'page_featured_image_fit'      => array(
+		'page_featured_image_fit' => array(
 			'cover'   => array(
 				'label' => __( 'Cover (fill and crop)', 'gnn' ),
 				'type'  => 'fit-cover',
@@ -697,7 +698,7 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 				'type'  => 'fit-fill',
 			),
 		),
-		'post_featured_image_fit'      => array(
+		'post_featured_image_fit' => array(
 			'cover'   => array(
 				'label' => __( 'Cover (fill and crop)', 'gnn' ),
 				'type'  => 'fit-cover',
@@ -908,7 +909,7 @@ function gnn_panel_render() {
 					<span class="dashicons dashicons-saved" aria-hidden="true"></span>
 					<span class="btn-text"><?php esc_html_e( 'Save Settings', 'gnn' ); ?></span>
 				</button>
-				<a class="gnn-header-tool-btn" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener" title="<?php esc_attr_e( 'View site', 'gnn' ); ?>">
+				<a class="gnn-header-tool-btn" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener" aria-label="<?php esc_attr_e( 'View site', 'gnn' ); ?>" title="<?php esc_attr_e( 'View site', 'gnn' ); ?>">
 					<span class="dashicons dashicons-external" aria-hidden="true"></span>
 				</a>
 				<span class="gnn-header-badge">v<?php echo esc_html( GNN_VERSION ); ?></span>
@@ -935,7 +936,6 @@ function gnn_panel_render() {
 			</div>
 		</header>
 		<hr class="wp-header-end">
-		<?php gnn_management_nav(); ?>
 
 		<?php settings_errors( 'gnn_options' ); ?>
 
@@ -957,8 +957,8 @@ function gnn_panel_render() {
 					<?php endforeach; ?>
 				</nav>
 				<div class="gnn-sidebar-secondary">
-					<a href="<?php echo esc_url( admin_url( 'admin.php?page=gnn-workspace' ) ); ?>"><span class="dashicons dashicons-dashboard" aria-hidden="true"></span><?php esc_html_e( 'Site workspace', 'gnn' ); ?></a>
-					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_layout' ) ); ?>"><span class="dashicons dashicons-layout" aria-hidden="true"></span><?php esc_html_e( 'Reusable layouts', 'gnn' ); ?></a>
+					<a href="<?php echo esc_url( admin_url( 'admin.php?page=gnn-workspace' ) ); ?>"><span class="dashicons dashicons-dashboard" aria-hidden="true"></span><?php esc_html_e( 'Setup wizard', 'gnn' ); ?></a>
+					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_layout' ) ); ?>"><span class="dashicons dashicons-layout" aria-hidden="true"></span><?php esc_html_e( 'Reusable blocks', 'gnn' ); ?></a>
 					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_slide' ) ); ?>"><span class="dashicons dashicons-images-alt2" aria-hidden="true"></span><?php esc_html_e( 'Slider', 'gnn' ); ?></a>
 				</div>
 				<div class="gnn-sidebar-footer">
@@ -971,9 +971,6 @@ function gnn_panel_render() {
 					<div class="gnn-search-box">
 						<span class="dashicons dashicons-search" aria-hidden="true"></span>
 						<input type="search" id="gnn-settings-search" placeholder="<?php esc_attr_e( 'Search settings…', 'gnn' ); ?>" autocomplete="off" aria-label="<?php esc_attr_e( 'Search settings…', 'gnn' ); ?>">
-					</div>
-					<div class="gnn-toolbar-links">
-						<a href="<?php echo esc_url( admin_url( 'admin.php?page=gnn-workspace' ) ); ?>"><?php esc_html_e( 'Profiles, recovery and diagnostics', 'gnn' ); ?><span class="dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span></a>
 					</div>
 				</div>
 				<p class="gnn-search-feedback" role="status" hidden></p>

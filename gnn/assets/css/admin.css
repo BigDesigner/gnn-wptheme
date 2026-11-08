@@ -1,10 +1,10 @@
 /* Scoped administration system. No frontend or global wp-admin selectors. */
 .gnn-panel {
 	--gnn-teal: #1abc9c;
-	--gnn-teal-dark: #16a085;
+	--gnn-teal-dark: #117865;
 	--gnn-teal-light: #e8f8f5;
 	--gnn-teal-hover: #18a287;
-	--gnn-save-btn: #1cb294;
+	--gnn-save-btn: #147d69;
 	--gnn-sidebar-bg: #222d3a;
 	--gnn-sidebar-hover: #1a232e;
 	--gnn-sidebar-active: #1a232e;
@@ -47,8 +47,8 @@
    Header Bar
    ========================================================================== */
 .gnn-panel-header {
-	height: 58px;
-	background: var(--gnn-teal);
+	min-height: 58px;
+	background: var(--gnn-teal-dark);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -61,7 +61,7 @@
 
 .gnn-panel-branding {
 	width: 230px;
-	height: 100%;
+	min-height: 58px;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -96,7 +96,7 @@
 	min-width: 0;
 }
 
-.gnn-panel-title {
+.gnn-panel .gnn-panel-title {
 	margin: 0;
 	padding: 0;
 	color: #ffffff;
@@ -115,6 +115,9 @@
 	align-items: center;
 	gap: 10px;
 	flex-shrink: 0;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	padding-block: 10px;
 }
 
 .gnn-save-btn,
@@ -182,45 +185,6 @@
 	padding: 5px 10px;
 	border-radius: 12px;
 	letter-spacing: 0.04em;
-}
-
-/* ==========================================================================
-   Product Navigation (Management screens)
-   ========================================================================== */
-.gnn-product-nav {
-	display: flex;
-	align-items: center;
-	gap: 4px;
-	padding: 8px 16px;
-	background: #ffffff;
-	border-left: 1px solid var(--gnn-line);
-	border-right: 1px solid var(--gnn-line);
-	border-bottom: 1px solid var(--gnn-line);
-	overflow-x: auto;
-}
-
-.gnn-product-nav a {
-	display: inline-flex;
-	align-items: center;
-	padding: 6px 12px;
-	color: var(--gnn-text-muted);
-	font-size: 12px;
-	font-weight: 500;
-	text-decoration: none;
-	border-radius: 4px;
-	white-space: nowrap;
-	transition: all 0.15s ease;
-}
-
-.gnn-product-nav a:hover {
-	background: #f1f5f9;
-	color: var(--gnn-text-main);
-}
-
-.gnn-product-nav a[aria-current="page"] {
-	background: var(--gnn-teal-light);
-	color: var(--gnn-teal-dark);
-	font-weight: 600;
 }
 
 /* ==========================================================================
@@ -1502,3 +1466,25 @@
 		transition: none !important;
 	}
 }
+
+/* Compact headers share the same layout across management screens. */
+.gnn-management .gnn-panel-header { margin-bottom: 24px; }
+.gnn-management .gnn-panel-header-center { padding-inline: 20px; }
+@media (max-width: 1200px) {
+	.gnn-panel-branding { width: auto; padding-inline: 16px; border: 0; }
+	.gnn-panel-header-center { padding-inline: 16px; }
+	.gnn-panel-header-actions { flex-shrink: 1; }
+}
+@media (max-width: 782px) {
+	.gnn-panel { margin: 12px 10px 24px 0; }
+	.gnn-panel-header { flex-wrap: wrap; padding: 12px; gap: 12px; }
+	.gnn-panel-branding { min-height: 0; padding: 0; }
+	.gnn-panel-header-center { padding: 0; }
+	.gnn-panel .gnn-panel-title { font-size: 19px; white-space: normal; }
+	.gnn-panel-header-actions { flex: 1 0 100%; justify-content: flex-start; padding: 0; }
+	.gnn-panel-content { padding: 16px; }
+	.gnn-management .gnn-panel-header-center { padding: 0; }
+	.gnn-management .gnn-header-badge { margin-inline-start: auto; }
+}
+
+.gnn-workspace .gnn-workspace-links{display:flex;flex-direction:column;gap:4px}.gnn-workspace .gnn-panel-header{margin-bottom:16px}@media(max-width:960px){.gnn-workspace .gnn-workspace-links{flex-direction:row;flex-wrap:wrap}}

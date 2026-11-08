@@ -15,11 +15,11 @@ function gnn_management_menu() {
 	$pages = array(
 		'gnn-overview'    => __( 'Overview', 'gnn' ),
 		'gnn-templates'   => __( 'Page templates', 'gnn' ),
-		'gnn-assignments' => __( 'Page and archive layouts', 'gnn' ),
+		'gnn-assignments' => __( 'Layouts', 'gnn' ),
 		'gnn-design'      => __( 'Design system', 'gnn' ),
 		'gnn-addons'      => __( 'Plugins', 'gnn' ),
 		'gnn-system'      => __( 'System status', 'gnn' ),
-		'gnn-maintenance' => __( 'Maintenance and recovery', 'gnn' ),
+		'gnn-maintenance' => __( 'Maintenance', 'gnn' ),
 	);
 	foreach ( $pages as $slug => $label ) {
 		add_submenu_page( 'gnn-panel', $label, $label, 'manage_options', $slug, 'gnn_management_page' );
@@ -27,39 +27,17 @@ function gnn_management_menu() {
 }
 add_action( 'admin_menu', 'gnn_management_menu', 25 );
 
-/** Shared page header and task navigation.
+/** Shared management page header.
  *
  * @param string $title Page title.
  */
 function gnn_management_open( $title ) {
-	echo '<div class="wrap gnn-panel gnn-management"><header class="gnn-panel__header"><h1>' . esc_html( $title ) . '</h1><span class="gnn-panel__badge">' . esc_html( GNN_VERSION ) . '</span></header>';
-	gnn_management_nav();
+	echo '<div class="wrap gnn-panel gnn-management"><header class="gnn-panel-header"><div class="gnn-panel-header-center"><h1 class="gnn-panel-title">' . esc_html( $title ) . '</h1></div><span class="gnn-header-badge">v' . esc_html( GNN_VERSION ) . '</span></header><hr class="wp-header-end">';
 	$notice = get_user_meta( get_current_user_id(), '_gnn_management_notice', true );
 	if ( is_array( $notice ) ) {
 		delete_user_meta( get_current_user_id(), '_gnn_management_notice' );
 		echo '<div role="status" class="notice ' . ( ! empty( $notice['error'] ) ? 'notice-error' : 'notice-success' ) . '"><p>' . esc_html( $notice['text'] ) . '</p></div>';
 	}
-}
-
-/** Product navigation shared by every settings screen. */
-function gnn_management_nav() {
-	echo '<nav class="gnn-product-nav" aria-label="' . esc_attr__( 'GNN navigation', 'gnn' ) . '">';
-	$links   = array(
-		'gnn-overview'    => __( 'Overview', 'gnn' ),
-		'gnn-workspace'   => __( 'Setup wizard', 'gnn' ),
-		'gnn-panel'       => __( 'Theme settings', 'gnn' ),
-		'gnn-templates'   => __( 'Page templates', 'gnn' ),
-		'gnn-assignments' => __( 'Layouts', 'gnn' ),
-		'gnn-design'      => __( 'Design system', 'gnn' ),
-		'gnn-addons'      => __( 'Plugins', 'gnn' ),
-		'gnn-system'      => __( 'System status', 'gnn' ),
-		'gnn-maintenance' => __( 'Maintenance', 'gnn' ),
-	);
-	$current = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only navigation.
-	foreach ( $links as $slug => $label ) {
-		echo '<a href="' . esc_url( admin_url( 'admin.php?page=' . $slug ) ) . '"' . ( $current === $slug ? ' aria-current="page"' : '' ) . '>' . esc_html( $label ) . '</a>';
-	}
-	echo '</nav>';
 }
 
 /** Asset scope includes product pages and shared content editors.
@@ -128,6 +106,15 @@ function gnn_workspace_page() {
 		$item = $profiles[ $profile ];
 		echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html( $item['label'] ) . '</h2>';
 		gnn_plugin_cards( 'commerce' === $profile );
+		$ready = gnn_starter_elementor_available() && ( 'commerce' !== $profile || class_exists( 'WooCommerce' ) );
+		if ( 'architecture' === $profile ) {
+			echo '<h3>' . esc_html__( 'Complete demo site', 'gnn' ) . '</h3><p>' . esc_html__( 'Publishes pages, projects, galleries, slides and journal posts. Sets the homepage, menus and design settings. Existing content is kept.', 'gnn' ) . '</p>';
+			gnn_management_form_open( 'demo' );
+			echo '<input type="hidden" name="profile" value="' . esc_attr( $profile ) . '"><label><input type="checkbox" name="confirm_demo" value="1" required> ' . esc_html__( 'Publish the demo and apply its homepage, menus and design.', 'gnn' ) . '</label>';
+			submit_button( __( 'Install demo site', 'gnn' ), 'primary', 'submit', true, $ready ? array() : array( 'disabled' => 'disabled' ) );
+			echo '<p class="gnn-operation-status" role="status"></p></form><hr>';
+		}
+		echo '<h3>' . esc_html__( 'Draft pages only', 'gnn' ) . '</h3>';
 		echo '<p>' . esc_html__( 'Pages are added as drafts. Existing pages, menus and your homepage stay unchanged.', 'gnn' ) . '</p>';
 		gnn_management_form_open( 'import' );
 		echo '<input type="hidden" name="profile" value="' . esc_attr( $profile ) . '"><label><input type="checkbox" name="reset_design" value="1"> ' . esc_html__( 'Reset design settings first', 'gnn' ) . '</label>';
@@ -379,10 +366,10 @@ function gnn_management_page() {
 		'gnn-overview'    => __( 'Overview', 'gnn' ),
 		'gnn-addons'      => __( 'Plugins', 'gnn' ),
 		'gnn-templates'   => __( 'Page templates', 'gnn' ),
-		'gnn-assignments' => __( 'Page and archive layouts', 'gnn' ),
+		'gnn-assignments' => __( 'Layouts', 'gnn' ),
 		'gnn-design'      => __( 'Design system', 'gnn' ),
 		'gnn-system'      => __( 'System status', 'gnn' ),
-		'gnn-maintenance' => __( 'Maintenance and recovery', 'gnn' ),
+		'gnn-maintenance' => __( 'Maintenance', 'gnn' ),
 	);
 	gnn_management_open( $titles[ $page ] ?? __( 'GNN', 'gnn' ) );
 	if ( 'gnn-addons' === $page ) {
@@ -455,7 +442,12 @@ function gnn_management_handle() {
 	$operation = isset( $_POST['operation'] ) && is_string( $_POST['operation'] ) ? sanitize_key( wp_unslash( $_POST['operation'] ) ) : '';
 	$result    = new WP_Error( 'gnn_operation', __( 'Invalid operation.', 'gnn' ) );
 	$target    = 'gnn-workspace';
-	if ( 'import' === $operation ) {
+	if ( 'demo' === $operation ) {
+		$profile   = isset( $_POST['profile'] ) && is_string( $_POST['profile'] ) ? sanitize_key( wp_unslash( $_POST['profile'] ) ) : '';
+		$confirmed = isset( $_POST['confirm_demo'] ) && '1' === $_POST['confirm_demo'];
+		$result    = gnn_import_demo_site( $profile, $confirmed, gnn_configuration_form_revision() );
+		$target    = 'gnn-workspace&path=ready&profile=' . rawurlencode( $profile );
+	} elseif ( 'import' === $operation ) {
 		$profile = isset( $_POST['profile'] ) && is_string( $_POST['profile'] ) ? sanitize_key( wp_unslash( $_POST['profile'] ) ) : '';
 		$result  = gnn_configuration_begin( 'setup', gnn_configuration_form_revision() );
 		if ( ! is_wp_error( $result ) ) {
@@ -523,7 +515,7 @@ function gnn_management_handle() {
 	}
 	if ( 'import' === $operation && is_wp_error( $result ) && isset( $profile ) ) {
 		$target = 'gnn-workspace&path=ready&profile=' . rawurlencode( $profile ); }
-	if ( ! is_wp_error( $result ) && in_array( $operation, array( 'scratch', 'import' ), true ) ) {
+	if ( ! is_wp_error( $result ) && in_array( $operation, array( 'scratch', 'import', 'demo' ), true ) ) {
 		update_option( 'gnn_setup_completed', true, false );
 	}
 	if ( 'design' === $operation ) {

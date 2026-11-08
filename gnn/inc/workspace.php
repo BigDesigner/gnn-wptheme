@@ -122,13 +122,10 @@ function gnn_workspace_legacy() {
 		$sections['recovery']   = __( 'Recovery snapshots', 'gnn' );
 		$sections['history']    = __( 'Change history', 'gnn' );
 	}
-	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel__header"><div class="gnn-panel__heading"><span class="gnn-panel__icon dashicons dashicons-dashboard" aria-hidden="true"></span><div><h1>' . esc_html__( 'Assigned settings', 'gnn' ) . '</h1><p class="gnn-panel__subtitle">' . esc_html__( 'Site operations, recovery and the settings assigned to your role.', 'gnn' ) . '</p></div></div><div class="gnn-panel__header-actions"><span class="gnn-panel__badge">v' . esc_html( GNN_VERSION ) . '</span>';
-	if ( $admin ) {
-		echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-panel' ) ) . '">' . esc_html__( 'Theme settings', 'gnn' ) . '</a>'; }
-	echo '</div></header><hr class="wp-header-end"><div class="gnn-admin-layout"><aside class="gnn-sidebar"><p class="gnn-sidebar__title">' . esc_html__( 'Site management', 'gnn' ) . '</p><nav class="gnn-workspace-links" aria-label="' . esc_attr__( 'Workspace sections', 'gnn' ) . '">';
+	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel-header"><div class="gnn-panel-header-center"><h1 class="gnn-panel-title">' . esc_html__( 'Assigned settings', 'gnn' ) . '</h1></div><span class="gnn-header-badge">v' . esc_html( GNN_VERSION ) . '</span></header><hr class="wp-header-end"><div class="gnn-panel-layout"><aside class="gnn-panel-sidebar"><nav class="gnn-sidebar-secondary gnn-workspace-links" aria-label="' . esc_attr__( 'Workspace sections', 'gnn' ) . '">';
 	foreach ( $sections as $key => $label ) {
 		echo '<a href="#gnn-workspace-' . esc_attr( $key ) . '">' . esc_html( $label ) . '</a>'; }
-	echo '</nav></aside><div class="gnn-workspace-content">';
+	echo '</nav></aside><div class="gnn-panel-content gnn-workspace-content">';
 	if ( $admin ) {
 		gnn_render_setup_dependencies();
 		echo '<section id="gnn-workspace-launch" class="gnn-settings-card"><h2>' . esc_html__( 'Launch checklist', 'gnn' ) . '</h2><div class="gnn-workspace-section"><ol class="gnn-launch-list">';
