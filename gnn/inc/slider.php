@@ -237,21 +237,23 @@ function gnn_slide_admin_assets( $hook ) {
 add_action( 'admin_enqueue_scripts', 'gnn_slide_admin_assets' );
 
 /**
- * Fetch published slides in display order, each as a ready-to-render array.
+ * Fetch published slides in display order for the selected or embedded group.
  *
+ * @param int|null $group Group ID, or current page setting.
  * @return array[]
  */
-function gnn_get_slides() {
+function gnn_get_slides( $group = null ) {
+	$group = null === $group ? absint( gnn_layout_value( 'hero_group' ) ) : absint( $group );
 	$query = new WP_Query(
 		array(
 			'post_type'        => 'gnn_slide',
 			'suppress_filters' => false,
 			// phpcs:ignore WordPress.DB.SlowDBQuery -- bounded explicit configuration/import query, not an unbounded visitor search.
-			'tax_query'        => gnn_layout_value( 'hero_group' ) ? array(
+			'tax_query'        => $group ? array(
 				array(
 					'taxonomy' => 'gnn_slide_group',
 					'field'    => 'term_id',
-					'terms'    => absint( gnn_layout_value( 'hero_group' ) ),
+					'terms'    => $group,
 				),
 			) : array(),
 			'post_status'      => 'publish',

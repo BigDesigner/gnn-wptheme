@@ -11,57 +11,70 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Small, distinct profiles rather than copied commercial demo sites. */
 function gnn_starter_profiles() {
 	return array(
-		'general'      => array(
-			'label'   => __( 'General services', 'gnn' ),
-			'accent'  => '#2563eb',
-			'header'  => 'classic',
-			'radius'  => 10,
-			'font'    => 'manrope',
-			'heading' => __( 'Clear solutions. Reliable service.', 'gnn' ),
+		'pro'          => array(
+			'label'       => __( 'GNNpro', 'gnn' ),
+			'accent'      => '#24415c',
+			'header'      => 'classic',
+			'radius'      => 2,
+			'font'        => 'manrope',
+			'heading'     => __( 'Expertise that moves you forward.', 'gnn' ),
+			'description' => __( 'A complete business website for companies, teams and professional services.', 'gnn' ),
 		),
-		'professional' => array(
-			'label'   => __( 'Professional services', 'gnn' ),
-			'accent'  => '#24415c',
-			'header'  => 'minimal',
-			'radius'  => 2,
-			'font'    => 'system',
-			'heading' => __( 'Experience you can rely on.', 'gnn' ),
+		'commerce'     => array(
+			'label'       => __( 'GNNcommerce', 'gnn' ),
+			'accent'      => '#12644a',
+			'header'      => 'classic',
+			'radius'      => 8,
+			'font'        => 'manrope',
+			'heading'     => __( 'Considered products. Everyday possibilities.', 'gnn' ),
+			'description' => __( 'A WooCommerce storefront with live products, categories, cart, checkout and customer account links.', 'gnn' ),
 		),
-		'industrial'   => array(
-			'label'   => __( 'Industrial and B2B', 'gnn' ),
-			'accent'  => '#b45309',
-			'header'  => 'stacked',
-			'radius'  => 4,
-			'font'    => 'manrope',
-			'heading' => __( 'Built for demanding projects.', 'gnn' ),
-		),
-		'creative'     => array(
-			'label'   => __( 'Creative agency', 'gnn' ),
-			'accent'  => '#7c3aed',
-			'header'  => 'transparent',
-			'radius'  => 24,
-			'font'    => 'space',
-			'heading' => __( 'Ideas shaped into meaningful experiences.', 'gnn' ),
+		'design'       => array(
+			'label'       => __( 'GNNdesign', 'gnn' ),
+			'accent'      => '#7045aa',
+			'header'      => 'minimal',
+			'radius'      => 16,
+			'font'        => 'space',
+			'heading'     => __( 'Design. Code. Make an impact.', 'gnn' ),
+			'description' => __( 'A personal portfolio for developers, designers and independent creative professionals.', 'gnn' ),
 		),
 		'architecture' => array(
-			'label'        => __( 'Architecture', 'gnn' ),
+			'label'        => __( 'GNNarchitecture', 'gnn' ),
 			'accent'       => '#855c40',
 			'header'       => 'minimal',
 			'radius'       => 2,
 			'font'         => 'manrope',
 			'heading_font' => 'space',
 			'heading'      => __( 'Space. Light. Life.', 'gnn' ),
-			'description'  => __( 'Architecture and construction: an editorial home, studio, services, two-column portfolio, gallery, contact and four linked project-detail drafts.', 'gnn' ),
+			'description'  => __( 'Architecture and construction with a live two-column portfolio, gallery, studio and services.', 'gnn' ),
 		),
 	);
+}
+
+/**
+ * Resolve former names without removing existing customer records or saved option values.
+ *
+ * @param string $name Profile key.
+ */
+function gnn_starter_profile_key( $name ) {
+	$aliases = array(
+		'general'      => 'pro',
+		'professional' => 'pro',
+		'original'     => 'pro',
+		'industrial'   => 'commerce',
+		'creative'     => 'design',
+	);
+	return $aliases[ $name ] ?? $name;
 }
 
 /**
  * Presets alter design only; customer identity, code, media and user content survive.
  *
  * @param string $name Profile identifier.
+ * @param bool   $reset Reset presentation defaults before applying the new profile.
  */
-function gnn_apply_design_preset( $name ) {
+function gnn_apply_design_preset( $name, $reset = false ) {
+	$name     = gnn_starter_profile_key( $name );
 	$profiles = gnn_starter_profiles();
 	if ( ! current_user_can( 'manage_options' ) || ! isset( $profiles[ $name ] ) ) {
 		return new WP_Error( 'gnn_preset', __( 'This profile is not available.', 'gnn' ) ); }
@@ -70,18 +83,34 @@ function gnn_apply_design_preset( $name ) {
 		return $started; }
 	$profile = $profiles[ $name ];
 	$options = (array) get_option( 'gnn_options', array() );
+	if ( $reset ) {
+		$defaults = gnn_option_defaults();
+		foreach ( gnn_design_reset_keys() as $key ) {
+			$options[ $key ] = $defaults[ $key ];
+		}
+	}
 	$options = array_replace(
 		$options,
 		array(
-			'site_segment'          => $name,
-			'header_preset'         => $profile['header'],
-			'footer_preset'         => 'balanced',
-			'design_radius'         => $profile['radius'],
-			'button_radius'         => $profile['radius'],
-			'body_font'             => $profile['font'],
-			'heading_font'          => $profile['heading_font'] ?? $profile['font'],
-			'compatibility_mode'    => 1,
-			'google_material_icons' => 0,
+			'site_segment'        => $name,
+			'header_preset'       => $profile['header'],
+			'footer_preset'       => 'balanced',
+			'design_radius'       => $profile['radius'],
+			'button_radius'       => $profile['radius'],
+			'body_font'           => $profile['font'],
+			'heading_font'        => $profile['heading_font'] ?? $profile['font'],
+			'hero_style'          => 'none',
+			'container_width'     => 1440,
+			'heading_size'        => 'architecture' === $name || 'design' === $name ? 100 : 80,
+			'heading_mobile_size' => 42,
+			'accent_light'        => $profile['accent'],
+			'accent_ink_light'    => '#ffffff',
+			'color_bg_light'      => '#fafafa',
+			'color_bg2_light'     => '#f0f1f3',
+			'color_bg3_light'     => '#e5e7eb',
+			'color_fg_light'      => '#18212b',
+			'color_fg2_light'     => '#515d69',
+			'color_line_light'    => '#d4d9df',
 		)
 	);
 	if ( 'architecture' === $name ) {
@@ -142,49 +171,36 @@ function gnn_starter_content( $heading, $text, $url = '', $label = '' ) {
  * Idempotent starter installation; menu, homepage and existing slugs are retained.
  *
  * @param string $name Profile identifier.
+ * @param string $editor Gutenberg or Elementor edition.
  */
-function gnn_install_starter( $name ) {
+function gnn_install_starter( $name, $editor = 'gutenberg' ) {
+	$name     = gnn_starter_profile_key( $name );
 	$profiles = gnn_starter_profiles();
 	if ( ! current_user_can( 'manage_options' ) || ! isset( $profiles[ $name ] ) ) {
 		return new WP_Error( 'gnn_starter', __( 'Invalid starter profile.', 'gnn' ) ); }
+	if ( ! in_array( $editor, array( 'gutenberg', 'elementor' ), true ) ) {
+		return new WP_Error( 'gnn_starter_editor', __( 'Choose Gutenberg or Elementor.', 'gnn' ) );
+	}
+	if ( 'elementor' === $editor && ! gnn_starter_elementor_available() ) {
+		return new WP_Error( 'gnn_starter_elementor', __( 'Activate Elementor 3.6 or newer before installing this edition.', 'gnn' ) );
+	}
+	if ( 'commerce' === $name && 'elementor' === $editor && ! class_exists( 'WooCommerce' ) ) {
+		return new WP_Error( 'gnn_starter_woocommerce', __( 'Activate WooCommerce and complete store setup before importing GNNcommerce.', 'gnn' ) );
+	}
+	if ( 'commerce' === $name && 'elementor' === $editor ) {
+		foreach ( array( 'shop', 'cart', 'checkout', 'myaccount' ) as $utility ) {
+			$id = wc_get_page_id( $utility );
+			if ( $id <= 0 || 'publish' !== get_post_status( $id ) ) {
+				return new WP_Error( 'gnn_starter_woocommerce', __( 'Activate WooCommerce and complete store setup before importing GNNcommerce.', 'gnn' ) );
+			}
+		}
+	}
 	$started = gnn_configuration_begin( 'starter', gnn_configuration_form_revision() );
 	if ( is_wp_error( $started ) ) {
 		return $started; }
-	if ( 'architecture' === $name ) {
+	if ( 'architecture' === $name && 'gutenberg' === $editor ) {
 		return gnn_install_architecture_starter(); }
-	$pages = array(
-		'contact'  => __( 'Contact', 'gnn' ),
-		'services' => __( 'Services', 'gnn' ),
-		'about'    => __( 'About', 'gnn' ),
-		'home'     => __( 'Home', 'gnn' ),
-		'news'     => __( 'News', 'gnn' ),
-	);
-	$ids   = array();
-	foreach ( $pages as $slug => $title ) {
-		$existing = get_page_by_path( $slug );
-		if ( $existing ) {
-			$ids[ $slug ] = $existing->ID;
-			continue; }
-		$contact = ! empty( $ids['contact'] ) ? get_permalink( $ids['contact'] ) : '';
-		$heading = 'home' === $slug ? $profiles[ $name ]['heading'] : $title;
-		$text    = 'contact' === $slug ? __( 'Add your public phone, email, location and a tested contact form before publishing.', 'gnn' ) : __( 'Replace this introductory content with your own services, expertise and project information.', 'gnn' );
-		$id      = wp_insert_post(
-			array(
-				'post_type'    => 'page',
-				'post_name'    => $slug,
-				'post_title'   => $title,
-				'post_status'  => 'draft',
-				'post_content' => gnn_starter_content( $heading, $text, 'contact' === $slug ? '' : $contact, __( 'Contact us', 'gnn' ) ),
-			),
-			true
-		);
-		if ( is_wp_error( $id ) ) {
-			return $id; }
-		update_post_meta( $id, '_gnn_starter', $name . ':' . $slug );
-		$ids[ $slug ] = $id;
-	}
-	// Drafts are intentionally not assigned as the live front page or published automatically.
-	return $ids;
+	return gnn_install_profile_pages( $name, $editor );
 }
 
 /** Register editable alternatives without changing previously inserted legacy sections. */

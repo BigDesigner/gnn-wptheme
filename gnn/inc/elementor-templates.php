@@ -1362,4 +1362,5 @@ function gnn_maybe_install_elementor_templates() {
 		gnn_install_elementor_templates();
 	}
 }
-add_action( 'admin_init', 'gnn_maybe_install_elementor_templates' );
+// Kept callable for existing libraries; new starters install only their selected page documents.
+// No automatic template-library population on admin requests.

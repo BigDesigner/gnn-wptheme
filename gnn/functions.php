@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.2.0' );
+define( 'GNN_VERSION', '2.3.0' );
 
 /**
  * Theme setup.
@@ -264,6 +264,10 @@ require get_template_directory() . '/inc/design-system.php';
 require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/starters.php';
 require get_template_directory() . '/inc/architecture.php';
+require get_template_directory() . '/inc/starter-layouts.php';
+require get_template_directory() . '/inc/starter-editors.php';
+require get_template_directory() . '/inc/content-modules.php';
+require get_template_directory() . '/inc/starter-maintenance.php';
 require get_template_directory() . '/inc/configuration.php';
 require get_template_directory() . '/inc/portability.php';
 require get_template_directory() . '/inc/options.php';
@@ -295,5 +299,12 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 if ( defined( 'ELEMENTOR_VERSION' ) ) {
 	require get_template_directory() . '/inc/elementor.php';
+	add_action(
+		'elementor/widgets/register',
+		function ( $manager ) {
+			require_once get_template_directory() . '/inc/elementor-modules.php';
+			gnn_register_elementor_modules( $manager );
+		}
+	);
 	require get_template_directory() . '/inc/elementor-templates.php';
 }

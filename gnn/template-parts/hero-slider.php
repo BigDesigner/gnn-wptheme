@@ -6,9 +6,9 @@
  * @package GNN
  */
 
-if ( 'none' === gnn_layout_value( 'hero_style' ) ) {
+if ( empty( $args['embedded'] ) && 'none' === gnn_layout_value( 'hero_style' ) ) {
 	return; }
-$gnn_slides = gnn_get_slides();
+$gnn_slides = gnn_get_slides( $args['group'] ?? null );
 
 if ( empty( $gnn_slides ) ) {
 	return;
@@ -18,7 +18,7 @@ $gnn_shop_url    = class_exists( 'WooCommerce' ) ? get_permalink( wc_get_page_id
 $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 ?>
 
-<section class="gnn-hero<?php echo $gnn_full_height ? ' gnn-hero--full-height' : ''; ?>" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Highlights', 'gnn' ); ?>">
+<section data-autoplay="<?php echo gnn_option( 'slider_autoplay' ) ? '1' : '0'; ?>" data-interval="<?php echo (int) max( 2, (int) gnn_option( 'slider_interval' ) ) * 1000; ?>" class="gnn-hero<?php echo $gnn_full_height ? ' gnn-hero--full-height' : ''; ?>" aria-roledescription="carousel" aria-label="<?php esc_attr_e( 'Highlights', 'gnn' ); ?>">
 	<div class="gnn-hero__track">
 		<?php foreach ( $gnn_slides as $gnn_index => $gnn_slide ) : ?>
 			<div class="gnn-hero__slide<?php echo 0 === $gnn_index ? ' is-active' : ''; ?>" role="group" aria-roledescription="slide"
@@ -52,7 +52,7 @@ $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 					<?php if ( $gnn_slide['kicker'] ) : ?>
 						<div class="entry-kicker"><?php echo esc_html( $gnn_slide['kicker'] ); ?></div>
 					<?php endif; ?>
-					<h1 class="gnn-hero__title"><?php echo esc_html( $gnn_slide['title'] ); ?></h1>
+					<h2 class="gnn-hero__title"><?php echo esc_html( $gnn_slide['title'] ); ?></h2>
 					<?php if ( $gnn_slide['text'] ) : ?>
 						<p class="gnn-hero__text"><?php echo esc_html( $gnn_slide['text'] ); ?></p>
 					<?php endif; ?>

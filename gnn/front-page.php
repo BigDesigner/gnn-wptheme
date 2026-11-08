@@ -21,6 +21,11 @@ if ( is_page_template( 'page-templates/tpl-architecture.php' ) ) {
 	return;
 }
 
+if ( is_page_template( 'page-templates/tpl-starter.php' ) ) {
+	get_template_part( 'page-templates/tpl', 'starter' );
+	return;
+}
+
 get_header();
 ?>
 
