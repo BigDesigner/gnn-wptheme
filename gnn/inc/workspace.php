@@ -52,10 +52,10 @@ function gnn_render_operation_controls() {
 /** Register delegated administration without exposing the full settings panel. */
 function gnn_workspace_menu() {
 	if ( current_user_can( 'manage_options' ) ) {
-		add_submenu_page( 'gnn-panel', __( 'Site workspace', 'gnn' ), __( 'Workspace', 'gnn' ), 'manage_options', 'gnn-workspace', 'gnn_workspace_page' );
+		add_submenu_page( 'gnn-panel', __( 'Setup wizard', 'gnn' ), __( 'Setup wizard', 'gnn' ), 'manage_options', 'gnn-workspace', 'gnn_workspace_page' );
 	} elseif ( current_user_can( 'gnn_manage_design' ) || current_user_can( 'gnn_manage_brand' ) || current_user_can( 'gnn_view_diagnostics' ) ) {
 		$cap = current_user_can( 'gnn_manage_design' ) ? 'gnn_manage_design' : ( current_user_can( 'gnn_manage_brand' ) ? 'gnn_manage_brand' : 'gnn_view_diagnostics' );
-		add_menu_page( __( 'Site workspace', 'gnn' ), 'GNN', $cap, 'gnn-panel', 'gnn_workspace_page', 'dashicons-admin-site-alt3', '59.100' );
+		add_menu_page( __( 'Setup wizard', 'gnn' ), 'GNN', $cap, 'gnn-panel', 'gnn_workspace_page', 'dashicons-admin-site-alt3', '59.100' );
 	}
 }
 add_action( 'admin_menu', 'gnn_workspace_menu', 20 );
@@ -122,7 +122,7 @@ function gnn_workspace_page() {
 		$sections['recovery']   = __( 'Recovery snapshots', 'gnn' );
 		$sections['history']    = __( 'Change history', 'gnn' );
 	}
-	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel__header"><div class="gnn-panel__heading"><span class="gnn-panel__icon dashicons dashicons-dashboard" aria-hidden="true"></span><div><h1>' . esc_html__( 'Site workspace', 'gnn' ) . '</h1><p class="gnn-panel__subtitle">' . esc_html__( 'Site operations, recovery and the settings assigned to your role.', 'gnn' ) . '</p></div></div><div class="gnn-panel__header-actions"><span class="gnn-panel__badge">v' . esc_html( GNN_VERSION ) . '</span>';
+	echo '<div class="wrap gnn-panel gnn-workspace"><header class="gnn-panel__header"><div class="gnn-panel__heading"><span class="gnn-panel__icon dashicons dashicons-dashboard" aria-hidden="true"></span><div><h1>' . esc_html__( 'Setup wizard', 'gnn' ) . '</h1><p class="gnn-panel__subtitle">' . esc_html__( 'Site operations, recovery and the settings assigned to your role.', 'gnn' ) . '</p></div></div><div class="gnn-panel__header-actions"><span class="gnn-panel__badge">v' . esc_html( GNN_VERSION ) . '</span>';
 	if ( $admin ) {
 		echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-panel' ) ) . '">' . esc_html__( 'Theme settings', 'gnn' ) . '</a>'; }
 	echo '</div></header><hr class="wp-header-end"><div class="gnn-admin-layout"><aside class="gnn-sidebar"><p class="gnn-sidebar__title">' . esc_html__( 'Site management', 'gnn' ) . '</p><nav class="gnn-workspace-links" aria-label="' . esc_attr__( 'Workspace sections', 'gnn' ) . '">';
@@ -130,6 +130,7 @@ function gnn_workspace_page() {
 		echo '<a href="#gnn-workspace-' . esc_attr( $key ) . '">' . esc_html( $label ) . '</a>'; }
 	echo '</nav></aside><div class="gnn-workspace-content">';
 	if ( $admin ) {
+		gnn_render_setup_dependencies();
 		echo '<section id="gnn-workspace-launch" class="gnn-settings-card"><h2>' . esc_html__( 'Launch checklist', 'gnn' ) . '</h2><div class="gnn-workspace-section"><ol class="gnn-launch-list">';
 		foreach ( array( __( 'Replace draft/demo content, choose logos and verify contact links.', 'gnn' ), __( 'Configure and test form delivery, consent, SEO and language integrations.', 'gnn' ), __( 'Review mobile navigation, keyboard operation and brand contrast.', 'gnn' ), __( 'Create an off-site database/files backup, rehearse upgrade and recovery on staging.', 'gnn' ), __( 'Assign the client or designer role instead of sharing an administrator account.', 'gnn' ) ) as $item ) {
 			echo '<li>' . esc_html( $item ) . '</li>'; }
@@ -138,9 +139,10 @@ function gnn_workspace_page() {
 			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p>';
 			if ( ! empty( $profile['description'] ) ) {
 				echo '<p class="description">' . esc_html( $profile['description'] ) . '</p>';
-				if ( 'architecture' === $slug ) {
-					echo '<img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/architecture/courtyard.svg' ) . '" alt="' . esc_attr__( 'Architecture concept preview', 'gnn' ) . '" width="1600" height="1100">';
-				}
+				$preview = 'architecture' === $slug ? '/assets/images/architecture/courtyard.svg' : '/assets/images/profiles/' . $slug . '.svg';
+				/* translators: %s: Ready-made site profile name. */
+				$preview_label = sprintf( __( '%s design concept preview', 'gnn' ), $profile['label'] );
+				echo '<img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . $preview ) . '" alt="' . esc_attr( $preview_label ) . '" width="1600" height="1100">';
 			}
 			$installed = gnn_starter_owned_page( $slug, 'elementor' );
 			if ( $installed && 'trash' !== $installed->post_status && current_user_can( 'edit_post', $installed->ID ) ) {
@@ -364,3 +366,18 @@ function gnn_handle_workspace() {
 	exit;
 }
 add_action( 'admin_post_gnn_workspace', 'gnn_handle_workspace' );
+
+/** Required editor shortcut uses WordPress's own permission-checked installer. */
+function gnn_render_setup_dependencies() {
+	echo '<section id="gnn-workspace-plugins" class="gnn-settings-card"><h2>' . esc_html__( 'Required plugins', 'gnn' ) . '</h2><div class="gnn-workspace-section"><p>' . esc_html__( 'Ready-made sites use Elementor Free. Install or activate it before importing a design. Nothing is installed automatically.', 'gnn' ) . '</p>';
+	if ( defined( 'ELEMENTOR_VERSION' ) ) {
+		echo '<p><strong>' . esc_html__( 'Elementor is active.', 'gnn' ) . '</strong></p>';
+	} elseif ( file_exists( WP_PLUGIN_DIR . '/elementor/elementor.php' ) && current_user_can( 'activate_plugins' ) ) {
+		echo '<a class="button button-secondary" href="' . esc_url( self_admin_url( 'plugins.php?s=elementor&plugin_status=inactive' ) ) . '">' . esc_html__( 'Open Elementor activation', 'gnn' ) . '</a>';
+	} elseif ( current_user_can( 'install_plugins' ) ) {
+		echo '<a class="button button-primary" href="' . esc_url( self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=elementor' ) ) . '">' . esc_html__( 'Install Elementor', 'gnn' ) . '</a>';
+	} else {
+		echo '<p>' . esc_html__( 'Ask an administrator with plugin installation permission to install Elementor.', 'gnn' ) . '</p>';
+	}
+	echo '</div></section>';
+}

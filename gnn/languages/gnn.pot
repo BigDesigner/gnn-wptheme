@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.3.1\n"
+"Project-Id-Version: GNN 2.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 07:05+0000\n"
-"PO-Revision-Date: 2026-11-08 07:05+0000\n"
+"POT-Creation-Date: 2026-11-08 09:11+0000\n"
+"PO-Revision-Date: 2026-11-08 09:11+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,6 +53,10 @@ msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] ""
 msgstr[1] ""
+
+#: inc/workspace.php:144
+msgid "%s design concept preview"
+msgstr ""
 
 #: inc/architecture.php:453
 msgid "1 project shown"
@@ -177,11 +181,11 @@ msgstr ""
 
 #: inc/admin-panel.php:968
 #: inc/customizer.php:59
-#: inc/workspace.php:173
+#: inc/workspace.php:175
 msgid "Accent color"
 msgstr ""
 
-#: inc/workspace.php:174
+#: inc/workspace.php:176
 msgid "Accent — light mode"
 msgstr ""
 
@@ -206,7 +210,7 @@ msgstr ""
 msgid "Activate Elementor 3.6 or newer before installing this edition."
 msgstr ""
 
-#: inc/workspace.php:154
+#: inc/workspace.php:156
 msgid "Activate Elementor to import pages. GNNcommerce also requires WooCommerce. Plugins are never installed automatically."
 msgstr ""
 
@@ -346,7 +350,7 @@ msgid "Analytics delivery"
 msgstr ""
 
 #: inc/admin-panel.php:796
-#: inc/workspace.php:162
+#: inc/workspace.php:164
 msgid "Announcement text"
 msgstr ""
 
@@ -372,7 +376,7 @@ msgstr ""
 msgid "Appears on archives and pages with a sidebar."
 msgstr ""
 
-#: inc/workspace.php:150
+#: inc/workspace.php:152
 msgid "Apply design profile"
 msgstr ""
 
@@ -420,10 +424,6 @@ msgstr ""
 msgid "Architecture and construction with a live two-column portfolio, gallery, studio and services."
 msgstr ""
 
-#: inc/workspace.php:142
-msgid "Architecture concept preview"
-msgstr ""
-
 #: inc/architecture.php:474
 msgid "Architecture gallery"
 msgstr ""
@@ -452,16 +452,20 @@ msgstr ""
 msgid "Archive header override"
 msgstr ""
 
+#: inc/workspace.php:380
+msgid "Ask an administrator with plugin installation permission to install Elementor."
+msgstr ""
+
 #: inc/blog.php:26
 msgid "Aspect ratio"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:135
 msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr ""
 
 #: inc/workspace.php:117
-#: inc/workspace.php:191
+#: inc/workspace.php:193
 msgid "Assigned site settings"
 msgstr ""
 
@@ -493,7 +497,7 @@ msgid "Back to Home"
 msgstr ""
 
 #: inc/admin-panel.php:1071
-#: inc/workspace.php:180
+#: inc/workspace.php:182
 msgid "Background"
 msgstr ""
 
@@ -568,7 +572,7 @@ msgstr ""
 msgid "Border"
 msgstr ""
 
-#: inc/workspace.php:185
+#: inc/workspace.php:187
 msgid "Borders"
 msgstr ""
 
@@ -727,7 +731,7 @@ msgstr ""
 msgid "Change history"
 msgstr ""
 
-#: inc/workspace.php:263
+#: inc/workspace.php:265
 msgid "Changed fields (%d)"
 msgstr ""
 
@@ -853,11 +857,11 @@ msgstr ""
 msgid "Concept study"
 msgstr ""
 
-#: inc/workspace.php:231
+#: inc/workspace.php:233
 msgid "Configuration revision"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:135
 msgid "Configure and test form delivery, consent, SEO and language integrations."
 msgstr ""
 
@@ -934,7 +938,7 @@ msgstr ""
 msgid "Coordinate"
 msgstr ""
 
-#: inc/workspace.php:166
+#: inc/workspace.php:168
 msgid "Copyright text"
 msgstr ""
 
@@ -994,11 +998,11 @@ msgstr ""
 msgid "Cover: poster left, text right"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:135
 msgid "Create an off-site database/files backup, rehearse upgrade and recovery on staging."
 msgstr ""
 
-#: inc/workspace.php:249
+#: inc/workspace.php:251
 msgid "Create configuration snapshot"
 msgstr ""
 
@@ -1074,7 +1078,7 @@ msgstr ""
 msgid "Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its \"Additional CSS Class(es)\" field (Advanced panel) using the class name shown under each style. Leave a style's name empty to skip it."
 msgstr ""
 
-#: inc/workspace.php:256
+#: inc/workspace.php:258
 msgid "Delete local recovery history"
 msgstr ""
 
@@ -1099,7 +1103,7 @@ msgstr ""
 msgid "Design Profile Showcase"
 msgstr ""
 
-#: inc/workspace.php:136
+#: inc/workspace.php:137
 msgid "Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus."
 msgstr ""
 
@@ -1111,7 +1115,7 @@ msgstr ""
 msgid "Design profiles"
 msgstr ""
 
-#: inc/workspace.php:136
+#: inc/workspace.php:137
 msgid "Design profiles and draft starter pages"
 msgstr ""
 
@@ -1135,7 +1139,7 @@ msgstr ""
 msgid "Diagnostics"
 msgstr ""
 
-#: inc/workspace.php:220
+#: inc/workspace.php:222
 msgid "Diagnostics and integration status"
 msgstr ""
 
@@ -1144,7 +1148,7 @@ msgid "Disable the emoji script"
 msgstr ""
 
 #: inc/platform.php:132
-#: inc/workspace.php:236
+#: inc/workspace.php:238
 msgid "Disabled"
 msgstr ""
 
@@ -1164,7 +1168,7 @@ msgstr ""
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr ""
 
-#: inc/workspace.php:242
+#: inc/workspace.php:244
 msgid "Download masked support summary"
 msgstr ""
 
@@ -1180,11 +1184,11 @@ msgstr ""
 msgid "Edit project"
 msgstr ""
 
-#: inc/workspace.php:147
+#: inc/workspace.php:149
 msgid "Edit with Elementor"
 msgstr ""
 
-#: inc/workspace.php:149
+#: inc/workspace.php:151
 msgid "Elementor Free edition. Only this design’s page documents are imported; no second editor edition or automatic saved-template library is created."
 msgstr ""
 
@@ -1197,6 +1201,10 @@ msgstr ""
 msgid "Elementor could not save the starter. Retry adding missing draft pages."
 msgstr ""
 
+#: inc/workspace.php:374
+msgid "Elementor is active."
+msgstr ""
+
 #: inc/admin-panel.php:1228
 msgid "Elementor templates"
 msgstr ""
@@ -1205,13 +1213,13 @@ msgstr ""
 msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr ""
 
-#: inc/workspace.php:182
+#: inc/workspace.php:184
 msgid "Elevated surface"
 msgstr ""
 
 #: inc/admin-panel.php:797
 #: inc/platform.php:409
-#: inc/workspace.php:164
+#: inc/workspace.php:166
 msgid "Email"
 msgstr ""
 
@@ -1227,7 +1235,7 @@ msgstr ""
 msgid "Enable theme updates"
 msgstr ""
 
-#: inc/workspace.php:236
+#: inc/workspace.php:238
 msgid "Enabled"
 msgstr ""
 
@@ -1451,12 +1459,12 @@ msgid "Footer legal text"
 msgstr ""
 
 #: inc/admin-panel.php:827
-#: inc/workspace.php:177
+#: inc/workspace.php:179
 msgid "Footer logo max height (px)"
 msgstr ""
 
 #: inc/admin-panel.php:824
-#: inc/workspace.php:172
+#: inc/workspace.php:174
 msgid "Footer logo — dark mode (1×)"
 msgstr ""
 
@@ -1465,7 +1473,7 @@ msgid "Footer logo — dark mode (2× retina)"
 msgstr ""
 
 #: inc/admin-panel.php:822
-#: inc/workspace.php:171
+#: inc/workspace.php:173
 msgid "Footer logo — light mode (1×)"
 msgstr ""
 
@@ -1482,7 +1490,7 @@ msgid "Footer style"
 msgstr ""
 
 #: inc/admin-panel.php:828
-#: inc/workspace.php:165
+#: inc/workspace.php:167
 msgid "Footer tagline"
 msgstr ""
 
@@ -1801,7 +1809,7 @@ msgstr ""
 msgid "Highlights"
 msgstr ""
 
-#: inc/workspace.php:255
+#: inc/workspace.php:257
 msgid "History management"
 msgstr ""
 
@@ -1847,7 +1855,7 @@ msgstr ""
 msgid "Image logo"
 msgstr ""
 
-#: inc/workspace.php:152
+#: inc/workspace.php:154
 msgid "Import Elementor starter pages"
 msgstr ""
 
@@ -1886,7 +1894,7 @@ msgstr ""
 
 #: inc/layout-system.php:129
 #: inc/layout-system.php:146
-#: inc/workspace.php:202
+#: inc/workspace.php:204
 msgid "Inherit"
 msgstr ""
 
@@ -1898,6 +1906,10 @@ msgstr ""
 msgid "Insights from the team"
 msgstr ""
 
+#: inc/workspace.php:378
+msgid "Install Elementor"
+msgstr ""
+
 #: inc/demo-import.php:127
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr ""
@@ -1906,7 +1918,7 @@ msgstr ""
 msgid "Installed version: %s"
 msgstr ""
 
-#: inc/workspace.php:226
+#: inc/workspace.php:228
 msgid "Integrations"
 msgstr ""
 
@@ -1938,7 +1950,7 @@ msgstr ""
 msgid "Invalid field value type. No settings were changed."
 msgstr ""
 
-#: inc/workspace.php:306
+#: inc/workspace.php:308
 msgid "Invalid operational field."
 msgstr ""
 
@@ -1968,12 +1980,12 @@ msgstr ""
 msgid "Large header over cover (left text)"
 msgstr ""
 
-#: inc/workspace.php:230
+#: inc/workspace.php:232
 msgid "Last update check"
 msgstr ""
 
 #: inc/workspace.php:113
-#: inc/workspace.php:133
+#: inc/workspace.php:134
 msgid "Launch checklist"
 msgstr ""
 
@@ -2085,32 +2097,32 @@ msgid "Local heading font"
 msgstr ""
 
 #: inc/admin-panel.php:761
-#: inc/workspace.php:175
+#: inc/workspace.php:177
 msgid "Logo max height — desktop (px)"
 msgstr ""
 
 #: inc/admin-panel.php:762
-#: inc/workspace.php:176
+#: inc/workspace.php:178
 msgid "Logo max height — mobile (px)"
 msgstr ""
 
 #: inc/admin-panel.php:758
-#: inc/workspace.php:169
+#: inc/workspace.php:171
 msgid "Logo — dark mode (1×)"
 msgstr ""
 
 #: inc/admin-panel.php:759
-#: inc/workspace.php:170
+#: inc/workspace.php:172
 msgid "Logo — dark mode (2× retina)"
 msgstr ""
 
 #: inc/admin-panel.php:756
-#: inc/workspace.php:167
+#: inc/workspace.php:169
 msgid "Logo — light mode (1×)"
 msgstr ""
 
 #: inc/admin-panel.php:757
-#: inc/workspace.php:168
+#: inc/workspace.php:170
 msgid "Logo — light mode (2× retina)"
 msgstr ""
 
@@ -2127,7 +2139,7 @@ msgstr ""
 msgid "Maintenance message"
 msgstr ""
 
-#: inc/workspace.php:228
+#: inc/workspace.php:230
 msgid "Maintenance mode"
 msgstr ""
 
@@ -2238,7 +2250,7 @@ msgstr ""
 msgid "Mobile navigation"
 msgstr ""
 
-#: inc/workspace.php:225
+#: inc/workspace.php:227
 msgid "Multisite"
 msgstr ""
 
@@ -2267,7 +2279,7 @@ msgstr ""
 msgid "New"
 msgstr ""
 
-#: inc/workspace.php:334
+#: inc/workspace.php:336
 msgid "New ready-made sites use Elementor."
 msgstr ""
 
@@ -2309,7 +2321,7 @@ msgstr ""
 
 #: inc/admin-panel.php:334
 #: inc/admin-panel.php:1167
-#: inc/workspace.php:214
+#: inc/workspace.php:216
 msgid "No pending changes"
 msgstr ""
 
@@ -2377,8 +2389,12 @@ msgstr ""
 msgid "Only applies while the toggle above is visible."
 msgstr ""
 
-#: inc/workspace.php:191
+#: inc/workspace.php:193
 msgid "Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator."
+msgstr ""
+
+#: inc/workspace.php:376
+msgid "Open Elementor activation"
 msgstr ""
 
 #: inc/elementor-templates.php:678
@@ -2423,7 +2439,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: inc/workspace.php:224
+#: inc/workspace.php:226
 msgid "PHP version"
 msgstr ""
 
@@ -2486,7 +2502,7 @@ msgid "Permission denied."
 msgstr ""
 
 #: inc/admin-panel.php:798
-#: inc/workspace.php:163
+#: inc/workspace.php:165
 msgid "Phone"
 msgstr ""
 
@@ -2569,7 +2585,7 @@ msgstr ""
 msgid "Preview import"
 msgstr ""
 
-#: inc/workspace.php:147
+#: inc/workspace.php:149
 msgid "Preview installed design"
 msgstr ""
 
@@ -2592,7 +2608,7 @@ msgid "Primary Menu"
 msgstr ""
 
 #: inc/admin-panel.php:1009
-#: inc/workspace.php:183
+#: inc/workspace.php:185
 msgid "Primary text"
 msgstr ""
 
@@ -2621,7 +2637,7 @@ msgstr ""
 msgid "Professional services"
 msgstr ""
 
-#: inc/workspace.php:149
+#: inc/workspace.php:151
 msgid "Profile actions"
 msgstr ""
 
@@ -2746,17 +2762,21 @@ msgstr ""
 msgid "Ready to secure your stack?"
 msgstr ""
 
-#: inc/workspace.php:260
+#: inc/workspace.php:372
+msgid "Ready-made sites use Elementor Free. Install or activate it before importing a design. Nothing is installed automatically."
+msgstr ""
+
+#: inc/workspace.php:262
 msgid "Recent configuration changes"
 msgstr ""
 
-#: inc/workspace.php:251
+#: inc/workspace.php:253
 msgid "Recovery actions"
 msgstr ""
 
 #: inc/workspace.php:122
-#: inc/workspace.php:227
-#: inc/workspace.php:248
+#: inc/workspace.php:229
+#: inc/workspace.php:250
 msgid "Recovery snapshots"
 msgstr ""
 
@@ -2768,7 +2788,7 @@ msgstr ""
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr ""
 
-#: inc/workspace.php:259
+#: inc/workspace.php:261
 msgid "Release abandoned settings lock"
 msgstr ""
 
@@ -2789,8 +2809,12 @@ msgstr ""
 msgid "Remove oEmbed discovery links"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:135
 msgid "Replace draft/demo content, choose logos and verify contact links."
+msgstr ""
+
+#: inc/workspace.php:372
+msgid "Required plugins"
 msgstr ""
 
 #: inc/admin-panel.php:1216
@@ -2831,7 +2855,7 @@ msgstr ""
 msgid "Restore the Architecture starter home from Trash before adding missing pages."
 msgstr ""
 
-#: inc/workspace.php:252
+#: inc/workspace.php:254
 msgid "Restore this configuration"
 msgstr ""
 
@@ -2852,7 +2876,7 @@ msgstr ""
 msgid "Reusable layouts"
 msgstr ""
 
-#: inc/workspace.php:301
+#: inc/workspace.php:303
 msgid "Review and confirm the operation first."
 msgstr ""
 
@@ -2860,7 +2884,7 @@ msgstr ""
 msgid "Review imported demo drafts"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:135
 msgid "Review mobile navigation, keyboard operation and brand contrast."
 msgstr ""
 
@@ -2896,7 +2920,7 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: inc/workspace.php:215
+#: inc/workspace.php:217
 msgid "Save assigned settings"
 msgstr ""
 
@@ -2938,7 +2962,7 @@ msgstr ""
 msgid "Secondary"
 msgstr ""
 
-#: inc/workspace.php:184
+#: inc/workspace.php:186
 msgid "Secondary text"
 msgstr ""
 
@@ -2979,7 +3003,7 @@ msgstr ""
 msgid "Selected work"
 msgstr ""
 
-#: inc/workspace.php:266
+#: inc/workspace.php:268
 msgid "Sensitive field values are never included in the change log or support summary."
 msgstr ""
 
@@ -3031,6 +3055,12 @@ msgstr ""
 
 #: inc/admin-panel.php:116
 msgid "Settings were not saved: a field has an invalid value type."
+msgstr ""
+
+#: inc/workspace.php:55
+#: inc/workspace.php:55
+#: inc/workspace.php:58
+msgid "Setup wizard"
 msgstr ""
 
 #: inc/admin-panel.php:1130
@@ -3207,8 +3237,6 @@ msgid "Site structure"
 msgstr ""
 
 #: inc/admin-panel.php:682
-#: inc/workspace.php:55
-#: inc/workspace.php:58
 msgid "Site workspace"
 msgstr ""
 
@@ -3346,7 +3374,7 @@ msgstr ""
 msgid "Support a clear handover and review the completed work."
 msgstr ""
 
-#: inc/workspace.php:181
+#: inc/workspace.php:183
 msgid "Surface"
 msgstr ""
 
@@ -3371,7 +3399,7 @@ msgstr ""
 msgid "Team introduction"
 msgstr ""
 
-#: inc/workspace.php:239
+#: inc/workspace.php:241
 msgid "Technical details"
 msgstr ""
 
@@ -3426,7 +3454,7 @@ msgstr ""
 msgid "The idea behind the space."
 msgstr ""
 
-#: inc/workspace.php:248
+#: inc/workspace.php:250
 msgid "The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages."
 msgstr ""
 
@@ -3513,7 +3541,7 @@ msgstr ""
 msgid "Theme update settings saved."
 msgstr ""
 
-#: inc/workspace.php:229
+#: inc/workspace.php:231
 msgid "Theme updates"
 msgstr ""
 
@@ -3521,7 +3549,7 @@ msgstr ""
 msgid "Theme updates (GitHub)"
 msgstr ""
 
-#: inc/workspace.php:222
+#: inc/workspace.php:224
 msgid "Theme version"
 msgstr ""
 
@@ -3537,7 +3565,7 @@ msgstr ""
 msgid "This profile is not available."
 msgstr ""
 
-#: inc/workspace.php:287
+#: inc/workspace.php:289
 msgid "This role cannot change the submitted fields."
 msgstr ""
 
@@ -3786,12 +3814,8 @@ msgstr ""
 msgid "WordPress defaults"
 msgstr ""
 
-#: inc/workspace.php:223
+#: inc/workspace.php:225
 msgid "WordPress version"
-msgstr ""
-
-#: inc/workspace.php:55
-msgid "Workspace"
 msgstr ""
 
 #: inc/workspace.php:128

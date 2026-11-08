@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.3.1\n"
+"Project-Id-Version: GNN 2.3.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 07:05+0000\n"
-"PO-Revision-Date: 2026-11-08 07:05+0000\n"
+"POT-Creation-Date: 2026-11-08 09:11+0000\n"
+"PO-Revision-Date: 2026-11-08 09:11+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -46,6 +46,9 @@ msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "%s yorum"
 msgstr[1] "%s yorum"
+
+msgid "%s design concept preview"
+msgstr "%s tasarım konsepti önizlemesi"
 
 msgid "1 project shown"
 msgstr "1 proje gösteriliyor"
@@ -311,9 +314,6 @@ msgstr "Mimarlık Vitrini"
 msgid "Architecture and construction with a live two-column portfolio, gallery, studio and services."
 msgstr "Dinamik iki sütunlu portföy, galeri, stüdyo ve hizmetlerle mimarlık ve yapı tasarımı."
 
-msgid "Architecture concept preview"
-msgstr "Mimarlık konsept tasarım önizlemesi"
-
 msgid "Architecture gallery"
 msgstr "Mimarlık galerisi"
 
@@ -334,6 +334,9 @@ msgstr "Arşiv altbilgi tercihi"
 
 msgid "Archive header override"
 msgstr "Arşiv üstbilgi tercihi"
+
+msgid "Ask an administrator with plugin installation permission to install Elementor."
+msgstr "Elementor kurulumu için eklenti yükleme yetkisi olan bir yöneticiye başvurun."
 
 msgid "Aspect ratio"
 msgstr "En-boy oranı"
@@ -860,6 +863,9 @@ msgstr "Elementor başlangıç belgesini açamadı."
 msgid "Elementor could not save the starter. Retry adding missing draft pages."
 msgstr "Elementor taslağı kaydedemedi. Eksik taslak sayfaları eklemeyi yeniden deneyin."
 
+msgid "Elementor is active."
+msgstr "Elementor etkin."
+
 msgid "Elementor templates"
 msgstr "Elementor şablonları"
 
@@ -1361,6 +1367,9 @@ msgstr "Varsayılan / yerel tema yerleşimi"
 msgid "Insights from the team"
 msgstr "Ekibimizden paylaşımlar"
 
+msgid "Install Elementor"
+msgstr "Elementor’u yükle"
+
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i kurup etkinleştirin."
 
@@ -1703,6 +1712,9 @@ msgstr "Yalnızca yukarıdaki düğme görünürken geçerlidir."
 msgid "Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator."
 msgstr "Burada yalnızca rolünüze atanmış alanları değiştirebilirsiniz. Kod, içe aktarma, sıfırlama ve güncelleme işlemleri site yöneticisine ayrılmıştır."
 
+msgid "Open Elementor activation"
+msgstr "Elementor etkinleştirme ekranını aç"
+
 msgid "Open spaces"
 msgstr "Açık alanlar"
 
@@ -1958,6 +1970,9 @@ msgstr "Son yazıları okuyun"
 msgid "Ready to secure your stack?"
 msgstr "Altyapınızı güvenceye almaya hazır mısınız?"
 
+msgid "Ready-made sites use Elementor Free. Install or activate it before importing a design. Nothing is installed automatically."
+msgstr "Hazır siteler ücretsiz Elementor kullanır. Tasarımı içe aktarmadan önce eklentiyi kurun veya etkinleştirin. Hiçbir eklenti otomatik kurulmaz."
+
 msgid "Recent configuration changes"
 msgstr "Son yapılandırma değişiklikleri"
 
@@ -1990,6 +2005,9 @@ msgstr "oEmbed keşif bağlantılarını kaldır"
 
 msgid "Replace draft/demo content, choose logos and verify contact links."
 msgstr "Taslak/örnek içeriği değiştirin, logoları seçin ve iletişim bağlantılarını doğrulayın."
+
+msgid "Required plugins"
+msgstr "Gerekli eklentiler"
 
 msgid "Reset all GNN Theme settings to defaults?"
 msgstr "Tüm GNN Tema ayarları varsayılana sıfırlansın mı?"
@@ -2161,6 +2179,9 @@ msgstr "Ayarlar varsayılana sıfırlandı."
 
 msgid "Settings were not saved: a field has an invalid value type."
 msgstr "Ayarlar kaydedilmedi: bir alanın değer türü geçersiz."
+
+msgid "Setup wizard"
+msgstr "Kurulum Sihirbazı"
 
 msgid "Sharp"
 msgstr "Keskin"
@@ -2710,9 +2731,6 @@ msgstr "WordPress varsayılanları"
 
 msgid "WordPress version"
 msgstr "WordPress sürümü"
-
-msgid "Workspace"
-msgstr "Çalışma alanı"
 
 msgid "Workspace sections"
 msgstr "Çalışma alanı bölümleri"
