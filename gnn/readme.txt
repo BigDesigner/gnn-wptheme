@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,13 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.3.0 =
+* Four ready-made Elementor sites: GNNpro, GNNcommerce, GNNdesign and GNNarchitecture.
+* Central project categories, automatic portfolio and project navigation, independent albums and project galleries; Free Elementor query widgets.
+* Explicit presentation reset and reviewed cleanup of unchanged imported drafts; customer content and integrations preserved.
+* Starter imports create only selected page documents; automatic legacy Elementor library population disabled.
+
 
 = 2.2.0 =
 * Add Architecture design profile and ten connected native-block draft pages for studios and construction businesses.
@@ -485,3 +492,15 @@ This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 = 1.0.0 =
 * Initial release.
+
+== Ready-made Elementor sites ==
+
+Site workspace offers GNNpro (business and professional services), GNNcommerce (WooCommerce), GNNdesign (independent designers/developers) and GNNarchitecture (architecture/construction). Activate Elementor Free before importing; GNNcommerce additionally requires WooCommerce and its store setup. Imports create editable draft page documents, do not publish or assign the homepage/menus, and never create a second editor edition or an automatic saved-template library. Preview installed drafts before publishing. Existing Gutenberg content remains supported and is not converted.
+
+Portfolio projects and categories are managed under GNN. Publish a project to add it to live portfolio queries; category selection and pagination are automatic. Single project pages show native title, featured image, facts, editable body, central gallery and category-based previous/next links. Use featured images, excerpts, order and native editor content to customize projects. Project categories are shared across profiles.
+
+Gallery albums use ordered Media Library image collections. GNN Gallery can query a project category, one project or an independent album ID. Images are referenced by attachment ID, not copied. Only published, unprotected records appear in public collections. Slider remains centrally managed and its groups are selectable through GNN Slider widgets.
+
+Elementor widgets GNN Portfolio, GNN Gallery, GNN Products and GNN Slider use live central data. Their query/source controls are native Elementor controls. Colors, typography and geometry inherit the theme panel tokens; widget settings allow local overrides. Replace illustrative images in the Image widget; image artwork is independent of interface color tokens.
+
+When applying a profile, optionally reset presentation defaults first. This resets theme appearance options, preserves identity/logo/contact information, customer code, integrations and central content, and records a configuration recovery snapshot. It does not erase intentional local styles inside customer-edited pages. Cleanup has a separate review list: only baseline-verified unchanged draft pages can be selected, with explicit Trash or permanent deletion. Published/modified/referenced/legacy-unverified records are protected. Remove child drafts before an unchanged parent. A configuration snapshot is not a page/database backup. Visitor maintenance mode remains an independent operational control.

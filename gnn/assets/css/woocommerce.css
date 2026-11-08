@@ -608,3 +608,6 @@ ul.products li.product { position: relative; }
 	background: var(--accent);
 	color: var(--accent-ink);
 }
+
+/* Native cart blocks inherit the same readable palette in both modes. */
+.woocommerce-cart .wc-block-cart-items__header th{color:var(--fg2);background:var(--bg)}

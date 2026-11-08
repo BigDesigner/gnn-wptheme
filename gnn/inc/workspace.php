@@ -89,6 +89,12 @@ function gnn_workspace_action_form( $action, $label, $extra = array() ) {
 	gnn_configuration_revision_field();
 	foreach ( $extra as $key => $value ) {
 		echo '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '">'; }
+	if ( 'preset' === $action ) {
+		echo '<label><input type="checkbox" name="reset_design" value="1"> ' . esc_html__( 'Reset presentation defaults before applying this profile. Keep identity, integrations and content.', 'gnn' ) . '</label><br>';
+	}
+	if ( 'starter' === $action ) {
+		echo '<input type="hidden" name="editor" value="elementor"><label><input type="checkbox" name="apply_design" value="1" checked> ' . esc_html__( 'Apply this design profile after successful import', 'gnn' ) . '</label><br><label><input type="checkbox" name="reset_design" value="1"> ' . esc_html__( 'Reset presentation defaults first', 'gnn' ) . '</label><br>';
+	}
 	if ( in_array( $action, array( 'restore', 'starter', 'preset', 'clear_history', 'unlock' ), true ) ) {
 		echo '<label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the scope. A recovery snapshot will be created before configuration changes.', 'gnn' ) . '</label> '; }
 	submit_button( $label, 'secondary', 'submit', false );
@@ -131,20 +137,26 @@ function gnn_workspace_page() {
 		foreach ( gnn_starter_profiles() as $slug => $profile ) {
 			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p>';
 			if ( ! empty( $profile['description'] ) ) {
-				echo '<p class="description">' . esc_html( $profile['description'] ) . '</p><img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/architecture/courtyard.svg' ) . '" alt="' . esc_attr__( 'Architecture concept preview', 'gnn' ) . '" width="1600" height="1100">';
-			}
-			if ( 'architecture' === $slug ) {
-				$starter_home = gnn_architecture_starter_home();
-				if ( $starter_home && current_user_can( 'edit_post', $starter_home ) ) {
-					echo '<p><a class="button" href="' . esc_url( get_preview_post_link( $starter_home ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Preview Architecture home', 'gnn' ) . '</a> <a href="' . esc_url( get_edit_post_link( $starter_home, 'raw' ) ) . '">' . esc_html__( 'Edit starter home', 'gnn' ) . '</a></p>';
+				echo '<p class="description">' . esc_html( $profile['description'] ) . '</p>';
+				if ( 'architecture' === $slug ) {
+					echo '<img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/architecture/courtyard.svg' ) . '" alt="' . esc_attr__( 'Architecture concept preview', 'gnn' ) . '" width="1600" height="1100">';
 				}
 			}
-			echo '<details><summary>' . esc_html__( 'Profile actions', 'gnn' ) . '</summary>';
+			$installed = gnn_starter_owned_page( $slug, 'elementor' );
+			if ( $installed && 'trash' !== $installed->post_status && current_user_can( 'edit_post', $installed->ID ) ) {
+				echo '<p><a class="button" href="' . esc_url( get_preview_post_link( $installed->ID ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Preview installed design', 'gnn' ) . '</a> <a href="' . esc_url( admin_url( 'post.php?post=' . $installed->ID . '&action=elementor' ) ) . '">' . esc_html__( 'Edit with Elementor', 'gnn' ) . '</a></p>';
+			}
+			echo '<p class="description">' . esc_html__( 'Elementor Free edition. Only this design’s page documents are imported; no second editor edition or automatic saved-template library is created.', 'gnn' ) . '</p><details><summary>' . esc_html__( 'Profile actions', 'gnn' ) . '</summary>';
 			gnn_workspace_action_form( 'preset', __( 'Apply design profile', 'gnn' ), array( 'profile' => $slug ) );
-			gnn_workspace_action_form( 'starter', __( 'Add missing draft pages', 'gnn' ), array( 'profile' => $slug ) );
+			if ( gnn_starter_elementor_available() && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) ) ) {
+				gnn_workspace_action_form( 'starter', __( 'Import Elementor starter pages', 'gnn' ), array( 'profile' => $slug ) );
+			} else {
+				echo '<p>' . esc_html__( 'Activate Elementor to import pages. GNNcommerce also requires WooCommerce. Plugins are never installed automatically.', 'gnn' ) . '</p>';
+			}
 			echo '</details></article>';
 		}
 		echo '</div></section>';
+		gnn_render_starter_maintenance();
 	}
 	$legacy_labels = array(
 		'topbar_text'            => __( 'Announcement text', 'gnn' ),
@@ -285,7 +297,7 @@ function gnn_handle_workspace() {
 		if ( ! is_wp_error( $result ) ) {
 			update_option( 'gnn_options', gnn_options_sanitize( array_replace( $merged, $input ) ) ); }
 	} elseif ( current_user_can( 'manage_options' ) ) {
-		if ( in_array( $operation, array( 'restore', 'preset', 'starter', 'operations', 'clear_history', 'unlock' ), true ) && empty( $_POST['confirmed'] ) ) {
+		if ( in_array( $operation, array( 'restore', 'preset', 'starter', 'starter_cleanup', 'operations', 'clear_history', 'unlock' ), true ) && empty( $_POST['confirmed'] ) ) {
 			wp_die( esc_html__( 'Review and confirm the operation first.', 'gnn' ), '', array( 'response' => 400 ) ); }
 		$profile = isset( $_POST['profile'] ) && is_string( $_POST['profile'] ) ? sanitize_key( wp_unslash( $_POST['profile'] ) ) : '';
 		if ( 'operations' === $operation ) {
@@ -314,9 +326,23 @@ function gnn_handle_workspace() {
 		if ( 'snapshot' === $operation ) {
 			$result = gnn_configuration_begin( 'manual', gnn_configuration_form_revision() ); }
 		if ( 'preset' === $operation ) {
-			$result = gnn_apply_design_preset( $profile ); }
+			$result = gnn_apply_design_preset( $profile, ! empty( $_POST['reset_design'] ) ); }
 		if ( 'starter' === $operation ) {
-			$result = gnn_install_starter( $profile ); }
+
+			$editor = isset( $_POST['editor'] ) && is_string( $_POST['editor'] ) ? sanitize_key( wp_unslash( $_POST['editor'] ) ) : 'elementor';
+			if ( 'elementor' !== $editor ) {
+				$result = new WP_Error( 'gnn_starter_editor', __( 'New ready-made sites use Elementor.', 'gnn' ) );
+			} else {
+				$result = gnn_install_starter( $profile, $editor );
+			}
+			if ( ! is_wp_error( $result ) && ! empty( $_POST['apply_design'] ) ) {
+				$result = gnn_apply_design_preset( $profile, ! empty( $_POST['reset_design'] ) );
+			}
+		}
+		if ( 'starter_cleanup' === $operation ) {
+			$selection = isset( $_POST['cleanup'] ) && is_array( $_POST['cleanup'] ) ? map_deep( wp_unslash( $_POST['cleanup'] ), 'sanitize_text_field' ) : array();
+			$result    = gnn_starter_cleanup( $selection, ! empty( $_POST['permanent'] ) );
+		}
 		if ( 'restore' === $operation ) {
 			$id     = isset( $_POST['snapshot'] ) && is_string( $_POST['snapshot'] ) ? sanitize_text_field( wp_unslash( $_POST['snapshot'] ) ) : '';
 			$result = gnn_restore_configuration( $id, gnn_configuration_form_revision() ); }

@@ -100,19 +100,24 @@ function gnn_brand_design_tokens( $mode ) {
 function gnn_design_css( $scope = ':root' ) {
 	$css = '--font-body:' . gnn_local_font_stack( 'body' ) . ';--font-heading:' . gnn_local_font_stack( 'heading' ) . ';';
 	foreach ( array(
-		'container_width'     => 'container',
-		'full_width'          => 'full-width',
-		'header_height'       => 'header-height',
-		'body_size'           => 'body-size',
-		'heading_size'        => 'heading-size',
-		'heading_mobile_size' => 'heading-mobile-size',
-		'design_radius'       => 'radius',
-		'button_radius'       => 'button-radius',
-		'button_padding'      => 'button-padding',
-		'design_spacing'      => 'section-space',
+		'module_gap'           => 'module-gap',
+		'project_detail_width' => 'project-width',
+		'container_width'      => 'container',
+		'full_width'           => 'full-width',
+		'header_height'        => 'header-height',
+		'body_size'            => 'body-size',
+		'heading_size'         => 'heading-size',
+		'heading_mobile_size'  => 'heading-mobile-size',
+		'design_radius'        => 'radius',
+		'button_radius'        => 'button-radius',
+		'button_padding'       => 'button-padding',
+		'design_spacing'       => 'section-space',
 	) as $key => $name ) {
 		$css .= '--gnn-' . $name . ':' . (int) gnn_option( $key ) . 'px;';
 	}
+	$ratio   = (string) gnn_option( 'portfolio_image_ratio' );
+	$fit     = (string) gnn_option( 'portfolio_image_fit' );
+	$css    .= '--gnn-project-ratio:' . ( in_array( $ratio, array( '4/3', '16/9', '1/1', '3/4', 'auto' ), true ) ? $ratio : '4/3' ) . ';--gnn-project-fit:' . ( in_array( $fit, array( 'cover', 'contain' ), true ) ? $fit : 'cover' ) . ';';
 	$css    .= '--gnn-body-leading:' . ( (int) gnn_option( 'body_line_height' ) / 100 ) . ';';
 	$css    .= '--gnn-heading-leading:' . ( (int) gnn_option( 'heading_line_height' ) / 100 ) . ';';
 	$css    .= '--gnn-heading-tracking:' . ( (int) gnn_option( 'heading_tracking' ) / 100 ) . 'em;';

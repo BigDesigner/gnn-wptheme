@@ -473,6 +473,10 @@ function gnn_field_select( $key, $label, $options, $hint = '' ) {
 	echo '<div class="gnn-field"><label class="gnn-field__label" for="gnn-' . esc_attr( $key ) . '">' . esc_html( $label ) . '</label>';
 	echo '<select id="gnn-' . esc_attr( $key ) . '" name="gnn_options[' . esc_attr( $key ) . ']">';
 	$current = (string) gnn_option( $key );
+	if ( 'site_segment' === $key ) {
+		$current = gnn_starter_profile_key( $current );
+		$options = wp_list_pluck( gnn_starter_profiles(), 'label' );
+	}
 	foreach ( $options as $value => $text ) {
 		echo '<option value="' . esc_attr( $value ) . '" ' . selected( $current, (string) $value, false ) . '>' . esc_html( $text ) . '</option>';
 	}

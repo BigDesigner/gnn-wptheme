@@ -1,5 +1,5 @@
 /* Original editorial Architecture presentation. Palette follows the theme's editable tokens. */
-.gnn-architecture{--arch-line:var(--line,#d2cabb);--arch-soft:var(--bg2,#ebe6dc);--arch-ink:var(--fg,#262b27);--arch-muted:var(--fg2,#62665f);color:var(--arch-ink);font-family:var(--font-body,Arial,sans-serif);font-size:16px;line-height:1.7;width:min(100%,1440px);margin-inline:auto;padding:clamp(28px,5vw,80px) clamp(20px,5vw,88px);}
+.gnn-architecture{--arch-line:var(--line,#d2cabb);--arch-soft:var(--bg2,#ebe6dc);--arch-ink:var(--fg,#262b27);--arch-muted:var(--fg2,#62665f);color:var(--arch-ink);font-family:var(--font-body,Arial,sans-serif);font-size:16px;line-height:1.7;width:min(100%,var(--gnn-container,1440px));margin-inline:auto;padding:clamp(28px,5vw,80px) clamp(20px,5vw,88px);}
 .gnn-architecture *, .gnn-architecture *::before,.gnn-architecture *::after{box-sizing:border-box;}
 .gnn-architecture [hidden]{display:none!important;}
 .gnn-architecture .wp-block-group{margin-block:0;}

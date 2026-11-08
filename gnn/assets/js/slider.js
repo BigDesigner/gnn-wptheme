@@ -2,8 +2,9 @@
 (function () {
 	'use strict';
 
-	var hero = document.querySelector('.gnn-hero');
-	if (!hero) { return; }
+	function initSliders(){
+	document.querySelectorAll('.gnn-hero').forEach(function(hero){
+	if(hero.dataset.gnnSliderReady)return;hero.dataset.gnnSliderReady='1';
 
 	var track = hero.querySelector('.gnn-hero__track');
 	var slides = hero.querySelectorAll('.gnn-hero__slide');
@@ -15,7 +16,7 @@
 	var count = slides.length;
 	var index = 0;
 	var timer = null;
-	var settings = window.gnnSlider || { autoplay: true, interval: 5000 };
+	var settings = hero.hasAttribute('data-autoplay') ? {autoplay:hero.dataset.autoplay==='1',interval:Number(hero.dataset.interval)||5000} : (window.gnnSlider || { autoplay: true, interval: 5000 });
 	var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 	var enabled = !!settings.autoplay && !reduced.matches;
 	var hovered = false, pointerIntent = null;
@@ -107,4 +108,9 @@
 
 	render();
 	updateRotation();
+	});
+	}
+	initSliders();
+	function register(){if(window.elementorFrontend?.hooks)window.elementorFrontend.hooks.addAction('frontend/element_ready/gnn-slider.default',initSliders);}
+	if(window.elementorFrontend?.hooks)register();else if(window.jQuery)window.jQuery(window).on('elementor/frontend/init',register);
 })();

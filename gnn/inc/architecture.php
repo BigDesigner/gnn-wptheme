@@ -493,10 +493,14 @@ add_action( 'init', 'gnn_architecture_patterns', 20 );
  * @return string
  */
 function gnn_architecture_preview_links( $content ) {
-	if ( ! is_preview() || ! is_page_template( 'page-templates/tpl-architecture.php' ) || ! current_user_can( 'edit_pages' ) ) {
+	if ( ! is_preview() || ! in_array( get_page_template_slug(), array( 'page-templates/tpl-architecture.php', 'page-templates/tpl-starter.php' ), true ) || ! current_user_can( 'edit_pages' ) ) {
 		return $content; }
-	$root = (int) get_post_meta( get_queried_object_id(), '_gnn_architecture_root', true );
-	$ids  = (array) get_post_meta( $root, '_gnn_architecture_pages', true );
+	$root = (int) get_post_meta( get_queried_object_id(), '_gnn_starter_root', true );
+	$ids  = (array) get_post_meta( $root, '_gnn_starter_pages', true );
+	if ( ! $root ) {
+		$root = (int) get_post_meta( get_queried_object_id(), '_gnn_architecture_root', true );
+		$ids  = (array) get_post_meta( $root, '_gnn_architecture_pages', true );
+	}
 	return preg_replace_callback(
 		'/href=(["\'])([^"\']+)\1/',
 		function ( $matches ) use ( $ids ) {

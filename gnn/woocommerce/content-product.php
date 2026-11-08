@@ -18,7 +18,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 ?>
 <li <?php wc_product_class( 'product-card', $product ); ?>>
 
-	<a href="<?php the_permalink(); ?>" class="product-card__media woocommerce-LoopProduct-link">
+	<a href="<?php the_permalink(); ?>" class="product-card__media woocommerce-LoopProduct-link" aria-label="<?php echo esc_attr( $product->get_name() ); ?>">
 		<?php
 		if ( has_post_thumbnail() ) {
 			the_post_thumbnail( 'gnn-card' );
