@@ -1078,3 +1078,388 @@ TRANSLATIONS.update({'Aspect ratio': 'En-boy oranı',
  'Single post content width (px)': 'Tekil yazı içerik genişliği (px)',
  'Single post layout and details': 'Tekil yazı düzeni ve ayrıntılar',
  'Space between cards (px)': 'Kartlar arası boşluk (px)'})
+
+TRANSLATIONS.update({'%d projects shown': '%d proje gösteriliyor',
+ '1 project shown': '1 proje gösteriliyor',
+ 'A clear process. A shared direction.': 'Net bir süreç. Ortak bir yön.',
+ 'A compact urban study that balances density and privacy. Repeated openings, sheltered terraces and a clear structural rhythm give the facade its identity.': 'Yoğunluk '
+                                                                                                                                                               'ile '
+                                                                                                                                                               'mahremiyeti '
+                                                                                                                                                               'dengeleyen '
+                                                                                                                                                               'kompakt '
+                                                                                                                                                               'bir '
+                                                                                                                                                               'kent '
+                                                                                                                                                               'yapısı '
+                                                                                                                                                               'çalışması. '
+                                                                                                                                                               'Tekrarlayan '
+                                                                                                                                                               'açıklıklar, '
+                                                                                                                                                               'korunaklı '
+                                                                                                                                                               'teraslar '
+                                                                                                                                                               've '
+                                                                                                                                                               'belirgin '
+                                                                                                                                                               'taşıyıcı '
+                                                                                                                                                               'ritim '
+                                                                                                                                                               'cepheye '
+                                                                                                                                                               'kimlik '
+                                                                                                                                                               'kazandırıyor.',
+ 'A complete design perspective.': 'Bütüncül bir tasarım bakışı.',
+ 'A considered approach': 'Özenli bir yaklaşım',
+ 'A flexible scope for architecture practices, interior studios and construction teams.': 'Mimarlık '
+                                                                                          'ofisleri, '
+                                                                                          'iç '
+                                                                                          'mekân '
+                                                                                          'stüdyoları '
+                                                                                          've yapı '
+                                                                                          'ekipleri '
+                                                                                          'için '
+                                                                                          'esnek '
+                                                                                          'bir '
+                                                                                          'hizmet '
+                                                                                          'kapsamı.',
+ 'A flexible workplace shaped by natural light and tactile materials. A restrained palette supports focused work, informal meetings and everyday collaboration.': 'Doğal '
+                                                                                                                                                                  'ışık '
+                                                                                                                                                                  've '
+                                                                                                                                                                  'dokunsal '
+                                                                                                                                                                  'malzemelerle '
+                                                                                                                                                                  'şekillenen '
+                                                                                                                                                                  'esnek '
+                                                                                                                                                                  'bir '
+                                                                                                                                                                  'çalışma '
+                                                                                                                                                                  'ortamı. '
+                                                                                                                                                                  'Sade '
+                                                                                                                                                                  'malzeme '
+                                                                                                                                                                  'paleti '
+                                                                                                                                                                  'odaklanmayı, '
+                                                                                                                                                                  'rahat '
+                                                                                                                                                                  'buluşmaları '
+                                                                                                                                                                  've '
+                                                                                                                                                                  'günlük '
+                                                                                                                                                                  'iş '
+                                                                                                                                                                  'birliğini '
+                                                                                                                                                                  'destekliyor.',
+ 'A new conversation': 'Yeni bir başlangıç',
+ 'A quiet home organised around a planted courtyard. Deep thresholds connect shared rooms, protected outdoor space and changing daylight.': 'Bitkilendirilmiş '
+                                                                                                                                            'bir '
+                                                                                                                                            'avlu '
+                                                                                                                                            'çevresinde '
+                                                                                                                                            'düzenlenen '
+                                                                                                                                            'sakin '
+                                                                                                                                            'bir '
+                                                                                                                                            'konut. '
+                                                                                                                                            'Derin '
+                                                                                                                                            'eşikler '
+                                                                                                                                            'ortak '
+                                                                                                                                            'yaşam '
+                                                                                                                                            'alanlarını, '
+                                                                                                                                            'korunaklı '
+                                                                                                                                            'açık '
+                                                                                                                                            'mekânı '
+                                                                                                                                            've '
+                                                                                                                                            'değişen '
+                                                                                                                                            'gün '
+                                                                                                                                            'ışığını '
+                                                                                                                                            'birbirine '
+                                                                                                                                            'bağlıyor.',
+ 'A studio shaped by curiosity.': 'Merakla şekillenen bir stüdyo.',
+ 'A visual notebook of form, atmosphere, material and detail.': 'Biçim, atmosfer, malzeme ve '
+                                                                'ayrıntılardan oluşan görsel bir '
+                                                                'not defteri.',
+ 'Add your studio’s public contact details and a contact form block before publishing.': 'Yayımlamadan '
+                                                                                         'önce '
+                                                                                         'stüdyonuzun '
+                                                                                         'iletişim '
+                                                                                         'bilgilerini '
+                                                                                         've bir '
+                                                                                         'iletişim '
+                                                                                         'formu '
+                                                                                         'bloğunu '
+                                                                                         'ekleyin.',
+ 'All projects': 'Tüm projeler',
+ 'An open cultural building with a generous public edge. A simple roof brings exhibition rooms, a shaded colonnade and a shared gathering space together.': 'Kamusal '
+                                                                                                                                                            'alanla '
+                                                                                                                                                            'güçlü '
+                                                                                                                                                            'bağ '
+                                                                                                                                                            'kuran '
+                                                                                                                                                            'açık '
+                                                                                                                                                            'bir '
+                                                                                                                                                            'kültür '
+                                                                                                                                                            'yapısı. '
+                                                                                                                                                            'Sade '
+                                                                                                                                                            'bir '
+                                                                                                                                                            'çatı; '
+                                                                                                                                                            'sergi '
+                                                                                                                                                            'salonlarını, '
+                                                                                                                                                            'gölgeli '
+                                                                                                                                                            'revakı '
+                                                                                                                                                            've '
+                                                                                                                                                            'ortak '
+                                                                                                                                                            'buluşma '
+                                                                                                                                                            'alanını '
+                                                                                                                                                            'bir '
+                                                                                                                                                            'araya '
+                                                                                                                                                            'getiriyor.',
+ 'Architectural material junction study': 'Mimari malzeme birleşim çalışması',
+ 'Architectural plan concept': 'Mimari plan konsepti',
+ 'Architecture': 'Architecture',
+ 'Architecture / Design / Construction': 'Mimarlık / Tasarım / Yapı',
+ 'Architecture Home': 'Architecture Ana Sayfa',
+ 'Architecture Showcase': 'Mimarlık Vitrini',
+ 'Architecture and construction: an editorial home, studio, services, two-column portfolio, gallery, contact and four linked project-detail drafts.': 'Mimarlık '
+                                                                                                                                                      've '
+                                                                                                                                                      'yapı '
+                                                                                                                                                      'şirketleri '
+                                                                                                                                                      'için '
+                                                                                                                                                      'ana '
+                                                                                                                                                      'sayfa, '
+                                                                                                                                                      'stüdyo, '
+                                                                                                                                                      'hizmetler, '
+                                                                                                                                                      'iki '
+                                                                                                                                                      'sütunlu '
+                                                                                                                                                      'portföy, '
+                                                                                                                                                      'galeri, '
+                                                                                                                                                      'iletişim '
+                                                                                                                                                      've '
+                                                                                                                                                      'birbirine '
+                                                                                                                                                      'bağlı '
+                                                                                                                                                      'dört '
+                                                                                                                                                      'proje '
+                                                                                                                                                      'detay '
+                                                                                                                                                      'taslağı.',
+ 'Architecture concept preview': 'Mimarlık konsept tasarım önizlemesi',
+ 'Architecture gallery': 'Mimarlık galerisi',
+ 'Architecture portfolio — two columns': 'Mimarlık portföyü — iki sütun',
+ 'Architecture services': 'Mimarlık hizmetleri',
+ 'Architecture with a sense of place': 'Yerle bağ kuran mimarlık',
+ 'Bring documentation, specialist input and decisions together.': 'Proje belgelerini, uzman '
+                                                                  'görüşlerini ve kararları ortak '
+                                                                  'bir düzlemde birleştirin.',
+ 'Civic Gallery': 'Kent Galerisi',
+ 'Clear documentation and collaboration connect design intent with the teams responsible for delivery.': 'Açık '
+                                                                                                         'proje '
+                                                                                                         'belgeleri '
+                                                                                                         've '
+                                                                                                         'iş '
+                                                                                                         'birliği, '
+                                                                                                         'tasarım '
+                                                                                                         'kararlarını '
+                                                                                                         'uygulama '
+                                                                                                         'ekiplerine '
+                                                                                                         'doğru '
+                                                                                                         'biçimde '
+                                                                                                         'aktarıyor.',
+ 'Concept study': 'Konsept çalışması',
+ 'Context first. People always.': 'Önce bağlam. Daima insan.',
+ 'Coordinate': 'Koordine et',
+ 'Courtyard Residence': 'Avlulu Konut',
+ 'Courtyard residence concept illustration': 'Avlulu konut konsept çizimi',
+ 'Deliver': 'Hayata geçir',
+ 'Design focus': 'Tasarım odağı',
+ 'Develop': 'Geliştir',
+ 'Discipline': 'Alan',
+ 'Discover': 'Keşfet',
+ 'Every commission has its own setting and ambitions. Our role is to turn these into a thoughtful, buildable and legible design.': 'Her '
+                                                                                                                                   'projenin '
+                                                                                                                                   'kendine '
+                                                                                                                                   'özgü '
+                                                                                                                                   'bir '
+                                                                                                                                   'bağlamı '
+                                                                                                                                   've '
+                                                                                                                                   'hedefleri '
+                                                                                                                                   'vardır. '
+                                                                                                                                   'Görevimiz '
+                                                                                                                                   'bunları '
+                                                                                                                                   'özenli, '
+                                                                                                                                   'uygulanabilir '
+                                                                                                                                   've '
+                                                                                                                                   'anlaşılır '
+                                                                                                                                   'bir '
+                                                                                                                                   'tasarıma '
+                                                                                                                                   'dönüştürmek.',
+ 'Explore project': 'Projeyi incele',
+ 'Explore residential, workplace and public-space concepts through their setting, material and spatial ideas.': 'Konut, '
+                                                                                                                'çalışma '
+                                                                                                                'ortamı '
+                                                                                                                've '
+                                                                                                                'kamusal '
+                                                                                                                'alan '
+                                                                                                                'konseptlerini '
+                                                                                                                'bağlamları, '
+                                                                                                                'malzemeleri '
+                                                                                                                've '
+                                                                                                                'mekânsal '
+                                                                                                                'fikirleri '
+                                                                                                                'üzerinden '
+                                                                                                                'keşfedin.',
+ 'From an idea to a place.': 'Bir fikirden bir mekâna.',
+ 'From the first site reading to a clear spatial concept, we shape buildings around their place and the people who use them.': 'İlk '
+                                                                                                                               'arazi '
+                                                                                                                               'incelemesinden '
+                                                                                                                               'mekânsal '
+                                                                                                                               'konsepte '
+                                                                                                                               'kadar '
+                                                                                                                               'yapıları '
+                                                                                                                               'bulundukları '
+                                                                                                                               'yere '
+                                                                                                                               've '
+                                                                                                                               'kullanıcılarına '
+                                                                                                                               'göre '
+                                                                                                                               'şekillendiriyoruz.',
+ 'Gallery': 'Galeri',
+ 'Good buildings begin with good questions.': 'İyi yapılar doğru sorularla başlar.',
+ 'Interior concept with natural materials and daylight': 'Doğal malzemeler ve gün ışığıyla iç '
+                                                         'mekân konsepti',
+ 'Interior design': 'İç mekân tasarımı',
+ 'Interior material and daylight study': 'İç mekân malzeme ve gün ışığı çalışması',
+ 'Let’s talk about your project.': 'Projenizi konuşalım.',
+ 'Light, material and proportion': 'Işık, malzeme ve oran',
+ 'Material, light and proportion work together to create interiors that feel considered, practical and enduring.': 'Malzeme, '
+                                                                                                                   'ışık '
+                                                                                                                   've '
+                                                                                                                   'oran '
+                                                                                                                   'birlikte '
+                                                                                                                   'çalışarak '
+                                                                                                                   'özenli, '
+                                                                                                                   'işlevsel '
+                                                                                                                   've '
+                                                                                                                   'kalıcı '
+                                                                                                                   'iç '
+                                                                                                                   'mekânlar '
+                                                                                                                   'oluşturuyor.',
+ 'Materials Studio': 'Malzeme Stüdyosu',
+ 'Meet the studio': 'Stüdyoyu tanıyın',
+ 'Next project': 'Sonraki proje',
+ 'No unused Architecture page path is available.': 'Architecture için kullanılabilir bir sayfa '
+                                                   'adresi bulunamadı.',
+ 'Our interests span homes, workplaces, public buildings and interior environments. We value simple ideas, careful coordination and an honest use of materials.': 'Çalışma '
+                                                                                                                                                                  'alanımız '
+                                                                                                                                                                  'konutları, '
+                                                                                                                                                                  'çalışma '
+                                                                                                                                                                  'ortamlarını, '
+                                                                                                                                                                  'kamu '
+                                                                                                                                                                  'yapılarını '
+                                                                                                                                                                  've '
+                                                                                                                                                                  'iç '
+                                                                                                                                                                  'mekânları '
+                                                                                                                                                                  'kapsıyor. '
+                                                                                                                                                                  'Sade '
+                                                                                                                                                                  'fikirlere, '
+                                                                                                                                                                  'dikkatli '
+                                                                                                                                                                  'koordinasyona '
+                                                                                                                                                                  've '
+                                                                                                                                                                  'malzemelerin '
+                                                                                                                                                                  'doğal '
+                                                                                                                                                                  'kullanımına '
+                                                                                                                                                                  'değer '
+                                                                                                                                                                  'veriyoruz.',
+ 'Overview': 'Genel bakış',
+ 'Places with purpose.': 'Anlam taşıyan mekânlar.',
+ 'Planning and feasibility': 'Planlama ve fizibilite',
+ 'Portfolio': 'Portföy',
+ 'Portfolio / 2 Columns': 'Portföy / 2 Sütun',
+ 'Previous project': 'Önceki proje',
+ 'Project coordination': 'Proje koordinasyonu',
+ 'Project enquiries': 'Proje başvuruları',
+ 'Project stage': 'Proje aşaması',
+ 'Public spaces': 'Kamusal alanlar',
+ 'Residential': 'Konut',
+ 'Restore the Architecture starter home from Trash before adding missing pages.': 'Eksik sayfaları '
+                                                                                  'eklemeden önce '
+                                                                                  'Architecture '
+                                                                                  'ana sayfasını '
+                                                                                  'çöp kutusundan '
+                                                                                  'geri yükleyin.',
+ 'Selected work': 'Seçili projeler',
+ 'Space. Light. Life.': 'Mekân. Işık. Yaşam.',
+ 'Start a conversation': 'İletişime geçin',
+ 'Studio': 'Stüdyo',
+ 'Support a clear handover and review the completed work.': 'Açık bir teslim sürecini destekleyin '
+                                                            've tamamlanan çalışmayı '
+                                                            'değerlendirin.',
+ 'Tell us about your site, your brief and the possibilities you see.': 'Proje alanınızı, '
+                                                                       'ihtiyaçlarınızı ve '
+                                                                       'gördüğünüz olasılıkları '
+                                                                       'bize anlatın.',
+ 'Test space, light, material and the design direction.': 'Mekânı, ışığı, malzemeyi ve tasarım '
+                                                          'yönünü sınayın.',
+ 'The idea behind the space.': 'Mekânın ardındaki fikir.',
+ 'The study explores how a clear structural order and a restrained material palette can create adaptable spaces with a distinct character.': 'Bu '
+                                                                                                                                             'çalışma, '
+                                                                                                                                             'belirgin '
+                                                                                                                                             'bir '
+                                                                                                                                             'taşıyıcı '
+                                                                                                                                             'düzen '
+                                                                                                                                             've '
+                                                                                                                                             'sade '
+                                                                                                                                             'malzeme '
+                                                                                                                                             'paletiyle '
+                                                                                                                                             'özgün '
+                                                                                                                                             'kimlik '
+                                                                                                                                             'taşıyan '
+                                                                                                                                             'esnek '
+                                                                                                                                             'mekânlar '
+                                                                                                                                             'oluşturmayı '
+                                                                                                                                             'araştırıyor.',
+ 'Thoughtful architecture and interiors for the way we live, work and come together.': 'Yaşama, '
+                                                                                       'çalışma ve '
+                                                                                       'bir araya '
+                                                                                       'gelme '
+                                                                                       'biçimimiz '
+                                                                                       'için '
+                                                                                       'özenli '
+                                                                                       'mimarlık '
+                                                                                       've iç '
+                                                                                       'mekânlar.',
+ 'Understand the brief, the site and the priorities.': 'İhtiyaçları, alanı ve öncelikleri anlayın.',
+ 'Urban House': 'Kent Evi',
+ 'View all projects': 'Tüm projeleri görün',
+ 'View selected work': 'Seçili projeleri görün',
+ 'Warm architectural material study': 'Sıcak tonlarda mimari malzeme çalışması',
+ 'We bring together observation, craft and a practical understanding of how spaces are made.': 'Gözlemi, '
+                                                                                               'ustalığı '
+                                                                                               've '
+                                                                                               'mekânın '
+                                                                                               'nasıl '
+                                                                                               'üretildiğine '
+                                                                                               'dair '
+                                                                                               'uygulama '
+                                                                                               'bilgisini '
+                                                                                               'bir '
+                                                                                               'araya '
+                                                                                               'getiriyoruz.',
+ 'We examine the brief, site constraints and development options to establish a sound foundation for the design.': 'Tasarım '
+                                                                                                                   'için '
+                                                                                                                   'sağlam '
+                                                                                                                   'bir '
+                                                                                                                   'temel '
+                                                                                                                   'oluşturmak '
+                                                                                                                   'üzere '
+                                                                                                                   'ihtiyaçları, '
+                                                                                                                   'alanın '
+                                                                                                                   'sınırlarını '
+                                                                                                                   've '
+                                                                                                                   'geliştirme '
+                                                                                                                   'seçeneklerini '
+                                                                                                                   'inceliyoruz.',
+ 'We listen to the brief, study the setting and test possibilities. The result is a clear relationship between architecture, landscape and everyday life.': 'İhtiyaçları '
+                                                                                                                                                            'dinliyor, '
+                                                                                                                                                            'bağlamı '
+                                                                                                                                                            'inceliyor '
+                                                                                                                                                            've '
+                                                                                                                                                            'olasılıkları '
+                                                                                                                                                            'deniyoruz. '
+                                                                                                                                                            'Böylece '
+                                                                                                                                                            'mimarlık, '
+                                                                                                                                                            'peyzaj '
+                                                                                                                                                            've '
+                                                                                                                                                            'günlük '
+                                                                                                                                                            'yaşam '
+                                                                                                                                                            'arasında '
+                                                                                                                                                            'açık '
+                                                                                                                                                            'bir '
+                                                                                                                                                            'ilişki '
+                                                                                                                                                            'kuruyoruz.',
+ 'What could your place become?': 'Mekânınız neye dönüşebilir?',
+ 'What guides the work.': 'Çalışmalarımıza yön verenler.',
+ 'Workspaces': 'Çalışma alanları'})
+
+TRANSLATIONS.update({'Project categories':'Proje kategorileri','Preview Architecture home':'Architecture ana sayfasını önizle','Edit starter home':'Başlangıç ana sayfasını düzenle'})

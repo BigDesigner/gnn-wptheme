@@ -43,6 +43,16 @@ function gnn_starter_profiles() {
 			'font'    => 'space',
 			'heading' => __( 'Ideas shaped into meaningful experiences.', 'gnn' ),
 		),
+		'architecture' => array(
+			'label'        => __( 'Architecture', 'gnn' ),
+			'accent'       => '#855c40',
+			'header'       => 'minimal',
+			'radius'       => 2,
+			'font'         => 'manrope',
+			'heading_font' => 'space',
+			'heading'      => __( 'Space. Light. Life.', 'gnn' ),
+			'description'  => __( 'Architecture and construction: an editorial home, studio, services, two-column portfolio, gallery, contact and four linked project-detail drafts.', 'gnn' ),
+		),
 	);
 }
 
@@ -69,11 +79,28 @@ function gnn_apply_design_preset( $name ) {
 			'design_radius'         => $profile['radius'],
 			'button_radius'         => $profile['radius'],
 			'body_font'             => $profile['font'],
-			'heading_font'          => $profile['font'],
+			'heading_font'          => $profile['heading_font'] ?? $profile['font'],
 			'compatibility_mode'    => 1,
 			'google_material_icons' => 0,
 		)
 	);
+	if ( 'architecture' === $name ) {
+		$options = array_replace(
+			$options,
+			array(
+				'color_bg_light'   => '#f4f1e9',
+				'color_bg2_light'  => '#ebe6dc',
+				'color_bg3_light'  => '#ded6c9',
+				'color_fg_light'   => '#262b27',
+				'color_fg2_light'  => '#62665f',
+				'color_line_light' => '#d2cabb',
+				'accent_light'     => '#855c40',
+				'accent_ink_light' => '#ffffff',
+				'hero_style'       => 'none',
+				'container_width'  => 1440,
+			)
+		);
+	}
 	update_option( 'gnn_options', $options );
 	set_theme_mod( 'gnn_default_theme', 'light' );
 	set_theme_mod( 'gnn_accent_color', $profile['accent'] );
@@ -123,6 +150,8 @@ function gnn_install_starter( $name ) {
 	$started = gnn_configuration_begin( 'starter', gnn_configuration_form_revision() );
 	if ( is_wp_error( $started ) ) {
 		return $started; }
+	if ( 'architecture' === $name ) {
+		return gnn_install_architecture_starter(); }
 	$pages = array(
 		'contact'  => __( 'Contact', 'gnn' ),
 		'services' => __( 'Services', 'gnn' ),

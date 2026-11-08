@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,28 @@ contents and third-party tracking plugins require their own consent configuratio
 Choose external delivery when a separate integration owns tracking. Turning off the
 theme loader does not remove tags installed outside the theme.
 
+== Architecture starter ==
+
+GNN > Workspace > Design profiles and draft starter pages includes Architecture.
+Apply design profile sets its warm neutral palette, typography and design geometry.
+Add missing draft pages creates an isolated Architecture home with studio, services,
+Portfolio / 2 Columns, gallery, contact and four linked concept-project detail pages.
+Existing pages, edits, homepage and menu assignments are retained. The workspace
+provides a home preview/edit link after installation. Review and publish the pages,
+then assign the desired homepage and menu through WordPress.
+
+Text, illustrations, galleries, links and layouts are native editable blocks. Replace
+the bundled original concept illustrations with your own photography in Image blocks.
+Set real project facts and public contact details, and add/test a form before publishing.
+Portfolio category filters are optional block content; removing the filter group leaves
+all cards visible. Without JavaScript all projects remain readable. Gallery expansion
+uses the native WordPress Image lightbox when available. Architecture gallery, services
+and two-column portfolio sections are also available in the block pattern inserter.
+
+For another project, create a page with Architecture Showcase, copy a sample project's
+blocks, then add its image/title/link card to the portfolio. Per-page content is not
+rewritten by another starter installation. Trashed starter pages are not resurrected.
+
 == Blog layouts ==
 
 GNN > Theme > Blog separates listing layout, listing images, single-post details
@@ -131,6 +153,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.2.0 =
+* Add Architecture design profile and ten connected native-block draft pages for studios and construction businesses.
+* Include a two-column portfolio with accessible category filters, a native gallery and four project-detail studies.
+* Bundle original architectural illustrations and reusable Architecture block patterns with editor styling.
+* Preserve existing pages, content edits, menu assignments and homepage settings during repeat installation.
 
 = 2.1.0 =
 * Add a dedicated Blog panel for independent listing, card image, single-post and featured-image settings.

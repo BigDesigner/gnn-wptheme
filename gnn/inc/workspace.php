@@ -129,7 +129,17 @@ function gnn_workspace_page() {
 			echo '<li>' . esc_html( $item ) . '</li>'; }
 		echo '</ol></div></section><section id="gnn-workspace-profiles"><h2 class="gnn-workspace-section-title">' . esc_html__( 'Design profiles and draft starter pages', 'gnn' ) . '</h2><p class="description">' . esc_html__( 'Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus.', 'gnn' ) . '</p><div class="gnn-workspace-grid">';
 		foreach ( gnn_starter_profiles() as $slug => $profile ) {
-			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p><details><summary>' . esc_html__( 'Profile actions', 'gnn' ) . '</summary>';
+			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p>';
+			if ( ! empty( $profile['description'] ) ) {
+				echo '<p class="description">' . esc_html( $profile['description'] ) . '</p><img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/architecture/courtyard.svg' ) . '" alt="' . esc_attr__( 'Architecture concept preview', 'gnn' ) . '" width="1600" height="1100">';
+			}
+			if ( 'architecture' === $slug ) {
+				$starter_home = gnn_architecture_starter_home();
+				if ( $starter_home && current_user_can( 'edit_post', $starter_home ) ) {
+					echo '<p><a class="button" href="' . esc_url( get_preview_post_link( $starter_home ) ) . '" target="_blank" rel="noopener">' . esc_html__( 'Preview Architecture home', 'gnn' ) . '</a> <a href="' . esc_url( get_edit_post_link( $starter_home, 'raw' ) ) . '">' . esc_html__( 'Edit starter home', 'gnn' ) . '</a></p>';
+				}
+			}
+			echo '<details><summary>' . esc_html__( 'Profile actions', 'gnn' ) . '</summary>';
 			gnn_workspace_action_form( 'preset', __( 'Apply design profile', 'gnn' ), array( 'profile' => $slug ) );
 			gnn_workspace_action_form( 'starter', __( 'Add missing draft pages', 'gnn' ), array( 'profile' => $slug ) );
 			echo '</details></article>';

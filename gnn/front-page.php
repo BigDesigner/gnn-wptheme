@@ -15,6 +15,12 @@ if ( 'posts' === get_option( 'show_on_front' ) ) {
 	return;
 }
 
+// Keep the Architecture canvas when its page is chosen as the static homepage.
+if ( is_page_template( 'page-templates/tpl-architecture.php' ) ) {
+	get_template_part( 'page-templates/tpl', 'architecture' );
+	return;
+}
+
 get_header();
 ?>
 
