@@ -76,8 +76,8 @@ function gnn_decode_settings_import( $raw ) {
 				}
 				if ( is_int( $defaults[ $key ] ) && ! is_bool( $value )
 					&& ! gnn_is_legacy_logo_url( $key, $value )
-					&& ! ( is_int( $value ) && ( $value >= 0 || ( 'heading_tracking' === $key && $value >= -8 ) ) )
-					&& ! ( is_string( $value ) && ( ctype_digit( $value ) || ( 'heading_tracking' === $key && preg_match( '/^-?[0-9]+$/D', $value ) && (int) $value >= -8 ) ) ) ) {
+					&& ! ( is_int( $value ) && ( $value >= 0 || ( isset( gnn_platform_schema()[ $key ] ) && in_array( gnn_platform_schema()[ $key ][1], array( 'number', 'region' ), true ) && $value >= ( 'region' === gnn_platform_schema()[ $key ][1] ? -2 : gnn_platform_schema()[ $key ][4] ) ) ) )
+					&& ! ( is_string( $value ) && ( ctype_digit( $value ) || ( isset( gnn_platform_schema()[ $key ] ) && preg_match( '/^-?[0-9]+$/D', $value ) && (int) $value >= ( 'region' === gnn_platform_schema()[ $key ][1] ? -2 : ( gnn_platform_schema()[ $key ][4] ?? 0 ) ) ) ) ) ) {
 					return $error;
 				}
 				if ( is_string( $defaults[ $key ] ) && ! is_string( $value ) ) {

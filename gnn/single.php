@@ -14,7 +14,7 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 }
 ?>
 
-<main id="primary" class="site-main single-main">
+<main id="primary" class="site-main single-main<?php echo gnn_layout_value( 'sidebar_template' ) > 0 ? ' gnn-custom-sidebar' : ''; ?>">
 
 	<?php
 	while ( have_posts() ) :
@@ -100,6 +100,10 @@ if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_loca
 
 	<?php endwhile; ?>
 
+<?php
+if ( gnn_layout_value( 'sidebar_template' ) > 0 ) {
+	get_sidebar(); }
+?>
 </main><!-- #primary -->
 
 <?php

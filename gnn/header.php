@@ -140,3 +140,5 @@
 		</nav><!-- #mobile-navigation -->
 	</header><!-- #masthead -->
 	<?php endif; // End theme header (Elementor location fallback). ?>
+
+<?php gnn_render_layout_region( 'titlebar' ); ?>

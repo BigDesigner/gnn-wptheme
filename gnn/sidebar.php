@@ -5,6 +5,9 @@
  * @package GNN
  */
 
+if ( gnn_render_layout_region( 'sidebar' ) ) {
+	return;
+}
 if ( ! gnn_show_sidebar() ) { // Widgets present AND panel position ≠ "none".
 	return;
 }

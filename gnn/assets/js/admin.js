@@ -145,7 +145,7 @@
     input.placeholder=color;
    }
    $input.wpColorPicker({palettes:false,width:220,change:function(event,ui){paint(ui.color.toString());if(wrap)markDirty();},clear:function(){paint('');if(wrap)markDirty();}});
-   $input.iris('option','controls',{horiz:'s',vert:'v',strip:'h'});
+   // Iris initializes its controls when the picker opens.
    $input.val(initialValue);
    wrap=input.closest('.wp-picker-container');if(!wrap)return;
    wrap.classList.add('gnn-picker');

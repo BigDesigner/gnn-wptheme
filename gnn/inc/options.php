@@ -459,6 +459,10 @@ function gnn_contact_url() {
  * @return bool
  */
 function gnn_show_sidebar() {
+	if ( ! is_admin() && -2 === (int) gnn_layout_value( 'sidebar_template' ) ) {
+		return false; }
+	if ( ! is_admin() && gnn_layout_value( 'sidebar_template' ) > 0 ) {
+		return true; }
 	return 'none' !== gnn_option( 'sidebar_position' ) && is_active_sidebar( 'sidebar-1' );
 }
 

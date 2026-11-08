@@ -60,6 +60,17 @@ function gnn_button_styles_inline_css() {
 		if ( '' !== $border ) {
 			$rule .= 'border:1px solid ' . esc_html( $border ) . ';';
 		}
+		$hover = '';
+		foreach ( array(
+			'hover_bg'   => 'background',
+			'hover_text' => 'color',
+		) as $part => $property ) {
+			$color = sanitize_hex_color( gnn_option( 'btn_style_' . $slot . '_' . $part ) );
+			if ( $color ) {
+				$hover .= $property . ':' . $color . ';'; }
+		}
+		if ( $hover ) {
+			$css .= '.' . gnn_button_style_class( $slot ) . ':hover,.' . gnn_button_style_class( $slot ) . ':focus-visible{' . $hover . '}'; }
 		if ( '' !== $rule ) {
 			$css .= '.' . gnn_button_style_class( $slot ) . '{' . $rule . '}';
 		}

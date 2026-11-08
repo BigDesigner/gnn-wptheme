@@ -18,11 +18,15 @@ function gnn_design_reset_keys() {
 	$preserve = array( 'header_cta_label', 'header_cta_url', 'topbar_text', 'topbar_email', 'topbar_phone', 'footer_tagline', 'footer_copyright', 'footer_logo_light', 'footer_logo_dark', 'contact_page_id' );
 	$keys     = array();
 	foreach ( gnn_option_defaults() as $key => $default ) {
-		if ( ! in_array( $key, $preserve, true ) && preg_match( '/^(show_toggle$|remember_mode$|smooth_scroll$|scroll_top$|scroll_anim$|preloader$|loading_screen$|portfolio_|gallery_|module_gap$|project_detail_width$|color_|accent|design_|button_|btn_style_|typo_|typography_|header_|footer_|topbar_|page_|post_|blog_|shop_|slider_|hero_|body_(font|size|line_height)$|heading_(font|size|mobile_size|line_height|tracking)$|container_width$|boxed_width$|full_width$|sidebar_|content_.*padding$|title_overlay_|sticky_header$|show_search$|show_cart$|logo_max_height)/', $key ) ) {
+		if ( ! in_array( $key, $preserve, true ) && preg_match( '/^(show_toggle$|remember_mode$|smooth_scroll$|scroll_top$|scroll_anim$|preloader$|loading_screen$|type_|global_color_|field_|focus_|site_frame$|site_padding$|mobile_padding$|content_gap$|tablet_breakpoint$|mobile_breakpoint$|portfolio_|gallery_|module_gap$|project_detail_width$|color_|accent|design_|button_|btn_style_|typo_|typography_|header_|footer_|topbar_|page_|post_|blog_|shop_|slider_|hero_|body_(font|size|line_height)$|heading_(font|size|mobile_size|line_height|tracking)$|container_width$|boxed_width$|full_width$|sidebar_|content_.*padding$|title_overlay_|sticky_header$|show_search$|show_cart$|logo_max_height)/', $key ) ) {
 			$keys[] = $key;
 		}
 	}
-	return $keys;
+	foreach ( gnn_site_schema() as $key => $field ) {
+		if ( in_array( $field[1], array( 'region', 'grid' ), true ) ) {
+			$keys[] = $key; }
+	}
+	return array_values( array_unique( $keys ) );
 }
 
 /**
@@ -38,7 +42,7 @@ function gnn_starter_fingerprint( $id ) {
 	}
 	$meta = get_post_meta( $id );
 	foreach ( array_keys( $meta ) as $key ) {
-		if ( in_array( $key, array( '_gnn_starter_baseline', '_edit_lock', '_edit_last', '_elementor_css', '_elementor_element_cache', '_elementor_page_assets', '_gnn_starter_pending' ), true ) ) {
+		if ( 0 === strpos( $key, '_gnn_ref_' ) || in_array( $key, array( '_gnn_starter_baseline', '_edit_lock', '_edit_last', '_elementor_css', '_elementor_element_cache', '_elementor_page_assets', '_gnn_starter_pending', '_gnn_shared_refs' ), true ) ) {
 			unset( $meta[ $key ] );
 		}
 	}

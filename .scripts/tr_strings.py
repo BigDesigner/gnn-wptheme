@@ -1472,8 +1472,108 @@ TRANSLATIONS.update({'Choose a published project or album': 'Yayımlanmış proj
 
 TRANSLATIONS.update({'Project': 'Proje', 'Add new project': 'Yeni proje ekle', 'Edit project': 'Projeyi düzenle', 'Album': 'Albüm', 'Add new album': 'Yeni albüm ekle', 'Edit album': 'Albümü düzenle'})
 
+TRANSLATIONS.update({
+    'A database table could not be reset.': 'Bir veritabanı tablosu sıfırlanamadı.',
+    'A reset is already running.': 'Sıfırlama zaten sürüyor.',
+    'A reset is in progress. Continue to finish it.': 'Yarım kalan sıfırlamaya devam edin.',
+    'Activate': 'Etkinleştir', 'Active': 'Etkin', 'Add grid layout': 'Izgara düzeni ekle',
+    'Add reusable block': 'Yeniden kullanılabilir blok ekle', 'Add template': 'Şablon ekle',
+    'Administrator access required.': 'Yönetici yetkisi gerekli.',
+    'All content, orders, media files, other users and plugin settings will be deleted. Your administrator account and theme/plugin files will remain. Plugins will be deactivated.': 'Tüm içerikler, siparişler, medya dosyaları, diğer kullanıcılar ve eklenti ayarları silinecek. Yönetici hesabınız ve tema/eklenti dosyaları korunacak. Eklentiler devre dışı bırakılacak.',
+    'An upload directory could not be removed.': 'Bir medya klasörü silinemedi.',
+    'An upload file could not be removed. Check file permissions.': 'Bir medya dosyası silinemedi. Dosya izinlerini kontrol edin.',
+    'Another operation is running.': 'Başka bir işlem sürüyor.',
+    'Another reset batch is running.': 'Başka bir sıfırlama adımı sürüyor.',
+    'Another site may share this database prefix. Reset is unavailable.': 'Bu veritabanı önekini başka bir site kullanıyor olabilir. Sıfırlama kapalı.',
+    'Apply': 'Uygula', 'Archives': 'Arşivler', 'Authors': 'Yazarlar', 'Available': 'Kullanılabilir',
+    'Border width': 'Kenarlık kalınlığı', 'Boxed': 'Kutulu', 'Button names': 'Buton adları',
+    'Button style': 'Buton stili', 'Card padding': 'Kart iç boşluğu', 'Categories': 'Kategoriler',
+    'Changes saved.': 'Değişiklikler kaydedildi.', 'Choose': 'Seç',
+    'Choose a logo for each mode. Retina versions are optional.': 'Her mod için logo seçin. Retina sürümleri isteğe bağlıdır.',
+    'Choose a published block.': 'Yayımlanmış bir blok seçin.',
+    'Color': 'Renk', 'Color name': 'Renk adı', 'Column gap': 'Sütun aralığı', 'Completed.': 'Tamamlandı.',
+    'Confirm the backup, site address and deletion scope.': 'Yedeği, site adresini ve silinecek verileri onaylayın.',
+    'Continue reset': 'Sıfırlamaya devam et', 'Corner radius': 'Köşe yarıçapı',
+    'Create snapshot': 'Ayar yedeği oluştur', 'Crop': 'Kırp',
+    'Database boundary changed. Reset stopped.': 'Veritabanı kapsamı değişti. Sıfırlama durduruldu.',
+    'Database inventory is unavailable.': 'Veritabanı listesi alınamadı.', 'Debug': 'Hata ayıklama',
+    'Delete the listed data and reset WordPress.': 'Belirtilen verileri sil ve WordPress’i sıfırla.',
+    'Design system': 'Tasarım sistemi', 'Desktop columns': 'Masaüstü sütunları', 'Desktop size': 'Masaüstü boyutu',
+    'Download support summary': 'Destek özetini indir', 'Edit selected': 'Seçileni düzenle',
+    'Enter a valid color.': 'Geçerli bir renk girin.',
+    'Finish the reset before changing settings.': 'Ayarları değiştirmeden önce sıfırlamayı tamamlayın.',
+    'Focus width': 'Odak kalınlığı', 'Font size': 'Yazı boyutu', 'Form fields': 'Form alanları',
+    'Full width': 'Tam genişlik', 'GNN': 'GNN', 'GNN Shared Block': 'GNN Ortak Blok',
+    'GNN navigation': 'GNN menüsü', 'Gap': 'Aralık', 'Global colors': 'Global renkler',
+    'Grid layout': 'Izgara düzeni', 'Grid layout ID': 'Izgara düzeni kimliği', 'Grid layouts': 'Izgara Düzenleri',
+    'Height': 'Yükseklik', 'Help': 'Yardım', 'Hover background': 'Üzerine gelince arka plan',
+    'Hover text': 'Üzerine gelince metin', 'I have a database and files backup.': 'Veritabanı ve dosya yedeğim var.',
+    'Image ratio': 'Görsel oranı', 'Image sizes': 'Görsel boyutları', 'Import': 'İçe aktar',
+    'Input variables': 'Girdi sınırı', 'Install': 'Yükle', 'Invalid operation.': 'Geçersiz işlem.',
+    'Large image threshold': 'Büyük görsel eşiği', 'Layout settings version': 'Yerleşim ayarları sürümü',
+    'Layouts': 'Yerleşimler', 'Letter spacing (1/100 em)': 'Harf aralığı (1/100 em)',
+    'Line height (%)': 'Satır yüksekliği (%)', 'Lowercase': 'Küçük harf', 'Maintenance': 'Bakım',
+    'Maintenance and recovery': 'Bakım ve kurtarma', 'Maintenance in progress.': 'Bakım sürüyor.',
+    'Manage slides under Slider.': 'Slaytları Slider bölümünden yönetin.', 'Memory limit': 'Bellek sınırı',
+    'Mobile breakpoint': 'Mobil kırılma noktası', 'Mobile columns': 'Mobil sütunları',
+    'Mobile padding': 'Mobil kenar boşluğu', 'Mobile size': 'Mobil boyutu', 'Natural': 'Doğal',
+    'New sizes apply to future uploads. Original files are kept.': 'Yeni boyutlar sonraki yüklemelerde uygulanır. Orijinal dosyalar korunur.',
+    'No': 'Hayır', 'No sample content will be added.': 'Örnek içerik eklenmeyecek.', 'Normal': 'Normal',
+    'Not assigned': 'Atanmamış', 'Only the administrator who started this reset can continue.': 'Yalnızca sıfırlamayı başlatan yönetici devam edebilir.',
+    'Optional store': 'İsteğe bağlı mağaza', 'Other block ID': 'Diğer blok kimliği', 'Padding': 'İç boşluk',
+    'Page and archive layouts': 'Sayfa ve arşiv düzenleri', 'Page template': 'Sayfa şablonu',
+    'Page templates': 'Sayfa Şablonları', 'Pages': 'Sayfalar',
+    'Pages are added as drafts. Existing pages, menus and your homepage stay unchanged.': 'Sayfalar taslak olarak eklenir. Mevcut sayfalar, menüler ve ana sayfanız korunur.',
+    'Plugins': 'Eklentiler', 'Preview': 'Önizle', 'Projects': 'Projeler', 'Ready-made site': 'Hazır site',
+    'Remove upload folder symlinks before resetting.': 'Sıfırlamadan önce medya klasöründeki sembolik bağlantıları kaldırın.',
+    'Required for ready-made sites': 'Hazır siteler için gerekli', 'Required for this design': 'Bu tasarım için gerekli',
+    'Reset WordPress': 'WordPress’i sıfırla', 'Reset design settings first': 'Önce tasarım ayarlarını sıfırla',
+    'Reset initialization failed. Continue after checking the database.': 'Sıfırlama tamamlanamadı. Veritabanını kontrol edip devam edin.',
+    'Reset is unavailable for shared or multisite databases.': 'Paylaşılan veya çoklu site veritabanlarında sıfırlama kapalı.',
+    'Reset requires a local, standard uploads folder.': 'Sıfırlama için standart, yerel medya klasörü gerekli.',
+    'Reset requires standard uploads and no must-use plugins.': 'Sıfırlama için standart medya yolu gerekli; zorunlu eklentiler bulunmamalı.',
+    'Reset stopped. Check the server and retry.': 'Sıfırlama durdu. Sunucuyu kontrol edip yeniden deneyin.',
+    'Restore': 'Geri yükle', 'Retry': 'Yeniden dene', 'Reusable blocks': 'Yeniden Kullanılabilir Bloklar',
+    'Review': 'İncele', 'Review design': 'Tasarımı incele', 'Saved templates': 'Kayıtlı şablonlar',
+    'Settings backup': 'Ayar yedeği', 'Settings snapshots do not include content or files.': 'Ayar yedekleri içerik ve dosyaları kapsamaz.',
+    'Shared block': 'Ortak blok', 'Side padding': 'Kenar boşluğu', 'Sidebar column width.': 'Yanbar sütununun genişliği.',
+    'Site': 'Site', 'Site layout': 'Site düzeni', 'Start from scratch': 'Sıfırdan başla', 'System status': 'Sistem durumu',
+    'Tablet breakpoint': 'Tablet kırılma noktası', 'Tablet columns': 'Tablet sütunları', 'Tablet size': 'Tablet boyutu',
+    'Tags': 'Etiketler', 'Text case': 'Harf biçimi', 'The administrator account is unavailable.': 'Yönetici hesabına erişilemiyor.',
+    'The operation stopped. Retry to continue.': 'İşlem durdu. Devam etmek için yeniden deneyin.',
+    'This cannot be undone. Take a database and files backup first.': 'Bu işlem geri alınamaz. Önce veritabanı ve dosya yedeği alın.',
+    'Time limit': 'Süre sınırı', 'Title bar': 'Başlık çubuğu', 'Type the site address': 'Site adresini yazın',
+    'Unavailable': 'Kullanılamıyor', 'Uncategorized': 'Genel', 'Unsupported database prefix.': 'Desteklenmeyen veritabanı öneki.',
+    'Upload boundary changed. Reset stopped.': 'Medya klasörünün kapsamı değişti. Sıfırlama durduruldu.',
+    'Upload limit': 'Yükleme sınırı', 'Uploads could not be read. Check file permissions.': 'Medya klasörü okunamadı. Dosya izinlerini kontrol edin.',
+    'Uppercase': 'Büyük harf', 'Usage indexing is in progress. Reload to continue.': 'Kullanım listesi hazırlanıyor. Devam etmek için sayfayı yenileyin.',
+    'Used in': 'Şurada kullanıldı', 'Users could not be reset.': 'Kullanıcılar sıfırlanamadı.',
+    'Visible area when cropped.': 'Kırpıldığında görünen alan.', 'Weight': 'Kalınlık', 'Width': 'Genişlik',
+    'Wipe': 'Wipe', 'WordPress': 'WordPress', 'Working…': 'İşleniyor…', 'Yes': 'Evet',
+})
+
 TRANSLATIONS.update({'No demo drafts selected. Select an eligible row; protected rows cannot be selected.': 'Örnek taslak seçilmedi. Temizlenebilir bir satır seçin; korunan satırlar seçilemez.', 'Protected: only draft pages can be cleaned automatically.': 'Korunuyor: otomatik temizlik yalnızca taslak sayfalarda kullanılabilir.', 'Protected: older import has no verification baseline. Review this page manually.': 'Korunuyor: eski içe aktarımın doğrulama kaydı yok. Sayfayı elle inceleyin.', 'Protected: content or metadata differs from the imported version.': 'Korunuyor: içerik veya meta verileri içe aktarılan sürümden farklı.', 'Protected: used by site settings, navigation, a parent page or other content.': 'Korunuyor: site ayarları, menüler, alt sayfalar veya diğer içerikler tarafından kullanılıyor.', 'No imported starter pages were found.': 'İçe aktarılmış başlangıç sayfası bulunamadı.', 'Select the unchanged demo drafts you want to remove.': 'Kaldırmak istediğiniz değiştirilmemiş örnek taslakları seçin.', 'No eligible demo drafts are available. Review the protection reasons below; resetting design settings does not require deleting pages.': 'Temizlenebilir örnek taslak yok. Listedeki koruma nedenlerini inceleyin; tasarım ayarlarını sıfırlamak için sayfa silmeniz gerekmez.'})
 
 TRANSLATIONS.update({'%s design concept preview':'%s tasarım konsepti önizlemesi'})
 
 TRANSLATIONS.update({'Setup wizard': 'Kurulum Sihirbazı', 'Required plugins': 'Gerekli eklentiler', 'Ready-made sites use Elementor Free. Install or activate it before importing a design. Nothing is installed automatically.': 'Hazır siteler ücretsiz Elementor kullanır. Tasarımı içe aktarmadan önce eklentiyi kurun veya etkinleştirin. Hiçbir eklenti otomatik kurulmaz.', 'Elementor is active.': 'Elementor etkin.', 'Open Elementor activation': 'Elementor etkinleştirme ekranını aç', 'Install Elementor': 'Elementor’u yükle', 'Ask an administrator with plugin installation permission to install Elementor.': 'Elementor kurulumu için eklenti yükleme yetkisi olan bir yöneticiye başvurun.'})
+
+TRANSLATIONS.update({
+ 'Button styles': 'Buton stilleri',
+ 'Exclude from search': 'Aramadan hariç tut',
+ 'Site settings could not be reset.': 'Site ayarları sıfırlanamadı.',
+ 'User settings could not be reset.': 'Kullanıcı ayarları sıfırlanamadı.',
+ 'Test compatibility changes before applying them.': 'Uyumluluk değişikliklerini uygulamadan önce test edin.',
+ 'I reviewed the changes.': 'Değişiklikleri inceledim.',
+ 'Apply settings': 'Ayarları uygula',
+})
+
+TRANSLATIONS.update({'All uses': 'Tüm kullanımlar'})
+
+TRANSLATIONS.update({'Assigned settings': 'Atanan ayarlar'})
+
+TRANSLATIONS.update({'Unavailable block': 'Kullanılamayan blok'})
+
+TRANSLATIONS.update({'Disable persistent caching before resetting.': 'Sıfırlamadan önce kalıcı önbelleği devre dışı bırakın.'})
+
+TRANSLATIONS.update({'Size 0 inherits. Empty letter spacing inherits.': 'Boyut için 0, harf aralığı için boş değer tema ayarını kullanır.'})

@@ -310,7 +310,7 @@ function gnn_options_sanitize( $input ) {
  * @param string $hook Current admin page hook.
  */
 function gnn_panel_assets( $hook ) {
-	if ( ! in_array( $hook, array( 'toplevel_page_gnn-panel', 'gnn_page_gnn-workspace' ), true ) ) {
+	if ( ! in_array( $hook, array( 'toplevel_page_gnn-panel', 'gnn_page_gnn-workspace', 'gnn_page_gnn-design' ), true ) ) {
 		return;
 	}
 	wp_enqueue_media();
@@ -470,6 +470,15 @@ function gnn_field_textarea( $key, $label, $value, $rows = 6, $hint = '' ) {
  * @param string   $hint    Optional description.
  */
 function gnn_field_select( $key, $label, $options, $hint = '' ) {
+	if ( 'header_preset' === $key ) {
+		echo '<fieldset class="gnn-field"><legend>' . esc_html( $label ) . '</legend><div class="gnn-header-picker">';
+		foreach ( $options as $value => $text ) {
+			echo '<label><input type="radio" name="gnn_options[header_preset]" value="' . esc_attr( $value ) . '" ' . checked( gnn_option( $key ), $value, false ) . '><span class="gnn-header-diagram ' . esc_attr( $value ) . '" aria-hidden="true"></span>' . esc_html( $text ) . '</label>';
+		}
+		echo '</div></fieldset>';
+		return;
+	}
+
 	echo '<div class="gnn-field"><label class="gnn-field__label" for="gnn-' . esc_attr( $key ) . '">' . esc_html( $label ) . '</label>';
 	echo '<select id="gnn-' . esc_attr( $key ) . '" name="gnn_options[' . esc_attr( $key ) . ']">';
 	$current = (string) gnn_option( $key );
@@ -655,6 +664,7 @@ function gnn_panel_render() {
 			</div>
 		</header>
 		<hr class="wp-header-end">
+		<?php gnn_management_nav(); ?>
 
 		<?php settings_errors( 'gnn_options' ); ?>
 
@@ -733,7 +743,7 @@ function gnn_panel_render() {
 				</div></article>
 
 <article class="gnn-settings-card"><h3><?php esc_html_e( 'Hero slider', 'gnn' ); ?></h3><div class="gnn-card-content">
-				<p class="description"><?php esc_html_e( 'Slides are managed under GNN Slider in the admin menu (unlimited slides).', 'gnn' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Manage slides under Slider.', 'gnn' ); ?></p>
 				<?php gnn_field_checkbox( 'slider_autoplay', __( 'Autoplay', 'gnn' ) ); ?>
 				<?php gnn_field_number( 'slider_interval', __( 'Autoplay interval (seconds)', 'gnn' ), 2, 30 ); ?>
 				<?php gnn_field_checkbox( 'slider_full_height', __( 'Full-height slider (fills the screen below the header)', 'gnn' ) ); ?>
@@ -751,7 +761,7 @@ function gnn_panel_render() {
 <div class="gnn-panel-grid">
 <article class="gnn-settings-card"><h3><?php esc_html_e( 'Brand assets', 'gnn' ); ?></h3><div class="gnn-card-content">
 
-				<p class="description gnn-group-note"><?php esc_html_e( 'Light mode uses dark artwork; dark mode uses light artwork. Upload a 2× version of each for crisp logos on Retina / high-DPI screens. If you only fill one mode, it is used for both.', 'gnn' ); ?></p>
+				<p class="description gnn-group-note"><?php esc_html_e( 'Choose a logo for each mode. Retina versions are optional.', 'gnn' ); ?></p>
 				<div class="gnn-logo-grid">
 					<?php gnn_field_media( 'logo_light', __( 'Logo — light mode (1×)', 'gnn' ), (int) gnn_option( 'logo_light' ) ); ?>
 					<?php gnn_field_media( 'logo_light_2x', __( 'Logo — light mode (2× retina)', 'gnn' ), (int) gnn_option( 'logo_light_2x' ) ); ?>
@@ -876,7 +886,7 @@ function gnn_panel_render() {
 				</div></article>
 
 <article class="gnn-settings-card"><h3><?php esc_html_e( 'Layout widths', 'gnn' ); ?></h3><div class="gnn-card-content">
-				<?php gnn_field_number( 'sidebar_width', __( 'Sidebar width (px)', 'gnn' ), 200, 500, __( 'Width of the sidebar column on the Left/Right Sidebar page templates.', 'gnn' ) ); ?>
+				<?php gnn_field_number( 'sidebar_width', __( 'Sidebar width (px)', 'gnn' ), 200, 500, __( 'Sidebar column width.', 'gnn' ) ); ?>
 				<?php gnn_field_number( 'boxed_width', __( 'Boxed template max width (px)', 'gnn' ), 600, 1600 ); ?>
 				<?php gnn_field_number( 'full_width', __( 'Full Width template max width (px)', 'gnn' ), 900, 1920 ); ?>
 
@@ -903,7 +913,7 @@ function gnn_panel_render() {
 						'center' => __( 'Center', 'gnn' ),
 						'bottom' => __( 'Bottom', 'gnn' ),
 					),
-					__( 'Which part of the image stays visible when it gets cropped.', 'gnn' )
+					__( 'Visible area when cropped.', 'gnn' )
 				);
 				?>
 
@@ -941,8 +951,8 @@ function gnn_panel_render() {
 
 			<section id="gnn-tab-blog" class="gnn-tab">
 <h2><span class="dashicons dashicons-admin-post" aria-hidden="true"></span><?php esc_html_e( 'Blog', 'gnn' ); ?></h2>
-<p class="description"><?php esc_html_e( 'Listing and single-post settings are independent. For 1000px text with a 1200px image, set the content width to 1000, choose Independent width and set the image width to 1200. Full viewport width reaches both screen edges. All widths shrink safely on mobile.', 'gnn' ); ?></p>
-<p class="description"><?php esc_html_e( 'Fixed height uses the pixel height; Aspect ratio uses the selected ratio; Original proportions displays the complete original image. Post editor layout overrides take priority over these defaults. Elementor Pro templates control their own content geometry.', 'gnn' ); ?></p>
+<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Listing and single-post settings are independent. For 1000px text with a 1200px image, set the content width to 1000, choose Independent width and set the image width to 1200. Full viewport width reaches both screen edges. All widths shrink safely on mobile.', 'gnn' ); ?></p></details>
+<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Fixed height uses the pixel height; Aspect ratio uses the selected ratio; Original proportions displays the complete original image. Post editor layout overrides take priority over these defaults. Elementor Pro templates control their own content geometry.', 'gnn' ); ?></p></details>
 <div class="gnn-panel-grid">
 	<?php
 	gnn_platform_fields( 'blog_archive' );
@@ -955,7 +965,7 @@ function gnn_panel_render() {
 
 <section id="gnn-tab-styles" class="gnn-tab">
 				<h2><span class="dashicons dashicons-art" aria-hidden="true"></span><?php esc_html_e( 'Styles', 'gnn' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme\'s own current color for that mode — change it, or use Clear to go back to that default.', 'gnn' ); ?></p>
+				<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Every theme color lives here, grouped by area. Type a hex code directly, or use the swatch button to pick one visually. Each Dark/Light pair shows the theme\'s own current color for that mode — change it, or use Clear to go back to that default.', 'gnn' ); ?></p></details>
 
 
 <div class="gnn-panel-grid">
@@ -981,7 +991,7 @@ function gnn_panel_render() {
 							</div>
 						</div>
 					</div>
-					<p class="description"><?php esc_html_e( 'Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching.', 'gnn' ); ?></p>
+					<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Used for buttons, links and highlights across the theme (and the Elementor color palette). Light matches Dark automatically unless you set a different value — use Clear to go back to matching.', 'gnn' ); ?></p></details>
 				</div>
 				<?php
 				gnn_field_color_pair(
@@ -1036,7 +1046,7 @@ function gnn_panel_render() {
 				</div></article>
 
 <article class="gnn-settings-card gnn-settings-card--wide"><h3><?php esc_html_e( 'Button Styles', 'gnn' ); ?></h3><div class="gnn-card-content">
-				<p class="description"><?php esc_html_e( 'Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its "Additional CSS Class(es)" field (Advanced panel) using the class name shown under each style. Leave a style\'s name empty to skip it.', 'gnn' ); ?></p>
+				<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Define up to 6 button variants here, then apply one to any Gutenberg or Elementor button via its "Additional CSS Class(es)" field (Advanced panel) using the class name shown under each style. Leave a style\'s name empty to skip it.', 'gnn' ); ?></p></details>
 				<div class="gnn-btn-styles">
 					<?php foreach ( gnn_button_style_slots() as $gnn_btn_slot ) : ?>
 						<?php
@@ -1100,7 +1110,7 @@ function gnn_panel_render() {
 				</div></article>
 
 <article class="gnn-settings-card gnn-settings-card--wide"><h3><?php esc_html_e( 'Fonts by element', 'gnn' ); ?></h3><div class="gnn-card-content">
-				<p class="description"><?php esc_html_e( 'Type the exact name from fonts.google.com (e.g. "Poppins", "IBM Plex Sans"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it.', 'gnn' ); ?></p>
+				<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Type the exact name from fonts.google.com (e.g. "Poppins", "IBM Plex Sans"). Leave empty to keep the theme default for that element. Turkish characters (ğ ı ş ö ü ç) need no separate setting — Google Fonts and the browser fetch the extended character set automatically, only when the page actually needs it.', 'gnn' ); ?></p></details>
 				<div class="gnn-typo-grid">
 					<?php foreach ( gnn_typography_roles() as $gnn_typo_role => $gnn_typo_label ) : ?>
 						<div class="gnn-typo-row">
@@ -1226,7 +1236,7 @@ function gnn_panel_advanced_tab() {
 		<?php if ( defined( 'ELEMENTOR_VERSION' ) ) : ?>
 			<div class="gnn-field gnn-settings-card">
 				<span class="gnn-field__label"><?php esc_html_e( 'Elementor templates', 'gnn' ); ?></span>
-				<p class="description"><?php esc_html_e( 'Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved.', 'gnn' ); ?></p>
+				<details class="gnn-field-help"><summary><?php esc_html_e( 'Help', 'gnn' ); ?></summary><p><?php esc_html_e( 'Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved.', 'gnn' ); ?></p></details>
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_rebuild_elementor_templates">
 					<?php wp_nonce_field( 'gnn_rebuild_elementor_templates' ); ?>
