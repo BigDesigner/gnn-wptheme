@@ -13,7 +13,6 @@ export async function testBrowser({browser,server,php,out}) {
  await page.clock.install({time:new Date('2026-10-18T00:00:00Z')});
  await page.clock.pauseAt(new Date('2026-10-18T00:00:00Z'));
  const errors=[];
- const rotationStartLabel=await php("echo __('Start slide rotation','gnn');");
  page.on('pageerror',error=>errors.push(String(error)));
  await record('A01 latest-posts homepage displays posts',async()=>{
   await page.goto(server.serverUrl,{waitUntil:'networkidle'});
@@ -42,17 +41,12 @@ export async function testBrowser({browser,server,php,out}) {
   await page.clock.runFor(2200);
   assert.equal(await page.locator('.gnn-hero__slide').nth(1).getAttribute('aria-hidden'),'false');
  });
- await record('A07 focus pauses until explicit restart',async()=>{
+ await record('A07 focus pauses without a visible rotation toggle',async()=>{
   await page.locator('.gnn-hero__slide.is-active a').focus();
   const before=await page.locator('.gnn-hero__track').getAttribute('style');
   await page.clock.runFor(5000);
   assert.equal(await page.locator('.gnn-hero__track').getAttribute('style'),before);
-  assert.equal(await page.locator('.gnn-hero__rotation').textContent(),rotationStartLabel);
-  await page.locator('.gnn-hero__rotation').focus();
-  await page.keyboard.press('Enter');
-  await page.mouse.move(0,0);
-  await page.clock.runFor(2200);
-  assert.notEqual(await page.locator('.gnn-hero__track').getAttribute('style'),before);
+  assert.equal(await page.locator('.gnn-hero__rotation').count(),0);
  });
  await record('A07 ordinary dot buttons select and expose current slide',async()=>{
   await page.locator('.gnn-hero__dot').nth(0).click();
@@ -60,9 +54,9 @@ export async function testBrowser({browser,server,php,out}) {
   assert.equal(await page.locator('.gnn-hero__slide').nth(0).getAttribute('aria-hidden'),'false');
   assert.equal(await page.locator('.gnn-hero [role=tab]').count(),0);
  });
- await record('A07 reduced motion stops and hides rotation control',async()=>{
+ await record('A07 reduced motion stops rotation',async()=>{
   await page.emulateMedia({reducedMotion:'reduce'});
-  await page.waitForFunction(()=>document.querySelector('.gnn-hero__rotation').hidden);
+  assert.equal(await page.locator('.gnn-hero__rotation').count(),0);
   const before=await page.locator('.gnn-hero__track').getAttribute('style');
   await page.clock.runFor(5000);
   assert.equal(await page.locator('.gnn-hero__track').getAttribute('style'),before);
