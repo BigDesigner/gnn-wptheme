@@ -23,7 +23,7 @@ function gnn_design_reset_keys() {
 		}
 	}
 	foreach ( gnn_site_schema() as $key => $field ) {
-		if ( in_array( $field[1], array( 'region', 'grid' ), true ) ) {
+		if ( 'region' === $field[1] ) {
 			$keys[] = $key; }
 	}
 	return array_values( array_unique( $keys ) );

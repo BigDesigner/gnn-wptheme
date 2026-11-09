@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.5.2
+Stable tag: 2.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,9 +67,7 @@ consumers and global assignments. Legacy usage indexing continues in batches.
 
 Layout resolution is page override, specific content/archive context, then site.
 Inherit, Theme default and Hide are distinct choices. Existing layout IDs and
-native-block records are preserved. Grid layouts control collection geometry;
-select defaults under Design system, choose a widget's grid ID, or use
-[gnn_grid id="123" source="portfolio"] (also gallery, products or posts).
+native-block records are preserved. Collection geometry is configured in Elementor and module controls.
 
 Design system includes responsive type roles, named color variables
 --gnn-global-1 through --gnn-global-6, button states, form controls and additional
@@ -179,6 +177,16 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.5.3 =
+* Fixed authorized Elementor previews for shared blocks without rendering assigned regions twice.
+* Removed saved grid layouts and Overview; moved System status into Maintenance and simplified menu labels/order.
+* Improved contrast of the update action in the settings header.
+* Removed duplicate in-content Architecture navigation; existing demo navigation is hidden without rewriting edited pages.
+* Removed the visible slide rotation toggle while preserving slide navigation and focus/hover motion handling.
+* Removed heading-level width restrictions from editable Architecture Elementor headings.
+* Preserved starter text alignment and wrapping button-container layout during Elementor import.
+* Corrected Architecture widget placement and nested image wrappers.
 
 = 2.5.2 =
 * Paced demo installation and reset requests to avoid request bursts.

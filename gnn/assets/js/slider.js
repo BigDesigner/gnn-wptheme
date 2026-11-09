@@ -1,4 +1,4 @@
-/** GNN hero slider: explicit rotation control and keyboard-safe slides. */
+/** GNN hero slider with keyboard-safe slides. */
 (function () {
 	'use strict';
 
@@ -12,14 +12,13 @@
 	var prev = hero.querySelector('.gnn-hero__arrow--prev');
 	var next = hero.querySelector('.gnn-hero__arrow--next');
 	var controls = hero.querySelector('.gnn-hero__controls');
-	var rotation = hero.querySelector('.gnn-hero__rotation');
 	var count = slides.length;
 	var index = 0;
 	var timer = null;
 	var settings = hero.hasAttribute('data-autoplay') ? {autoplay:hero.dataset.autoplay==='1',interval:Number(hero.dataset.interval)||5000} : (window.gnnSlider || { autoplay: true, interval: 5000 });
 	var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 	var enabled = !!settings.autoplay && !reduced.matches;
-	var hovered = false, pointerIntent = null;
+	var hovered = false;
 
 	/* Respect reduced-motion: no autoplay, arrows/dots still work. */
 	if (reduced.matches) {
@@ -72,7 +71,6 @@
 	}
 	function updateRotation() {
 		stopAutoplay();
-		if (rotation) { rotation.textContent = rotation.getAttribute(enabled ? 'data-stop' : 'data-start'); }
 		track.setAttribute('aria-live', enabled ? 'off' : 'polite');
 		startAutoplay();
 	}
@@ -86,21 +84,9 @@
 	hero.addEventListener('focusin', function () { enabled = false; updateRotation(); });
 	hero.addEventListener('mouseenter', function () { hovered = true; updateRotation(); });
 	hero.addEventListener('mouseleave', function () { hovered = false; updateRotation(); });
-	if (rotation) {
-		rotation.hidden = !settings.autoplay || reduced.matches;
-		// Capture intent before focusin pauses an already-running carousel.
-		rotation.addEventListener('pointerdown', function () { pointerIntent = !enabled; });
-		rotation.addEventListener('pointercancel', function () { pointerIntent = null; });
-		rotation.addEventListener('click', function () {
-			enabled = pointerIntent === null ? !enabled : pointerIntent;
-			pointerIntent = null;
-			updateRotation();
-		});
-	}
 	document.addEventListener('visibilitychange', updateRotation);
 	function motionChanged() {
 		if (reduced.matches) { enabled = false; }
-		if (rotation) { rotation.hidden = !settings.autoplay || reduced.matches; }
 		updateRotation();
 	}
 	if (reduced.addEventListener) { reduced.addEventListener('change', motionChanged); }

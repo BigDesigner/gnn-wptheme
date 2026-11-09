@@ -13,12 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 function gnn_management_menu() {
 	add_submenu_page( null, __( 'Used in', 'gnn' ), __( 'Used in', 'gnn' ), 'manage_options', 'gnn-usage', 'gnn_usage_page' );
 	$pages = array(
-		'gnn-overview'    => __( 'Overview', 'gnn' ),
 		'gnn-templates'   => __( 'Page templates', 'gnn' ),
 		'gnn-assignments' => __( 'Layouts', 'gnn' ),
 		'gnn-design'      => __( 'Design system', 'gnn' ),
 		'gnn-addons'      => __( 'Plugins', 'gnn' ),
-		'gnn-system'      => __( 'System status', 'gnn' ),
 		'gnn-maintenance' => __( 'Maintenance', 'gnn' ),
 	);
 	foreach ( $pages as $slug => $label ) {
@@ -46,7 +44,7 @@ function gnn_management_open( $title ) {
  */
 function gnn_management_assets( $hook ) {
 	$screen = get_current_screen();
-	if ( false === strpos( $hook, 'gnn' ) && ( ! $screen || ! in_array( $screen->post_type, array( 'gnn_layout', 'gnn_grid' ), true ) ) ) {
+	if ( false === strpos( $hook, 'gnn' ) && ( ! $screen || ! in_array( $screen->post_type, array( 'gnn_layout' ), true ) ) ) {
 		return;
 	}
 	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array(), GNN_VERSION );
@@ -272,7 +270,6 @@ function gnn_design_fields() {
 		'button_names'  => __( 'Button styles', 'gnn' ),
 		'global_colors' => __( 'Global colors', 'gnn' ),
 		'images'        => __( 'Image sizes', 'gnn' ),
-		'grids'         => __( 'Grid layouts', 'gnn' ),
 		'search'        => __( 'Exclude from search', 'gnn' ),
 	);
 	echo '<div class="gnn-design-topics">';
@@ -308,19 +305,6 @@ function gnn_design_fields() {
 				gnn_field_checkbox( $key, $field[0] );
 			} elseif ( 'select' === $field[1] ) {
 				gnn_field_select( $key, $field[0], $field[4] );
-			} elseif ( 'grid' === $field[1] ) {
-				$choices = array( 0 => __( 'Theme default', 'gnn' ) );
-				foreach ( get_posts(
-					array(
-						'post_type'   => 'gnn_grid',
-						'post_status' => 'publish',
-						'numberposts' => -1,
-						'orderby'     => 'title',
-						'order'       => 'ASC',
-					)
-				) as $record ) {
-					$choices[ $record->ID ] = $record->post_title; }
-				gnn_field_select( $key, $field[0], $choices );
 			} elseif ( 'hex' === $field[1] ) {
 				gnn_field_color( $key, $field[0], (string) gnn_option( $key ), '#000000', '', true );
 			} else {
@@ -384,12 +368,10 @@ function gnn_management_page() {
 	}
 	$page   = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only page route.
 	$titles = array(
-		'gnn-overview'    => __( 'Overview', 'gnn' ),
 		'gnn-addons'      => __( 'Plugins', 'gnn' ),
 		'gnn-templates'   => __( 'Page templates', 'gnn' ),
 		'gnn-assignments' => __( 'Layouts', 'gnn' ),
 		'gnn-design'      => __( 'Design system', 'gnn' ),
-		'gnn-system'      => __( 'System status', 'gnn' ),
 		'gnn-maintenance' => __( 'Maintenance', 'gnn' ),
 	);
 	gnn_management_open( $titles[ $page ] ?? __( 'GNN', 'gnn' ) );
@@ -401,9 +383,8 @@ function gnn_management_page() {
 		gnn_assignment_fields();
 	} elseif ( 'gnn-design' === $page ) {
 		gnn_design_fields();
-	} elseif ( 'gnn-system' === $page ) {
-		gnn_system_table();
 	} elseif ( 'gnn-maintenance' === $page ) {
+		gnn_system_table();
 		echo '<section class="gnn-settings-card gnn-card-content">';
 		gnn_render_operation_controls();
 		echo '</section><section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Settings backup', 'gnn' ) . '</h2><p>' . esc_html__( 'Settings snapshots do not include content or files.', 'gnn' ) . '</p>';
@@ -414,17 +395,6 @@ function gnn_management_page() {
 		}
 		echo '</section>';
 		gnn_wipe_screen();
-	} else {
-		echo '<div class="gnn-choice-grid">';
-		foreach ( array(
-			'gnn-workspace' => __( 'Setup wizard', 'gnn' ),
-			'gnn-templates' => __( 'Page templates', 'gnn' ),
-			'gnn-addons'    => __( 'Plugins', 'gnn' ),
-			'gnn-system'    => __( 'System status', 'gnn' ),
-		) as $slug => $label ) {
-			echo '<a class="gnn-choice-card" href="' . esc_url( admin_url( 'admin.php?page=' . $slug ) ) . '"><h2>' . esc_html( $label ) . '</h2></a>';
-		}
-		echo '</div>';
 	}
 	echo '</div>';
 }
@@ -445,7 +415,7 @@ function gnn_system_table() {
 	foreach ( array( 'curl', 'dom', 'zip', 'mbstring' ) as $extension ) {
 		$facts[ $extension ] = extension_loaded( $extension ) ? __( 'Available', 'gnn' ) : __( 'Unavailable', 'gnn' );
 	}
-	echo '<section class="gnn-settings-card gnn-card-content"><table class="widefat striped"><tbody>';
+	echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'System status', 'gnn' ) . '</h2><table class="widefat striped"><tbody>';
 	foreach ( $facts as $label => $value ) {
 		echo '<tr><th scope="row">' . esc_html( $label ) . '</th><td>' . esc_html( $value ) . '</td></tr>';
 	}
@@ -527,7 +497,7 @@ function gnn_management_handle() {
 				}
 			}
 		}
-		$target = 'design' === $operation ? 'gnn-design' : 'gnn-overview';
+		$target = 'design' === $operation ? 'gnn-design' : 'gnn-maintenance';
 	}
 	if ( 'import' === $operation && is_wp_error( $result ) && isset( $profile ) ) {
 		$target = 'gnn-workspace&path=ready&profile=' . rawurlencode( $profile ); }

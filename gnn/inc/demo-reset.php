@@ -189,7 +189,7 @@ function gnn_demo_clear_references() {
 		$options[ $key ] = $defaults[ $key ] ?? 0;
 	}
 	foreach ( gnn_platform_schema() as $key => $field ) {
-		if ( in_array( $field[1], array( 'region', 'grid', 'media' ), true ) ) {
+		if ( in_array( $field[1], array( 'region', 'media' ), true ) ) {
 			$options[ $key ] = $field[2];
 		}
 	}

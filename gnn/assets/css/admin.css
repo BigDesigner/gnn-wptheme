@@ -1488,3 +1488,6 @@
 }
 
 .gnn-workspace .gnn-workspace-links{display:flex;flex-direction:column;gap:4px}.gnn-workspace .gnn-panel-header{margin-bottom:16px}@media(max-width:960px){.gnn-workspace .gnn-workspace-links{flex-direction:row;flex-wrap:wrap}}
+/* Header actions retain contrast against the panel banner. */
+.gnn-panel-header .button.gnn-update-btn{color:#fff;border-color:rgba(255,255,255,.7);background:transparent;}
+.gnn-panel-header .button.gnn-update-btn:hover,.gnn-panel-header .button.gnn-update-btn:focus{color:#fff;border-color:#fff;background:rgba(255,255,255,.12);}

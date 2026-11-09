@@ -68,7 +68,6 @@ $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 
 	<?php if ( count( $gnn_slides ) > 1 ) : ?>
 		<div class="gnn-hero__controls" hidden>
-		<button type="button" class="gnn-hero__rotation" data-start="<?php esc_attr_e( 'Start slide rotation', 'gnn' ); ?>" data-stop="<?php esc_attr_e( 'Stop slide rotation', 'gnn' ); ?>"><?php esc_html_e( 'Stop slide rotation', 'gnn' ); ?></button>
 		<button type="button" class="gnn-hero__arrow gnn-hero__arrow--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'gnn' ); ?>">&lsaquo;</button>
 		<button type="button" class="gnn-hero__arrow gnn-hero__arrow--next" aria-label="<?php esc_attr_e( 'Next slide', 'gnn' ); ?>">&rsaquo;</button>
 		<div class="gnn-hero__dots" role="group" aria-label="<?php esc_attr_e( 'Choose a slide', 'gnn' ); ?>">
