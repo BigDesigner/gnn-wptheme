@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.5.2\n"
+"Project-Id-Version: GNN 2.5.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 02:02+0000\n"
-"PO-Revision-Date: 2026-11-09 02:02+0000\n"
+"POT-Creation-Date: 2026-11-09 03:32+0000\n"
+"PO-Revision-Date: 2026-11-09 03:32+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -230,9 +230,6 @@ msgstr "Etkileyici kısa bir giriş buraya ekleyin. Bu örnek metni bölümü, �
 msgid "Add draft pages"
 msgstr "Taslak sayfaları ekle"
 
-msgid "Add grid layout"
-msgstr "Izgara düzeni ekle"
-
 msgid "Add new album"
 msgstr "Yeni albüm ekle"
 
@@ -294,7 +291,7 @@ msgid "Album"
 msgstr "Albüm"
 
 msgid "All Slides"
-msgstr "Tüm Slaytlar"
+msgstr "Slaytlar"
 
 msgid "All categories"
 msgstr "Tüm kategoriler"
@@ -312,7 +309,7 @@ msgid "All projects"
 msgstr "Tüm projeler"
 
 msgid "All slides"
-msgstr "Tüm slaytlar"
+msgstr "Slaytlar"
 
 msgid "All stories"
 msgstr "Tüm yazılar"
@@ -643,9 +640,6 @@ msgstr "Kart görseli sabit yüksekliği (px)"
 
 msgid "Card image sizing"
 msgstr "Kart görseli boyutlandırması"
-
-msgid "Card padding"
-msgstr "Kart iç boşluğu"
 
 msgid "Carefully placed openings bring natural light deep into the plan. Durable surfaces, tactile finishes and sheltered outdoor spaces support everyday use throughout the seasons."
 msgstr "Özenle konumlandırılan açıklıklar doğal ışığı yapının derinliklerine taşır. Dayanıklı yüzeyler, dokulu malzemeler ve korunaklı açık alanlar her mevsim kullanımı destekler."
@@ -1041,7 +1035,7 @@ msgid "Design replacement and cleanup"
 msgstr "Tasarım değiştirme ve temizlik"
 
 msgid "Design system"
-msgstr "Tasarım sistemi"
+msgstr "Tasarım Sistemi"
 
 msgid "Design tokens"
 msgstr "Tasarım değerleri"
@@ -1051,9 +1045,6 @@ msgstr "Tasarla. Kodla. İz bırak."
 
 msgid "Designing around daylight"
 msgstr "Gün ışığıyla tasarlamak"
-
-msgid "Desktop columns"
-msgstr "Masaüstü sütunları"
 
 msgid "Desktop size"
 msgstr "Masaüstü boyutu"
@@ -1445,9 +1436,6 @@ msgstr "GNNpro"
 msgid "Gallery"
 msgstr "Galeri"
 
-msgid "Gallery albums"
-msgstr "Galeri albümleri"
-
 msgid "Gallery columns"
 msgstr "Galeri sütunları"
 
@@ -1456,9 +1444,6 @@ msgstr "Galeri görselleri ve proje bilgileri"
 
 msgid "Gallery source"
 msgstr "Galeri kaynağı"
-
-msgid "Gap"
-msgstr "Aralık"
 
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr "Üst bölüm ile sayfa içeriği arasındaki boşluk — sayfada öne çıkarılan görsel varsa, görsel ile içerik arasındaki boşluk."
@@ -1501,15 +1486,6 @@ msgstr "Sorularınız mı var? Bize ulaşmaktan çekinmeyin."
 
 msgid "Grid"
 msgstr "Izgara"
-
-msgid "Grid layout"
-msgstr "Izgara düzeni"
-
-msgid "Grid layout ID"
-msgstr "Izgara düzeni kimliği"
-
-msgid "Grid layouts"
-msgstr "Izgara Düzenleri"
 
 msgid "Gutenberg only."
 msgstr "Sadece Gutenberg."
@@ -1660,9 +1636,6 @@ msgstr "Görsel sığdırma"
 
 msgid "Image logo"
 msgstr "Görsel logo"
-
-msgid "Image ratio"
-msgstr "Görsel oranı"
 
 msgid "Image sizes"
 msgstr "Görsel boyutları"
@@ -1994,9 +1967,6 @@ msgstr "Mobil alt uygulama çubuğu (≤600px)"
 msgid "Mobile breakpoint"
 msgstr "Mobil kırılma noktası"
 
-msgid "Mobile columns"
-msgstr "Mobil sütunları"
-
 msgid "Mobile navigation"
 msgstr "Mobil gezinme"
 
@@ -2020,9 +1990,6 @@ msgstr "İsim (ör. Birincil) — atlamak için boş bırakın"
 
 msgid "Native theme / builder fallback"
 msgstr "Yerel tema / sayfa oluşturucu yerleşimi"
-
-msgid "Natural"
-msgstr "Doğal"
 
 msgid "Natural image ratio"
 msgstr "Doğal görsel oranı"
@@ -2278,9 +2245,6 @@ msgstr "Portföy görsel yerleşimi"
 
 msgid "Portfolio image ratio"
 msgstr "Portföy görsel oranı"
-
-msgid "Portfolio projects"
-msgstr "Portföy projeleri"
 
 msgid "Post"
 msgstr "Yazı"
@@ -2538,7 +2502,7 @@ msgid "Retry"
 msgstr "Yeniden dene"
 
 msgid "Reusable blocks"
-msgstr "Yeniden Kullanılabilir Bloklar"
+msgstr "Ortak Bloklar"
 
 msgid "Reusable footer"
 msgstr "Yeniden kullanılabilir altbilgi"
@@ -2909,9 +2873,6 @@ msgstr "Projenizi konuşalım"
 msgid "Start from scratch"
 msgstr "Sıfırdan başla"
 
-msgid "Start slide rotation"
-msgstr "Slayt geçişini başlat"
-
 msgid "Statistics cards"
 msgstr "İstatistik kartları"
 
@@ -2920,9 +2881,6 @@ msgstr "Durum"
 
 msgid "Sticky header"
 msgstr "Sabit üst bölüm"
-
-msgid "Stop slide rotation"
-msgstr "Slayt geçişini durdur"
 
 msgid "Store collection"
 msgstr "Mağaza koleksiyonu"
@@ -2971,9 +2929,6 @@ msgstr "Sistem durumu"
 
 msgid "Tablet breakpoint"
 msgstr "Tablet kırılma noktası"
-
-msgid "Tablet columns"
-msgstr "Tablet sütunları"
 
 msgid "Tablet size"
 msgstr "Tablet boyutu"
@@ -3099,7 +3054,7 @@ msgid "Theme sections"
 msgstr "Tema bölümleri"
 
 msgid "Theme settings"
-msgstr "Tema ayarları"
+msgstr "Tema Ayarları"
 
 msgid "Theme update settings saved."
 msgstr "Tema güncelleme ayarları kaydedildi."

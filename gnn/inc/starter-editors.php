@@ -66,6 +66,17 @@ function gnn_starter_elementor_elements( $blocks ) {
 				'flex_direction' => 'column',
 				'css_id'         => $attrs['anchor'] ?? '',
 			);
+			if ( 'core/buttons' === $name ) {
+				$element['settings']['flex_direction']       = 'row';
+				$element['settings']['flex_wrap']            = 'wrap';
+				$justify                                     = $attrs['layout']['justifyContent'] ?? 'left';
+				$element['settings']['flex_justify_content'] = array(
+					'left'          => 'flex-start',
+					'center'        => 'center',
+					'right'         => 'flex-end',
+					'space-between' => 'space-between',
+				)[ $justify ] ?? 'flex-start';
+			}
 		} else {
 			$element['elType'] = 'widget';
 			$html              = $block['innerHTML'];
@@ -74,10 +85,16 @@ function gnn_starter_elementor_elements( $blocks ) {
 				$element['settings']['title']         = wp_kses_post( strip_tags( $html, '<strong><em><a><br><span>' ) );
 				$element['settings']['header_size']   = 'h' . (int) ( $attrs['level'] ?? 2 );
 				$element['settings']['_css_classes'] .= ' gnn-starter-heading';
+				if ( in_array( $attrs['textAlign'] ?? '', array( 'left', 'center', 'right', 'justify' ), true ) ) {
+					$element['settings']['align'] = $attrs['textAlign'];
+				}
 			} elseif ( 'core/paragraph' === $name ) {
 				$element['widgetType']                = 'text-editor';
 				$element['settings']['editor']        = wp_kses_post( $html );
 				$element['settings']['_css_classes'] .= ' gnn-starter-text';
+				if ( in_array( $attrs['align'] ?? '', array( 'left', 'center', 'right', 'justify' ), true ) ) {
+					$element['settings']['align'] = $attrs['align'];
+				}
 			} elseif ( 'core/button' === $name ) {
 				$element['widgetType']                = 'button';
 				$element['settings']['text']          = html_entity_decode( wp_strip_all_tags( $html ), ENT_QUOTES, 'UTF-8' );

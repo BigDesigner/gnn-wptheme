@@ -15,9 +15,9 @@ function gnn_register_content_modules() {
 		register_post_type(
 			'gnn_project',
 			array(
-				'label'           => __( 'Portfolio projects', 'gnn' ),
+				'label'           => __( 'Portfolio', 'gnn' ),
 				'labels'          => array(
-					'name'          => __( 'Portfolio projects', 'gnn' ),
+					'name'          => __( 'Portfolio', 'gnn' ),
 					'singular_name' => __( 'Project', 'gnn' ),
 					'add_new_item'  => __( 'Add new project', 'gnn' ),
 					'edit_item'     => __( 'Edit project', 'gnn' ),
@@ -60,9 +60,9 @@ function gnn_register_content_modules() {
 		register_post_type(
 			'gnn_album',
 			array(
-				'label'           => __( 'Gallery albums', 'gnn' ),
+				'label'           => __( 'Gallery', 'gnn' ),
 				'labels'          => array(
-					'name'          => __( 'Gallery albums', 'gnn' ),
+					'name'          => __( 'Gallery', 'gnn' ),
 					'singular_name' => __( 'Album', 'gnn' ),
 					'add_new_item'  => __( 'Add new album', 'gnn' ),
 					'edit_item'     => __( 'Edit album', 'gnn' ),
@@ -295,15 +295,10 @@ function gnn_project_query( $attrs ) {
  * @return string Escaped rendered presentation.
  */
 function gnn_render_module( $module, $attrs = array() ) {
-	$grid = absint( ! empty( $attrs['grid_layout'] ) ? $attrs['grid_layout'] : gnn_option( $module . '_grid_layout' ) );
-	if ( $grid && 'publish' === get_post_status( $grid ) && 'gnn_grid' === get_post_type( $grid ) ) {
-		$values           = (array) get_post_meta( $grid, '_gnn_grid', true );
-		$attrs['columns'] = $values['columns'] ?? 3;
-	}
-	return gnn_grid_wrap( gnn_render_module_inner( $module, $attrs ), $grid );
+	return gnn_render_module_inner( $module, $attrs );
 }
 
-/** Render a live collection before optional grid presentation.
+/** Render a live collection with its own query controls.
  *
  * @param string $module Module name.
  * @param array  $attrs Query settings.

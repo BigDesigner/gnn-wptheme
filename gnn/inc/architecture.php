@@ -225,17 +225,7 @@ function gnn_architecture_services() {
  * @return string
  */
 function gnn_architecture_intro( $ids, $title, $intro ) {
-	$nav = '';
-	foreach ( array(
-		'home'      => __( 'Overview', 'gnn' ),
-		'studio'    => __( 'Studio', 'gnn' ),
-		'portfolio' => __( 'Portfolio', 'gnn' ),
-		'gallery'   => __( 'Gallery', 'gnn' ),
-		'contact'   => __( 'Contact', 'gnn' ),
-	) as $key => $label ) {
-		$nav .= gnn_architecture_button( $label, gnn_architecture_url( $ids, $key ), 'gnn-arch-nav-link' );
-	}
-	return gnn_architecture_group( 'gnn-arch-local-nav', $nav ) . gnn_architecture_group( 'gnn-arch-page-intro', gnn_architecture_text( __( 'Architecture / Design / Construction', 'gnn' ), 'gnn-arch-eyebrow' ) . gnn_architecture_heading( $title, 1 ) . gnn_architecture_text( $intro, 'gnn-arch-lead' ) );
+	return gnn_architecture_group( 'gnn-arch-page-intro', gnn_architecture_text( __( 'Architecture / Design / Construction', 'gnn' ), 'gnn-arch-eyebrow' ) . gnn_architecture_heading( $title, 1 ) . gnn_architecture_text( $intro, 'gnn-arch-lead' ) );
 }
 
 /**

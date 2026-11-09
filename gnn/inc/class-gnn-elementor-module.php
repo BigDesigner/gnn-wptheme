@@ -62,15 +62,6 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 	protected function register_controls() {
 		$this->start_controls_section( 'query', array( 'label' => __( 'Central content source', 'gnn' ) ) );
 		$this->add_control(
-			'grid_layout',
-			array(
-				'label'   => __( 'Grid layout ID', 'gnn' ),
-				'type'    => \Elementor\Controls_Manager::NUMBER,
-				'default' => 0,
-				'min'     => 0,
-			)
-		);
-		$this->add_control(
 			'columns',
 			array(
 				'label'   => __( 'Columns (0 uses theme panel)', 'gnn' ),

@@ -86,3 +86,14 @@
 .gnn-architecture .gnn-architecture{padding:0;width:100%;}
 
 .editor-styles-wrapper .gnn-arch-filters,.block-editor-block-list__layout .gnn-arch-filters{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* Elementor owns widget width and alignment; heading semantics must not move its box. */
+.gnn-architecture .gnn-arch-local-nav{display:none;}
+.gnn-architecture :is(h1,h2,h3,h4,h5,h6).elementor-heading-title{max-width:none;}
+.gnn-architecture .gnn-starter-text p{max-width:none;}
+.gnn-architecture .elementor-widget{min-width:0;}
+.gnn-architecture .gnn-arch-statement>.gnn-starter-heading{grid-column:2;}
+.gnn-architecture .gnn-arch-service>.gnn-starter-text:not(.gnn-arch-number){grid-column:2;}
+.gnn-architecture .gnn-arch-image>.elementor-widget-container{height:100%;}
+.gnn-architecture .gnn-arch-image img{display:block;}
+@media(max-width:700px){.gnn-architecture .gnn-arch-statement>.gnn-starter-heading{grid-column:1;grid-row:auto;}}

@@ -16,7 +16,7 @@ function gnn_site_fingerprint() {
 function gnn_site_specific_keys() {
 	$keys = array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x', 'footer_logo_light', 'footer_logo_light_2x', 'footer_logo_dark', 'footer_logo_dark_2x', 'error404_image', 'contact_page_id', 'local_font', 'header_template', 'footer_template', 'post_header_template', 'post_footer_template', 'archive_header_template', 'archive_footer_template', 'hero_group', 'ga4_id', 'gtm_id', 'analytics_delivery', 'custom_css', 'custom_js_head', 'custom_js_footer', 'head_html', 'body_html', 'topbar_text', 'topbar_phone', 'topbar_email', 'footer_tagline', 'footer_copyright', 'company_name', 'company_phone', 'company_email', 'company_address', 'company_hours', 'company_social_url', 'header_cta_label', 'header_cta_url', 'mobile_actions', 'maintenance_message', 'maintenance_mode', 'error404_text', 'error404_title', 'error404_button' );
 	foreach ( gnn_site_schema() as $key => $field ) {
-		if ( in_array( $field[1], array( 'region', 'grid' ), true ) ) {
+		if ( 'region' === $field[1] ) {
 			$keys[] = $key;
 		}
 	}
@@ -94,7 +94,7 @@ function gnn_resolve_import_references( $result, $document ) {
 		return $result; }
 	$ref_keys = array( 'contact_page_id', 'local_font', 'header_template', 'footer_template', 'post_header_template', 'post_footer_template', 'archive_header_template', 'archive_footer_template', 'hero_group', 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x', 'footer_logo_light', 'footer_logo_light_2x', 'footer_logo_dark', 'footer_logo_dark_2x', 'error404_image' );
 	foreach ( gnn_site_schema() as $key => $field ) {
-		if ( in_array( $field[1], array( 'region', 'grid' ), true ) ) {
+		if ( 'region' === $field[1] ) {
 			$ref_keys[] = $key; }
 	}
 	foreach ( array( 'options', 'theme_mods' ) as $group ) {
@@ -104,7 +104,7 @@ function gnn_resolve_import_references( $result, $document ) {
 			$mapped = isset( $document->reference_map->$key ) && is_scalar( $document->reference_map->$key ) && ctype_digit( (string) $document->reference_map->$key ) ? absint( $document->reference_map->$key ) : 0;
 			$ref    = $document->references->$key ?? null;
 			if ( ! $mapped && is_object( $ref ) && isset( $ref->path, $ref->type ) && is_string( $ref->path ) && is_string( $ref->type ) ) {
-				if ( in_array( $ref->type, array( 'page', 'gnn_layout', 'gnn_grid' ), true ) ) {
+				if ( in_array( $ref->type, array( 'page', 'gnn_layout' ), true ) ) {
 					$post   = get_page_by_path( $ref->path, OBJECT, $ref->type );
 					$mapped = $post ? $post->ID : 0; } elseif ( 'attachment' === $ref->type && ! empty( $ref->sha256 ) && is_string( $ref->sha256 ) ) {
 					$posts = get_posts(
@@ -133,7 +133,7 @@ function gnn_resolve_import_references( $result, $document ) {
 				if ( ! term_exists( $mapped, 'gnn_slide_group' ) ) {
 					return new WP_Error( 'gnn_reference', __( 'The selected slider group does not exist.', 'gnn' ) ); }
 			} else {
-				$type = 'contact_page_id' === $key ? 'page' : ( false !== strpos( $key, '_template' ) ? 'gnn_layout' : ( false !== strpos( $key, '_grid_layout' ) ? 'gnn_grid' : 'attachment' ) );
+				$type = 'contact_page_id' === $key ? 'page' : ( false !== strpos( $key, '_template' ) ? 'gnn_layout' : 'attachment' );
 				if ( get_post_type( $mapped ) !== $type ) {
 					return new WP_Error( 'gnn_reference', __( 'The selected reference has the wrong content type.', 'gnn' ) ); }
 				if ( 'local_font' === $key && 'font/woff2' !== get_post_mime_type( $mapped ) ) {

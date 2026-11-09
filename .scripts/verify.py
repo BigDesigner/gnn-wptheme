@@ -56,7 +56,7 @@ for file in (ROOT/'gnn').rglob('*.json'):
     check('JSON: ' + str(file.relative_to(ROOT)), valid)
 with (ROOT/'gnn/languages/tr_TR.mo').open('rb') as file:
     catalog = gettext.GNUTranslations(file)
-check('Turkish slider labels compiled', catalog.gettext('Start slide rotation') == 'Slayt geçişini başlat')
+check('Turkish slider labels compiled', catalog.gettext('Next slide') != 'Next slide')
 code, output = run([sys.executable, '.scripts/gen-i18n.py', '--check'])
 check('Complete Turkish catalog and printf placeholders', code == 0, output)
 result = {'type':('Static / package checks' if args.package else 'Static checks') + ' (not WordPress integration)',

@@ -22,14 +22,6 @@ function gnn_site_schema() {
 		}
 	}
 	foreach ( array(
-		'portfolio' => __( 'Portfolio', 'gnn' ),
-		'gallery'   => __( 'Gallery', 'gnn' ),
-		'products'  => __( 'Products', 'gnn' ),
-		'blog'      => __( 'Blog', 'gnn' ),
-	) as $module => $label ) {
-		$schema[ $module . '_grid_layout' ] = array( $label, 'grid', 0, 'grids' );
-	}
-	foreach ( array(
 		'page'        => __( 'Pages', 'gnn' ),
 		'post'        => __( 'Posts', 'gnn' ),
 		'gnn_project' => __( 'Projects', 'gnn' ),
@@ -266,7 +258,7 @@ add_action( 'init', 'gnn_shared_editor_support', 30 );
  */
 function gnn_shared_body( $content ) {
 	static $rendering = false;
-	if ( $rendering || is_admin() || ! is_main_query() || ! in_the_loop() || ! is_singular() || post_password_required() ) {
+	if ( $rendering || is_admin() || ! is_main_query() || ! in_the_loop() || ! is_singular() || is_singular( 'gnn_layout' ) || post_password_required() ) {
 		return $content;
 	}
 	$assignment = gnn_region_assignment( 'content' );
@@ -401,24 +393,3 @@ function gnn_search_types( $query ) {
 	$query->set( 'post_type', $types ? array_values( $types ) : array( 'gnn_no_search_results' ) );
 }
 add_action( 'pre_get_posts', 'gnn_search_types' );
-
-/** Saved blog grids style the existing main query and pagination. */
-function gnn_saved_blog_grid_styles() {
-	if ( ! ( is_home() || is_archive() ) ) {
-		return; }
-	$id = absint( gnn_option( 'blog_grid_layout' ) );
-	if ( 'gnn_grid' !== get_post_type( $id ) || 'publish' !== get_post_status( $id ) ) {
-		return; }
-	$values = (array) get_post_meta( $id, '_gnn_grid', true );
-	$css    = '';
-	foreach ( gnn_grid_schema() as $key => $field ) {
-		$values[ $key ] = max( $field[1], min( $field[2], (int) ( $values[ $key ] ?? $field[3] ) ) );
-	}
-	$css  .= 'body .site-main .posts-grid{grid-template-columns:repeat(' . $values['columns'] . ',minmax(0,1fr));gap:' . $values['gap'] . 'px;}body .posts-grid .post-card{border-radius:' . $values['radius'] . 'px;padding:' . $values['padding'] . 'px;}';
-	$ratio = $values['ratio'] ?? 'auto';
-	if ( in_array( $ratio, array( 'auto', '16/9', '4/3', '1/1', '3/4' ), true ) ) {
-		$css .= 'body .posts-grid .post-card__media img{aspect-ratio:' . $ratio . ';height:auto;object-fit:cover;}'; }
-	$css .= '@media(max-width:' . (int) gnn_option( 'tablet_breakpoint' ) . 'px){body .site-main .posts-grid{grid-template-columns:repeat(' . $values['tablet'] . ',minmax(0,1fr));}}@media(max-width:' . (int) gnn_option( 'mobile_breakpoint' ) . 'px){body .site-main .posts-grid{grid-template-columns:repeat(' . $values['mobile'] . ',minmax(0,1fr));}}';
-	wp_add_inline_style( 'gnn-main', $css );
-}
-add_action( 'wp_enqueue_scripts', 'gnn_saved_blog_grid_styles', 40 );

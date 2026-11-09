@@ -47,6 +47,46 @@ function gnn_register_layout_content() {
 add_action( 'init', 'gnn_register_layout_content' );
 
 /**
+ * Allow builder preview queries while keeping shared records out of public browsing.
+ *
+ * @param array  $args Registration arguments.
+ * @param string $type Post type.
+ */
+function gnn_layout_preview_args( $args, $type ) {
+	if ( 'gnn_layout' === $type ) {
+		$args['publicly_queryable']  = true;
+		$args['exclude_from_search'] = true;
+		$args['rewrite']             = false;
+	}
+	return $args;
+}
+add_filter( 'register_post_type_args', 'gnn_layout_preview_args', 10, 2 );
+
+/** Only an editor of the shared record may open its standalone preview. */
+function gnn_layout_preview_access() {
+	if ( is_singular( 'gnn_layout' ) && ! current_user_can( 'edit_post', get_queried_object_id() ) ) {
+		global $wp_query;
+		$wp_query->set_404();
+		status_header( 404 );
+		nocache_headers();
+	}
+}
+add_action( 'template_redirect', 'gnn_layout_preview_access', 0 );
+
+/**
+ * A shared region preview must not embed itself through the site's assigned footer.
+ *
+ * @param string $template Selected template.
+ */
+function gnn_layout_preview_template( $template ) {
+	if ( is_singular( 'gnn_layout' ) && current_user_can( 'edit_post', get_queried_object_id() ) ) {
+		return get_template_directory() . '/page-templates/layout-preview.php';
+	}
+	return $template;
+}
+add_filter( 'template_include', 'gnn_layout_preview_template', 99 );
+
+/**
  * Grant layout editing to administrators/designers, never just because a user can edit pages.
  *
  * @param array $allcaps Effective user capabilities.

@@ -220,8 +220,6 @@ function gnn_validate_platform_input( $input ) {
 			$invalid = true; }
 		if ( 'actions' === $field[1] && is_wp_error( gnn_sanitize_actions( (string) $value ) ) ) {
 			$invalid = true; }
-		if ( 'grid' === $field[1] && ( ! preg_match( '/^[0-9]+$/D', (string) $value ) || ( (int) $value > 0 && ( 'gnn_grid' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) ) ) {
-			$invalid = true; }
 		if ( 'hex' === $field[1] && '' !== $value && ! sanitize_hex_color( $value ) ) {
 			$invalid = true;
 		}
@@ -288,11 +286,6 @@ function gnn_sanitize_platform_options( $out, $input ) {
 		}
 		$value = $input[ $key ];
 		switch ( $field[1] ) {
-			case 'grid':
-				$value = absint( $value );
-				if ( $value && ( 'gnn_grid' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
-					$value = 0; }
-				break;
 			case 'hex':
 				$value = sanitize_hex_color( $value );
 				break;
