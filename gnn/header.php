@@ -26,7 +26,7 @@
 	// Elementor Pro Theme Builder: a "header" template replaces the theme header.
 	if ( ! gnn_render_layout_region( 'header' ) && ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) ) :
 		gnn_render_topbar();
-		$gnn_centered = 'centered' === gnn_layout_value( 'header_preset' ) || ( 'legacy' === gnn_layout_value( 'header_preset' ) && 'centered' === gnn_option( 'header_layout' ) );
+		$gnn_centered = gnn_header_is_centered();
 		?>
 	<header id="masthead" class="site-header<?php echo $gnn_centered ? ' gnn-header-centered' : ''; ?>">
 		<div class="site-header__inner">
@@ -42,15 +42,7 @@
 
 				<nav class="main-navigation main-navigation--left" aria-label="<?php esc_attr_e( 'Header left', 'gnn' ); ?>">
 					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => has_nav_menu( 'header-left' ) ? 'header-left' : 'primary',
-							'menu_class'     => 'menu',
-							'container'      => false,
-							'fallback_cb'    => false,
-							'walker'         => new GNN_Walker_Nav_Menu(),
-						)
-					);
+					gnn_header_side_menu( 'left' );
 					?>
 				</nav>
 
@@ -60,17 +52,7 @@
 
 				<div class="gnn-header-right-group"><nav class="main-navigation main-navigation--right" aria-label="<?php esc_attr_e( 'Header right', 'gnn' ); ?>">
 					<?php
-					if ( has_nav_menu( 'header-right' ) ) {
-						wp_nav_menu(
-							array(
-								'theme_location' => 'header-right',
-								'menu_class'     => 'menu',
-								'container'      => false,
-								'fallback_cb'    => false,
-								'walker'         => new GNN_Walker_Nav_Menu(),
-							)
-						);
-					}
+					gnn_header_side_menu( 'right' );
 					?>
 				</nav>
 
