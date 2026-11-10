@@ -221,12 +221,16 @@ function gnn_assignment_fields() {
 				echo '<option value="' . esc_attr( $id ) . '" ' . selected( $id, $value, false ) . '>' . esc_html( $title ) . '</option>';
 			}
 			foreach ( $records as $record ) {
+				if ( ! gnn_block_matches_region( $record->ID, $region ) && (int) $record->ID !== $value ) {
+					continue;
+				}
 				echo '<option value="' . esc_attr( $record->ID ) . '" ' . selected( $record->ID, $value, false ) . '>' . esc_html( $record->post_title ) . '</option>';
 			}
 			if ( $value > 0 && ! in_array( $value, array_map( 'intval', wp_list_pluck( $records, 'ID' ) ), true ) ) {
 				echo '<option value="' . esc_attr( $value ) . '" selected disabled>' . esc_html__( 'Unavailable block', 'gnn' ) . '</option>';
 			}
 			echo '</select>';
+			echo '<a class="button gnn-region-edit"' . ( $value > 0 && current_user_can( 'edit_post', $value ) ? '' : ' hidden' ) . ' href="' . esc_url( admin_url( 'post.php?post=' . max( 0, $value ) . '&action=elementor' ) ) . '">' . esc_html__( 'Edit selected block', 'gnn' ) . '</a>';
 			if ( -1 === $value && 'site' !== $context ) {
 				$parents = ! in_array( $context, array( 'page', 'post', 'project', 'archive', 'search', 'notfound' ), true ) ? array( 'archive', 'site' ) : array( 'site' );
 				foreach ( $parents as $parent ) {
@@ -343,14 +347,15 @@ function gnn_template_catalog() {
 	if ( ! gnn_starter_elementor_available() ) {
 		gnn_plugin_cards();
 		return; }
+	gnn_section_library();
 	echo '<p><a class="button" href="' . esc_url( admin_url( 'edit.php?post_type=elementor_library' ) ) . '">' . esc_html__( 'Saved templates', 'gnn' ) . '</a> <a class="button" href="' . esc_url( admin_url( 'post-new.php?post_type=elementor_library' ) ) . '">' . esc_html__( 'Add template', 'gnn' ) . '</a></p>';
 	foreach ( gnn_starter_profiles() as $profile => $details ) {
-		echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html( $details['label'] ) . '</h2>';
 		$home = gnn_starter_owned_page( $profile, 'elementor' );
 		$ids  = $home ? (array) get_post_meta( $home->ID, '_gnn_starter_pages', true ) : array();
 		if ( ! $ids ) {
-			echo '<a class="button" href="' . esc_url( admin_url( 'admin.php?page=gnn-workspace&path=ready&profile=' . $profile ) ) . '">' . esc_html__( 'Setup wizard', 'gnn' ) . '</a>';
+			continue;
 		}
+		echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html( $details['label'] ) . '</h2>';
 		foreach ( $ids as $id ) {
 			if ( ! current_user_can( 'edit_post', $id ) || ! get_post( $id ) ) {
 				continue;
@@ -385,6 +390,7 @@ function gnn_management_page() {
 		gnn_design_fields();
 	} elseif ( 'gnn-maintenance' === $page ) {
 		gnn_system_table();
+		gnn_authoring_checks_screen();
 		echo '<section class="gnn-settings-card gnn-card-content">';
 		gnn_render_operation_controls();
 		echo '</section><section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Settings backup', 'gnn' ) . '</h2><p>' . esc_html__( 'Settings snapshots do not include content or files.', 'gnn' ) . '</p>';
@@ -456,6 +462,10 @@ function gnn_management_handle() {
 					break 2;
 				}
 				$values[ $key ] = (int) $value;
+				if ( (int) $value > 0 && ! gnn_block_matches_region( (int) $value, $region ) ) {
+					$result = new WP_Error( 'gnn_role', __( 'The block role does not match this region.', 'gnn' ) );
+					break 2;
+				}
 			}
 		}
 		if ( ! is_wp_error( $result ) ) {

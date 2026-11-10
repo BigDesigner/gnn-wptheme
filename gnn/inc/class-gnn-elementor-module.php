@@ -163,6 +163,151 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 			);
 		}
 		$this->end_controls_section();
+		if ( 'portfolio' === $this->module ) {
+			$this->start_controls_section( 'selection', array( 'label' => __( 'Project selection', 'gnn' ) ) );
+			$this->add_control(
+				'orderby',
+				array(
+					'label'   => __( 'Order by', 'gnn' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => '',
+					'options' => array(
+						''           => __( 'Theme default', 'gnn' ),
+						'date'       => __( 'Date', 'gnn' ),
+						'title'      => __( 'Title', 'gnn' ),
+						'menu_order' => __( 'Menu order', 'gnn' ),
+					),
+				)
+			);
+			$this->add_control(
+				'order',
+				array(
+					'label'   => __( 'Order', 'gnn' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => 'DESC',
+					'options' => array(
+						'ASC'  => __( 'Ascending', 'gnn' ),
+						'DESC' => __( 'Descending', 'gnn' ),
+					),
+				)
+			);
+			$this->add_control(
+				'exclude_ids',
+				array(
+					'label'   => __( 'Excluded project IDs', 'gnn' ),
+					'type'    => \Elementor\Controls_Manager::TEXT,
+					'default' => '',
+				)
+			);
+			$this->add_control(
+				'related',
+				array(
+					'label'   => __( 'Related projects', 'gnn' ),
+					'type'    => \Elementor\Controls_Manager::SWITCHER,
+					'default' => '',
+				)
+			);
+			$this->end_controls_section();
+		}
+		if ( in_array( $this->module, array( 'portfolio', 'gallery' ), true ) ) {
+			$this->start_controls_section(
+				'appearance',
+				array(
+					'label' => __( 'Appearance', 'gnn' ),
+					'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				)
+			);
+			$this->add_responsive_control(
+				'display_columns',
+				array(
+					'label'     => __( 'Columns', 'gnn' ),
+					'type'      => \Elementor\Controls_Manager::SELECT,
+					'options'   => array(
+						''  => __( 'Theme default', 'gnn' ),
+						'1' => '1',
+						'2' => '2',
+						'3' => '3',
+						'4' => '4',
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-grid' => 'grid-template-columns:repeat({{VALUE}},minmax(0,1fr));' ),
+				)
+			);
+			$this->add_responsive_control(
+				'item_gap',
+				array(
+					'label'     => __( 'Gap', 'gnn' ),
+					'type'      => \Elementor\Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-grid' => 'gap:{{SIZE}}{{UNIT}};' ),
+				)
+			);
+			$this->add_control(
+				'image_ratio',
+				array(
+					'label'     => __( 'Image ratio', 'gnn' ),
+					'type'      => \Elementor\Controls_Manager::SELECT,
+					'options'   => array(
+						''     => __( 'Theme default', 'gnn' ),
+						'auto' => __( 'Natural', 'gnn' ),
+						'1/1'  => '1:1',
+						'4/3'  => '4:3',
+						'16/9' => '16:9',
+						'3/4'  => '3:4',
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'aspect-ratio:{{VALUE}};' ),
+				)
+			);
+			$this->add_control(
+				'image_fit',
+				array(
+					'label'     => __( 'Image fit', 'gnn' ),
+					'type'      => \Elementor\Controls_Manager::SELECT,
+					'options'   => array(
+						''        => __( 'Theme default', 'gnn' ),
+						'cover'   => __( 'Cover', 'gnn' ),
+						'contain' => __( 'Contain', 'gnn' ),
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image img, {{WRAPPER}} .gnn-module-gallery img' => 'object-fit:{{VALUE}};' ),
+				)
+			);
+			$this->add_control(
+				'card_radius',
+				array(
+					'label'     => __( 'Corner radius', 'gnn' ),
+					'type'      => \Elementor\Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'border-radius:{{SIZE}}{{UNIT}};' ),
+				)
+			);
+			if ( 'portfolio' === $this->module ) {
+				$this->add_control(
+					'title_color',
+					array(
+						'label'     => __( 'Title color', 'gnn' ),
+						'type'      => \Elementor\Controls_Manager::COLOR,
+						'selectors' => array( '{{WRAPPER}} .gnn-module-project h3, {{WRAPPER}} .gnn-module-project h3 a' => 'color:{{VALUE}};' ),
+					)
+				);
+				$this->add_group_control(
+					\Elementor\Group_Control_Typography::get_type(),
+					array(
+						'name'     => 'card_title',
+						'selector' => '{{WRAPPER}} .gnn-module-project h3',
+					)
+				);
+			}
+			$this->end_controls_section();
+		}
 	}
 
 	/** Read current records on every render, including editor preview. */

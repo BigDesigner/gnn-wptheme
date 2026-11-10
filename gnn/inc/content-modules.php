@@ -274,13 +274,37 @@ function gnn_project_query( $attrs ) {
 		),
 		'paged'          => max( 1, absint( $attrs['page'] ?? 1 ) ),
 	);
+	if ( in_array( $attrs['orderby'] ?? '', array( 'date', 'title', 'menu_order' ), true ) ) {
+		$args['orderby'] = array(
+			$attrs['orderby'] => 'ASC' === ( $attrs['order'] ?? '' ) ? 'ASC' : 'DESC',
+			'ID'              => 'DESC',
+		);
+	}
+	$exclude = isset( $attrs['exclude_ids'] ) && is_string( $attrs['exclude_ids'] ) ? preg_split( '/[\s,]+/', $attrs['exclude_ids'] ) : array();
+	$exclude = array_values( array_filter( array_map( 'absint', array_slice( $exclude, 0, 100 ) ) ) );
+	if ( 'yes' === ( $attrs['related'] ?? '' ) && ! is_singular( 'gnn_project' ) ) {
+		$args['post__in'] = array( 0 );
+	}
+	if ( 'yes' === ( $attrs['related'] ?? '' ) && is_singular( 'gnn_project' ) ) {
+		$current    = get_queried_object_id();
+		$exclude[]  = $current;
+		$categories = wp_get_post_terms( $current, 'gnn_project_category', array( 'fields' => 'ids' ) );
+		if ( is_wp_error( $categories ) || ! $categories ) {
+			$args['post__in'] = array( 0 );
+		} else {
+			$attrs['category'] = $categories;
+		}
+	}
+	if ( $exclude ) {
+		$args['post__not_in'] = array_values( array_unique( $exclude ) ); // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- bounded explicit selection.
+	}
 	if ( ! empty( $attrs['category'] ) ) {
 		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- indexed native term relationships.
 		$args['tax_query'] = array(
 			array(
 				'taxonomy' => 'gnn_project_category',
 				'field'    => 'term_id',
-				'terms'    => absint( $attrs['category'] ),
+				'terms'    => array_map( 'absint', (array) $attrs['category'] ),
 			),
 		); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- native taxonomy selection, indexed relationships.
 	}

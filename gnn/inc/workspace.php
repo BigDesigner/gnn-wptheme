@@ -62,7 +62,9 @@ add_action( 'admin_menu', 'gnn_workspace_menu', 20 );
 
 /** Diagnostic export contains versions/counts, never user/site/contact/code values. */
 function gnn_support_summary() {
+	$checks = get_user_meta( get_current_user_id(), '_gnn_authoring_checks', true );
 	return array(
+		'authoring_checks'       => is_array( $checks ) ? $checks : array(),
 		'theme'                  => GNN_VERSION,
 		'wordpress'              => get_bloginfo( 'version' ),
 		'php'                    => PHP_VERSION,

@@ -143,7 +143,7 @@ function gnn_render_layout_region( $region ) {
 	if ( ! $id ) {
 		return false; }
 	$post = get_post( gnn_translated_post_id( $id ) );
-	if ( ! $post || 'gnn_layout' !== $post->post_type || 'publish' !== $post->post_status || '' !== $post->post_password ) {
+	if ( ! $post || 'gnn_layout' !== $post->post_type || 'publish' !== $post->post_status || '' !== $post->post_password || ! gnn_block_matches_region( $id, $region ) ) {
 		return false; }
 	$rendering = true;
 	$content   = gnn_shared_content( $id );

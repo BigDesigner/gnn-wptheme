@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.5.3' );
+define( 'GNN_VERSION', '2.6.0' );
 
 /**
  * Theme setup.
@@ -260,6 +260,7 @@ add_action( 'wp_head', 'gnn_pingback_header' );
 require get_template_directory() . '/inc/blog.php';
 require get_template_directory() . '/inc/platform.php';
 require get_template_directory() . '/inc/site-platform.php';
+require get_template_directory() . '/inc/authoring.php';
 require get_template_directory() . '/inc/shared-library.php';
 require get_template_directory() . '/inc/layout-system.php';
 require get_template_directory() . '/inc/design-system.php';

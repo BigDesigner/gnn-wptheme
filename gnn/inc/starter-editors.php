@@ -25,6 +25,123 @@ function gnn_starter_attribute( $html, $name ) {
 }
 
 /**
+ * Give new Architecture containers native, editable layout defaults.
+ *
+ * @param array $settings Container settings.
+ */
+function gnn_starter_container_layout( $settings ) {
+	$classes = explode( ' ', $settings['css_classes'] );
+	$grids   = array(
+		'gnn-arch-hero'         => 'minmax(0,.95fr) minmax(0,1.05fr)',
+		'gnn-arch-statement'    => 'minmax(0,.5fr) minmax(0,1fr)',
+		'gnn-arch-projects'     => 'repeat(2,minmax(0,1fr))',
+		'gnn-arch-services'     => 'repeat(2,minmax(0,1fr))',
+		'gnn-arch-service'      => '40px minmax(0,1fr)',
+		'gnn-arch-split'        => 'repeat(2,minmax(0,1fr))',
+		'gnn-arch-process'      => 'repeat(4,minmax(0,1fr))',
+		'gnn-arch-facts'        => 'repeat(3,minmax(0,1fr))',
+		'gnn-arch-section'      => 'minmax(0,1fr)',
+		'gnn-arch-copy'         => 'minmax(0,1fr)',
+		'gnn-arch-hero-copy'    => 'minmax(0,1fr)',
+		'gnn-arch-page-intro'   => 'minmax(0,1fr)',
+		'gnn-arch-callout'      => 'minmax(0,1fr)',
+		'gnn-arch-project'      => 'minmax(0,1fr)',
+		'gnn-arch-process-step' => 'minmax(0,1fr)',
+		'gnn-arch-fact'         => 'minmax(0,1fr)',
+	);
+	foreach ( $grids as $class => $columns ) {
+		if ( ! in_array( $class, $classes, true ) ) {
+			continue;
+		}
+		if ( ! class_exists( '\Elementor\Group_Control_Grid_Container' ) ) {
+			return $settings;
+		}
+		$settings['css_classes']   .= ' gnn-native-container';
+		$settings['container_type'] = 'grid';
+		$gaps                       = array(
+			'gnn-arch-statement' => array( 24, 70 ),
+			'gnn-arch-projects'  => array( 54, 32 ),
+			'gnn-arch-services'  => array( 0, 50 ),
+			'gnn-arch-service'   => array( 16, 16 ),
+			'gnn-arch-process'   => array( 28, 28 ),
+			'gnn-arch-facts'     => array( 30, 30 ),
+			'gnn-arch-section'   => array( 32, 32 ),
+			'gnn-arch-callout'   => array( 25, 25 ),
+		);
+		$gap                        = $gaps[ $class ] ?? array( 24, 24 );
+		$settings['grid_gaps']      = array(
+			'unit'     => 'px',
+			'row'      => (string) $gap[0],
+			'column'   => (string) $gap[1],
+			'isLinked' => $gap[0] === $gap[1],
+		);
+		$settings['flex_gap']       = $settings['grid_gaps'];
+		$padding                    = in_array( $class, array( 'gnn-arch-section', 'gnn-arch-statement' ), true ) ? 80 : ( 'gnn-arch-callout' === $class ? 60 : 0 );
+		$settings['padding']        = array(
+			'unit'     => 'px',
+			'top'      => (string) $padding,
+			'right'    => '0',
+			'bottom'   => (string) $padding,
+			'left'     => '0',
+			'isLinked' => false,
+		);
+		$settings['padding_mobile'] = array_replace(
+			$settings['padding'],
+			array(
+				'top'    => (string) min( $padding, 40 ),
+				'bottom' => (string) min( $padding, 40 ),
+			)
+		);
+		if ( 'gnn-arch-callout' === $class ) {
+			$settings['margin'] = array(
+				'unit'     => 'px',
+				'top'      => '80',
+				'right'    => '0',
+				'bottom'   => '0',
+				'left'     => '0',
+				'isLinked' => false,
+			);
+		}
+		if ( 'gnn-arch-hero' === $class ) {
+			$settings['min_height']        = array(
+				'unit' => 'px',
+				'size' => 660,
+			);
+			$settings['min_height_mobile'] = array(
+				'unit' => 'px',
+				'size' => 0,
+			);
+		}
+		$settings['grid_columns_grid']        = array(
+			'unit' => 'custom',
+			'size' => $columns,
+		);
+		$settings['grid_rows_grid']           = array(
+			'unit' => 'custom',
+			'size' => 'auto',
+		);
+		$settings['grid_columns_grid_mobile'] = array(
+			'unit' => 'fr',
+			'size' => 1,
+		);
+		if ( 'gnn-arch-service' === $class ) {
+			$settings['grid_columns_grid_mobile'] = array(
+				'unit' => 'custom',
+				'size' => $columns,
+			);
+		}
+		if ( 'gnn-arch-process' === $class ) {
+			$settings['grid_columns_grid_tablet'] = array(
+				'unit' => 'fr',
+				'size' => 2,
+			);
+		}
+		return $settings;
+	}
+	return $settings;
+}
+
+/**
  * Map the supported generated block vocabulary to editable Free widgets and nested containers.
  * Refuse unsupported blocks instead of hiding whole sections inside an HTML/text widget.
  *
@@ -60,6 +177,21 @@ function gnn_starter_elementor_elements( $blocks ) {
 			}
 			$element['elType']   = 'container';
 			$element['elements'] = $children;
+			$classes             = explode( ' ', $attrs['className'] ?? '' );
+			if ( count( $children ) > 1 && array_intersect( array( 'gnn-arch-statement', 'gnn-arch-service' ), $classes ) && class_exists( '\Elementor\Group_Control_Grid_Container' ) ) {
+				$copy                = array(
+					'id'       => substr( md5( wp_generate_uuid4() ), 0, 7 ),
+					'elType'   => 'container',
+					'isInner'  => true,
+					'settings' => array(
+						'content_width'  => 'full',
+						'flex_direction' => 'column',
+						'css_classes'    => 'gnn-native-stack',
+					),
+					'elements' => array_slice( $children, 1 ),
+				);
+				$element['elements'] = array( $children[0], $copy );
+			}
 			$element['settings'] = array(
 				'css_classes'    => trim( 'gnn-starter-container wp-block-group ' . ( $attrs['className'] ?? '' ) . ( 'core/buttons' === $name ? ' gnn-starter-buttons wp-block-buttons' : '' ) ),
 				'content_width'  => 'full',
@@ -77,6 +209,7 @@ function gnn_starter_elementor_elements( $blocks ) {
 					'space-between' => 'space-between',
 				)[ $justify ] ?? 'flex-start';
 			}
+			$element['settings'] = gnn_starter_container_layout( $element['settings'] );
 		} else {
 			$element['elType'] = 'widget';
 			$html              = $block['innerHTML'];

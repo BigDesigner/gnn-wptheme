@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.5.3
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -177,6 +177,13 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.6.0 =
+* Added selected-section imports into Elementor saved templates with visual catalog cards.
+* Added responsive collection appearance controls, project ordering, exclusions and related projects.
+* Added shared-block roles, compatible region choices and direct editing links.
+* Added visual header selection and on-demand connection, media and editor checks in Maintenance.
+* New Architecture imports use native grid controls where supported; edited existing pages are retained.
 
 = 2.5.3 =
 * Fixed authorized Elementor previews for shared blocks without rendering assigned regions twice.
