@@ -288,7 +288,11 @@ function gnn_options_sanitize( $input ) {
 		}
 	}
 
-	return gnn_sanitize_platform_options( $out, $input );
+	$out = gnn_sanitize_platform_options( $out, $input );
+	if ( isset( $input['header_layout'] ) && in_array( $input['header_layout'], array( 'standard', 'centered' ), true ) && ( $saved['header_layout'] ?? 'standard' ) !== $input['header_layout'] ) {
+		$out['header_preset'] = 'centered' === $input['header_layout'] ? 'centered' : 'legacy';
+	}
+	return $out;
 }
 
 /**

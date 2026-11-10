@@ -75,6 +75,8 @@ body .gnn-hero--full-height,body.gnn-has-topbar .gnn-hero--full-height,body.gnn-
 @media(min-width:900px){
  .site-header.gnn-header-centered .main-navigation--left{padding-inline-start:calc(var(--gnn-header-actions-width,0px) + 16px);box-sizing:border-box;}
  .site-header.gnn-header-centered .gnn-header-right-group{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;}
- .site-header.gnn-header-centered .main-navigation{justify-content:center;}
- .site-header.gnn-header-centered .main-navigation .menu{justify-content:center;width:100%;}
+ .site-header.gnn-header-centered .main-navigation--left{justify-content:flex-end;}
+ .site-header.gnn-header-centered .main-navigation--right{justify-content:flex-start;}
+ .site-header.gnn-header-centered .main-navigation--left .menu{justify-content:flex-end;width:100%;}
+ .site-header.gnn-header-centered .main-navigation--right .menu{justify-content:flex-start;width:100%;}
 }

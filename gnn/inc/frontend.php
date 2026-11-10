@@ -24,6 +24,77 @@ function gnn_register_extra_menus() {
 }
 add_action( 'after_setup_theme', 'gnn_register_extra_menus', 20 );
 
+/** Resolve the header arrangement while retaining explicit page overrides. */
+function gnn_header_is_centered() {
+	$id   = is_singular() ? get_queried_object_id() : 0;
+	$meta = $id ? (array) get_post_meta( $id, '_gnn_layout', true ) : array();
+	if ( ! empty( $meta['header_preset'] ) && 'legacy' !== $meta['header_preset'] ) {
+		return 'centered' === $meta['header_preset'];
+	}
+	return 'centered' === gnn_option( 'header_layout' ) || 'centered' === gnn_layout_value( 'header_preset' );
+}
+
+/**
+ * Keep each top-level menu branch together when splitting the primary menu.
+ *
+ * @param object[] $items Menu items.
+ * @param object   $args Menu arguments.
+ * @return object[]
+ */
+function gnn_split_header_items( $items, $args ) {
+	if ( empty( $args->gnn_header_half ) || ! in_array( $args->gnn_header_half, array( 'left', 'right' ), true ) ) {
+		return $items;
+	}
+	$parents = array();
+	$roots   = array();
+	foreach ( $items as $item ) {
+		$parents[ (int) $item->ID ] = (int) $item->menu_item_parent;
+		if ( ! $item->menu_item_parent ) {
+			$roots[] = (int) $item->ID;
+		}
+	}
+	$middle = (int) ceil( count( $roots ) / 2 );
+	$keep   = 'left' === $args->gnn_header_half ? array_slice( $roots, 0, $middle ) : array_slice( $roots, $middle );
+	return array_values(
+		array_filter(
+			$items,
+			static function ( $item ) use ( $parents, $keep ) {
+				$root = (int) $item->ID;
+				$seen = array();
+				while ( ! empty( $parents[ $root ] ) && ! isset( $seen[ $root ] ) ) {
+					$seen[ $root ] = true;
+					$root          = $parents[ $root ];
+				}
+				return in_array( $root, $keep, true );
+			}
+		)
+	);
+}
+add_filter( 'wp_nav_menu_objects', 'gnn_split_header_items', 20, 2 );
+
+/**
+ * Render explicit side menus, or split the existing primary menu automatically.
+ *
+ * @param string $side Left or right.
+ */
+function gnn_header_side_menu( $side ) {
+	$custom = has_nav_menu( 'header-left' ) || has_nav_menu( 'header-right' );
+	if ( $custom && ! has_nav_menu( 'header-' . $side ) ) {
+		return;
+	}
+	wp_nav_menu(
+		array(
+			'theme_location'  => $custom ? 'header-' . $side : 'primary',
+			'gnn_header_half' => $custom ? '' : $side,
+			'menu_id'         => 'header-' . $side . '-menu',
+			'menu_class'      => 'menu',
+			'container'       => false,
+			'fallback_cb'     => false,
+			'walker'          => new GNN_Walker_Nav_Menu(),
+		)
+	);
+}
+
 /**
  * Enqueue the small features script when any interactive option needs it.
  */
