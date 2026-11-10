@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -177,6 +177,9 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.6.1 =
+* Fixed centered header logo alignment and balanced split menus around optional header actions.
 
 = 2.6.0 =
 * Added selected-section imports into Elementor saved templates with visual catalog cards.
