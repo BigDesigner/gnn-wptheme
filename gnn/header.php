@@ -28,7 +28,7 @@
 		gnn_render_topbar();
 		$gnn_centered = 'centered' === gnn_layout_value( 'header_preset' ) || ( 'legacy' === gnn_layout_value( 'header_preset' ) && 'centered' === gnn_option( 'header_layout' ) );
 		?>
-	<header id="masthead" class="site-header">
+	<header id="masthead" class="site-header<?php echo $gnn_centered ? ' gnn-header-centered' : ''; ?>">
 		<div class="site-header__inner">
 
 			<button class="menu-toggle" aria-controls="mobile-navigation" aria-expanded="false">
