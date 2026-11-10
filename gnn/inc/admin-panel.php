@@ -1032,15 +1032,7 @@ function gnn_panel_render() {
 
 						<?php gnn_section_bar( __( 'Layout', 'gnn' ) ); ?>
 						<?php
-						gnn_field_select(
-							'header_layout',
-							__( 'Header layout', 'gnn' ),
-							array(
-								'standard' => __( 'Standard (logo left, menu right)', 'gnn' ),
-								'centered' => __( 'Centered (logo center, split menus)', 'gnn' ),
-							),
-							__( 'Centered layout uses the Header Left and Header Right menu locations.', 'gnn' )
-						);
+						gnn_visual_header_layout();
 						gnn_field_select(
 							'header_menu_align',
 							__( 'Menu alignment', 'gnn' ),

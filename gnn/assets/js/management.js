@@ -2,6 +2,19 @@
 (function () {
  'use strict';
  var config = window.gnnManagement || {};
+ document.querySelectorAll('select[name^="regions["]').forEach(function (select) {
+  select.addEventListener('change', function () {
+   var link = select.parentNode.querySelector('.gnn-region-edit');
+   if (!link) { return; }
+   var id = Number(select.value);
+   link.hidden = !Number.isInteger(id) || id <= 0;
+   if (!link.hidden) {
+    var url = new URL(link.href);
+    url.searchParams.set('post', String(id));
+    link.href = url.href;
+   }
+  });
+ });
  function pause(milliseconds) {
   return new Promise(function (resolve) { window.setTimeout(resolve, milliseconds); });
  }

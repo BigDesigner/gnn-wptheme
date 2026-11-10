@@ -262,7 +262,7 @@ function gnn_shared_body( $content ) {
 		return $content;
 	}
 	$assignment = gnn_region_assignment( 'content' );
-	if ( $assignment['id'] <= 0 ) {
+	if ( $assignment['id'] <= 0 || ! gnn_block_matches_region( $assignment['id'], 'content' ) ) {
 		return $content;
 	}
 	$rendering = true;

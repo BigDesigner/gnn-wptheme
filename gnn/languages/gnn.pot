@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.5.3\n"
+"Project-Id-Version: GNN 2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 03:32+0000\n"
-"PO-Revision-Date: 2026-11-09 03:32+0000\n"
+"POT-Creation-Date: 2026-11-10 03:34+0000\n"
+"PO-Revision-Date: 2026-11-10 03:34+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +54,7 @@ msgid_plural "%s comments"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/workspace.php:141
+#: inc/workspace.php:143
 msgid "%s design concept preview"
 msgstr ""
 
@@ -62,20 +62,20 @@ msgstr ""
 msgid "1 project shown"
 msgstr ""
 
-#: inc/admin-panel.php:1182
+#: inc/admin-panel.php:1174
 msgid "404 description"
 msgstr ""
 
-#: inc/admin-panel.php:1185
+#: inc/admin-panel.php:1177
 msgid "404 image"
 msgstr ""
 
-#: inc/admin-panel.php:1180
+#: inc/admin-panel.php:1172
 #: inc/site-platform.php:125
 msgid "404 page"
 msgstr ""
 
-#: inc/admin-panel.php:1181
+#: inc/admin-panel.php:1173
 msgid "404 title"
 msgstr ""
 
@@ -99,7 +99,7 @@ msgstr ""
 msgid "A clear way of working"
 msgstr ""
 
-#: inc/demo-site.php:497
+#: inc/demo-site.php:498
 msgid "A collection of places."
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "A new conversation"
 msgstr ""
 
-#: inc/demo-site.php:462
+#: inc/demo-site.php:463
 msgid "A new place starts with a conversation."
 msgstr ""
 
@@ -198,7 +198,7 @@ msgstr ""
 msgid "A reset is in progress. Continue to finish it."
 msgstr ""
 
-#: inc/demo-site.php:517
+#: inc/demo-site.php:518
 msgid "A shared design process."
 msgstr ""
 
@@ -222,7 +222,7 @@ msgstr ""
 msgid "A visual notebook of form, atmosphere, material and detail."
 msgstr ""
 
-#: inc/starter-editors.php:197
+#: inc/starter-editors.php:276
 #: inc/starter-layouts.php:51
 msgid "About"
 msgstr ""
@@ -231,17 +231,17 @@ msgstr ""
 msgid "About the event"
 msgstr ""
 
-#: inc/admin-panel.php:1200
+#: inc/admin-panel.php:1192
 msgid "Accent"
 msgstr ""
 
-#: inc/admin-panel.php:1207
+#: inc/admin-panel.php:1199
 #: inc/admin-screens.php:108
 #: inc/customizer.php:59
 msgid "Accent color"
 msgstr ""
 
-#: inc/workspace.php:173
+#: inc/workspace.php:175
 msgid "Accent — light mode"
 msgstr ""
 
@@ -265,12 +265,12 @@ msgstr ""
 msgid "Activate"
 msgstr ""
 
-#: inc/starter-editors.php:193
+#: inc/starter-editors.php:272
 #: inc/starters.php:185
 msgid "Activate Elementor 3.6 or newer before installing this edition."
 msgstr ""
 
-#: inc/workspace.php:153
+#: inc/workspace.php:155
 msgid "Activate Elementor to import pages. GNNcommerce also requires WooCommerce. Plugins are never installed automatically."
 msgstr ""
 
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Activate WooCommerce and complete store setup before importing GNNcommerce."
 msgstr ""
 
-#: inc/content-modules.php:314
+#: inc/content-modules.php:338
 msgid "Activate WooCommerce to display the live product collection."
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr ""
 msgid "Add reusable block"
 msgstr ""
 
-#: inc/admin-screens.php:346
+#: inc/admin-screens.php:351
 msgid "Add template"
 msgstr ""
 
@@ -327,8 +327,17 @@ msgstr ""
 msgid "Add to cart"
 msgstr ""
 
+#: inc/authoring.php:337
+msgid "Add to saved templates"
+msgstr ""
+
 #: inc/elementor-templates.php:240
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
+msgstr ""
+
+#: inc/authoring.php:141
+#: inc/authoring.php:173
+msgid "Add your own content."
 msgstr ""
 
 #: inc/starters.php:223
@@ -355,7 +364,7 @@ msgstr ""
 msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
 msgstr ""
 
-#: inc/admin-panel.php:1345
+#: inc/admin-panel.php:1337
 msgid "Adds the font stylesheet site-wide so .material-symbols-* classes render."
 msgstr ""
 
@@ -375,7 +384,7 @@ msgstr ""
 msgid "Advisory"
 msgstr ""
 
-#: inc/admin-panel.php:1378
+#: inc/admin-panel.php:1370
 msgid "After <body> HTML"
 msgstr ""
 
@@ -408,7 +417,7 @@ msgid "All pages, posts, projects, galleries, slides, menus, comments, orders an
 msgstr ""
 
 #: inc/architecture.php:251
-#: inc/content-modules.php:358
+#: inc/content-modules.php:382
 msgid "All projects"
 msgstr ""
 
@@ -416,7 +425,7 @@ msgstr ""
 msgid "All slides"
 msgstr ""
 
-#: inc/demo-site.php:495
+#: inc/demo-site.php:496
 msgid "All stories"
 msgstr ""
 
@@ -424,7 +433,7 @@ msgstr ""
 msgid "All uses"
 msgstr ""
 
-#: inc/admin-panel.php:1241
+#: inc/admin-panel.php:1233
 msgid "Alternate surface background"
 msgstr ""
 
@@ -440,7 +449,7 @@ msgstr ""
 msgid "An upload file could not be removed. Check file permissions."
 msgstr ""
 
-#: inc/admin-panel.php:1368
+#: inc/admin-panel.php:1360
 msgid "Analytics and consent"
 msgstr ""
 
@@ -448,8 +457,8 @@ msgstr ""
 msgid "Analytics delivery"
 msgstr ""
 
-#: inc/admin-panel.php:1061
-#: inc/workspace.php:161
+#: inc/admin-panel.php:1053
+#: inc/workspace.php:163
 msgid "Announcement text"
 msgstr ""
 
@@ -477,6 +486,10 @@ msgstr ""
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:216
+msgid "Appearance"
+msgstr ""
+
 #: inc/admin-panel.php:985
 msgid "Appearance and behavior"
 msgstr ""
@@ -493,7 +506,7 @@ msgstr ""
 msgid "Apply"
 msgstr ""
 
-#: inc/workspace.php:149
+#: inc/workspace.php:151
 msgid "Apply design profile"
 msgstr ""
 
@@ -505,11 +518,11 @@ msgstr ""
 msgid "Apply the reviewed changes and create a recovery snapshot."
 msgstr ""
 
-#: inc/workspace.php:96
+#: inc/workspace.php:98
 msgid "Apply this design profile after successful import"
 msgstr ""
 
-#: inc/demo-site.php:517
+#: inc/demo-site.php:518
 msgid "Architects, interior designers and project coordinators work together from the first conversation. Each project grows through close dialogue with its users and a careful reading of its surroundings."
 msgstr ""
 
@@ -532,7 +545,7 @@ msgstr ""
 msgid "Architecture / Design / Construction"
 msgstr ""
 
-#: inc/demo-site.php:471
+#: inc/demo-site.php:472
 msgid "Architecture / Interiors / Landscape"
 msgstr ""
 
@@ -542,7 +555,7 @@ msgid "Architecture / Selected projects"
 msgstr ""
 
 #: inc/architecture.php:330
-#: inc/starter-editors.php:204
+#: inc/starter-editors.php:283
 msgid "Architecture Home"
 msgstr ""
 
@@ -554,7 +567,7 @@ msgstr ""
 msgid "Architecture and construction with a live two-column portfolio, gallery, studio and services."
 msgstr ""
 
-#: inc/demo-site.php:518
+#: inc/demo-site.php:519
 msgid "Architecture and planning lead the spatial strategy; interior design develops materials and daily use; project coordination brings specialists and construction teams together."
 msgstr ""
 
@@ -610,7 +623,11 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: inc/workspace.php:377
+#: inc/class-gnn-elementor-module.php:189
+msgid "Ascending"
+msgstr ""
+
+#: inc/workspace.php:379
 msgid "Ask an administrator with plugin installation permission to install Elementor."
 msgstr ""
 
@@ -618,17 +635,17 @@ msgstr ""
 msgid "Aspect ratio"
 msgstr ""
 
-#: inc/workspace.php:132
+#: inc/workspace.php:134
 msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr ""
 
 #: inc/workspace.php:58
-#: inc/workspace.php:125
+#: inc/workspace.php:127
 msgid "Assigned settings"
 msgstr ""
 
-#: inc/workspace.php:117
-#: inc/workspace.php:190
+#: inc/workspace.php:119
+#: inc/workspace.php:192
 msgid "Assigned site settings"
 msgstr ""
 
@@ -641,7 +658,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: inc/admin-panel.php:1120
+#: inc/admin-panel.php:1112
 msgid "Auto-detect (default)"
 msgstr ""
 
@@ -653,7 +670,7 @@ msgstr ""
 msgid "Autoplay interval (seconds)"
 msgstr ""
 
-#: inc/admin-screens.php:416
+#: inc/admin-screens.php:422
 msgid "Available"
 msgstr ""
 
@@ -662,14 +679,14 @@ msgid "BRAND."
 msgstr ""
 
 #: 404.php:18
-#: inc/admin-panel.php:1184
+#: inc/admin-panel.php:1176
 #: template-parts/content-none.php:33
 msgid "Back to Home"
 msgstr ""
 
-#: inc/admin-panel.php:1303
+#: inc/admin-panel.php:1295
 #: inc/site-platform.php:93
-#: inc/workspace.php:179
+#: inc/workspace.php:181
 msgid "Background"
 msgstr ""
 
@@ -695,6 +712,12 @@ msgstr ""
 
 #: inc/page-layouts.php:106
 msgid "Blank Canvas (no header/footer)"
+msgstr ""
+
+#: inc/authoring.php:30
+#: inc/authoring.php:41
+#: inc/authoring.php:70
+msgid "Block role"
 msgstr ""
 
 #: home.php:20
@@ -740,7 +763,7 @@ msgstr ""
 msgid "Bold heading, paragraph & button"
 msgstr ""
 
-#: inc/admin-panel.php:1305
+#: inc/admin-panel.php:1297
 #: inc/site-platform.php:95
 msgid "Border"
 msgstr ""
@@ -749,15 +772,15 @@ msgstr ""
 msgid "Border width"
 msgstr ""
 
-#: inc/workspace.php:184
+#: inc/workspace.php:186
 msgid "Borders"
 msgstr ""
 
-#: inc/admin-panel.php:1248
+#: inc/admin-panel.php:1240
 msgid "Borders / dividers"
 msgstr ""
 
-#: inc/admin-panel.php:1157
+#: inc/admin-panel.php:1149
 #: inc/blog.php:60
 #: inc/blog.php:93
 msgid "Bottom"
@@ -771,7 +794,7 @@ msgstr ""
 msgid "Boxed (max 1200px)"
 msgstr ""
 
-#: inc/admin-panel.php:1136
+#: inc/admin-panel.php:1128
 msgid "Boxed template max width (px)"
 msgstr ""
 
@@ -805,7 +828,7 @@ msgstr ""
 msgid "Business segment"
 msgstr ""
 
-#: inc/admin-panel.php:1271
+#: inc/admin-panel.php:1263
 msgid "Button Styles"
 msgstr ""
 
@@ -825,7 +848,7 @@ msgstr ""
 msgid "Button style"
 msgstr ""
 
-#: inc/admin-screens.php:270
+#: inc/admin-screens.php:274
 msgid "Button styles"
 msgstr ""
 
@@ -837,6 +860,7 @@ msgstr ""
 msgid "Call"
 msgstr ""
 
+#: inc/authoring.php:97
 #: inc/starters.php:215
 msgid "Call to action"
 msgstr ""
@@ -853,7 +877,7 @@ msgstr ""
 msgid "Canopy Residences"
 msgstr ""
 
-#: inc/admin-panel.php:1240
+#: inc/admin-panel.php:1232
 msgid "Card / panel background"
 msgstr ""
 
@@ -910,42 +934,41 @@ msgstr ""
 
 #: inc/admin-panel.php:647
 #: inc/admin-panel.php:661
-#: inc/admin-panel.php:1049
+#: inc/admin-panel.php:1041
 msgid "Center"
 msgstr ""
 
+#: inc/authoring.php:480
 #: inc/platform.php:31
 #: inc/platform.php:51
-#: inc/platform.php:118
 msgid "Centered"
 msgstr ""
 
 #: inc/admin-panel.php:623
-#: inc/admin-panel.php:1040
 msgid "Centered (logo center, split menus)"
-msgstr ""
-
-#: inc/admin-panel.php:1042
-msgid "Centered layout uses the Header Left and Header Right menu locations."
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:63
 msgid "Central content source"
 msgstr ""
 
-#: inc/workspace.php:123
+#: inc/workspace.php:125
 msgid "Change history"
 msgstr ""
 
-#: inc/workspace.php:262
+#: inc/workspace.php:264
 msgid "Changed fields (%d)"
 msgstr ""
 
-#: inc/admin-screens.php:523
+#: inc/admin-screens.php:533
 msgid "Changes saved."
 msgstr ""
 
-#: inc/admin-panel.php:1524
+#: inc/authoring.php:444
+msgid "Check Elementor activation and the shared block preview route."
+msgstr ""
+
+#: inc/admin-panel.php:1516
 msgid "Check GitHub for new releases"
 msgstr ""
 
@@ -955,6 +978,14 @@ msgstr ""
 
 #: inc/admin-panel.php:932
 msgid "Check for updates"
+msgstr ""
+
+#: inc/authoring.php:434
+msgid "Check media directory permissions."
+msgstr ""
+
+#: inc/authoring.php:427
+msgid "Check site URLs and server access rules."
 msgstr ""
 
 #: inc/starter-layouts.php:94
@@ -970,7 +1001,7 @@ msgstr ""
 msgid "Choose Gutenberg or Elementor."
 msgstr ""
 
-#: inc/admin-screens.php:455
+#: inc/admin-screens.php:461
 msgid "Choose a published block."
 msgstr ""
 
@@ -1032,6 +1063,12 @@ msgstr ""
 msgid "Clear selection"
 msgstr ""
 
+#: inc/authoring.php:145
+#: inc/authoring.php:145
+#: inc/authoring.php:145
+msgid "Client logo"
+msgstr ""
+
 #: single-gnn_project.php:23
 #: inc/content-modules.php:220
 msgid "Client or project context"
@@ -1039,7 +1076,7 @@ msgstr ""
 
 #: inc/admin-panel.php:319
 #: inc/admin-screens.php:60
-#: inc/content-modules.php:409
+#: inc/content-modules.php:433
 msgid "Close"
 msgstr ""
 
@@ -1053,6 +1090,10 @@ msgstr ""
 
 #: inc/site-platform.php:43
 msgid "Column gap"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:223
+msgid "Columns"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:67
@@ -1096,11 +1137,11 @@ msgstr ""
 msgid "Concept study"
 msgstr ""
 
-#: inc/workspace.php:230
+#: inc/workspace.php:232
 msgid "Configuration revision"
 msgstr ""
 
-#: inc/workspace.php:132
+#: inc/workspace.php:134
 msgid "Configure and test form delivery, consent, SEO and language integrations."
 msgstr ""
 
@@ -1120,13 +1161,21 @@ msgstr ""
 msgid "Confirm the complete site installation."
 msgstr ""
 
+#: inc/authoring.php:461
+msgid "Connection and editor checks"
+msgstr ""
+
+#: inc/authoring.php:427
+msgid "Connection failed. Check server access rules."
+msgstr ""
+
 #: inc/starters.php:29
 msgid "Considered products. Everyday possibilities."
 msgstr ""
 
 #: inc/architecture.php:335
-#: inc/frontend.php:213
-#: inc/platform.php:440
+#: inc/authoring.php:96
+#: inc/authoring.php:235
 msgid "Contact"
 msgstr ""
 
@@ -1138,7 +1187,7 @@ msgstr ""
 msgid "Contact information"
 msgstr ""
 
-#: inc/admin-panel.php:1126
+#: inc/admin-panel.php:1118
 msgid "Contact page"
 msgstr ""
 
@@ -1152,6 +1201,7 @@ msgstr ""
 msgid "Contact with social links"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:273
 #: inc/platform.php:175
 msgid "Contain"
 msgstr ""
@@ -1162,7 +1212,7 @@ msgstr ""
 
 #: inc/admin-panel.php:693
 #: inc/admin-panel.php:707
-#: inc/admin-panel.php:1147
+#: inc/admin-panel.php:1139
 msgid "Contain (show the whole image)"
 msgstr ""
 
@@ -1170,7 +1220,7 @@ msgstr ""
 msgid "Content and blog layout"
 msgstr ""
 
-#: inc/admin-panel.php:1132
+#: inc/admin-panel.php:1124
 msgid "Content bottom spacing (px)"
 msgstr ""
 
@@ -1185,7 +1235,7 @@ msgstr ""
 msgid "Content replacement is unavailable for this database."
 msgstr ""
 
-#: inc/admin-panel.php:1131
+#: inc/admin-panel.php:1123
 msgid "Content top spacing (px)"
 msgstr ""
 
@@ -1205,7 +1255,7 @@ msgstr ""
 msgid "Continue the demo installation from Setup wizard."
 msgstr ""
 
-#: inc/admin-panel.php:1088
+#: inc/admin-panel.php:1080
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr ""
 
@@ -1213,15 +1263,16 @@ msgstr ""
 msgid "Coordinate"
 msgstr ""
 
-#: inc/workspace.php:165
+#: inc/workspace.php:167
 msgid "Copyright text"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:281
 #: inc/site-platform.php:46
 msgid "Corner radius"
 msgstr ""
 
-#: inc/admin-panel.php:1512
+#: inc/admin-panel.php:1504
 msgid "Could not reach GitHub to check for updates."
 msgstr ""
 
@@ -1233,13 +1284,14 @@ msgstr ""
 msgid "Courtyard residence concept illustration"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:272
 #: inc/platform.php:174
 msgid "Cover"
 msgstr ""
 
 #: inc/admin-panel.php:689
 #: inc/admin-panel.php:703
-#: inc/admin-panel.php:1146
+#: inc/admin-panel.php:1138
 msgid "Cover (fill and crop)"
 msgstr ""
 
@@ -1278,15 +1330,15 @@ msgstr ""
 msgid "Cover: poster left, text right"
 msgstr ""
 
-#: inc/workspace.php:132
+#: inc/workspace.php:134
 msgid "Create an off-site database/files backup, rehearse upgrade and recovery on staging."
 msgstr ""
 
-#: inc/workspace.php:248
+#: inc/workspace.php:250
 msgid "Create configuration snapshot"
 msgstr ""
 
-#: inc/admin-screens.php:391
+#: inc/admin-screens.php:397
 msgid "Create snapshot"
 msgstr ""
 
@@ -1302,7 +1354,7 @@ msgstr ""
 msgid "Crop"
 msgstr ""
 
-#: inc/demo-site.php:516
+#: inc/demo-site.php:517
 msgid "Curiosity. Clarity. Care."
 msgstr ""
 
@@ -1310,8 +1362,12 @@ msgstr ""
 msgid "Curious minds. Purposeful design."
 msgstr ""
 
-#: inc/admin-panel.php:1365
-#: inc/admin-panel.php:1366
+#: inc/authoring.php:146
+msgid "Custom"
+msgstr ""
+
+#: inc/admin-panel.php:1357
+#: inc/admin-panel.php:1358
 msgid "Custom CSS"
 msgstr ""
 
@@ -1319,11 +1375,11 @@ msgstr ""
 msgid "Custom Code"
 msgstr ""
 
-#: inc/admin-panel.php:1374
+#: inc/admin-panel.php:1366
 msgid "Custom JavaScript — footer"
 msgstr ""
 
-#: inc/admin-panel.php:1373
+#: inc/admin-panel.php:1365
 msgid "Custom JavaScript — head"
 msgstr ""
 
@@ -1360,11 +1416,15 @@ msgstr ""
 msgid "Database inventory is unavailable."
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:176
+msgid "Date"
+msgstr ""
+
 #: inc/demo-site.php:341
 msgid "Daylight shapes how a room feels throughout the day. We begin with orientation, depth and the movement of the sun, then tune each opening to balance brightness, privacy and summer shade."
 msgstr ""
 
-#: inc/admin-screens.php:413
+#: inc/admin-screens.php:419
 msgid "Debug"
 msgstr ""
 
@@ -1373,7 +1433,7 @@ msgstr ""
 msgid "Default mode"
 msgstr ""
 
-#: inc/admin-panel.php:1113
+#: inc/admin-panel.php:1105
 msgid "Default sidebar position"
 msgstr ""
 
@@ -1385,7 +1445,7 @@ msgstr ""
 msgid "Delete and apply"
 msgstr ""
 
-#: inc/workspace.php:255
+#: inc/workspace.php:257
 msgid "Delete local recovery history"
 msgstr ""
 
@@ -1405,6 +1465,10 @@ msgstr ""
 msgid "Deliver and review"
 msgstr ""
 
+#: inc/authoring.php:143
+msgid "Delivery"
+msgstr ""
+
 #: inc/starter-layouts.php:24
 #: inc/starter-layouts.php:201
 msgid "Delivery information"
@@ -1414,15 +1478,23 @@ msgstr ""
 msgid "Demo installation"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:190
+msgid "Descending"
+msgstr ""
+
 #: inc/starter-layouts.php:71
 msgid "Describe the scope, who it helps and what a client can expect. Add your own process and relevant examples."
+msgstr ""
+
+#: inc/authoring.php:143
+msgid "Design"
 msgstr ""
 
 #: inc/page-layouts.php:101
 msgid "Design Profile Showcase"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:136
 msgid "Design changes preserve identity and content. Starter installation only adds missing draft pages; it does not publish them or replace your homepage or menus."
 msgstr ""
 
@@ -1430,11 +1502,11 @@ msgstr ""
 msgid "Design focus"
 msgstr ""
 
-#: inc/workspace.php:114
+#: inc/workspace.php:116
 msgid "Design profiles"
 msgstr ""
 
-#: inc/workspace.php:134
+#: inc/workspace.php:136
 msgid "Design profiles and draft starter pages"
 msgstr ""
 
@@ -1443,7 +1515,7 @@ msgid "Design replacement and cleanup"
 msgstr ""
 
 #: inc/admin-screens.php:18
-#: inc/admin-screens.php:374
+#: inc/admin-screens.php:379
 msgid "Design system"
 msgstr ""
 
@@ -1467,11 +1539,11 @@ msgstr ""
 msgid "Develop"
 msgstr ""
 
-#: inc/workspace.php:119
+#: inc/workspace.php:121
 msgid "Diagnostics"
 msgstr ""
 
-#: inc/workspace.php:219
+#: inc/workspace.php:221
 msgid "Diagnostics and integration status"
 msgstr ""
 
@@ -1483,9 +1555,9 @@ msgstr ""
 msgid "Disable the emoji script"
 msgstr ""
 
-#: inc/admin-screens.php:413
+#: inc/admin-screens.php:419
 #: inc/platform.php:132
-#: inc/workspace.php:235
+#: inc/workspace.php:237
 msgid "Disabled"
 msgstr ""
 
@@ -1501,15 +1573,15 @@ msgstr ""
 msgid "Discuss your requirements"
 msgstr ""
 
-#: inc/admin-panel.php:1410
+#: inc/admin-panel.php:1402
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr ""
 
-#: inc/workspace.php:241
+#: inc/workspace.php:243
 msgid "Download masked support summary"
 msgstr ""
 
-#: inc/admin-screens.php:423
+#: inc/admin-screens.php:429
 msgid "Download support summary"
 msgstr ""
 
@@ -1525,48 +1597,52 @@ msgstr ""
 msgid "Edit project"
 msgstr ""
 
-#: inc/admin-screens.php:244
+#: inc/admin-screens.php:248
 msgid "Edit selected"
 msgstr ""
 
-#: inc/admin-screens.php:358
-#: inc/workspace.php:146
+#: inc/admin-screens.php:233
+msgid "Edit selected block"
+msgstr ""
+
+#: inc/admin-screens.php:363
+#: inc/workspace.php:148
 msgid "Edit with Elementor"
 msgstr ""
 
-#: inc/workspace.php:148
+#: inc/workspace.php:150
 msgid "Elementor Free edition. Only this design’s page documents are imported; no second editor edition or automatic saved-template library is created."
 msgstr ""
 
-#: inc/starter-editors.php:140
+#: inc/starter-editors.php:219
 msgid "Elementor could not open the starter document."
 msgstr ""
 
-#: inc/starter-editors.php:150
-#: inc/starter-editors.php:154
+#: inc/starter-editors.php:229
+#: inc/starter-editors.php:233
 msgid "Elementor could not save the starter. Retry adding missing draft pages."
 msgstr ""
 
-#: inc/workspace.php:371
+#: inc/workspace.php:373
 msgid "Elementor is active."
 msgstr ""
 
-#: inc/admin-panel.php:1466
-#: inc/admin-panel.php:1469
+#: inc/admin-panel.php:1458
+#: inc/admin-panel.php:1461
 msgid "Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1687
+#: inc/admin-panel.php:1679
 msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr ""
 
-#: inc/workspace.php:181
+#: inc/workspace.php:183
 msgid "Elevated surface"
 msgstr ""
 
-#: inc/admin-panel.php:1062
+#: inc/admin-panel.php:1054
 #: inc/platform.php:442
-#: inc/workspace.php:163
+#: inc/workspace.php:165
 msgid "Email"
 msgstr ""
 
@@ -1578,25 +1654,29 @@ msgstr ""
 msgid "Enable maintenance mode for visitors"
 msgstr ""
 
-#: inc/admin-panel.php:1060
+#: inc/admin-panel.php:1052
 msgid "Enable the top announcement bar"
 msgstr ""
 
-#: inc/admin-panel.php:1521
+#: inc/admin-panel.php:1513
 msgid "Enable theme updates"
 msgstr ""
 
-#: inc/admin-screens.php:413
-#: inc/workspace.php:235
+#: inc/admin-screens.php:419
+#: inc/workspace.php:237
 msgid "Enabled"
 msgstr ""
 
-#: inc/admin-screens.php:487
+#: inc/admin-screens.php:497
 msgid "Enter a valid color."
 msgstr ""
 
 #: inc/patterns.php:73
 msgid "Enterprise clients"
+msgstr ""
+
+#: inc/authoring.php:146
+msgid "Essential"
 msgstr ""
 
 #: inc/elementor-templates.php:272
@@ -1615,7 +1695,7 @@ msgstr ""
 msgid "Every commission has its own setting and ambitions. Our role is to turn these into a thoughtful, buildable and legible design."
 msgstr ""
 
-#: inc/demo-site.php:534
+#: inc/demo-site.php:535
 msgid "Every project begins with a conversation."
 msgstr ""
 
@@ -1623,8 +1703,12 @@ msgstr ""
 msgid "Excerpt length (words)"
 msgstr ""
 
-#: inc/admin-screens.php:273
+#: inc/admin-screens.php:277
 msgid "Exclude from search"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:197
+msgid "Excluded project IDs"
 msgstr ""
 
 #: inc/platform.php:29
@@ -1632,7 +1716,7 @@ msgstr ""
 msgid "Existing layout"
 msgstr ""
 
-#: inc/content-modules.php:411
+#: inc/content-modules.php:435
 msgid "Expand image"
 msgstr ""
 
@@ -1670,16 +1754,16 @@ msgstr ""
 msgid "Explore the collection"
 msgstr ""
 
-#: inc/admin-panel.php:1423
+#: inc/admin-panel.php:1415
 msgid "Export JSON"
 msgstr ""
 
-#: inc/admin-panel.php:1416
+#: inc/admin-panel.php:1408
 msgid "Export scope"
 msgstr ""
 
-#: inc/admin-panel.php:1406
-#: inc/admin-panel.php:1409
+#: inc/admin-panel.php:1398
+#: inc/admin-panel.php:1401
 msgid "Export settings"
 msgstr ""
 
@@ -1687,7 +1771,7 @@ msgstr ""
 msgid "External consent bridge required when analytics is used"
 msgstr ""
 
-#: inc/admin-panel.php:1377
+#: inc/admin-panel.php:1369
 msgid "Extra <head> HTML (meta/verification tags)"
 msgstr ""
 
@@ -1724,7 +1808,7 @@ msgstr ""
 msgid "Featured card image attachment ID"
 msgstr ""
 
-#: inc/admin-panel.php:1139
+#: inc/admin-panel.php:1131
 msgid "Featured image"
 msgstr ""
 
@@ -1742,11 +1826,11 @@ msgstr ""
 
 #: inc/admin-panel.php:697
 #: inc/admin-panel.php:711
-#: inc/admin-panel.php:1148
+#: inc/admin-panel.php:1140
 msgid "Fill (stretch)"
 msgstr ""
 
-#: inc/admin-panel.php:1354
+#: inc/admin-panel.php:1346
 msgid "Filled"
 msgstr ""
 
@@ -1770,11 +1854,11 @@ msgstr ""
 msgid "Follow us"
 msgstr ""
 
-#: inc/admin-panel.php:1334
+#: inc/admin-panel.php:1326
 msgid "Font family"
 msgstr ""
 
-#: inc/admin-panel.php:1320
+#: inc/admin-panel.php:1312
 msgid "Font loading"
 msgstr ""
 
@@ -1782,11 +1866,11 @@ msgstr ""
 msgid "Font size"
 msgstr ""
 
-#: inc/admin-panel.php:1335
+#: inc/admin-panel.php:1327
 msgid "Font weight"
 msgstr ""
 
-#: inc/admin-panel.php:1329
+#: inc/admin-panel.php:1321
 msgid "Fonts by element"
 msgstr ""
 
@@ -1815,47 +1899,47 @@ msgstr ""
 msgid "Footer Column 4"
 msgstr ""
 
-#: inc/admin-panel.php:1073
+#: inc/admin-panel.php:1065
 msgid "Footer brand"
 msgstr ""
 
-#: inc/admin-panel.php:1069
+#: inc/admin-panel.php:1061
 msgid "Footer branding"
 msgstr ""
 
-#: inc/admin-panel.php:1101
+#: inc/admin-panel.php:1093
 msgid "Footer copyright line"
 msgstr ""
 
-#: inc/admin-panel.php:1102
+#: inc/admin-panel.php:1094
 #: inc/customizer.php:76
 msgid "Footer legal text"
 msgstr ""
 
-#: inc/admin-panel.php:1088
-#: inc/workspace.php:176
+#: inc/admin-panel.php:1080
+#: inc/workspace.php:178
 msgid "Footer logo max height (px)"
 msgstr ""
 
-#: inc/admin-panel.php:1085
-#: inc/workspace.php:171
+#: inc/admin-panel.php:1077
+#: inc/workspace.php:173
 msgid "Footer logo — dark mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:1086
+#: inc/admin-panel.php:1078
 msgid "Footer logo — dark mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:1083
-#: inc/workspace.php:170
+#: inc/admin-panel.php:1075
+#: inc/workspace.php:172
 msgid "Footer logo — light mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:1084
+#: inc/admin-panel.php:1076
 msgid "Footer logo — light mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:1093
+#: inc/admin-panel.php:1085
 msgid "Footer menu alignment"
 msgstr ""
 
@@ -1863,8 +1947,8 @@ msgstr ""
 msgid "Footer style"
 msgstr ""
 
-#: inc/admin-panel.php:1089
-#: inc/workspace.php:164
+#: inc/admin-panel.php:1081
+#: inc/workspace.php:166
 msgid "Footer tagline"
 msgstr ""
 
@@ -1880,7 +1964,7 @@ msgstr ""
 msgid "Force on for this page"
 msgstr ""
 
-#: inc/admin-screens.php:269
+#: inc/admin-screens.php:273
 msgid "Form fields"
 msgstr ""
 
@@ -1900,15 +1984,15 @@ msgstr ""
 msgid "From the first site reading to a clear spatial concept, we shape buildings around their place and the people who use them."
 msgstr ""
 
-#: inc/demo-site.php:489
+#: inc/demo-site.php:490
 msgid "From the first sketch to the final detail."
 msgstr ""
 
-#: inc/demo-site.php:495
+#: inc/demo-site.php:496
 msgid "From the journal"
 msgstr ""
 
-#: inc/admin-panel.php:1137
+#: inc/admin-panel.php:1129
 msgid "Full Width template max width (px)"
 msgstr ""
 
@@ -1932,7 +2016,7 @@ msgstr ""
 msgid "Full-stack security, one accountable partner."
 msgstr ""
 
-#: inc/admin-screens.php:377
+#: inc/admin-screens.php:382
 msgid "GNN"
 msgstr ""
 
@@ -2020,16 +2104,25 @@ msgstr ""
 msgid "Gallery source"
 msgstr ""
 
-#: inc/admin-panel.php:1131
+#: inc/class-gnn-elementor-module.php:238
+msgid "Gap"
+msgstr ""
+
+#: inc/admin-panel.php:1123
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr ""
 
-#: inc/admin-panel.php:1132
+#: inc/admin-panel.php:1124
 msgid "Gap between the page content and the footer."
 msgstr ""
 
 #: inc/demo-site.php:222
 msgid "Garden homes"
+msgstr ""
+
+#: inc/authoring.php:14
+#: inc/authoring.php:83
+msgid "General purpose"
 msgstr ""
 
 #: inc/platform.php:146
@@ -2044,7 +2137,7 @@ msgstr ""
 msgid "Global"
 msgstr ""
 
-#: inc/admin-screens.php:271
+#: inc/admin-screens.php:275
 msgid "Global colors"
 msgstr ""
 
@@ -2060,11 +2153,11 @@ msgstr ""
 msgid "Good buildings begin with good questions."
 msgstr ""
 
-#: inc/admin-panel.php:1369
+#: inc/admin-panel.php:1361
 msgid "Google Analytics 4 ID"
 msgstr ""
 
-#: inc/admin-panel.php:1370
+#: inc/admin-panel.php:1362
 msgid "Google Tag Manager ID"
 msgstr ""
 
@@ -2104,7 +2197,7 @@ msgstr ""
 msgid "H6"
 msgstr ""
 
-#: inc/admin-panel.php:1089
+#: inc/admin-panel.php:1081
 msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
 msgstr ""
 
@@ -2133,7 +2226,7 @@ msgstr ""
 msgid "Header height"
 msgstr ""
 
-#: inc/admin-panel.php:1037
+#: inc/authoring.php:477
 msgid "Header layout"
 msgstr ""
 
@@ -2183,6 +2276,10 @@ msgstr ""
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr ""
 
+#: inc/authoring.php:91
+msgid "Hero"
+msgstr ""
+
 #: inc/platform.php:113
 msgid "Hero layout"
 msgstr ""
@@ -2192,7 +2289,7 @@ msgid "Hero slider"
 msgstr ""
 
 #: inc/admin-panel.php:683
-#: inc/admin-panel.php:1078
+#: inc/admin-panel.php:1070
 #: inc/admin-screens.php:219
 msgid "Hide"
 msgstr ""
@@ -2218,7 +2315,7 @@ msgstr ""
 msgid "Highlights"
 msgstr ""
 
-#: inc/workspace.php:254
+#: inc/workspace.php:256
 msgid "History management"
 msgstr ""
 
@@ -2244,7 +2341,7 @@ msgstr ""
 msgid "How we can help"
 msgstr ""
 
-#: inc/demo-site.php:518
+#: inc/demo-site.php:519
 msgid "How we work"
 msgstr ""
 
@@ -2256,7 +2353,7 @@ msgstr ""
 msgid "I reviewed the changes."
 msgstr ""
 
-#: inc/workspace.php:99
+#: inc/workspace.php:101
 msgid "I reviewed the scope. A recovery snapshot will be created before configuration changes."
 msgstr ""
 
@@ -2264,47 +2361,52 @@ msgstr ""
 msgid "I reviewed the selected records and deletion method."
 msgstr ""
 
-#: inc/admin-panel.php:1349
+#: inc/admin-panel.php:1341
 msgid "Icon style"
 msgstr ""
 
-#: inc/admin-panel.php:1344
+#: inc/admin-panel.php:1336
 msgid "Icons"
 msgstr ""
 
 #: inc/admin-panel.php:679
-#: inc/admin-panel.php:1077
+#: inc/admin-panel.php:1069
 msgid "Image + text"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:268
 #: inc/slider.php:162
 msgid "Image fit"
 msgstr ""
 
 #: inc/admin-panel.php:675
-#: inc/admin-panel.php:1076
+#: inc/admin-panel.php:1068
 msgid "Image logo"
 msgstr ""
 
-#: inc/admin-screens.php:272
+#: inc/class-gnn-elementor-module.php:252
+msgid "Image ratio"
+msgstr ""
+
+#: inc/admin-screens.php:276
 msgid "Image sizes"
 msgstr ""
 
-#: inc/workspace.php:151
+#: inc/workspace.php:153
 msgid "Import Elementor starter pages"
 msgstr ""
 
-#: inc/admin-panel.php:1685
+#: inc/admin-panel.php:1677
 #: inc/settings-transfer.php:42
 msgid "Import failed: the file is not a valid GNN settings export."
 msgstr ""
 
-#: inc/admin-panel.php:1428
-#: inc/admin-panel.php:1431
+#: inc/admin-panel.php:1420
+#: inc/admin-panel.php:1423
 msgid "Import settings"
 msgstr ""
 
-#: inc/demo-site.php:506
+#: inc/demo-site.php:507
 msgid "In the details."
 msgstr ""
 
@@ -2338,7 +2440,7 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
-#: inc/admin-screens.php:410
+#: inc/admin-screens.php:416
 msgid "Input variables"
 msgstr ""
 
@@ -2350,7 +2452,7 @@ msgstr ""
 msgid "Install"
 msgstr ""
 
-#: inc/workspace.php:375
+#: inc/workspace.php:377
 msgid "Install Elementor"
 msgstr ""
 
@@ -2367,7 +2469,7 @@ msgstr ""
 msgid "Installation stopped. Check the server and retry."
 msgstr ""
 
-#: inc/admin-panel.php:1495
+#: inc/admin-panel.php:1487
 msgid "Installed version: %s"
 msgstr ""
 
@@ -2375,7 +2477,7 @@ msgstr ""
 msgid "Installing demo…"
 msgstr ""
 
-#: inc/workspace.php:225
+#: inc/workspace.php:227
 msgid "Integrations"
 msgstr ""
 
@@ -2407,15 +2509,15 @@ msgstr ""
 msgid "Invalid field value type. No settings were changed."
 msgstr ""
 
-#: inc/admin-screens.php:434
+#: inc/admin-screens.php:440
 msgid "Invalid operation."
 msgstr ""
 
-#: inc/workspace.php:305
+#: inc/workspace.php:307
 msgid "Invalid operational field."
 msgstr ""
 
-#: inc/starter-editors.php:190
+#: inc/starter-editors.php:269
 #: inc/starters.php:180
 msgid "Invalid starter profile."
 msgstr ""
@@ -2428,7 +2530,7 @@ msgstr ""
 msgid "Items per page"
 msgstr ""
 
-#: inc/admin-panel.php:1372
+#: inc/admin-panel.php:1364
 msgid "JavaScript"
 msgstr ""
 
@@ -2449,17 +2551,17 @@ msgstr ""
 msgid "Large image threshold"
 msgstr ""
 
-#: inc/workspace.php:229
+#: inc/workspace.php:231
 msgid "Last update check"
 msgstr ""
 
-#: inc/workspace.php:113
-#: inc/workspace.php:131
+#: inc/workspace.php:115
+#: inc/workspace.php:133
 msgid "Launch checklist"
 msgstr ""
 
 #: inc/admin-panel.php:1033
-#: inc/admin-screens.php:267
+#: inc/admin-screens.php:271
 #: inc/layout-system.php:19
 msgid "Layout"
 msgstr ""
@@ -2468,12 +2570,12 @@ msgstr ""
 msgid "Layout settings version"
 msgstr ""
 
-#: inc/admin-panel.php:1134
+#: inc/admin-panel.php:1126
 msgid "Layout widths"
 msgstr ""
 
 #: inc/admin-screens.php:17
-#: inc/admin-screens.php:373
+#: inc/admin-screens.php:378
 msgid "Layouts"
 msgstr ""
 
@@ -2490,8 +2592,8 @@ msgstr ""
 msgid "Leave a comment"
 msgstr ""
 
+#: inc/admin-panel.php:1250
 #: inc/admin-panel.php:1258
-#: inc/admin-panel.php:1266
 msgid "Leave empty to match the theme automatically."
 msgstr ""
 
@@ -2522,7 +2624,7 @@ msgid "Let’s shape your next space."
 msgstr ""
 
 #: inc/architecture.php:297
-#: inc/demo-site.php:534
+#: inc/demo-site.php:535
 msgid "Let’s talk about your project."
 msgstr ""
 
@@ -2548,7 +2650,7 @@ msgstr ""
 msgid "Listen and define"
 msgstr ""
 
-#: inc/demo-site.php:518
+#: inc/demo-site.php:519
 msgid "Listen to the brief. Understand the site. Test the possibilities. Develop the details. Follow the work through construction."
 msgstr ""
 
@@ -2564,7 +2666,7 @@ msgstr ""
 msgid "Listing layout"
 msgstr ""
 
-#: inc/admin-panel.php:1345
+#: inc/admin-panel.php:1337
 msgid "Load Google Material Symbols"
 msgstr ""
 
@@ -2585,32 +2687,32 @@ msgid "Local heading font"
 msgstr ""
 
 #: inc/admin-panel.php:1030
-#: inc/workspace.php:174
+#: inc/workspace.php:176
 msgid "Logo max height — desktop (px)"
 msgstr ""
 
 #: inc/admin-panel.php:1031
-#: inc/workspace.php:175
+#: inc/workspace.php:177
 msgid "Logo max height — mobile (px)"
 msgstr ""
 
 #: inc/admin-panel.php:1027
-#: inc/workspace.php:168
+#: inc/workspace.php:170
 msgid "Logo — dark mode (1×)"
 msgstr ""
 
 #: inc/admin-panel.php:1028
-#: inc/workspace.php:169
+#: inc/workspace.php:171
 msgid "Logo — dark mode (2× retina)"
 msgstr ""
 
 #: inc/admin-panel.php:1025
-#: inc/workspace.php:166
+#: inc/workspace.php:168
 msgid "Logo — light mode (1×)"
 msgstr ""
 
 #: inc/admin-panel.php:1026
-#: inc/workspace.php:167
+#: inc/workspace.php:169
 msgid "Logo — light mode (2× retina)"
 msgstr ""
 
@@ -2619,12 +2721,12 @@ msgid "Lowercase"
 msgstr ""
 
 #: inc/admin-screens.php:20
-#: inc/admin-screens.php:375
+#: inc/admin-screens.php:380
 msgid "Maintenance"
 msgstr ""
 
 #: inc/workspace.php:31
-#: inc/workspace.php:121
+#: inc/workspace.php:123
 msgid "Maintenance and compatibility"
 msgstr ""
 
@@ -2638,7 +2740,7 @@ msgstr ""
 msgid "Maintenance message"
 msgstr ""
 
-#: inc/workspace.php:227
+#: inc/workspace.php:229
 msgid "Maintenance mode"
 msgstr ""
 
@@ -2666,7 +2768,7 @@ msgstr ""
 msgid "Materials Studio"
 msgstr ""
 
-#: inc/demo-site.php:506
+#: inc/demo-site.php:507
 msgid "Materials, rooms and landscape from our projects and studio."
 msgstr ""
 
@@ -2696,8 +2798,12 @@ msgstr ""
 msgid "Media & text (image right)"
 msgstr ""
 
+#: inc/authoring.php:432
+msgid "Media write test"
+msgstr ""
+
 #: inc/architecture.php:244
-#: inc/demo-site.php:471
+#: inc/demo-site.php:472
 msgid "Meet the studio"
 msgstr ""
 
@@ -2709,7 +2815,7 @@ msgstr ""
 msgid "Mega menu parent (top level)"
 msgstr ""
 
-#: inc/admin-screens.php:408
+#: inc/admin-screens.php:414
 msgid "Memory limit"
 msgstr ""
 
@@ -2717,12 +2823,16 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: inc/admin-panel.php:1046
+#: inc/admin-panel.php:1038
 msgid "Menu alignment"
 msgstr ""
 
 #: inc/menu-controls.php:28
 msgid "Menu layout"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:178
+msgid "Menu order"
 msgstr ""
 
 #: inc/platform.php:34
@@ -2750,7 +2860,7 @@ msgstr ""
 msgid "Mobile actions in display order (leave labels empty to use the existing dock)"
 msgstr ""
 
-#: inc/admin-panel.php:1057
+#: inc/admin-panel.php:1049
 msgid "Mobile bottom app dock (≤600px)"
 msgstr ""
 
@@ -2770,12 +2880,12 @@ msgstr ""
 msgid "Mobile size"
 msgstr ""
 
-#: inc/admin-screens.php:412
-#: inc/workspace.php:224
+#: inc/admin-screens.php:418
+#: inc/workspace.php:226
 msgid "Multisite"
 msgstr ""
 
-#: inc/admin-panel.php:1247
+#: inc/admin-panel.php:1239
 msgid "Muted text"
 msgstr ""
 
@@ -2784,7 +2894,7 @@ msgstr ""
 msgid "My account"
 msgstr ""
 
-#: inc/admin-panel.php:1301
+#: inc/admin-panel.php:1293
 msgid "Name (e.g. Primary) — leave empty to skip"
 msgstr ""
 
@@ -2792,19 +2902,27 @@ msgstr ""
 msgid "Native theme / builder fallback"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:256
+msgid "Natural"
+msgstr ""
+
 #: inc/platform.php:165
 msgid "Natural image ratio"
+msgstr ""
+
+#: inc/authoring.php:468
+msgid "Needs attention"
 msgstr ""
 
 #: inc/class-gnn-walker-nav-menu.php:108
 msgid "New"
 msgstr ""
 
-#: inc/workspace.php:333
+#: inc/workspace.php:335
 msgid "New ready-made sites use Elementor."
 msgstr ""
 
-#: inc/admin-screens.php:332
+#: inc/admin-screens.php:336
 msgid "New sizes apply to future uploads. Original files are kept."
 msgstr ""
 
@@ -2812,13 +2930,13 @@ msgstr ""
 msgid "Newer comments →"
 msgstr ""
 
-#: inc/starter-editors.php:199
+#: inc/starter-editors.php:278
 #: inc/starter-layouts.php:53
 msgid "News"
 msgstr ""
 
 #: inc/architecture.php:295
-#: inc/content-modules.php:452
+#: inc/content-modules.php:476
 msgid "Next project"
 msgstr ""
 
@@ -2831,7 +2949,7 @@ msgstr ""
 msgid "Next →"
 msgstr ""
 
-#: inc/admin-screens.php:412
+#: inc/admin-screens.php:418
 msgid "No"
 msgstr ""
 
@@ -2849,12 +2967,12 @@ msgid "No imported starter pages were found."
 msgstr ""
 
 #: inc/admin-panel.php:325
-#: inc/admin-panel.php:1384
-#: inc/workspace.php:213
+#: inc/admin-panel.php:1376
+#: inc/workspace.php:215
 msgid "No pending changes"
 msgstr ""
 
-#: inc/content-modules.php:378
+#: inc/content-modules.php:402
 msgid "No projects have been published in this selection yet."
 msgstr ""
 
@@ -2875,7 +2993,7 @@ msgid "No settings match your search. Try another keyword."
 msgstr ""
 
 #: inc/admin-panel.php:637
-#: inc/admin-panel.php:1117
+#: inc/admin-panel.php:1109
 msgid "No sidebar"
 msgstr ""
 
@@ -2891,7 +3009,7 @@ msgstr ""
 msgid "No unused Architecture page path is available."
 msgstr ""
 
-#: inc/starter-editors.php:236
+#: inc/starter-editors.php:315
 msgid "No unused starter page path is available."
 msgstr ""
 
@@ -2915,11 +3033,11 @@ msgstr ""
 msgid "Nothing here yet"
 msgstr ""
 
-#: inc/admin-panel.php:1168
+#: inc/admin-panel.php:1160
 msgid "Off by default. Replaces the normal title above the content with a centered title overlaid on the featured image itself. Any page can override this individually — see \"Title over featured image\" in its GNN Display Options box."
 msgstr ""
 
-#: inc/admin-panel.php:1325
+#: inc/admin-panel.php:1317
 msgid "Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font."
 msgstr ""
 
@@ -2943,11 +3061,11 @@ msgstr ""
 msgid "Only the administrator who started this reset can continue."
 msgstr ""
 
-#: inc/workspace.php:190
+#: inc/workspace.php:192
 msgid "Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator."
 msgstr ""
 
-#: inc/workspace.php:373
+#: inc/workspace.php:375
 msgid "Open Elementor activation"
 msgstr ""
 
@@ -2964,6 +3082,14 @@ msgstr ""
 msgid "Optional store"
 msgstr ""
 
+#: inc/class-gnn-elementor-module.php:185
+msgid "Order"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:171
+msgid "Order by"
+msgstr ""
+
 #: inc/blog.php:28
 msgid "Original proportions"
 msgstr ""
@@ -2976,15 +3102,15 @@ msgstr ""
 msgid "Our interests span homes, workplaces, public buildings and interior environments. We value simple ideas, careful coordination and an honest use of materials."
 msgstr ""
 
-#: inc/demo-site.php:489
+#: inc/demo-site.php:490
 msgid "Our services"
 msgstr ""
 
-#: inc/demo-site.php:489
+#: inc/demo-site.php:490
 msgid "Our studio works across architecture, interior design and landscape. We stay close to each project through research, design development and coordination on site."
 msgstr ""
 
-#: inc/demo-site.php:518
+#: inc/demo-site.php:519
 msgid "Our team"
 msgstr ""
 
@@ -2992,19 +3118,19 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/admin-panel.php:1351
+#: inc/admin-panel.php:1343
 msgid "Outlined"
 msgstr ""
 
-#: inc/admin-panel.php:1171
+#: inc/admin-panel.php:1163
 msgid "Overlay title background color"
 msgstr ""
 
-#: inc/admin-panel.php:1172
+#: inc/admin-panel.php:1164
 msgid "Overlay title background opacity (%)"
 msgstr ""
 
-#: inc/admin-panel.php:1170
+#: inc/admin-panel.php:1162
 msgid "Overlay title font size (px)"
 msgstr ""
 
@@ -3012,7 +3138,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: inc/workspace.php:223
+#: inc/workspace.php:225
 msgid "PHP version"
 msgstr ""
 
@@ -3025,28 +3151,28 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-#: inc/admin-panel.php:1239
+#: inc/admin-panel.php:1231
 msgid "Page background"
 msgstr ""
 
-#: inc/admin-panel.php:1153
+#: inc/admin-panel.php:1145
 msgid "Page image alignment"
 msgstr ""
 
-#: inc/admin-panel.php:1144
+#: inc/admin-panel.php:1136
 msgid "Page image fit"
 msgstr ""
 
-#: inc/admin-panel.php:1140
+#: inc/admin-panel.php:1132
 msgid "Page image height (px)"
 msgstr ""
 
 #: 404.php:16
-#: inc/admin-panel.php:1181
+#: inc/admin-panel.php:1173
 msgid "Page not found"
 msgstr ""
 
-#: inc/admin-panel.php:1109
+#: inc/admin-panel.php:1101
 msgid "Page structure"
 msgstr ""
 
@@ -3055,7 +3181,7 @@ msgid "Page template"
 msgstr ""
 
 #: inc/admin-screens.php:16
-#: inc/admin-screens.php:372
+#: inc/admin-screens.php:377
 msgid "Page templates"
 msgstr ""
 
@@ -3077,18 +3203,24 @@ msgstr ""
 msgid "Paragraph (body text)"
 msgstr ""
 
+#: inc/authoring.php:434
+#: inc/authoring.php:444
+#: inc/authoring.php:468
+msgid "Passed"
+msgstr ""
+
 #: inc/starter-maintenance.php:218
 msgid "Permanently delete selected demo drafts and their metadata instead of moving to Trash. This cannot be undone; a settings snapshot does not back up pages."
 msgstr ""
 
-#: inc/admin-panel.php:1558
-#: inc/admin-panel.php:1576
-#: inc/admin-panel.php:1608
+#: inc/admin-panel.php:1550
+#: inc/admin-panel.php:1568
+#: inc/admin-panel.php:1600
 msgid "Permission denied."
 msgstr ""
 
-#: inc/admin-panel.php:1063
-#: inc/workspace.php:162
+#: inc/admin-panel.php:1055
+#: inc/workspace.php:164
 msgid "Phone"
 msgstr ""
 
@@ -3096,7 +3228,7 @@ msgstr ""
 msgid "Physical samples and working models connect an early idea to the finished space. Testing junctions, textures and proportions together helps the team make deliberate decisions before construction begins."
 msgstr ""
 
-#: inc/admin-panel.php:1101
+#: inc/admin-panel.php:1093
 msgid "Placeholders: %year% and %site%. Leave empty for the default."
 msgstr ""
 
@@ -3117,23 +3249,23 @@ msgid "Platform uptime SLA"
 msgstr ""
 
 #: inc/admin-screens.php:19
-#: inc/admin-screens.php:371
+#: inc/admin-screens.php:376
 msgid "Plugins"
 msgstr ""
 
-#: inc/admin-panel.php:1418
+#: inc/admin-panel.php:1410
 msgid "Portable design profile (no site identity or code)"
 msgstr ""
 
 #: inc/content-modules.php:18
 #: inc/content-modules.php:20
-#: inc/content-modules.php:355
+#: inc/content-modules.php:379
 msgid "Portfolio"
 msgstr ""
 
 #: inc/architecture.php:248
 #: inc/architecture.php:333
-#: inc/starter-editors.php:207
+#: inc/starter-editors.php:286
 msgid "Portfolio / 2 Columns"
 msgstr ""
 
@@ -3173,25 +3305,29 @@ msgstr ""
 msgid "Preload theme fonts"
 msgstr ""
 
-#: inc/admin-screens.php:358
+#: inc/admin-screens.php:363
 msgid "Preview"
 msgstr ""
 
-#: inc/admin-panel.php:1442
+#: inc/admin-panel.php:1434
 msgid "Preview import"
 msgstr ""
 
-#: inc/workspace.php:146
+#: inc/workspace.php:148
 msgid "Preview installed design"
 msgstr ""
 
 #: inc/architecture.php:295
-#: inc/content-modules.php:452
+#: inc/content-modules.php:476
 msgid "Previous project"
 msgstr ""
 
 #: template-parts/hero-slider.php:71
 msgid "Previous slide"
+msgstr ""
+
+#: inc/authoring.php:95
+msgid "Pricing"
 msgstr ""
 
 #: header.php:83
@@ -3203,8 +3339,8 @@ msgstr ""
 msgid "Primary Menu"
 msgstr ""
 
-#: inc/admin-panel.php:1246
-#: inc/workspace.php:182
+#: inc/admin-panel.php:1238
+#: inc/workspace.php:184
 msgid "Primary text"
 msgstr ""
 
@@ -3225,15 +3361,19 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: inc/admin-panel.php:1177
+#: inc/admin-panel.php:1169
 msgid "Products per page"
+msgstr ""
+
+#: inc/authoring.php:146
+msgid "Professional"
 msgstr ""
 
 #: inc/platform.php:147
 msgid "Professional services"
 msgstr ""
 
-#: inc/workspace.php:148
+#: inc/workspace.php:150
 msgid "Profile actions"
 msgstr ""
 
@@ -3243,7 +3383,7 @@ msgstr ""
 
 #: inc/architecture.php:442
 #: inc/content-modules.php:46
-#: inc/content-modules.php:358
+#: inc/content-modules.php:382
 msgid "Project categories"
 msgstr ""
 
@@ -3260,7 +3400,7 @@ msgid "Project detail maximum width"
 msgstr ""
 
 #: inc/architecture.php:298
-#: inc/demo-site.php:528
+#: inc/demo-site.php:529
 msgid "Project enquiries"
 msgstr ""
 
@@ -3269,7 +3409,7 @@ msgstr ""
 msgid "Project location"
 msgstr ""
 
-#: inc/content-modules.php:451
+#: inc/content-modules.php:475
 msgid "Project navigation"
 msgstr ""
 
@@ -3281,8 +3421,12 @@ msgstr ""
 msgid "Project overview"
 msgstr ""
 
-#: inc/content-modules.php:382
+#: inc/content-modules.php:406
 msgid "Project pages"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:167
+msgid "Project selection"
 msgstr ""
 
 #: inc/architecture.php:283
@@ -3348,11 +3492,15 @@ msgstr ""
 msgid "Question two goes here?"
 msgstr ""
 
-#: inc/admin-panel.php:1373
+#: inc/authoring.php:413
+msgid "REST API"
+msgstr ""
+
+#: inc/admin-panel.php:1365
 msgid "Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_html capability."
 msgstr ""
 
-#: inc/demo-site.php:493
+#: inc/demo-site.php:494
 msgid "Read story"
 msgstr ""
 
@@ -3368,33 +3516,41 @@ msgstr ""
 msgid "Ready-made site"
 msgstr ""
 
-#: inc/workspace.php:369
+#: inc/workspace.php:371
 msgid "Ready-made sites use Elementor Free. Install or activate it before importing a design. Nothing is installed automatically."
 msgstr ""
 
-#: inc/workspace.php:259
+#: inc/workspace.php:261
 msgid "Recent configuration changes"
 msgstr ""
 
-#: inc/workspace.php:250
+#: inc/workspace.php:252
 msgid "Recovery actions"
 msgstr ""
 
-#: inc/workspace.php:122
-#: inc/workspace.php:226
-#: inc/workspace.php:247
+#: inc/workspace.php:124
+#: inc/workspace.php:228
+#: inc/workspace.php:249
 msgid "Recovery snapshots"
 msgstr ""
 
-#: inc/admin-panel.php:1476
+#: inc/authoring.php:94
+msgid "References"
+msgstr ""
+
+#: inc/admin-panel.php:1468
 msgid "Refresh Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1470
+#: inc/admin-panel.php:1462
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr ""
 
-#: inc/workspace.php:258
+#: inc/class-gnn-elementor-module.php:205
+msgid "Related projects"
+msgstr ""
+
+#: inc/workspace.php:260
 msgid "Release abandoned settings lock"
 msgstr ""
 
@@ -3420,8 +3576,12 @@ msgstr ""
 msgid "Remove upload folder symlinks before resetting."
 msgstr ""
 
-#: inc/workspace.php:132
+#: inc/workspace.php:134
 msgid "Replace draft/demo content, choose logos and verify contact links."
+msgstr ""
+
+#: inc/authoring.php:212
+msgid "Request a quote"
 msgstr ""
 
 #: inc/admin-screens.php:161
@@ -3432,7 +3592,7 @@ msgstr ""
 msgid "Required for this design"
 msgstr ""
 
-#: inc/workspace.php:369
+#: inc/workspace.php:371
 msgid "Required plugins"
 msgstr ""
 
@@ -3440,7 +3600,7 @@ msgstr ""
 msgid "Reset WordPress"
 msgstr ""
 
-#: inc/admin-panel.php:1454
+#: inc/admin-panel.php:1446
 msgid "Reset all GNN Theme settings to defaults?"
 msgstr ""
 
@@ -3452,11 +3612,11 @@ msgstr ""
 msgid "Reset is unavailable for shared or multisite databases."
 msgstr ""
 
-#: inc/workspace.php:93
+#: inc/workspace.php:95
 msgid "Reset presentation defaults before applying this profile. Keep identity, integrations and content."
 msgstr ""
 
-#: inc/workspace.php:96
+#: inc/workspace.php:98
 msgid "Reset presentation defaults first"
 msgstr ""
 
@@ -3464,8 +3624,8 @@ msgstr ""
 msgid "Reset presentation settings when applying a new profile. Identity, integrations, customer code and central content are preserved. A configuration snapshot is created first."
 msgstr ""
 
-#: inc/admin-panel.php:1447
-#: inc/admin-panel.php:1450
+#: inc/admin-panel.php:1439
+#: inc/admin-panel.php:1442
 msgid "Reset settings"
 msgstr ""
 
@@ -3473,7 +3633,7 @@ msgstr ""
 msgid "Reset stopped. Check the server and retry."
 msgstr ""
 
-#: inc/admin-panel.php:1460
+#: inc/admin-panel.php:1452
 msgid "Reset to defaults"
 msgstr ""
 
@@ -3483,7 +3643,7 @@ msgstr ""
 msgid "Residential"
 msgstr ""
 
-#: inc/demo-site.php:497
+#: inc/demo-site.php:498
 msgid "Residential architecture, interiors and shared spaces. Explore the projects by category."
 msgstr ""
 
@@ -3491,11 +3651,11 @@ msgstr ""
 msgid "Residential towers"
 msgstr ""
 
-#: inc/admin-screens.php:394
+#: inc/admin-screens.php:400
 msgid "Restore"
 msgstr ""
 
-#: inc/admin-panel.php:1451
+#: inc/admin-panel.php:1443
 msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
 msgstr ""
 
@@ -3503,11 +3663,11 @@ msgstr ""
 msgid "Restore the Architecture starter home from Trash before adding missing pages."
 msgstr ""
 
-#: inc/workspace.php:251
+#: inc/workspace.php:253
 msgid "Restore this configuration"
 msgstr ""
 
-#: inc/starter-editors.php:225
+#: inc/starter-editors.php:304
 msgid "Restore this edition’s starter home from Trash before adding missing pages."
 msgstr ""
 
@@ -3528,7 +3688,7 @@ msgstr ""
 msgid "Reusable header"
 msgstr ""
 
-#: inc/workspace.php:300
+#: inc/workspace.php:302
 msgid "Review and confirm the operation first."
 msgstr ""
 
@@ -3536,7 +3696,7 @@ msgstr ""
 msgid "Review imported demo drafts"
 msgstr ""
 
-#: inc/workspace.php:132
+#: inc/workspace.php:134
 msgid "Review mobile navigation, keyboard operation and brand contrast."
 msgstr ""
 
@@ -3555,35 +3715,47 @@ msgstr ""
 msgid "Right Sidebar"
 msgstr ""
 
-#: inc/admin-panel.php:1352
+#: inc/admin-panel.php:1344
 msgid "Rounded"
+msgstr ""
+
+#: inc/authoring.php:463
+msgid "Run checks"
 msgstr ""
 
 #: inc/elementor-templates.php:224
 msgid "Sample title"
 msgstr ""
 
-#: inc/admin-panel.php:1525
-#: inc/admin-screens.php:251
-#: inc/admin-screens.php:336
+#: inc/admin-panel.php:1517
+#: inc/admin-screens.php:255
+#: inc/admin-screens.php:340
 msgid "Save"
 msgstr ""
 
 #: inc/admin-panel.php:910
-#: inc/admin-panel.php:1385
+#: inc/admin-panel.php:1377
 msgid "Save Settings"
 msgstr ""
 
-#: inc/workspace.php:214
+#: inc/workspace.php:216
 msgid "Save assigned settings"
 msgstr ""
 
-#: inc/admin-screens.php:346
+#: inc/admin-screens.php:351
 msgid "Saved templates"
 msgstr ""
 
 #: inc/admin-panel.php:326
 msgid "Saving settings…"
+msgstr ""
+
+#: inc/authoring.php:207
+msgid "Schedule"
+msgstr ""
+
+#: inc/authoring.php:199
+msgid "Scope"
 msgstr ""
 
 #: inc/workspace.php:40
@@ -3621,8 +3793,12 @@ msgstr ""
 msgid "Secondary"
 msgstr ""
 
-#: inc/workspace.php:183
+#: inc/workspace.php:185
 msgid "Secondary text"
+msgstr ""
+
+#: inc/authoring.php:333
+msgid "Section library"
 msgstr ""
 
 #: inc/platform.php:95
@@ -3633,7 +3809,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/content-modules.php:414
+#: inc/content-modules.php:438
 msgid "Select an album or publish projects with gallery images to populate this collection."
 msgstr ""
 
@@ -3654,7 +3830,7 @@ msgstr ""
 msgid "Select the unchanged demo drafts you want to remove."
 msgstr ""
 
-#: inc/demo-site.php:474
+#: inc/demo-site.php:475
 #: inc/starter-layouts.php:83
 msgid "Selected projects"
 msgstr ""
@@ -3663,7 +3839,7 @@ msgstr ""
 msgid "Selected work"
 msgstr ""
 
-#: inc/workspace.php:265
+#: inc/workspace.php:267
 msgid "Sensitive field values are never included in the change log or support summary."
 msgstr ""
 
@@ -3676,8 +3852,8 @@ msgid "Server connection interrupted. Retry to continue."
 msgstr ""
 
 #: inc/architecture.php:332
-#: inc/starter-editors.php:198
-#: inc/starter-editors.php:206
+#: inc/authoring.php:92
+#: inc/starter-editors.php:277
 msgid "Services"
 msgstr ""
 
@@ -3697,11 +3873,11 @@ msgstr ""
 msgid "Setting groups"
 msgstr ""
 
-#: inc/admin-panel.php:1441
+#: inc/admin-panel.php:1433
 msgid "Settings JSON file"
 msgstr ""
 
-#: inc/admin-screens.php:390
+#: inc/admin-screens.php:396
 msgid "Settings backup"
 msgstr ""
 
@@ -3721,11 +3897,11 @@ msgstr ""
 msgid "Settings exceed the 1 MB limit. Nothing was changed."
 msgstr ""
 
-#: inc/admin-panel.php:1684
+#: inc/admin-panel.php:1676
 msgid "Settings imported successfully."
 msgstr ""
 
-#: inc/admin-panel.php:1686
+#: inc/admin-panel.php:1678
 msgid "Settings reset to defaults."
 msgstr ""
 
@@ -3733,7 +3909,7 @@ msgstr ""
 msgid "Settings saved."
 msgstr ""
 
-#: inc/admin-screens.php:390
+#: inc/admin-screens.php:396
 msgid "Settings snapshots do not include content or files."
 msgstr ""
 
@@ -3743,7 +3919,7 @@ msgstr ""
 
 #: inc/admin-panel.php:960
 #: inc/admin-screens.php:81
-#: inc/admin-screens.php:352
+#: inc/workspace.php:55
 msgid "Setup wizard"
 msgstr ""
 
@@ -3752,7 +3928,11 @@ msgstr ""
 msgid "Shared block"
 msgstr ""
 
-#: inc/admin-panel.php:1353
+#: inc/authoring.php:442
+msgid "Shared block preview"
+msgstr ""
+
+#: inc/admin-panel.php:1345
 msgid "Sharp"
 msgstr ""
 
@@ -3765,11 +3945,11 @@ msgstr ""
 msgid "Shop by category"
 msgstr ""
 
-#: inc/admin-panel.php:1176
+#: inc/admin-panel.php:1168
 msgid "Shop columns"
 msgstr ""
 
-#: inc/admin-panel.php:1183
+#: inc/admin-panel.php:1175
 msgid "Show a search box on the 404 page"
 msgstr ""
 
@@ -3813,7 +3993,7 @@ msgstr ""
 msgid "Show the author biography box"
 msgstr ""
 
-#: inc/admin-panel.php:1056
+#: inc/admin-panel.php:1048
 msgid "Show the cart link (WooCommerce)"
 msgstr ""
 
@@ -3837,11 +4017,11 @@ msgstr ""
 msgid "Show the language switcher when supported"
 msgstr ""
 
-#: inc/admin-panel.php:1167
+#: inc/admin-panel.php:1159
 msgid "Show the page title centered inside the featured image"
 msgstr ""
 
-#: inc/admin-panel.php:1055
+#: inc/admin-panel.php:1047
 msgid "Show the search icon"
 msgstr ""
 
@@ -3849,7 +4029,7 @@ msgstr ""
 msgid "Show the “Scroll to top” button"
 msgstr ""
 
-#: inc/admin-panel.php:1102
+#: inc/admin-panel.php:1094
 msgid "Shown bottom-right in the footer. Leave empty to hide."
 msgstr ""
 
@@ -3862,11 +4042,11 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-#: inc/admin-panel.php:1135
+#: inc/admin-panel.php:1127
 msgid "Sidebar column width."
 msgstr ""
 
-#: inc/admin-panel.php:1135
+#: inc/admin-panel.php:1127
 msgid "Sidebar width (px)"
 msgstr ""
 
@@ -3927,7 +4107,11 @@ msgstr ""
 msgid "Site platform"
 msgstr ""
 
-#: inc/admin-panel.php:1419
+#: inc/authoring.php:412
+msgid "Site response"
+msgstr ""
+
+#: inc/admin-panel.php:1411
 msgid "Site settings (includes private configuration)"
 msgstr ""
 
@@ -3939,7 +4123,7 @@ msgstr ""
 msgid "Site structure"
 msgstr ""
 
-#: inc/admin-screens.php:284
+#: inc/admin-screens.php:288
 msgid "Size 0 inherits. Empty letter spacing inherits."
 msgstr ""
 
@@ -3988,7 +4172,7 @@ msgstr ""
 msgid "Soft"
 msgstr ""
 
-#: inc/admin-panel.php:1688
+#: inc/admin-panel.php:1680
 msgid "Some Elementor templates could not be saved. Please retry."
 msgstr ""
 
@@ -4001,7 +4185,7 @@ msgstr ""
 msgid "Space. Light. Life."
 msgstr ""
 
-#: inc/demo-site.php:471
+#: inc/demo-site.php:472
 msgid "Spaces for the way we live."
 msgstr ""
 
@@ -4013,8 +4197,11 @@ msgstr ""
 msgid "Stacked"
 msgstr ""
 
+#: inc/authoring.php:479
+msgid "Standard"
+msgstr ""
+
 #: inc/admin-panel.php:619
-#: inc/admin-panel.php:1039
 msgid "Standard (logo left, menu right)"
 msgstr ""
 
@@ -4026,7 +4213,7 @@ msgstr ""
 msgid "Start a conversation"
 msgstr ""
 
-#: inc/demo-site.php:462
+#: inc/demo-site.php:463
 msgid "Start a project"
 msgstr ""
 
@@ -4042,12 +4229,16 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: inc/admin-panel.php:1054
+#: inc/admin-panel.php:1046
 msgid "Sticky header"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:119
 msgid "Store collection"
+msgstr ""
+
+#: inc/authoring.php:143
+msgid "Strategy"
 msgstr ""
 
 #: inc/starter-layouts.php:18
@@ -4059,7 +4250,7 @@ msgid "Strong"
 msgstr ""
 
 #: inc/architecture.php:331
-#: inc/starter-editors.php:205
+#: inc/starter-editors.php:284
 msgid "Studio"
 msgstr ""
 
@@ -4067,11 +4258,11 @@ msgstr ""
 msgid "Studio Journal"
 msgstr ""
 
-#: inc/demo-site.php:533
+#: inc/demo-site.php:534
 msgid "Studio visits by appointment."
 msgstr ""
 
-#: inc/admin-panel.php:1296
+#: inc/admin-panel.php:1288
 msgid "Style %d"
 msgstr ""
 
@@ -4083,11 +4274,15 @@ msgstr ""
 msgid "Suggested: #34d399, #22d3ee, #fb923c, #a78bfa"
 msgstr ""
 
+#: inc/authoring.php:203
+msgid "Support"
+msgstr ""
+
 #: inc/architecture.php:268
 msgid "Support a clear handover and review the completed work."
 msgstr ""
 
-#: inc/workspace.php:180
+#: inc/workspace.php:182
 msgid "Surface"
 msgstr ""
 
@@ -4095,7 +4290,7 @@ msgstr ""
 msgid "Surface shadow"
 msgstr ""
 
-#: inc/admin-panel.php:1237
+#: inc/admin-panel.php:1229
 msgid "Surfaces"
 msgstr ""
 
@@ -4104,7 +4299,7 @@ msgstr ""
 msgid "System fonts"
 msgstr ""
 
-#: inc/admin-screens.php:418
+#: inc/admin-screens.php:424
 msgid "System status"
 msgstr ""
 
@@ -4124,15 +4319,25 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
+#: inc/authoring.php:93
+msgid "Team"
+msgstr ""
+
 #: inc/starters.php:212
 msgid "Team introduction"
 msgstr ""
 
-#: inc/workspace.php:238
+#: inc/authoring.php:144
+#: inc/authoring.php:144
+#: inc/authoring.php:144
+msgid "Team member"
+msgstr ""
+
+#: inc/workspace.php:240
 msgid "Technical details"
 msgstr ""
 
-#: inc/demo-site.php:528
+#: inc/demo-site.php:529
 msgid "Tell us about the place, the people who will use it and what you would like to create. We welcome conversations about new homes, shared buildings and interior spaces."
 msgstr ""
 
@@ -4152,18 +4357,18 @@ msgstr ""
 msgid "Test space, light, material and the design direction."
 msgstr ""
 
-#: inc/admin-panel.php:1304
+#: inc/admin-panel.php:1296
 #: inc/design-system.php:251
 #: inc/site-platform.php:94
 msgid "Text"
 msgstr ""
 
-#: inc/admin-panel.php:1244
+#: inc/admin-panel.php:1236
 msgid "Text & Borders"
 msgstr ""
 
 #: inc/admin-panel.php:671
-#: inc/admin-panel.php:1075
+#: inc/admin-panel.php:1067
 msgid "Text (site title)"
 msgstr ""
 
@@ -4171,7 +4376,7 @@ msgstr ""
 msgid "Text case"
 msgstr ""
 
-#: inc/admin-panel.php:1230
+#: inc/admin-panel.php:1222
 msgid "Text on accent"
 msgstr ""
 
@@ -4181,6 +4386,10 @@ msgstr ""
 
 #: inc/platform.php:244
 msgid "The analytics ID is invalid. No settings were changed."
+msgstr ""
+
+#: inc/admin-screens.php:466
+msgid "The block role does not match this region."
 msgstr ""
 
 #: inc/starter-maintenance.php:163
@@ -4204,7 +4413,7 @@ msgstr ""
 msgid "The installation has not finished. Continue from where it stopped."
 msgstr ""
 
-#: inc/workspace.php:247
+#: inc/workspace.php:249
 msgid "The last ten local configuration snapshots are retained. This does not replace a database/files backup. Recovery does not delete or roll back customer pages."
 msgstr ""
 
@@ -4233,6 +4442,11 @@ msgstr ""
 msgid "The requested snapshot is no longer available."
 msgstr ""
 
+#: inc/authoring.php:378
+#: inc/authoring.php:384
+msgid "The section could not be saved."
+msgstr ""
+
 #: inc/portability.php:138
 msgid "The selected reference has the wrong content type."
 msgstr ""
@@ -4249,7 +4463,7 @@ msgstr ""
 msgid "The study explores how a clear structural order and a restrained material palette can create adaptable spaces with a distinct character."
 msgstr ""
 
-#: inc/admin-panel.php:1233
+#: inc/admin-panel.php:1225
 msgid "The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast."
 msgstr ""
 
@@ -4262,7 +4476,7 @@ msgstr ""
 msgid "The update package could not be prepared. The installed theme has not been changed."
 msgstr ""
 
-#: inc/admin-screens.php:405
+#: inc/admin-screens.php:411
 #: inc/frontend.php:233
 #: inc/platform.php:445
 msgid "Theme"
@@ -4272,9 +4486,9 @@ msgstr ""
 msgid "Theme Mode"
 msgstr ""
 
-#: inc/admin-panel.php:1334
+#: inc/admin-panel.php:1326
 #: inc/admin-screens.php:218
-#: inc/admin-screens.php:237
+#: inc/admin-screens.php:241
 msgid "Theme default"
 msgstr ""
 
@@ -4290,21 +4504,21 @@ msgstr ""
 msgid "Theme settings"
 msgstr ""
 
-#: inc/admin-panel.php:1689
+#: inc/admin-panel.php:1681
 msgid "Theme update settings saved."
 msgstr ""
 
-#: inc/workspace.php:228
+#: inc/workspace.php:230
 msgid "Theme updates"
 msgstr ""
 
-#: inc/admin-panel.php:1488
-#: inc/admin-panel.php:1491
+#: inc/admin-panel.php:1480
+#: inc/admin-panel.php:1483
 msgid "Theme updates (GitHub)"
 msgstr ""
 
 #: inc/admin-panel.php:965
-#: inc/workspace.php:221
+#: inc/workspace.php:223
 msgid "Theme version"
 msgstr ""
 
@@ -4329,8 +4543,12 @@ msgstr ""
 msgid "This profile is not available."
 msgstr ""
 
-#: inc/workspace.php:286
+#: inc/workspace.php:288
 msgid "This role cannot change the submitted fields."
+msgstr ""
+
+#: inc/authoring.php:351
+msgid "This section is unavailable."
 msgstr ""
 
 #: inc/portability.php:85
@@ -4341,7 +4559,7 @@ msgstr ""
 msgid "This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the \"GNN Ana Sayfa\" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page."
 msgstr ""
 
-#: inc/starter-editors.php:118
+#: inc/starter-editors.php:197
 msgid "This starter contains a block without an Elementor equivalent."
 msgstr ""
 
@@ -4349,15 +4567,23 @@ msgstr ""
 msgid "Thoughtful architecture and interiors for the way we live, work and come together."
 msgstr ""
 
-#: inc/admin-screens.php:409
+#: inc/admin-screens.php:415
 msgid "Time limit"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:177
+msgid "Title"
 msgstr ""
 
 #: inc/site-platform.php:139
 msgid "Title bar"
 msgstr ""
 
-#: inc/admin-panel.php:1163
+#: inc/class-gnn-elementor-module.php:296
+msgid "Title color"
+msgstr ""
+
+#: inc/admin-panel.php:1155
 #: inc/page-meta.php:114
 msgid "Title over featured image"
 msgstr ""
@@ -4367,22 +4593,22 @@ msgstr ""
 msgid "Toggle dark / light mode"
 msgstr ""
 
-#: inc/admin-panel.php:1155
+#: inc/admin-panel.php:1147
 #: inc/blog.php:58
 #: inc/blog.php:91
 msgid "Top"
 msgstr ""
 
-#: inc/admin-panel.php:1059
-#: inc/admin-panel.php:1251
+#: inc/admin-panel.php:1051
+#: inc/admin-panel.php:1243
 msgid "Top bar"
 msgstr ""
 
-#: inc/admin-panel.php:1255
+#: inc/admin-panel.php:1247
 msgid "Top bar background color"
 msgstr ""
 
-#: inc/admin-panel.php:1263
+#: inc/admin-panel.php:1255
 msgid "Top bar text color"
 msgstr ""
 
@@ -4429,15 +4655,15 @@ msgid "Type the site address"
 msgstr ""
 
 #: inc/admin-panel.php:881
-#: inc/admin-screens.php:268
+#: inc/admin-screens.php:272
 msgid "Typography"
 msgstr ""
 
-#: inc/admin-screens.php:416
+#: inc/admin-screens.php:422
 msgid "Unavailable"
 msgstr ""
 
-#: inc/admin-screens.php:227
+#: inc/admin-screens.php:230
 msgid "Unavailable block"
 msgstr ""
 
@@ -4462,11 +4688,11 @@ msgstr ""
 msgid "Unsupported database prefix."
 msgstr ""
 
-#: inc/admin-panel.php:1506
+#: inc/admin-panel.php:1498
 msgid "Update available: version %s."
 msgstr ""
 
-#: inc/admin-panel.php:1690
+#: inc/admin-panel.php:1682
 msgid "Update check complete."
 msgstr ""
 
@@ -4474,7 +4700,7 @@ msgstr ""
 msgid "Update to %s"
 msgstr ""
 
-#: inc/admin-panel.php:1432
+#: inc/admin-panel.php:1424
 msgid "Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values."
 msgstr ""
 
@@ -4487,7 +4713,7 @@ msgstr ""
 msgid "Upload boundary changed. Reset stopped."
 msgstr ""
 
-#: inc/admin-screens.php:411
+#: inc/admin-screens.php:417
 msgid "Upload limit"
 msgstr ""
 
@@ -4518,11 +4744,11 @@ msgstr ""
 msgid "Usage indexing is in progress. Reload to continue."
 msgstr ""
 
-#: inc/admin-panel.php:1324
+#: inc/admin-panel.php:1316
 msgid "Use Google Fonts instead"
 msgstr ""
 
-#: inc/admin-panel.php:1357
+#: inc/admin-panel.php:1349
 msgid "Use it in content with e.g. %s"
 msgstr ""
 
@@ -4530,7 +4756,7 @@ msgstr ""
 msgid "Use this editorial page for announcements, resources and selected articles. Add your own article summaries and links in your chosen editor."
 msgstr ""
 
-#: inc/admin-panel.php:1128
+#: inc/admin-panel.php:1120
 msgid "Used by the mobile dock's Contact link (and anywhere else the theme links to \"get in touch\"). Auto-detect looks for a page slugged \"contact\" or \"iletisim\"."
 msgstr ""
 
@@ -4548,7 +4774,7 @@ msgstr ""
 msgid "Users could not be reset."
 msgstr ""
 
-#: inc/admin-panel.php:1376
+#: inc/admin-panel.php:1368
 msgid "Verification and custom markup"
 msgstr ""
 
@@ -4573,11 +4799,11 @@ msgstr ""
 msgid "View site"
 msgstr ""
 
-#: inc/admin-panel.php:1159
+#: inc/admin-panel.php:1151
 msgid "Visible area when cropped."
 msgstr ""
 
-#: inc/demo-site.php:533
+#: inc/demo-site.php:534
 msgid "Visit the studio"
 msgstr ""
 
@@ -4593,7 +4819,7 @@ msgstr ""
 msgid "Warm architectural material study"
 msgstr ""
 
-#: inc/demo-site.php:516
+#: inc/demo-site.php:517
 msgid "We are a collaborative architecture studio interested in how places can support a better everyday life."
 msgstr ""
 
@@ -4609,7 +4835,7 @@ msgstr ""
 msgid "We bring together observation, craft and a practical understanding of how spaces are made."
 msgstr ""
 
-#: inc/demo-site.php:471
+#: inc/demo-site.php:472
 msgid "We connect thoughtful architecture with the life around it. From a private home to a shared neighbourhood, our work brings light, landscape and carefully chosen materials into balance."
 msgstr ""
 
@@ -4657,7 +4883,7 @@ msgstr ""
 msgid "Wipe"
 msgstr ""
 
-#: inc/admin-screens.php:406
+#: inc/admin-screens.php:412
 msgid "WordPress"
 msgstr ""
 
@@ -4665,7 +4891,7 @@ msgstr ""
 msgid "WordPress defaults"
 msgstr ""
 
-#: inc/workspace.php:222
+#: inc/workspace.php:224
 msgid "WordPress version"
 msgstr ""
 
@@ -4673,7 +4899,7 @@ msgstr ""
 msgid "Working…"
 msgstr ""
 
-#: inc/workspace.php:125
+#: inc/workspace.php:127
 msgid "Workspace sections"
 msgstr ""
 
@@ -4686,7 +4912,7 @@ msgstr ""
 msgid "Written by"
 msgstr ""
 
-#: inc/admin-screens.php:412
+#: inc/admin-screens.php:418
 msgid "Yes"
 msgstr ""
 
@@ -4694,7 +4920,7 @@ msgstr ""
 msgid "You are not allowed to restore configuration snapshots."
 msgstr ""
 
-#: inc/admin-panel.php:1510
+#: inc/admin-panel.php:1502
 msgid "You are running the latest version."
 msgstr ""
 
@@ -4722,7 +4948,7 @@ msgstr ""
 msgid "— second line"
 msgstr ""
 
-#: inc/admin-panel.php:1184
+#: inc/admin-panel.php:1176
 msgid "“Back to home” button text"
 msgstr ""
 

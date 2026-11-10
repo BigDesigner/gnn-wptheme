@@ -1681,3 +1681,26 @@ TRANSLATIONS.update({
 'Settings changed. Reload and try again.': 'Ayarlar değişti. Sayfayı yenileyip yeniden deneyin.',
 'This installation is not available.': 'Bu kuruluma erişilemiyor.'
 })
+
+TRANSLATIONS.update({
+ 'Add to saved templates': 'Şablonlara ekle', 'Add your own content.': 'İçeriğinizi ekleyin.',
+ 'Appearance': 'Görünüm', 'Ascending': 'Artan', 'Descending': 'Azalan',
+ 'Block role': 'Blok türü', 'Check media directory permissions.': 'Medya dizini izinlerini kontrol edin.',
+ 'Client logo': 'Müşteri logosu', 'Columns': 'Sütunlar', 'Connection and editor checks': 'Bağlantı ve editör kontrolleri',
+ 'Connection failed. Check server access rules.': 'Bağlantı kurulamadı. Sunucu erişim kurallarını kontrol edin.',
+ 'Custom': 'Özel', 'Date': 'Tarih', 'Delivery': 'Uygulama', 'Design': 'Tasarım',
+ 'Edit selected block': 'Seçili bloğu düzenle', 'Essential': 'Başlangıç', 'Excluded project IDs': 'Hariç tutulan proje kimlikleri',
+ 'General purpose': 'Genel', 'Hero': 'Karşılama', 'Media write test': 'Medya yazma testi', 'Menu order': 'Menü sırası',
+ 'Needs attention': 'Kontrol gerekli', 'Order': 'Sıralama', 'Order by': 'Sıralama ölçütü', 'Passed': 'Başarılı',
+ 'Preview route and Elementor availability.': 'Önizleme yolu ve Elementor kullanılabilirliği.',
+ 'Pricing': 'Paketler', 'Professional': 'Profesyonel', 'Project selection': 'Proje seçimi', 'REST API': 'REST API',
+ 'References': 'Referanslar', 'Related projects': 'İlgili projeler', 'Request a quote': 'Teklif iste',
+ 'Run checks': 'Kontrol et', 'Schedule': 'Takvim', 'Scope': 'Kapsam', 'Section library': 'Bölüm Kütüphanesi',
+ 'Shared block preview': 'Ortak blok önizlemesi', 'Site response': 'Site yanıtı', 'Standard': 'Standart',
+ 'Strategy': 'Strateji', 'Support': 'Destek', 'Team': 'Ekip', 'Team member': 'Ekip üyesi',
+ 'The block role does not match this region.': 'Blok türü bu yerleşime uygun değil.',
+ 'The section could not be saved.': 'Bölüm kaydedilemedi.', 'This section is unavailable.': 'Bu bölüm kullanılamıyor.',
+ 'Title color': 'Başlık rengi',
+ 'Check site URLs and server access rules.': 'Site adreslerini ve sunucu erişim kurallarını kontrol edin.',
+ 'Check Elementor activation and the shared block preview route.': 'Elementor etkinliğini ve ortak blok önizleme yolunu kontrol edin.'
+})

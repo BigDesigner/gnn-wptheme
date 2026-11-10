@@ -428,8 +428,9 @@ function gnn_demo_finish( $result, $group ) {
 	if ( is_wp_error( $preset ) ) {
 		return $preset;
 	}
-	$options                      = (array) get_option( 'gnn_options', array() );
-	$options['footer_template']   = $footer;
+	$options                    = (array) get_option( 'gnn_options', array() );
+	$options['footer_template'] = $footer;
+	update_post_meta( $footer, '_gnn_block_role', 'footer' );
 	$options['portfolio_columns'] = 2;
 	$options['contact_page_id']   = $pages['contact'];
 	$options['hero_style']        = 'none';

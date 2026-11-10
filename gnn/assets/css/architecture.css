@@ -97,3 +97,6 @@
 .gnn-architecture .gnn-arch-image>.elementor-widget-container{height:100%;}
 .gnn-architecture .gnn-arch-image img{display:block;}
 @media(max-width:700px){.gnn-architecture .gnn-arch-statement>.gnn-starter-heading{grid-column:1;grid-row:auto;}}
+.gnn-architecture .gnn-native-container.e-con{display:var(--display,grid);grid-template-columns:var(--e-con-grid-template-columns);grid-template-rows:var(--e-con-grid-template-rows,auto);gap:var(--row-gap,24px) var(--column-gap,24px);align-items:var(--align-items,stretch);justify-items:var(--justify-items,stretch);justify-content:var(--justify-content,normal);min-height:var(--min-height,0);padding:var(--padding-top,0) var(--padding-right,0) var(--padding-bottom,0) var(--padding-left,0);margin:var(--margin-top,0) var(--margin-right,0) var(--margin-bottom,0) var(--margin-left,0);}
+.gnn-architecture .gnn-native-container>.gnn-native-stack{min-width:0;gap:var(--row-gap,24px) var(--column-gap,24px);}
+.gnn-architecture .gnn-starter-buttons.e-con{display:var(--display,flex);gap:var(--row-gap,12px) var(--column-gap,12px);}
