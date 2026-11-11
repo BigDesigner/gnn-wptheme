@@ -38,7 +38,8 @@ get_header();
 	if ( 'page' === get_option( 'show_on_front' ) ) :
 		while ( have_posts() ) :
 			the_post();
-			if ( trim( get_the_content() ) !== '' ) :
+			$gnn_document = class_exists( '\Elementor\Plugin' ) ? \Elementor\Plugin::$instance->documents->get( get_the_ID() ) : false;
+			if ( '' !== trim( get_the_content() ) || ( $gnn_document && $gnn_document->is_built_with_elementor() ) ) :
 				?>
 				<div class="entry-content front-page-content">
 					<?php the_content(); ?>

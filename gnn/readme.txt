@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.6.2
+Stable tag: 2.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,6 +148,23 @@ Post editor > Site layout overrides can override the single-post geometry, or
 inherit site defaults. Widths shrink to the available mobile viewport. A builder's
 own Single/Archive templates control their content geometry instead.
 
+== Demo packages ==
+
+Use Maintenance > Export demo package to download the site's supported content,
+media, navigation and appearance as a ZIP. Edited Elementor documents and the
+active color/typography kit are included. Uploaded packages do not join the
+built-in demo catalog. Load the ZIP from Setup wizard > Ready-made site.
+
+Loading requires one deletion confirmation and replaces existing content/media;
+accounts, active plugins and their integration settings remain. User accounts,
+comments, orders and unrelated plugin configuration are not exported. Install
+required editor/widget plugins before loading a package.
+
+Single-site WordPress and PHP ZIP support are required. Limits: 2,000 records,
+1,000 terms, 8 MiB manifest, 32 MiB per media file and 256 MiB total. The server's
+upload limit also applies. Executable files and SVG are not accepted. A package
+is a reusable site design and content collection, not a full database backup.
+
 == Updating and client customizations ==
 
 Install the parent theme normally; the optional gnn-child ZIP is the supported place
@@ -177,6 +194,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.7.0 =
+* Added private demo ZIP export in Maintenance and file import in Setup wizard.
+* Packages transfer edited Elementor documents, shared blocks, projects, galleries, slides, posts, media, menus and appearance settings.
+* Added archive/dependency checks before deletion and resumable installation with cross-site reference mapping.
+* Fixed metadata-only Elementor homepages being skipped when the classic content field is empty.
 
 = 2.6.2 =
 * Split the primary menu around the centered logo, keeping submenus together and links aligned toward the logo.

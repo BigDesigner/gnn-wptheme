@@ -112,7 +112,8 @@ function gnn_workspace_page() {
 		return;
 	}
 	$profiles = gnn_starter_profiles();
-	$ready    = gnn_starter_elementor_available();
+	gnn_package_upload_screen();
+	$ready = gnn_starter_elementor_available();
 	if ( ! $ready ) {
 		gnn_plugin_cards();
 	}
@@ -389,6 +390,7 @@ function gnn_management_page() {
 	} elseif ( 'gnn-design' === $page ) {
 		gnn_design_fields();
 	} elseif ( 'gnn-maintenance' === $page ) {
+		gnn_package_export_screen();
 		gnn_system_table();
 		gnn_authoring_checks_screen();
 		echo '<section class="gnn-settings-card gnn-card-content">';
