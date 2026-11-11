@@ -102,7 +102,13 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 	if ( true !== $confirmed ) {
 		return new WP_Error( 'gnn_demo_confirm', __( 'Confirm content deletion to apply this demo.', 'gnn' ) );
 	}
-	if ( 'architecture' !== $profile || ! gnn_starter_elementor_available() ) {
+	$package = 0 === strpos( $profile, 'package-' );
+	if ( $package ) {
+		$validated = gnn_package_stage( $profile );
+		if ( is_wp_error( $validated ) ) {
+			return $validated;
+		}
+	} elseif ( 'architecture' !== $profile || ! gnn_starter_elementor_available() ) {
 		return new WP_Error( 'gnn_demo_editor', __( 'This demo requires Elementor.', 'gnn' ) );
 	}
 	foreach ( array( 'publish_pages', 'edit_pages', 'edit_posts', 'upload_files' ) as $capability ) {
@@ -110,7 +116,7 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 			return new WP_Error( 'gnn_demo_permission', __( 'Permission denied.', 'gnn' ) );
 		}
 	}
-	foreach ( range( 0, 28 ) as $number ) {
+	foreach ( $package ? array() : range( 0, 28 ) as $number ) {
 		if ( 5 !== $number && ! is_readable( get_template_directory() . '/assets/images/demo/architecture/image-' . sprintf( '%02d', $number ) . '.jpg' ) ) {
 			return new WP_Error( 'gnn_demo_image', __( 'A demo image is missing. Reinstall the theme.', 'gnn' ) );
 		}
@@ -289,6 +295,9 @@ function gnn_demo_replace_step( $job_id ) {
 			$job['phase'] = 'import';
 		}
 	} elseif ( 'import' === $job['phase'] ) {
+		if ( 0 === strpos( $job['profile'], 'package-' ) ) {
+			return gnn_package_import_step( $job );
+		}
 		// Generate one attachment's derivatives per request before saving the page graph.
 		$cursor = (int) ( $job['media_cursor'] ?? 0 );
 		if ( 5 === $cursor ) {

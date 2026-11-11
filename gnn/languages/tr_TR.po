@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.6.2\n"
+"Project-Id-Version: GNN 2.7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 00:59+0000\n"
-"PO-Revision-Date: 2026-11-11 00:59+0000\n"
+"POT-Creation-Date: 2026-11-12 00:37+0000\n"
+"PO-Revision-Date: 2026-11-12 00:37+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1055,6 +1055,9 @@ msgstr "Teslimat bilgileri"
 msgid "Demo installation"
 msgstr "Demo kurulumu"
 
+msgid "Demo package"
+msgstr "Demo paketi"
+
 msgid "Descending"
 msgstr "Azalan"
 
@@ -1127,6 +1130,9 @@ msgstr "İhtiyaçlarınızı görüşelim"
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr "Tüm GNN Tema ayarlarını yedek veya aktarım için JSON dosyası olarak indirin."
 
+msgid "Download demo package"
+msgstr "Demo paketini indir"
+
 msgid "Download masked support summary"
 msgstr "Maskelenmiş destek özetini indir"
 
@@ -1180,6 +1186,9 @@ msgstr "Demo yüklemek için JavaScript’i etkinleştirin."
 
 msgid "Enable maintenance mode for visitors"
 msgstr "Ziyaretçiler için bakım modunu etkinleştir"
+
+msgid "Enable the PHP ZIP extension to use demo packages."
+msgstr "Demo paketleri için PHP ZIP uzantısını etkinleştirin."
 
 msgid "Enable the top announcement bar"
 msgstr "Üst duyuru çubuğunu etkinleştir"
@@ -1255,6 +1264,9 @@ msgstr "Koleksiyonu keşfedin"
 
 msgid "Export JSON"
 msgstr "JSON’a Aktar"
+
+msgid "Export demo package"
+msgstr "Demo paketini dışa aktar"
 
 msgid "Export scope"
 msgstr "Dışa aktarma kapsamı"
@@ -1721,6 +1733,9 @@ msgstr "Ayarları içe aktar"
 msgid "In the details."
 msgstr "Detaylarda saklı."
 
+msgid "Includes site content, media, menus and appearance. Accounts, comments, orders and integration keys are excluded."
+msgstr "İçerikler, medya, menüler ve görünüm dahildir. Hesaplar, yorumlar, siparişler ve entegrasyon anahtarları aktarılmaz."
+
 msgid "Independent album"
 msgstr "Bağımsız albüm"
 
@@ -1759,6 +1774,9 @@ msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i k
 
 msgid "Install demo site"
 msgstr "Demo siteyi yükle"
+
+msgid "Install the plugin for this widget before loading the package: %s"
+msgstr "Paketi yüklemeden önce bu bileşenin eklentisini kurun: %s"
 
 msgid "Installation stopped. Check the server and retry."
 msgstr "Kurulum durdu. Sunucuyu kontrol edip yeniden deneyin."
@@ -1904,6 +1922,9 @@ msgstr "Listeleme düzeni"
 msgid "Load Google Material Symbols"
 msgstr "Google Material Symbols’ı yükle"
 
+msgid "Load demo package"
+msgstr "Demo paketi yükle"
+
 msgid "Local WOFF2 font attachment ID"
 msgstr "Yerel WOFF2 yazı tipi medya kimliği"
 
@@ -1990,6 +2011,9 @@ msgstr "Görsel ve metin (solda görsel)"
 
 msgid "Media & text (image right)"
 msgstr "Görsel ve metin (sağda görsel)"
+
+msgid "Media could not be saved. Check available disk space and retry."
+msgstr "Medya kaydedilemedi. Disk alanını kontrol edip yeniden deneyin."
 
 msgid "Media write test"
 msgstr "Medya yazma testi"
@@ -2536,6 +2560,9 @@ msgstr "jQuery Migrate’i kaldır (ön yüz)"
 
 msgid "Remove oEmbed discovery links"
 msgstr "oEmbed keşif bağlantılarını kaldır"
+
+msgid "Remove password protection from demo content before exporting."
+msgstr "Dışa aktarmadan önce demo içeriklerinin parola korumasını kaldırın."
 
 msgid "Remove upload folder symlinks before resetting."
 msgstr "Sıfırlamadan önce medya klasöründeki sembolik bağlantıları kaldırın."
@@ -3131,8 +3158,14 @@ msgstr "Blok türü bu yerleşime uygun değil."
 msgid "The cleanup selection changed or contains protected content. Review the latest list."
 msgstr "Temizlik seçimi değişti veya korunan içerik barındırıyor. Güncel listeyi inceleyin."
 
+msgid "The demo package is invalid or unsupported."
+msgstr "Demo paketi geçersiz veya desteklenmiyor."
+
 msgid "The export scope is invalid."
 msgstr "Dışa aktarma kapsamı geçersiz."
+
+msgid "The file could not be uploaded. Check the upload limit and retry."
+msgstr "Dosya yüklenemedi. Yükleme sınırını kontrol edip yeniden deneyin."
 
 msgid "The idea"
 msgstr "Fikir"
@@ -3335,6 +3368,9 @@ msgstr "Kaydedilmemiş değişiklikler"
 msgid "Unsupported database prefix."
 msgstr "Desteklenmeyen veritabanı öneki."
 
+msgid "Update Elementor before loading this package."
+msgstr "Bu paketi yüklemeden önce Elementor’u güncelleyin."
+
 msgid "Update available: version %s."
 msgstr "Güncelleme mevcut: sürüm %s."
 
@@ -3343,6 +3379,9 @@ msgstr "Güncelleme kontrolü tamamlandı."
 
 msgid "Update to %s"
 msgstr "%s sürümüne güncelle"
+
+msgid "Upload"
+msgstr "Yükle"
 
 msgid "Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values."
 msgstr "GNN ayarları JSON dosyasını yükleyin (en fazla 1 MB). Dosyada bulunmayan alanlar mevcut değerlerini korur."
@@ -3508,6 +3547,9 @@ msgstr "En güncel sürümü kullanıyorsunuz."
 
 msgid "Your comment is awaiting moderation."
 msgstr "Yorumunuz onay bekliyor."
+
+msgid "ZIP · up to %s"
+msgstr "ZIP · en fazla %s"
 
 msgid "hello!"
 msgstr "merhaba!"

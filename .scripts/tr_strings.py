@@ -1683,6 +1683,17 @@ TRANSLATIONS.update({
 })
 
 TRANSLATIONS.update({
+ 'The demo package is invalid or unsupported.': 'Demo paketi geçersiz veya desteklenmiyor.',
+ 'Update Elementor before loading this package.': 'Bu paketi yüklemeden önce Elementor’u güncelleyin.',
+ 'Remove password protection from demo content before exporting.': 'Dışa aktarmadan önce demo içeriklerinin parola korumasını kaldırın.',
+ 'The file could not be uploaded. Check the upload limit and retry.': 'Dosya yüklenemedi. Yükleme sınırını kontrol edip yeniden deneyin.',
+ 'Media could not be saved. Check available disk space and retry.': 'Medya kaydedilemedi. Disk alanını kontrol edip yeniden deneyin.',
+ 'Install the plugin for this widget before loading the package: %s': 'Paketi yüklemeden önce bu bileşenin eklentisini kurun: %s',
+ 'Enable the PHP ZIP extension to use demo packages.': 'Demo paketleri için PHP ZIP uzantısını etkinleştirin.',
+ 'Load demo package': 'Demo paketi yükle', 'Demo package': 'Demo paketi', 'Upload': 'Yükle',
+ 'ZIP · up to %s': 'ZIP · en fazla %s',
+ 'Export demo package': 'Demo paketini dışa aktar', 'Download demo package': 'Demo paketini indir',
+ 'Includes site content, media, menus and appearance. Accounts, comments, orders and integration keys are excluded.': 'İçerikler, medya, menüler ve görünüm dahildir. Hesaplar, yorumlar, siparişler ve entegrasyon anahtarları aktarılmaz.',
  'Add to saved templates': 'Şablonlara ekle', 'Add your own content.': 'İçeriğinizi ekleyin.',
  'Appearance': 'Görünüm', 'Ascending': 'Artan', 'Descending': 'Azalan',
  'Block role': 'Blok türü', 'Check media directory permissions.': 'Medya dizini izinlerini kontrol edin.',

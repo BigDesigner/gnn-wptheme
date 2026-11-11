@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.6.2' );
+define( 'GNN_VERSION', '2.7.0' );
 
 /**
  * Theme setup.
@@ -286,6 +286,9 @@ if ( is_admin() ) {
 	require get_template_directory() . '/inc/site-reset.php';
 	require get_template_directory() . '/inc/demo-reset.php';
 }
+require get_template_directory() . '/inc/demo-package.php';
+require get_template_directory() . '/inc/demo-package-import.php';
+require get_template_directory() . '/inc/demo-package-admin.php';
 // Theme updates are also checked by WP-Cron and WP-CLI outside wp-admin.
 require get_template_directory() . '/inc/updater.php';
 require get_template_directory() . '/inc/template-tags.php';
