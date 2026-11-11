@@ -19,6 +19,22 @@ function gnn_package_extensions() {
 	return array( 'jpg', 'jpeg', 'jpe', 'png', 'gif', 'webp', 'avif', 'ico', 'pdf', 'woff', 'woff2', 'mp4', 'm4v', 'mov', 'webm', 'mp3', 'm4a', 'oga', 'ogg', 'wav', 'flac', 'txt' );
 }
 
+/**
+ * Validate dates before any destructive operation, including core's empty date.
+ *
+ * @param mixed $value Exported date.
+ * @return bool
+ */
+function gnn_package_valid_date( $value ) {
+	if ( '0000-00-00 00:00:00' === $value ) {
+		return true;
+	}
+	if ( ! is_string( $value ) || ! preg_match( '/^([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2})$/D', $value, $parts ) ) {
+		return false;
+	}
+	return checkdate( (int) $parts[2], (int) $parts[3], (int) $parts[1] ) && (int) $parts[4] < 24 && (int) $parts[5] < 60 && (int) $parts[6] < 60;
+}
+
 /** Fixed document types; transactions and user data are outside this format. */
 function gnn_package_types() {
 	return array( 'page', 'post', 'attachment', 'gnn_project', 'gnn_album', 'gnn_slide', 'gnn_layout', 'elementor_library', 'wp_block', 'nav_menu_item' );
@@ -331,7 +347,7 @@ function gnn_package_validate( $file ) {
 				}
 			}
 			foreach ( array( 'date', 'date_gmt' ) as $key ) {
-				if ( isset( $row[ $key ] ) && ( ! is_string( $row[ $key ] ) || ! preg_match( '/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/D', $row[ $key ] ) ) ) {
+				if ( isset( $row[ $key ] ) && ! gnn_package_valid_date( $row[ $key ] ) ) {
 					return gnn_package_error();
 				}
 			}
@@ -398,7 +414,7 @@ function gnn_package_validate( $file ) {
 		}
 		$terms = array();
 		foreach ( $doc['terms'] as $term ) {
-			if ( ! is_array( $term ) || ! is_int( $term['id'] ?? null ) || $term['id'] < 1 || isset( $terms[ $term['id'] ] ) || ! in_array( $term['taxonomy'] ?? '', gnn_package_taxonomies(), true ) || ! taxonomy_exists( $term['taxonomy'] ) || ! is_string( $term['name'] ?? null ) || ! is_string( $term['slug'] ?? null ) ) {
+			if ( ! is_array( $term ) || ! is_int( $term['id'] ?? null ) || $term['id'] < 1 || isset( $terms[ $term['id'] ] ) || ! in_array( $term['taxonomy'] ?? '', gnn_package_taxonomies(), true ) || ! taxonomy_exists( $term['taxonomy'] ) || ! is_string( $term['name'] ?? null ) || '' === trim( wp_strip_all_tags( $term['name'] ) ) || ! is_string( $term['slug'] ?? null ) ) {
 				return gnn_package_error();
 			}
 			$terms[ $term['id'] ] = $term['taxonomy'];

@@ -238,6 +238,8 @@ function gnn_package_import_step( $job ) {
 								'post_type'     => $row['type'],
 								'post_status'   => 'attachment' === $row['type'] ? 'inherit' : 'draft',
 								'post_title'    => sanitize_text_field( $row['title'] ),
+								'post_content'  => $row['content'],
+								'post_excerpt'  => $row['excerpt'],
 								'post_name'     => sanitize_title( $row['slug'] ),
 								'post_author'   => get_current_user_id(),
 								'post_date'     => $row['date'] ?? current_time( 'mysql' ),
