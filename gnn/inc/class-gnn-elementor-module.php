@@ -105,6 +105,18 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 		);
 		if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
 			$this->add_control(
+				'filter_layout',
+				array(
+					'label'   => __( 'Filter display', 'gnn' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => 'links',
+					'options' => array(
+						'links'  => __( 'Links', 'gnn' ),
+						'select' => __( 'Dropdown', 'gnn' ),
+					),
+				)
+			);
+			$this->add_control(
 				'filters',
 				array(
 					'label'   => __( 'Show category filters', 'gnn' ),
@@ -297,14 +309,14 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 					array(
 						'label'     => __( 'Title color', 'gnn' ),
 						'type'      => \Elementor\Controls_Manager::COLOR,
-						'selectors' => array( '{{WRAPPER}} .gnn-module-project h3, {{WRAPPER}} .gnn-module-project h3 a' => 'color:{{VALUE}};' ),
+						'selectors' => array( '{{WRAPPER}} .gnn-module-project h3, {{WRAPPER}} .gnn-module-project h3 a, {{WRAPPER}} .gnn-module-product h3, {{WRAPPER}} .gnn-module-product h3 a' => 'color:{{VALUE}};' ),
 					)
 				);
 				$this->add_group_control(
 					\Elementor\Group_Control_Typography::get_type(),
 					array(
 						'name'     => 'card_title',
-						'selector' => '{{WRAPPER}} .gnn-module-project h3',
+						'selector' => '{{WRAPPER}} .gnn-module-project h3, {{WRAPPER}} .gnn-module-product h3',
 					)
 				);
 			}

@@ -1,1 +1,9 @@
 (function(){'use strict';document.addEventListener('click',function(event){var link=event.target.closest('.gnn-gallery-expand');if(!link||typeof HTMLDialogElement==='undefined'||event.ctrlKey||event.metaKey||event.shiftKey)return;event.preventDefault();var dialog=document.createElement('dialog'),image=document.createElement('img'),close=document.createElement('button');dialog.className='gnn-gallery-dialog';dialog.setAttribute('aria-label',link.getAttribute('aria-label')||'Image');image.src=link.href;image.alt=link.querySelector('img')?.alt||'';close.textContent='×';close.setAttribute('aria-label',link.closest('.gnn-module-gallery')?.dataset.closeLabel||window.gnnModules?.close||'Close');close.addEventListener('click',function(){dialog.close();});dialog.addEventListener('click',function(e){if(e.target===dialog)dialog.close();});dialog.addEventListener('close',function(){dialog.remove();link.focus();});dialog.append(close,image);document.body.append(dialog);dialog.showModal();close.focus();});})();
+(function () {
+	'use strict';
+	document.addEventListener('change', function (event) {
+		if (!event.target.matches('.gnn-module-filter-select')) return;
+		var target = new URL(event.target.value, window.location.href);
+		if (target.origin === window.location.origin) window.location.assign(target.href);
+	});
+})();

@@ -19,6 +19,7 @@
 	var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 	var enabled = !!settings.autoplay && !reduced.matches;
 	var hovered = false;
+	var focused = false;
 
 	/* Respect reduced-motion: no autoplay, arrows/dots still work. */
 	if (reduced.matches) {
@@ -62,7 +63,7 @@
 	}
 
 	function startAutoplay() {
-		if (!enabled || hovered || document.hidden || reduced.matches || timer) { return; }
+		if (!enabled || hovered || focused || document.hidden || reduced.matches || timer) { return; }
 		timer = setInterval(function () { go(index + 1); }, settings.interval || 5000);
 	}
 
@@ -81,7 +82,13 @@
 		dot.addEventListener('click', function () { go(i); });
 	});
 
-	hero.addEventListener('focusin', function () { enabled = false; updateRotation(); });
+	hero.addEventListener('focusin', function () { focused = true; updateRotation(); });
+	hero.addEventListener('focusout', function () {
+		window.setTimeout(function () {
+			focused = hero.contains(document.activeElement);
+			updateRotation();
+		}, 0);
+	});
 	hero.addEventListener('mouseenter', function () { hovered = true; updateRotation(); });
 	hero.addEventListener('mouseleave', function () { hovered = false; updateRotation(); });
 	document.addEventListener('visibilitychange', updateRotation);

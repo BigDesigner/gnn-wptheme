@@ -116,13 +116,6 @@ add_action( 'add_meta_boxes', 'gnn_add_slide_meta_box' );
 function gnn_render_slide_meta_box( $post ) {
 	wp_nonce_field( 'gnn_slide_meta', 'gnn_slide_meta_nonce' );
 	?>
-	<div class="notice notice-warning inline" style="margin:0 0 16px;">
-		<p>
-			<strong><?php esc_html_e( 'Gutenberg only.', 'gnn' ); ?></strong>
-			<?php esc_html_e( 'This slider renders on the default (Gutenberg-driven) front page template only. If the front page has been built or replaced with Elementor — including the "GNN Ana Sayfa" Elementor template — the slider will not appear there, since Elementor content takes over the entire front page.', 'gnn' ); ?>
-		</p>
-	</div>
-	<?php
 	$image_2x = (int) get_post_meta( $post->ID, '_gnn_slide_image_2x', true );
 	$kicker   = (string) get_post_meta( $post->ID, '_gnn_slide_kicker', true );
 	$text     = (string) get_post_meta( $post->ID, '_gnn_slide_text', true );
@@ -132,7 +125,7 @@ function gnn_render_slide_meta_box( $post ) {
 	$fit      = $fit ? $fit : 'cover';
 	$img_html = $image_2x ? wp_get_attachment_image( $image_2x, 'medium', false, array( 'class' => 'gnn-media-preview' ) ) : '';
 	?>
-	<p class="description"><?php esc_html_e( 'Set the standard background via the Featured Image box. The 2× image below is optional (used on Retina/high-DPI screens).', 'gnn' ); ?></p>
+	<p class="description"><?php esc_html_e( 'Set the main image in Featured Image. The optional 2× image is used on high-density screens.', 'gnn' ); ?></p>
 
 	<div class="gnn-media gnn-field">
 		<span class="gnn-field__label"><?php esc_html_e( 'Background image (2× retina)', 'gnn' ); ?></span>
@@ -175,7 +168,7 @@ function gnn_render_slide_meta_box( $post ) {
 			?>
 		</select>
 	</p>
-	<p class="description"><?php esc_html_e( 'Slide order: set the "Order" field under Page Attributes (lower = earlier). An empty title hides the slide from the front page.', 'gnn' ); ?></p>
+	<p class="description"><?php esc_html_e( 'Use Order in Page Attributes to set the sequence.', 'gnn' ); ?></p>
 	<?php
 }
 
