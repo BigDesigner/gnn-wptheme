@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.8.1\n"
+"Project-Id-Version: GNN 2.8.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 23:00+0000\n"
-"PO-Revision-Date: 2026-11-12 23:00+0000\n"
+"POT-Creation-Date: 2026-11-13 00:02+0000\n"
+"PO-Revision-Date: 2026-11-13 00:02+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -279,7 +279,7 @@ msgstr ""
 msgid "Activate WooCommerce and complete store setup before importing GNNcommerce."
 msgstr ""
 
-#: inc/content-modules.php:468
+#: inc/content-modules.php:470
 msgid "Activate WooCommerce to display the live product collection."
 msgstr ""
 
@@ -405,7 +405,7 @@ msgid "All Slides"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:86
-#: inc/content-modules.php:448
+#: inc/content-modules.php:450
 msgid "All categories"
 msgstr ""
 
@@ -421,12 +421,12 @@ msgstr ""
 msgid "All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed."
 msgstr ""
 
-#: inc/content-modules.php:581
+#: inc/content-modules.php:583
 msgid "All products"
 msgstr ""
 
 #: inc/architecture.php:251
-#: inc/content-modules.php:525
+#: inc/content-modules.php:527
 msgid "All projects"
 msgstr ""
 
@@ -703,7 +703,7 @@ msgstr ""
 msgid "Background image (1×)"
 msgstr ""
 
-#: inc/slider.php:131
+#: inc/slider.php:152
 msgid "Background image (2× retina)"
 msgstr ""
 
@@ -841,7 +841,7 @@ msgstr ""
 msgid "Button Styles"
 msgstr ""
 
-#: inc/slider.php:151
+#: inc/slider.php:172
 msgid "Button URL"
 msgstr ""
 
@@ -849,7 +849,7 @@ msgstr ""
 msgid "Button corner radius"
 msgstr ""
 
-#: inc/slider.php:147
+#: inc/slider.php:168
 msgid "Button label"
 msgstr ""
 
@@ -934,7 +934,7 @@ msgid "Categories"
 msgstr ""
 
 #: archive.php:43
-#: inc/content-modules.php:448
+#: inc/content-modules.php:450
 msgid "Category"
 msgstr ""
 
@@ -1086,7 +1086,7 @@ msgstr ""
 
 #: inc/admin-panel.php:323
 #: inc/admin-screens.php:60
-#: inc/content-modules.php:626
+#: inc/content-modules.php:628
 msgid "Close"
 msgstr ""
 
@@ -1216,7 +1216,7 @@ msgstr ""
 msgid "Contain"
 msgstr ""
 
-#: inc/slider.php:160
+#: inc/slider.php:181
 msgid "Contain (fit, no crop)"
 msgstr ""
 
@@ -1305,15 +1305,15 @@ msgstr ""
 msgid "Cover (fill and crop)"
 msgstr ""
 
-#: inc/slider.php:159
+#: inc/slider.php:180
 msgid "Cover (fill, cropped)"
 msgstr ""
 
-#: inc/slider.php:162
+#: inc/slider.php:183
 msgid "Cover — bottom"
 msgstr ""
 
-#: inc/slider.php:163
+#: inc/slider.php:184
 msgid "Cover — centered"
 msgstr ""
 
@@ -1321,7 +1321,7 @@ msgstr ""
 msgid "Cover — gradient text"
 msgstr ""
 
-#: inc/slider.php:161
+#: inc/slider.php:182
 msgid "Cover — top"
 msgstr ""
 
@@ -1756,7 +1756,7 @@ msgstr ""
 msgid "Existing layout"
 msgstr ""
 
-#: inc/content-modules.php:639
+#: inc/content-modules.php:642
 msgid "Expand: %s"
 msgstr ""
 
@@ -1877,6 +1877,10 @@ msgstr ""
 
 #: inc/admin-panel.php:1350
 msgid "Filled"
+msgstr ""
+
+#: inc/content-modules.php:454
+msgid "Filter"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:110
@@ -2418,7 +2422,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-#: inc/content-modules.php:637
+#: inc/content-modules.php:639
 msgid "Image"
 msgstr ""
 
@@ -2428,7 +2432,7 @@ msgid "Image + text"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:282
-#: inc/slider.php:155
+#: inc/slider.php:176
 msgid "Image fit"
 msgstr ""
 
@@ -2600,7 +2604,7 @@ msgstr ""
 msgid "Journal"
 msgstr ""
 
-#: inc/slider.php:139
+#: inc/slider.php:160
 msgid "Kicker"
 msgstr ""
 
@@ -3014,12 +3018,12 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: inc/content-modules.php:713
+#: inc/content-modules.php:716
 msgid "Next product"
 msgstr ""
 
 #: inc/architecture.php:295
-#: inc/content-modules.php:690
+#: inc/content-modules.php:693
 msgid "Next project"
 msgstr ""
 
@@ -3055,11 +3059,11 @@ msgstr ""
 msgid "No pending changes"
 msgstr ""
 
-#: inc/content-modules.php:595
+#: inc/content-modules.php:597
 msgid "No products have been published in this selection yet."
 msgstr ""
 
-#: inc/content-modules.php:539
+#: inc/content-modules.php:541
 msgid "No projects have been published in this selection yet."
 msgstr ""
 
@@ -3346,7 +3350,7 @@ msgstr ""
 
 #: inc/content-modules.php:18
 #: inc/content-modules.php:20
-#: inc/content-modules.php:512
+#: inc/content-modules.php:514
 msgid "Portfolio"
 msgstr ""
 
@@ -3404,12 +3408,12 @@ msgstr ""
 msgid "Preview installed design"
 msgstr ""
 
-#: inc/content-modules.php:713
+#: inc/content-modules.php:716
 msgid "Previous product"
 msgstr ""
 
 #: inc/architecture.php:295
-#: inc/content-modules.php:690
+#: inc/content-modules.php:693
 msgid "Previous project"
 msgstr ""
 
@@ -3447,7 +3451,7 @@ msgstr ""
 
 #: inc/class-gnn-elementor-module.php:136
 #: inc/content-modules.php:91
-#: inc/content-modules.php:581
+#: inc/content-modules.php:583
 msgid "Product categories"
 msgstr ""
 
@@ -3460,11 +3464,11 @@ msgstr ""
 msgid "Product code"
 msgstr ""
 
-#: inc/content-modules.php:712
+#: inc/content-modules.php:715
 msgid "Product navigation"
 msgstr ""
 
-#: inc/content-modules.php:599
+#: inc/content-modules.php:601
 msgid "Product pages"
 msgstr ""
 
@@ -3500,7 +3504,7 @@ msgstr ""
 
 #: inc/architecture.php:442
 #: inc/content-modules.php:46
-#: inc/content-modules.php:525
+#: inc/content-modules.php:527
 msgid "Project categories"
 msgstr ""
 
@@ -3526,7 +3530,7 @@ msgstr ""
 msgid "Project location"
 msgstr ""
 
-#: inc/content-modules.php:689
+#: inc/content-modules.php:692
 msgid "Project navigation"
 msgstr ""
 
@@ -3534,7 +3538,7 @@ msgstr ""
 msgid "Project overview"
 msgstr ""
 
-#: inc/content-modules.php:543
+#: inc/content-modules.php:545
 msgid "Project pages"
 msgstr ""
 
@@ -3680,7 +3684,7 @@ msgid "Remember each visitor's choice (localStorage)"
 msgstr ""
 
 #: inc/admin-panel.php:546
-#: inc/slider.php:135
+#: inc/slider.php:156
 msgid "Remove"
 msgstr ""
 
@@ -3934,12 +3938,12 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/content-modules.php:643
+#: inc/content-modules.php:646
 msgid "Select an album or publish projects with gallery images to populate this collection."
 msgstr ""
 
 #: inc/admin-panel.php:542
-#: inc/slider.php:134
+#: inc/slider.php:155
 msgid "Select image"
 msgstr ""
 
@@ -3990,7 +3994,7 @@ msgstr ""
 msgid "Set background image"
 msgstr ""
 
-#: inc/slider.php:128
+#: inc/slider.php:149
 msgid "Set the main image in Featured Image. The optional 2× image is used on high-density screens."
 msgstr ""
 
@@ -4264,7 +4268,7 @@ msgstr ""
 msgid "Slide"
 msgstr ""
 
-#: inc/slider.php:107
+#: inc/slider.php:129
 msgid "Slide Details"
 msgstr ""
 
@@ -4887,7 +4891,7 @@ msgstr ""
 msgid "Use Google Fonts instead"
 msgstr ""
 
-#: inc/slider.php:171
+#: inc/slider.php:192
 msgid "Use Order in Page Attributes to set the sequence."
 msgstr ""
 

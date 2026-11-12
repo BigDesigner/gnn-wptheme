@@ -46,6 +46,7 @@ function gnn_register_slide_cpt() {
 			'publicly_queryable'  => false,
 			'show_in_rest'        => true,
 			'capability_type'     => 'page',
+			'map_meta_cap'        => true,
 		)
 	);
 }
@@ -58,13 +59,24 @@ add_action( 'init', 'gnn_register_slide_cpt' );
  */
 function gnn_slide_meta_fields() {
 	return array(
-		'_gnn_slide_image_2x'  => 'absint',
+		'_gnn_slide_image_2x'  => 'gnn_sanitize_slide_image_id',
 		'_gnn_slide_kicker'    => 'sanitize_text_field',
 		'_gnn_slide_text'      => 'sanitize_textarea_field',
 		'_gnn_slide_cta_label' => 'sanitize_text_field',
 		'_gnn_slide_cta_url'   => 'esc_url_raw',
 		'_gnn_slide_fit'       => 'gnn_sanitize_slide_fit',
 	);
+}
+
+/**
+ * Accept only image attachments for the optional high-density source.
+ *
+ * @param mixed $value Attachment ID.
+ * @return int
+ */
+function gnn_sanitize_slide_image_id( $value ) {
+	$value = absint( $value );
+	return $value && wp_attachment_is_image( $value ) ? $value : 0;
 }
 
 /**
@@ -79,6 +91,18 @@ function gnn_sanitize_slide_fit( $value ) {
 }
 
 /**
+ * Limit slide meta changes to editors allowed to edit the specific slide.
+ *
+ * @param bool   $allowed Whether access is allowed.
+ * @param string $meta_key Meta key.
+ * @param int    $post_id Slide ID.
+ * @return bool
+ */
+function gnn_slide_meta_permission( $allowed, $meta_key, $post_id ) {
+	return current_user_can( 'edit_post', $post_id );
+}
+
+/**
  * Register slide meta for REST + revisions.
  */
 function gnn_register_slide_meta() {
@@ -87,13 +111,11 @@ function gnn_register_slide_meta() {
 			'gnn_slide',
 			$key,
 			array(
-				'type'              => 'string',
+				'type'              => '_gnn_slide_image_2x' === $key ? 'integer' : 'string',
 				'single'            => true,
 				'show_in_rest'      => true,
 				'sanitize_callback' => $cb,
-				'auth_callback'     => function () {
-					return current_user_can( 'edit_posts' );
-				},
+				'auth_callback'     => 'gnn_slide_meta_permission',
 			)
 		);
 	}
@@ -115,7 +137,6 @@ add_action( 'add_meta_boxes', 'gnn_add_slide_meta_box' );
  */
 function gnn_render_slide_meta_box( $post ) {
 	wp_nonce_field( 'gnn_slide_meta', 'gnn_slide_meta_nonce' );
-	?>
 	$image_2x = (int) get_post_meta( $post->ID, '_gnn_slide_image_2x', true );
 	$kicker   = (string) get_post_meta( $post->ID, '_gnn_slide_kicker', true );
 	$text     = (string) get_post_meta( $post->ID, '_gnn_slide_text', true );
@@ -251,7 +272,10 @@ function gnn_get_slides( $group = null ) {
 			) : array(),
 			'post_status'      => 'publish',
 			'posts_per_page'   => -1,
-			'orderby'          => 'menu_order',
+			'orderby'          => array(
+				'menu_order' => 'ASC',
+				'ID'         => 'ASC',
+			),
 			'order'            => 'ASC',
 			'no_found_rows'    => true,
 		)
