@@ -1683,6 +1683,10 @@ TRANSLATIONS.update({
 })
 
 TRANSLATIONS.update({
+ 'Filter display': 'Filtre görünümü', 'Links': 'Bağlantılar', 'Dropdown': 'Açılır liste',
+ 'Image': 'Görsel', 'Expand: %s': 'Büyüt: %s',
+ 'Set the main image in Featured Image. The optional 2× image is used on high-density screens.': 'Ana görseli Öne Çıkan Görsel alanından ayarlayın. İsteğe bağlı 2× görsel, yüksek yoğunluklu ekranlarda kullanılır.',
+ 'Use Order in Page Attributes to set the sequence.': 'Sıralamayı Sayfa Öznitelikleri içindeki Sıra alanından belirleyin.',
  'The demo package is invalid or unsupported.': 'Demo paketi geçersiz veya desteklenmiyor.',
  'Update Elementor before loading this package.': 'Bu paketi yüklemeden önce Elementor’u güncelleyin.',
  'Remove password protection from demo content before exporting.': 'Dışa aktarmadan önce demo içeriklerinin parola korumasını kaldırın.',

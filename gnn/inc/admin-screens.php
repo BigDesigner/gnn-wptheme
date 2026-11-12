@@ -172,7 +172,8 @@ function gnn_plugin_cards( $commerce = false ) {
 		} elseif ( $installed && current_user_can( 'activate_plugins' ) ) {
 			echo '<a class="button" href="' . esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=' . rawurlencode( $plugin[1] ) ), 'activate-plugin_' . $plugin[1] ) ) . '">' . esc_html__( 'Activate', 'gnn' ) . '</a>';
 		} elseif ( ! $installed && current_user_can( 'install_plugins' ) ) {
-			echo '<a class="button" href="' . esc_url( self_admin_url( 'plugin-install.php?tab=plugin-information&plugin=' . $slug ) ) . '">' . esc_html__( 'Install', 'gnn' ) . '</a>';
+			$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . rawurlencode( $slug ) ), 'install-plugin_' . $slug );
+			echo '<a class="button" href="' . esc_url( $install_url ) . '">' . esc_html__( 'Install', 'gnn' ) . '</a>';
 		} else {
 			echo '<span>' . esc_html__( 'Administrator access required.', 'gnn' ) . '</span>';
 		}

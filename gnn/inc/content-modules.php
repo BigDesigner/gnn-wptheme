@@ -238,6 +238,26 @@ function gnn_module_attributes() {
 			'type'    => 'boolean',
 			'default' => true,
 		),
+		'filter_layout' => array(
+			'type'    => 'string',
+			'default' => 'links',
+		),
+		'orderby' => array(
+			'type'    => 'string',
+			'default' => '',
+		),
+		'order' => array(
+			'type'    => 'string',
+			'default' => 'DESC',
+		),
+		'exclude_ids' => array(
+			'type'    => 'string',
+			'default' => '',
+		),
+		'related' => array(
+			'type'    => 'string',
+			'default' => '',
+		),
 	);
 }
 
@@ -415,6 +435,23 @@ function gnn_render_module( $module, $attrs = array() ) {
 	return gnn_render_module_inner( $module, $attrs );
 }
 
+/**
+ * Render a category selector using the same destinations as the link filter.
+ *
+ * @param string         $base Base URL.
+ * @param string         $param Filter query parameter.
+ * @param array|WP_Error $terms Available categories.
+ * @param int            $selected Selected category ID.
+ * @return string Escaped selector markup.
+ */
+function gnn_collection_filter_select( $base, $param, $terms, $selected ) {
+	$html = '<select class="gnn-module-filter-select" aria-label="' . esc_attr__( 'Category', 'gnn' ) . '"><option value="' . esc_url( $base ) . '">' . esc_html__( 'All categories', 'gnn' ) . '</option>';
+	foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
+		$html .= '<option value="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . selected( $selected, $term->term_id, false ) . '>' . esc_html( $term->name ) . '</option>';
+	}
+	return $html . '</select>';
+}
+
 /** Render a live collection with its own query controls.
  *
  * @param string $module Module name.
@@ -463,6 +500,9 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		$category = absint( $attrs['category'] ?? 0 );
 		$param    = 'gnn_category';
 		$selected = isset( $_GET[ $param ] ) && is_scalar( $_GET[ $param ] ) ? absint( $_GET[ $param ] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public read-only filter.
+		if ( $selected && ! term_exists( $selected, 'gnn_project_category' ) ) {
+			$selected = 0;
+		}
 		if ( ! $category && $selected && false !== ( $attrs['filters'] ?? true ) ) {
 			$attrs['category'] = $selected;
 		}
@@ -472,7 +512,6 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		$html          = '<section class="gnn-content-module" aria-label="' . esc_attr__( 'Portfolio', 'gnn' ) . '">';
 		if ( ! $category && false !== ( $attrs['filters'] ?? true ) ) {
 			$base  = remove_query_arg( array( $param, 'gnn_projects_page' ) );
-			$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Project categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All projects', 'gnn' ) . '</a>';
 			$terms = get_terms(
 				array(
 					'taxonomy'   => 'gnn_project_category',
@@ -480,10 +519,15 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 					'number'     => 100,
 				)
 			);
-			foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
-				$html .= '<a href="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . ( $selected === $term->term_id ? ' aria-current="true"' : '' ) . '>' . esc_html( $term->name ) . '</a>';
+			if ( 'select' === ( $attrs['filter_layout'] ?? '' ) ) {
+				$html .= gnn_collection_filter_select( $base, $param, $terms, $selected );
+			} else {
+				$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Project categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All projects', 'gnn' ) . '</a>';
+				foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
+					$html .= '<a href="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . ( $selected === $term->term_id ? ' aria-current="true"' : '' ) . '>' . esc_html( $term->name ) . '</a>';
+				}
+				$html .= '</nav>';
 			}
-			$html .= '</nav>';
 		}
 		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '">';
 		foreach ( $query->posts as $project ) {
@@ -510,8 +554,11 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 	if ( 'catalog' === $module ) {
 		$instance = wp_unique_id( 'gnn-catalog-' );
 		$category = absint( $attrs['category'] ?? 0 );
-		$param    = 'gnn_product_category';
+		$param    = 'gnn_catalog_category';
 		$selected = isset( $_GET[ $param ] ) && is_scalar( $_GET[ $param ] ) ? absint( $_GET[ $param ] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public read-only filter.
+		if ( $selected && ! term_exists( $selected, 'gnn_product_category' ) ) {
+			$selected = 0;
+		}
 		if ( ! $category && $selected && false !== ( $attrs['filters'] ?? true ) ) {
 			$attrs['category'] = $selected;
 		}
@@ -521,7 +568,6 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		$html          = '<section class="gnn-content-module" aria-label="' . esc_attr__( 'Products', 'gnn' ) . '">';
 		if ( ! $category && false !== ( $attrs['filters'] ?? true ) ) {
 			$base  = remove_query_arg( array( $param, 'gnn_products_page' ) );
-			$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Product categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All products', 'gnn' ) . '</a>';
 			$terms = get_terms(
 				array(
 					'taxonomy'   => 'gnn_product_category',
@@ -529,10 +575,15 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 					'number'     => 100,
 				)
 			);
-			foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
-				$html .= '<a href="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . ( $selected === $term->term_id ? ' aria-current="true"' : '' ) . '>' . esc_html( $term->name ) . '</a>';
+			if ( 'select' === ( $attrs['filter_layout'] ?? '' ) ) {
+				$html .= gnn_collection_filter_select( $base, $param, $terms, $selected );
+			} else {
+				$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Product categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All products', 'gnn' ) . '</a>';
+				foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
+					$html .= '<a href="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . ( $selected === $term->term_id ? ' aria-current="true"' : '' ) . '>' . esc_html( $term->name ) . '</a>';
+				}
+				$html .= '</nav>';
 			}
-			$html .= '</nav>';
 		}
 		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '">';
 		foreach ( $query->posts as $product ) {
@@ -572,11 +623,23 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 			}
 			$ids = gnn_gallery_ids( $ids );
 		}
-		$html = '<div data-close-label="' . esc_attr__( 'Close', 'gnn' ) . '" class="gnn-content-module gnn-module-gallery gnn-module-grid gnn-module-columns-' . $columns . '">';
+		$html           = '<div data-close-label="' . esc_attr__( 'Close', 'gnn' ) . '" class="gnn-content-module gnn-module-gallery gnn-module-grid gnn-module-columns-' . $columns . '">';
+		$rendered_images = 0;
 		foreach ( $ids as $id ) {
-			$html .= '<a class="gnn-gallery-expand" href="' . esc_url( wp_get_attachment_image_url( $id, 'full' ) ) . '" aria-label="' . esc_attr__( 'Expand image', 'gnn' ) . '">' . wp_get_attachment_image( $id, 'large' ) . '</a>';
+			if ( ! wp_attachment_is_image( $id ) || ! wp_get_attachment_image_url( $id, 'full' ) ) {
+				continue;
+			}
+			$label = (string) get_post_meta( $id, '_wp_attachment_image_alt', true );
+			if ( '' === $label ) {
+				$label = get_the_title( $id );
+			}
+			if ( '' === $label ) {
+				$label = __( 'Image', 'gnn' );
+			}
+			$html .= '<a class="gnn-gallery-expand" href="' . esc_url( wp_get_attachment_image_url( $id, 'full' ) ) . '" aria-label="' . esc_attr( sprintf( __( 'Expand: %s', 'gnn' ), $label ) ) . '">' . wp_get_attachment_image( $id, 'large' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- media markup is core-generated.
+			++$rendered_images;
 		}
-		if ( ! $ids && current_user_can( 'edit_pages' ) ) {
+		if ( ! $rendered_images && current_user_can( 'edit_pages' ) ) {
 			$html .= '<p>' . esc_html__( 'Select an album or publish projects with gallery images to populate this collection.', 'gnn' ) . '</p>';
 		}
 		return $html . '</div>';
