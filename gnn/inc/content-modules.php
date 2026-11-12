@@ -56,6 +56,51 @@ function gnn_register_content_modules() {
 			)
 		);
 	}
+	if ( ! post_type_exists( 'gnn_product' ) ) {
+		register_post_type(
+			'gnn_product',
+			array(
+				'label'           => __( 'Products', 'gnn' ),
+				'labels'          => array(
+					'name'          => __( 'Products', 'gnn' ),
+					'singular_name' => __( 'Product', 'gnn' ),
+					'add_new_item'  => __( 'Add new product', 'gnn' ),
+					'edit_item'     => __( 'Edit product', 'gnn' ),
+				),
+				'public'          => true,
+				'show_ui'         => true,
+				'show_in_rest'    => true,
+				'show_in_menu'    => 'gnn-panel',
+				'has_archive'     => false,
+				'rewrite'         => array(
+					'slug'       => 'products',
+					'with_front' => false,
+				),
+				'supports'        => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes', 'custom-fields' ),
+				'capability_type' => 'page',
+				'map_meta_cap'    => true,
+			)
+		);
+	}
+	add_post_type_support( 'gnn_product', 'elementor' );
+	if ( ! taxonomy_exists( 'gnn_product_category' ) ) {
+		register_taxonomy(
+			'gnn_product_category',
+			'gnn_product',
+			array(
+				'label'             => __( 'Product categories', 'gnn' ),
+				'show_admin_column' => true,
+				'public'            => true,
+				'show_ui'           => true,
+				'show_in_rest'      => true,
+				'hierarchical'      => true,
+				'rewrite'           => array(
+					'slug'       => 'product-category',
+					'with_front' => false,
+				),
+			)
+		);
+	}
 	if ( ! post_type_exists( 'gnn_album' ) ) {
 		register_post_type(
 			'gnn_album',
@@ -77,7 +122,7 @@ function gnn_register_content_modules() {
 			)
 		);
 	}
-	foreach ( array( 'gnn_project', 'gnn_album' ) as $type ) {
+	foreach ( array( 'gnn_project', 'gnn_product', 'gnn_album' ) as $type ) {
 		register_post_meta(
 			$type,
 			'_gnn_gallery_ids',
@@ -111,7 +156,21 @@ function gnn_register_content_modules() {
 			)
 		);
 	}
-	foreach ( array( 'portfolio', 'gallery', 'products', 'slider' ) as $module ) {
+	foreach ( array( '_gnn_product_code', '_gnn_product_material', '_gnn_product_dimensions' ) as $key ) {
+		register_post_meta(
+			'gnn_product',
+			$key,
+			array(
+				'type'              => 'string',
+				'single'            => true,
+				'show_in_rest'      => true,
+				'sanitize_callback' => 'sanitize_text_field',
+				'auth_callback'     => 'gnn_module_meta_permission',
+				'revisions_enabled' => true,
+			)
+		);
+	}
+	foreach ( array( 'portfolio', 'catalog', 'gallery', 'products', 'slider' ) as $module ) {
 		register_block_type(
 			'gnn/' . $module,
 			array(
@@ -194,8 +253,8 @@ function gnn_module_block( $module, $attrs = array() ) {
 
 /** Admin media collections and project facts. */
 function gnn_module_meta_boxes() {
-	foreach ( array( 'gnn_project', 'gnn_album' ) as $type ) {
-		add_meta_box( 'gnn-content-collection', __( 'Gallery images and project information', 'gnn' ), 'gnn_module_meta_box', $type, 'normal', 'high' );
+	foreach ( array( 'gnn_project', 'gnn_product', 'gnn_album' ) as $type ) {
+		add_meta_box( 'gnn-content-collection', __( 'Gallery images', 'gnn' ), 'gnn_module_meta_box', $type, 'normal', 'high' );
 	}
 }
 add_action( 'add_meta_boxes', 'gnn_module_meta_boxes' );
@@ -222,6 +281,15 @@ function gnn_module_meta_box( $post ) {
 			echo '<p><label>' . esc_html( $label ) . '<br><input type="text" class="widefat" name="gnn_project_' . esc_attr( $key ) . '" value="' . esc_attr( get_post_meta( $post->ID, '_gnn_project_' . $key, true ) ) . '"></label></p>';
 		}
 	}
+	if ( 'gnn_product' === $post->post_type ) {
+		foreach ( array(
+			'code'       => __( 'Product code', 'gnn' ),
+			'material'   => __( 'Material', 'gnn' ),
+			'dimensions' => __( 'Dimensions', 'gnn' ),
+		) as $key => $label ) {
+			echo '<p><label>' . esc_html( $label ) . '<br><input type="text" class="widefat" name="gnn_product_' . esc_attr( $key ) . '" value="' . esc_attr( get_post_meta( $post->ID, '_gnn_product_' . $key, true ) ) . '"></label></p>';
+		}
+	}
 }
 
 /**
@@ -230,7 +298,7 @@ function gnn_module_meta_box( $post ) {
  * @param int $id Record ID.
  */
 function gnn_save_module_collection( $id ) {
-	if ( ! in_array( get_post_type( $id ), array( 'gnn_project', 'gnn_album' ), true ) || ! current_user_can( 'edit_post', $id ) || wp_is_post_revision( $id ) || ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! isset( $_POST['gnn_collection_nonce'] ) || ! is_string( $_POST['gnn_collection_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['gnn_collection_nonce'] ) ), 'gnn_content_collection' ) ) {
+	if ( ! in_array( get_post_type( $id ), array( 'gnn_project', 'gnn_product', 'gnn_album' ), true ) || ! current_user_can( 'edit_post', $id ) || wp_is_post_revision( $id ) || ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) || ! isset( $_POST['gnn_collection_nonce'] ) || ! is_string( $_POST['gnn_collection_nonce'] ) || ! wp_verify_nonce( sanitize_key( wp_unslash( $_POST['gnn_collection_nonce'] ) ), 'gnn_content_collection' ) ) {
 		return;
 	}
 	if ( isset( $_POST['gnn_gallery_ids'] ) && is_string( $_POST['gnn_gallery_ids'] ) ) {
@@ -241,13 +309,18 @@ function gnn_save_module_collection( $id ) {
 			update_post_meta( $id, '_gnn_project_' . $key, sanitize_text_field( wp_unslash( $_POST[ 'gnn_project_' . $key ] ) ) );
 		}
 	}
+	foreach ( array( 'code', 'material', 'dimensions' ) as $key ) {
+		if ( isset( $_POST[ 'gnn_product_' . $key ] ) && is_string( $_POST[ 'gnn_product_' . $key ] ) ) {
+			update_post_meta( $id, '_gnn_product_' . $key, sanitize_text_field( wp_unslash( $_POST[ 'gnn_product_' . $key ] ) ) );
+		}
+	}
 }
 add_action( 'save_post', 'gnn_save_module_collection' );
 
 /** Register editor media controls only on the two central content screens. */
 function gnn_module_admin_assets() {
 	$screen = get_current_screen();
-	if ( ! $screen || ! in_array( $screen->post_type, array( 'gnn_project', 'gnn_album' ), true ) ) {
+	if ( ! $screen || ! in_array( $screen->post_type, array( 'gnn_project', 'gnn_product', 'gnn_album' ), true ) ) {
 		return;
 	}
 	wp_enqueue_media();
@@ -259,11 +332,13 @@ add_action( 'admin_enqueue_scripts', 'gnn_module_admin_assets' );
 /**
  * One validated query contract. Drafts are never leaked through public widgets.
  *
- * @param array $attrs Query settings.
+ * @param array  $attrs    Query settings.
+ * @param string $type     Content type.
+ * @param string $taxonomy Category taxonomy.
  */
-function gnn_project_query( $attrs ) {
+function gnn_collection_query( $attrs, $type, $taxonomy ) {
 	$args = array(
-		'post_type'      => 'gnn_project',
+		'post_type'      => $type,
 		'post_status'    => 'publish',
 		'has_password'   => false,
 		'posts_per_page' => max( 1, min( 48, absint( $attrs['limit'] ?? 12 ) ) ),
@@ -282,13 +357,13 @@ function gnn_project_query( $attrs ) {
 	}
 	$exclude = isset( $attrs['exclude_ids'] ) && is_string( $attrs['exclude_ids'] ) ? preg_split( '/[\s,]+/', $attrs['exclude_ids'] ) : array();
 	$exclude = array_values( array_filter( array_map( 'absint', array_slice( $exclude, 0, 100 ) ) ) );
-	if ( 'yes' === ( $attrs['related'] ?? '' ) && ! is_singular( 'gnn_project' ) ) {
+	if ( 'yes' === ( $attrs['related'] ?? '' ) && ! is_singular( $type ) ) {
 		$args['post__in'] = array( 0 );
 	}
-	if ( 'yes' === ( $attrs['related'] ?? '' ) && is_singular( 'gnn_project' ) ) {
+	if ( 'yes' === ( $attrs['related'] ?? '' ) && is_singular( $type ) ) {
 		$current    = get_queried_object_id();
 		$exclude[]  = $current;
-		$categories = wp_get_post_terms( $current, 'gnn_project_category', array( 'fields' => 'ids' ) );
+		$categories = wp_get_post_terms( $current, $taxonomy, array( 'fields' => 'ids' ) );
 		if ( is_wp_error( $categories ) || ! $categories ) {
 			$args['post__in'] = array( 0 );
 		} else {
@@ -302,13 +377,31 @@ function gnn_project_query( $attrs ) {
 		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- indexed native term relationships.
 		$args['tax_query'] = array(
 			array(
-				'taxonomy' => 'gnn_project_category',
+				'taxonomy' => $taxonomy,
 				'field'    => 'term_id',
 				'terms'    => array_map( 'absint', (array) $attrs['category'] ),
 			),
 		); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query -- native taxonomy selection, indexed relationships.
 	}
 	return new WP_Query( $args );
+}
+
+/**
+ * Query portfolio records using the shared public collection contract.
+ *
+ * @param array $attrs Query settings.
+ */
+function gnn_project_query( $attrs ) {
+	return gnn_collection_query( $attrs, 'gnn_project', 'gnn_project_category' );
+}
+
+/**
+ * Query catalogue records without requiring a commerce plugin.
+ *
+ * @param array $attrs Query settings.
+ */
+function gnn_product_query( $attrs ) {
+	return gnn_collection_query( $attrs, 'gnn_product', 'gnn_product_category' );
 }
 
 /**
@@ -414,12 +507,61 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		}
 		return $html . '</section>';
 	}
+	if ( 'catalog' === $module ) {
+		$instance = wp_unique_id( 'gnn-catalog-' );
+		$category = absint( $attrs['category'] ?? 0 );
+		$param    = 'gnn_product_category';
+		$selected = isset( $_GET[ $param ] ) && is_scalar( $_GET[ $param ] ) ? absint( $_GET[ $param ] ) : 0; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public read-only filter.
+		if ( ! $category && $selected && false !== ( $attrs['filters'] ?? true ) ) {
+			$attrs['category'] = $selected;
+		}
+		$page          = isset( $_GET['gnn_products_page'] ) && is_scalar( $_GET['gnn_products_page'] ) ? max( 1, absint( $_GET['gnn_products_page'] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public pagination.
+		$attrs['page'] = $page;
+		$query         = gnn_product_query( $attrs );
+		$html          = '<section class="gnn-content-module" aria-label="' . esc_attr__( 'Products', 'gnn' ) . '">';
+		if ( ! $category && false !== ( $attrs['filters'] ?? true ) ) {
+			$base  = remove_query_arg( array( $param, 'gnn_products_page' ) );
+			$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Product categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All products', 'gnn' ) . '</a>';
+			$terms = get_terms(
+				array(
+					'taxonomy'   => 'gnn_product_category',
+					'hide_empty' => true,
+					'number'     => 100,
+				)
+			);
+			foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
+				$html .= '<a href="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . ( $selected === $term->term_id ? ' aria-current="true"' : '' ) . '>' . esc_html( $term->name ) . '</a>';
+			}
+			$html .= '</nav>';
+		}
+		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '">';
+		foreach ( $query->posts as $product ) {
+			$url   = get_permalink( $product );
+			$terms = get_the_terms( $product, 'gnn_product_category' );
+			$html .= '<article class="gnn-module-product"><a class="gnn-module-project-image" aria-label="' . esc_attr( get_the_title( $product ) ) . '" href="' . esc_url( $url ) . '">' . gnn_product_image( $product->ID ) . '</a><p class="gnn-module-kicker">' . esc_html( $terms && ! is_wp_error( $terms ) ? implode( ' / ', wp_list_pluck( $terms, 'name' ) ) : '' ) . '</p><h3><a href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $product ) ) . '</a></h3><p>' . esc_html( wp_trim_words( $product->post_excerpt, 24 ) ) . '</p></article>';
+		}
+		if ( ! $query->posts ) {
+			$html .= '<p>' . esc_html__( 'No products have been published in this selection yet.', 'gnn' ) . '</p>';
+		}
+		$html .= '</div>';
+		if ( $query->max_num_pages > 1 ) {
+			$html .= '<nav class="gnn-module-pagination" aria-label="' . esc_attr__( 'Product pages', 'gnn' ) . '">' . paginate_links(
+				array(
+					'base'    => add_query_arg( 'gnn_products_page', '%#%' ),
+					'format'  => '',
+					'current' => $page,
+					'total'   => $query->max_num_pages,
+				)
+			) . '</nav>';
+		}
+		return $html . '</section>';
+	}
 	if ( 'gallery' === $module ) {
 		$record = absint( $attrs['record'] ?? 0 );
 		$source = $attrs['source'] ?? 'projects';
 		$ids    = array();
-		if ( in_array( $source, array( 'album', 'project' ), true ) ) {
-			$expected = 'album' === $source ? 'gnn_album' : 'gnn_project';
+		if ( in_array( $source, array( 'album', 'project', 'product' ), true ) ) {
+			$expected = 'album' === $source ? 'gnn_album' : ( 'product' === $source ? 'gnn_product' : 'gnn_project' );
 			if ( $record && get_post_type( $record ) === $expected && 'publish' === get_post_status( $record ) && ! post_password_required( $record ) ) {
 				$ids = gnn_gallery_ids( get_post_meta( $record, '_gnn_gallery_ids', true ) );
 			}
@@ -459,6 +601,15 @@ function gnn_project_image( $id ) {
 }
 
 /**
+ * Product cards use native featured images only.
+ *
+ * @param int $id Product ID.
+ */
+function gnn_product_image( $id ) {
+	return has_post_thumbnail( $id ) ? get_the_post_thumbnail( $id, 'large' ) : '';
+}
+
+/**
  * Automatic adjacency follows the current category and native project publication dates.
  *
  * @param int $id Current project.
@@ -481,6 +632,29 @@ function gnn_project_navigation( $id ) {
 	return $html . '</nav>';
 }
 
+/**
+ * Automatic adjacency follows the current product category.
+ *
+ * @param int $id Current product.
+ */
+function gnn_product_navigation( $id ) {
+	global $post;
+	$original      = $post;
+	$post          = get_post( $id ); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- native adjacent-post API requires contextual global, restored immediately.
+	$terms         = get_the_terms( $id, 'gnn_product_category' );
+	$same_category = $terms && ! is_wp_error( $terms );
+	$previous      = get_adjacent_post( $same_category, '', true, 'gnn_product_category' );
+	$next          = get_adjacent_post( $same_category, '', false, 'gnn_product_category' );
+	$post          = $original; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- restore native query context.
+	$html          = '<nav class="gnn-project-navigation" aria-label="' . esc_attr__( 'Product navigation', 'gnn' ) . '">';
+	foreach ( array( array( $previous, __( 'Previous product', 'gnn' ) ), array( $next, __( 'Next product', 'gnn' ) ) ) as $item ) {
+		if ( $item[0] instanceof WP_Post ) {
+			$html .= '<a href="' . esc_url( get_permalink( $item[0] ) ) . '">' . esc_html( $item[1] . ' / ' . get_the_title( $item[0] ) ) . '</a>';
+		}
+	}
+	return $html . '</nav>';
+}
+
 /** Load small central collection assets; no frontend remote requests. */
 function gnn_register_module_assets() {
 	wp_register_style( 'gnn-content-modules', get_template_directory_uri() . '/assets/css/content-modules.css', array( 'gnn-design-system' ), GNN_VERSION );
@@ -495,7 +669,7 @@ function gnn_module_assets() {
 	wp_localize_script( 'gnn-content-modules', 'gnnModules', array( 'close' => __( 'Close', 'gnn' ) ) );
 	$post = get_queried_object();
 	$data = $post instanceof WP_Post ? (string) get_post_meta( $post->ID, '_elementor_data', true ) : '';
-	if ( gnn_layout_value( 'sidebar_template' ) > 0 || is_singular( 'gnn_project' ) || is_tax( 'gnn_project_category' ) || ( $post instanceof WP_Post && ( false !== strpos( $post->post_content, 'wp:gnn/' ) || preg_match( '/"widgetType"\s*:\s*"gnn-(portfolio|gallery|products|slider)"/', $data ) ) ) ) {
+	if ( gnn_layout_value( 'sidebar_template' ) > 0 || is_singular( array( 'gnn_project', 'gnn_product' ) ) || is_tax( array( 'gnn_project_category', 'gnn_product_category' ) ) || ( $post instanceof WP_Post && ( false !== strpos( $post->post_content, 'wp:gnn/' ) || preg_match( '/"widgetType"\s*:\s*"gnn-(portfolio|catalog|gallery|products|slider)"/', $data ) ) ) ) {
 		wp_enqueue_style( 'gnn-content-modules' );
 		wp_enqueue_script( 'gnn-content-modules' );
 	}
@@ -504,9 +678,9 @@ add_action( 'wp_enqueue_scripts', 'gnn_module_assets', 17 );
 
 /** Flush only when the content schema changes, not on visitor requests. */
 function gnn_module_rewrite_setup() {
-	if ( current_user_can( 'manage_options' ) && '1' !== get_option( 'gnn_content_schema' ) ) {
+	if ( current_user_can( 'manage_options' ) && '2' !== get_option( 'gnn_content_schema' ) ) {
 		flush_rewrite_rules( false );
-		update_option( 'gnn_content_schema', '1', false );
+		update_option( 'gnn_content_schema', '2', false );
 	}
 }
 add_action( 'admin_init', 'gnn_module_rewrite_setup' );

@@ -37,17 +37,17 @@ function gnn_package_valid_date( $value ) {
 
 /** Fixed document types; transactions and user data are outside this format. */
 function gnn_package_types() {
-	return array( 'page', 'post', 'attachment', 'gnn_project', 'gnn_album', 'gnn_slide', 'gnn_layout', 'elementor_library', 'wp_block', 'nav_menu_item' );
+	return array( 'page', 'post', 'attachment', 'gnn_project', 'gnn_product', 'gnn_album', 'gnn_slide', 'gnn_layout', 'elementor_library', 'wp_block', 'nav_menu_item' );
 }
 
 /** Fixed taxonomy schema. */
 function gnn_package_taxonomies() {
-	return array( 'category', 'post_tag', 'gnn_project_category', 'gnn_slide_group', 'nav_menu', 'elementor_library_type' );
+	return array( 'category', 'post_tag', 'gnn_project_category', 'gnn_product_category', 'gnn_slide_group', 'nav_menu', 'elementor_library_type' );
 }
 
 /** Only rendering metadata is portable; caches and importer receipts are not. */
 function gnn_package_meta_keys() {
-	return array( '_thumbnail_id', '_wp_page_template', '_wp_attachment_image_alt', '_elementor_data', '_elementor_edit_mode', '_elementor_template_type', '_elementor_page_settings', '_gnn_layout', '_gnn_hide_title', '_gnn_hide_breadcrumb', '_gnn_title_overlay', '_gnn_block_role', '_gnn_gallery_ids', '_gnn_project_location', '_gnn_project_year', '_gnn_project_client', '_gnn_project_illustration', '_gnn_slide_image_2x', '_gnn_slide_kicker', '_gnn_slide_text', '_gnn_slide_cta_label', '_gnn_slide_cta_url', '_gnn_slide_fit', '_gnn_menu_layout', '_gnn_menu_image', '_menu_item_type', '_menu_item_menu_item_parent', '_menu_item_object_id', '_menu_item_object', '_menu_item_target', '_menu_item_classes', '_menu_item_xfn', '_menu_item_url' );
+	return array( '_thumbnail_id', '_wp_page_template', '_wp_attachment_image_alt', '_elementor_data', '_elementor_edit_mode', '_elementor_template_type', '_elementor_page_settings', '_gnn_layout', '_gnn_hide_title', '_gnn_hide_breadcrumb', '_gnn_title_overlay', '_gnn_block_role', '_gnn_gallery_ids', '_gnn_project_location', '_gnn_project_year', '_gnn_project_client', '_gnn_project_illustration', '_gnn_product_code', '_gnn_product_material', '_gnn_product_dimensions', '_gnn_slide_image_2x', '_gnn_slide_kicker', '_gnn_slide_text', '_gnn_slide_cta_label', '_gnn_slide_cta_url', '_gnn_slide_fit', '_gnn_menu_layout', '_gnn_menu_image', '_menu_item_type', '_menu_item_menu_item_parent', '_menu_item_object_id', '_menu_item_object', '_menu_item_target', '_menu_item_classes', '_menu_item_xfn', '_menu_item_url' );
 }
 
 /** Known theme settings except integrations, injected code and operation state. */

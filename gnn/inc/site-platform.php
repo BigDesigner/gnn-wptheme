@@ -25,6 +25,7 @@ function gnn_site_schema() {
 		'page'        => __( 'Pages', 'gnn' ),
 		'post'        => __( 'Posts', 'gnn' ),
 		'gnn_project' => __( 'Projects', 'gnn' ),
+		'gnn_product' => __( 'Products', 'gnn' ),
 	) as $type => $label ) {
 		$schema[ 'search_exclude_' . $type ] = array( $label, 'bool', 0, 'search' );
 	}
@@ -117,6 +118,7 @@ function gnn_site_contexts() {
 		'page'     => __( 'Pages', 'gnn' ),
 		'post'     => __( 'Posts', 'gnn' ),
 		'project'  => __( 'Projects', 'gnn' ),
+		'product'  => __( 'Products', 'gnn' ),
 		'archive'  => __( 'Archives', 'gnn' ),
 		'category' => __( 'Categories', 'gnn' ),
 		'post_tag' => __( 'Tags', 'gnn' ),
@@ -152,6 +154,8 @@ function gnn_site_context_chain() {
 		$chain[] = 'notfound';
 	} elseif ( is_singular( 'gnn_project' ) ) {
 		$chain[] = 'project';
+	} elseif ( is_singular( 'gnn_product' ) ) {
+		$chain[] = 'product';
 	} elseif ( is_singular( 'post' ) ) {
 		$chain[] = 'post';
 	} elseif ( is_page() ) {
@@ -386,7 +390,7 @@ function gnn_search_types( $query ) {
 	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
 		return; }
 	$types = get_post_types( array( 'exclude_from_search' => false ) );
-	foreach ( array( 'page', 'post', 'gnn_project' ) as $type ) {
+	foreach ( array( 'page', 'post', 'gnn_project', 'gnn_product' ) as $type ) {
 		if ( gnn_option( 'search_exclude_' . $type ) ) {
 			unset( $types[ $type ] ); }
 	}

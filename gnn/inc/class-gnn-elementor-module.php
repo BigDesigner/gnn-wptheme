@@ -26,6 +26,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 	public function get_title() {
 		$names = array(
 			'portfolio' => __( 'GNN Portfolio', 'gnn' ),
+			'catalog'   => __( 'GNN Product catalogue', 'gnn' ),
 			'gallery'   => __( 'GNN Gallery', 'gnn' ),
 			'products'  => __( 'GNN Products', 'gnn' ),
 			'slider'    => __( 'GNN Slider', 'gnn' ),
@@ -81,7 +82,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 				'max'     => 48,
 			)
 		);
-		$taxonomy = 'slider' === $this->module ? 'gnn_slide_group' : ( 'products' === $this->module ? 'product_cat' : 'gnn_project_category' );
+		$taxonomy = 'slider' === $this->module ? 'gnn_slide_group' : ( 'products' === $this->module ? 'product_cat' : ( 'catalog' === $this->module ? 'gnn_product_category' : 'gnn_project_category' ) );
 		$options  = array( 0 => __( 'All categories', 'gnn' ) );
 		$terms    = get_terms(
 			array(
@@ -96,13 +97,13 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 		$this->add_control(
 			'category',
 			array(
-				'label'   => __( 'Category or slider group', 'gnn' ),
+				'label'   => 'catalog' === $this->module ? __( 'Product category', 'gnn' ) : __( 'Category or slider group', 'gnn' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'options' => $options,
 				'default' => 0,
 			)
 		);
-		if ( 'portfolio' === $this->module ) {
+		if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
 			$this->add_control(
 				'filters',
 				array(
@@ -135,15 +136,16 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 					'options' => array(
 						'projects' => __( 'Project category', 'gnn' ),
 						'project'  => __( 'Single project', 'gnn' ),
+						'product'  => __( 'Single product', 'gnn' ),
 						'album'    => __( 'Independent album', 'gnn' ),
 					),
 					'default' => 'projects',
 				)
 			);
-			$records = array( 0 => __( 'Choose a published project or album', 'gnn' ) );
+			$records = array( 0 => __( 'Choose a published project, product or album', 'gnn' ) );
 			foreach ( get_posts(
 				array(
-					'post_type'      => array( 'gnn_project', 'gnn_album' ),
+					'post_type'      => array( 'gnn_project', 'gnn_product', 'gnn_album' ),
 					'post_status'    => 'publish',
 					'posts_per_page' => 100,
 					'orderby'        => 'title',
@@ -155,7 +157,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 			$this->add_control(
 				'record',
 				array(
-					'label'   => __( 'Project or album', 'gnn' ),
+					'label'   => __( 'Project, product or album', 'gnn' ),
 					'type'    => \Elementor\Controls_Manager::SELECT2,
 					'options' => $records,
 					'default' => 0,
@@ -163,8 +165,8 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 			);
 		}
 		$this->end_controls_section();
-		if ( 'portfolio' === $this->module ) {
-			$this->start_controls_section( 'selection', array( 'label' => __( 'Project selection', 'gnn' ) ) );
+		if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
+			$this->start_controls_section( 'selection', array( 'label' => 'catalog' === $this->module ? __( 'Product selection', 'gnn' ) : __( 'Project selection', 'gnn' ) ) );
 			$this->add_control(
 				'orderby',
 				array(
@@ -194,7 +196,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 			$this->add_control(
 				'exclude_ids',
 				array(
-					'label'   => __( 'Excluded project IDs', 'gnn' ),
+					'label'   => 'catalog' === $this->module ? __( 'Excluded product IDs', 'gnn' ) : __( 'Excluded project IDs', 'gnn' ),
 					'type'    => \Elementor\Controls_Manager::TEXT,
 					'default' => '',
 				)
@@ -202,14 +204,14 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 			$this->add_control(
 				'related',
 				array(
-					'label'   => __( 'Related projects', 'gnn' ),
+					'label'   => 'catalog' === $this->module ? __( 'Related products', 'gnn' ) : __( 'Related projects', 'gnn' ),
 					'type'    => \Elementor\Controls_Manager::SWITCHER,
 					'default' => '',
 				)
 			);
 			$this->end_controls_section();
 		}
-		if ( in_array( $this->module, array( 'portfolio', 'gallery' ), true ) ) {
+		if ( in_array( $this->module, array( 'portfolio', 'catalog', 'gallery' ), true ) ) {
 			$this->start_controls_section(
 				'appearance',
 				array(
@@ -289,7 +291,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'border-radius:{{SIZE}}{{UNIT}};' ),
 				)
 			);
-			if ( 'portfolio' === $this->module ) {
+			if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
 				$this->add_control(
 					'title_color',
 					array(

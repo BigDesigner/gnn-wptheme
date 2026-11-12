@@ -50,7 +50,7 @@ function gnn_panel_menu_reorder() {
 	if ( empty( $submenu['gnn-panel'] ) ) {
 		return;
 	}
-	$order = array_flip( array( 'gnn-panel', 'gnn-templates', 'gnn-assignments', 'gnn-design', 'edit.php?post_type=gnn_layout', 'edit.php?post_type=gnn_project', 'edit.php?post_type=gnn_album', 'edit.php?post_type=gnn_slide', 'gnn-workspace', 'gnn-addons', 'gnn-maintenance' ) );
+	$order = array_flip( array( 'gnn-panel', 'gnn-templates', 'gnn-assignments', 'gnn-design', 'edit.php?post_type=gnn_layout', 'edit.php?post_type=gnn_project', 'edit.php?post_type=gnn_product', 'edit.php?post_type=gnn_album', 'edit.php?post_type=gnn_slide', 'gnn-workspace', 'gnn-addons', 'gnn-maintenance' ) );
 	foreach ( $submenu['gnn-panel'] as $item ) {
 		if ( ! isset( $order[ $item[2] ] ) ) {
 			$order[ $item[2] ] = count( $order );

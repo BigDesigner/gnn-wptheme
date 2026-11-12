@@ -158,7 +158,7 @@ function gnn_render_layout_region( $region ) {
 
 /** Page controls do not require Elementor Pro. */
 function gnn_layout_meta_box() {
-	add_meta_box( 'gnn-layout', __( 'Site layout overrides', 'gnn' ), 'gnn_render_layout_meta_box', array( 'page', 'post', 'gnn_project' ), 'side' );
+	add_meta_box( 'gnn-layout', __( 'Site layout overrides', 'gnn' ), 'gnn_render_layout_meta_box', array( 'page', 'post', 'gnn_project', 'gnn_product' ), 'side' );
 }
 add_action( 'add_meta_boxes', 'gnn_layout_meta_box' );
 
