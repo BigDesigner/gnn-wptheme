@@ -114,7 +114,7 @@ function gnn_package_content( $content, $state ) {
  */
 function gnn_package_shortcodes( $content, $state ) {
 	return preg_replace_callback(
-		'/\[(gnn_block|gnn_portfolio|gnn_gallery|gnn_slider|gallery|elementor-template)\b([^\]]*)\]/',
+		'/\[(gnn_block|gnn_portfolio|gnn_catalog|gnn_gallery|gnn_slider|gallery|elementor-template)\b([^\]]*)\]/',
 		static function ( $parts ) use ( $state ) {
 			$attrs = shortcode_parse_atts( $parts[2] );
 			if ( ! is_array( $attrs ) ) {

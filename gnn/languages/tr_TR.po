@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.7.1\n"
+"Project-Id-Version: GNN 2.8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 00:40+0000\n"
-"PO-Revision-Date: 2026-11-12 00:40+0000\n"
+"POT-Creation-Date: 2026-11-12 06:01+0000\n"
+"PO-Revision-Date: 2026-11-12 06:01+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -233,6 +233,9 @@ msgstr "Taslak sayfaları ekle"
 msgid "Add new album"
 msgstr "Yeni albüm ekle"
 
+msgid "Add new product"
+msgstr "Yeni ürün ekle"
+
 msgid "Add new project"
 msgstr "Yeni proje ekle"
 
@@ -310,6 +313,9 @@ msgstr "Tüm gruplar"
 
 msgid "All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed."
 msgstr "Tüm sayfalar, yazılar, projeler, galeriler, slaytlar, menüler, yorumlar, siparişler ve medya dosyaları kalıcı olarak silinecek. Aktif tema, eklentiler ve kullanıcı hesapları korunacak. Seçilen demo kurulacak."
+
+msgid "All products"
+msgstr "Tüm ürünler"
 
 msgid "All projects"
 msgstr "Tüm projeler"
@@ -725,8 +731,8 @@ msgstr "Gutenberg veya Elementor seçin."
 msgid "Choose a published block."
 msgstr "Yayımlanmış bir blok seçin."
 
-msgid "Choose a published project or album"
-msgstr "Yayımlanmış proje veya albüm seçin"
+msgid "Choose a published project, product or album"
+msgstr "Yayımlanmış bir proje, ürün veya albüm seçin"
 
 msgid "Choose a reference on this site"
 msgstr "Bu siteden bir referans seçin"
@@ -1109,6 +1115,9 @@ msgstr "Tanılama"
 msgid "Diagnostics and integration status"
 msgstr "Tanılama ve entegrasyon durumu"
 
+msgid "Dimensions"
+msgstr "Ölçüler"
+
 msgid "Disable persistent caching before resetting."
 msgstr "Sıfırlamadan önce kalıcı önbelleği devre dışı bırakın."
 
@@ -1144,6 +1153,9 @@ msgstr "Slaytı Düzenle"
 
 msgid "Edit album"
 msgstr "Albümü düzenle"
+
+msgid "Edit product"
+msgstr "Ürünü düzenle"
 
 msgid "Edit project"
 msgstr "Projeyi düzenle"
@@ -1228,6 +1240,9 @@ msgstr "Özet uzunluğu (kelime)"
 
 msgid "Exclude from search"
 msgstr "Aramadan hariç tut"
+
+msgid "Excluded product IDs"
+msgstr "Hariç tutulan ürün kimlikleri"
 
 msgid "Excluded project IDs"
 msgstr "Hariç tutulan proje kimlikleri"
@@ -1472,6 +1487,9 @@ msgstr "GNN Hap Buton"
 msgid "GNN Portfolio"
 msgstr "GNN Portföy"
 
+msgid "GNN Product catalogue"
+msgstr "GNN Ürün Kataloğu"
+
 msgid "GNN Products"
 msgstr "GNN Ürünler"
 
@@ -1508,8 +1526,8 @@ msgstr "Galeri"
 msgid "Gallery columns"
 msgstr "Galeri sütunları"
 
-msgid "Gallery images and project information"
-msgstr "Galeri görselleri ve proje bilgileri"
+msgid "Gallery images"
+msgstr "Galeri görselleri"
 
 msgid "Gallery source"
 msgstr "Galeri kaynağı"
@@ -1982,6 +2000,9 @@ msgstr "İçe aktarmadan önce %s referansını bu sitede eşleyin. Hiçbir ayar
 msgid "Match content width"
 msgstr "İçerik genişliğiyle eşleştir"
 
+msgid "Material"
+msgstr "Malzeme"
+
 msgid "Material and light"
 msgstr "Malzeme ve ışık"
 
@@ -2114,6 +2135,9 @@ msgstr "Yeni yorumlar →"
 msgid "News"
 msgstr "Haberler"
 
+msgid "Next product"
+msgstr "Sonraki ürün"
+
 msgid "Next project"
 msgstr "Sonraki proje"
 
@@ -2137,6 +2161,9 @@ msgstr "İçe aktarılmış başlangıç sayfası bulunamadı."
 
 msgid "No pending changes"
 msgstr "Kaydedilmemiş değişiklik yok"
+
+msgid "No products have been published in this selection yet."
+msgstr "Bu seçimde henüz yayımlanmış ürün yok."
 
 msgid "No projects have been published in this selection yet."
 msgstr "Bu seçimde henüz yayımlanmış proje yok."
@@ -2381,6 +2408,9 @@ msgstr "İçe aktarmayı önizle"
 msgid "Preview installed design"
 msgstr "Kurulan tasarımı önizle"
 
+msgid "Previous product"
+msgstr "Önceki ürün"
+
 msgid "Previous project"
 msgstr "Önceki proje"
 
@@ -2407,6 +2437,21 @@ msgstr "Ürün danışmanlığı"
 
 msgid "Product categories"
 msgstr "Ürün kategorileri"
+
+msgid "Product category"
+msgstr "Ürün kategorisi"
+
+msgid "Product code"
+msgstr "Ürün kodu"
+
+msgid "Product navigation"
+msgstr "Ürünler arasında gezinme"
+
+msgid "Product pages"
+msgstr "Ürün sayfaları"
+
+msgid "Product selection"
+msgstr "Ürün seçimi"
 
 msgid "Products"
 msgstr "Ürünler"
@@ -2447,9 +2492,6 @@ msgstr "Proje konumu"
 msgid "Project navigation"
 msgstr "Projeler arasında gezinme"
 
-msgid "Project or album"
-msgstr "Proje veya albüm"
-
 msgid "Project overview"
 msgstr "Proje tanıtımı"
 
@@ -2464,6 +2506,9 @@ msgstr "Proje aşaması"
 
 msgid "Project year"
 msgstr "Proje yılı"
+
+msgid "Project, product or album"
+msgstr "Proje, ürün veya albüm"
 
 msgid "Projects"
 msgstr "Projeler"
@@ -2542,6 +2587,9 @@ msgstr "Elementor şablonlarını yenile"
 
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr "Değiştirilmemiş GNN kayıtlı şablonlarını yeniler ve eksik bölümleri ekler. Düzenlediğiniz şablonlar ve kimlikleri korunur. Başlangıç kaydı bulunmayan eski şablonlar korunur."
+
+msgid "Related products"
+msgstr "İlgili ürünler"
 
 msgid "Related projects"
 msgstr "İlgili projeler"
@@ -2932,6 +2980,9 @@ msgstr "Tekil yazı üstbilgi tercihi"
 
 msgid "Single post layout and details"
 msgstr "Tekil yazı düzeni ve ayrıntılar"
+
+msgid "Single product"
+msgstr "Tek ürün"
 
 msgid "Single project"
 msgstr "Tek proje"

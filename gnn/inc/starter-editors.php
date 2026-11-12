@@ -163,7 +163,7 @@ function gnn_starter_elementor_elements( $blocks ) {
 			'elements' => array(),
 			'isInner'  => false,
 		);
-		if ( 0 === strpos( (string) $name, 'gnn/' ) && in_array( substr( $name, 4 ), array( 'portfolio', 'gallery', 'products', 'slider' ), true ) ) {
+		if ( 0 === strpos( (string) $name, 'gnn/' ) && in_array( substr( $name, 4 ), array( 'portfolio', 'catalog', 'gallery', 'products', 'slider' ), true ) ) {
 			$element['elType']     = 'widget';
 			$element['widgetType'] = 'gnn-' . substr( $name, 4 );
 			$element['settings']   = array_merge( $settings, $attrs );

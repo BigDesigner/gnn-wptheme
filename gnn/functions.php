@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.7.1' );
+define( 'GNN_VERSION', '2.8.0' );
 
 /**
  * Theme setup.

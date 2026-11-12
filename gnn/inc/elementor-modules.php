@@ -18,7 +18,7 @@ function gnn_register_elementor_modules( $manager ) {
 	require_once get_template_directory() . '/inc/class-gnn-elementor-module.php';
 	require_once get_template_directory() . '/inc/class-gnn-elementor-block.php';
 	$manager->register( new GNN_Elementor_Block() );
-	foreach ( array( 'portfolio', 'gallery', 'products', 'slider' ) as $module ) {
+	foreach ( array( 'portfolio', 'catalog', 'gallery', 'products', 'slider' ) as $module ) {
 		require_once get_template_directory() . '/inc/class-gnn-elementor-' . $module . '.php';
 		$class = 'GNN_Elementor_' . ucfirst( $module );
 		$manager->register( new $class() );
