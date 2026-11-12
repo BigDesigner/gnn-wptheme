@@ -3,7 +3,10 @@
 	'use strict';
 	document.addEventListener('change', function (event) {
 		if (!event.target.matches('.gnn-module-filter-select')) return;
-		var target = new URL(event.target.value, window.location.href);
-		if (target.origin === window.location.origin) window.location.assign(target.href);
+		var form = event.target.closest('.gnn-module-filter-form');
+		if (form) {
+			if (form.requestSubmit) { form.requestSubmit(); }
+			else { form.submit(); }
+		}
 	});
 })();

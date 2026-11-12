@@ -214,27 +214,27 @@ function gnn_gallery_ids( $value ) {
 /** Shared dynamic settings for native Elementor widgets and server rendering. */
 function gnn_module_attributes() {
 	return array(
-		'category' => array(
+		'category'      => array(
 			'type'    => 'integer',
 			'default' => 0,
 		),
-		'columns'  => array(
+		'columns'       => array(
 			'type'    => 'integer',
 			'default' => 0,
 		),
-		'limit'    => array(
+		'limit'         => array(
 			'type'    => 'integer',
 			'default' => 12,
 		),
-		'source'   => array(
+		'source'        => array(
 			'type'    => 'string',
 			'default' => 'projects',
 		),
-		'record'   => array(
+		'record'        => array(
 			'type'    => 'integer',
 			'default' => 0,
 		),
-		'filters'  => array(
+		'filters'       => array(
 			'type'    => 'boolean',
 			'default' => true,
 		),
@@ -242,19 +242,19 @@ function gnn_module_attributes() {
 			'type'    => 'string',
 			'default' => 'links',
 		),
-		'orderby' => array(
+		'orderby'       => array(
 			'type'    => 'string',
 			'default' => '',
 		),
-		'order' => array(
+		'order'         => array(
 			'type'    => 'string',
 			'default' => 'DESC',
 		),
-		'exclude_ids' => array(
+		'exclude_ids'   => array(
 			'type'    => 'string',
 			'default' => '',
 		),
-		'related' => array(
+		'related'       => array(
 			'type'    => 'string',
 			'default' => '',
 		),
@@ -442,14 +442,16 @@ function gnn_render_module( $module, $attrs = array() ) {
  * @param string         $param Filter query parameter.
  * @param array|WP_Error $terms Available categories.
  * @param int            $selected Selected category ID.
+ * @param string         $field_id Unique field ID.
  * @return string Escaped selector markup.
  */
-function gnn_collection_filter_select( $base, $param, $terms, $selected ) {
-	$html = '<select class="gnn-module-filter-select" aria-label="' . esc_attr__( 'Category', 'gnn' ) . '"><option value="' . esc_url( $base ) . '">' . esc_html__( 'All categories', 'gnn' ) . '</option>';
+function gnn_collection_filter_select( $base, $param, $terms, $selected, $field_id = '' ) {
+	$field_id = $field_id ? $field_id : wp_unique_id( 'gnn-module-filter-' );
+	$html     = '<form class="gnn-module-filter-form" method="get" action="' . esc_url( $base ) . '"><label class="screen-reader-text" for="' . esc_attr( $field_id ) . '">' . esc_html__( 'Category', 'gnn' ) . '</label><select id="' . esc_attr( $field_id ) . '" class="gnn-module-filter-select" name="' . esc_attr( $param ) . '"><option value="0">' . esc_html__( 'All categories', 'gnn' ) . '</option>';
 	foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
-		$html .= '<option value="' . esc_url( add_query_arg( $param, $term->term_id, $base ) ) . '"' . selected( $selected, $term->term_id, false ) . '>' . esc_html( $term->name ) . '</option>';
+		$html .= '<option value="' . (int) $term->term_id . '"' . selected( $selected, $term->term_id, false ) . '>' . esc_html( $term->name ) . '</option>';
 	}
-	return $html . '</select>';
+	return $html . '</select><button type="submit" class="gnn-module-filter-submit">' . esc_html__( 'Filter', 'gnn' ) . '</button></form>';
 }
 
 /** Render a live collection with its own query controls.
@@ -520,7 +522,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 				)
 			);
 			if ( 'select' === ( $attrs['filter_layout'] ?? '' ) ) {
-				$html .= gnn_collection_filter_select( $base, $param, $terms, $selected );
+				$html .= gnn_collection_filter_select( $base, $param, $terms, $selected, $instance . '-filter' );
 			} else {
 				$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Project categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All projects', 'gnn' ) . '</a>';
 				foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
@@ -576,7 +578,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 				)
 			);
 			if ( 'select' === ( $attrs['filter_layout'] ?? '' ) ) {
-				$html .= gnn_collection_filter_select( $base, $param, $terms, $selected );
+				$html .= gnn_collection_filter_select( $base, $param, $terms, $selected, $instance . '-filter' );
 			} else {
 				$html .= '<nav class="gnn-module-filters" aria-label="' . esc_attr__( 'Product categories', 'gnn' ) . '"><a href="' . esc_url( $base ) . '"' . ( ! $selected ? ' aria-current="true"' : '' ) . '>' . esc_html__( 'All products', 'gnn' ) . '</a>';
 				foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
@@ -623,7 +625,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 			}
 			$ids = gnn_gallery_ids( $ids );
 		}
-		$html           = '<div data-close-label="' . esc_attr__( 'Close', 'gnn' ) . '" class="gnn-content-module gnn-module-gallery gnn-module-grid gnn-module-columns-' . $columns . '">';
+		$html            = '<div data-close-label="' . esc_attr__( 'Close', 'gnn' ) . '" class="gnn-content-module gnn-module-gallery gnn-module-grid gnn-module-columns-' . $columns . '">';
 		$rendered_images = 0;
 		foreach ( $ids as $id ) {
 			if ( ! wp_attachment_is_image( $id ) || ! wp_get_attachment_image_url( $id, 'full' ) ) {
@@ -636,6 +638,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 			if ( '' === $label ) {
 				$label = __( 'Image', 'gnn' );
 			}
+			/* translators: %s: image label. */
 			$html .= '<a class="gnn-gallery-expand" href="' . esc_url( wp_get_attachment_image_url( $id, 'full' ) ) . '" aria-label="' . esc_attr( sprintf( __( 'Expand: %s', 'gnn' ), $label ) ) . '">' . wp_get_attachment_image( $id, 'large' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- media markup is core-generated.
 			++$rendered_images;
 		}

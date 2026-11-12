@@ -1683,7 +1683,7 @@ TRANSLATIONS.update({
 })
 
 TRANSLATIONS.update({
- 'Filter display': 'Filtre görünümü', 'Links': 'Bağlantılar', 'Dropdown': 'Açılır liste',
+ 'Filter': 'Filtrele', 'Filter display': 'Filtre görünümü', 'Links': 'Bağlantılar', 'Dropdown': 'Açılır liste',
  'Image': 'Görsel', 'Expand: %s': 'Büyüt: %s',
  'Set the main image in Featured Image. The optional 2× image is used on high-density screens.': 'Ana görseli Öne Çıkan Görsel alanından ayarlayın. İsteğe bağlı 2× görsel, yüksek yoğunluklu ekranlarda kullanılır.',
  'Use Order in Page Attributes to set the sequence.': 'Sıralamayı Sayfa Öznitelikleri içindeki Sıra alanından belirleyin.',
