@@ -176,15 +176,15 @@ function gnn_demo_resume_screen( $job ) {
 function gnn_plugin_cards( $commerce = false ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	$plugins = array(
-		'elementor'    => array( 'Elementor', 'elementor/elementor.php', __( 'Required for ready-made sites', 'gnn' ) ),
-		'woocommerce'  => array( 'WooCommerce', 'woocommerce/woocommerce.php', $commerce ? __( 'Required for this design', 'gnn' ) : __( 'Optional store', 'gnn' ) ),
-		'gnn-lightbox' => array( 'GNN Lightbox', 'gnn-lightbox/gnn-lightbox.php', __( 'Image viewer', 'gnn' ) ),
+		'elementor'    => array( 'Elementor', 'elementor/elementor.php', __( 'Build and edit pages visually.', 'gnn' ), __( 'Required for ready-made sites.', 'gnn' ) ),
+		'woocommerce'  => array( 'WooCommerce', 'woocommerce/woocommerce.php', __( 'Add an online store and checkout.', 'gnn' ), $commerce ? __( 'Required for this design.', 'gnn' ) : __( 'Optional; required for an online store.', 'gnn' ) ),
+		'gnn-lightbox' => array( 'GNN Lightbox', 'gnn-lightbox/gnn-lightbox.php', __( 'Open gallery images in a lightbox.', 'gnn' ), __( 'Optional; required for lightbox viewing.', 'gnn' ) ),
 	);
 	echo '<div class="gnn-choice-grid">';
 	foreach ( $plugins as $slug => $plugin ) {
 		$installed = file_exists( WP_PLUGIN_DIR . '/' . $plugin[1] );
 		$active    = is_plugin_active( $plugin[1] );
-		echo '<article class="gnn-plugin-card"><span class="dashicons dashicons-admin-plugins" aria-hidden="true"></span><h3>' . esc_html( $plugin[0] ) . '</h3><p>' . esc_html( $plugin[2] ) . '</p>';
+		echo '<article class="gnn-plugin-card"><span class="dashicons dashicons-admin-plugins" aria-hidden="true"></span><h3>' . esc_html( $plugin[0] ) . '</h3><p>' . esc_html( $plugin[2] ) . '</p><p>' . esc_html( $plugin[3] ) . '</p>';
 		if ( $active ) {
 			echo '<strong>' . esc_html__( 'Active', 'gnn' ) . '</strong>';
 		} elseif ( $installed && current_user_can( 'activate_plugins' ) ) {

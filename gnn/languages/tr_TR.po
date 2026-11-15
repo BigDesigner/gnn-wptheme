@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.9.1\n"
+"Project-Id-Version: GNN 2.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 23:48+0000\n"
-"PO-Revision-Date: 2026-11-15 23:48+0000\n"
+"POT-Creation-Date: 2026-11-16 00:37+0000\n"
+"PO-Revision-Date: 2026-11-16 00:37+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -232,6 +232,9 @@ msgstr "Teklifi, ürünü ya da hikayeyi anlatan kısa bir destekleyici paragraf
 
 msgid "Add a short, evocative introduction here. Replace this placeholder with your own copy describing the section, product or story."
 msgstr "Etkileyici kısa bir giriş buraya ekleyin. Bu örnek metni bölümü, ürünü ya da hikayeyi anlatan kendi içeriğinizle değiştirin."
+
+msgid "Add an online store and checkout."
+msgstr "Online mağaza ve ödeme sayfası ekler."
 
 msgid "Add draft pages"
 msgstr "Taslak sayfaları ekle"
@@ -604,6 +607,9 @@ msgstr "İçerik yolu"
 
 msgid "Bring documentation, specialist input and decisions together."
 msgstr "Proje belgelerini, uzman görüşlerini ve kararları ortak bir düzlemde birleştirin."
+
+msgid "Build and edit pages visually."
+msgstr "Sayfaları görsel olarak oluşturur ve düzenler."
 
 msgid "Business profile and hero"
 msgstr "İşletme profili ve karşılama alanı"
@@ -1757,9 +1763,6 @@ msgstr "Görsel oranı"
 msgid "Image sizes"
 msgstr "Görsel boyutları"
 
-msgid "Image viewer"
-msgstr "Görsel görüntüleyici"
-
 msgid "Import Elementor starter pages"
 msgstr "Elementor başlangıç sayfalarını içe aktar"
 
@@ -2276,14 +2279,20 @@ msgstr "Burada yalnızca rolünüze atanmış alanları değiştirebilirsiniz. K
 msgid "Open Elementor activation"
 msgstr "Elementor etkinleştirme ekranını aç"
 
+msgid "Open gallery images in a lightbox."
+msgstr "Galeri görsellerini büyüterek açar."
+
 msgid "Open spaces"
 msgstr "Açık alanlar"
 
 msgid "Opening hours"
 msgstr "Çalışma saatleri"
 
-msgid "Optional store"
-msgstr "İsteğe bağlı mağaza"
+msgid "Optional; required for an online store."
+msgstr "İsteğe bağlı; online mağaza için gerekli."
+
+msgid "Optional; required for lightbox viewing."
+msgstr "İsteğe bağlı; görselleri büyütmek için gerekli."
 
 msgid "Order"
 msgstr "Sıralama"
@@ -2663,11 +2672,11 @@ msgstr "Taslak/örnek içeriği değiştirin, logoları seçin ve iletişim bağ
 msgid "Request a quote"
 msgstr "Teklif iste"
 
-msgid "Required for ready-made sites"
-msgstr "Hazır siteler için gerekli"
+msgid "Required for ready-made sites."
+msgstr "Hazır siteler için gerekli."
 
-msgid "Required for this design"
-msgstr "Bu tasarım için gerekli"
+msgid "Required for this design."
+msgstr "Bu tasarım için gerekli."
 
 msgid "Required plugins"
 msgstr "Gerekli eklentiler"

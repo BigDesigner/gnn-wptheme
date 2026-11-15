@@ -16,6 +16,13 @@ PLURALS = {
 }
 
 TRANSLATIONS = {
+    'Build and edit pages visually.': 'Sayfaları görsel olarak oluşturur ve düzenler.',
+    'Required for ready-made sites.': 'Hazır siteler için gerekli.',
+    'Add an online store and checkout.': 'Online mağaza ve ödeme sayfası ekler.',
+    'Required for this design.': 'Bu tasarım için gerekli.',
+    'Optional; required for an online store.': 'İsteğe bağlı; online mağaza için gerekli.',
+    'Open gallery images in a lightbox.': 'Galeri görsellerini büyüterek açar.',
+    'Optional; required for lightbox viewing.': 'İsteğe bağlı; görselleri büyütmek için gerekli.',
     'Image viewer': 'Görsel görüntüleyici',
     'Plugin download unavailable.': 'Eklenti indirilemiyor.',
     'Installation failed.': 'Kurulum başarısız.',
