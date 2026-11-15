@@ -2,6 +2,26 @@
 (function () {
  'use strict';
  var config = window.gnnManagement || {};
+ document.addEventListener('click', async function (event) {
+  var button = event.target.closest('.gnn-plugin-action');
+  if (!button) return;
+  var status = button.closest('.gnn-plugin-card').querySelector('.gnn-plugin-status');
+  button.disabled = true;
+  status.textContent = config.busy;
+  try {
+   var body = new URLSearchParams({action:'gnn_plugin_action',nonce:config.pluginNonce,plugin:button.dataset.plugin,operation:button.dataset.operation});
+   var response = await fetch(config.ajax, {method:'POST',credentials:'same-origin',body:body});
+   var result = await response.json();
+   if (!response.ok || !result.success) throw new Error(result.data && result.data.message || config.failure);
+   if (result.data.active) {
+    var label = document.createElement('strong'); label.textContent = config.pluginActive; button.replaceWith(label);
+    status.textContent = config.done;
+   } else {
+    button.dataset.operation = 'activate'; button.textContent = config.pluginActivate; button.disabled = false;
+    status.textContent = config.done;
+   }
+  } catch (error) { status.textContent = error.message || config.failure; button.disabled = false; }
+ });
  document.querySelectorAll('select[name^="regions["]').forEach(function (select) {
   select.addEventListener('change', function () {
    var link = select.parentNode.querySelector('.gnn-region-edit');

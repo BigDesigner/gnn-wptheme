@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.9.0\n"
+"Project-Id-Version: GNN 2.9.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 22:43+0000\n"
-"PO-Revision-Date: 2026-11-15 22:43+0000\n"
+"POT-Creation-Date: 2026-11-15 23:48+0000\n"
+"PO-Revision-Date: 2026-11-15 23:48+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1757,6 +1757,9 @@ msgstr "Görsel oranı"
 msgid "Image sizes"
 msgstr "Görsel boyutları"
 
+msgid "Image viewer"
+msgstr "Görsel görüntüleyici"
+
 msgid "Import Elementor starter pages"
 msgstr "Elementor başlangıç sayfalarını içe aktar"
 
@@ -1813,6 +1816,9 @@ msgstr "Demo siteyi yükle"
 
 msgid "Install the plugin for this widget before loading the package: %s"
 msgstr "Paketi yüklemeden önce bu bileşenin eklentisini kurun: %s"
+
+msgid "Installation failed."
+msgstr "Kurulum başarısız."
 
 msgid "Installation stopped. Check the server and retry."
 msgstr "Kurulum durdu. Sunucuyu kontrol edip yeniden deneyin."
@@ -2395,6 +2401,9 @@ msgstr "Planlama ve fizibilite"
 
 msgid "Platform uptime SLA"
 msgstr "Platform çalışma süresi SLA"
+
+msgid "Plugin download unavailable."
+msgstr "Eklenti indirilemiyor."
 
 msgid "Plugins"
 msgstr "Eklentiler"

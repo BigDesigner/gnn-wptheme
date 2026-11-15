@@ -58,6 +58,9 @@ function gnn_management_assets( $hook ) {
 			'ajax'              => admin_url( 'admin-ajax.php' ),
 			'nonce'             => wp_create_nonce( 'gnn_wipe' ),
 			'demoNonce'         => wp_create_nonce( 'gnn_demo_replace' ),
+			'pluginNonce'       => wp_create_nonce( 'gnn_plugin_action' ),
+			'pluginActive'      => __( 'Active', 'gnn' ),
+			'pluginActivate'    => __( 'Activate', 'gnn' ),
 			'close'             => __( 'Close', 'gnn' ),
 			'setup'             => admin_url( 'admin.php?page=gnn-panel#gnn-tab-setup' ),
 			'deleting'          => __( 'Deleting site content…', 'gnn' ),
@@ -173,8 +176,9 @@ function gnn_demo_resume_screen( $job ) {
 function gnn_plugin_cards( $commerce = false ) {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	$plugins = array(
-		'elementor'   => array( 'Elementor', 'elementor/elementor.php', __( 'Required for ready-made sites', 'gnn' ) ),
-		'woocommerce' => array( 'WooCommerce', 'woocommerce/woocommerce.php', $commerce ? __( 'Required for this design', 'gnn' ) : __( 'Optional store', 'gnn' ) ),
+		'elementor'    => array( 'Elementor', 'elementor/elementor.php', __( 'Required for ready-made sites', 'gnn' ) ),
+		'woocommerce'  => array( 'WooCommerce', 'woocommerce/woocommerce.php', $commerce ? __( 'Required for this design', 'gnn' ) : __( 'Optional store', 'gnn' ) ),
+		'gnn-lightbox' => array( 'GNN Lightbox', 'gnn-lightbox/gnn-lightbox.php', __( 'Image viewer', 'gnn' ) ),
 	);
 	echo '<div class="gnn-choice-grid">';
 	foreach ( $plugins as $slug => $plugin ) {
@@ -184,17 +188,68 @@ function gnn_plugin_cards( $commerce = false ) {
 		if ( $active ) {
 			echo '<strong>' . esc_html__( 'Active', 'gnn' ) . '</strong>';
 		} elseif ( $installed && current_user_can( 'activate_plugins' ) ) {
-			echo '<a class="button" href="' . esc_url( wp_nonce_url( self_admin_url( 'plugins.php?action=activate&plugin=' . rawurlencode( $plugin[1] ) ), 'activate-plugin_' . $plugin[1] ) ) . '">' . esc_html__( 'Activate', 'gnn' ) . '</a>';
+			echo '<button type="button" class="button gnn-plugin-action" data-plugin="' . esc_attr( $slug ) . '" data-operation="activate">' . esc_html__( 'Activate', 'gnn' ) . '</button>';
 		} elseif ( ! $installed && current_user_can( 'install_plugins' ) ) {
-			$install_url = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . rawurlencode( $slug ) ), 'install-plugin_' . $slug );
-			echo '<a class="button" href="' . esc_url( $install_url ) . '">' . esc_html__( 'Install', 'gnn' ) . '</a>';
+			echo '<button type="button" class="button gnn-plugin-action" data-plugin="' . esc_attr( $slug ) . '" data-operation="install">' . esc_html__( 'Install', 'gnn' ) . '</button>';
 		} else {
 			echo '<span>' . esc_html__( 'Administrator access required.', 'gnn' ) . '</span>';
 		}
-		echo '</article>';
+		echo '<p class="gnn-plugin-status" role="status" aria-live="polite"></p></article>';
 	}
 	echo '</div>';
 }
+
+/** Install and activate only the plugins presented in the panel. */
+function gnn_plugin_action_ajax() {
+	check_ajax_referer( 'gnn_plugin_action', 'nonce' );
+	$slug      = isset( $_POST['plugin'] ) && is_string( $_POST['plugin'] ) ? sanitize_key( wp_unslash( $_POST['plugin'] ) ) : '';
+	$operation = isset( $_POST['operation'] ) && is_string( $_POST['operation'] ) ? sanitize_key( wp_unslash( $_POST['operation'] ) ) : '';
+	$plugins   = array(
+		'elementor'    => 'elementor/elementor.php',
+		'woocommerce'  => 'woocommerce/woocommerce.php',
+		'gnn-lightbox' => 'gnn-lightbox/gnn-lightbox.php',
+	);
+	if ( ! isset( $plugins[ $slug ] ) || ! in_array( $operation, array( 'install', 'activate' ), true ) || ! current_user_can( 'activate_plugins' ) || ( 'install' === $operation && ! current_user_can( 'install_plugins' ) ) ) {
+		wp_send_json_error( array( 'message' => __( 'Permission denied.', 'gnn' ) ), 403 );
+	}
+	require_once ABSPATH . 'wp-admin/includes/plugin.php';
+	if ( 'activate' === $operation ) {
+		$result = activate_plugin( $plugins[ $slug ], '', false, false );
+		if ( is_wp_error( $result ) ) {
+			wp_send_json_error( array( 'message' => $result->get_error_message() ), 400 );
+		}
+		wp_send_json_success( array( 'active' => true ) );
+	}
+	if ( file_exists( WP_PLUGIN_DIR . '/' . $plugins[ $slug ] ) ) {
+		wp_send_json_success( array( 'active' => is_plugin_active( $plugins[ $slug ] ) ) );
+	}
+	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+	if ( 'gnn-lightbox' === $slug ) {
+		$package = 'https://github.com/BigDesigner/gnn-lightbox/releases/download/v1.1.0/gnn-lightbox-v1.1.0.zip';
+	} else {
+		$info = plugins_api(
+			'plugin_information',
+			array(
+				'slug'   => $slug,
+				'fields' => array( 'sections' => false ),
+			)
+		);
+		if ( is_wp_error( $info ) || empty( $info->download_link ) ) {
+			wp_send_json_error( array( 'message' => __( 'Plugin download unavailable.', 'gnn' ) ), 502 );
+		}
+		$package = $info->download_link;
+	}
+	$skin     = new WP_Ajax_Upgrader_Skin();
+	$upgrader = new Plugin_Upgrader( $skin );
+	$result   = $upgrader->install( $package );
+	if ( is_wp_error( $result ) || ! $result || ! file_exists( WP_PLUGIN_DIR . '/' . $plugins[ $slug ] ) ) {
+		$error = $skin->get_errors();
+		wp_send_json_error( array( 'message' => is_wp_error( $result ) ? $result->get_error_message() : ( $error->has_errors() ? $error->get_error_message() : __( 'Installation failed.', 'gnn' ) ) ), 500 );
+	}
+	wp_send_json_success( array( 'active' => false ) );
+}
+add_action( 'wp_ajax_gnn_plugin_action', 'gnn_plugin_action_ajax' );
 
 /** Start an authenticated operation form.
  *

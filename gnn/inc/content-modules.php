@@ -610,9 +610,10 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		return $html . '</section>';
 	}
 	if ( 'gallery' === $module ) {
-		$record = absint( $attrs['record'] ?? 0 );
-		$source = $attrs['source'] ?? 'projects';
-		$ids    = array();
+		$instance = wp_unique_id( 'gnn-gallery-' );
+		$record   = absint( $attrs['record'] ?? 0 );
+		$source   = $attrs['source'] ?? 'projects';
+		$ids      = array();
 		if ( in_array( $source, array( 'album', 'project', 'product' ), true ) ) {
 			$expected = 'album' === $source ? 'gnn_album' : ( 'product' === $source ? 'gnn_product' : 'gnn_project' );
 			if ( $record && get_post_type( $record ) === $expected && 'publish' === get_post_status( $record ) && ! post_password_required( $record ) ) {
@@ -639,7 +640,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 				$label = __( 'Image', 'gnn' );
 			}
 			/* translators: %s: image label. */
-			$html .= '<a class="gnn-gallery-expand" href="' . esc_url( wp_get_attachment_image_url( $id, 'full' ) ) . '" aria-label="' . esc_attr( sprintf( __( 'Expand: %s', 'gnn' ), $label ) ) . '">' . wp_get_attachment_image( $id, 'large' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- media markup is core-generated.
+			$html .= '<a class="gnn-lightbox" data-lightbox-gallery="' . esc_attr( $instance ) . '" href="' . esc_url( wp_get_attachment_image_url( $id, 'full' ) ) . '" aria-label="' . esc_attr( sprintf( __( 'Expand: %s', 'gnn' ), $label ) ) . '">' . wp_get_attachment_image( $id, 'large' ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- media markup is core-generated.
 			++$rendered_images;
 		}
 		if ( ! $rendered_images && current_user_can( 'edit_pages' ) ) {
