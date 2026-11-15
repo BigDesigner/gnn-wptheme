@@ -119,11 +119,11 @@ function gnn_package_upload_screen() {
 		echo '<p>' . esc_html( $stage['title'] ) . '</p><button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $token ) . '" data-label="' . esc_attr( $stage['title'] ) . '">' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
 	} else {
 		echo '<form action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" method="post" enctype="multipart/form-data"><input type="hidden" name="action" value="gnn_package_upload">';
-		wp_nonce_field( 'gnn_package_upload' );
+		gnn_panel_nonce_field( 'gnn_package_upload' );
 		echo '<p><label>' . esc_html__( 'Demo package', 'gnn' ) . ' <input type="file" name="package" accept=".zip,application/zip" required></label></p>';
 		/* translators: %s: maximum upload size. */
 		echo '<p>' . esc_html( sprintf( __( 'ZIP · up to %s', 'gnn' ), size_format( min( wp_max_upload_size(), 256 * MB_IN_BYTES ) ) ) ) . '</p>';
-		submit_button( __( 'Upload', 'gnn' ), 'secondary' );
+		gnn_panel_submit_button( __( 'Upload', 'gnn' ), 'secondary' );
 		echo '</form>';
 	}
 	echo '</section>';
@@ -139,7 +139,7 @@ function gnn_package_export_screen() {
 		return;
 	}
 	echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Export demo package', 'gnn' ) . '</h2><p>' . esc_html__( 'Includes site content, media, menus and appearance. Accounts, comments, orders and integration keys are excluded.', 'gnn' ) . '</p><form action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" method="post"><input type="hidden" name="action" value="gnn_package_export">';
-	wp_nonce_field( 'gnn_package_export' );
-	submit_button( __( 'Download demo package', 'gnn' ), 'secondary' );
+	gnn_panel_nonce_field( 'gnn_package_export' );
+	gnn_panel_submit_button( __( 'Download demo package', 'gnn' ), 'secondary' );
 	echo '</form></section>';
 }

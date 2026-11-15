@@ -349,6 +349,7 @@ function gnn_sanitize_platform_options( $out, $input ) {
  * Render schema-driven accessible controls in the existing Settings API form.
  *
  * @param string $group Settings group.
+ * @param array  $exclude Keys rendered by another control.
  */
 function gnn_platform_fields( $group, $exclude = array() ) {
 	$titles = array(
@@ -422,8 +423,8 @@ function gnn_platform_fields( $group, $exclude = array() ) {
 				echo '</div></div>';
 				break;
 			case 'font':
-				gnn_field_number( $key, $field[0], 0, PHP_INT_MAX, __( 'Upload a trusted WOFF2 file in Media, then choose its attachment ID. No remote font URL is used.', 'gnn' ) );
-				echo '<div class="gnn-setting-row"><div class="gnn-setting-label-col"></div><div class="gnn-setting-control-col"><button type="button" class="button gnn-font-pick" data-target="gnn-' . esc_attr( $key ) . '">' . esc_html__( 'Choose local WOFF2 font', 'gnn' ) . '</button></div></div>';
+				$font_id = absint( gnn_option( $key ) );
+				echo '<div class="gnn-setting-row" data-key="' . esc_attr( $key ) . '"><div class="gnn-setting-label-col"><span class="gnn-setting-label">' . esc_html__( 'Local WOFF2 font', 'gnn' ) . '</span></div><div class="gnn-setting-control-col gnn-local-font"><input type="hidden" id="gnn-' . esc_attr( $key ) . '" name="gnn_options[' . esc_attr( $key ) . ']" value="' . (int) $font_id . '"><span class="gnn-local-font-name">' . esc_html( $font_id ? get_the_title( $font_id ) : __( 'No font selected', 'gnn' ) ) . '</span><div class="gnn-media-actions"><button type="button" class="button gnn-font-pick" data-target="gnn-' . esc_attr( $key ) . '">' . esc_html__( 'Choose local WOFF2 font', 'gnn' ) . '</button><button type="button" class="button gnn-font-clear" data-target="gnn-' . esc_attr( $key ) . '"' . ( $font_id ? '' : ' hidden' ) . '>' . esc_html__( 'Remove', 'gnn' ) . '</button></div></div></div>';
 				break;
 			default:
 				gnn_field_text( $key, $field[0], (string) gnn_option( $key ) );

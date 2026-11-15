@@ -13,6 +13,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Render a core nonce without duplicate DOM identifiers across embedded forms.
+ *
+ * @param string $action Nonce action.
+ * @param string $name Field name, preserved for existing handlers.
+ * @param bool   $referer Include the referer field.
+ */
+function gnn_panel_nonce_field( $action, $name = '_wpnonce', $referer = true ) {
+	$field = wp_nonce_field( $action, $name, $referer, false );
+	echo str_replace( 'id="' . esc_attr( $name ) . '"', 'id="' . esc_attr( wp_unique_id( 'gnn-nonce-' ) ) . '"', $field ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core escapes the nonce markup; replacement ID is escaped.
+}
+
+/**
+ * Render a core submit control with a page-unique ID.
+ *
+ * @param string $text Button text.
+ * @param string $type Core button classes.
+ * @param string $name Submitted field name.
+ * @param bool   $wrap Include a paragraph wrapper.
+ * @param array  $attributes Additional attributes.
+ */
+function gnn_panel_submit_button( $text, $type = 'primary', $name = 'submit', $wrap = true, $attributes = array() ) {
+	$attributes['id'] = $attributes['id'] ?? wp_unique_id( 'gnn-submit-' );
+	submit_button( $text, $type, $name, $wrap, $attributes );
+}
+
+/**
  * Register the shared GNN menu and theme settings screen.
  *
  * Position '59.100' is this theme's reserved slot in the GNN product
@@ -113,6 +139,10 @@ function gnn_options_sanitize( $input ) {
 		add_settings_error( 'gnn_options', $validation->get_error_code(), $validation->get_error_message() );
 		return $saved;
 	}
+	if ( isset( $input['accent'] ) && ! sanitize_hex_color( $input['accent'] ) ) {
+		add_settings_error( 'gnn_options', 'gnn_field_accent', __( 'Enter a valid hex color.', 'gnn' ) );
+		return $saved;
+	}
 	$started = gnn_configuration_begin( 'save', gnn_configuration_form_revision() );
 	if ( is_wp_error( $started ) ) {
 		add_settings_error( 'gnn_options', $started->get_error_code(), $started->get_error_message() );
@@ -120,8 +150,9 @@ function gnn_options_sanitize( $input ) {
 	}
 
 	// --- Shared theme_mods (not stored in the option). ---
-	if ( isset( $input['accent'] ) && preg_match( '/^#[0-9a-fA-F]{6}$/', $input['accent'] ) ) {
-		set_theme_mod( 'gnn_accent_color', $input['accent'] );
+	if ( isset( $input['accent'] ) ) {
+		$accent = preg_replace( '/^#(.)(.)(.)$/D', '#$1$1$2$2$3$3', $input['accent'] );
+		set_theme_mod( 'gnn_accent_color', $accent );
 	}
 	if ( isset( $input['default_mode'] ) ) {
 		set_theme_mod( 'gnn_default_theme', 'light' === $input['default_mode'] ? 'light' : 'dark' );
@@ -310,9 +341,24 @@ function gnn_panel_assets( $hook ) {
 		return;
 	}
 	wp_enqueue_media();
-	wp_enqueue_style( 'wp-color-picker' );
-	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array( 'wp-color-picker' ), GNN_VERSION );
-	wp_enqueue_script( 'gnn-admin', get_template_directory_uri() . '/assets/js/admin.js', array( 'wp-color-picker' ), GNN_VERSION, true );
+	wp_enqueue_style( 'gnn-admin', get_template_directory_uri() . '/assets/css/admin.css', array(), GNN_VERSION );
+	wp_enqueue_script( 'gnn-admin', get_template_directory_uri() . '/assets/js/admin.js', array(), GNN_VERSION, true );
+	wp_enqueue_script( 'gnn-admin-fonts', get_template_directory_uri() . '/assets/js/admin-fonts.js', array( 'gnn-admin' ), GNN_VERSION, true );
+	wp_localize_script(
+		'gnn-admin-fonts',
+		'gnnFontCatalog',
+		array(
+			'ajax'        => admin_url( 'admin-ajax.php' ),
+			'nonce'       => wp_create_nonce( 'gnn_font_catalog' ),
+			'fallback'    => get_template_directory_uri() . '/assets/data/google-fonts.json',
+			'choose'      => __( 'Choose font', 'gnn' ),
+			'default'     => __( 'Theme default', 'gnn' ),
+			'loading'     => __( 'Loading fonts…', 'gnn' ),
+			'empty'       => __( 'No fonts found.', 'gnn' ),
+			'cached'      => __( 'Using the saved font list.', 'gnn' ),
+			'unavailable' => __( 'The font list could not be loaded. Try again.', 'gnn' ),
+		)
+	);
 	gnn_panel_code_editors();
 	$invalid = '';
 	foreach ( get_settings_errors( 'gnn_options' ) as $error ) {
@@ -331,6 +377,8 @@ function gnn_panel_assets( $hook ) {
 			'unsaved'         => __( 'Unsaved changes', 'gnn' ),
 			'invalidField'    => $invalid,
 			'chooseColor'     => __( 'Choose color', 'gnn' ),
+			'invalidColor'    => __( 'Enter a valid hex color.', 'gnn' ),
+			'noFont'          => __( 'No font selected', 'gnn' ),
 			'ready'           => __( 'No pending changes', 'gnn' ),
 			'saving'          => __( 'Saving settings…', 'gnn' ),
 			'allGroups'       => __( 'All groups', 'gnn' ),
@@ -762,9 +810,9 @@ function gnn_field_number( $key, $label, $min = 0, $max = 9999, $hint = '' ) {
 	$unit = 'px';
 	if ( false !== strpos( $key, 'interval' ) ) {
 		$unit = 's';
-	} elseif ( false !== strpos( $key, 'opacity' ) ) {
+	} elseif ( false !== strpos( $key, 'opacity' ) || false !== strpos( $key, 'leading' ) || false !== strpos( $key, 'line_height' ) || false !== strpos( $label, '%' ) ) {
 		$unit = '%';
-	} elseif ( false !== strpos( $key, 'columns' ) || false !== strpos( $key, 'per_page' ) || false !== strpos( $key, 'excerpt' ) ) {
+	} elseif ( false !== strpos( $key, 'columns' ) || false !== strpos( $key, 'per_page' ) || false !== strpos( $key, 'excerpt' ) || 'image_quality' === $key ) {
 		$unit = '';
 	}
 	?>
@@ -818,7 +866,7 @@ function gnn_field_color( $key, $label, $value, $default_swatch = '#000000', $hi
 		</div>
 		<div class="gnn-setting-control-col">
 			<div class="gnn-color-field">
-				<input type="text" id="gnn-<?php echo esc_attr( $key ); ?>" name="gnn_options[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( $value ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $default_swatch ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+				<input type="text" id="gnn-<?php echo esc_attr( $key ); ?>" name="gnn_options[<?php echo esc_attr( $key ); ?>]" value="<?php echo esc_attr( $value ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $default_swatch ); ?>" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
 				<?php if ( $allow_empty ) : ?>
 					<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( $key ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 				<?php endif; ?>
@@ -853,14 +901,14 @@ function gnn_field_color_pair( $key, $label, $dark_default, $light_default, $hin
 				<div class="gnn-color-pair__item">
 					<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
 					<div class="gnn-color-field">
-						<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" aria-label="<?php echo esc_attr( $label . ' — ' . __( 'Dark', 'gnn' ) ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+						<input type="text" id="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>" aria-label="<?php echo esc_attr( $label . ' — ' . __( 'Dark', 'gnn' ) ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_dark" ); ?>]" value="<?php echo esc_attr( $dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $dark_default ); ?>" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
 						<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_dark" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 					</div>
 				</div>
 				<div class="gnn-color-pair__item">
 					<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
 					<div class="gnn-color-field">
-						<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" aria-label="<?php echo esc_attr( $label . ' — ' . __( 'Light', 'gnn' ) ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+						<input type="text" id="gnn-<?php echo esc_attr( "{$key}_light" ); ?>" aria-label="<?php echo esc_attr( $label . ' — ' . __( 'Light', 'gnn' ) ); ?>" name="gnn_options[<?php echo esc_attr( "{$key}_light" ); ?>]" value="<?php echo esc_attr( $light ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $light_default ); ?>" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
 						<button type="button" class="button gnn-color-clear" data-target="gnn-<?php echo esc_attr( "{$key}_light" ); ?>"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 					</div>
 				</div>
@@ -881,37 +929,37 @@ function gnn_panel_render() {
 	}
 
 	$tabs = array(
-		'global'     => __( 'Global', 'gnn' ),
-		'header'     => __( 'Header', 'gnn' ),
-		'footer'     => __( 'Footer', 'gnn' ),
-		'pages'      => __( 'Pages Layout', 'gnn' ),
-		'blog'       => __( 'Blog', 'gnn' ),
-		'styles'     => __( 'Styles', 'gnn' ),
-		'typography' => __( 'Typography', 'gnn' ),
-		'templates'  => __( 'Page templates', 'gnn' ),
-		'layouts'    => __( 'Layouts', 'gnn' ),
-		'setup'      => __( 'Setup wizard', 'gnn' ),
-		'plugins'    => __( 'Plugins', 'gnn' ),
-		'maintenance'=> __( 'Maintenance', 'gnn' ),
-		'code'       => __( 'Custom Code', 'gnn' ),
-		'advanced'   => __( 'Advanced', 'gnn' ),
+		'global'      => __( 'Global', 'gnn' ),
+		'header'      => __( 'Header', 'gnn' ),
+		'footer'      => __( 'Footer', 'gnn' ),
+		'pages'       => __( 'Pages Layout', 'gnn' ),
+		'blog'        => __( 'Blog', 'gnn' ),
+		'styles'      => __( 'Styles', 'gnn' ),
+		'typography'  => __( 'Typography', 'gnn' ),
+		'templates'   => __( 'Page templates', 'gnn' ),
+		'layouts'     => __( 'Layouts', 'gnn' ),
+		'setup'       => __( 'Setup wizard', 'gnn' ),
+		'plugins'     => __( 'Plugins', 'gnn' ),
+		'maintenance' => __( 'Maintenance', 'gnn' ),
+		'code'        => __( 'Custom Code', 'gnn' ),
+		'advanced'    => __( 'Advanced', 'gnn' ),
 	);
 
 	$tab_icons = array(
-		'global'     => 'admin-generic',
-		'header'     => 'align-center',
-		'footer'     => 'arrow-down-alt2',
-		'pages'      => 'admin-page',
-		'blog'       => 'admin-post',
-		'styles'     => 'art',
-		'typography' => 'editor-textcolor',
-		'templates'  => 'media-document',
-		'layouts'    => 'layout',
-		'setup'      => 'admin-tools',
-		'plugins'    => 'admin-plugins',
-		'maintenance'=> 'admin-generic',
-		'code'       => 'editor-code',
-		'advanced'   => 'admin-tools',
+		'global'      => 'admin-generic',
+		'header'      => 'align-center',
+		'footer'      => 'arrow-down-alt2',
+		'pages'       => 'admin-page',
+		'blog'        => 'admin-post',
+		'styles'      => 'art',
+		'typography'  => 'editor-textcolor',
+		'templates'   => 'media-document',
+		'layouts'     => 'layout',
+		'setup'       => 'admin-tools',
+		'plugins'     => 'admin-plugins',
+		'maintenance' => 'admin-generic',
+		'code'        => 'editor-code',
+		'advanced'    => 'admin-tools',
 	);
 	?>
 	<div class="wrap gnn-panel" id="gnn-theme-panel">
@@ -947,7 +995,7 @@ function gnn_panel_render() {
 					<?php else : ?>
 						<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-update-form">
 							<input type="hidden" name="action" value="gnn_check_theme_update">
-							<?php wp_nonce_field( 'gnn_check_theme_update' ); ?>
+							<?php gnn_panel_nonce_field( 'gnn_check_theme_update' ); ?>
 							<button type="submit" class="button gnn-update-btn"><?php esc_html_e( 'Check for updates', 'gnn' ); ?></button>
 						</form>
 					<?php endif; ?>
@@ -1059,6 +1107,8 @@ function gnn_panel_render() {
 
 						<?php gnn_section_bar( __( 'Layout', 'gnn' ) ); ?>
 						<?php
+						$gnn_header_schema = gnn_platform_schema();
+						gnn_field_select( 'header_preset', __( 'Header style', 'gnn' ), $gnn_header_schema['header_preset'][4] );
 						gnn_visual_header_layout();
 						gnn_field_select(
 							'header_menu_align',
@@ -1081,7 +1131,7 @@ function gnn_panel_render() {
 						<?php gnn_field_text( 'topbar_email', __( 'Email', 'gnn' ), (string) gnn_option( 'topbar_email' ) ); ?>
 						<?php gnn_field_text( 'topbar_phone', __( 'Phone', 'gnn' ), (string) gnn_option( 'topbar_phone' ) ); ?>
 
-						<?php gnn_platform_fields( 'header' ); ?>
+						<?php gnn_platform_fields( 'header', array( 'header_preset' ) ); ?>
 					</section>
 
 					<section id="gnn-tab-footer" class="gnn-tab">
@@ -1231,13 +1281,13 @@ function gnn_panel_render() {
 									<div class="gnn-color-pair__item">
 										<span class="gnn-color-pair__tag"><?php esc_html_e( 'Dark', 'gnn' ); ?></span>
 										<div class="gnn-color-field">
-											<input type="text" id="gnn-accent" name="gnn_options[accent]" value="<?php echo esc_attr( $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="#34d399" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+											<input type="text" id="gnn-accent" aria-label="<?php esc_attr_e( 'Accent color — Dark', 'gnn' ); ?>" name="gnn_options[accent]" value="<?php echo esc_attr( $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="#34d399" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
 										</div>
 									</div>
 									<div class="gnn-color-pair__item">
 										<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
 										<div class="gnn-color-field">
-											<input type="text" id="gnn-accent_light" name="gnn_options[accent_light]" value="<?php echo esc_attr( '' !== $gnn_accent_light ? $gnn_accent_light : $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $gnn_accent_dark ); ?>" maxlength="7" pattern="^#[0-9a-fA-F]{6}$">
+											<input type="text" id="gnn-accent_light" aria-label="<?php esc_attr_e( 'Accent color — Light', 'gnn' ); ?>" name="gnn_options[accent_light]" value="<?php echo esc_attr( '' !== $gnn_accent_light ? $gnn_accent_light : $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $gnn_accent_dark ); ?>" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
 											<button type="button" class="button gnn-color-clear" data-target="gnn-accent_light"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 										</div>
 									</div>
@@ -1292,11 +1342,13 @@ function gnn_panel_render() {
 						<div class="gnn-btn-styles">
 							<?php foreach ( gnn_button_style_slots() as $gnn_btn_slot ) : ?>
 								<?php
-								$gnn_btn_label         = (string) gnn_option( "btn_style_{$gnn_btn_slot}_label" );
-								$gnn_btn_class         = gnn_button_style_class( $gnn_btn_slot );
-								$gnn_btn_bg            = (string) gnn_option( "btn_style_{$gnn_btn_slot}_bg" );
-								$gnn_btn_text          = (string) gnn_option( "btn_style_{$gnn_btn_slot}_text" );
-								$gnn_btn_border        = (string) gnn_option( "btn_style_{$gnn_btn_slot}_border" );
+								$gnn_btn_label  = (string) gnn_option( "btn_style_{$gnn_btn_slot}_label" );
+								$gnn_btn_class  = gnn_button_style_class( $gnn_btn_slot );
+								$gnn_btn_bg     = (string) gnn_option( "btn_style_{$gnn_btn_slot}_bg" );
+								$gnn_btn_text   = (string) gnn_option( "btn_style_{$gnn_btn_slot}_text" );
+								$gnn_btn_border = (string) gnn_option( "btn_style_{$gnn_btn_slot}_border" );
+								/* translators: %d: button style number. */
+								$gnn_btn_name_label    = sprintf( __( 'Style %d name', 'gnn' ), (int) $gnn_btn_slot );
 								$gnn_btn_preview_style = '';
 								if ( '' !== $gnn_btn_bg ) {
 									$gnn_btn_preview_style .= 'background:' . $gnn_btn_bg . ';';
@@ -1318,7 +1370,7 @@ function gnn_panel_render() {
 										</strong>
 										<code class="gnn-btn-style-card__class"><?php echo esc_html( '.' . $gnn_btn_class ); ?></code>
 									</div>
-									<input type="text" name="gnn_options[btn_style_<?php echo esc_attr( $gnn_btn_slot ); ?>_label]" value="<?php echo esc_attr( $gnn_btn_label ); ?>" placeholder="<?php esc_attr_e( 'Name (e.g. Primary) — leave empty to skip', 'gnn' ); ?>" class="gnn-input regular-text">
+									<input type="text" aria-label="<?php echo esc_attr( $gnn_btn_name_label ); ?>" name="gnn_options[btn_style_<?php echo esc_attr( $gnn_btn_slot ); ?>_label]" value="<?php echo esc_attr( $gnn_btn_label ); ?>" placeholder="<?php esc_attr_e( 'Name (e.g. Primary) — leave empty to skip', 'gnn' ); ?>" class="gnn-input regular-text">
 									<div class="gnn-btn-style-card__colors">
 										<?php gnn_field_color( "btn_style_{$gnn_btn_slot}_bg", __( 'Background', 'gnn' ), $gnn_btn_bg, '#34d399', '', true ); ?>
 										<?php gnn_field_color( "btn_style_{$gnn_btn_slot}_text", __( 'Text', 'gnn' ), $gnn_btn_text, '#062416', '', true ); ?>
@@ -1334,7 +1386,7 @@ function gnn_panel_render() {
 						</div>
 
 						<?php gnn_platform_fields( 'styles' ); ?>
-						<?php gnn_design_fields( array( 'fields', 'button_names', 'global_colors' ), false ); ?>
+						<?php gnn_design_fields( array( 'fields', 'global_colors' ), false ); ?>
 					</section>
 
 					<section id="gnn-tab-typography" class="gnn-tab">
@@ -1343,7 +1395,7 @@ function gnn_panel_render() {
 						gnn_field_checkbox(
 							'typography_google_enable',
 							__( 'Use Google Fonts instead', 'gnn' ),
-							__( 'Off by default. When on, any element below with a font name set loads that Google Font; elements left empty keep the fast self-hosted default. Every font you pick is combined into a single stylesheet request, never one per font.', 'gnn' )
+							__( 'Loads the selected fonts from Google. Empty fields use the local font.', 'gnn' )
 						);
 						?>
 
@@ -1352,7 +1404,7 @@ function gnn_panel_render() {
 							<?php foreach ( gnn_typography_roles() as $gnn_typo_role => $gnn_typo_label ) : ?>
 								<div class="gnn-typo-row">
 									<span class="gnn-typo-row__label"><?php echo esc_html( $gnn_typo_label ); ?></span>
-									<input type="text" aria-label="<?php echo esc_attr( $gnn_typo_label . ' — ' . __( 'Font family', 'gnn' ) ); ?>" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_family]" value="<?php echo esc_attr( (string) gnn_option( "typo_{$gnn_typo_role}_family" ) ); ?>" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>" class="gnn-input regular-text">
+									<input type="text" aria-label="<?php echo esc_attr( $gnn_typo_label . ' — ' . __( 'Font family', 'gnn' ) ); ?>" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_family]" value="<?php echo esc_attr( (string) gnn_option( "typo_{$gnn_typo_role}_family" ) ); ?>" placeholder="<?php esc_attr_e( 'Theme default', 'gnn' ); ?>" id="gnn-typo-<?php echo esc_attr( $gnn_typo_role ); ?>-family" class="gnn-input gnn-font-family" autocomplete="off">
 									<select aria-label="<?php echo esc_attr( $gnn_typo_label . ' — ' . __( 'Font weight', 'gnn' ) ); ?>" name="gnn_options[typo_<?php echo esc_attr( $gnn_typo_role ); ?>_weight]" class="gnn-select">
 										<?php foreach ( gnn_typography_weights() as $gnn_typo_weight ) : ?>
 											<option value="<?php echo esc_attr( $gnn_typo_weight ); ?>" <?php selected( (string) gnn_option( "typo_{$gnn_typo_role}_weight" ), $gnn_typo_weight ); ?>><?php echo esc_html( $gnn_typo_weight ); ?></option>
@@ -1409,7 +1461,7 @@ function gnn_panel_render() {
 
 					<div class="gnn-savebar">
 						<p class="gnn-save-status" role="status"><?php esc_html_e( 'No pending changes', 'gnn' ); ?></p>
-						<?php submit_button( __( 'Save Settings', 'gnn' ), 'primary gnn-btn-save', 'submit', false ); ?>
+						<?php gnn_panel_submit_button( __( 'Save Settings', 'gnn' ), 'primary gnn-btn-save', 'submit', false ); ?>
 					</div>
 				</form>
 
@@ -1467,8 +1519,8 @@ function gnn_panel_advanced_tab() {
 							<option value="site"><?php esc_html_e( 'Site settings (includes private configuration)', 'gnn' ); ?></option>
 						</select>
 					</label>
-					<?php wp_nonce_field( 'gnn_export_settings' ); ?>
-					<?php submit_button( __( 'Export JSON', 'gnn' ), 'secondary', 'submit', false ); ?>
+					<?php gnn_panel_nonce_field( 'gnn_export_settings' ); ?>
+					<?php gnn_panel_submit_button( __( 'Export JSON', 'gnn' ), 'secondary', 'submit', false ); ?>
 				</form>
 			</div>
 		</div>
@@ -1483,7 +1535,7 @@ function gnn_panel_advanced_tab() {
 				<form method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_import_settings">
 					<?php
-					wp_nonce_field( 'gnn_import_settings' );
+					gnn_panel_nonce_field( 'gnn_import_settings' );
 					gnn_configuration_revision_field();
 					?>
 					<input type="file" aria-label="<?php esc_attr_e( 'Settings JSON file', 'gnn' ); ?>" name="gnn_import_file" accept="application/json,.json" required>
@@ -1502,10 +1554,10 @@ function gnn_panel_advanced_tab() {
 				<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return confirm('<?php echo esc_js( __( 'Reset all GNN Theme settings to defaults?', 'gnn' ) ); ?>');" class="gnn-inline-form">
 					<input type="hidden" name="action" value="gnn_reset_settings">
 					<?php
-					wp_nonce_field( 'gnn_reset_settings' );
+					gnn_panel_nonce_field( 'gnn_reset_settings' );
 					gnn_configuration_revision_field();
 					?>
-					<?php submit_button( __( 'Reset to defaults', 'gnn' ), 'delete', 'submit', false ); ?>
+					<?php gnn_panel_submit_button( __( 'Reset to defaults', 'gnn' ), 'delete', 'submit', false ); ?>
 				</form>
 			</div>
 		</div>
@@ -1520,8 +1572,8 @@ function gnn_panel_advanced_tab() {
 				<div class="gnn-setting-control-col">
 					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 						<input type="hidden" name="action" value="gnn_rebuild_elementor_templates">
-						<?php wp_nonce_field( 'gnn_rebuild_elementor_templates' ); ?>
-						<?php submit_button( __( 'Refresh Elementor templates', 'gnn' ), 'secondary', 'submit', false ); ?>
+						<?php gnn_panel_nonce_field( 'gnn_rebuild_elementor_templates' ); ?>
+						<?php gnn_panel_submit_button( __( 'Refresh Elementor templates', 'gnn' ), 'secondary', 'submit', false ); ?>
 					</form>
 				</div>
 			</div>
@@ -1564,13 +1616,13 @@ function gnn_panel_advanced_tab() {
 
 					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="gnn-inline-form">
 						<input type="hidden" name="action" value="gnn_save_updater_settings">
-						<?php wp_nonce_field( 'gnn_save_updater_settings' ); ?>
+						<?php gnn_panel_nonce_field( 'gnn_save_updater_settings' ); ?>
 						<label class="gnn-switch">
 							<input type="checkbox" aria-label="<?php esc_attr_e( 'Enable theme updates', 'gnn' ); ?>" name="gnn_updates_enable" value="1" <?php checked( $gnn_updates_on ); ?>>
 							<span class="gnn-switch__track"><span class="gnn-switch__thumb"></span></span>
 						</label>
 						<span class="gnn-switch__label"><?php esc_html_e( 'Check GitHub for new releases', 'gnn' ); ?></span>
-						<?php submit_button( __( 'Save', 'gnn' ), 'secondary', 'submit', false ); ?>
+						<?php gnn_panel_submit_button( __( 'Save', 'gnn' ), 'secondary', 'submit', false ); ?>
 					</form>
 				</div>
 			</div>

@@ -37,7 +37,7 @@ add_action( 'add_meta_boxes', 'gnn_block_role_box' );
  * @param WP_Post $post Shared block.
  */
 function gnn_block_role_fields( $post ) {
-	wp_nonce_field( 'gnn_block_role', 'gnn_block_role_nonce' );
+	gnn_panel_nonce_field( 'gnn_block_role', 'gnn_block_role_nonce' );
 	echo '<label class="screen-reader-text" for="gnn-block-role-select">' . esc_html__( 'Block role', 'gnn' ) . '</label><select id="gnn-block-role-select" name="gnn_block_role">';
 	foreach ( gnn_block_roles() as $key => $label ) {
 		echo '<option value="' . esc_attr( $key ) . '" ' . selected( get_post_meta( $post->ID, '_gnn_block_role', true ), $key, false ) . '>' . esc_html( $label ) . '</option>';
@@ -333,7 +333,7 @@ function gnn_section_library() {
 	echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Section library', 'gnn' ) . '</h2><div class="gnn-section-library">';
 	foreach ( gnn_section_catalog() as $key => $label ) {
 		echo '<article class="gnn-section-card"><div aria-hidden="true" class="gnn-section-wireframe gnn-section-wireframe--' . esc_attr( $key ) . '"><span></span><span></span><span></span></div><h3>' . esc_html( $label ) . '</h3><form method="post" class="gnn-management-form" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_add_section"><input type="hidden" name="section" value="' . esc_attr( $key ) . '">';
-		wp_nonce_field( 'gnn_add_section' );
+		gnn_panel_nonce_field( 'gnn_add_section' );
 		echo '<button class="button" type="submit">' . esc_html__( 'Add to saved templates', 'gnn' ) . '</button></form></article>';
 	}
 	echo '</div></section>';
@@ -459,7 +459,7 @@ add_action( 'admin_post_gnn_authoring_checks', 'gnn_run_authoring_checks' );
 /** Show actual check results, distinct from static environment information. */
 function gnn_authoring_checks_screen() {
 	echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Connection and editor checks', 'gnn' ) . '</h2><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_authoring_checks">';
-	wp_nonce_field( 'gnn_authoring_checks' );
+	gnn_panel_nonce_field( 'gnn_authoring_checks' );
 	echo '<button class="button" type="submit">' . esc_html__( 'Run checks', 'gnn' ) . '</button></form>';
 	$result = get_user_meta( get_current_user_id(), '_gnn_authoring_checks', true );
 	if ( is_array( $result ) && ! empty( $result['items'] ) ) {
@@ -474,7 +474,7 @@ function gnn_authoring_checks_screen() {
 
 /** Visual selection writes the existing header layout setting. */
 function gnn_visual_header_layout() {
-	echo '<fieldset class="gnn-visual-options"><legend>' . esc_html__( 'Header layout', 'gnn' ) . '</legend>';
+	echo '<fieldset class="gnn-visual-options" data-gnn-legacy-header' . ( 'legacy' === gnn_option( 'header_preset' ) ? '' : ' hidden' ) . '><legend>' . esc_html__( 'Header layout', 'gnn' ) . '</legend>';
 	foreach ( array(
 		'standard' => __( 'Standard', 'gnn' ),
 		'centered' => __( 'Centered', 'gnn' ),

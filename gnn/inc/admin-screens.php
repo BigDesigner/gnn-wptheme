@@ -81,10 +81,10 @@ function gnn_workspace_page() {
 	}
 	$args = array( 'page' => 'gnn-panel' );
 	if ( isset( $_GET['path'] ) && is_string( $_GET['path'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only route.
-		$args['path'] = sanitize_key( wp_unslash( $_GET['path'] ) );
+		$args['path'] = sanitize_key( wp_unslash( $_GET['path'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only setup route.
 	}
 	if ( isset( $_GET['package'] ) && is_string( $_GET['package'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only package handoff.
-		$package = sanitize_key( wp_unslash( $_GET['package'] ) );
+		$package = sanitize_key( wp_unslash( $_GET['package'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only package handoff.
 		if ( preg_match( '/^package-[a-f0-9]{32}$/D', $package ) ) {
 			$args['package'] = $package;
 		}
@@ -122,7 +122,7 @@ function gnn_setup_wizard_content() {
 		}
 		gnn_field_text( 'accent', __( 'Accent color', 'gnn' ), get_theme_mod( 'gnn_accent_color', '#34d399' ) );
 		echo '<p>' . esc_html__( 'No sample content will be added.', 'gnn' ) . '</p>';
-		submit_button( __( 'Apply', 'gnn' ) );
+		gnn_panel_submit_button( __( 'Apply', 'gnn' ) );
 		echo '</div></form>';
 		return;
 	}
@@ -141,7 +141,7 @@ function gnn_setup_wizard_content() {
 		} else {
 			gnn_management_form_open( 'import' );
 			echo '<input type="hidden" name="profile" value="' . esc_attr( $slug ) . '">';
-			submit_button( __( 'Add draft pages', 'gnn' ), 'secondary', 'submit', true, $ready && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) ) ? array() : array( 'disabled' => 'disabled' ) );
+			gnn_panel_submit_button( __( 'Add draft pages', 'gnn' ), 'secondary', 'submit', true, $ready && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) ) ? array() : array( 'disabled' => 'disabled' ) );
 			echo '<p class="gnn-operation-status" role="status"></p></form>';
 		}
 		echo '</article>';
@@ -202,7 +202,7 @@ function gnn_plugin_cards( $commerce = false ) {
  */
 function gnn_management_form_open( $operation ) {
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="gnn-management-form"><input type="hidden" name="action" value="gnn_management"><input type="hidden" name="operation" value="' . esc_attr( $operation ) . '">';
-	wp_nonce_field( 'gnn_management' );
+	gnn_panel_nonce_field( 'gnn_management' );
 	gnn_configuration_revision_field();
 }
 
@@ -268,11 +268,16 @@ function gnn_assignment_fields() {
 		echo '</section>';
 	}
 	echo '</div>';
-	submit_button( __( 'Save', 'gnn' ) );
+	gnn_panel_submit_button( __( 'Save', 'gnn' ) );
 	echo '</form>';
 }
 
-/** Render extended design settings by topic. */
+/**
+ * Render extended design settings by topic.
+ *
+ * @param array $requested_groups Requested topic keys.
+ * @param bool  $with_form Include a separate form.
+ */
 function gnn_design_fields( $requested_groups = array(), $with_form = true ) {
 	$draft          = get_user_meta( get_current_user_id(), '_gnn_design_draft', true );
 	$saved          = (array) get_option( 'gnn_options', array() );
@@ -362,7 +367,7 @@ function gnn_design_fields( $requested_groups = array(), $with_form = true ) {
 		echo '</div></details>';
 	}
 	if ( $with_form ) {
-		submit_button( __( 'Save', 'gnn' ) );
+		gnn_panel_submit_button( __( 'Save', 'gnn' ) );
 		echo '</form>';
 	}
 	remove_filter( 'pre_option_gnn_options', $display );
@@ -392,6 +397,15 @@ function gnn_template_catalog() {
 	}
 }
 
+/** Redirect historical settings routes before WordPress sends page output. */
+function gnn_management_legacy_route() {
+	$page = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only page route.
+	if ( in_array( $page, array( 'gnn-addons', 'gnn-templates', 'gnn-assignments', 'gnn-design', 'gnn-maintenance' ), true ) ) {
+		gnn_management_page();
+	}
+}
+add_action( 'admin_init', 'gnn_management_legacy_route' );
+
 /** Role-checked page dispatcher. */
 function gnn_management_page() {
 	if ( ! current_user_can( 'manage_options' ) ) {
@@ -409,7 +423,11 @@ function gnn_management_page() {
 	exit;
 }
 
-/** Render former management screens inside their Theme settings tab. */
+/**
+ * Render former management screens inside their Theme settings tab.
+ *
+ * @param string $tab Settings tab key.
+ */
 function gnn_management_tab_content( $tab ) {
 	if ( 'plugins' === $tab ) {
 		gnn_plugin_cards( 'commerce' === gnn_option( 'site_segment' ) );
@@ -506,9 +524,9 @@ function gnn_management_handle() {
 		}
 		$target = 'layouts';
 	} elseif ( in_array( $operation, array( 'scratch', 'design' ), true ) ) {
-		$raw     = isset( $_POST['gnn_options'] ) && is_array( $_POST['gnn_options'] ) ? wp_unslash( $_POST['gnn_options'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- allowlist and typed schema below.
+		$raw           = isset( $_POST['gnn_options'] ) && is_array( $_POST['gnn_options'] ) ? wp_unslash( $_POST['gnn_options'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- allowlist and typed schema below.
 		$design_groups = isset( $_POST['design_groups'] ) && is_array( $_POST['design_groups'] ) ? array_map( 'sanitize_key', wp_unslash( $_POST['design_groups'] ) ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- values are compared to the schema below.
-		$allowed = 'scratch' === $operation ? array( 'header_preset', 'footer_preset', 'body_font', 'heading_font', 'accent' ) : array_keys(
+		$allowed       = 'scratch' === $operation ? array( 'header_preset', 'footer_preset', 'body_font', 'heading_font', 'accent' ) : array_keys(
 			array_filter(
 				gnn_site_schema(),
 				function ( $field ) use ( $design_groups ) {

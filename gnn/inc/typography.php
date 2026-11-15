@@ -37,7 +37,7 @@ function gnn_typography_roles() {
  * @return string[]
  */
 function gnn_typography_weights() {
-	return array( '300', '400', '500', '600', '700', '800', '900' );
+	return array( '100', '200', '300', '400', '500', '600', '700', '800', '900', '1000' );
 }
 
 /**
@@ -79,9 +79,12 @@ function gnn_typography_google_fonts_url() {
 		return '';
 	}
 	$parts = array();
+	ksort( $fonts, SORT_STRING );
 	foreach ( $fonts as $family => $weights ) {
+		$weights = array_keys( $weights );
+		sort( $weights, SORT_NUMERIC );
 		// Google's css2 endpoint uses a literal "+" for spaces in family names.
-		$parts[] = 'family=' . str_replace( ' ', '+', $family ) . ':wght@' . implode( ';', array_keys( $weights ) );
+		$parts[] = 'family=' . str_replace( ' ', '+', $family ) . ':wght@' . implode( ';', $weights );
 	}
 	return 'https://fonts.googleapis.com/css2?' . implode( '&', $parts ) . '&display=swap';
 }

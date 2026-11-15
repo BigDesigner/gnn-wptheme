@@ -441,7 +441,8 @@
 
 /* Setting Rows (2-column layout) */
 .gnn-setting-row {
-	display: flex;
+	display: grid;
+	grid-template-columns: minmax(140px,210px) minmax(0,1fr);
 	align-items: flex-start;
 	padding: 16px 0;
 	border-bottom: 1px solid #f1f5f9;
@@ -461,7 +462,8 @@
 }
 
 .gnn-setting-label-col {
-	width: 210px;
+	min-width: 0;
+	width: auto;
 	flex-shrink: 0;
 	padding-top: 4px;
 }
@@ -483,6 +485,7 @@
 }
 
 .gnn-setting-control-col {
+	width: 100%;
 	flex: 1;
 	min-width: 0;
 }
@@ -492,12 +495,14 @@
    ========================================================================== */
 .gnn-range-group {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	gap: 16px;
 }
 
 .gnn-range-slider-wrap {
-	width: 180px;
+	min-width: 0;
+	width: min(180px,100%);
 	display: flex;
 	flex-direction: column;
 }
@@ -836,9 +841,17 @@
 .gnn-switch input {
 	position: absolute;
 	opacity: 0;
-	width: 0;
-	height: 0;
+	inset: 0;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
 	margin: 0;
+	cursor: pointer;
+}
+
+.gnn-switch:has(input:focus-visible) .gnn-switch__track {
+	outline: 2px solid var(--gnn-teal-dark);
+	outline-offset: 3px;
 }
 
 .gnn-switch__track {
@@ -990,10 +1003,12 @@
 }
 
 /* ==========================================================================
-   Color Picker Fields (Iris integration)
+   Color fields
    ========================================================================== */
 .gnn-color-pair__row {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(auto-fit,minmax(min(100%,250px),1fr));
+	max-width: 620px;
 	gap: 20px;
 	flex-wrap: wrap;
 }
@@ -1019,66 +1034,8 @@
 	position: relative;
 }
 
-.gnn-color-field .gnn-picker {
-	position: relative;
-	display: flex;
-	align-items: stretch;
-	min-width: 120px;
-	max-width: 220px;
-	min-height: 36px;
-	border: 1px solid #cbd5e1;
-	border-radius: 4px;
-	background: var(--gnn-picker-color, #ffffff);
-	color: var(--gnn-picker-ink, #000000);
-}
-
-.gnn-picker .wp-picker-input-wrap {
-	display: block !important;
-	flex: 1;
-}
-
-.gnn-picker input.gnn-color-picker {
-	display: block !important;
-	width: 100% !important;
-	border: 0 !important;
-	background: transparent !important;
-	color: var(--gnn-picker-ink, #000000) !important;
-	box-shadow: none !important;
-	min-height: 36px !important;
-	padding: 6px 10px !important;
-	font: 12px/20px ui-monospace, SFMono-Regular, Consolas, monospace !important;
-}
-
-.gnn-panel .gnn-picker .wp-color-result.button {
-	flex: 0 0 32px;
-	width: 32px;
-	min-height: 36px;
-	margin: 0 !important;
-	padding: 0;
-	border: 0;
-	border-left: 1px solid currentColor;
-	border-radius: 0;
-	background: transparent !important;
-	color: inherit;
-	box-shadow: none;
-}
-
-.gnn-picker .wp-picker-holder {
-	display: none;
-	position: absolute;
-	left: 0;
-	top: calc(100% + 6px);
-	z-index: 100;
-	padding: 10px;
-	background: #ffffff;
-	border: 1px solid #cbd5e1;
-	border-radius: 4px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-}
-
-.gnn-picker.wp-picker-active .wp-picker-holder {
-	display: block;
-}
+.gnn-panel input.gnn-color-swatch { flex:0 0 38px;width:38px;height:38px;min-width:38px;padding:3px;border:1px solid var(--gnn-border);border-radius:5px;background:#fff;cursor:pointer; }
+.gnn-panel input.gnn-color-picker { width:110px;min-width:0;max-width:100%;height:38px;padding:7px 10px;border:1px solid var(--gnn-border);border-radius:5px;background:#fff;color:#1e293b;font:13px/20px ui-monospace,SFMono-Regular,Consolas,monospace; }
 
 .gnn-color-clear {
 	font-size: 11px !important;
@@ -1164,7 +1121,7 @@
 
 .gnn-typo-row {
 	display: grid;
-	grid-template-columns: 180px 1fr 120px;
+	grid-template-columns: minmax(90px,140px) minmax(0,1fr) minmax(74px,90px);
 	gap: 16px;
 	align-items: center;
 	padding: 12px 0;
@@ -1183,6 +1140,9 @@
 
 .gnn-typo-row input,
 .gnn-typo-row select {
+	min-width: 0;
+	width: 100%;
+	max-width: 100%;
 	height: 36px;
 	border: 1px solid #cbd5e1;
 	border-radius: 4px;
@@ -1219,7 +1179,7 @@
 
 .gnn-action-row {
 	display: grid;
-	grid-template-columns: 140px 160px 1fr;
+	grid-template-columns: minmax(110px,140px) minmax(100px,160px) minmax(0,1fr);
 	gap: 10px;
 	margin: 10px 0;
 }
@@ -1449,7 +1409,7 @@
 		display: none;
 	}
 	.gnn-setting-row {
-		flex-direction: column;
+		grid-template-columns: minmax(0,1fr);
 		gap: 8px;
 	}
 	.gnn-setting-label-col {
@@ -1492,3 +1452,35 @@
 .gnn-panel-header .button.gnn-update-btn{color:#fff;border-color:rgba(255,255,255,.7);background:transparent;}
 .gnn-panel-header .button.gnn-update-btn:hover,.gnn-panel-header .button.gnn-update-btn:focus{color:#fff;border-color:#fff;background:rgba(255,255,255,.12);}
 .gnn-visual-options{display:flex;gap:16px;flex-wrap:wrap;padding-block:16px}.gnn-visual-options legend{font-weight:600}.gnn-visual-options label{position:relative;display:grid;gap:12px;padding:16px;min-width:180px;border:1px solid #c5d0da;border-radius:8px;cursor:pointer}.gnn-visual-options label:has(input:checked){border-color:#127768;background:#eef8f5;box-shadow:0 0 0 1px #127768}.gnn-visual-options input{position:absolute;top:12px;right:12px}.gnn-header-wireframe{display:flex;align-items:center;justify-content:flex-end;gap:8px;background:#e2e8ed;height:58px;padding:10px}.gnn-header-wireframe i{display:block;background:#8b9caa;height:5px;width:22px}.gnn-header-wireframe i:first-child{background:#254958;width:26px;height:22px;margin-inline-end:auto}.gnn-header-wireframe--centered i:first-child{order:2;margin-inline:12px}.gnn-header-wireframe--centered i:nth-child(2){order:1}.gnn-header-wireframe--centered i:nth-child(3){order:3}
+
+/* Controls respond to their available content width, including nested cards. */
+.gnn-panel-content{min-width:0;container-type:inline-size}
+.gnn-panel input,.gnn-panel select,.gnn-panel textarea{min-width:0;max-width:100%}
+.gnn-panel .gnn-setting-hint{color:#64748b;overflow-wrap:anywhere}
+.gnn-choice-grid>*{min-width:0}
+#gnn-theme-panel .gnn-choice-grid .gnn-field{display:flex;flex-direction:column;gap:8px;min-width:0}
+#gnn-theme-panel .gnn-choice-grid .gnn-field select{width:100%;min-width:0;max-width:100%}
+#gnn-theme-panel .gnn-choice-grid .gnn-field small,#gnn-theme-panel .gnn-choice-grid .gnn-field>a{grid-column:auto;max-width:100%;margin-inline-start:0;overflow-wrap:anywhere}
+.gnn-btn-style-card{min-width:0}
+.gnn-btn-style-card .gnn-setting-row{grid-template-columns:minmax(0,1fr);gap:8px;padding-block:12px}
+.gnn-btn-style-card .gnn-setting-label-col{width:auto;padding:0}
+.gnn-color-pair__item,.gnn-color-field{min-width:0;flex-wrap:wrap}
+.gnn-color-clear{margin:0!important;padding:0 8px!important;min-height:36px}
+.gnn-local-font{display:flex;flex-direction:column;gap:12px}
+.gnn-local-font-name{overflow-wrap:anywhere}
+.gnn-media-actions{flex-wrap:wrap}
+.gnn-font-combobox{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 36px;min-width:0;max-width:100%;gap:6px;align-items:center}
+.gnn-font-combobox>.gnn-font-family{width:100%;max-width:none;min-width:0;flex:1}
+.gnn-panel .gnn-font-toggle{flex:0 0 36px;min-width:36px;min-height:36px;margin:0;padding:0;color:#334155;border-color:#cbd5e1;background:#fff}
+.gnn-font-list{position:absolute;inset-inline:0;top:100%;z-index:40;margin:4px 0 0;padding:4px;max-height:260px;overflow:auto;background:#fff;border:1px solid #94a3b8;border-radius:4px;box-shadow:0 6px 18px #17202b26;color:#1e293b}
+.gnn-font-list [role=option]{padding:8px 10px;margin:0;cursor:pointer;overflow-wrap:anywhere;min-height:36px}
+.gnn-font-list [role=option]:hover,.gnn-font-list .is-active{background:#e8f8f5;color:#12594f}
+.gnn-font-list [aria-selected=true]{font-weight:600}
+.gnn-font-status{position:static;grid-column:1/-1;background:#fff;font-size:12px;color:#475569}
+.gnn-font-status:empty{display:none}
+@container(max-width:900px){.gnn-btn-styles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container(max-width:620px){.gnn-setting-row{grid-template-columns:minmax(0,1fr);gap:10px}.gnn-setting-label-col{width:auto}.gnn-btn-styles{grid-template-columns:minmax(0,1fr)}.gnn-typo-row{grid-template-columns:minmax(0,1fr) 84px;gap:8px}.gnn-typo-row__label{grid-column:1/-1}.gnn-color-pair__row{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:782px){.gnn-typo-row{grid-template-columns:minmax(0,1fr) 84px;gap:8px}.gnn-typo-row__label{grid-column:1/-1}.gnn-setting-control-col{width:100%}.gnn-action-row{flex-wrap:wrap;min-width:0}.gnn-action-row input,.gnn-action-row select{width:100%}}
+
+@container(max-width:620px){.gnn-action-row{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:782px){.gnn-action-row{grid-template-columns:minmax(0,1fr)}.gnn-logo-grid{grid-template-columns:minmax(0,1fr)}}

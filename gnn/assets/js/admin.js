@@ -3,7 +3,7 @@
  *
  * Handles tab navigation, range slider / number input two-way binding,
  * visual option cards, live search filtering, media pickers, and
- * Iris color picker integration.
+ * native color controls.
  *
  * @package GNN
  */
@@ -247,7 +247,7 @@
 				feedback.hidden = true;
 			}
 			panes.forEach( function ( pane ) {
-				pane.querySelectorAll( '.gnn-setting-row' ).forEach( function ( row ) {
+				pane.querySelectorAll( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ).forEach( function ( row ) {
 					row.hidden = false;
 					row.classList.remove( 'is-search-match' );
 				} );
@@ -262,10 +262,10 @@
 		var count = 0;
 		panes.forEach( function ( pane ) {
 			var paneMatches = 0;
-			var rows = Array.from( pane.querySelectorAll( '.gnn-setting-row' ) );
+			var rows = Array.from( pane.querySelectorAll( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ) );
 
 			rows.forEach( function ( row ) {
-				var match = row.textContent.toLocaleLowerCase().includes( term );
+				var match = ( row.textContent + ' ' + Array.from( row.querySelectorAll( 'input,select' ) ).map( function ( el ) { return el.getAttribute( 'aria-label' ) || ''; } ).join( ' ' ) ).toLocaleLowerCase().includes( term );
 				row.hidden = ! match;
 				row.classList.toggle( 'is-search-match', match );
 				if ( match ) {
@@ -280,7 +280,7 @@
 				var next = bar.nextElementSibling;
 				var hasVisibleRow = false;
 				while ( next && ! next.classList.contains( 'gnn-section-bar' ) ) {
-					if ( next.classList.contains( 'gnn-setting-row' ) && ! next.hidden ) {
+					if ( ( next.matches( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ) || next.querySelector( '.gnn-setting-row:not([hidden]), .gnn-typo-row:not([hidden]), .gnn-field:not([hidden])' ) ) && ! next.hidden ) {
 						hasVisibleRow = true;
 						break;
 					}
@@ -337,7 +337,7 @@
 		number.addEventListener( 'input', function () {
 			var val = parseInt( number.value, 10 );
 			var min = parseInt( slider.min, 10 ) || 0;
-			var max = parseInt( slider.max, 10 ) || 9999;
+			var max = Number.isNaN( parseInt( slider.max, 10 ) ) ? 9999 : parseInt( slider.max, 10 );
 			if ( ! isNaN( val ) ) {
 				if ( val > max ) val = max;
 				if ( val < min ) val = min;
@@ -348,12 +348,13 @@
 		number.addEventListener( 'change', function () {
 			var val = parseInt( number.value, 10 );
 			var min = parseInt( slider.min, 10 ) || 0;
-			var max = parseInt( slider.max, 10 ) || 9999;
+			var max = Number.isNaN( parseInt( slider.max, 10 ) ) ? 9999 : parseInt( slider.max, 10 );
 			if ( isNaN( val ) || val < min ) {
 				number.value = min;
 			} else if ( val > max ) {
 				number.value = max;
 			}
+			if ( ! isNaN( val ) ) number.value = Math.min( max, Math.max( min, val ) );
 			slider.value = number.value;
 			markDirty();
 		} );
@@ -410,6 +411,22 @@
 	}
 
 	if ( form ) {
+		form.addEventListener( 'invalid', function ( event ) {
+			var input = event.target;
+			if ( search && search.value ) { search.value = ''; applySearch(); }
+			var pane = input.closest( '.gnn-tab' );
+			if ( pane ) activate( pane.id.replace( 'gnn-tab-', '' ), true );
+			var parent = input.parentElement;
+			while ( parent && parent !== form ) {
+				if ( parent.tagName === 'DETAILS' ) parent.open = true;
+				if ( parent.matches( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ) ) parent.hidden = false;
+				parent = parent.parentElement;
+			}
+			input.setAttribute( 'aria-invalid', 'true' );
+		}, true );
+		form.addEventListener( 'input', function ( event ) {
+			if ( event.target.validity && event.target.validity.valid ) event.target.removeAttribute( 'aria-invalid' );
+		} );
 		if ( status ) {
 			status.textContent = text.ready || 'No pending changes';
 		}
@@ -459,6 +476,15 @@
 	// 8. Media Pickers (WordPress Media Frame)
 	// ==========================================================================
 	document.addEventListener( 'click', function ( e ) {
+		var clearFont = e.target.closest( '.gnn-font-clear' );
+		if ( clearFont ) {
+			var local = document.getElementById( clearFont.dataset.target );
+			local.value = '0';
+			local.dispatchEvent( new Event( 'change', { bubbles: true } ) );
+			local.closest( '.gnn-local-font' ).querySelector( '.gnn-local-font-name' ).textContent = text.noFont || 'No font selected';
+			clearFont.hidden = true;
+			return;
+		}
 		var font = e.target.closest( '.gnn-font-pick' );
 		if ( font && window.wp && wp.media ) {
 			e.preventDefault();
@@ -469,7 +495,10 @@
 			} );
 			fonts.on( 'select', function () {
 				var input = document.getElementById( font.dataset.target );
-				input.value = fonts.state().get( 'selection' ).first().toJSON().id;
+				var attachment = fonts.state().get( 'selection' ).first().toJSON();
+				input.value = attachment.id;
+				input.closest( '.gnn-local-font' ).querySelector( '.gnn-local-font-name' ).textContent = attachment.title || attachment.filename;
+				input.closest( '.gnn-local-font' ).querySelector( '.gnn-font-clear' ).hidden = false;
 				input.dispatchEvent( new Event( 'change', { bubbles: true } ) );
 			} );
 			fonts.open();
@@ -523,113 +552,29 @@
 	// ==========================================================================
 	// 9. Iris Color Picker Integration
 	// ==========================================================================
-	if ( window.jQuery && jQuery.fn.wpColorPicker ) {
-		jQuery( '.gnn-color-picker' ).each( function () {
-			var input = this, $input = jQuery( input ), wrap, initialValue = input.value;
-
-			function paint( value ) {
-				if ( ! wrap ) return;
-				var color = /^#[0-9a-f]{6}$/i.test( value ) ? value : input.dataset.defaultColor;
-				if ( input.id === 'gnn-accent_light' && ! input.value ) {
-					color = document.getElementById( 'gnn-accent' ).value;
-				}
-				if ( ! /^#[0-9a-f]{6}$/i.test( color ) ) {
-					color = '#ffffff';
-				}
-				var channels = [ 1, 3, 5 ].map( function ( i ) {
-					var c = parseInt( color.slice( i, i + 2 ), 16 ) / 255;
-					return c <= 0.04045 ? c / 12.92 : Math.pow( ( c + 0.055 ) / 1.055, 2.4 );
-				} );
-				var luminance = 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
-				wrap.style.setProperty( '--gnn-picker-color', color );
-				wrap.style.setProperty( '--gnn-picker-ink', luminance > 0.179 ? '#000000' : '#ffffff' );
-				input.placeholder = color;
-			}
-
-			$input.wpColorPicker( {
-				palettes: false,
-				width: 220,
-				change: function ( event, ui ) {
-					paint( ui.color.toString() );
-					if ( wrap ) markDirty();
-				},
-				clear: function () {
-					paint( '' );
-					if ( wrap ) markDirty();
-				}
-			} );
-
-			$input.val( initialValue );
-			wrap = input.closest( '.wp-picker-container' );
-			if ( ! wrap ) return;
-			wrap.classList.add( 'gnn-picker' );
-
-			var toggle = wrap.querySelector( '.wp-color-result' ),
-				holder = wrap.querySelector( '.wp-picker-holder' ),
-				reset  = wrap.querySelector( '.wp-picker-default, .wp-picker-clear' );
-
-			var label = input.getAttribute( 'aria-label' ) || Array.from( input.labels || [] ).map( function ( l ) {
-				return l.textContent.trim();
-			} ).filter( Boolean ).join( ' — ' );
-
-			if ( toggle ) {
-				toggle.setAttribute( 'aria-label', ( text.chooseColor || 'Choose color' ) + ' — ' + label );
-				toggle.querySelector( '.wp-color-result-text' ).classList.add( 'screen-reader-text' );
-				var arrow = document.createElement( 'span' );
-				arrow.className = 'dashicons dashicons-arrow-down-alt2';
-				arrow.setAttribute( 'aria-hidden', 'true' );
-				toggle.appendChild( arrow );
-			}
-
-			holder.querySelectorAll( '.iris-square-value' ).forEach( function ( control ) {
-				control.setAttribute( 'aria-label', ( text.chooseColor || 'Choose color' ) + ' — ' + label );
-			} );
-
-			if ( reset ) {
-				holder.appendChild( reset );
-				jQuery( reset ).on( 'click', function () {
-					paint( input.value );
-					input.dispatchEvent( new Event( 'change', { bubbles: true } ) );
-				} );
-			}
-
-			$input.on( 'input change', function () {
-				paint( input.value );
-				if ( input.id === 'gnn-accent' ) {
-					var light = document.getElementById( 'gnn-accent_light' );
-					if ( light && ! light.value ) {
-						jQuery( light ).triggerHandler( 'input' );
-					}
-				}
-			} );
-
-			function showPicker() {
-				if ( ! wrap.classList.contains( 'wp-picker-active' ) ) {
-					$input.wpColorPicker( 'open' );
-				}
-				$input.iris( 'show' );
-			}
-
-			input.addEventListener( 'click', showPicker );
-			if ( toggle ) {
-				toggle.addEventListener( 'click', function () {
-					if ( wrap.classList.contains( 'wp-picker-active' ) ) {
-						$input.iris( 'show' );
-					}
-				} );
-			}
-
-			wrap.addEventListener( 'keydown', function ( event ) {
-				if ( event.key === 'Escape' && wrap.classList.contains( 'wp-picker-active' ) ) {
-					$input.wpColorPicker( 'close' );
-					input.focus();
-					event.stopPropagation();
-				}
-			} );
-
-			paint( input.value );
-		} );
-	}
+	panel.querySelectorAll( '.gnn-color-picker' ).forEach( function ( input ) {
+		var swatch = document.createElement( 'input' );
+		swatch.type = 'color';
+		swatch.className = 'gnn-color-swatch';
+		swatch.setAttribute( 'aria-label', ( text.chooseColor || 'Choose color' ) + ' — ' + ( input.getAttribute( 'aria-label' ) || Array.from( input.labels || [] ).map( function ( l ) { return l.textContent.trim(); } ).join( ' ' ) ) );
+		input.before( swatch );
+		function normalize( value ) {
+			return /^#[0-9a-f]{3}$/i.test( value ) ? '#' + value.slice( 1 ).split( '' ).map( function ( c ) { return c + c; } ).join( '' ) : value;
+		}
+		function paint() {
+			var value = input.value.trim();
+			var fallback = input.id === 'gnn-accent_light' && ! value ? document.getElementById( 'gnn-accent' ).value : input.dataset.defaultColor;
+			swatch.value = /^#[0-9a-f]{6}$/i.test( normalize( value ) ) ? normalize( value ) : normalize( fallback || '#ffffff' );
+			input.placeholder = normalize( fallback || '#ffffff' );
+			input.setCustomValidity( value && ! /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test( value ) ? text.invalidColor || 'Enter a valid hex color.' : '' );
+		}
+		swatch.addEventListener( 'input', function () { input.value = swatch.value; input.dispatchEvent( new Event( 'input', { bubbles: true } ) ); } );
+		swatch.addEventListener( 'change', function () { input.value = swatch.value; input.dispatchEvent( new Event( 'change', { bubbles: true } ) ); } );
+		input.addEventListener( 'input', paint );
+		input.addEventListener( 'change', paint );
+		if ( input.id === 'gnn-accent' ) input.addEventListener( 'input', function () { var light = document.getElementById( 'gnn-accent_light' ); if ( light && ! light.value ) light.dispatchEvent( new Event( 'change', { bubbles: true } ) ); } );
+		paint();
+	} );
 
 	// Color Clear buttons
 	document.addEventListener( 'click', function ( e ) {
@@ -642,12 +587,9 @@
 		if ( ! input ) {
 			return;
 		}
-		if ( window.jQuery ) {
-			jQuery( input ).val( '' ).trigger( 'change' );
-		} else {
-			input.value = '';
-			input.dispatchEvent( new Event( 'change', { bubbles: true } ) );
-		}
+		input.value = '';
+		input.dispatchEvent( new Event( 'input', { bubbles: true } ) );
+		input.dispatchEvent( new Event( 'change', { bubbles: true } ) );
 		markDirty();
 	} );
 
@@ -697,6 +639,13 @@
 		search.addEventListener( 'input', syncBlogControls );
 	}
 	syncBlogControls();
+	var headerPreset = document.getElementById( 'gnn-header_preset' );
+	var legacyHeader = panel.querySelector( '[data-gnn-legacy-header]' );
+	if ( headerPreset && legacyHeader ) {
+		var syncHeader = function () { legacyHeader.hidden = headerPreset.value !== 'legacy'; };
+		headerPreset.addEventListener( 'change', syncHeader );
+		syncHeader();
+	}
 } )();
 
 /* Cleanup form validation */

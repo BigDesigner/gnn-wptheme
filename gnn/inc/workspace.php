@@ -29,7 +29,7 @@ function gnn_operation_keys() {
 /** High-impact operations require an explicit confirmation and revision. */
 function gnn_render_operation_controls() {
 	echo '<h2>' . esc_html__( 'Maintenance and compatibility', 'gnn' ) . '</h2><p>' . esc_html__( 'Test compatibility changes before applying them.', 'gnn' ) . '</p><form class="gnn-operations-form" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="operations">';
-	wp_nonce_field( 'gnn_workspace' );
+	gnn_panel_nonce_field( 'gnn_workspace' );
 	gnn_configuration_revision_field();
 	$labels = array(
 		'maintenance_mode'   => __( 'Enable maintenance mode for visitors', 'gnn' ),
@@ -45,7 +45,7 @@ function gnn_render_operation_controls() {
 		gnn_field_checkbox( $key, $label ); }
 	gnn_field_textarea( 'maintenance_message', __( 'Maintenance message', 'gnn' ), (string) gnn_option( 'maintenance_message' ), 3 );
 	echo '<p><label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the changes.', 'gnn' ) . '</label></p>';
-	submit_button( __( 'Apply settings', 'gnn' ) );
+	gnn_panel_submit_button( __( 'Apply settings', 'gnn' ) );
 	echo '</form>';
 }
 
@@ -87,7 +87,7 @@ function gnn_support_summary() {
  */
 function gnn_workspace_action_form( $action, $label, $extra = array() ) {
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="gnn-workspace-action"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="' . esc_attr( $action ) . '">';
-	wp_nonce_field( 'gnn_workspace' );
+	gnn_panel_nonce_field( 'gnn_workspace' );
 	gnn_configuration_revision_field();
 	foreach ( $extra as $key => $value ) {
 		echo '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '">'; }
@@ -99,7 +99,7 @@ function gnn_workspace_action_form( $action, $label, $extra = array() ) {
 	}
 	if ( in_array( $action, array( 'restore', 'starter', 'preset', 'clear_history', 'unlock' ), true ) ) {
 		echo '<label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the scope. A recovery snapshot will be created before configuration changes.', 'gnn' ) . '</label> '; }
-	submit_button( $label, 'secondary', 'submit', false );
+	gnn_panel_submit_button( $label, 'secondary', 'submit', false );
 	echo '</form>';
 }
 
@@ -190,7 +190,7 @@ function gnn_workspace_legacy() {
 	}
 	if ( $delegate && ! $admin ) {
 		echo '<section id="gnn-workspace-brand" class="gnn-settings-card"><h2>' . esc_html__( 'Assigned site settings', 'gnn' ) . '</h2><p class="gnn-workspace-section">' . esc_html__( 'Only the fields assigned to your role can be changed here. Code, imports, resets and update controls are restricted to the site operator.', 'gnn' ) . '</p><form id="gnn-brand-form" class="gnn-card-content" method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="brand">';
-		wp_nonce_field( 'gnn_workspace' );
+		gnn_panel_nonce_field( 'gnn_workspace' );
 		gnn_configuration_revision_field();
 		$schema = gnn_platform_schema();
 		foreach ( gnn_delegated_keys() as $key ) {
@@ -213,7 +213,7 @@ function gnn_workspace_legacy() {
 							gnn_field_text( $key, $field[0], 'accent' === $key ? get_theme_mod( 'gnn_accent_color', '#34d399' ) : (string) gnn_option( $key ) ); }
 		}
 		echo '<div class="gnn-savebar"><p class="gnn-save-status" role="status">' . esc_html__( 'No pending changes', 'gnn' ) . '</p>';
-		submit_button( __( 'Save assigned settings', 'gnn' ), 'primary', 'submit', false );
+		gnn_panel_submit_button( __( 'Save assigned settings', 'gnn' ), 'primary', 'submit', false );
 		echo '</div>';
 		echo '</form></section>';
 	}

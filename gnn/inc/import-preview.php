@@ -44,7 +44,7 @@ function gnn_render_import_preview( $raw ) {
 			echo '<li>' . esc_html( $group . ': ' . $key ) . '</li>'; }
 	}
 	echo '</ul><form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_confirm_import"><input type="hidden" name="token" value="' . esc_attr( $token ) . '">';
-	wp_nonce_field( 'gnn_confirm_import' );
+	gnn_panel_nonce_field( 'gnn_confirm_import' );
 	$same_site     = isset( $document->source_site ) && is_string( $document->source_site ) && hash_equals( gnn_site_fingerprint(), $document->source_site );
 	$source_values = array_replace( (array) ( $document->theme_mods ?? array() ), (array) ( $document->options ?? array() ) );
 	foreach ( array_intersect_key( $source_values, array_flip( gnn_site_specific_keys() ) ) as $key => $id ) {

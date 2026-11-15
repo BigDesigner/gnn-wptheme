@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.8.3' );
+define( 'GNN_VERSION', '2.8.4' );
 
 /**
  * Theme setup.
@@ -277,6 +277,7 @@ require get_template_directory() . '/inc/portability.php';
 require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/asset-compatibility.php';
 require get_template_directory() . '/inc/typography.php';
+require get_template_directory() . '/inc/font-catalog.php';
 require get_template_directory() . '/inc/button-styles.php';
 if ( is_admin() ) {
 	require get_template_directory() . '/inc/admin-panel.php';

@@ -1721,3 +1721,8 @@ TRANSLATIONS.update({
  'Check site URLs and server access rules.': 'Site adreslerini ve sunucu erişim kurallarını kontrol edin.',
  'Check Elementor activation and the shared block preview route.': 'Elementor etkinliğini ve ortak blok önizleme yolunu kontrol edin.'
 })
+
+# Admin control corrections.
+TRANSLATIONS.update({'Choose font': 'Yazı tipi seç', 'Loading fonts…': 'Yazı tipleri yükleniyor…', 'No fonts found.': 'Yazı tipi bulunamadı.', 'Using the saved font list.': 'Kayıtlı yazı tipi listesi kullanılıyor.', 'The font list could not be loaded. Try again.': 'Yazı tipi listesi yüklenemedi. Yeniden deneyin.', 'Enter a valid hex color.': 'Geçerli bir HEX renk kodu girin.', 'No font selected': 'Yazı tipi seçilmedi', 'Local WOFF2 font': 'Yerel WOFF2 yazı tipi', 'Style %d name': 'Stil %d adı', 'Loads the selected fonts from Google. Empty fields use the local font.': 'Seçilen yazı tipleri Google’dan yüklenir. Boş alanlarda yerel yazı tipi kullanılır.'})
+
+TRANSLATIONS.update({'Accent color — Dark': 'Vurgu rengi — Koyu', 'Accent color — Light': 'Vurgu rengi — Açık'})

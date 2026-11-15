@@ -202,7 +202,7 @@ function gnn_render_starter_maintenance() {
 		echo '<div class="notice notice-warning"><p>' . esc_html__( 'No demo drafts selected. Select an eligible row; protected rows cannot be selected.', 'gnn' ) . '</p></div>';
 	}
 	echo '<section id="gnn-workspace-cleanup" class="gnn-settings-card"><h2>' . esc_html__( 'Design replacement and cleanup', 'gnn' ) . '</h2><div class="gnn-workspace-section"><p>' . esc_html__( 'Reset presentation settings when applying a new profile. Identity, integrations, customer code and central content are preserved. A configuration snapshot is created first.', 'gnn' ) . '</p><p>' . esc_html__( 'Cleanup only offers unchanged imported draft pages. Published, edited, referenced and older unverified records are protected. Projects, albums, slides and media are never deleted here. Remove child drafts first to unlock an unchanged parent on the next review.', 'gnn' ) . '</p><details' . ( $notice ? ' open' : '' ) . '><summary>' . esc_html__( 'Review imported demo drafts', 'gnn' ) . '</summary><form data-gnn-cleanup method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '"><input type="hidden" name="action" value="gnn_workspace"><input type="hidden" name="operation" value="starter_cleanup">';
-	wp_nonce_field( 'gnn_workspace' );
+	gnn_panel_nonce_field( 'gnn_workspace' );
 	gnn_configuration_revision_field();
 	echo '<table class="widefat striped"><thead><tr><th>' . esc_html__( 'Select', 'gnn' ) . '</th><th>' . esc_html__( 'Page', 'gnn' ) . '</th><th>' . esc_html__( 'Status', 'gnn' ) . '</th></tr></thead><tbody>';
 	if ( ! $rows ) {
@@ -216,6 +216,6 @@ function gnn_render_starter_maintenance() {
 		echo '</td><td><a href="' . esc_url( get_edit_post_link( $row['id'], 'raw' ) ) . '">' . esc_html( $row['title'] . ' / ' . $row['profile'] ) . '</a></td><td>' . esc_html( $reasons[ $row['reason'] ] ) . '</td></tr>';
 	}
 	echo '</tbody></table><p class="gnn-cleanup-feedback" role="status">' . esc_html( $eligible ? __( 'Select the unchanged demo drafts you want to remove.', 'gnn' ) : __( 'No eligible demo drafts are available. Review the protection reasons below; resetting design settings does not require deleting pages.', 'gnn' ) ) . '</p><p><label><input type="checkbox" name="permanent" value="1"> ' . esc_html__( 'Permanently delete selected demo drafts and their metadata instead of moving to Trash. This cannot be undone; a settings snapshot does not back up pages.', 'gnn' ) . '</label></p><p><label><input type="checkbox" name="confirmed" value="1" required> ' . esc_html__( 'I reviewed the selected records and deletion method.', 'gnn' ) . '</label></p>';
-	submit_button( __( 'Clean selected demo drafts', 'gnn' ), 'secondary', 'submit', true, $eligible ? array() : array( 'disabled' => 'disabled' ) );
+	gnn_panel_submit_button( __( 'Clean selected demo drafts', 'gnn' ), 'secondary', 'submit', true, $eligible ? array() : array( 'disabled' => 'disabled' ) );
 	echo '</form></details><p><a href="' . esc_url( admin_url( 'admin.php?page=gnn-panel#gnn-tab-maintenance' ) ) . '">' . esc_html__( 'Visitor maintenance mode is controlled separately under Maintenance and compatibility.', 'gnn' ) . '</a></p></div></section>';
 }
