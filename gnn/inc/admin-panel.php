@@ -1135,7 +1135,11 @@ function gnn_panel_render() {
 					</section>
 
 					<section id="gnn-tab-footer" class="gnn-tab">
+						<?php gnn_section_bar( __( 'Footer visibility', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'footer_show_shared', __( 'Show shared footer', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'footer_show_with_shared', __( 'Show theme footer with shared footer', 'gnn' ) ); ?>
 						<?php gnn_section_bar( __( 'Footer branding', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'footer_show_brand', __( 'Show footer brand', 'gnn' ) ); ?>
 						<?php
 						gnn_field_select(
 							'footer_brand_type',
@@ -1155,7 +1159,10 @@ function gnn_panel_render() {
 							<?php gnn_field_media( 'footer_logo_dark_2x', __( 'Footer logo — dark mode (2× retina)', 'gnn' ), (int) gnn_option( 'footer_logo_dark_2x' ) ); ?>
 						</div>
 						<?php gnn_field_number( 'footer_logo_height', __( 'Footer logo max height (px)', 'gnn' ), 12, 200, __( 'Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow.', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'footer_show_tagline', __( 'Show footer tagline', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'footer_tagline', __( 'Footer tagline', 'gnn' ), (string) gnn_option( 'footer_tagline' ), 3, __( 'HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline.', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'footer_show_widgets', __( 'Show footer columns', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'footer_show_company', __( 'Show footer contact details', 'gnn' ) ); ?>
 						<?php
 						gnn_field_select(
 							'footer_menu_align',
@@ -1166,12 +1173,14 @@ function gnn_panel_render() {
 								'right'  => __( 'Right', 'gnn' ),
 							)
 						);
+						gnn_field_checkbox( 'footer_show_copyright', __( 'Show footer copyright', 'gnn' ) );
 						/* translators: %year% and %site% are literal replacement tokens shown to the admin, not printf placeholders. */
 						gnn_field_text( 'footer_copyright', __( 'Footer copyright line', 'gnn' ), (string) gnn_option( 'footer_copyright' ), '© %year% %site%. All rights reserved.', __( 'Placeholders: %year% and %site%. Leave empty for the default.', 'gnn' ) );
+						gnn_field_checkbox( 'footer_show_legal', __( 'Show footer legal text', 'gnn' ) );
 						gnn_field_text( 'footer_legal', __( 'Footer legal text', 'gnn' ), (string) get_theme_mod( 'gnn_footer_legal', '' ), 'Privacy — Terms', __( 'Shown bottom-right in the footer. Leave empty to hide.', 'gnn' ) );
 						?>
 
-						<?php gnn_platform_fields( 'footer' ); ?>
+						<?php gnn_platform_fields( 'footer', array( 'footer_show_shared', 'footer_show_with_shared', 'footer_show_brand', 'footer_show_tagline', 'footer_show_widgets', 'footer_show_company', 'footer_show_copyright', 'footer_show_legal' ) ); ?>
 					</section>
 
 					<section id="gnn-tab-pages" class="gnn-tab">

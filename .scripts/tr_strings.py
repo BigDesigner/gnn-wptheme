@@ -16,6 +16,15 @@ PLURALS = {
 }
 
 TRANSLATIONS = {
+    'Footer visibility': 'Alt bölüm görünürlüğü',
+    'Show shared footer': 'Ortak alt bölümü göster',
+    'Show theme footer with shared footer': 'Tema alt bölümünü ortak blokla göster',
+    'Show footer brand': 'Alt bölüm logosunu göster',
+    'Show footer tagline': 'Alt bölüm sloganını göster',
+    'Show footer columns': 'Alt bölüm sütunlarını göster',
+    'Show footer contact details': 'Alt bölüm iletişim bilgilerini göster',
+    'Show footer copyright': 'Telif satırını göster',
+    'Show footer legal text': 'Yasal metni göster',
     'Build and edit pages visually.': 'Sayfaları görsel olarak oluşturur ve düzenler.',
     'Required for ready-made sites.': 'Hazır siteler için gerekli.',
     'Add an online store and checkout.': 'Online mağaza ve ödeme sayfası ekler.',

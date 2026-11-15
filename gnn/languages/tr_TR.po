@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.9.2\n"
+"Project-Id-Version: GNN 2.10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 00:37+0000\n"
-"PO-Revision-Date: 2026-11-16 00:37+0000\n"
+"POT-Creation-Date: 2026-11-16 02:21+0000\n"
+"PO-Revision-Date: 2026-11-16 02:21+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1447,6 +1447,9 @@ msgstr "Altbilgi stili"
 
 msgid "Footer tagline"
 msgstr "Alt bölüm sloganı"
+
+msgid "Footer visibility"
+msgstr "Alt bölüm görünürlüğü"
 
 msgid "Footer widget columns"
 msgstr "Altbilgi bileşen sütunları"
@@ -2951,6 +2954,24 @@ msgstr "Kategori filtrelerini göster"
 msgid "Show contact information in the header"
 msgstr "Üstbilgide iletişim bilgilerini göster"
 
+msgid "Show footer brand"
+msgstr "Alt bölüm logosunu göster"
+
+msgid "Show footer columns"
+msgstr "Alt bölüm sütunlarını göster"
+
+msgid "Show footer contact details"
+msgstr "Alt bölüm iletişim bilgilerini göster"
+
+msgid "Show footer copyright"
+msgstr "Telif satırını göster"
+
+msgid "Show footer legal text"
+msgstr "Yasal metni göster"
+
+msgid "Show footer tagline"
+msgstr "Alt bölüm sloganını göster"
+
 msgid "Show listing date and reading time"
 msgstr "Listede tarih ve okuma bilgisini göster"
 
@@ -2962,6 +2983,9 @@ msgstr "Yazı etiketlerini göster"
 
 msgid "Show previous and next posts"
 msgstr "Önceki ve sonraki yazıları göster"
+
+msgid "Show shared footer"
+msgstr "Ortak alt bölümü göster"
 
 msgid "Show the author biography box"
 msgstr "Yazar biyografi kutusunu göster"
@@ -2992,6 +3016,9 @@ msgstr "Arama ikonunu göster"
 
 msgid "Show the “Scroll to top” button"
 msgstr "“Yukarı çık” butonunu göster"
+
+msgid "Show theme footer with shared footer"
+msgstr "Tema alt bölümünü ortak blokla göster"
 
 msgid "Shown bottom-right in the footer. Leave empty to hide."
 msgstr "Footer’ın sağ altında görünür. Gizlemek için boş bırakın."
