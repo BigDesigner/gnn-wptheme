@@ -75,7 +75,7 @@ function gnn_package_upload() {
 		false
 	);
 	wp_schedule_single_event( time() + DAY_IN_SECONDS, 'gnn_package_expire', array( $token ) );
-	wp_safe_redirect( admin_url( 'admin.php?page=gnn-workspace&path=ready&package=' . $token ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=gnn-panel&path=ready&package=' . $token . '#gnn-tab-setup' ) );
 	exit;
 }
 add_action( 'admin_post_gnn_package_upload', 'gnn_package_upload' );

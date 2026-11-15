@@ -17,4 +17,39 @@
 .gnn-demo-dialog:focus-visible,.gnn-demo-dialog button:focus-visible{outline:2px solid #117865;outline-offset:3px}
 .gnn-section-library{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px;margin-top:16px}.gnn-section-card{padding:18px;border:1px solid #dce3eb;border-radius:8px;min-width:0}.gnn-section-wireframe{height:96px;background:#f3f5f7;display:grid;gap:8px;align-content:center;padding:16px;border:1px solid #dce3eb}.gnn-section-wireframe span{height:10px;background:#aebfca;border-radius:2px}.gnn-section-wireframe span:first-child{width:65%;height:16px;background:#486577}.gnn-section-wireframe--team,.gnn-section-wireframe--references,.gnn-section-wireframe--pricing,.gnn-section-wireframe--services{grid-template-columns:repeat(3,1fr)}.gnn-section-wireframe--team span,.gnn-section-wireframe--references span,.gnn-section-wireframe--pricing span,.gnn-section-wireframe--services span{width:100%;height:52px}.gnn-section-wireframe--contact span:last-child{height:24px}.gnn-region-edit{margin-inline-start:8px!important}
 .gnn-region-edit[hidden]{display:none!important;}
+
+/* Embedded management tools use the Theme settings field contract. */
+#gnn-theme-panel .gnn-choice-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px;padding:0;margin:0 0 24px}
+#gnn-theme-panel .gnn-choice-card,#gnn-theme-panel .gnn-plugin-card,#gnn-theme-panel .gnn-profile-card{min-width:0;border:1px solid var(--gnn-line);border-radius:6px;background:#fff;padding:20px;color:#1e293b}
+#gnn-theme-panel .gnn-choice-card{min-height:168px;align-items:flex-start;justify-content:flex-start}
+#gnn-theme-panel .gnn-choice-card>.dashicons{font-size:28px;width:28px;height:28px;color:var(--gnn-teal)}
+#gnn-theme-panel .gnn-profile-card{text-align:start}
+#gnn-theme-panel .gnn-profile-preview{display:block;width:100%;height:180px;object-fit:cover;margin:0 0 16px;border:1px solid var(--gnn-line);border-radius:4px}
+#gnn-theme-panel .gnn-settings-card{max-width:none;margin:0 0 20px}
+#gnn-theme-panel .gnn-settings-card.gnn-card-content{padding:20px}
+#gnn-theme-panel .gnn-field{display:grid;grid-template-columns:minmax(180px,280px) minmax(0,1fr);align-items:start;gap:12px 24px;padding:14px 0;border-bottom:1px solid #f1f5f9}
+#gnn-theme-panel .gnn-field:last-child{border-bottom:0}
+#gnn-theme-panel .gnn-field label{font-size:13px;font-weight:600;color:#334155;line-height:1.45}
+#gnn-theme-panel .gnn-field select,#gnn-theme-panel .gnn-field input[type=text],#gnn-theme-panel .gnn-field input[type=number],#gnn-theme-panel .gnn-field input[type=url]{width:100%;max-width:560px;min-height:36px;margin:0}
+#gnn-theme-panel .gnn-field small,#gnn-theme-panel .gnn-field>a{grid-column:2;justify-self:start}
+#gnn-theme-panel .gnn-design-group{margin:0 0 18px;border:1px solid var(--gnn-line);border-radius:6px;background:#fff}
+#gnn-theme-panel .gnn-design-group>summary{padding:14px 16px;font-size:13px;font-weight:600;color:#334155}
+#gnn-theme-panel .gnn-design-group>.gnn-card-content{padding:0 16px 16px}
+#gnn-theme-panel .gnn-design-subgroup{margin:12px 0;border-color:var(--gnn-line)}
+#gnn-theme-panel .gnn-design-subgroup>.gnn-design-fields{padding:0 16px 8px}
+#gnn-theme-panel .gnn-design-subgroup .gnn-type-preview{padding:14px 0;color:#334155}
+#gnn-theme-panel .gnn-catalog-row{gap:12px;padding:14px 0}
+#gnn-theme-panel .gnn-catalog-row a{white-space:nowrap}
+#gnn-theme-panel .gnn-operations-form{max-width:900px}
+#gnn-theme-panel .widefat{border-color:var(--gnn-line)}
+#gnn-theme-panel .gnn-management-form,#gnn-theme-panel .gnn-workspace-action,#gnn-theme-panel .gnn-operations-form{margin:0}
+#gnn-theme-panel .gnn-workspace-section{min-width:0}
+#gnn-theme-panel .gnn-management-form .button,#gnn-theme-panel .gnn-workspace-action .button,#gnn-theme-panel .gnn-operations-form .button,#gnn-theme-panel .gnn-plugin-card .button,#gnn-theme-panel .gnn-catalog-row .button{min-height:36px;padding:0 14px;border:1px solid var(--gnn-line);border-radius:5px;background:#fff;color:#205d57;font-weight:600;line-height:34px;box-shadow:none}
+#gnn-theme-panel .gnn-management-form .button-primary,#gnn-theme-panel .gnn-workspace-action .button-primary,#gnn-theme-panel .gnn-operations-form .button-primary,#gnn-theme-panel .gnn-plugin-card .button-primary{border-color:var(--gnn-teal);background:var(--gnn-teal);color:#fff}
+#gnn-theme-panel .gnn-management-form .button:hover,#gnn-theme-panel .gnn-workspace-action .button:hover,#gnn-theme-panel .gnn-operations-form .button:hover,#gnn-theme-panel .gnn-plugin-card .button:hover,#gnn-theme-panel .gnn-catalog-row .button:hover{border-color:var(--gnn-teal);background:#edf7f5;color:#0f675c}
+#gnn-theme-panel .gnn-management-form .button-primary:hover,#gnn-theme-panel .gnn-workspace-action .button-primary:hover,#gnn-theme-panel .gnn-operations-form .button-primary:hover,#gnn-theme-panel .gnn-plugin-card .button-primary:hover{background:#0e675b;color:#fff}
+#gnn-theme-panel .gnn-management-form label>input[type=checkbox],#gnn-theme-panel .gnn-workspace-action label>input[type=checkbox],#gnn-theme-panel .gnn-operations-form label>input[type=checkbox]{accent-color:var(--gnn-teal)}
+#gnn-theme-panel .gnn-steps{gap:20px;margin:0 0 20px;padding:12px 16px;border:1px solid var(--gnn-line);border-radius:6px;background:#f8fafc;font-size:13px}
+#gnn-theme-panel .gnn-steps li::marker{color:var(--gnn-teal);font-weight:700}
+@media(max-width:782px){#gnn-theme-panel .gnn-field{grid-template-columns:1fr;gap:8px}#gnn-theme-panel .gnn-field small,#gnn-theme-panel .gnn-field>a{grid-column:1}#gnn-theme-panel .gnn-profile-preview{height:150px}}
 .wrap.gnn-management{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.gnn-management h2,.gnn-management h3{font-family:inherit;font-weight:600}.wrap.gnn-management .button{border-color:#c5d0da;color:#234956;background:#fff;border-radius:6px;min-height:36px;padding-inline:14px;font-family:inherit}.wrap.gnn-management .button:hover{background:#edf4f2;border-color:#127768;color:#0c5d50}.wrap.gnn-management .button-primary{background:#127768;border-color:#127768;color:#fff}.wrap.gnn-management .button-primary:hover{background:#0c5d50;color:#fff}.wrap.gnn-management .button:focus-visible{outline:2px solid #127768;outline-offset:3px;box-shadow:none}

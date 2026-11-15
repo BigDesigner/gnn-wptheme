@@ -74,7 +74,7 @@ function gnn_site_schema() {
 				'900' => '900',
 			),
 		);
-		$schema[ 'type_' . $role . '_tracking' ]  = array( strtoupper( $role ) . ' / ' . __( 'Letter spacing (1/100 em)', 'gnn' ), 'optional_number', '', 'type_scale', -10, 50 );
+		$schema[ 'type_' . $role . '_tracking' ]  = array( strtoupper( $role ) . ' / ' . __( 'Letter spacing (1/100 em)', 'gnn' ), 'number', 0, 'type_scale', 0, 50 );
 		$schema[ 'type_' . $role . '_transform' ] = array(
 			strtoupper( $role ) . ' / ' . __( 'Text case', 'gnn' ),
 			'select',
@@ -110,6 +110,31 @@ function gnn_site_schema() {
 	}
 	return $schema;
 }
+
+/** Align the old and role-based typography contracts on the zero-tracking baseline. */
+function gnn_normalize_typography_tracking() {
+	if ( '2.8.3' === get_option( 'gnn_tracking_contract' ) ) {
+		return;
+	}
+	$options = (array) get_option( 'gnn_options', array() );
+	$changed = false;
+	foreach ( array_keys( gnn_typography_roles() ) as $role ) {
+		$key = 'type_' . $role . '_tracking';
+		if ( ! array_key_exists( $key, $options ) || 0 !== (int) $options[ $key ] ) {
+			$options[ $key ] = 0;
+			$changed         = true;
+		}
+	}
+	if ( ! array_key_exists( 'heading_tracking', $options ) || 0 !== (int) $options['heading_tracking'] ) {
+		$options['heading_tracking'] = 0;
+		$changed                     = true;
+	}
+	if ( $changed ) {
+		update_option( 'gnn_options', $options );
+	}
+	update_option( 'gnn_tracking_contract', '2.8.3', false );
+}
+add_action( 'admin_init', 'gnn_normalize_typography_tracking', 5 );
 
 /** Assignment contexts, from general to specific. */
 function gnn_site_contexts() {

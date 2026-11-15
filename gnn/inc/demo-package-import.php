@@ -398,7 +398,7 @@ function gnn_package_import_step( $job ) {
 				\Elementor\Plugin::$instance->files_manager->clear_cache();
 			}
 			$job['phase']    = 'complete';
-			$job['redirect'] = admin_url( 'admin.php?page=gnn-workspace&path=ready' );
+			$job['redirect'] = admin_url( 'admin.php?page=gnn-panel&path=ready#gnn-tab-setup' );
 			update_option(
 				'gnn_demo_replace_last',
 				array(

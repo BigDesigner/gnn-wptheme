@@ -52,7 +52,7 @@ function gnn_render_operation_controls() {
 /** Register delegated administration without exposing the full settings panel. */
 function gnn_workspace_menu() {
 	if ( current_user_can( 'manage_options' ) ) {
-		add_submenu_page( 'gnn-panel', __( 'Setup wizard', 'gnn' ), __( 'Setup wizard', 'gnn' ), 'manage_options', 'gnn-workspace', 'gnn_workspace_page' );
+		add_submenu_page( null, __( 'Setup wizard', 'gnn' ), __( 'Setup wizard', 'gnn' ), 'manage_options', 'gnn-workspace', 'gnn_workspace_page' );
 	} elseif ( current_user_can( 'gnn_manage_design' ) || current_user_can( 'gnn_manage_brand' ) || current_user_can( 'gnn_view_diagnostics' ) ) {
 		$cap = current_user_can( 'gnn_manage_design' ) ? 'gnn_manage_design' : ( current_user_can( 'gnn_manage_brand' ) ? 'gnn_manage_brand' : 'gnn_view_diagnostics' );
 		add_menu_page( __( 'Assigned settings', 'gnn' ), 'GNN', $cap, 'gnn-panel', 'gnn_workspace_page', 'dashicons-admin-site-alt3', '59.100' );
@@ -344,7 +344,7 @@ function gnn_handle_workspace() {
 			$selection = isset( $_POST['cleanup'] ) && is_array( $_POST['cleanup'] ) ? map_deep( wp_unslash( $_POST['cleanup'] ), 'sanitize_text_field' ) : array();
 			$result    = gnn_starter_cleanup( $selection, ! empty( $_POST['permanent'] ) );
 			if ( is_wp_error( $result ) && 'gnn_cleanup_empty' === $result->get_error_code() ) {
-				wp_safe_redirect( admin_url( 'admin.php?page=gnn-workspace&gnn_cleanup_notice=selection#gnn-workspace-cleanup' ) );
+				wp_safe_redirect( admin_url( 'admin.php?page=gnn-panel&gnn_cleanup_notice=selection#gnn-tab-setup' ) );
 				exit;
 			}
 		}
@@ -361,7 +361,7 @@ function gnn_handle_workspace() {
 				'back_link' => true,
 			)
 		); }
-	wp_safe_redirect( admin_url( 'admin.php?page=' . ( current_user_can( 'manage_options' ) ? 'gnn-workspace' : 'gnn-panel' ) ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=' . ( current_user_can( 'manage_options' ) ? 'gnn-panel#gnn-tab-setup' : 'gnn-panel' ) ) );
 	exit;
 }
 add_action( 'admin_post_gnn_workspace', 'gnn_handle_workspace' );

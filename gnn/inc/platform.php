@@ -88,7 +88,9 @@ function gnn_platform_schema() {
 			'heading_mobile_size'     => array( __( 'Mobile H1 size', 'gnn' ), 'number', 34, 'typography', 24, 56 ),
 			'body_line_height'        => array( __( 'Body line height (%)', 'gnn' ), 'number', 175, 'typography', 130, 220 ),
 			'heading_line_height'     => array( __( 'Heading line height (%)', 'gnn' ), 'number', 115, 'typography', 100, 160 ),
-			'heading_tracking'        => array( __( 'Heading letter spacing (hundredths of em)', 'gnn' ), 'number', -1, 'typography', -8, 20 ),
+			// Retained for existing documents that consume this legacy token.
+			// Role based type controls are the editable typography scale.
+			'heading_tracking'        => array( __( 'Heading letter spacing (hundredths of em)', 'gnn' ), 'number', 0, 'typography', 0, 50 ),
 			'design_radius'           => array( __( 'Card and image corner radius', 'gnn' ), 'number', 16, 'styles', 0, 40 ),
 			'button_radius'           => array( __( 'Button corner radius', 'gnn' ), 'number', 999, 'styles', 0, 999 ),
 			'button_padding'          => array( __( 'Button vertical padding', 'gnn' ), 'number', 14, 'styles', 8, 28 ),
@@ -348,7 +350,7 @@ function gnn_sanitize_platform_options( $out, $input ) {
  *
  * @param string $group Settings group.
  */
-function gnn_platform_fields( $group ) {
+function gnn_platform_fields( $group, $exclude = array() ) {
 	$titles = array(
 		'global'       => __( 'Business profile and hero', 'gnn' ),
 		'header'       => __( 'Company and header configuration', 'gnn' ),
@@ -368,7 +370,7 @@ function gnn_platform_fields( $group ) {
 		echo '<div class="gnn-section-bar" aria-hidden="true"><span>' . esc_html( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) ) . '</span></div>';
 	}
 	foreach ( gnn_platform_schema() as $key => $field ) {
-		if ( $field[3] !== $group ) {
+		if ( $field[3] !== $group || in_array( $key, $exclude, true ) ) {
 			continue;
 		}
 		switch ( $field[1] ) {

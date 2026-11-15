@@ -323,7 +323,7 @@ function gnn_demo_replace_step( $job_id ) {
 			return $result;
 		}
 		$job['phase']    = 'complete';
-		$job['redirect'] = admin_url( 'admin.php?page=gnn-workspace&path=ready' );
+		$job['redirect'] = admin_url( 'admin.php?page=gnn-panel&path=ready#gnn-tab-setup' );
 		update_option( 'gnn_demo_replace_last', $job, false );
 		delete_option( 'gnn_wipe_job' );
 		flush_rewrite_rules( false );

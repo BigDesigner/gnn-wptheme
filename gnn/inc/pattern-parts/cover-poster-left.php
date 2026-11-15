@@ -11,12 +11,12 @@
 <div class="wp-block-cover alignfull has-custom-content-position is-position-top-center" style="margin-top:0;padding-top:5vw;padding-right:5vw;padding-bottom:5vw;padding-left:5vw"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-100 has-background-dim" style="background-color:#36220c"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"blockGap":"3vw"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"stretch","justifyContent":"space-between"}} -->
 <div class="wp-block-group"><!-- wp:cover {"url":"<?php echo esc_url( $gnn_ph ); ?>","dimRatio":50,"minHeight":75,"minHeightUnit":"vh","contentPosition":"top right","isDark":false,"style":{"layout":{"selfStretch":"fill"},"spacing":{"padding":{"top":"4vw","right":"4vw","bottom":"4vw","left":"4vw"}},"color":{"duotone":["rgb(137, 75, 0)","rgb(210, 210, 210)"]}}} -->
 <div class="wp-block-cover is-light has-custom-content-position is-position-top-right" style="padding-top:4vw;padding-right:4vw;padding-bottom:4vw;padding-left:4vw;min-height:75vh"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( $gnn_ph ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","justifyContent":"right"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"typography":{"fontSize":"140px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"800","lineHeight":"0.8","letterSpacing":"-6px"},"color":{"text":"#e5683a"}}} -->
-<p class="has-text-color" style="color:#e5683a;font-size:140px;font-style:normal;font-weight:800;letter-spacing:-6px;line-height:0.8;text-transform:uppercase">Sample</p>
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"typography":{"fontSize":"140px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"800","lineHeight":"0.8","letterSpacing":"0px"},"color":{"text":"#e5683a"}}} -->
+<p class="has-text-color" style="color:#e5683a;font-size:140px;font-style:normal;font-weight:800;letter-spacing:0;line-height:0.8;text-transform:uppercase">Sample</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"style":{"typography":{"fontSize":"130px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"800","lineHeight":"0.8","letterSpacing":"-6px"},"color":{"text":"#e5683a"}}} -->
-<p class="has-text-color" style="color:#e5683a;font-size:130px;font-style:normal;font-weight:800;letter-spacing:-6px;line-height:0.8;text-transform:uppercase">title</p>
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"130px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"800","lineHeight":"0.8","letterSpacing":"0px"},"color":{"text":"#e5683a"}}} -->
+<p class="has-text-color" style="color:#e5683a;font-size:130px;font-style:normal;font-weight:800;letter-spacing:0;line-height:0.8;text-transform:uppercase">title</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->

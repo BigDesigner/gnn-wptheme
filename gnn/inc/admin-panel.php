@@ -50,7 +50,12 @@ function gnn_panel_menu_reorder() {
 	if ( empty( $submenu['gnn-panel'] ) ) {
 		return;
 	}
-	$order = array_flip( array( 'gnn-panel', 'gnn-templates', 'gnn-assignments', 'gnn-design', 'edit.php?post_type=gnn_layout', 'edit.php?post_type=gnn_project', 'edit.php?post_type=gnn_product', 'edit.php?post_type=gnn_album', 'edit.php?post_type=gnn_slide', 'gnn-workspace', 'gnn-addons', 'gnn-maintenance' ) );
+	// These tools live as Theme settings tabs. Remove any extension or stale
+	// registration that would surface them again in the product menu.
+	foreach ( array( 'gnn-templates', 'gnn-assignments', 'gnn-design', 'gnn-addons', 'gnn-maintenance', 'gnn-workspace' ) as $slug ) {
+		remove_submenu_page( 'gnn-panel', $slug );
+	}
+	$order = array_flip( array( 'gnn-panel', 'edit.php?post_type=gnn_layout', 'edit.php?post_type=gnn_project', 'edit.php?post_type=gnn_product', 'edit.php?post_type=gnn_album', 'edit.php?post_type=gnn_slide' ) );
 	foreach ( $submenu['gnn-panel'] as $item ) {
 		if ( ! isset( $order[ $item[2] ] ) ) {
 			$order[ $item[2] ] = count( $order );
@@ -883,6 +888,11 @@ function gnn_panel_render() {
 		'blog'       => __( 'Blog', 'gnn' ),
 		'styles'     => __( 'Styles', 'gnn' ),
 		'typography' => __( 'Typography', 'gnn' ),
+		'templates'  => __( 'Page templates', 'gnn' ),
+		'layouts'    => __( 'Layouts', 'gnn' ),
+		'setup'      => __( 'Setup wizard', 'gnn' ),
+		'plugins'    => __( 'Plugins', 'gnn' ),
+		'maintenance'=> __( 'Maintenance', 'gnn' ),
 		'code'       => __( 'Custom Code', 'gnn' ),
 		'advanced'   => __( 'Advanced', 'gnn' ),
 	);
@@ -895,6 +905,11 @@ function gnn_panel_render() {
 		'blog'       => 'admin-post',
 		'styles'     => 'art',
 		'typography' => 'editor-textcolor',
+		'templates'  => 'media-document',
+		'layouts'    => 'layout',
+		'setup'      => 'admin-tools',
+		'plugins'    => 'admin-plugins',
+		'maintenance'=> 'admin-generic',
 		'code'       => 'editor-code',
 		'advanced'   => 'admin-tools',
 	);
@@ -942,6 +957,13 @@ function gnn_panel_render() {
 		<hr class="wp-header-end">
 
 		<?php settings_errors( 'gnn_options' ); ?>
+		<?php
+		$gnn_management_notice = get_user_meta( get_current_user_id(), '_gnn_management_notice', true );
+		if ( is_array( $gnn_management_notice ) ) {
+			delete_user_meta( get_current_user_id(), '_gnn_management_notice' );
+			echo '<div role="status" class="notice ' . ( ! empty( $gnn_management_notice['error'] ) ? 'notice-error' : 'notice-success' ) . '"><p>' . esc_html( $gnn_management_notice['text'] ) . '</p></div>';
+		}
+		?>
 
 		<div class="gnn-panel-layout">
 			<aside class="gnn-panel-sidebar">
@@ -951,6 +973,8 @@ function gnn_panel_render() {
 							<div class="gnn-nav-group-title"><?php esc_html_e( 'Site structure', 'gnn' ); ?></div>
 						<?php elseif ( 'styles' === $id ) : ?>
 							<div class="gnn-nav-group-title"><?php esc_html_e( 'Brand and appearance', 'gnn' ); ?></div>
+						<?php elseif ( 'templates' === $id ) : ?>
+							<div class="gnn-nav-group-title"><?php esc_html_e( 'Site tools', 'gnn' ); ?></div>
 						<?php elseif ( 'code' === $id ) : ?>
 							<div class="gnn-nav-group-title"><?php esc_html_e( 'Administration', 'gnn' ); ?></div>
 						<?php endif; ?>
@@ -961,7 +985,6 @@ function gnn_panel_render() {
 					<?php endforeach; ?>
 				</nav>
 				<div class="gnn-sidebar-secondary">
-					<a href="<?php echo esc_url( admin_url( 'admin.php?page=gnn-workspace' ) ); ?>"><span class="dashicons dashicons-dashboard" aria-hidden="true"></span><?php esc_html_e( 'Setup wizard', 'gnn' ); ?></a>
 					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_layout' ) ); ?>"><span class="dashicons dashicons-layout" aria-hidden="true"></span><?php esc_html_e( 'Reusable blocks', 'gnn' ); ?></a>
 					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_slide' ) ); ?>"><span class="dashicons dashicons-images-alt2" aria-hidden="true"></span><?php esc_html_e( 'Slider', 'gnn' ); ?></a>
 				</div>
@@ -1181,6 +1204,7 @@ function gnn_panel_render() {
 						<?php gnn_field_media( 'error404_image', __( '404 image', 'gnn' ), (int) gnn_option( 'error404_image' ) ); ?>
 
 						<?php gnn_platform_fields( 'pages' ); ?>
+						<?php gnn_design_fields( array( 'geometry', 'images' ), false ); ?>
 					</section>
 
 					<section id="gnn-tab-blog" class="gnn-tab">
@@ -1310,6 +1334,7 @@ function gnn_panel_render() {
 						</div>
 
 						<?php gnn_platform_fields( 'styles' ); ?>
+						<?php gnn_design_fields( array( 'fields', 'button_names', 'global_colors' ), false ); ?>
 					</section>
 
 					<section id="gnn-tab-typography" class="gnn-tab">
@@ -1354,7 +1379,13 @@ function gnn_panel_render() {
 						);
 						?>
 
-						<?php gnn_platform_fields( 'typography' ); ?>
+						<?php
+						gnn_platform_fields(
+							'typography',
+							array( 'body_size', 'heading_size', 'heading_mobile_size', 'body_line_height', 'heading_line_height', 'heading_tracking' )
+						);
+						gnn_design_fields( array( 'type_scale' ), false );
+						?>
 					</section>
 
 					<section id="gnn-tab-code" class="gnn-tab">
@@ -1382,6 +1413,26 @@ function gnn_panel_render() {
 					</div>
 				</form>
 
+				<section id="gnn-tab-templates" class="gnn-tab">
+					<?php gnn_management_tab_content( 'templates' ); ?>
+				</section>
+
+				<section id="gnn-tab-layouts" class="gnn-tab">
+					<?php gnn_management_tab_content( 'layouts' ); ?>
+				</section>
+
+				<section id="gnn-tab-setup" class="gnn-tab">
+					<?php gnn_setup_wizard_content(); ?>
+				</section>
+
+				<section id="gnn-tab-plugins" class="gnn-tab">
+					<?php gnn_management_tab_content( 'plugins' ); ?>
+				</section>
+
+				<section id="gnn-tab-maintenance" class="gnn-tab">
+					<?php gnn_management_tab_content( 'maintenance' ); ?>
+				</section>
+
 				<?php gnn_panel_advanced_tab(); ?>
 			</div>
 		</div>
@@ -1399,6 +1450,7 @@ function gnn_panel_render() {
 function gnn_panel_advanced_tab() {
 	?>
 	<section id="gnn-tab-advanced" class="gnn-tab">
+		<?php gnn_design_fields( array( 'search' ) ); ?>
 		<?php gnn_section_bar( __( 'Export settings', 'gnn' ) ); ?>
 		<div class="gnn-setting-row">
 			<div class="gnn-setting-label-col">

@@ -168,8 +168,9 @@
 			}
 		} );
 
+		var toolTabs = [ 'advanced', 'templates', 'layouts', 'setup', 'plugins', 'maintenance' ];
 		panel.querySelectorAll( '#gnn-save-header, .gnn-savebar' ).forEach( function ( el ) {
-			el.hidden = ( id === 'advanced' );
+			el.hidden = toolTabs.includes( id );
 		} );
 
 		if ( remember ) {

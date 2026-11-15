@@ -16,6 +16,8 @@ PLURALS = {
 }
 
 TRANSLATIONS = {
+	'Site tools': 'Site araçları',
+	'Set size to 0 to inherit. Letter spacing starts at 0.': 'Miras almak için boyutu 0 yapın. Harf aralığı 0 ile başlar.',
     'Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values.': 'GNN ayarları JSON dosyasını yükleyin (en fazla 1 MB). Dosyada bulunmayan alanlar mevcut değerlerini korur.',
     'Settings were not saved: a field has an invalid value type.': 'Ayarlar kaydedilmedi: bir alanın değer türü geçersiz.',
     'Refresh Elementor templates': 'Elementor şablonlarını yenile',

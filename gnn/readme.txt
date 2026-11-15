@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.8.2
+Stable tag: 2.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -194,6 +194,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.8.3 =
+* Consolidated Theme settings tools into one panel and removed duplicate GNN menu entries.
+* Moved layout, design, setup, plugin, template and maintenance controls into matching panel tabs.
+* Unified embedded management cards, controls and field grids with Theme settings.
+* Normalized all theme typography letter-spacing settings to 0.
 
 = 2.8.2 =
 * Fixed the slide editor rendering source code instead of its fields.

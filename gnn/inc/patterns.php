@@ -34,20 +34,20 @@ function gnn_register_patterns() {
 <!-- /wp:spacer -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap","justifyContent":"center"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"-4px"},"color":{"text":"#c8c4d3"}}} -->
-<p class="has-text-align-right has-text-color" style="color:#c8c4d3;font-size:148px;font-style:normal;font-weight:300;letter-spacing:-4px;line-height:0.8;text-transform:uppercase">GNN</p>
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"0px"},"color":{"text":"#c8c4d3"}}} -->
+<p class="has-text-align-right has-text-color" style="color:#c8c4d3;font-size:148px;font-style:normal;font-weight:300;letter-spacing:0;line-height:0.8;text-transform:uppercase">GNN</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"-4px"},"color":{"text":"#ac94b2"}}} -->
-<p class="has-text-align-right has-text-color" style="color:#ac94b2;font-size:148px;font-style:normal;font-weight:300;letter-spacing:-4px;line-height:0.8;text-transform:uppercase">GNN</p>
+<!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"0px"},"color":{"text":"#ac94b2"}}} -->
+<p class="has-text-align-right has-text-color" style="color:#ac94b2;font-size:148px;font-style:normal;font-weight:300;letter-spacing:0;line-height:0.8;text-transform:uppercase">GNN</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"-4px"},"color":{"text":"#71689c"}}} -->
-<p class="has-text-align-right has-text-color" style="color:#71689c;font-size:148px;font-style:normal;font-weight:300;letter-spacing:-4px;line-height:0.8;text-transform:uppercase">GNN</p>
+<!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"0px"},"color":{"text":"#71689c"}}} -->
+<p class="has-text-align-right has-text-color" style="color:#71689c;font-size:148px;font-style:normal;font-weight:300;letter-spacing:0;line-height:0.8;text-transform:uppercase">GNN</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"-4px"},"color":{"text":"#444178"}}} -->
-<p class="has-text-align-right has-text-color" style="color:#444178;font-size:148px;font-style:normal;font-weight:300;letter-spacing:-4px;line-height:0.8;text-transform:uppercase">GNN</p>
+<!-- wp:paragraph {"className":"has-text-color","style":{"typography":{"fontSize":"148px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"300","lineHeight":"0.8","letterSpacing":"0px"},"color":{"text":"#444178"}}} -->
+<p class="has-text-align-right has-text-color" style="color:#444178;font-size:148px;font-style:normal;font-weight:300;letter-spacing:0;line-height:0.8;text-transform:uppercase">GNN</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

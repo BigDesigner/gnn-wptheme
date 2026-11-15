@@ -7,7 +7,7 @@
 /* ---------------------------------------------------------------- Shop loop */
 .woocommerce-main .woocommerce-products-header__title.page-title {
 	font-size: clamp(32px, 5vw, 48px);
-	letter-spacing: -0.02em;
+	letter-spacing: 0;
 	margin: 12px 0 0;
 }
 .woocommerce-main .woocommerce-result-count { color: var(--fg2); font-size: 16px; margin: 10px 0 0; }
@@ -147,7 +147,7 @@ ul.products li.product { position: relative; }
 
 .single-product div.product .product_title {
 	font-size: clamp(28px, 4.5vw, 40px);
-	letter-spacing: -0.02em;
+	letter-spacing: 0;
 	line-height: 1.1;
 	margin: 10px 0 0;
 }

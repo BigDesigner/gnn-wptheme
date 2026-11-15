@@ -13,8 +13,8 @@
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"48px"}},"layout":{"type":"flex","flexWrap":"wrap","verticalAlignment":"top","justifyContent":"space-between"}} -->
 <div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"0px"}},"layout":{"type":"default"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"className":"has-white-color has-text-color has-link-color","style":{"typography":{"fontSize":"172px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"700","lineHeight":"0.7","letterSpacing":"-10px"},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
-<p class="has-text-align-left has-white-color has-text-color has-link-color" style="font-size:172px;font-style:normal;font-weight:700;letter-spacing:-10px;line-height:0.7;text-transform:uppercase"><strong>BRAND</strong>.</p>
+<div class="wp-block-group"><!-- wp:paragraph {"className":"has-white-color has-text-color has-link-color","style":{"typography":{"fontSize":"172px","textTransform":"uppercase","fontStyle":"normal","fontWeight":"700","lineHeight":"0.7","letterSpacing":"0px"},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+<p class="has-text-align-left has-white-color has-text-color has-link-color" style="font-size:172px;font-style:normal;font-weight:700;letter-spacing:0;line-height:0.7;text-transform:uppercase"><strong>BRAND</strong>.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 

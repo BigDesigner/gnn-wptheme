@@ -191,6 +191,6 @@ function gnn_support_admin_access( $prevent ) {
 	$page = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
 	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- routing only; the workspace action independently verifies its nonce.
 	$action = isset( $_POST['action'] ) && is_string( $_POST['action'] ) ? sanitize_key( wp_unslash( $_POST['action'] ) ) : '';
-	return in_array( $page, array( 'gnn-panel', 'gnn-workspace' ), true ) || 'gnn_workspace' === $action ? false : $prevent;
+	return 'gnn-panel' === $page || 'gnn_workspace' === $action ? false : $prevent;
 }
 add_filter( 'woocommerce_prevent_admin_access', 'gnn_support_admin_access' );

@@ -331,7 +331,7 @@ function gnn_wipe_step( $job ) {
 		return array(
 			'phase'    => 'complete',
 			'done'     => $job['done'],
-			'redirect' => admin_url( 'admin.php?page=gnn-workspace' ),
+			'redirect' => admin_url( 'admin.php?page=gnn-panel#gnn-tab-setup' ),
 		);
 	}
 	update_option( 'gnn_wipe_job', $job, false );
@@ -388,9 +388,9 @@ function gnn_wipe_admin_gate() {
 		wp_send_json_error( array( 'message' => __( 'Maintenance in progress.', 'gnn' ) ), 503 );
 	}
 	$page    = isset( $_GET['page'] ) && is_string( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing.
-	$allowed = 'demo' === ( $job['kind'] ?? '' ) ? 'gnn-workspace' : 'gnn-maintenance';
-	if ( $allowed !== $page ) {
-		wp_safe_redirect( admin_url( 'admin.php?page=' . $allowed ) );
+	$allowed_tab = 'demo' === ( $job['kind'] ?? '' ) ? 'setup' : 'maintenance';
+	if ( 'gnn-panel' !== $page ) {
+		wp_safe_redirect( admin_url( 'admin.php?page=gnn-panel#gnn-tab-' . $allowed_tab ) );
 		exit;
 	}
 }

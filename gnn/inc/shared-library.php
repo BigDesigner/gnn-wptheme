@@ -133,7 +133,7 @@ function gnn_shared_column( $column, $id ) {
 	$found = false;
 	foreach ( (array) get_option( 'gnn_options', array() ) as $key => $value ) {
 		if ( ( false !== strpos( $key, '_template' ) ) && (int) $value === (int) $id ) {
-			echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=gnn-assignments' ) ) . '">' . esc_html( str_replace( '_', ' ', $key ) ) . '</a></p>';
+			echo '<p><a href="' . esc_url( admin_url( 'admin.php?page=gnn-panel#gnn-tab-layouts' ) ) . '">' . esc_html( str_replace( '_', ' ', $key ) ) . '</a></p>';
 			$found = true;
 		}
 	}

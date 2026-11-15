@@ -403,7 +403,7 @@ function gnn_run_authoring_checks() {
 	}
 	check_admin_referer( 'gnn_authoring_checks' );
 	if ( get_option( 'gnn_wipe_job' ) || get_transient( 'gnn_authoring_check_' . get_current_user_id() ) ) {
-		wp_safe_redirect( admin_url( 'admin.php?page=gnn-maintenance' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=gnn-panel#gnn-tab-maintenance' ) );
 		exit;
 	}
 	set_transient( 'gnn_authoring_check_' . get_current_user_id(), 1, 30 );
@@ -451,7 +451,7 @@ function gnn_run_authoring_checks() {
 			'items' => $checks,
 		)
 	);
-	wp_safe_redirect( admin_url( 'admin.php?page=gnn-maintenance' ) );
+	wp_safe_redirect( admin_url( 'admin.php?page=gnn-panel#gnn-tab-maintenance' ) );
 	exit;
 }
 add_action( 'admin_post_gnn_authoring_checks', 'gnn_run_authoring_checks' );

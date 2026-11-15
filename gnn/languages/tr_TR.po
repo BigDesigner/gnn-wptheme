@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.8.2\n"
+"Project-Id-Version: GNN 2.8.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-13 00:02+0000\n"
-"PO-Revision-Date: 2026-11-13 00:02+0000\n"
+"POT-Creation-Date: 2026-11-15 06:45+0000\n"
+"PO-Revision-Date: 2026-11-15 06:45+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1478,9 +1478,6 @@ msgstr "Tam ekran yükleme katmanı"
 msgid "Full-stack security, one accountable partner."
 msgstr "Uçtan uca güvenlik, tek sorumlu iş ortağı."
 
-msgid "GNN"
-msgstr "GNN"
-
 msgid "GNN Demo"
 msgstr "GNN Demo"
 
@@ -2831,6 +2828,9 @@ msgstr "Hizmetlerin tanıtımı"
 msgid "Set background image"
 msgstr "Arka plan görseli seç"
 
+msgid "Set size to 0 to inherit. Letter spacing starts at 0."
+msgstr "Miras almak için boyutu 0 yapın. Harf aralığı 0 ile başlar."
+
 msgid "Set the main image in Featured Image. The optional 2× image is used on high-density screens."
 msgstr "Ana görseli Öne Çıkan Görsel alanından ayarlayın. İsteğe bağlı 2× görsel, yüksek yoğunluklu ekranlarda kullanılır."
 
@@ -3023,8 +3023,8 @@ msgstr "Site ayarları sıfırlanamadı."
 msgid "Site structure"
 msgstr "Site yapısı"
 
-msgid "Size 0 inherits. Empty letter spacing inherits."
-msgstr "Boyut için 0, harf aralığı için boş değer tema ayarını kullanır."
+msgid "Site tools"
+msgstr "Site araçları"
 
 msgid "Skip to content"
 msgstr "İçeriğe geç"
