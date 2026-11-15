@@ -127,7 +127,7 @@ input:focus, textarea:focus, select:focus { border-color: var(--accent); }
 textarea { resize: vertical; }
 
 .gnn-container {
-	max-width: 1280px;
+	max-width: var(--gnn-container, 1280px);
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: clamp(16px, 3vw, 32px);
@@ -1145,15 +1145,11 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
  * ------------------------------------------------------------------------- */
 .site-footer { border-top: 1px solid var(--line); background: var(--bg2); margin-top: 0; }
 .site-footer__widgets {
-	max-width: 1280px;
+	max-width: var(--gnn-container, 1280px);
 	margin: 0 auto;
 	padding: 64px clamp(16px, 3vw, 32px) 0;
 	display: grid;
-	/* The brand column (always first — see footer.php) gets a wider minimum
-	   so a wide-format logo (banner-style, e.g. 12:1) has enough room to
-	   render at its configured height instead of being squeezed narrower
-	   by the shared auto-fit track and shrinking in turn. */
-	grid-template-columns: minmax(min(100%, 260px), 1.3fr) repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
 	gap: 40px;
 }
 .footer-brand { font-family: var(--font-heading); font-weight: 700; font-size: 24px; }
@@ -1175,7 +1171,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 }
 .footer-column ul li a:hover, .footer-menu li a:hover { background: transparent; color: var(--accent-text); }
 .site-footer__bottom {
-	max-width: 1280px;
+	max-width: var(--gnn-container, 1280px);
 	margin: 48px auto 0;
 	padding: 28px clamp(16px, 3vw, 32px);
 	border-top: 1px solid var(--line);

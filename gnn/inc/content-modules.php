@@ -511,7 +511,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		$page          = isset( $_GET['gnn_projects_page'] ) && is_scalar( $_GET['gnn_projects_page'] ) ? max( 1, absint( $_GET['gnn_projects_page'] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public pagination.
 		$attrs['page'] = $page;
 		$query         = gnn_project_query( $attrs );
-		$html          = '<section class="gnn-content-module" aria-label="' . esc_attr__( 'Portfolio', 'gnn' ) . '">';
+		$html          = '<section class="gnn-content-module" data-gnn-collection="portfolio" aria-label="' . esc_attr__( 'Portfolio', 'gnn' ) . '">';
 		if ( ! $category && false !== ( $attrs['filters'] ?? true ) ) {
 			$base  = remove_query_arg( array( $param, 'gnn_projects_page' ) );
 			$terms = get_terms(
@@ -567,7 +567,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		$page          = isset( $_GET['gnn_products_page'] ) && is_scalar( $_GET['gnn_products_page'] ) ? max( 1, absint( $_GET['gnn_products_page'] ) ) : 1; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- public pagination.
 		$attrs['page'] = $page;
 		$query         = gnn_product_query( $attrs );
-		$html          = '<section class="gnn-content-module" aria-label="' . esc_attr__( 'Products', 'gnn' ) . '">';
+		$html          = '<section class="gnn-content-module" data-gnn-collection="catalog" aria-label="' . esc_attr__( 'Products', 'gnn' ) . '">';
 		if ( ! $category && false !== ( $attrs['filters'] ?? true ) ) {
 			$base  = remove_query_arg( array( $param, 'gnn_products_page' ) );
 			$terms = get_terms(
