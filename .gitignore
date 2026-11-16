@@ -1,6 +1,7 @@
 # Local agent, memory and specification folders
 .agents/
 .memory-bank/
+.archive/
 .tasks/
 .specs/
 .claude/
