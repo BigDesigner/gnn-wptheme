@@ -1182,6 +1182,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 	font-size: 13px;
 	color: var(--fg2);
 }
+.site-footer__bottom:first-child { margin-top: 0; border-top: 0; }
 
 /* ---------------------------------------------------------------------------
  * 17. Responsive (breakpoint 900px, matching the mockup)

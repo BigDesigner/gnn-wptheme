@@ -17,9 +17,8 @@
 		$gnn_shared_footer = elementor_theme_do_location( 'footer' );
 	}
 	if ( ! $gnn_footer_hidden && ( ! $gnn_shared_footer || gnn_option( 'footer_show_with_shared' ) ) ) :
+		ob_start();
 		?>
-	<footer id="colophon" class="site-footer">
-		<div class="site-footer__widgets">
 			<?php
 			$gnn_fbrand = (string) gnn_option( 'footer_brand_type' ); // text | image | both | none.
 			$gnn_ftag   = trim( (string) gnn_translated_option( 'footer_tagline' ) );
@@ -79,31 +78,41 @@
 			<?php endfor; ?>
 		<?php if ( gnn_option( 'footer_show_company' ) ) { ?>
 			<?php gnn_footer_company_details(); ?>
-		<?php } ?></div><!-- .site-footer__widgets -->
+		<?php } ?>
+		<?php
+		$gnn_footer_widgets = trim( ob_get_clean() );
+		$gnn_footer_legal   = trim( (string) get_theme_mod( 'gnn_footer_legal', '' ) );
+		$gnn_footer_bottom  = gnn_option( 'footer_show_copyright' ) || ( gnn_option( 'footer_show_legal' ) && '' !== $gnn_footer_legal );
+		if ( '' !== $gnn_footer_widgets || $gnn_footer_bottom ) :
+			?>
+	<footer id="colophon" class="site-footer">
+			<?php if ( '' !== $gnn_footer_widgets ) : ?>
+			<div class="site-footer__widgets"><?php echo $gnn_footer_widgets; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- captured, already escaped footer and WordPress widget output. ?></div>
+		<?php endif; ?>
 
-		<?php if ( gnn_option( 'footer_show_copyright' ) || ( gnn_option( 'footer_show_legal' ) && '' !== trim( (string) get_theme_mod( 'gnn_footer_legal', '' ) ) ) ) : ?>
+			<?php if ( $gnn_footer_bottom ) : ?>
 		<div class="site-footer__bottom">
-			<?php if ( gnn_option( 'footer_show_copyright' ) ) : ?>
+				<?php if ( gnn_option( 'footer_show_copyright' ) ) : ?>
 			<span class="site-copyright">
-				<?php
-				$gnn_copy = trim( (string) gnn_translated_option( 'footer_copyright' ) );
-				if ( '' !== $gnn_copy ) {
-					// Panel text with %year% / %site% placeholders.
-					echo esc_html( str_replace( array( '%year%', '%site%' ), array( gmdate( 'Y' ), get_bloginfo( 'name' ) ), $gnn_copy ) );
-				} else {
-					/* translators: 1: current year, 2: site name. */
-					printf( esc_html__( '© %1$s %2$s. All rights reserved.', 'gnn' ), esc_html( gmdate( 'Y' ) ), esc_html( get_bloginfo( 'name' ) ) );
-				}
-				?>
+					<?php
+					$gnn_copy = trim( (string) gnn_translated_option( 'footer_copyright' ) );
+					if ( '' !== $gnn_copy ) {
+						// Panel text with %year% / %site% placeholders.
+						echo esc_html( str_replace( array( '%year%', '%site%' ), array( gmdate( 'Y' ), get_bloginfo( 'name' ) ), $gnn_copy ) );
+					} else {
+						/* translators: 1: current year, 2: site name. */
+						printf( esc_html__( '© %1$s %2$s. All rights reserved.', 'gnn' ), esc_html( gmdate( 'Y' ) ), esc_html( get_bloginfo( 'name' ) ) );
+					}
+					?>
 			</span>
 			<?php endif; ?>
-			<?php $gnn_legal = get_theme_mod( 'gnn_footer_legal', '' ); ?>
-			<?php if ( gnn_option( 'footer_show_legal' ) && '' !== trim( (string) $gnn_legal ) ) : ?>
-				<span class="site-legal"><?php echo esc_html( $gnn_legal ); ?></span>
+				<?php if ( gnn_option( 'footer_show_legal' ) && '' !== $gnn_footer_legal ) : ?>
+				<span class="site-legal"><?php echo esc_html( $gnn_footer_legal ); ?></span>
 			<?php endif; ?>
 		</div><!-- .site-footer__bottom -->
 		<?php endif; ?>
 	</footer><!-- #colophon -->
+		<?php endif; ?>
 	<?php endif; // End theme footer (Elementor location fallback). ?>
 </div><!-- #page -->
 
