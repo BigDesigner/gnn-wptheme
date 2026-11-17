@@ -49,7 +49,25 @@ function gnn_configuration_begin( $action, $revision = '' ) {
 		'time'  => time(),
 	);
 	if ( ! add_option( 'gnn_configuration_lock', $lock, '', false ) ) {
-		return new WP_Error( 'gnn_busy', __( 'Another settings operation is in progress. Reload and try again.', 'gnn' ) );
+		// A worker killed mid-save never releases its lock; take over after five minutes.
+		global $wpdb;
+		$held = get_option( 'gnn_configuration_lock' );
+		$time = is_array( $held ) && isset( $held['time'] ) ? (int) $held['time'] : 0;
+		if ( $time > time() - 300 ) {
+			return new WP_Error( 'gnn_busy', __( 'Another settings operation is in progress. Reload and try again.', 'gnn' ) );
+		}
+		if ( false !== $held ) {
+			// Compare-and-delete: a concurrent taker that already replaced the stale lock wins.
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching -- conditional delete of the exact stale lock value; cache cleared below.
+			$removed = $wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name = %s AND option_value = %s", 'gnn_configuration_lock', maybe_serialize( $held ) ) );
+			wp_cache_delete( 'gnn_configuration_lock', 'options' );
+			if ( 1 !== $removed ) {
+				return new WP_Error( 'gnn_busy', __( 'Another settings operation is in progress. Reload and try again.', 'gnn' ) );
+			}
+		}
+		if ( ! add_option( 'gnn_configuration_lock', $lock, '', false ) ) {
+			return new WP_Error( 'gnn_busy', __( 'Another settings operation is in progress. Reload and try again.', 'gnn' ) );
+		}
 	}
 	register_shutdown_function(
 		function () use ( $token ) {
@@ -78,6 +96,67 @@ function gnn_configuration_begin( $action, $revision = '' ) {
 		)
 	);
 	update_option( 'gnn_configuration_history', array_slice( $items, 0, 10 ), false );
+	return true;
+}
+
+/** A settings lock older than five minutes belongs to a stopped worker. */
+function gnn_configuration_locked() {
+	$held = get_option( 'gnn_configuration_lock' );
+	if ( false === $held ) {
+		return false;
+	}
+	return ! is_array( $held ) || ! isset( $held['time'] ) || (int) $held['time'] > time() - 300;
+}
+
+/**
+ * Last reason the options sanitizer kept the stored value, for internal writers.
+ *
+ * @param WP_Error|null $error Rejection to record.
+ * @param bool          $clear Forget the previous rejection.
+ * @return WP_Error|null
+ */
+function gnn_configuration_rejection( $error = null, $clear = false ) {
+	static $last = null;
+	if ( $clear ) {
+		$last = null;
+	} elseif ( is_wp_error( $error ) ) {
+		$last = $error;
+	}
+	return $last;
+}
+
+/**
+ * Write the panel options and confirm the sanitized value was stored.
+ *
+ * @param array $options Complete option array.
+ * @param bool  $fresh Ignore rejections recorded before this write.
+ * @return true|WP_Error
+ */
+function gnn_configuration_write( $options, $fresh = true ) {
+	if ( $fresh ) {
+		gnn_configuration_rejection( null, true );
+	}
+	// Stored options omit checkboxes that were never saved, and the sanitizer reads an absent checkbox as off.
+	foreach ( gnn_options_schema() as $key => $field ) {
+		if ( is_array( $options ) && 'checkbox' === $field['type'] && ! array_key_exists( $key, $options ) ) {
+			$options[ $key ] = gnn_option( $key );
+		}
+	}
+	$expected = $options;
+	$capture  = static function ( $value ) use ( &$expected ) {
+		$expected = $value;
+		return $value;
+	};
+	add_filter( 'sanitize_option_gnn_options', $capture, PHP_INT_MAX );
+	update_option( 'gnn_options', $options );
+	remove_filter( 'sanitize_option_gnn_options', $capture, PHP_INT_MAX );
+	$rejected = gnn_configuration_rejection();
+	if ( $rejected ) {
+		return new WP_Error( $rejected->get_error_code(), $rejected->get_error_message() );
+	}
+	if ( get_option( 'gnn_options' ) !== $expected ) {
+		return new WP_Error( 'gnn_not_saved', __( 'Settings could not be saved. Reload and try again.', 'gnn' ) );
+	}
 	return true;
 }
 
@@ -176,13 +255,17 @@ function gnn_restore_configuration( $id, $revision ) {
 			if ( is_wp_error( $started ) ) {
 				return $started;
 			}
+			// Options first: a rejected snapshot leaves branding and the icon untouched.
+			$written = gnn_configuration_write( (array) $item['state']['options'] );
+			if ( is_wp_error( $written ) ) {
+				return new WP_Error( $written->get_error_code(), __( 'The snapshot was not restored.', 'gnn' ) . ' ' . $written->get_error_message() );
+			}
 			foreach ( gnn_configuration_state()['mods'] as $key => $value ) {
 				remove_theme_mod( $key );
 			}
 			foreach ( $item['state']['mods'] as $key => $value ) {
 				set_theme_mod( $key, $value );
 			}
-			update_option( 'gnn_options', $item['state']['options'] );
 			update_option( 'site_icon', $item['state']['site_icon'] );
 			return true;
 		}

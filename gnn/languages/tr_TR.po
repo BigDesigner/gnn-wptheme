@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.10.1\n"
+"Project-Id-Version: GNN 2.11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 03:11+0000\n"
-"PO-Revision-Date: 2026-11-16 03:11+0000\n"
+"POT-Creation-Date: 2026-11-17 09:26+0000\n"
+"PO-Revision-Date: 2026-11-17 09:26+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2342,6 +2342,9 @@ msgstr "Genel bakış"
 msgid "PHP version"
 msgstr "PHP sürümü"
 
+msgid "Packages can contain scripts. Upload only packages from sources you trust."
+msgstr "Paketler betik içerebilir. Yalnızca güvendiğiniz kaynaklardan gelen paketleri yükleyin."
+
 msgid "Padding"
 msgstr "İç boşluk"
 
@@ -2386,6 +2389,9 @@ msgstr "Paragraf (gövde metni)"
 
 msgid "Passed"
 msgstr "Başarılı"
+
+msgid "Pause slides"
+msgstr "Slaytları duraklat"
 
 msgid "Permanently delete selected demo drafts and their metadata instead of moving to Trash. This cannot be undone; a settings snapshot does not back up pages."
 msgstr "Seçili örnek taslakları çöpe taşımak yerine meta verileriyle birlikte kalıcı sil. Bu işlem geri alınamaz; ayar yedeği sayfaları yedeklemez."
@@ -2897,6 +2903,9 @@ msgstr "Bu form açıldıktan sonra ayarlar değişti. Değişiklikleriniz uygul
 msgid "Settings changed. Reload and try again."
 msgstr "Ayarlar değişti. Sayfayı yenileyip yeniden deneyin."
 
+msgid "Settings could not be saved. Reload and try again."
+msgstr "Ayarlar kaydedilemedi. Sayfayı yenileyip yeniden deneyin."
+
 msgid "Settings exceed the 1 MB limit. Nothing was changed."
 msgstr "Ayarlar 1 MB sınırını aşıyor. Hiçbir şey değiştirilmedi."
 
@@ -3128,6 +3137,9 @@ msgstr "Hafif"
 msgid "Some Elementor templates could not be saved. Please retry."
 msgstr "Bazı Elementor şablonları kaydedilemedi. Lütfen tekrar deneyin."
 
+msgid "Sorry, you are not allowed to do that."
+msgstr "Bu işlem için yetkiniz yok."
+
 msgid "Space between cards (px)"
 msgstr "Kartlar arası boşluk (px)"
 
@@ -3290,6 +3302,9 @@ msgstr "Blok türü bu yerleşime uygun değil."
 msgid "The cleanup selection changed or contains protected content. Review the latest list."
 msgstr "Temizlik seçimi değişti veya korunan içerik barındırıyor. Güncel listeyi inceleyin."
 
+msgid "The demo package changed after it was checked. Installation stopped. Upload the package again."
+msgstr "Demo paketi kontrol edildikten sonra değişti. Kurulum durduruldu. Paketi yeniden yükleyin."
+
 msgid "The demo package is invalid or unsupported."
 msgstr "Demo paketi geçersiz veya desteklenmiyor."
 
@@ -3323,6 +3338,9 @@ msgstr "Medya klasörü tema veya eklenti dosyalarıyla çakışıyor."
 msgid "The operation stopped. Retry to continue."
 msgstr "İşlem durdu. Devam etmek için yeniden deneyin."
 
+msgid "The package settings could not be applied."
+msgstr "Paket ayarları uygulanamadı."
+
 msgid "The page you’re looking for was moved, renamed or never existed."
 msgstr "Aradığınız sayfa taşınmış, adı değişmiş ya da hiç var olmamış."
 
@@ -3343,6 +3361,12 @@ msgstr "Seçilen referans WOFF2 yazı tipi değil."
 
 msgid "The selected slider group does not exist."
 msgstr "Seçilen slayt grubu mevcut değil."
+
+msgid "The site is under maintenance."
+msgstr "Site bakımda."
+
+msgid "The snapshot was not restored."
+msgstr "Anlık görüntü geri yüklenmedi."
 
 msgid "The study explores how a clear structural order and a restrained material palette can create adaptable spaces with a distinct character."
 msgstr "Bu çalışma, belirgin bir taşıyıcı düzen ve sade malzeme paletiyle özgün kimlik taşıyan esnek mekânlar oluşturmayı araştırıyor."

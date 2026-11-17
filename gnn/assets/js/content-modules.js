@@ -1,7 +1,12 @@
 (function () {
 	'use strict';
 	var pending = Object.create(null);
-	function update(section, url) {
+	function page(url) { return String(url).split('#')[0]; }
+	var current = page(window.location.href);
+	if (!history.state && document.querySelector('[data-gnn-collection]')) {
+		history.replaceState({ gnnCollection: true, url: current }, '', window.location.href);
+	}
+	function update(section, url, restoring) {
 		if (!window.fetch || !window.DOMParser || !window.AbortController) { window.location.href = url; return; }
 		var type = section.dataset.gnnCollection;
 		var sections = Array.from(document.querySelectorAll('[data-gnn-collection="' + type + '"]'));
@@ -21,8 +26,9 @@
 			if (replacements.length !== sections.length || !replacements[index]) throw new Error('Collection missing');
 			sections.forEach(function (current, position) { current.replaceWith(replacements[position]); });
 			var focus = replacements[index].querySelector('.gnn-module-filters a[aria-current], .gnn-module-filter-select, .gnn-module-pagination [aria-current]');
-			if (focus) focus.focus({ preventScroll: true });
-			history.pushState({ gnnCollection: true }, '', url);
+			if (focus && !restoring) focus.focus({ preventScroll: true });
+			current = page(url);
+			if (!restoring) history.pushState({ gnnCollection: type, url: url }, '', url);
 		}).catch(function (error) {
 			if (error.name !== 'AbortError') window.location.href = url;
 		}).finally(function () {
@@ -37,7 +43,21 @@
 		event.preventDefault();
 		update(section, link.href);
 	});
-	window.addEventListener('popstate', function () { window.location.reload(); });
+	window.addEventListener('popstate', function (event) {
+		var state = event.state;
+		// In-page anchor entries carry no state; they still show the collection of their own URL.
+		var url = state && state.gnnCollection && state.url ? state.url : (!state && document.querySelector('[data-gnn-collection]') ? window.location.href : '');
+		if (!url || page(url) === current) return;
+		var seen = Object.create(null);
+		var sections = Array.from(document.querySelectorAll('[data-gnn-collection]')).filter(function (item) {
+			var type = item.dataset.gnnCollection;
+			if (seen[type]) return false;
+			seen[type] = true;
+			return true;
+		});
+		if (!sections.length) { window.location.reload(); return; }
+		sections.forEach(function (item) { update(item, url, true); });
+	});
 	document.addEventListener('change', function (event) {
 		if (!event.target.matches('.gnn-module-filter-select')) return;
 		var form = event.target.closest('.gnn-module-filter-form');

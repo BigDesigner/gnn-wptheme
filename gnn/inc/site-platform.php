@@ -336,38 +336,99 @@ function gnn_site_styles() {
 			$css .= ':root{--gnn-global-' . $slot . ':' . $color . ';}.gnn-color-' . $slot . '{color:var(--gnn-global-' . $slot . ');}';
 		}
 	}
+	/*
+	 * Type scale. Headings publish per-role custom properties
+	 * (--gnn-hN-size/-leading/-tracking/-weight) that main.css and
+	 * design-system.css read with fallbacks to the global heading tokens, so
+	 * a panel value reaches plain headings, entry titles and entry content
+	 * regardless of stylesheet order. Only values the admin actually set are
+	 * emitted (a zero is the stored default for every numeric field), and
+	 * Elementor widgets are targeted only for those values, so Elementor Site
+	 * Settings typography is never overridden by default.
+	 */
+	$ua_sizes = array(
+		'h1' => '2em',
+		'h2' => '1.5em',
+		'h3' => '1.17em',
+		'h4' => '1em',
+		'h5' => '.83em',
+		'h6' => '.67em',
+	);
+	$devices  = array(
+		'tablet' => 'tablet_breakpoint',
+		'mobile' => 'mobile_breakpoint',
+	);
 	foreach ( array_keys( gnn_typography_roles() ) as $role ) {
-		$selector = 'p' === $role ? '.entry-content p,.elementor-widget-text-editor' : $role . ',.elementor-widget-heading ' . $role . '.elementor-heading-title';
-		$rules    = '';
-		$base     = 'type_' . $role . '_';
-		if ( gnn_option( $base . 'size' ) ) {
-			$rules .= 'font-size:' . (int) gnn_option( $base . 'size' ) . 'px;';
+		$base      = 'type_' . $role . '_';
+		$size      = (int) gnn_option( $base . 'size' );
+		$leading   = (int) gnn_option( $base . 'leading' );
+		$tracking  = (int) gnn_option( $base . 'tracking' );
+		$own       = (string) gnn_option( $base . 'weight' );
+		$weight    = '' !== $own ? gnn_typography_role_weight( $role ) : '';
+		$transform = (string) gnn_option( $base . 'transform' );
+		$transform = in_array( $transform, array( 'none', 'uppercase', 'lowercase' ), true ) ? $transform : '';
+		$rules     = '';
+		if ( $size ) {
+			$rules .= 'font-size:' . $size . 'px;';
 		}
-		if ( gnn_option( $base . 'leading' ) ) {
-			$rules .= 'line-height:' . ( (int) gnn_option( $base . 'leading' ) / 100 ) . ';';
+		if ( $leading ) {
+			$rules .= 'line-height:' . ( $leading / 100 ) . ';';
 		}
-		if ( gnn_option( $base . 'weight' ) ) {
-			$rules .= 'font-weight:' . (int) gnn_option( $base . 'weight' ) . ';';
+		if ( $weight ) {
+			$rules .= 'font-weight:' . (int) $weight . ';';
 		}
-		if ( '' !== gnn_option( $base . 'tracking' ) ) {
-			$rules .= 'letter-spacing:' . ( (int) gnn_option( $base . 'tracking' ) / 100 ) . 'em;';
+		if ( $tracking ) {
+			$rules .= 'letter-spacing:' . ( $tracking / 100 ) . 'em;';
 		}
-		$transform = gnn_option( $base . 'transform' );
-		if ( in_array( $transform, array( 'none', 'uppercase', 'lowercase' ), true ) ) {
+		if ( $transform ) {
 			$rules .= 'text-transform:' . $transform . ';';
 		}
-		$css .= $selector . '{' . $rules . '}';
-		foreach ( array(
-			'tablet' => 'tablet_breakpoint',
-			'mobile' => 'mobile_breakpoint',
-		) as $device => $breakpoint ) {
-			if ( gnn_option( $base . $device ) ) {
-				$css .= '@media(max-width:' . (int) gnn_option( $breakpoint ) . 'px){' . $selector . '{font-size:' . (int) gnn_option( $base . $device ) . 'px;}}';
+		$elementor = 'p' === $role ? '.elementor-widget-text-editor' : '.elementor-widget-heading ' . $role . '.elementor-heading-title';
+		if ( 'p' === $role ) {
+			// Body text has no competing theme rule; set values apply directly.
+			if ( '' !== $rules ) {
+				$css .= '.entry-content p,' . $elementor . '{' . $rules . '}';
 			}
+		} else {
+			$vars = '';
+			if ( $size ) {
+				$vars .= '--gnn-' . $role . '-size:' . $size . 'px;';
+			}
+			if ( $leading ) {
+				$vars .= '--gnn-' . $role . '-leading:' . ( $leading / 100 ) . ';';
+			}
+			if ( $weight ) {
+				$vars .= '--gnn-' . $role . '-weight:' . (int) $weight . ';';
+			}
+			if ( $tracking ) {
+				$vars .= '--gnn-' . $role . '-tracking:' . ( $tracking / 100 ) . 'em;';
+			}
+			if ( '' !== $vars ) {
+				$css .= ':root{' . $vars . '}';
+			}
+			// Plain headings have no theme size rule; the fallback is the
+			// browser default, used where only a smaller device size is set.
+			if ( $size || gnn_option( $base . 'tablet' ) || gnn_option( $base . 'mobile' ) ) {
+				$css .= $role . '{font-size:var(--gnn-' . $role . '-size,' . $ua_sizes[ $role ] . ');}';
+			}
+			if ( $transform ) {
+				$css .= $role . '{text-transform:' . $transform . ';}';
+			}
+			if ( '' !== $rules ) {
+				$css .= $elementor . '{' . $rules . '}';
+			}
+		}
+		foreach ( $devices as $device => $breakpoint ) {
+			$device_size = (int) gnn_option( $base . $device );
+			if ( ! $device_size ) {
+				continue;
+			}
+			$target = 'p' === $role ? '.entry-content p,' . $elementor . '{font-size:' . $device_size . 'px;}' : ':root{--gnn-' . $role . '-size:' . $device_size . 'px;}' . $elementor . '{font-size:' . $device_size . 'px;}';
+			$css   .= '@media(max-width:' . (int) gnn_option( $breakpoint ) . 'px){' . $target . '}';
 		}
 	}
 	$css .= '.entry-content input:not([type=checkbox]):not([type=radio]),.entry-content select,.entry-content textarea,.woocommerce input.input-text,.woocommerce select{border-radius:' . (int) gnn_option( 'field_radius' ) . 'px;padding:' . (int) gnn_option( 'field_padding' ) . 'px;border-width:' . (int) gnn_option( 'field_border' ) . 'px;font-size:' . (int) gnn_option( 'field_size' ) . 'px;background:var(--bg2);color:var(--fg);border-color:var(--line);}';
-	$css .= ':where(a,button,input,select,textarea):focus-visible{outline:' . (int) gnn_option( 'focus_width' ) . 'px solid var(--accent);outline-offset:3px;}input:disabled,select:disabled,textarea:disabled{opacity:.6;}input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#c93535;}';
+	$css .= ':where(a,button,input,select,textarea):focus-visible{outline:' . (int) gnn_option( 'focus_width' ) . 'px solid var(--accent-text);outline-offset:3px;}input:disabled,select:disabled,textarea:disabled{opacity:.6;}input[aria-invalid=true],textarea[aria-invalid=true]{border-color:#c93535;}';
 	wp_add_inline_style( 'gnn-main', $css );
 }
 add_action( 'wp_enqueue_scripts', 'gnn_site_styles', 35 );

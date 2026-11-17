@@ -14,6 +14,18 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 THEME = os.path.join(ROOT, 'gnn')
 BUILD = os.path.join(ROOT, '.build')
+# Development and OS junk that must never ship. Keep in sync with verify.py.
+EXCLUDE_DIRS = {'node_modules', '__pycache__'}
+EXCLUDE_FILES = ('.DS_Store', 'Thumbs.db', 'desktop.ini', '*.swp', '*~', '.git*', '*.map', '*.pyc')
+
+
+def is_excluded(name, is_dir=False):
+    import fnmatch
+    if is_dir:
+        return name in EXCLUDE_DIRS or name.startswith('.git')
+    return any(fnmatch.fnmatch(name, pattern) for pattern in EXCLUDE_FILES)
+
+
 # Refuse mislabeled release artifacts before writing any package.
 subprocess.run([sys.executable, os.path.join(HERE, 'check-release.py')], check=True)
 os.makedirs(BUILD, exist_ok=True)
@@ -74,9 +86,16 @@ if not os.path.exists(shot):
 import shutil
 if '--wporg' in sys.argv:
     raise SystemExit('WordPress.org packaging is retired. Use the normal gnn.zip build.')
-if os.path.exists(os.path.join(ROOT, 'gnn-demo-content.xml')):
-    shutil.copyfile(os.path.join(ROOT, 'gnn-demo-content.xml'),
-                    os.path.join(THEME, 'demo', 'gnn-demo-content.xml'))
+# The build never mutates the source tree. A stray root-level demo export must
+# already match the shipped copy, otherwise the release would silently diverge.
+_root_demo = os.path.join(ROOT, 'gnn-demo-content.xml')
+_theme_demo = os.path.join(THEME, 'demo', 'gnn-demo-content.xml')
+if os.path.exists(_root_demo):
+    with open(_root_demo, 'rb') as a, open(_theme_demo, 'rb') as b:
+        if a.read() != b.read():
+            raise SystemExit('gnn-demo-content.xml at the repository root differs from '
+                             'gnn/demo/gnn-demo-content.xml. Move the intended file into '
+                             'gnn/demo/ (or delete the root copy) and build again.')
 
 import re
 
@@ -98,7 +117,10 @@ zip_name = 'gnn.zip'
 zip_path = os.path.join(BUILD, zip_name)
 with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as z:
     for root, dirs, files in os.walk(THEME):
+        dirs[:] = sorted(d for d in dirs if not is_excluded(d, True))
         for f in sorted(files):
+            if is_excluded(f):
+                continue
             p = os.path.join(root, f)
             arc = os.path.relpath(p, ROOT).replace(os.sep, '/')
             if f.endswith('.js'):
@@ -126,6 +148,9 @@ for slug in ('gnn-child', 'gnn-content'):
     destination = Path(BUILD, f'{slug}-{version}.zip')
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for source in sorted(package.rglob('*')):
+            relative = source.relative_to(package)
+            if any(is_excluded(part, True) for part in relative.parts[:-1]) or is_excluded(source.name):
+                continue
             if source.is_file():
                 archive.write(source, slug + '/' + source.relative_to(package).as_posix())
     release_files.append(destination)

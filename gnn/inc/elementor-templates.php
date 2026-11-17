@@ -5,7 +5,7 @@
  * section/column/widget JSON so Elementor-only users get them too.
  *
  * Nothing here touches the Gutenberg patterns; both libraries coexist.
- * Templates are created once (idempotent, tracked by an option) as
+ * Templates are created on request (idempotent, tracked by an option) as
  * `elementor_library` posts, which Elementor's own "Templates → Saved
  * Templates → Insert Template" panel lists automatically — no Pro required.
  *
@@ -1322,10 +1322,8 @@ function gnn_elementor_template_fingerprint( $post_id ) {
 }
 
 /**
- * Install (or heal) the Elementor template library. Hooked to admin_init
- * (runs on every wp-admin request) rather than elementor/loaded: in some
- * environments (e.g. automated/headless installs) elementor/loaded fires
- * without a full admin request ever completing, so it can be missed.
+ * Install (or heal) an existing Elementor template library for a user who can
+ * edit theme options. Not hooked: the library is populated only on request.
  *
  * Re-runs when either:
  * - The stored library version doesn't match its independent version, or
@@ -1362,5 +1360,3 @@ function gnn_maybe_install_elementor_templates() {
 		gnn_install_elementor_templates();
 	}
 }
-// Kept callable for existing libraries; new starters install only their selected page documents.
-// No automatic template-library population on admin requests.

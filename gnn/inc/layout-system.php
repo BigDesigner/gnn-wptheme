@@ -62,6 +62,28 @@ function gnn_layout_preview_args( $args, $type ) {
 }
 add_filter( 'register_post_type_args', 'gnn_layout_preview_args', 10, 2 );
 
+/**
+ * Reusable blocks are rendered through their assigned regions; the REST collection is for editors only.
+ *
+ * @param mixed           $response Earlier short-circuit result.
+ * @param array           $handler Matched route handler.
+ * @param WP_REST_Request $request Current request.
+ * @return mixed
+ */
+function gnn_layout_rest_access( $response, $handler, $request ) {
+	$type  = get_post_type_object( 'gnn_layout' );
+	$base  = '/' . ( $type && ! empty( $type->rest_namespace ) ? $type->rest_namespace : 'wp/v2' ) . '/' . ( $type && ! empty( $type->rest_base ) ? $type->rest_base : 'gnn_layout' );
+	$route = untrailingslashit( (string) $request->get_route() );
+	if ( $base !== $route && 0 !== strpos( $route, $base . '/' ) ) {
+		return $response;
+	}
+	if ( ! is_wp_error( $response ) && ! current_user_can( 'edit_posts' ) ) {
+		return new WP_Error( 'rest_forbidden', __( 'Sorry, you are not allowed to do that.', 'gnn' ), array( 'status' => rest_authorization_required_code() ) );
+	}
+	return $response;
+}
+add_filter( 'rest_request_before_callbacks', 'gnn_layout_rest_access', 10, 3 );
+
 /** Only an editor of the shared record may open its standalone preview. */
 function gnn_layout_preview_access() {
 	if ( is_singular( 'gnn_layout' ) && ! current_user_can( 'edit_post', get_queried_object_id() ) ) {

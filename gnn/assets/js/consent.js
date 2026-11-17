@@ -4,7 +4,8 @@
  var config=window.gnnTracking||{},loaded=false,granted=false;
  window.dataLayer=window.dataLayer||[];
  function command(){window.dataLayer.push(arguments);}
- command('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
+ // The inline head bootstrap normally sets the default; never repeat it after an update.
+ if(!window.gnnConsentDefault){window.gnnConsentDefault=true;command('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});}
  function setConsent(allow){
   granted=allow===true;
   command('consent','update',{analytics_storage:granted?'granted':'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
@@ -24,4 +25,7 @@
  document.addEventListener('wp_listen_for_consent_change',readProvider);
  document.addEventListener('wp_consent_api_status_change',readProvider);
  document.addEventListener('DOMContentLoaded',readProvider);readProvider();
+ // Apply decisions made by head code before this deferred file ran; the last one wins.
+ var early=window.gnnConsentQueue;window.gnnConsentQueue=null;
+ if(early&&early.length)setConsent(early[early.length-1]);
 })();

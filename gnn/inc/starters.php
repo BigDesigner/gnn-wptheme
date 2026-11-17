@@ -225,4 +225,4 @@ function gnn_register_portable_patterns() {
 		);
 	}
 }
-add_action( 'init', 'gnn_register_portable_patterns', 20 );
+gnn_add_block_patterns( 'gnn_register_portable_patterns', 20 );

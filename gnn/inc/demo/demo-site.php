@@ -539,12 +539,3 @@ function gnn_demo_page_content( $key, $pages, $data, $group ) {
 	}
 	return gnn_architecture_group( 'gnn-architecture', $content . $cta );
 }
-
-/** Load the shared demo footer's presentation on archives and project details too. */
-function gnn_demo_site_styles() {
-	if ( get_option( 'gnn_demo_architecture_complete' ) ) {
-		wp_enqueue_style( 'gnn-architecture', get_template_directory_uri() . '/assets/css/architecture.css', array( 'gnn-design-system' ), GNN_VERSION );
-		wp_enqueue_style( 'gnn-starter-editors', get_template_directory_uri() . '/assets/css/starter-editors.css', array( 'gnn-design-system' ), GNN_VERSION );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'gnn_demo_site_styles', 17 );

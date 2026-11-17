@@ -1,5 +1,5 @@
 {
-	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
+	"$schema": "https://schemas.wp.org/wp/6.0/theme.json",
 	"version": 2,
 	"settings": {
 		"appearanceTools": false,
@@ -14,7 +14,7 @@
 				{ "slug": "accent", "name": "Accent", "color": "#34d399" },
 				{ "slug": "ink", "name": "Ink (dark bg)", "color": "#0a0a0b" },
 				{ "slug": "surface", "name": "Surface", "color": "#141416" },
-				{ "slug": "paper", "name": "Paper (light bg)", "color": "#fafaf9" },
+				{ "slug": "paper", "name": "Paper (light bg)", "color": "#fafafa" },
 				{ "slug": "foreground", "name": "Foreground", "color": "#f5f5f4" },
 				{ "slug": "muted", "name": "Muted", "color": "#9d9da4" },
 				{ "slug": "white", "name": "White", "color": "#ffffff" },

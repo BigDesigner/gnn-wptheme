@@ -144,6 +144,63 @@ function gnn_architecture_image( $name, $alt, $url = '', $lightbox = false ) {
 }
 
 /**
+ * Intrinsic size of a bundled illustration or a media library image URL.
+ *
+ * @param string $src Image URL.
+ * @return int[] Width and height, or an empty array when unknown.
+ */
+function gnn_architecture_image_size( $src ) {
+	static $sizes = array();
+	$src = (string) strtok( $src, '?#' );
+	if ( isset( $sizes[ $src ] ) ) {
+		return $sizes[ $src ];
+	}
+	$size   = array();
+	$bundle = get_template_directory_uri() . '/assets/images/architecture/';
+	if ( 0 === strpos( $src, $bundle ) ) {
+		$file = get_template_directory() . '/assets/images/architecture/' . basename( $src );
+		$head = is_readable( $file ) ? (string) file_get_contents( $file, false, null, 0, 512 ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- local bundled asset.
+		if ( preg_match( '/<svg[^>]*\swidth="(\d+)"[^>]*\sheight="(\d+)"/', $head, $match ) || preg_match( '/viewBox="0 0 (\d+) (\d+)"/', $head, $match ) ) {
+			$size = array( (int) $match[1], (int) $match[2] );
+		}
+	} elseif ( preg_match( '/-(\d+)x(\d+)\.(?:jpe?g|png|gif|webp|avif)$/i', $src, $match ) ) {
+		$size = array( (int) $match[1], (int) $match[2] );
+	} elseif ( 0 === strpos( $src, (string) wp_get_upload_dir()['baseurl'] ) ) {
+		$cached = wp_cache_get( 'gnn_img_' . md5( $src ), 'gnn' );
+		if ( is_array( $cached ) ) {
+			$size = $cached;
+		} else {
+			$id   = attachment_url_to_postid( $src );
+			$meta = $id ? wp_get_attachment_metadata( $id ) : array();
+			$size = ! empty( $meta['width'] ) && ! empty( $meta['height'] ) ? array( (int) $meta['width'], (int) $meta['height'] ) : array();
+			wp_cache_set( 'gnn_img_' . md5( $src ), $size, 'gnn', DAY_IN_SECONDS );
+		}
+	}
+	$sizes[ $src ] = $size;
+	return $size;
+}
+
+/**
+ * Add width/height to Architecture images at render time; saved block markup stays unchanged.
+ *
+ * @param string $content Rendered block.
+ * @param array  $block Parsed block.
+ * @return string
+ */
+function gnn_architecture_image_dimensions( $content, $block ) {
+	if ( false === strpos( (string) ( $block['attrs']['className'] ?? '' ), 'gnn-arch-image' ) || ! preg_match( '/<img\b[^>]*>/i', $content, $tag ) || preg_match( '/\swidth=/i', $tag[0] ) || ! preg_match( '/\ssrc="([^"]+)"/i', $tag[0], $src ) ) {
+		return $content;
+	}
+	$size = gnn_architecture_image_size( html_entity_decode( $src[1], ENT_QUOTES, 'UTF-8' ) );
+	if ( ! $size ) {
+		return $content;
+	}
+	$img = preg_replace( '/^<img\b/i', '<img width="' . (int) $size[0] . '" height="' . (int) $size[1] . '"', $tag[0] );
+	return str_replace( $tag[0], $img, $content );
+}
+add_filter( 'render_block_core/image', 'gnn_architecture_image_dimensions', 10, 2 );
+
+/**
  * Stable ID links continue working after drafts are renamed or published.
  *
  * @param array  $ids Installed page IDs.
@@ -448,6 +505,45 @@ function gnn_enqueue_architecture() {
 }
 add_action( 'wp_enqueue_scripts', 'gnn_enqueue_architecture', 15 );
 
+/**
+ * Whether an assigned, renderable layout region uses Architecture or starter markup.
+ *
+ * @return bool
+ */
+function gnn_demo_region_uses_architecture() {
+	foreach ( array_keys( gnn_site_regions() ) as $region ) {
+		$assigned = (int) gnn_layout_value( $region . '_template' );
+		$id       = $assigned > 0 ? absint( apply_filters( 'gnn_layout_region_id', $assigned, $region ) ) : 0;
+		if ( ! $id ) {
+			continue;
+		}
+		$post = get_post( gnn_translated_post_id( $id ) );
+		if ( ! $post || 'gnn_layout' !== $post->post_type || 'publish' !== $post->post_status || '' !== $post->post_password || ! gnn_block_matches_region( $id, $region ) ) {
+			continue;
+		}
+		$markup = $post->post_content . ( 'builder' === get_post_meta( $post->ID, '_elementor_edit_mode', true ) ? (string) get_post_meta( $post->ID, '_elementor_data', true ) : '' );
+		if ( false !== strpos( $markup, 'gnn-arch' ) || false !== strpos( $markup, 'gnn-starter' ) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/** Load the shared demo presentation on project views and where a demo region renders. */
+function gnn_demo_site_styles() {
+	if ( ! get_option( 'gnn_demo_architecture_complete' ) ) {
+		return;
+	}
+	// Pages with this markup in their own content are handled by the Architecture and starter loaders.
+	$project = is_singular( 'gnn_project' ) || is_post_type_archive( 'gnn_project' ) || is_tax( 'gnn_project_category' );
+	if ( ! $project && ! gnn_demo_region_uses_architecture() ) {
+		return;
+	}
+	wp_enqueue_style( 'gnn-architecture', get_template_directory_uri() . '/assets/css/architecture.css', array( 'gnn-design-system' ), GNN_VERSION );
+	wp_enqueue_style( 'gnn-starter-editors', get_template_directory_uri() . '/assets/css/starter-editors.css', array( 'gnn-design-system' ), GNN_VERSION );
+}
+// Hooked from functions.php after content-modules.php so the stylesheet order is unchanged.
+
 /** Keep Architecture blocks styled inside the native editor too. */
 function gnn_architecture_editor_styles() {
 	add_editor_style( 'assets/css/architecture.css' );
@@ -474,7 +570,7 @@ function gnn_architecture_patterns() {
 		);
 	}
 }
-add_action( 'init', 'gnn_architecture_patterns', 20 );
+gnn_add_block_patterns( 'gnn_architecture_patterns', 20 );
 
 /**
  * Preview-only draft links stay navigable without storing preview flags in content.
@@ -510,21 +606,3 @@ function gnn_architecture_preview_links( $content ) {
 	);
 }
 add_filter( 'the_content', 'gnn_architecture_preview_links', 12 );
-
-// phpcs:disable WordPress.DB.SlowDBQuery -- one bounded lookup for the administrator's starter preview card.
-/** Completed starter home, without exposing trashed or unfinished installations. */
-function gnn_architecture_starter_home() {
-	$pages = get_posts(
-		array(
-			'post_type'      => 'page',
-			'post_status'    => array( 'draft', 'publish', 'private', 'pending', 'future' ),
-			'posts_per_page' => 1,
-			'meta_key'       => '_gnn_starter',
-			'meta_value'     => 'architecture:home',
-		)
-	);
-	if ( ! $pages || ! is_array( get_post_meta( $pages[0]->ID, '_gnn_architecture_pages', true ) ) ) {
-		return 0; }
-	return $pages[0]->ID;
-}
-// phpcs:enable WordPress.DB.SlowDBQuery

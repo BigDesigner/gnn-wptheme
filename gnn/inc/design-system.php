@@ -73,23 +73,86 @@ function gnn_readable_brand_color( $color, $background ) {
 }
 
 /**
- * Preserve explicit ink choices; derive readable defaults for any brand palette.
+ * WCAG contrast ratio between two valid hexadecimal colors.
+ *
+ * @param string $first  Valid hexadecimal color.
+ * @param string $second Valid hexadecimal color.
+ * @return float
+ */
+function gnn_color_contrast( $first, $second ) {
+	$a = gnn_color_luminance( $first );
+	$b = gnn_color_luminance( $second );
+	return ( max( $a, $b ) + 0.05 ) / ( min( $a, $b ) + 0.05 );
+}
+
+/**
+ * Text color for content placed on an accent fill: near-black or white,
+ * whichever reaches the higher WCAG contrast against that accent.
+ *
+ * @param string $accent Valid hexadecimal color.
+ * @return string
+ */
+function gnn_accent_ink_for( $accent ) {
+	return gnn_color_contrast( $accent, '#0a0a0a' ) >= gnn_color_contrast( $accent, '#ffffff' ) ? '#0a0a0a' : '#ffffff';
+}
+
+/**
+ * Accent value for one palette: the Customizer accent (gnn_accent_color) is
+ * the dark value and the default for light; accent_light overrides light.
+ *
+ * @param string $mode Dark or light palette.
+ * @return string
+ */
+function gnn_brand_accent( $mode ) {
+	$accent = sanitize_hex_color( (string) get_theme_mod( 'gnn_accent_color', '#34d399' ) );
+	$light  = sanitize_hex_color( (string) gnn_option( 'accent_light' ) );
+	$accent = 'light' === $mode && $light ? $light : $accent;
+	return $accent ? $accent : '#34d399';
+}
+
+/**
+ * The only place --accent, --accent-ink and --accent-text are emitted.
+ *
+ * Explicit ink choices (accent_ink_dark / accent_ink_light) win; otherwise
+ * the ink follows the accent so text on accent fills stays readable.
  *
  * @param string $mode Dark or light palette.
  * @return string
  */
 function gnn_brand_design_tokens( $mode ) {
-	$accent     = sanitize_hex_color( get_theme_mod( 'gnn_accent_color', '#34d399' ) );
-	$light      = sanitize_hex_color( (string) gnn_option( 'accent_light' ) );
-	$accent     = 'light' === $mode && $light ? $light : $accent;
-	$accent     = $accent ? $accent : '#34d399';
+	$accent     = gnn_brand_accent( $mode );
 	$background = sanitize_hex_color( (string) gnn_option( 'color_bg_' . $mode ) );
 	$background = $background ? $background : ( 'light' === $mode ? '#fafafa' : '#0a0a0b' );
 	$ink        = sanitize_hex_color( (string) gnn_option( 'accent_ink_' . $mode ) );
 	if ( ! $ink ) {
-		$ink = gnn_color_luminance( $accent ) > 0.179 ? '#000000' : '#ffffff';
+		$ink = gnn_accent_ink_for( $accent );
 	}
 	return '--accent:' . $accent . ';--accent-ink:' . $ink . ';--accent-text:' . gnn_readable_brand_color( $accent, $background ) . ';';
+}
+
+/**
+ * Server-side estimate of the space above page content (admin bar, top bar,
+ * header) so full-height sections render at their final size before
+ * layout-geometry.js measures the real value.
+ *
+ * @return string CSS.
+ */
+function gnn_header_occupied_css() {
+	$height = max( 48, (int) gnn_option( 'header_height' ) ) + 1; // Header bottom border.
+	if ( gnn_option( 'topbar_enable' ) ) {
+		$read = function_exists( 'gnn_translated_option' ) ? 'gnn_translated_option' : 'gnn_option';
+		foreach ( array( 'topbar_text', 'topbar_email', 'topbar_phone' ) as $key ) {
+			if ( '' !== trim( (string) call_user_func( $read, $key ) ) ) {
+				$height += 41; // 13px text, body line height, 9px vertical padding.
+				break;
+			}
+		}
+	}
+	$css = ':root{--gnn-header-occupied:' . $height . 'px;}';
+	if ( is_admin_bar_showing() ) {
+		$css = ':root{--gnn-header-occupied:' . ( $height + 32 ) . 'px;}@media screen and (max-width:782px){:root{--gnn-header-occupied:' . ( $height + 46 ) . 'px;}}';
+	}
+	return $css;
 }
 
 /**
@@ -141,7 +204,7 @@ function gnn_design_css( $scope = ':root' ) {
 /** Native and custom headers share the configured geometry. */
 function gnn_enqueue_design_system() {
 	wp_enqueue_style( 'gnn-design-system', get_template_directory_uri() . '/assets/css/design-system.css', array( 'gnn-main' ), GNN_VERSION );
-	wp_add_inline_style( 'gnn-design-system', gnn_design_css() . ':root{' . gnn_brand_design_tokens( 'dark' ) . '}[data-theme="light"]{' . gnn_brand_design_tokens( 'light' ) . '}' );
+	wp_add_inline_style( 'gnn-design-system', gnn_design_css() . gnn_header_occupied_css() . ':root{' . gnn_brand_design_tokens( 'dark' ) . '}[data-theme="light"]{' . gnn_brand_design_tokens( 'light' ) . '}' );
 	wp_enqueue_script( 'gnn-layout-geometry', get_template_directory_uri() . '/assets/js/layout-geometry.js', array(), GNN_VERSION, true );
 	$styles = wp_styles();
 	if ( isset( $styles->registered['gnn-style'] ) ) {

@@ -87,16 +87,16 @@
 				<?php endif; ?>
 
 				<?php if ( gnn_option( 'show_toggle' ) ) : ?>
-					<button class="theme-toggle" aria-label="<?php esc_attr_e( 'Toggle dark / light mode', 'gnn' ); ?>">
+					<button type="button" class="theme-toggle" aria-pressed="<?php echo 'light' === get_theme_mod( 'gnn_default_theme', 'dark' ) ? 'false' : 'true'; ?>" aria-label="<?php esc_attr_e( 'Toggle dark / light mode', 'gnn' ); ?>">
 						<span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">&#9728;</span>
 						<span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">&#9790;</span>
 					</button>
 				<?php endif; ?>
 
-				<?php if ( class_exists( 'WooCommerce' ) && gnn_option( 'show_cart' ) ) : ?>
+				<?php if ( class_exists( 'WooCommerce' ) && function_exists( 'wc_get_cart_url' ) && gnn_option( 'show_cart' ) ) : ?>
 					<a class="cart-link" href="<?php echo esc_url( wc_get_cart_url() ); ?>">
 						<?php esc_html_e( 'Cart', 'gnn' ); ?>
-						<span class="cart-count"><?php echo esc_html( WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
+						<span class="cart-count"><?php echo esc_html( function_exists( 'WC' ) && WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
 					</a>
 				<?php endif; ?>
 			</div><!-- .header-actions -->

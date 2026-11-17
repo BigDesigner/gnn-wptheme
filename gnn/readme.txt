@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.10.1
+Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -194,6 +194,19 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.11.0 =
+* Fixed demo package and snapshot settings that were silently not applied; failures are now reported.
+* Fixed per-heading size, line height, spacing and weight settings that did not apply, and stopped overriding Elementor Site Settings typography by default.
+* Fixed the browser Back button reloading pages that contain filterable collections.
+* Added a pause button to autoplaying sliders.
+* Improved light-mode focus contrast and button text contrast for custom accent colors.
+* Custom CSS now requires the unfiltered HTML capability, like other code fields.
+* Hidden shared layouts from anonymous REST requests; maintenance mode now also covers REST content.
+* Reduced frontend work: demo styles, module assets, the hero slider and admin-only code load only where needed.
+* Hero images keep responsive sizes when a 2x image is set; consent script no longer blocks rendering.
+* RTL styles now use logical properties and the RTL stylesheet loads once.
+* The settings lock now expires after five minutes; site reset no longer drops unrelated database tables.
 
 = 2.10.1 =
 * Removed empty footer sections and their spacing when footer content is hidden.

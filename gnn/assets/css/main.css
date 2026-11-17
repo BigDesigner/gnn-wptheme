@@ -100,13 +100,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Per-element Google Font overrides (GNN Panel → Typography). Each falls
    back to the shared --font-heading token, so leaving a role unconfigured
-   changes nothing. */
-h1 { font-family: var(--font-h1, var(--font-heading)); font-weight: var(--font-h1-weight, 700); }
-h2 { font-family: var(--font-h2, var(--font-heading)); font-weight: var(--font-h2-weight, 700); }
-h3 { font-family: var(--font-h3, var(--font-heading)); font-weight: var(--font-h3-weight, 700); }
-h4 { font-family: var(--font-h4, var(--font-heading)); font-weight: var(--font-h4-weight, 700); }
-h5 { font-family: var(--font-h5, var(--font-heading)); font-weight: var(--font-h5-weight, 700); }
-h6 { font-family: var(--font-h6, var(--font-heading)); font-weight: var(--font-h6-weight, 700); }
+   changes nothing. Weight precedence: the Google font weight while the role
+   uses a Google font, else the type scale weight, else 700
+   (see gnn_typography_role_weight()). */
+h1 { font-family: var(--font-h1, var(--font-heading)); font-weight: var(--font-h1-weight, var(--gnn-h1-weight, 700)); }
+h2 { font-family: var(--font-h2, var(--font-heading)); font-weight: var(--font-h2-weight, var(--gnn-h2-weight, 700)); }
+h3 { font-family: var(--font-h3, var(--font-heading)); font-weight: var(--font-h3-weight, var(--gnn-h3-weight, 700)); }
+h4 { font-family: var(--font-h4, var(--font-heading)); font-weight: var(--font-h4-weight, var(--gnn-h4-weight, 700)); }
+h5 { font-family: var(--font-h5, var(--font-heading)); font-weight: var(--font-h5-weight, var(--gnn-h5-weight, 700)); }
+h6 { font-family: var(--font-h6, var(--font-heading)); font-weight: var(--font-h6-weight, var(--gnn-h6-weight, 700)); }
 
 img { max-width: 100%; height: auto; display: block; }
 
@@ -123,15 +125,13 @@ input[type="password"], input[type="tel"], input[type="number"], textarea, selec
 	outline: none;
 	max-width: 100%;
 }
-input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+input:focus, textarea:focus, select:focus { border-color: var(--accent-text); }
 textarea { resize: vertical; }
 
 .gnn-container {
 	max-width: var(--gnn-container, 1280px);
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: clamp(16px, 3vw, 32px);
-	padding-right: clamp(16px, 3vw, 32px);
+	margin-inline: auto;
+	padding-inline: clamp(16px, 3vw, 32px);
 }
 
 .screen-reader-text {
@@ -140,11 +140,11 @@ textarea { resize: vertical; }
 	word-wrap: normal;
 }
 .skip-link {
-	position: absolute; left: -9999px; top: 0; z-index: 999;
+	position: absolute; inset-inline-start: -9999px; top: 0; z-index: 999;
 	background: var(--accent); color: var(--accent-ink);
-	padding: 10px 18px; border-radius: 0 0 10px 0; font-weight: 700;
+	padding: 10px 18px; border-radius: 0; border-end-end-radius: 10px; font-weight: 700;
 }
-.skip-link:focus { left: 0; clip-path: none; width: auto; height: auto; }
+.skip-link:focus { inset-inline-start: 0; clip-path: none; width: auto; height: auto; }
 
 /* Buttons */
 .gnn-btn,
@@ -248,7 +248,7 @@ input[type="submit"].gnn-btn,
 .main-navigation .sub-menu {
 	position: absolute;
 	top: 100%;
-	left: -16px;
+	inset-inline-start: -16px;
 	width: 240px;
 	background: var(--bg2);
 	border: 1px solid var(--line);
@@ -278,12 +278,10 @@ input[type="submit"].gnn-btn,
 /* Mega menu (.sub-menu.mega-menu on a .mega-menu-parent item) */
 .main-navigation .mega-menu-parent { position: static; }
 .main-navigation .sub-menu.mega-menu {
-	left: 0;
-	right: 0;
+	inset-inline: 0;
 	width: auto;
 	border-radius: 0;
-	border-left: 0;
-	border-right: 0;
+	border-inline: 0;
 	border-top: 0;
 	box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
 	/* Full-width panel; inner grid stays aligned with the 1280px container. */
@@ -346,7 +344,7 @@ input[type="submit"].gnn-btn,
 .mega-menu__card-desc { display: block; font-size: 13px; color: var(--fg2); margin-top: 4px; }
 
 /* Header actions */
-.header-actions { margin-left: auto; display: flex; align-items: center; gap: 18px; }
+.header-actions { margin-inline-start: auto; display: flex; align-items: center; gap: 18px; }
 .header-search-link { font-size: 14px; font-weight: 600; color: var(--fg2); }
 .theme-toggle {
 	width: 34px; height: 34px;
@@ -404,7 +402,7 @@ input[type="submit"].gnn-btn,
 /* Mobile drawer */
 .mobile-navigation {
 	position: absolute;
-	top: 100%; left: 0; right: 0;
+	top: 100%; inset-inline: 0;
 	max-height: calc(100vh - 64px);
 	overflow: auto;
 	background: var(--bg2);
@@ -527,7 +525,40 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 }
 .gnn-hero__dot.is-active { width: 28px; background: var(--accent); }
 .gnn-hero__controls[hidden] { display: none; }
-.gnn-hero__controls button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.gnn-hero__controls button:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
+.gnn-hero__toggle {
+	position: absolute;
+	inset-inline-end: 24px;
+	bottom: 18px;
+	width: 36px; height: 36px;
+	padding: 0;
+	border-radius: 50%;
+	border: 1px solid var(--line);
+	background: color-mix(in srgb, var(--bg) 60%, transparent);
+	backdrop-filter: blur(8px);
+	color: var(--fg);
+	cursor: pointer;
+	z-index: 2;
+}
+.gnn-hero__toggle:hover { border-color: var(--accent); }
+.gnn-hero__toggle[hidden] { display: none; }
+.gnn-hero__toggle::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	width: 10px; height: 12px;
+	border-left: 3px solid currentColor;
+	border-right: 3px solid currentColor;
+	box-sizing: border-box;
+}
+.gnn-hero__toggle[aria-pressed="true"]::before {
+	width: 0; height: 0;
+	border-style: solid;
+	border-width: 6px 0 6px 10px;
+	border-color: transparent transparent transparent currentColor;
+	transform: translateX(1px);
+}
 
 /* ---------------------------------------------------------------------------
  * 6. Front-page sections
@@ -679,12 +710,12 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 /* ---------------------------------------------------------------------------
  * 8. Single post
  * ------------------------------------------------------------------------- */
-.single-main { padding-left: clamp(16px, 3vw, 32px); padding-right: clamp(16px, 3vw, 32px); padding-top: 64px; }
+.single-main { padding-inline: clamp(16px, 3vw, 32px); padding-top: 64px; }
 .single-article { max-width: 760px; margin: 0 auto; }
 .single-article .entry-title {
-	font-size: clamp(30px, 5vw, 46px);
-	letter-spacing: 0;
-	line-height: 1.1;
+	font-size: var(--gnn-h1-size, clamp(30px, 5vw, 46px));
+	letter-spacing: var(--gnn-h1-tracking, 0);
+	line-height: var(--gnn-h1-leading, 1.1);
 	margin: 18px 0 0;
 }
 .entry-author-row { display: flex; align-items: center; gap: 14px; margin: 26px 0 36px; }
@@ -709,11 +740,12 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 .entry-content p { margin: 0 0 24px; }
 .entry-content h2 { font-size: 26px; margin: 40px 0 16px; }
 .entry-content h3 { font-size: 21px; margin: 32px 0 14px; }
-.entry-content ul, .entry-content ol { margin: 0 0 24px; padding-left: 22px; line-height: 2; }
+.entry-content ul, .entry-content ol { margin: 0 0 24px; padding-inline-start: 22px; line-height: 2; }
 .entry-content blockquote {
-	border-left: 3px solid var(--accent);
+	border-inline-start: 3px solid var(--accent);
 	margin: 32px 0;
-	padding: 8px 0 8px 24px;
+	padding-block: 8px;
+	padding-inline: 24px 0;
 	font-family: var(--font-heading);
 	font-size: 21px;
 	line-height: 1.5;
@@ -722,8 +754,8 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 .entry-content blockquote p { margin: 0; }
 .entry-content a { color: var(--accent-text); }
 .entry-content img { border-radius: 16px; }
-.entry-content .alignwide { margin-left: -80px; margin-right: -80px; max-width: none; width: auto; }
-.entry-content .alignfull { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); max-width: none; width: auto; }
+.entry-content .alignwide { margin-inline: -80px; max-width: none; width: auto; }
+.entry-content .alignfull { margin-inline: calc(50% - 50vw); max-width: none; width: auto; }
 .page-links { margin: 24px 0; font-weight: 700; }
 
 /* Author box */
@@ -763,7 +795,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 	transition: border-color .25s;
 }
 .post-nav-card:hover { border-color: var(--accent); }
-.post-nav-card--next { text-align: right; }
+.post-nav-card--next { text-align: end; }
 .post-nav-card__label {
 	display: block;
 	font-size: 11px; font-weight: 800; letter-spacing: .12em;
@@ -779,10 +811,10 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 .comment-list, .comment-list .children { list-style: none; margin: 0; padding: 0; }
 .comment-list > li { margin-bottom: 24px; }
 .comment-list .children {
-	border-left: 2px solid var(--line);
-	padding-left: 20px;
+	border-inline-start: 2px solid var(--line);
+	padding-inline-start: 20px;
 	margin-top: 20px;
-	margin-left: 60px;
+	margin-inline-start: 60px;
 }
 .comment-body { display: grid; grid-template-columns: auto 1fr; gap: 0 16px; }
 .comment-meta { display: contents; }
@@ -888,7 +920,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 	object-fit: var(--gnn-page-thumb-fit, cover);
 	object-position: var(--gnn-page-thumb-pos, center);
 }
-.gnn-page-thumb--boxed { max-width: var(--gnn-boxed-width, 1200px); margin-left: auto; margin-right: auto; }
+.gnn-page-thumb--boxed { max-width: var(--gnn-boxed-width, 1200px); margin-inline: auto; }
 
 /* Title overlay: centered on all sides over the featured image, replacing
    the normal in-flow H1 (see gnn_title_overlay_html() in inc/page-meta.php).
@@ -978,7 +1010,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 }
 .widget ul li a:hover { background: var(--bg3); color: var(--fg); }
 .widget ul li { color: var(--fg2); font-size: 12px; }
-.widget .post-date { font-size: 11px; color: var(--fg2); padding-left: 10px; }
+.widget .post-date { font-size: 11px; color: var(--fg2); padding-inline-start: 10px; }
 
 /* Search widget: pill field */
 .widget .search-form, .search-form { display: flex; gap: 0; }
@@ -1068,7 +1100,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 	flex-shrink: 0;
 }
 .search-result-row__title { font-weight: 600; font-size: 15px; }
-.search-result-row__arrow { margin-left: auto; color: var(--fg2); font-size: 13px; }
+.search-result-row__arrow { margin-inline-start: auto; color: var(--fg2); font-size: 13px; }
 
 /* No results / empty state */
 .no-results {
@@ -1082,7 +1114,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 .no-results__title { font-size: 24px; margin: 0; }
 .no-results__text { color: var(--fg2); font-size: 15px; margin: 10px 0 0; }
 .no-results .gnn-btn, .no-results .search-form { margin-top: 28px; }
-.no-results .search-form { max-width: 420px; margin-left: auto; margin-right: auto; }
+.no-results .search-form { max-width: 420px; margin-inline: auto; }
 
 /* ---------------------------------------------------------------------------
  * 14. 404
@@ -1191,7 +1223,7 @@ body.gnn-has-topbar .gnn-hero--full-height { height: calc(100vh - 64px - 40px); 
 	.main-navigation, .header-search-link { display: none; }
 	.menu-toggle { display: flex; }
 	.featured-post-card__body { padding: 28px; }
-	.entry-content .alignwide { margin-left: 0; margin-right: 0; }
+	.entry-content .alignwide { margin-inline: 0; }
 }
 @media (min-width: 900px) {
 	.mobile-navigation { display: none !important; }
@@ -1236,7 +1268,7 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
 /* Core content classes (captions, alignments, author highlight). */
 .alignleft { float: left; margin: 6px 24px 16px 0; }
 .alignright { float: right; margin: 6px 0 16px 24px; }
-.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.aligncenter { display: block; margin-inline: auto; }
 .wp-caption { max-width: 100%; margin-bottom: 24px; }
 .wp-caption img { display: block; max-width: 100%; height: auto; }
 .wp-caption-text,
@@ -1259,7 +1291,7 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
 
 /* Visible keyboard focus everywhere (a11y). */
 :focus-visible {
-	outline: 2px solid var(--accent);
+	outline: 2px solid var(--accent-text);
 	outline-offset: 2px;
 	border-radius: 4px;
 }
@@ -1283,17 +1315,29 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
 .header-search-link:hover { color: var(--fg); }
 .gnn-icon { display: block; }
 
+/* Material Symbols (GNN Panel → Icons) load with font-display: swap; a fixed
+   1em box keeps the ligature name from widening the layout before the font
+   arrives. */
+[class^="material-symbols-"], [class*=" material-symbols-"] {
+	display: inline-block;
+	width: 1em; height: 1em;
+	overflow: hidden;
+	line-height: 1;
+	white-space: nowrap;
+	direction: ltr;
+}
+
 /* Header menu alignment (standard layout) */
-.gnn-menu-center .site-header__inner .main-navigation { margin-left: auto; }
-.gnn-menu-center .site-header__inner .header-actions { margin-left: auto; }
-.gnn-menu-right .site-header__inner .main-navigation { margin-left: auto; }
-.gnn-menu-right .site-header__inner .header-actions { margin-left: 0; }
+.gnn-menu-center .site-header__inner .main-navigation { margin-inline-start: auto; }
+.gnn-menu-center .site-header__inner .header-actions { margin-inline-start: auto; }
+.gnn-menu-right .site-header__inner .main-navigation { margin-inline-start: auto; }
+.gnn-menu-right .site-header__inner .header-actions { margin-inline-start: 0; }
 
 /* Centered header layout */
 .gnn-header-centered .site-header__inner { gap: clamp(12px, 2vw, 28px); }
 .gnn-header-centered .site-branding--center { margin: 0 auto; }
-.gnn-header-centered .main-navigation--left { margin-right: auto; }
-.gnn-header-centered .main-navigation--right { margin-left: auto; }
+.gnn-header-centered .main-navigation--left { margin-inline-end: auto; }
+.gnn-header-centered .main-navigation--right { margin-inline-start: auto; }
 
 /* Top announcement bar */
 /* Top bar. Width matches .site-header__inner (1280px) so it always reads as
@@ -1341,11 +1385,10 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+	margin-inline: auto;
 }
 .gnn-fmenu-center .footer-logo-link { justify-content: center; width: 100%; }
-.gnn-fmenu-center .footer-tagline { text-align: center; margin-left: auto; margin-right: auto; }
+.gnn-fmenu-center .footer-tagline { text-align: center; margin-inline: auto; }
 .gnn-fmenu-center .footer-column .footer-menu { align-items: center; text-align: center; }
 .gnn-fmenu-center .footer-column { text-align: center; }
 
@@ -1355,13 +1398,13 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
-	text-align: right;
-	margin-left: auto;
+	text-align: end;
+	margin-inline-start: auto;
 }
 .gnn-fmenu-right .footer-logo-link { justify-content: flex-end; width: 100%; }
-.gnn-fmenu-right .footer-tagline { text-align: right; margin-left: auto; }
-.gnn-fmenu-right .footer-column .footer-menu { align-items: flex-end; text-align: right; }
-.gnn-fmenu-right .footer-column { text-align: right; }
+.gnn-fmenu-right .footer-tagline { text-align: end; margin-inline-start: auto; }
+.gnn-fmenu-right .footer-column .footer-menu { align-items: flex-end; text-align: end; }
+.gnn-fmenu-right .footer-column { text-align: end; }
 
 /* Scroll-to-top */
 .gnn-scrolltop {
@@ -1379,7 +1422,7 @@ body.gnn-sidebar-left .content-sidebar-layout.has-sidebar .widget-area { order: 
    bubbles) conventionally live. */
 .gnn-dock { display: none; }
 body.gnn-has-dock .gnn-dock {
-	position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+	position: fixed; inset-inline: 0; bottom: 0; z-index: 60;
 	display: none; justify-content: center; align-items: stretch; gap: clamp(8px, 5vw, 32px);
 	background: var(--bg2); border-top: 1px solid var(--line); padding: 6px 28px env(safe-area-inset-bottom);
 }
@@ -1415,7 +1458,7 @@ body.gnn-has-dock .gnn-dock {
 }
 
 /* Preloader (top bar) + loading overlay */
-.gnn-preloader { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 100; background: transparent; }
+.gnn-preloader { position: fixed; top: 0; inset-inline: 0; height: 3px; z-index: 100; background: transparent; }
 .gnn-preloader__bar { display: block; height: 100%; width: 0; background: var(--accent); animation: gnn-pre 2s ease-in-out infinite; }
 .gnn-preloader.is-done { opacity: 0; transition: opacity .4s; }
 @keyframes gnn-pre { 0% { width: 0; } 50% { width: 70%; } 100% { width: 100%; } }
@@ -1464,7 +1507,7 @@ body.gnn-has-dock .gnn-dock {
  * 21. Unified badges (menu item badges + WooCommerce sale/stock badges)
  * ------------------------------------------------------------------------- */
 .gnn-badge {
-	display: inline-flex; align-items: center; margin-left: 6px;
+	display: inline-flex; align-items: center; margin-inline-start: 6px;
 	padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 800;
 	letter-spacing: .04em; text-transform: uppercase; line-height: 1.6;
 	background: var(--accent); color: var(--accent-ink); vertical-align: middle;

@@ -26,6 +26,18 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Set up Node
+        uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+          extensions: mbstring, xml
+          coverage: none
+
       - name: Resolve version
         id: version
         env:
@@ -38,6 +50,11 @@ jobs:
         # Reuses the same packager used for local builds (.build/gnn.zip),
         # so CI releases and dev builds can never drift apart.
         run: python .scripts/build-zip.py
+
+      - name: Verify package contents
+        # Rebuilds with the same packager, then checks ZIP integrity, exact file
+        # lists and versions of every asset before anything is published.
+        run: python .scripts/verify.py --package
 
       - name: Name the release asset
         id: asset

@@ -8,9 +8,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; }
 
-/** Stable identifier for same-site recovery; never expose the site's URL. */
+/** Keyed same-site identifier; older unkeyed exports are treated as foreign. */
 function gnn_site_fingerprint() {
-	return hash( 'sha256', untrailingslashit( home_url() ) ); }
+	return hash_hmac( 'sha256', untrailingslashit( home_url() ), wp_salt( 'auth' ) ); }
 
 /** IDs and identity-bearing values never belong in a reusable design profile. */
 function gnn_site_specific_keys() {

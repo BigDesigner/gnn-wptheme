@@ -112,8 +112,8 @@ function gnn_panel_settings() {
 add_action( 'admin_init', 'gnn_panel_settings' );
 
 /**
- * Sanitize everything; route shared brand values into theme_mods so the
- * Customizer live preview stays in sync (single source of truth).
+ * Sanitize everything by gnn_options_schema(); route shared brand values into
+ * theme_mods so the Customizer live preview stays in sync (single source of truth).
  *
  * @param array $input Raw POST values.
  * @return array Stored option array.
@@ -124,207 +124,69 @@ function gnn_options_sanitize( $input ) {
 	if ( ! array_key_exists( 'post_meta', $saved ) && array_key_exists( 'blog_meta', $saved ) ) {
 		$out['post_meta'] = (int) (bool) $saved['blog_meta'];
 	}
-	if ( ! is_array( $input ) ) {
+	// Internal writers read the recorded rejection instead of assuming the write applied.
+	$reject = static function ( $error ) use ( $saved ) {
+		if ( function_exists( 'add_settings_error' ) ) {
+			add_settings_error( 'gnn_options', $error->get_error_code(), $error->get_error_message() );
+		}
+		gnn_configuration_rejection( $error );
 		return $saved;
+	};
+	if ( ! is_array( $input ) ) {
+		return $reject( new WP_Error( 'gnn_value_type', __( 'Settings were not saved: a field has an invalid value type.', 'gnn' ) ) );
 	}
 	foreach ( $input as $value ) {
 		if ( ! is_scalar( $value ) ) {
-			add_settings_error( 'gnn_options', 'gnn_value_type', __( 'Settings were not saved: a field has an invalid value type.', 'gnn' ) );
-			return $saved;
+			return $reject( new WP_Error( 'gnn_value_type', __( 'Settings were not saved: a field has an invalid value type.', 'gnn' ) ) );
 		}
 	}
 
 	$validation = gnn_validate_platform_input( $input );
 	if ( is_wp_error( $validation ) ) {
-		add_settings_error( 'gnn_options', $validation->get_error_code(), $validation->get_error_message() );
-		return $saved;
+		return $reject( $validation );
 	}
-	if ( isset( $input['accent'] ) && ! sanitize_hex_color( $input['accent'] ) ) {
-		add_settings_error( 'gnn_options', 'gnn_field_accent', __( 'Enter a valid hex color.', 'gnn' ) );
-		return $saved;
+	$schema = gnn_options_schema();
+	foreach ( $schema as $key => $field ) {
+		if ( isset( $field['require_hex'], $input[ $key ] ) && ! sanitize_hex_color( $input[ $key ] ) ) {
+			return $reject( new WP_Error( 'gnn_field_' . $key, $field['require_hex'] ) );
+		}
 	}
 	$started = gnn_configuration_begin( 'save', gnn_configuration_form_revision() );
 	if ( is_wp_error( $started ) ) {
-		add_settings_error( 'gnn_options', $started->get_error_code(), $started->get_error_message() );
-		return $saved;
+		return $reject( $started );
 	}
 
-	// --- Shared theme_mods (not stored in the option). ---
-	if ( isset( $input['accent'] ) ) {
-		$accent = preg_replace( '/^#(.)(.)(.)$/D', '#$1$1$2$2$3$3', $input['accent'] );
-		set_theme_mod( 'gnn_accent_color', $accent );
-	}
-	if ( isset( $input['default_mode'] ) ) {
-		set_theme_mod( 'gnn_default_theme', 'light' === $input['default_mode'] ? 'light' : 'dark' );
-	}
-	if ( isset( $input['footer_legal'] ) ) {
-		set_theme_mod( 'gnn_footer_legal', sanitize_text_field( $input['footer_legal'] ) );
-	}
-	if ( ! empty( $input['site_icon'] ) ) {
-		update_option( 'site_icon', absint( $input['site_icon'] ) );
-	} elseif ( isset( $input['site_icon'] ) ) {
-		delete_option( 'site_icon' );
-	}
-
-	// --- Media ids. ---
-	foreach ( array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x', 'footer_logo_light', 'footer_logo_light_2x', 'footer_logo_dark', 'footer_logo_dark_2x', 'error404_image' ) as $key ) {
-		if ( isset( $input[ $key ] ) ) {
-			$out[ $key ] = gnn_is_legacy_logo_url( $key, $input[ $key ] ) ? $input[ $key ] : absint( $input[ $key ] );
-		}
-	}
-
-	// --- Post ids (page pickers). ---
-	if ( isset( $input['contact_page_id'] ) ) {
-		$out['contact_page_id'] = absint( $input['contact_page_id'] );
-	}
-
-	// --- Plain text. ---
-	foreach ( array( 'footer_copyright', 'ga4_id', 'gtm_id', 'topbar_text', 'topbar_phone', 'error404_title', 'error404_button' ) as $key ) {
-		if ( isset( $input[ $key ] ) ) {
-			$out[ $key ] = sanitize_text_field( $input[ $key ] );
-		}
-	}
-	if ( isset( $input['footer_tagline'] ) ) {
-		$out['footer_tagline'] = wp_kses_post( $input['footer_tagline'] );
-	}
-	if ( isset( $input['topbar_email'] ) ) {
-		$out['topbar_email'] = sanitize_email( $input['topbar_email'] );
-	}
-
-	// --- Optional colors. ---
-	foreach ( array(
-		'topbar_bg',
-		'topbar_text_color',
-		'title_overlay_bg',
-		'accent_light',
-		'accent_ink_dark',
-		'accent_ink_light',
-		'color_bg_dark',
-		'color_bg_light',
-		'color_bg2_dark',
-		'color_bg2_light',
-		'color_bg3_dark',
-		'color_bg3_light',
-		'color_fg_dark',
-		'color_fg_light',
-		'color_fg2_dark',
-		'color_fg2_light',
-		'color_line_dark',
-		'color_line_light',
-	) as $key ) {
-		if ( ! isset( $input[ $key ] ) ) {
-			continue;
-		}
-		$val         = trim( (string) $input[ $key ] );
-		$out[ $key ] = ( '' === $val ) ? '' : (string) sanitize_hex_color( $val );
-	}
-
-	// --- Textareas. ---
-	foreach ( array( 'maintenance_message', 'error404_text' ) as $key ) {
-		if ( isset( $input[ $key ] ) ) {
-			$out[ $key ] = sanitize_textarea_field( $input[ $key ] );
-		}
-	}
-
-	// --- Choices. ---
-	$choices = array(
-		'sidebar_position'             => array( 'right', 'left', 'none' ),
-		'header_layout'                => array( 'standard', 'centered' ),
-		'header_menu_align'            => array( 'left', 'center', 'right' ),
-		'footer_menu_align'            => array( 'left', 'center', 'right' ),
-		'footer_brand_type'            => array( 'text', 'image', 'both', 'none' ),
-		'material_icons_style'         => array( 'outlined', 'rounded', 'sharp', 'filled' ),
-		'page_featured_image_fit'      => array( 'cover', 'contain', 'fill' ),
-		'page_featured_image_position' => array( 'top', 'center', 'bottom' ),
-		'post_featured_image_fit'      => array( 'cover', 'contain', 'fill' ),
-		'post_featured_image_position' => array( 'top', 'center', 'bottom' ),
-	);
-	foreach ( $choices as $key => $allowed ) {
-		if ( isset( $input[ $key ] ) && in_array( $input[ $key ], $allowed, true ) ) {
-			$out[ $key ] = $input[ $key ];
-		}
-	}
-
-	// --- Numbers (clamped). ---
-	foreach ( array(
-		'content_top_padding'        => array( 0, 200 ),
-		'content_bottom_padding'     => array( 0, 300 ),
-		'page_featured_image_height' => array( 80, 600 ),
-		'post_featured_image_height' => array( 80, 800 ),
-		'excerpt_length'             => array( 5, 100 ),
-		'shop_columns'               => array( 2, 6 ),
-		'shop_per_page'              => array( 2, 48 ),
-		'logo_max_height'            => array( 12, 200 ),
-		'logo_max_height_mobile'     => array( 12, 200 ),
-		'footer_logo_height'         => array( 12, 300 ),
-		'slider_interval'            => array( 2, 30 ),
-		'title_overlay_font_size'    => array( 16, 120 ),
-		'title_overlay_bg_opacity'   => array( 0, 100 ),
-		'sidebar_width'              => array( 200, 500 ),
-		'boxed_width'                => array( 600, 1600 ),
-		'full_width'                 => array( 900, 1920 ),
-	) as $key => $range ) {
-		if ( isset( $input[ $key ] ) ) {
-			$out[ $key ] = min( $range[1], max( $range[0], absint( $input[ $key ] ) ) );
-		}
-	}
-
+	// A design form leaves operational controls at their stored values.
+	$scoped = $input;
 	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Settings API checks the form nonce.
 	if ( isset( $_POST['gnn_form_scope'] ) && 'design' === $_POST['gnn_form_scope'] ) {
 		foreach ( gnn_operation_keys() as $key ) {
-			$input[ $key ] = $saved[ $key ] ?? gnn_option_defaults()[ $key ];
+			$scoped[ $key ] = $saved[ $key ] ?? gnn_option_defaults()[ $key ];
 		}
 	}
-	// --- Checkboxes. ---
-	foreach ( array( 'show_toggle', 'remember_mode', 'sticky_header', 'show_search', 'show_cart', 'disable_emoji', 'disable_oembed', 'disable_migrate', 'heartbeat_slow', 'woo_scope', 'font_preload', 'mobile_dock', 'topbar_enable', 'smooth_scroll', 'scroll_top', 'scroll_anim', 'preloader', 'loading_screen', 'maintenance_mode', 'error404_search', 'slider_autoplay', 'slider_full_height', 'google_material_icons', 'typography_google_enable', 'title_overlay_enable' ) as $key ) {
-		$out[ $key ] = empty( $input[ $key ] ) ? 0 : 1;
-	}
-
-	// --- Typography. ---
-	foreach ( array_keys( gnn_typography_roles() ) as $gnn_typo_role ) {
-		$fam_key = "typo_{$gnn_typo_role}_family";
-		if ( isset( $input[ $fam_key ] ) ) {
-			$out[ $fam_key ] = substr( trim( (string) preg_replace( '/[^A-Za-z0-9 ]/', '', $input[ $fam_key ] ) ), 0, 60 );
+	foreach ( $schema as $key => $field ) {
+		// Strict entries are applied last, by gnn_sanitize_platform_options().
+		if ( ! empty( $field['strict'] ) ) {
+			continue;
 		}
-		$wt_key = "typo_{$gnn_typo_role}_weight";
-		if ( isset( $input[ $wt_key ] ) && in_array( $input[ $wt_key ], gnn_typography_weights(), true ) ) {
-			$out[ $wt_key ] = $input[ $wt_key ];
+		// Checkboxes are always written (absent means off) and, like code
+		// fields, read the scope-adjusted form. Legacy order: other types
+		// read the posted value, so a design form still saves maintenance_message.
+		if ( 'checkbox' === $field['type'] ) {
+			$out[ $key ] = gnn_option_sanitize_field( $key, $field, $scoped[ $key ] ?? null, $saved )[1];
+			continue;
 		}
-	}
-
-	// --- Button styles. ---
-	foreach ( gnn_button_style_slots() as $gnn_btn_slot ) {
-		$label_key = "btn_style_{$gnn_btn_slot}_label";
-		if ( isset( $input[ $label_key ] ) ) {
-			$out[ $label_key ] = wp_html_excerpt( sanitize_text_field( (string) $input[ $label_key ] ), 40, '' );
+		$source = 'code' === $field['type'] ? $scoped : $input;
+		if ( ! isset( $source[ $key ] ) ) {
+			continue;
 		}
-		foreach ( array( 'bg', 'text', 'border' ) as $gnn_btn_part ) {
-			$color_key = "btn_style_{$gnn_btn_slot}_{$gnn_btn_part}";
-			if ( ! isset( $input[ $color_key ] ) ) {
-				continue;
-			}
-			$val               = trim( (string) $input[ $color_key ] );
-			$out[ $color_key ] = ( '' === $val ) ? '' : (string) sanitize_hex_color( $val );
+		list( $store, $value ) = gnn_option_sanitize_field( $key, $field, $source[ $key ], $saved );
+		if ( $store ) {
+			$out[ $key ] = $value;
 		}
 	}
 
-	// --- Custom CSS. ---
-	if ( isset( $input['custom_css'] ) ) {
-		$out['custom_css'] = wp_strip_all_tags( (string) $input['custom_css'] );
-	}
-
-	// --- Script fields. ---
-	foreach ( array( 'custom_js_head', 'custom_js_footer', 'head_html', 'body_html' ) as $key ) {
-		if ( isset( $input[ $key ] ) ) {
-			if ( current_user_can( 'unfiltered_html' ) ) {
-				$out[ $key ] = (string) $input[ $key ];
-			} else {
-				add_settings_error( 'gnn_options', 'gnn_js_cap', __( 'Custom script fields were not saved: your account lacks the unfiltered_html capability.', 'gnn' ) );
-			}
-		}
-	}
-
-	$out = gnn_sanitize_platform_options( $out, $input );
+	$out = gnn_sanitize_platform_options( $out, $scoped );
 	if ( isset( $input['header_layout'] ) && in_array( $input['header_layout'], array( 'standard', 'centered' ), true ) && ( $saved['header_layout'] ?? 'standard' ) !== $input['header_layout'] ) {
 		$out['header_preset'] = 'centered' === $input['header_layout'] ? 'centered' : 'legacy';
 	}
@@ -573,7 +435,8 @@ function gnn_field_checkbox( $key, $label, $hint = '' ) {
  * @param string     $hint  Optional description.
  */
 function gnn_field_media( $key, $label, $value, $hint = '' ) {
-	$img = $value ? wp_get_attachment_image( $value, 'medium', false, array( 'class' => 'gnn-media-preview' ) ) : '';
+	$value = is_numeric( $value ) ? absint( $value ) : (string) $value;
+	$img   = is_int( $value ) && $value ? wp_get_attachment_image( $value, 'medium', false, array( 'class' => 'gnn-media-preview' ) ) : '';
 	if ( gnn_is_legacy_logo_url( $key, $value ) ) {
 		$img = gnn_logo_img( $value, 0, 'gnn-media-preview' );
 	}
@@ -1097,10 +960,11 @@ function gnn_panel_render() {
 					<section id="gnn-tab-header" class="gnn-tab">
 						<?php gnn_section_bar( __( 'Brand assets', 'gnn' ) ); ?>
 						<div class="gnn-logo-grid">
-							<?php gnn_field_media( 'logo_light', __( 'Logo — light mode (1×)', 'gnn' ), (int) gnn_option( 'logo_light' ) ); ?>
-							<?php gnn_field_media( 'logo_light_2x', __( 'Logo — light mode (2× retina)', 'gnn' ), (int) gnn_option( 'logo_light_2x' ) ); ?>
-							<?php gnn_field_media( 'logo_dark', __( 'Logo — dark mode (1×)', 'gnn' ), (int) gnn_option( 'logo_dark' ) ); ?>
-							<?php gnn_field_media( 'logo_dark_2x', __( 'Logo — dark mode (2× retina)', 'gnn' ), (int) gnn_option( 'logo_dark_2x' ) ); ?>
+							<?php // Stored legacy URLs stay in the form so an untouched save keeps them. ?>
+							<?php gnn_field_media( 'logo_light', __( 'Logo — light mode (1×)', 'gnn' ), gnn_option( 'logo_light' ) ); ?>
+							<?php gnn_field_media( 'logo_light_2x', __( 'Logo — light mode (2× retina)', 'gnn' ), gnn_option( 'logo_light_2x' ) ); ?>
+							<?php gnn_field_media( 'logo_dark', __( 'Logo — dark mode (1×)', 'gnn' ), gnn_option( 'logo_dark' ) ); ?>
+							<?php gnn_field_media( 'logo_dark_2x', __( 'Logo — dark mode (2× retina)', 'gnn' ), gnn_option( 'logo_dark_2x' ) ); ?>
 						</div>
 						<?php gnn_field_number( 'logo_max_height', __( 'Logo max height — desktop (px)', 'gnn' ), 12, 200 ); ?>
 						<?php gnn_field_number( 'logo_max_height_mobile', __( 'Logo max height — mobile (px)', 'gnn' ), 12, 200 ); ?>

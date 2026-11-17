@@ -1,12 +1,13 @@
 /*
- * GNN theme — RTL overrides. WordPress loads this automatically after
- * style.css when the site language is right-to-left (ar, he, fa, …).
+ * GNN theme — RTL overrides. Enqueued once after style.css on right-to-left
+ * sites (see gnn_scripts()). Directional offsets in main.css use logical
+ * properties and mirror on their own; only intentional physical rules and
+ * explicit ordering need a counterpart here.
  */
 
 body { direction: rtl; unicode-bidi: embed; }
 
 /* Header */
-.main-navigation .menu > li > .sub-menu { right: 0; left: auto; }
 .mega-menu { direction: rtl; }
 
 /* Breadcrumb + meta separators read naturally in RTL already (flex order). */
@@ -40,12 +41,3 @@ input, textarea, select { text-align: right; }
 
 /* Button styles (GNN Panel → Styles) inherit the button's own centering. */
 .gnn-btn { direction: rtl; }
-
-/* Physical offsets in the base stylesheet need an explicit RTL counterpart. */
-.header-actions { margin-left: 0; margin-right: auto; }
-.search-result-row__arrow { margin-left: 0; margin-right: auto; }
-.entry-content ul, .entry-content ol { padding-left: 0; padding-right: 22px; }
-.entry-content blockquote { border-left: 0; border-right: 3px solid var(--accent); }
-.comment-list .children { margin-left: 0; margin-right: 60px; padding-left: 0; padding-right: 20px; border-left: 0; border-right: 2px solid var(--line); }
-.skip-link { left: auto; right: -9999px; }
-.skip-link:focus { left: auto; right: 0; }

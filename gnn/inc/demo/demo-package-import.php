@@ -184,6 +184,16 @@ function gnn_package_import_step( $job ) {
 	if ( ! is_array( $stage ) || ! is_readable( $stage['file'] ) || get_current_user_id() !== $stage['owner'] || ! hash_equals( $stage['site'], home_url( '/' ) ) || ! current_user_can( 'unfiltered_html' ) ) {
 		return gnn_package_error();
 	}
+	// The archive must still be the one validated when the job started; jobs from older versions carry only the stage hash.
+	$expected = is_string( $job['package_hash'] ?? null ) ? $job['package_hash'] : (string) $stage['hash'];
+	$actual   = hash_file( 'sha256', $stage['file'] );
+	if ( '' === $expected || ! is_string( $actual ) || ! hash_equals( $expected, $actual ) || ! hash_equals( $expected, (string) $stage['hash'] ) ) {
+		// Stop the job and discard the archive; content already removed stays removed, settings stay as they are.
+		wp_delete_file( $stage['file'] );
+		delete_option( 'gnn_' . $job['profile'] );
+		delete_option( 'gnn_wipe_job' );
+		return new WP_Error( 'gnn_package_changed', __( 'The demo package changed after it was checked. Installation stopped. Upload the package again.', 'gnn' ) );
+	}
 	$zip = new ZipArchive();
 	if ( true !== $zip->open( $stage['file'] ) ) {
 		return gnn_package_error();
@@ -377,7 +387,16 @@ function gnn_package_import_step( $job ) {
 			}
 		} elseif ( 'settings' === $state['phase'] ) {
 			$options = gnn_package_remap( $doc['options'], $state );
-			update_option( 'gnn_options', array_replace( (array) get_option( 'gnn_options', array() ), $options ) );
+			// The job's own maintenance lock must not make the sanitizer drop package settings.
+			gnn_demo_import_context( true );
+			try {
+				$written = gnn_configuration_write( array_replace( (array) get_option( 'gnn_options', array() ), (array) $options ) );
+			} finally {
+				gnn_demo_import_context( false );
+			}
+			if ( is_wp_error( $written ) ) {
+				return new WP_Error( $written->get_error_code(), __( 'The package settings could not be applied.', 'gnn' ) . ' ' . $written->get_error_message() );
+			}
 			foreach ( gnn_package_remap( $doc['mods'], $state ) as $key => $value ) {
 				set_theme_mod( $key, $value );
 			}

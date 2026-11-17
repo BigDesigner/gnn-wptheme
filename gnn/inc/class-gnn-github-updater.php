@@ -92,12 +92,15 @@ class GNN_GitHub_Updater {
 		}
 
 		$url  = sprintf( 'https://api.github.com/repos/%s/releases/latest', $this->repo );
-		$args = array(
-			'headers' => array(
+		// Generic agent: the site address is never sent to the release host.
+		$agent = 'GNN-Theme-Updater/' . ( defined( 'GNN_VERSION' ) ? GNN_VERSION : '0' );
+		$args  = array(
+			'headers'    => array(
 				'Accept'     => 'application/vnd.github.v3+json',
-				'User-Agent' => 'WordPress/' . get_bloginfo( 'version' ) . '; ' . home_url(),
+				'User-Agent' => $agent,
 			),
-			'timeout' => 10,
+			'user-agent' => $agent,
+			'timeout'    => 10,
 		);
 		if ( $this->access_token ) {
 			$args['headers']['Authorization'] = 'token ' . $this->access_token;

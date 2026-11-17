@@ -205,52 +205,52 @@ function gnn_platform_defaults() {
 
 /**
  * Validate semantic values before any shared option or theme mod is changed.
+ * Strict and pattern entries of gnn_options_schema() are checked here.
  *
  * @param array $input Submitted options.
  */
 function gnn_validate_platform_input( $input ) {
 	if ( strlen( wp_json_encode( $input ) ) > 1048576 ) {
 		return new WP_Error( 'gnn_size', __( 'Settings exceed the 1 MB limit. Nothing was changed.', 'gnn' ) ); }
-	foreach ( gnn_platform_schema() as $key => $field ) {
-		if ( ! isset( $input[ $key ] ) ) {
+	$schema = gnn_options_schema();
+	foreach ( $schema as $key => $field ) {
+		if ( empty( $field['strict'] ) || ! isset( $input[ $key ] ) ) {
 			continue; }
 		$value = $input[ $key ];
+		$type  = $field['type'];
 		if ( ! is_scalar( $value ) ) {
 			return new WP_Error( 'gnn_type', __( 'Invalid field value type. No settings were changed.', 'gnn' ) ); }
-		$invalid = ! is_scalar( $value ) || ( is_string( $value ) && strlen( $value ) > 65536 );
-		if ( 'select' === $field[1] && ! isset( $field[4][ $value ] ) ) {
+		$invalid = is_string( $value ) && strlen( $value ) > 65536;
+		if ( 'select' === $type && ! isset( $field['choices'][ $value ] ) ) {
 			$invalid = true; }
-		if ( 'optional_number' === $field[1] && '' !== $value && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field[4] || $value > $field[5] ) ) {
+		if ( 'optional_number' === $type && '' !== $value && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field['min'] || $value > $field['max'] ) ) {
 			$invalid = true; }
-		if ( 'number' === $field[1] && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field[4] || $value > $field[5] ) ) {
+		if ( 'number' === $type && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field['min'] || $value > $field['max'] ) ) {
 			$invalid = true; }
-		if ( 'email' === $field[1] && '' !== $value && ! is_email( $value ) ) {
+		if ( 'email' === $type && '' !== $value && ! is_email( $value ) ) {
 			$invalid = true; }
-		if ( 'url' === $field[1] && '' !== $value && ! esc_url_raw( $value ) ) {
+		if ( 'url' === $type && '' !== $value && ! esc_url_raw( $value ) ) {
 			$invalid = true; }
-		if ( 'actions' === $field[1] && is_wp_error( gnn_sanitize_actions( (string) $value ) ) ) {
+		if ( 'actions' === $type && is_wp_error( gnn_sanitize_actions( (string) $value ) ) ) {
 			$invalid = true; }
-		if ( 'hex' === $field[1] && '' !== $value && ! sanitize_hex_color( $value ) ) {
+		if ( 'hex' === $type && '' !== $value && ! sanitize_hex_color( $value ) ) {
 			$invalid = true;
 		}
-		if ( 'region' === $field[1] && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || (int) $value < -2 || ( (int) $value > 0 && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) ) ) {
+		if ( 'region' === $type && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || (int) $value < -2 || ( (int) $value > 0 && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) ) ) {
 			$invalid = true;
 		}
-		if ( in_array( $field[1], array( 'layout', 'font', 'slide_group' ), true ) && ! preg_match( '/^[0-9]+$/D', (string) $value ) ) {
+		if ( in_array( $type, array( 'layout', 'font', 'slide_group' ), true ) && ! preg_match( '/^[0-9]+$/D', (string) $value ) ) {
 			$invalid = true; }
-		if ( ! $invalid && $value && 'layout' === $field[1] && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
+		if ( ! $invalid && $value && 'layout' === $type && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
 			$invalid = true; }
-		if ( ! $invalid && $value && 'font' === $field[1] && 'font/woff2' !== get_post_mime_type( $value ) ) {
+		if ( ! $invalid && $value && 'font' === $type && 'font/woff2' !== get_post_mime_type( $value ) ) {
 			$invalid = true; }
 		if ( $invalid ) {
 			/* translators: %s: field name; %d: action position. */
-			return new WP_Error( 'gnn_field_' . $key, sprintf( __( 'Invalid value for %s. No settings were changed.', 'gnn' ), $field[0] ) ); }
+			return new WP_Error( 'gnn_field_' . $key, sprintf( __( 'Invalid value for %s. No settings were changed.', 'gnn' ), $field['label'] ) ); }
 	}
-	foreach ( array(
-		'ga4_id' => '/^G-[A-Z0-9]{4,}$/i',
-		'gtm_id' => '/^GTM-[A-Z0-9]{4,}$/i',
-	) as $key => $pattern ) {
-		if ( ! empty( $input[ $key ] ) && ! preg_match( $pattern, (string) $input[ $key ] ) ) {
+	foreach ( $schema as $key => $field ) {
+		if ( isset( $field['pattern'] ) && ! empty( $input[ $key ] ) && ! preg_match( $field['pattern'], (string) $input[ $key ] ) ) {
 			return new WP_Error( 'gnn_tracking_id', __( 'The analytics ID is invalid. No settings were changed.', 'gnn' ) ); }
 	}
 	return true;
@@ -288,69 +288,133 @@ function gnn_sanitize_actions( $raw ) {
  * @param array $input Submitted options.
  */
 function gnn_sanitize_platform_options( $out, $input ) {
-	foreach ( gnn_platform_schema() as $key => $field ) {
+	foreach ( gnn_options_schema() as $key => $field ) {
+		if ( empty( $field['strict'] ) ) {
+			continue;
+		}
 		if ( ! array_key_exists( $key, $input ) ) {
-			if ( 'bool' === $field[1] && isset( $input['platform_fields_present'] ) && ! isset( gnn_site_schema()[ $key ] ) ) {
+			if ( 'bool' === $field['type'] && isset( $field['form_flag'], $input[ $field['form_flag'] ] ) ) {
 				$out[ $key ] = 0; }
 			continue;
 		}
-		$value = $input[ $key ];
-		switch ( $field[1] ) {
-			case 'hex':
-				$value = sanitize_hex_color( $value );
-				break;
-			case 'region':
-				$value = max( -2, (int) $value );
-				if ( $value > 0 && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
-					$value = -1;
-				}
-				break;
-			case 'bool':
-				$value = empty( $value ) ? 0 : 1;
-				break;
-			case 'optional_number':
-				$value = '' === $value ? '' : (string) max( $field[4], min( $field[5], (int) $value ) );
-				break;
-			case 'number':
-				$value = max( $field[4], min( $field[5], (int) $value ) );
-				if ( 'blog_width' === $key && $value > 0 ) {
-					$value = max( 360, $value ); }
-				break;
-			case 'email':
-				$value = sanitize_email( $value );
-				break;
-			case 'url':
-				$value = esc_url_raw( $value );
-				break;
-			case 'select':
-				if ( ! isset( $field[4][ $value ] ) ) {
-					$value = $field[2];
-				} break;
-			case 'layout':
-				$value = absint( $value );
-				if ( $value && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
-					$value = 0; }
-				break;
-			case 'font':
-				$value = absint( $value );
-				if ( $value && ( 'font/woff2' !== get_post_mime_type( $value ) || ! wp_get_attachment_url( $value ) ) ) {
-					$value = 0; }
-				break;
-			case 'slide_group':
-				$value = absint( $value );
-				break;
-			case 'actions':
-				$value = gnn_sanitize_actions( $value );
-				if ( is_wp_error( $value ) ) {
-					add_settings_error( 'gnn_options', $value->get_error_code(), $value->get_error_message() );
-					continue 2; }
-				break;
-			default:
-				$value = sanitize_text_field( $value );
+		list( $store, $value ) = gnn_option_sanitize_field( $key, $field, $input[ $key ] );
+		if ( $store ) {
+			$out[ $key ] = $value;
 		}
-		$out[ $key ] = $value;
 	}
 	return $out;
+}
+
+/**
+ * Sanitize one submitted value by its gnn_options_schema() entry.
+ *
+ * Brand fields (`*_mod`, `site_icon`) write their shared value and store
+ * nothing in the option. A `code` value without the entry's capability, an
+ * `enum` value outside its list and invalid `actions` keep the stored value.
+ *
+ * @param string $key   Option key.
+ * @param array  $field Schema entry.
+ * @param mixed  $value Submitted value.
+ * @param array  $saved Stored options before this save.
+ * @return array Whether to store the value, and the value.
+ */
+function gnn_option_sanitize_field( $key, $field, $value, $saved = array() ) {
+	switch ( $field['type'] ) {
+		case 'accent_mod':
+			set_theme_mod( $field['mod'], preg_replace( '/^#(.)(.)(.)$/D', '#$1$1$2$2$3$3', $value ) );
+			return array( false, null );
+		case 'mode_mod':
+			set_theme_mod( $field['mod'], 'light' === $value ? 'light' : 'dark' );
+			return array( false, null );
+		case 'text_mod':
+			set_theme_mod( $field['mod'], sanitize_text_field( $value ) );
+			return array( false, null );
+		case 'site_icon':
+			if ( ! empty( $value ) ) {
+				update_option( 'site_icon', absint( $value ) );
+			} else {
+				delete_option( 'site_icon' );
+			}
+			return array( false, null );
+		case 'media':
+			// An unchanged, already stored URL is kept even when it is off-site.
+			// Older sites keep the header logo URL in theme_mods, which gnn_option() still reads.
+			$stored = array_key_exists( $key, $saved ) ? $saved[ $key ] : ( in_array( $key, array( 'logo_light', 'logo_light_2x', 'logo_dark', 'logo_dark_2x' ), true ) ? get_theme_mod( $key ) : null );
+			$kept   = is_string( $stored ) && '' !== $stored && $stored === $value;
+			return array( true, ( $kept || gnn_is_legacy_logo_url( $key, $value ) ) ? $value : absint( $value ) );
+		case 'absint':
+			return array( true, absint( $value ) );
+		case 'html':
+			return array( true, wp_kses_post( $value ) );
+		case 'color':
+			$value = trim( (string) $value );
+			return array( true, ( '' === $value ) ? '' : (string) sanitize_hex_color( $value ) );
+		case 'textarea':
+			return array( true, sanitize_textarea_field( $value ) );
+		case 'enum':
+			return in_array( $value, $field['allowed'], true ) ? array( true, $value ) : array( false, null );
+		case 'clamp':
+			return array( true, min( $field['max'], max( $field['min'], absint( $value ) ) ) );
+		case 'checkbox':
+		case 'bool':
+			return array( true, empty( $value ) ? 0 : 1 );
+		case 'family':
+			return array( true, substr( trim( (string) preg_replace( '/[^A-Za-z0-9 ]/', '', $value ) ), 0, 60 ) );
+		case 'code':
+			$value = empty( $field['strip_tags'] ) ? (string) $value : wp_strip_all_tags( (string) $value );
+			if ( current_user_can( $field['cap'] ) ) {
+				return array( true, $value );
+			}
+			// add_settings_error() exists only once wp-admin/includes/template.php is loaded.
+			if ( (string) ( $saved[ $key ] ?? '' ) !== $value && function_exists( 'add_settings_error' ) ) {
+				add_settings_error( 'gnn_options', 'gnn_js_cap', __( 'Custom script fields were not saved: your account lacks the unfiltered_html capability.', 'gnn' ) );
+			}
+			return array( false, null );
+		case 'hex':
+			return array( true, sanitize_hex_color( $value ) );
+		case 'region':
+			$value = max( -2, (int) $value );
+			if ( $value > 0 && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
+				$value = -1;
+			}
+			return array( true, $value );
+		case 'optional_number':
+			return array( true, '' === $value ? '' : (string) max( $field['min'], min( $field['max'], (int) $value ) ) );
+		case 'number':
+			$value = max( $field['min'], min( $field['max'], (int) $value ) );
+			if ( isset( $field['floor'] ) && $value > 0 ) {
+				$value = max( $field['floor'], $value ); }
+			return array( true, $value );
+		case 'email':
+			return array( true, sanitize_email( $value ) );
+		case 'url':
+			return array( true, esc_url_raw( $value ) );
+		case 'select':
+			return array( true, isset( $field['choices'][ $value ] ) ? $value : $field['default'] );
+		case 'layout':
+			$value = absint( $value );
+			if ( $value && ( 'gnn_layout' !== get_post_type( $value ) || 'publish' !== get_post_status( $value ) ) ) {
+				$value = 0; }
+			return array( true, $value );
+		case 'font':
+			$value = absint( $value );
+			if ( $value && ( 'font/woff2' !== get_post_mime_type( $value ) || ! wp_get_attachment_url( $value ) ) ) {
+				$value = 0; }
+			return array( true, $value );
+		case 'slide_group':
+			return array( true, absint( $value ) );
+		case 'actions':
+			$value = gnn_sanitize_actions( $value );
+			if ( is_wp_error( $value ) ) {
+				if ( function_exists( 'add_settings_error' ) ) {
+					add_settings_error( 'gnn_options', $value->get_error_code(), $value->get_error_message() );
+				}
+				return array( false, null );
+			}
+			return array( true, $value );
+		default:
+			return array( true, sanitize_text_field( $value ) );
+	}
 }
 
 /**

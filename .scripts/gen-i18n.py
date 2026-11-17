@@ -32,7 +32,11 @@ PLURAL = re.compile(
 entries = {}   # msgid -> {'plural': str|None, 'refs': [file:line]}
 
 for root, dirs, files in os.walk(THEME):
-    dirs[:] = [d for d in dirs if d not in ('fonts', 'demo')]
+    # Skip only the top-level asset folders; gnn/inc/demo holds PHP code.
+    if os.path.abspath(root) == os.path.abspath(THEME):
+        dirs[:] = [d for d in dirs if d not in ('fonts', 'demo')]
+    else:
+        dirs[:] = [d for d in dirs if d != 'fonts']
     for f in sorted(files):
         if not f.endswith('.php'):
             continue

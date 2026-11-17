@@ -141,7 +141,7 @@ function gnn_register_patterns() {
 		);
 	}
 }
-add_action( 'init', 'gnn_register_patterns' );
+gnn_add_block_patterns( 'gnn_register_patterns' );
 
 /**
  * Block styles: the theme's pill button as a core/button variation.

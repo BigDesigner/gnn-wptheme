@@ -34,12 +34,15 @@ $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 								'fetchpriority' => 'high',
 							)
 							: array( 'loading' => 'lazy' );
-						// Add a 2x descriptor when a retina image is set.
+						// Offer the retina image as a wider candidate; core sizes stay available.
 						if ( ! empty( $gnn_slide['image_2x'] ) ) {
-							$gnn_1x = wp_get_attachment_image_url( (int) $gnn_slide['image'], 'full' );
-							$gnn_2x = wp_get_attachment_image_url( (int) $gnn_slide['image_2x'], 'full' );
-							if ( $gnn_1x && $gnn_2x ) {
-								$gnn_attr['srcset'] = esc_url( $gnn_1x ) . ' 1x, ' . esc_url( $gnn_2x ) . ' 2x';
+							$gnn_1x = wp_get_attachment_image_src( (int) $gnn_slide['image'], 'full' );
+							$gnn_2x = wp_get_attachment_image_src( (int) $gnn_slide['image_2x'], 'full' );
+							if ( $gnn_1x && $gnn_2x && (int) $gnn_2x[1] > (int) $gnn_1x[1] ) {
+								$gnn_srcset = wp_get_attachment_image_srcset( (int) $gnn_slide['image'], 'full' );
+								$gnn_srcset = $gnn_srcset ? $gnn_srcset : esc_url( $gnn_1x[0] ) . ' ' . (int) $gnn_1x[1] . 'w';
+								$gnn_attr['srcset'] = $gnn_srcset . ', ' . esc_url( $gnn_2x[0] ) . ' ' . (int) $gnn_2x[1] . 'w';
+								$gnn_attr['sizes']  = '100vw';
 							}
 						}
 						echo wp_get_attachment_image( (int) $gnn_slide['image'], 'full', false, $gnn_attr );
@@ -70,6 +73,9 @@ $gnn_full_height = (bool) gnn_option( 'slider_full_height' );
 		<div class="gnn-hero__controls" hidden>
 		<button type="button" class="gnn-hero__arrow gnn-hero__arrow--prev" aria-label="<?php esc_attr_e( 'Previous slide', 'gnn' ); ?>">&lsaquo;</button>
 		<button type="button" class="gnn-hero__arrow gnn-hero__arrow--next" aria-label="<?php esc_attr_e( 'Next slide', 'gnn' ); ?>">&rsaquo;</button>
+		<?php if ( gnn_option( 'slider_autoplay' ) ) : ?>
+			<button type="button" class="gnn-hero__toggle" aria-pressed="false" aria-label="<?php esc_attr_e( 'Pause slides', 'gnn' ); ?>"></button>
+		<?php endif; ?>
 		<div class="gnn-hero__dots" role="group" aria-label="<?php esc_attr_e( 'Choose a slide', 'gnn' ); ?>">
 			<?php foreach ( $gnn_slides as $gnn_index => $gnn_slide ) : ?>
 				<button type="button" class="gnn-hero__dot<?php echo 0 === $gnn_index ? ' is-active' : ''; ?>"

@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Request-scoped permission to run the importer while its own maintenance job exists.
+ * Request-scoped permission for the job's own settings writes while its maintenance job exists.
  *
- * @param bool|null $value Set only around the owned import call.
+ * @param bool|null $value Set only around the owned reference cleanup or import call.
  * @return bool
  */
 function gnn_demo_import_context( $value = null ) {
@@ -21,7 +21,7 @@ function gnn_demo_import_context( $value = null ) {
 		$active = (bool) $value;
 	}
 	$job = get_option( 'gnn_wipe_job' );
-	return $active && is_array( $job ) && 'demo' === ( $job['kind'] ?? '' ) && 'import' === $job['phase'] && get_current_user_id() === (int) $job['owner'] && hash_equals( home_url( '/' ), $job['site'] );
+	return $active && is_array( $job ) && 'demo' === ( $job['kind'] ?? '' ) && in_array( $job['phase'] ?? '', array( 'content', 'import' ), true ) && get_current_user_id() === (int) $job['owner'] && hash_equals( home_url( '/' ), $job['site'] );
 }
 
 /**
@@ -131,7 +131,7 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 	if ( ! is_string( $revision ) || ! hash_equals( gnn_configuration_revision(), $revision ) ) {
 		return new WP_Error( 'gnn_conflict', __( 'Settings changed. Reload and try again.', 'gnn' ) );
 	}
-	if ( get_option( 'gnn_configuration_lock' ) ) {
+	if ( gnn_configuration_locked() ) {
 		return new WP_Error( 'gnn_demo_busy', __( 'Another operation is running.', 'gnn' ) );
 	}
 	$boundary = gnn_reset_upload_boundary();
@@ -165,13 +165,21 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 		'template'           => get_template(),
 		'protected_post_ids' => $kit ? array( $kit ) : array(),
 	);
+	if ( $package ) {
+		// Every import step re-checks the archive against the hash validated here.
+		$job['package_hash'] = $validated['stage']['hash'];
+	}
 	if ( ! add_option( 'gnn_wipe_job', $job, '', false ) ) {
 		return new WP_Error( 'gnn_demo_busy', __( 'Another operation is running.', 'gnn' ) );
 	}
 	return $job;
 }
 
-/** Remove only references to content that has just been deleted. */
+/**
+ * Remove only references to content that has just been deleted.
+ *
+ * @return true|WP_Error
+ */
 function gnn_demo_clear_references() {
 	wp_cache_set( 'last_changed', microtime(), 'terms' );
 	foreach ( array( 'gnn_demo_architecture_complete', 'gnn_elementor_templates_installed', 'gnn_usage_index_pending' ) as $option ) {
@@ -195,12 +203,21 @@ function gnn_demo_clear_references() {
 		$options[ $key ] = $defaults[ $key ] ?? 0;
 	}
 	foreach ( gnn_platform_schema() as $key => $field ) {
-		if ( in_array( $field[1], array( 'region', 'media' ), true ) ) {
+		if ( in_array( $field[1], array( 'region', 'media', 'layout', 'font', 'slide_group' ), true ) ) {
 			$options[ $key ] = $field[2];
 		}
 	}
 	$options['contact_page_id'] = 0;
-	update_option( 'gnn_options', $options );
+	// The job's own maintenance lock would otherwise make the sanitizer keep the old references.
+	gnn_demo_import_context( true );
+	try {
+		$written = gnn_configuration_write( $options );
+	} finally {
+		gnn_demo_import_context( false );
+	}
+	if ( is_wp_error( $written ) ) {
+		return $written;
+	}
 	$category = wp_insert_term( __( 'Uncategorized', 'gnn' ), 'category' );
 	if ( ! is_wp_error( $category ) ) {
 		update_option( 'default_category', (int) $category['term_id'] );
@@ -216,6 +233,7 @@ function gnn_demo_clear_references() {
 			WC_Cache_Helper::invalidate_cache_group( $group );
 		}
 	}
+	return true;
 }
 
 /**
@@ -259,7 +277,12 @@ function gnn_demo_replace_step( $job_id ) {
 			if ( ! get_post( (int) $post->ID ) ) {
 				continue;
 			}
-			$deleted = 'attachment' === $post->post_type ? wp_delete_attachment( (int) $post->ID, true ) : wp_delete_post( (int) $post->ID, true );
+			// Elementor stops any kit deletion with a confirmation page; the active kit is protected above
+			// and the job's deletion consent covers inactive kits left by earlier installs.
+			if ( 'elementor_library' === $post->post_type && 'kit' === get_post_meta( (int) $post->ID, '_elementor_template_type', true ) ) {
+				$_GET['force_delete_kit'] = '1'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- request-scoped flag read by Elementor's delete guard.
+			}
+			$deleted ='attachment' === $post->post_type ? wp_delete_attachment( (int) $post->ID, true ) : wp_delete_post( (int) $post->ID, true );
 			if ( ! $deleted ) {
 				return new WP_Error( 'gnn_demo_delete', __( 'Content could not be deleted. Check the server and retry.', 'gnn' ) );
 			}
@@ -291,7 +314,10 @@ function gnn_demo_replace_step( $job_id ) {
 				unset( $job['tables'][ $table ] );
 			}
 		} else {
-			gnn_demo_clear_references();
+			$cleared = gnn_demo_clear_references();
+			if ( is_wp_error( $cleared ) ) {
+				return $cleared;
+			}
 			$job['phase'] = 'import';
 		}
 	} elseif ( 'import' === $job['phase'] ) {
@@ -339,11 +365,7 @@ function gnn_demo_replace_ajax() {
 	if ( ! current_user_can( 'manage_options' ) ) {
 		wp_send_json_error( array( 'message' => __( 'Permission denied.', 'gnn' ) ), 403 );
 	}
-	$lock = get_option( 'gnn_wipe_batch_lock' );
-	if ( $lock && (int) $lock < time() - 120 ) {
-		delete_option( 'gnn_wipe_batch_lock' );
-	}
-	if ( ! add_option( 'gnn_wipe_batch_lock', time(), '', false ) ) {
+	if ( ! gnn_reset_batch_lock() ) {
 		wp_send_json_error( array( 'message' => __( 'Another operation is running.', 'gnn' ) ), 409 );
 	}
 	try {
@@ -358,7 +380,7 @@ function gnn_demo_replace_ajax() {
 	} catch ( Throwable $error ) {
 		$result = new WP_Error( 'gnn_demo_failed', __( 'Installation stopped. Check the server and retry.', 'gnn' ) );
 	} finally {
-		delete_option( 'gnn_wipe_batch_lock' );
+		gnn_reset_batch_unlock();
 	}
 	if ( is_wp_error( $result ) ) {
 		wp_send_json_error( array( 'message' => $result->get_error_message() ), 409 );

@@ -120,6 +120,7 @@ function gnn_package_upload_screen() {
 	} else {
 		echo '<form action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" method="post" enctype="multipart/form-data"><input type="hidden" name="action" value="gnn_package_upload">';
 		gnn_panel_nonce_field( 'gnn_package_upload' );
+		echo '<p><strong>' . esc_html__( 'Packages can contain scripts. Upload only packages from sources you trust.', 'gnn' ) . '</strong></p>';
 		echo '<p><label>' . esc_html__( 'Demo package', 'gnn' ) . ' <input type="file" name="package" accept=".zip,application/zip" required></label></p>';
 		/* translators: %s: maximum upload size. */
 		echo '<p>' . esc_html( sprintf( __( 'ZIP · up to %s', 'gnn' ), size_format( min( wp_max_upload_size(), 256 * MB_IN_BYTES ) ) ) ) . '</p>';

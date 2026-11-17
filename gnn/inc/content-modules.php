@@ -477,15 +477,11 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		return do_shortcode( '[products limit="' . max( 1, min( 24, absint( $attrs['limit'] ?? 8 ) ) ) . '" columns="' . $columns . '" visibility="visible"' . ( $category ? ' category="' . sanitize_title( $category->slug ) . '"' : '' ) . ']' );
 	}
 	if ( 'slider' === $module ) {
-		wp_enqueue_script( 'gnn-slider', get_template_directory_uri() . '/assets/js/slider.js', array(), GNN_VERSION, true );
-		wp_localize_script(
-			'gnn-slider',
-			'gnnSlider',
-			array(
-				'autoplay' => (bool) gnn_option( 'slider_autoplay' ),
-				'interval' => max( 2, (int) gnn_option( 'slider_interval' ) ) * 1000,
-			)
-		);
+		if ( ! wp_script_is( 'gnn-slider', 'registered' ) ) {
+			gnn_register_module_assets();
+		}
+		// Settings come from the section's data attributes; no per-instance config.
+		wp_enqueue_script( 'gnn-slider' );
 		ob_start();
 		get_template_part(
 			'template-parts/hero-slider',
@@ -730,13 +726,71 @@ function gnn_register_module_assets() {
 }
 add_action( 'init', 'gnn_register_module_assets', 11 );
 
+/**
+ * Whether a record's own content contains a GNN module. Elementor data is scanned
+ * once per revision and the result kept in post meta.
+ *
+ * @param int $id Record ID.
+ * @return bool
+ */
+function gnn_post_has_modules( $id ) {
+	$post = get_post( $id );
+	if ( ! $post ) {
+		return false;
+	}
+	if ( false !== strpos( $post->post_content, 'wp:gnn/' ) ) {
+		return true;
+	}
+	if ( ! get_post_meta( $post->ID, '_elementor_edit_mode', true ) ) {
+		return false;
+	}
+	$stamp  = (string) $post->post_modified_gmt;
+	$cached = get_post_meta( $post->ID, '_gnn_module_scan', true );
+	if ( is_array( $cached ) && isset( $cached['stamp'], $cached['found'] ) && $stamp === $cached['stamp'] ) {
+		return (bool) $cached['found'];
+	}
+	$data  = (string) get_post_meta( $post->ID, '_elementor_data', true );
+	$found = (bool) preg_match( '/"widgetType"\s*:\s*"gnn-(portfolio|catalog|gallery|products|slider)"/', $data );
+	update_post_meta(
+		$post->ID,
+		'_gnn_module_scan',
+		array(
+			'stamp' => $stamp,
+			'found' => $found,
+		)
+	);
+	return $found;
+}
+
+/**
+ * Builder saves can change widget data without a new modified date.
+ *
+ * @param int    $meta_id Meta ID.
+ * @param int    $object_id Record ID.
+ * @param string $meta_key Meta key.
+ */
+function gnn_reset_module_scan( $meta_id, $object_id, $meta_key ) {
+	if ( '_elementor_data' === $meta_key ) {
+		delete_post_meta( $object_id, '_gnn_module_scan' );
+	}
+}
+add_action( 'added_post_meta', 'gnn_reset_module_scan', 10, 3 );
+add_action( 'updated_post_meta', 'gnn_reset_module_scan', 10, 3 );
+add_action( 'deleted_post_meta', 'gnn_reset_module_scan', 10, 3 );
+
 /** Emit live geometry and load assets only for pages containing these modules. */
 function gnn_module_assets() {
 	gnn_register_module_assets();
 	wp_localize_script( 'gnn-content-modules', 'gnnModules', array( 'close' => __( 'Close', 'gnn' ) ) );
-	$post = get_queried_object();
-	$data = $post instanceof WP_Post ? (string) get_post_meta( $post->ID, '_elementor_data', true ) : '';
-	if ( gnn_layout_value( 'sidebar_template' ) > 0 || is_singular( array( 'gnn_project', 'gnn_product' ) ) || is_tax( array( 'gnn_project_category', 'gnn_product_category' ) ) || ( $post instanceof WP_Post && ( false !== strpos( $post->post_content, 'wp:gnn/' ) || preg_match( '/"widgetType"\s*:\s*"gnn-(portfolio|catalog|gallery|products|slider)"/', $data ) ) ) ) {
+	$needed = is_singular( array( 'gnn_project', 'gnn_product' ) ) || is_tax( array( 'gnn_project_category', 'gnn_product_category' ) );
+	$post   = get_queried_object();
+	if ( ! $needed && $post instanceof WP_Post ) {
+		$needed = gnn_post_has_modules( $post->ID );
+	}
+	if ( ! $needed && gnn_layout_value( 'sidebar_template' ) > 0 ) {
+		$needed = gnn_post_has_modules( gnn_translated_post_id( absint( gnn_layout_value( 'sidebar_template' ) ) ) );
+	}
+	if ( $needed ) {
 		wp_enqueue_style( 'gnn-content-modules' );
 		wp_enqueue_script( 'gnn-content-modules' );
 	}

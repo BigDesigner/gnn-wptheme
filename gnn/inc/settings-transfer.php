@@ -50,6 +50,11 @@ function gnn_decode_settings_import( $raw ) {
 		|| ( ! isset( $data->options ) && ! isset( $data->theme_mods ) ) ) {
 		return $error;
 	}
+	// Only fields written by the exporter or the reference mapping step.
+	$known = array( '_gnn_export', 'options', 'theme_mods', 'schema_version', 'scope', 'source_site', 'references', 'reference_map' );
+	if ( array_diff( array_keys( get_object_vars( $data ) ), $known ) ) {
+		return $error;
+	}
 	$result   = array(
 		'options'    => array(),
 		'theme_mods' => array(),
@@ -123,7 +128,7 @@ function gnn_import_panel_settings( $raw, $revision = '' ) {
 		return $data;
 	}
 	if ( ! current_user_can( 'unfiltered_html' ) ) {
-		foreach ( array( 'custom_js_head', 'custom_js_footer', 'head_html', 'body_html' ) as $key ) {
+		foreach ( array( 'custom_css', 'custom_js_head', 'custom_js_footer', 'head_html', 'body_html' ) as $key ) {
 			if ( isset( $data['options'][ $key ] ) && gnn_option( $key ) !== $data['options'][ $key ] ) {
 				return new WP_Error( 'gnn_import_code_permission', __( 'Custom script fields were not saved: your account lacks the unfiltered_html capability.', 'gnn' ) );
 			}
@@ -137,7 +142,11 @@ function gnn_import_panel_settings( $raw, $revision = '' ) {
 		return $started; }
 	if ( $data['options'] ) {
 		$current = wp_parse_args( (array) get_option( 'gnn_options', array() ), gnn_option_defaults() );
-		update_option( 'gnn_options', gnn_options_sanitize( array_replace( $current, $data['options'] ) ) );
+		gnn_configuration_rejection( null, true );
+		$written = gnn_configuration_write( gnn_options_sanitize( array_replace( $current, $data['options'] ) ), false );
+		if ( is_wp_error( $written ) ) {
+			return $written;
+		}
 	}
 	foreach ( $data['theme_mods'] as $key => $value ) {
 		set_theme_mod( $key, 'gnn_footer_legal' === $key ? sanitize_text_field( $value ) : $value );

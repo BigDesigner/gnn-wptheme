@@ -3,10 +3,17 @@
 .site-header__inner { min-height:var(--gnn-header-height,64px);height:auto;padding-block:12px; }
 body:not(.wp-admin),.editor-styles-wrapper { font-family:var(--font-p,var(--font-body));font-size:var(--gnn-body-size,17px);line-height:var(--gnn-body-leading,1.75); }
 .entry-content { font-size:var(--gnn-body-size,17px);line-height:var(--gnn-body-leading,1.75); }
-h1,h2,h3,h4,h5,h6,.editor-styles-wrapper :is(h1,h2,h3,h4,h5,h6) { line-height:var(--gnn-heading-leading,1.15);letter-spacing:var(--gnn-heading-tracking,0); }
-.entry-title,.page-title,.gnn-hero__title,.editor-styles-wrapper h1 { font-size:clamp(var(--gnn-heading-mobile-size,34px),5vw,var(--gnn-heading-size,56px)); }
-.entry-content h2,.editor-styles-wrapper h2 { font-family:var(--font-h2,var(--font-heading));font-size:clamp(24px,3vw,calc(var(--gnn-heading-size,56px)*.65)); }
-.entry-content h3,.editor-styles-wrapper h3 { font-size:clamp(21px,2.3vw,calc(var(--gnn-heading-size,56px)*.48)); }
+/* Per-role type scale tokens (--gnn-hN-*) are set only when chosen in the panel; each falls back to the global heading tokens. */
+h1,.editor-styles-wrapper h1 { line-height:var(--gnn-h1-leading,var(--gnn-heading-leading,1.15));letter-spacing:var(--gnn-h1-tracking,var(--gnn-heading-tracking,0)); }
+h2,.editor-styles-wrapper h2 { line-height:var(--gnn-h2-leading,var(--gnn-heading-leading,1.15));letter-spacing:var(--gnn-h2-tracking,var(--gnn-heading-tracking,0)); }
+h3,.editor-styles-wrapper h3 { line-height:var(--gnn-h3-leading,var(--gnn-heading-leading,1.15));letter-spacing:var(--gnn-h3-tracking,var(--gnn-heading-tracking,0)); }
+h4,.editor-styles-wrapper h4 { line-height:var(--gnn-h4-leading,var(--gnn-heading-leading,1.15));letter-spacing:var(--gnn-h4-tracking,var(--gnn-heading-tracking,0)); }
+h5,.editor-styles-wrapper h5 { line-height:var(--gnn-h5-leading,var(--gnn-heading-leading,1.15));letter-spacing:var(--gnn-h5-tracking,var(--gnn-heading-tracking,0)); }
+h6,.editor-styles-wrapper h6 { line-height:var(--gnn-h6-leading,var(--gnn-heading-leading,1.15));letter-spacing:var(--gnn-h6-tracking,var(--gnn-heading-tracking,0)); }
+.entry-title,.page-title,.gnn-hero__title { font-size:clamp(var(--gnn-heading-mobile-size,34px),5vw,var(--gnn-heading-size,56px)); }
+h1.entry-title,h1.page-title,.editor-styles-wrapper h1 { font-size:var(--gnn-h1-size,clamp(var(--gnn-heading-mobile-size,34px),5vw,var(--gnn-heading-size,56px))); }
+.entry-content h2,.editor-styles-wrapper h2 { font-family:var(--font-h2,var(--font-heading));font-size:var(--gnn-h2-size,clamp(24px,3vw,calc(var(--gnn-heading-size,56px)*.65))); }
+.entry-content h3,.editor-styles-wrapper h3 { font-size:var(--gnn-h3-size,clamp(21px,2.3vw,calc(var(--gnn-heading-size,56px)*.48))); }
 .entry-content img,.post-thumbnail,.post-card,.featured-post-card,.author-box,.stat-card { border-radius:var(--gnn-radius,16px);box-shadow:var(--gnn-shadow,none); }
 .gnn-btn,.wp-block-button__link,.elementor .elementor-button { border-radius:var(--gnn-button-radius,999px);padding:var(--gnn-button-padding,14px) calc(var(--gnn-button-padding,14px)*2);transition:filter .15s,transform .15s; }
 .gnn-btn:hover,.wp-block-button__link:hover { filter:brightness(.93); }

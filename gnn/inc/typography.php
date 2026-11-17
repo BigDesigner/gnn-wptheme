@@ -41,6 +41,46 @@ function gnn_typography_weights() {
 }
 
 /**
+ * Google font family assigned to a role, or '' when that role keeps the
+ * theme's own font (feature off or no family chosen).
+ *
+ * @param string $role Typography role.
+ * @return string
+ */
+function gnn_typography_role_family( $role ) {
+	if ( ! gnn_option( 'typography_google_enable' ) ) {
+		return '';
+	}
+	return trim( (string) gnn_option( "typo_{$role}_family" ) );
+}
+
+/**
+ * Effective font weight for a role.
+ *
+ * Two stored settings carry a weight for the same text: the Google font
+ * weight (typo_{role}_weight, GNN Panel → Typography) and the type scale
+ * weight (type_{role}_weight, type scale settings). Precedence:
+ *   1. While the role uses a Google font, its Google weight applies — it is
+ *      the only weight requested from Google for that family.
+ *   2. Otherwise the type scale weight applies.
+ *   3. '' keeps the theme default.
+ * The CSS chain mirrors this: font-weight:var(--font-hN-weight,
+ * var(--gnn-hN-weight,700)), where --font-hN-weight is only emitted for roles
+ * that use a Google font. Both option keys stay stored unchanged.
+ *
+ * @param string $role Typography role.
+ * @return string Numeric weight, or '' for the theme default.
+ */
+function gnn_typography_role_weight( $role ) {
+	if ( '' !== gnn_typography_role_family( $role ) ) {
+		$weight = (string) gnn_option( "typo_{$role}_weight" );
+		return in_array( $weight, gnn_typography_weights(), true ) ? $weight : '400';
+	}
+	$weight = (string) gnn_option( "type_{$role}_weight" );
+	return in_array( $weight, array( '300', '400', '500', '600', '700', '800', '900' ), true ) ? $weight : '';
+}
+
+/**
  * Collect { family => { weight => true } } for every role with a Google
  * Font configured, when the feature is enabled. Multiple roles sharing the
  * same family are merged into one entry so the font is only requested once.

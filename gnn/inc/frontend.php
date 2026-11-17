@@ -359,3 +359,27 @@ function gnn_maintenance_mode() {
 	exit;
 }
 add_action( 'template_redirect', 'gnn_maintenance_mode' );
+
+/**
+ * Keep content REST routes closed while maintenance is on. Feeds already pass through template_redirect.
+ * Users who can edit content keep REST access so the editors continue to work.
+ *
+ * @param mixed           $result Earlier short-circuit result.
+ * @param WP_REST_Server  $server REST server.
+ * @param WP_REST_Request $request Current request.
+ * @return mixed
+ */
+function gnn_maintenance_rest( $result, $server, $request ) {
+	if ( null !== $result || ! gnn_option( 'maintenance_mode' ) ) {
+		return $result;
+	}
+	if ( is_user_logged_in() && ( current_user_can( 'manage_options' ) || current_user_can( 'edit_posts' ) ) ) {
+		return $result;
+	}
+	$route = (string) $request->get_route();
+	if ( 0 === strpos( $route, '/wp/v2/' ) || '/wp/v2' === $route || 0 === strpos( $route, '/oembed/' ) ) {
+		return new WP_Error( 'gnn_maintenance', __( 'The site is under maintenance.', 'gnn' ), array( 'status' => 503 ) );
+	}
+	return $result;
+}
+add_filter( 'rest_pre_dispatch', 'gnn_maintenance_rest', 10, 3 );

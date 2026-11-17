@@ -12,6 +12,7 @@
 	var prev = hero.querySelector('.gnn-hero__arrow--prev');
 	var next = hero.querySelector('.gnn-hero__arrow--next');
 	var controls = hero.querySelector('.gnn-hero__controls');
+	var toggle = hero.querySelector('.gnn-hero__toggle');
 	var count = slides.length;
 	var index = 0;
 	var timer = null;
@@ -20,6 +21,7 @@
 	var enabled = !!settings.autoplay && !reduced.matches;
 	var hovered = false;
 	var focused = false;
+	var paused = false;
 
 	/* Respect reduced-motion: no autoplay, arrows/dots still work. */
 	if (reduced.matches) {
@@ -70,8 +72,14 @@
 	function stopAutoplay() {
 		if (timer) { clearInterval(timer); timer = null; }
 	}
+	function syncToggle() {
+		if (!toggle) { return; }
+		toggle.hidden = !settings.autoplay || reduced.matches;
+		toggle.setAttribute('aria-pressed', paused ? 'true' : 'false');
+	}
 	function updateRotation() {
 		stopAutoplay();
+		syncToggle();
 		track.setAttribute('aria-live', enabled ? 'off' : 'polite');
 		startAutoplay();
 	}
@@ -81,11 +89,19 @@
 	dots.forEach(function (dot, i) {
 		dot.addEventListener('click', function () { go(i); });
 	});
+	if (toggle) {
+		toggle.addEventListener('click', function () {
+			paused = !paused;
+			enabled = !paused && !!settings.autoplay && !reduced.matches;
+			updateRotation();
+		});
+	}
 
-	hero.addEventListener('focusin', function () { focused = true; updateRotation(); });
+	// Focus on the play/pause button itself must not hold rotation.
+	hero.addEventListener('focusin', function (event) { focused = event.target !== toggle; updateRotation(); });
 	hero.addEventListener('focusout', function () {
 		window.setTimeout(function () {
-			focused = hero.contains(document.activeElement);
+			focused = hero.contains(document.activeElement) && document.activeElement !== toggle;
 			updateRotation();
 		}, 0);
 	});
@@ -104,6 +120,7 @@
 	});
 	}
 	initSliders();
-	function register(){if(window.elementorFrontend?.hooks)window.elementorFrontend.hooks.addAction('frontend/element_ready/gnn-slider.default',initSliders);}
-	if(window.elementorFrontend?.hooks)register();else if(window.jQuery)window.jQuery(window).on('elementor/frontend/init',register);
+	function hooks(){return window.elementorFrontend&&window.elementorFrontend.hooks;}
+	function register(){if(hooks())hooks().addAction('frontend/element_ready/gnn-slider.default',initSliders);}
+	if(hooks())register();else if(window.jQuery)window.jQuery(window).on('elementor/frontend/init',register);
 })();

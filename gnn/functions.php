@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.10.1' );
+define( 'GNN_VERSION', '2.11.0' );
 
 /**
  * Theme setup.
@@ -103,15 +103,20 @@ function gnn_scripts() {
 	wp_enqueue_style( 'gnn-main', get_template_directory_uri() . '/assets/css/main.css', array(), GNN_VERSION );
 	wp_enqueue_style( 'gnn-style', get_stylesheet_uri(), array( 'gnn-main' ), GNN_VERSION );
 	if ( is_rtl() ) {
-		wp_enqueue_style( 'gnn-rtl', get_template_directory_uri() . '/rtl.css', array( 'gnn-style' ), GNN_VERSION );
+		$gnn_rtl = get_template_directory_uri() . '/rtl.css';
+		wp_enqueue_style( 'gnn-rtl', $gnn_rtl, array( 'gnn-style' ), GNN_VERSION );
+		// Core's locale_stylesheet() (wp_head, priority 10) also prints
+		// get_locale_stylesheet_uri(), which on RTL sites resolves to the
+		// active stylesheet directory's rtl.css. Drop it only when that is this
+		// file, so a child theme's own rtl.css or a {locale}.css still loads.
+		if ( get_locale_stylesheet_uri() === $gnn_rtl ) {
+			remove_action( 'wp_head', 'locale_stylesheet' );
+		}
 	}
 
-	// Accent color override. wp_add_inline_style() guarantees this prints
-	// immediately after gnn-main in the DOM, so it always wins the cascade
-	// over main.css's own :root default — a plain <style> tag in wp_head
-	// (even at priority 0) can print BEFORE main.css and get overridden by it.
-	$gnn_accent  = sanitize_hex_color( get_theme_mod( 'gnn_accent_color', '#34d399' ) );
-	$gnn_accent  = $gnn_accent ? $gnn_accent : '#34d399';
+	// Layout tokens. wp_add_inline_style() prints right after main.css, so
+	// these always win over its own :root defaults. Accent tokens are
+	// emitted once, by gnn_brand_design_tokens() (inc/design-system.php).
 	$gnn_top_pad = max( 0, min( 200, (int) gnn_layout_value( 'content_top_padding' ) ) );
 	$gnn_bot_pad = max( 0, min( 300, (int) gnn_layout_value( 'content_bottom_padding' ) ) );
 
@@ -128,7 +133,7 @@ function gnn_scripts() {
 
 	wp_add_inline_style(
 		'gnn-main',
-		':root{--accent:' . esc_html( $gnn_accent ) . ';--gnn-content-top-pad:' . $gnn_top_pad . 'px;--gnn-content-bottom-pad:' . $gnn_bot_pad . 'px;' .
+		':root{--gnn-content-top-pad:' . $gnn_top_pad . 'px;--gnn-content-bottom-pad:' . $gnn_bot_pad . 'px;' .
 		'--gnn-page-thumb-h:' . $gnn_page_thumb_h . 'px;--gnn-page-thumb-fit:' . esc_html( $gnn_page_thumb_fit ) . ';--gnn-page-thumb-pos:' . esc_html( $gnn_page_thumb_pos ) . ';' .
 		'--gnn-post-thumb-h:' . $gnn_post_thumb_h . 'px;--gnn-post-thumb-fit:' . esc_html( $gnn_post_thumb_fit ) . ';--gnn-post-thumb-pos:' . esc_html( $gnn_post_thumb_pos ) . ';' .
 		'--gnn-sidebar-w:' . $gnn_sidebar_w . 'px;--gnn-boxed-width:' . $gnn_boxed_w . 'px;--gnn-full-width:' . $gnn_full_w . 'px;}'
@@ -140,16 +145,11 @@ function gnn_scripts() {
 
 	wp_enqueue_script( 'gnn-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), GNN_VERSION, true );
 
-	if ( is_front_page() ) {
+	// The hero carries its own data-autoplay / data-interval attributes, so no
+	// global config is localized here; content modules enqueue the same
+	// handle themselves when they render a slider.
+	if ( gnn_front_hero_renders() ) {
 		wp_enqueue_script( 'gnn-slider', get_template_directory_uri() . '/assets/js/slider.js', array(), GNN_VERSION, true );
-		wp_localize_script(
-			'gnn-slider',
-			'gnnSlider',
-			array(
-				'autoplay' => (bool) gnn_option( 'slider_autoplay' ),
-				'interval' => max( 2, (int) gnn_option( 'slider_interval' ) ) * 1000,
-			)
-		);
 	}
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -159,6 +159,25 @@ function gnn_scripts() {
 add_action( 'wp_enqueue_scripts', 'gnn_scripts' );
 
 /**
+ * Whether front-page.php will render the hero slider on this request
+ * (mirrors its template branches and template-parts/hero-slider.php).
+ *
+ * @return bool
+ */
+function gnn_front_hero_renders() {
+	if ( ! is_front_page() || 'page' !== get_option( 'show_on_front' ) ) {
+		return false;
+	}
+	if ( is_page_template( 'page-templates/tpl-architecture.php' ) || is_page_template( 'page-templates/tpl-starter.php' ) ) {
+		return false;
+	}
+	if ( 'none' === gnn_layout_value( 'hero_style' ) || ! function_exists( 'gnn_get_slides' ) ) {
+		return false;
+	}
+	return (bool) gnn_get_slides();
+}
+
+/**
  * Defer the theme's own scripts (they attach listeners; order is irrelevant).
  *
  * @param string $tag    The script tag HTML.
@@ -166,7 +185,7 @@ add_action( 'wp_enqueue_scripts', 'gnn_scripts' );
  * @return string
  */
 function gnn_defer_scripts( $tag, $handle ) {
-	if ( in_array( $handle, array( 'gnn-theme', 'gnn-slider' ), true ) && false === strpos( $tag, ' defer' ) ) {
+	if ( in_array( $handle, array( 'gnn-theme', 'gnn-slider', 'gnn-layout-geometry' ), true ) && false === strpos( $tag, ' defer' ) ) {
 		$tag = str_replace( ' src=', ' defer src=', $tag );
 	}
 	return $tag;
@@ -257,6 +276,70 @@ function gnn_pingback_header() {
 }
 add_action( 'wp_head', 'gnn_pingback_header' );
 
+/**
+ * Whether block patterns are registered on init: wp-admin (editors, AJAX) and WP-CLI.
+ *
+ * @return bool
+ */
+function gnn_block_patterns_eager() {
+	return is_admin() || ( defined( 'WP_CLI' ) && WP_CLI );
+}
+
+/**
+ * Pattern callbacks deferred outside wp-admin, keyed by their original init priority.
+ *
+ * @param callable|null $callback Callback to record.
+ * @param int           $priority Original init priority.
+ * @return array
+ */
+function gnn_deferred_block_patterns( $callback = null, $priority = 10 ) {
+	static $callbacks = array();
+	if ( null !== $callback ) {
+		$callbacks[ $priority ][] = $callback;
+		ksort( $callbacks );
+	}
+	return $callbacks;
+}
+
+/**
+ * Register a pattern callback where patterns are read. Visitor pages skip the markup;
+ * REST requests (the editor inserter) register on rest_api_init, since REST_REQUEST
+ * is not known yet on init.
+ *
+ * @param callable $callback Pattern registration callback.
+ * @param int      $priority Hook priority.
+ */
+function gnn_add_block_patterns( $callback, $priority = 10 ) {
+	if ( gnn_block_patterns_eager() ) {
+		add_action( 'init', $callback, $priority );
+		return;
+	}
+	gnn_deferred_block_patterns( $callback, $priority );
+	add_action( 'rest_api_init', $callback, $priority );
+}
+
+/**
+ * A core/pattern block that references a GNN pattern still renders on visitor pages.
+ *
+ * @param string|null $pre_render   Short-circuit output.
+ * @param array       $parsed_block Block being rendered.
+ * @return string|null
+ */
+function gnn_block_patterns_on_demand( $pre_render, $parsed_block ) {
+	$slug = isset( $parsed_block['blockName'], $parsed_block['attrs']['slug'] ) && 'core/pattern' === $parsed_block['blockName'] ? (string) $parsed_block['attrs']['slug'] : '';
+	if ( 0 === strpos( $slug, 'gnn/' ) && class_exists( 'WP_Block_Patterns_Registry' ) && ! WP_Block_Patterns_Registry::get_instance()->is_registered( $slug ) ) {
+		foreach ( gnn_deferred_block_patterns() as $callbacks ) {
+			foreach ( $callbacks as $callback ) {
+				call_user_func( $callback );
+			}
+		}
+	}
+	return $pre_render;
+}
+if ( ! gnn_block_patterns_eager() ) {
+	add_filter( 'pre_render_block', 'gnn_block_patterns_on_demand', 10, 2 );
+}
+
 require get_template_directory() . '/inc/blog.php';
 require get_template_directory() . '/inc/platform.php';
 require get_template_directory() . '/inc/site-platform.php';
@@ -268,12 +351,10 @@ require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/starters.php';
 require get_template_directory() . '/inc/architecture.php';
 require get_template_directory() . '/inc/starter-layouts.php';
-require get_template_directory() . '/inc/starter-editors.php';
 require get_template_directory() . '/inc/content-modules.php';
-require get_template_directory() . '/inc/starter-maintenance.php';
-require get_template_directory() . '/inc/demo-site.php';
+// Hooked here, after content-modules.php, to keep the frontend stylesheet order.
+add_action( 'wp_enqueue_scripts', 'gnn_demo_site_styles', 17 );
 require get_template_directory() . '/inc/configuration.php';
-require get_template_directory() . '/inc/portability.php';
 require get_template_directory() . '/inc/options.php';
 require get_template_directory() . '/inc/asset-compatibility.php';
 require get_template_directory() . '/inc/typography.php';
@@ -284,12 +365,32 @@ if ( is_admin() ) {
 	require get_template_directory() . '/inc/workspace.php';
 	require get_template_directory() . '/inc/import-preview.php';
 	require get_template_directory() . '/inc/admin-screens.php';
-	require get_template_directory() . '/inc/site-reset.php';
-	require get_template_directory() . '/inc/demo-reset.php';
+	require get_template_directory() . '/inc/demo/reset-engine.php';
+	require get_template_directory() . '/inc/demo/site-reset.php';
+	require get_template_directory() . '/inc/demo/demo-reset.php';
 }
-require get_template_directory() . '/inc/demo-package.php';
-require get_template_directory() . '/inc/demo-package-import.php';
-require get_template_directory() . '/inc/demo-package-admin.php';
+// Starter, demo and package tools run only from wp-admin (including AJAX and admin-post),
+// WP-Cron (package expiry) and WP-CLI; visitor and REST requests never call them.
+if ( is_admin() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
+	require get_template_directory() . '/inc/starter-editors.php';
+	require get_template_directory() . '/inc/starter-maintenance.php';
+	require get_template_directory() . '/inc/demo/demo-site.php';
+	require get_template_directory() . '/inc/portability.php';
+	require get_template_directory() . '/inc/demo/demo-package.php';
+	require get_template_directory() . '/inc/demo/demo-package-import.php';
+	require get_template_directory() . '/inc/demo/demo-package-admin.php';
+	require get_template_directory() . '/inc/demo/demo-import.php';
+} else {
+	// ALTERNATE_WP_CRON runs due events inside an ordinary request; load the expiry handler first.
+	add_action(
+		'gnn_package_expire',
+		function () {
+			require_once get_template_directory() . '/inc/demo/demo-package.php';
+			require_once get_template_directory() . '/inc/demo/demo-package-admin.php';
+		},
+		9
+	);
+}
 // Theme updates are also checked by WP-Cron and WP-CLI outside wp-admin.
 require get_template_directory() . '/inc/updater.php';
 require get_template_directory() . '/inc/template-tags.php';
@@ -302,7 +403,6 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/slider.php';
 require get_template_directory() . '/inc/page-meta.php';
 require get_template_directory() . '/inc/patterns.php';
-require get_template_directory() . '/inc/demo-import.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/inc/woocommerce.php';
