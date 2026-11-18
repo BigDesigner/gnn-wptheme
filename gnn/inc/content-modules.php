@@ -224,7 +224,7 @@ function gnn_module_attributes() {
 		),
 		'limit'         => array(
 			'type'    => 'integer',
-			'default' => 12,
+			'default' => 0,
 		),
 		'source'        => array(
 			'type'    => 'string',
@@ -357,11 +357,13 @@ add_action( 'admin_enqueue_scripts', 'gnn_module_admin_assets' );
  * @param string $taxonomy Category taxonomy.
  */
 function gnn_collection_query( $attrs, $type, $taxonomy ) {
-	$args = array(
+	$requested_limit = absint( $attrs['limit'] ?? 0 );
+	$per_page        = $requested_limit ? $requested_limit : absint( gnn_option( 'portfolio_per_page' ) );
+	$args            = array(
 		'post_type'      => $type,
 		'post_status'    => 'publish',
 		'has_password'   => false,
-		'posts_per_page' => max( 1, min( 48, absint( $attrs['limit'] ?? 12 ) ) ),
+		'posts_per_page' => max( 1, min( 48, $per_page ) ),
 		'orderby'        => array(
 			'menu_order' => 'ASC',
 			'date'       => 'DESC',
@@ -447,7 +449,18 @@ function gnn_render_module( $module, $attrs = array() ) {
  */
 function gnn_collection_filter_select( $base, $param, $terms, $selected, $field_id = '' ) {
 	$field_id = $field_id ? $field_id : wp_unique_id( 'gnn-module-filter-' );
-	$html     = '<form class="gnn-module-filter-form" method="get" action="' . esc_url( $base ) . '"><label class="screen-reader-text" for="' . esc_attr( $field_id ) . '">' . esc_html__( 'Category', 'gnn' ) . '</label><select id="' . esc_attr( $field_id ) . '" class="gnn-module-filter-select" name="' . esc_attr( $param ) . '"><option value="0">' . esc_html__( 'All categories', 'gnn' ) . '</option>';
+	$query    = wp_parse_url( $base, PHP_URL_QUERY );
+	$hidden   = '';
+	if ( is_string( $query ) && '' !== $query ) {
+		parse_str( $query, $base_args );
+		unset( $base_args[ $param ], $base_args['gnn_products_page'], $base_args['gnn_projects_page'] );
+		foreach ( $base_args as $key => $val ) {
+			if ( is_scalar( $val ) && '' !== (string) $key ) {
+				$hidden .= '<input type="hidden" name="' . esc_attr( (string) $key ) . '" value="' . esc_attr( (string) $val ) . '">';
+			}
+		}
+	}
+	$html = '<form class="gnn-module-filter-form" method="get" action="' . esc_url( $base ) . '">' . $hidden . '<label class="screen-reader-text" for="' . esc_attr( $field_id ) . '">' . esc_html__( 'Category', 'gnn' ) . '</label><select id="' . esc_attr( $field_id ) . '" class="gnn-module-filter-select" name="' . esc_attr( $param ) . '"><option value="0">' . esc_html__( 'All categories', 'gnn' ) . '</option>';
 	foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
 		$html .= '<option value="' . (int) $term->term_id . '"' . selected( $selected, $term->term_id, false ) . '>' . esc_html( $term->name ) . '</option>';
 	}
@@ -469,12 +482,14 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		if ( ! class_exists( 'WooCommerce' ) ) {
 			return current_user_can( 'manage_options' ) ? '<p>' . esc_html__( 'Activate WooCommerce to display the live product collection.', 'gnn' ) . '</p>' : '';
 		}
-		$category = ! empty( $attrs['category'] ) ? get_term( absint( $attrs['category'] ), 'product_cat' ) : null;
-		$category = $category && ! is_wp_error( $category ) ? $category : null;
+		$products_limit = absint( $attrs['limit'] ?? 0 );
+		$products_limit = max( 1, min( 24, $products_limit ? $products_limit : 12 ) );
+		$category       = ! empty( $attrs['category'] ) ? get_term( absint( $attrs['category'] ), 'product_cat' ) : null;
+		$category       = $category && ! is_wp_error( $category ) ? $category : null;
 		if ( 'categories' === ( $attrs['source'] ?? '' ) ) {
-			return do_shortcode( '[product_categories limit="' . max( 1, min( 24, absint( $attrs['limit'] ?? 8 ) ) ) . '" columns="' . $columns . '" hide_empty="1"' . ( $category ? ' ids="' . (int) $category->term_id . '"' : '' ) . ']' );
+			return do_shortcode( '[product_categories limit="' . $products_limit . '" columns="' . $columns . '" hide_empty="1"' . ( $category ? ' ids="' . (int) $category->term_id . '"' : '' ) . ']' );
 		}
-		return do_shortcode( '[products limit="' . max( 1, min( 24, absint( $attrs['limit'] ?? 8 ) ) ) . '" columns="' . $columns . '" visibility="visible"' . ( $category ? ' category="' . sanitize_title( $category->slug ) . '"' : '' ) . ']' );
+		return do_shortcode( '[products limit="' . $products_limit . '" columns="' . $columns . '" visibility="visible"' . ( $category ? ' category="' . sanitize_title( $category->slug ) . '"' : '' ) . ']' );
 	}
 	if ( 'slider' === $module ) {
 		if ( ! wp_script_is( 'gnn-slider', 'registered' ) ) {
@@ -489,6 +504,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 			array(
 				'embedded' => true,
 				'group'    => absint( $attrs['category'] ?? 0 ),
+				'limit'    => absint( $attrs['limit'] ?? 0 ),
 			)
 		);
 		return ob_get_clean();
@@ -527,7 +543,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 				$html .= '</nav>';
 			}
 		}
-		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '">';
+		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '" style="--gnn-module-columns:' . $columns . ';">';
 		foreach ( $query->posts as $project ) {
 			$url   = get_permalink( $project );
 			$terms = get_the_terms( $project, 'gnn_project_category' );
@@ -583,7 +599,7 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 				$html .= '</nav>';
 			}
 		}
-		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '">';
+		$html .= '<div id="' . esc_attr( $instance ) . '" class="gnn-module-grid gnn-module-columns-' . $columns . '" style="--gnn-module-columns:' . $columns . ';">';
 		foreach ( $query->posts as $product ) {
 			$url   = get_permalink( $product );
 			$terms = get_the_terms( $product, 'gnn_product_category' );
@@ -606,11 +622,13 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		return $html . '</section>';
 	}
 	if ( 'gallery' === $module ) {
-		$instance = wp_unique_id( 'gnn-gallery-' );
-		$record   = absint( $attrs['record'] ?? 0 );
-		$source   = $attrs['source'] ?? 'projects';
-		$ids      = array();
-		if ( in_array( $source, array( 'album', 'project', 'product' ), true ) ) {
+		$instance      = wp_unique_id( 'gnn-gallery-' );
+		$record        = absint( $attrs['record'] ?? 0 );
+		$source        = $attrs['source'] ?? 'projects';
+		$gallery_limit = absint( $attrs['limit'] ?? 0 );
+		$single_record = in_array( $source, array( 'album', 'project', 'product' ), true );
+		$ids           = array();
+		if ( $single_record ) {
 			$expected = 'album' === $source ? 'gnn_album' : ( 'product' === $source ? 'gnn_product' : 'gnn_project' );
 			if ( $record && get_post_type( $record ) === $expected && 'publish' === get_post_status( $record ) && ! post_password_required( $record ) ) {
 				$ids = gnn_gallery_ids( get_post_meta( $record, '_gnn_gallery_ids', true ) );
@@ -622,9 +640,12 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 			}
 			$ids = gnn_gallery_ids( $ids );
 		}
-		$html            = '<div data-close-label="' . esc_attr__( 'Close', 'gnn' ) . '" class="gnn-content-module gnn-module-gallery gnn-module-grid gnn-module-columns-' . $columns . '">';
+		$html            = '<div data-close-label="' . esc_attr__( 'Close', 'gnn' ) . '" class="gnn-content-module gnn-module-gallery gnn-module-grid gnn-module-columns-' . $columns . '" style="--gnn-module-columns:' . $columns . ';">';
 		$rendered_images = 0;
 		foreach ( $ids as $id ) {
+			if ( $single_record && $gallery_limit > 0 && $rendered_images >= $gallery_limit ) {
+				break;
+			}
 			if ( ! wp_attachment_is_image( $id ) || ! wp_get_attachment_image_url( $id, 'full' ) ) {
 				continue;
 			}

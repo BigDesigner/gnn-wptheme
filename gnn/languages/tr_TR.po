@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.11.0\n"
+"Project-Id-Version: GNN 2.11.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 09:26+0000\n"
-"PO-Revision-Date: 2026-11-17 09:26+0000\n"
+"POT-Creation-Date: 2026-11-18 06:24+0000\n"
+"PO-Revision-Date: 2026-11-18 06:24+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -809,9 +809,6 @@ msgstr "Sütun aralığı"
 msgid "Columns"
 msgstr "Sütunlar"
 
-msgid "Columns (0 uses theme panel)"
-msgstr "Sütunlar (0: tema panelini kullan)"
-
 msgid "Comments are closed."
 msgstr "Yorumlar kapalı."
 
@@ -1039,6 +1036,9 @@ msgstr "Gün ışığı, gün boyunca mekânın hissini şekillendirir. Yönlenm
 
 msgid "Debug"
 msgstr "Hata ayıklama"
+
+msgid "Default columns"
+msgstr "Varsayılan sütun"
 
 msgid "Default mode"
 msgstr "Varsayılan mod"
@@ -2309,6 +2309,9 @@ msgstr "Orijinal oranlar"
 msgid "Other block ID"
 msgstr "Diğer blok kimliği"
 
+msgid "Other block ID overrides the selected block."
+msgstr "Diğer blok kimliği seçilen bloğun önüne geçer."
+
 msgid "Our interests span homes, workplaces, public buildings and interior environments. We value simple ideas, careful coordination and an honest use of materials."
 msgstr "Çalışma alanımız konutları, çalışma ortamlarını, kamu yapılarını ve iç mekânları kapsıyor. Sade fikirlere, dikkatli koordinasyona ve malzemelerin doğal kullanımına değer veriyoruz."
 
@@ -2435,11 +2438,11 @@ msgstr "Portföy"
 msgid "Portfolio / 2 Columns"
 msgstr "Portföy / 2 Sütun"
 
+msgid "Portfolio and catalog columns"
+msgstr "Portföy ve katalog sütunları"
+
 msgid "Portfolio and gallery spacing"
 msgstr "Portföy ve galeri aralığı"
-
-msgid "Portfolio columns"
-msgstr "Portföy sütunları"
 
 msgid "Portfolio image fit"
 msgstr "Portföy görsel yerleşimi"
@@ -2572,9 +2575,6 @@ msgstr "Proje, ürün veya albüm"
 
 msgid "Projects"
 msgstr "Projeler"
-
-msgid "Projects per page"
-msgstr "Sayfa başına proje"
 
 msgid "Protected: content or metadata differs from the imported version."
 msgstr "Korunuyor: içerik veya meta verileri içe aktarılan sürümden farklı."

@@ -1160,7 +1160,7 @@ function gnn_panel_render() {
 									<div class="gnn-color-pair__item">
 										<span class="gnn-color-pair__tag"><?php esc_html_e( 'Light', 'gnn' ); ?></span>
 										<div class="gnn-color-field">
-											<input type="text" id="gnn-accent_light" aria-label="<?php esc_attr_e( 'Accent color — Light', 'gnn' ); ?>" name="gnn_options[accent_light]" value="<?php echo esc_attr( '' !== $gnn_accent_light ? $gnn_accent_light : $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $gnn_accent_dark ); ?>" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
+											<input type="text" id="gnn-accent_light" aria-label="<?php esc_attr_e( 'Accent color — Light', 'gnn' ); ?>" name="gnn_options[accent_light]" value="<?php echo esc_attr( $gnn_accent_light ); ?>" placeholder="<?php echo esc_attr( $gnn_accent_dark ); ?>" class="gnn-color-picker" data-default-color="<?php echo esc_attr( $gnn_accent_dark ); ?>" maxlength="7" pattern="^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$">
 											<button type="button" class="button gnn-color-clear" data-target="gnn-accent_light"><?php esc_html_e( 'Clear', 'gnn' ); ?></button>
 										</div>
 									</div>

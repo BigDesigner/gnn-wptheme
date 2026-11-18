@@ -8,7 +8,7 @@
 
 if ( empty( $args['embedded'] ) && 'none' === gnn_layout_value( 'hero_style' ) ) {
 	return; }
-$gnn_slides = gnn_get_slides( $args['group'] ?? null );
+$gnn_slides = gnn_get_slides( $args['group'] ?? null, $args['limit'] ?? 0 );
 
 if ( empty( $gnn_slides ) ) {
 	return;

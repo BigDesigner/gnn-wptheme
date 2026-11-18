@@ -160,8 +160,8 @@ function gnn_platform_schema() {
 					'architecture' => __( 'Architecture', 'gnn' ),
 				),
 			),
-			'portfolio_columns'       => array( __( 'Portfolio columns', 'gnn' ), 'number', 2, 'pages', 1, 4 ),
-			'portfolio_per_page'      => array( __( 'Projects per page', 'gnn' ), 'number', 12, 'pages', 1, 48 ),
+			'portfolio_columns'       => array( __( 'Portfolio and catalog columns', 'gnn' ), 'number', 2, 'pages', 1, 4 ),
+			'portfolio_per_page'      => array( __( 'Items per page', 'gnn' ), 'number', 12, 'pages', 1, 48 ),
 			'portfolio_image_ratio'   => array(
 				__( 'Portfolio image ratio', 'gnn' ),
 				'select',

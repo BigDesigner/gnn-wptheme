@@ -69,10 +69,12 @@ function gnn_button_styles_inline_css() {
 			if ( $color ) {
 				$hover .= $property . ':' . $color . ';'; }
 		}
-		if ( $hover ) {
-			$css .= '.' . gnn_button_style_class( $slot ) . ':hover,.' . gnn_button_style_class( $slot ) . ':focus-visible{' . $hover . '}'; }
+		$cls = gnn_button_style_class( $slot );
 		if ( '' !== $rule ) {
-			$css .= '.' . gnn_button_style_class( $slot ) . '{' . $rule . '}';
+			$css .= '.' . $cls . ':not(.elementor-widget),.elementor .' . $cls . ' .elementor-button{' . $rule . '}';
+		}
+		if ( $hover ) {
+			$css .= '.' . $cls . ':not(.elementor-widget):hover,.' . $cls . ':not(.elementor-widget):focus-visible,.elementor .' . $cls . ' .elementor-button:hover,.elementor .' . $cls . ' .elementor-button:focus-visible{' . $hover . '}';
 		}
 	}
 	if ( '' !== $css ) {

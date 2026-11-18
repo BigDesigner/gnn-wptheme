@@ -62,24 +62,26 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 	/** Shared, server-validated query controls. */
 	protected function register_controls() {
 		$this->start_controls_section( 'query', array( 'label' => __( 'Central content source', 'gnn' ) ) );
-		$this->add_control(
-			'columns',
-			array(
-				'label'   => __( 'Columns (0 uses theme panel)', 'gnn' ),
-				'type'    => \Elementor\Controls_Manager::NUMBER,
-				'default' => 0,
-				'min'     => 0,
-				'max'     => 4,
-			)
-		);
+		if ( 'slider' !== $this->module ) {
+			$this->add_control(
+				'columns',
+				array(
+					'label'   => __( 'Default columns', 'gnn' ),
+					'type'    => \Elementor\Controls_Manager::NUMBER,
+					'default' => 0,
+					'min'     => 0,
+					'max'     => 4,
+				)
+			);
+		}
 		$this->add_control(
 			'limit',
 			array(
 				'label'   => __( 'Items per page', 'gnn' ),
 				'type'    => \Elementor\Controls_Manager::NUMBER,
-				'default' => 12,
+				'default' => 'products' === $this->module ? 12 : 0,
 				'min'     => 0,
-				'max'     => 48,
+				'max'     => 'products' === $this->module ? 24 : 48,
 			)
 		);
 		$taxonomy = 'slider' === $this->module ? 'gnn_slide_group' : ( 'products' === $this->module ? 'product_cat' : ( 'catalog' === $this->module ? 'gnn_product_category' : 'gnn_project_category' ) );
@@ -243,7 +245,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 						'3' => '3',
 						'4' => '4',
 					),
-					'selectors' => array( '{{WRAPPER}} .gnn-module-grid' => 'grid-template-columns:repeat({{VALUE}},minmax(0,1fr));' ),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-grid' => '--gnn-grid-columns:{{VALUE}};' ),
 				)
 			);
 			$this->add_responsive_control(
@@ -266,7 +268,7 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 					'label'     => __( 'Image ratio', 'gnn' ),
 					'type'      => \Elementor\Controls_Manager::SELECT,
 					'options'   => array(
-						''     => __( 'Theme default', 'gnn' ),
+						''     => 'gallery' === $this->module ? __( 'Natural', 'gnn' ) : __( 'Theme default', 'gnn' ),
 						'auto' => __( 'Natural', 'gnn' ),
 						'1/1'  => '1:1',
 						'4/3'  => '4:3',

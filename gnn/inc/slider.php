@@ -254,10 +254,12 @@ add_action( 'admin_enqueue_scripts', 'gnn_slide_admin_assets' );
  * Fetch published slides in display order for the selected or embedded group.
  *
  * @param int|null $group Group ID, or current page setting.
+ * @param int      $limit Optional maximum slide count (0 = all).
  * @return array[]
  */
-function gnn_get_slides( $group = null ) {
+function gnn_get_slides( $group = null, $limit = 0 ) {
 	$group = null === $group ? absint( gnn_layout_value( 'hero_group' ) ) : absint( $group );
+	$limit = absint( $limit );
 	$query = new WP_Query(
 		array(
 			'post_type'        => 'gnn_slide',
@@ -271,7 +273,7 @@ function gnn_get_slides( $group = null ) {
 				),
 			) : array(),
 			'post_status'      => 'publish',
-			'posts_per_page'   => -1,
+			'posts_per_page'   => $limit ? min( 48, $limit ) : -1,
 			'orderby'          => array(
 				'menu_order' => 'ASC',
 				'ID'         => 'ASC',

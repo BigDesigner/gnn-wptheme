@@ -1749,3 +1749,10 @@ TRANSLATIONS.update({'Accent color — Dark': 'Vurgu rengi — Koyu', 'Accent co
 # 2.11.0 audit fixes.
 TRANSLATIONS.update({'Settings could not be saved. Reload and try again.': 'Ayarlar kaydedilemedi. Sayfayı yenileyip yeniden deneyin.', 'The snapshot was not restored.': 'Anlık görüntü geri yüklenmedi.', 'The site is under maintenance.': 'Site bakımda.', 'Sorry, you are not allowed to do that.': 'Bu işlem için yetkiniz yok.', 'Pause slides': 'Slaytları duraklat'})
 TRANSLATIONS.update({'The demo package changed after it was checked. Installation stopped. Upload the package again.': 'Demo paketi kontrol edildikten sonra değişti. Kurulum durduruldu. Paketi yeniden yükleyin.', 'The package settings could not be applied.': 'Paket ayarları uygulanamadı.', 'Packages can contain scripts. Upload only packages from sources you trust.': 'Paketler betik içerebilir. Yalnızca güvendiğiniz kaynaklardan gelen paketleri yükleyin.'})
+
+# 2.11.1 control fixes.
+TRANSLATIONS.update({
+    'Default columns': 'Varsayılan sütun',
+    'Portfolio and catalog columns': 'Portföy ve katalog sütunları',
+    'Other block ID overrides the selected block.': 'Diğer blok kimliği seçilen bloğun önüne geçer.',
+})

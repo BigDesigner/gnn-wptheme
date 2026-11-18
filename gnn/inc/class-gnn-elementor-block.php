@@ -51,6 +51,16 @@ class GNN_Elementor_Block extends \Elementor\Widget_Base {
 			)
 		);
 		$this->add_control(
+			'shared_block_override_notice',
+			array(
+				'type'      => \Elementor\Controls_Manager::RAW_HTML,
+				'raw'       => '<p class="elementor-control-field-description">' . esc_html__( 'Other block ID overrides the selected block.', 'gnn' ) . '</p>',
+				'condition' => array(
+					'shared_block_id!' => array( '', 0, '0' ),
+				),
+			)
+		);
+		$this->add_control(
 			'shared_block_id',
 			array(
 				'label'   => __( 'Other block ID', 'gnn' ),

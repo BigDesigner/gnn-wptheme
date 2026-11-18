@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.11.0\n"
+"Project-Id-Version: GNN 2.11.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 09:26+0000\n"
-"PO-Revision-Date: 2026-11-17 09:26+0000\n"
+"POT-Creation-Date: 2026-11-18 06:24+0000\n"
+"PO-Revision-Date: 2026-11-18 06:24+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -288,7 +288,7 @@ msgstr ""
 msgid "Activate WooCommerce and complete store setup before importing GNNcommerce."
 msgstr ""
 
-#: inc/content-modules.php:470
+#: inc/content-modules.php:483
 msgid "Activate WooCommerce to display the live product collection."
 msgstr ""
 
@@ -418,8 +418,8 @@ msgstr ""
 msgid "All Slides"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:86
-#: inc/content-modules.php:450
+#: inc/class-gnn-elementor-module.php:88
+#: inc/content-modules.php:463
 msgid "All categories"
 msgstr ""
 
@@ -435,12 +435,12 @@ msgstr ""
 msgid "All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed."
 msgstr ""
 
-#: inc/content-modules.php:579
+#: inc/content-modules.php:595
 msgid "All products"
 msgstr ""
 
 #: inc/architecture.php:308
-#: inc/content-modules.php:523
+#: inc/content-modules.php:539
 msgid "All projects"
 msgstr ""
 
@@ -511,7 +511,7 @@ msgstr ""
 msgid "Answer the question here. Replace this placeholder text with your own content."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:230
+#: inc/class-gnn-elementor-module.php:232
 msgid "Appearance"
 msgstr ""
 
@@ -648,7 +648,7 @@ msgstr ""
 msgid "Archives"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:203
+#: inc/class-gnn-elementor-module.php:205
 msgid "Ascending"
 msgstr ""
 
@@ -723,7 +723,7 @@ msgstr ""
 msgid "Background image (2× retina)"
 msgstr ""
 
-#: inc/frontend.php:240
+#: inc/frontend.php:244
 msgid "Badge (e.g. New, Hot, Sale)"
 msgstr ""
 
@@ -939,7 +939,7 @@ msgid "Carefully placed openings bring natural light deep into the plan. Durable
 msgstr ""
 
 #: header.php:98
-#: inc/frontend.php:284
+#: inc/frontend.php:288
 #: inc/platform.php:519
 msgid "Cart"
 msgstr ""
@@ -954,11 +954,11 @@ msgid "Categories"
 msgstr ""
 
 #: archive.php:43
-#: inc/content-modules.php:450
+#: inc/content-modules.php:463
 msgid "Category"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:100
+#: inc/class-gnn-elementor-module.php:102
 msgid "Category or slider group"
 msgstr ""
 
@@ -1035,7 +1035,7 @@ msgstr ""
 msgid "Choose a published block."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:157
+#: inc/class-gnn-elementor-module.php:159
 msgid "Choose a published project, product or album"
 msgstr ""
 
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #: inc/admin-panel.php:236
 #: inc/admin-screens.php:64
-#: inc/content-modules.php:625
+#: inc/content-modules.php:643
 msgid "Close"
 msgstr ""
 
@@ -1126,12 +1126,8 @@ msgstr ""
 msgid "Column gap"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:237
+#: inc/class-gnn-elementor-module.php:239
 msgid "Columns"
-msgstr ""
-
-#: inc/class-gnn-elementor-module.php:68
-msgid "Columns (0 uses theme panel)"
 msgstr ""
 
 #: comments.php:46
@@ -1235,7 +1231,7 @@ msgstr ""
 msgid "Contact with social links"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:287
+#: inc/class-gnn-elementor-module.php:289
 #: inc/platform.php:185
 msgid "Contain"
 msgstr ""
@@ -1301,7 +1297,7 @@ msgstr ""
 msgid "Copyright text"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:295
+#: inc/class-gnn-elementor-module.php:297
 #: inc/site-platform.php:47
 msgid "Corner radius"
 msgstr ""
@@ -1318,7 +1314,7 @@ msgstr ""
 msgid "Courtyard residence concept illustration"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:286
+#: inc/class-gnn-elementor-module.php:288
 #: inc/platform.php:184
 msgid "Cover"
 msgstr ""
@@ -1450,7 +1446,7 @@ msgstr ""
 msgid "Database inventory is unavailable."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:190
+#: inc/class-gnn-elementor-module.php:192
 msgid "Date"
 msgstr ""
 
@@ -1460,6 +1456,10 @@ msgstr ""
 
 #: inc/admin-screens.php:521
 msgid "Debug"
+msgstr ""
+
+#: inc/class-gnn-elementor-module.php:69
+msgid "Default columns"
 msgstr ""
 
 #: inc/admin-panel.php:927
@@ -1516,7 +1516,7 @@ msgstr ""
 msgid "Demo package"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:204
+#: inc/class-gnn-elementor-module.php:206
 msgid "Descending"
 msgstr ""
 
@@ -1631,7 +1631,7 @@ msgstr ""
 msgid "Download support summary"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:115
+#: inc/class-gnn-elementor-module.php:117
 msgid "Dropdown"
 msgstr ""
 
@@ -1771,11 +1771,11 @@ msgstr ""
 msgid "Exclude from search"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:211
+#: inc/class-gnn-elementor-module.php:213
 msgid "Excluded product IDs"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:211
+#: inc/class-gnn-elementor-module.php:213
 msgid "Excluded project IDs"
 msgstr ""
 
@@ -1784,7 +1784,7 @@ msgstr ""
 msgid "Existing layout"
 msgstr ""
 
-#: inc/content-modules.php:639
+#: inc/content-modules.php:660
 msgid "Expand: %s"
 msgstr ""
 
@@ -1907,11 +1907,11 @@ msgstr ""
 msgid "Filled"
 msgstr ""
 
-#: inc/content-modules.php:454
+#: inc/content-modules.php:467
 msgid "Filter"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:110
+#: inc/class-gnn-elementor-module.php:112
 msgid "Filter display"
 msgstr ""
 
@@ -2185,11 +2185,11 @@ msgstr ""
 msgid "Gallery images"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:146
+#: inc/class-gnn-elementor-module.php:148
 msgid "Gallery source"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:252
+#: inc/class-gnn-elementor-module.php:254
 msgid "Gap"
 msgstr ""
 
@@ -2401,7 +2401,7 @@ msgstr ""
 msgid "History management"
 msgstr ""
 
-#: inc/frontend.php:294
+#: inc/frontend.php:298
 #: inc/platform.php:513
 #: inc/starter-editors.php:329
 msgid "Home"
@@ -2451,7 +2451,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-#: inc/content-modules.php:636
+#: inc/content-modules.php:657
 msgid "Image"
 msgstr ""
 
@@ -2460,7 +2460,7 @@ msgstr ""
 msgid "Image + text"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:282
+#: inc/class-gnn-elementor-module.php:284
 #: inc/slider.php:176
 msgid "Image fit"
 msgstr ""
@@ -2470,7 +2470,7 @@ msgstr ""
 msgid "Image logo"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:266
+#: inc/class-gnn-elementor-module.php:268
 msgid "Image ratio"
 msgstr ""
 
@@ -2500,7 +2500,7 @@ msgstr ""
 msgid "Includes site content, media, menus and appearance. Accounts, comments, orders and integration keys are excluded."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:152
+#: inc/class-gnn-elementor-module.php:154
 msgid "Independent album"
 msgstr ""
 
@@ -2625,7 +2625,8 @@ msgstr ""
 msgid "Invalid value for %s. No settings were changed."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:78
+#: inc/class-gnn-elementor-module.php:80
+#: inc/platform.php:164
 msgid "Items per page"
 msgstr ""
 
@@ -2741,7 +2742,7 @@ msgstr ""
 msgid "Line height (%)"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:114
+#: inc/class-gnn-elementor-module.php:116
 msgid "Links"
 msgstr ""
 
@@ -2959,7 +2960,7 @@ msgstr ""
 msgid "Menu layout"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:192
+#: inc/class-gnn-elementor-module.php:194
 msgid "Menu order"
 msgstr ""
 
@@ -2996,7 +2997,7 @@ msgstr ""
 msgid "Mobile breakpoint"
 msgstr ""
 
-#: inc/frontend.php:291
+#: inc/frontend.php:295
 msgid "Mobile navigation"
 msgstr ""
 
@@ -3030,7 +3031,8 @@ msgstr ""
 msgid "Native theme / builder fallback"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:270
+#: inc/class-gnn-elementor-module.php:271
+#: inc/class-gnn-elementor-module.php:272
 msgid "Natural"
 msgstr ""
 
@@ -3063,12 +3065,12 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: inc/content-modules.php:713
+#: inc/content-modules.php:734
 msgid "Next product"
 msgstr ""
 
 #: inc/architecture.php:352
-#: inc/content-modules.php:690
+#: inc/content-modules.php:711
 msgid "Next project"
 msgstr ""
 
@@ -3113,11 +3115,11 @@ msgstr ""
 msgid "No pending changes"
 msgstr ""
 
-#: inc/content-modules.php:593
+#: inc/content-modules.php:609
 msgid "No products have been published in this selection yet."
 msgstr ""
 
-#: inc/content-modules.php:537
+#: inc/content-modules.php:553
 msgid "No projects have been published in this selection yet."
 msgstr ""
 
@@ -3231,11 +3233,11 @@ msgstr ""
 msgid "Optional; required for lightbox viewing."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:199
+#: inc/class-gnn-elementor-module.php:201
 msgid "Order"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:185
+#: inc/class-gnn-elementor-module.php:187
 msgid "Order by"
 msgstr ""
 
@@ -3243,8 +3245,12 @@ msgstr ""
 msgid "Original proportions"
 msgstr ""
 
-#: inc/class-gnn-elementor-block.php:56
+#: inc/class-gnn-elementor-block.php:66
 msgid "Other block ID"
+msgstr ""
+
+#: inc/class-gnn-elementor-block.php:57
+msgid "Other block ID overrides the selected block."
 msgstr ""
 
 #: inc/architecture.php:332
@@ -3420,7 +3426,7 @@ msgstr ""
 
 #: inc/content-modules.php:18
 #: inc/content-modules.php:20
-#: inc/content-modules.php:510
+#: inc/content-modules.php:526
 msgid "Portfolio"
 msgstr ""
 
@@ -3430,12 +3436,12 @@ msgstr ""
 msgid "Portfolio / 2 Columns"
 msgstr ""
 
-#: inc/platform.php:189
-msgid "Portfolio and gallery spacing"
+#: inc/platform.php:163
+msgid "Portfolio and catalog columns"
 msgstr ""
 
-#: inc/platform.php:163
-msgid "Portfolio columns"
+#: inc/platform.php:189
+msgid "Portfolio and gallery spacing"
 msgstr ""
 
 #: inc/platform.php:179
@@ -3478,12 +3484,12 @@ msgstr ""
 msgid "Preview installed design"
 msgstr ""
 
-#: inc/content-modules.php:713
+#: inc/content-modules.php:734
 msgid "Previous product"
 msgstr ""
 
 #: inc/architecture.php:352
-#: inc/content-modules.php:690
+#: inc/content-modules.php:711
 msgid "Previous project"
 msgstr ""
 
@@ -3519,13 +3525,13 @@ msgstr ""
 msgid "Product advice"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:136
+#: inc/class-gnn-elementor-module.php:138
 #: inc/content-modules.php:91
-#: inc/content-modules.php:579
+#: inc/content-modules.php:595
 msgid "Product categories"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:100
+#: inc/class-gnn-elementor-module.php:102
 msgid "Product category"
 msgstr ""
 
@@ -3534,19 +3540,19 @@ msgstr ""
 msgid "Product code"
 msgstr ""
 
-#: inc/content-modules.php:712
+#: inc/content-modules.php:733
 msgid "Product navigation"
 msgstr ""
 
-#: inc/content-modules.php:597
+#: inc/content-modules.php:613
 msgid "Product pages"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:181
+#: inc/class-gnn-elementor-module.php:183
 msgid "Product selection"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:135
+#: inc/class-gnn-elementor-module.php:137
 #: inc/content-modules.php:63
 #: inc/content-modules.php:65
 msgid "Products"
@@ -3574,11 +3580,11 @@ msgstr ""
 
 #: inc/architecture.php:499
 #: inc/content-modules.php:46
-#: inc/content-modules.php:523
+#: inc/content-modules.php:539
 msgid "Project categories"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:149
+#: inc/class-gnn-elementor-module.php:151
 msgid "Project category"
 msgstr ""
 
@@ -3600,7 +3606,7 @@ msgstr ""
 msgid "Project location"
 msgstr ""
 
-#: inc/content-modules.php:689
+#: inc/content-modules.php:710
 msgid "Project navigation"
 msgstr ""
 
@@ -3608,11 +3614,11 @@ msgstr ""
 msgid "Project overview"
 msgstr ""
 
-#: inc/content-modules.php:541
+#: inc/content-modules.php:557
 msgid "Project pages"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:181
+#: inc/class-gnn-elementor-module.php:183
 msgid "Project selection"
 msgstr ""
 
@@ -3625,17 +3631,13 @@ msgstr ""
 msgid "Project year"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:172
+#: inc/class-gnn-elementor-module.php:174
 msgid "Project, product or album"
 msgstr ""
 
 #: inc/site-platform.php:27
 #: inc/site-platform.php:145
 msgid "Projects"
-msgstr ""
-
-#: inc/platform.php:164
-msgid "Projects per page"
 msgstr ""
 
 #: inc/starter-maintenance.php:198
@@ -3737,11 +3739,11 @@ msgstr ""
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:219
+#: inc/class-gnn-elementor-module.php:221
 msgid "Related products"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:219
+#: inc/class-gnn-elementor-module.php:221
 msgid "Related projects"
 msgstr ""
 
@@ -3962,7 +3964,7 @@ msgstr ""
 msgid "Scope WooCommerce assets to pages that need them"
 msgstr ""
 
-#: inc/frontend.php:195
+#: inc/frontend.php:199
 msgid "Scroll to top"
 msgstr ""
 
@@ -4009,7 +4011,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/content-modules.php:643
+#: inc/content-modules.php:664
 msgid "Select an album or publish projects with gallery images to populate this collection."
 msgstr ""
 
@@ -4174,7 +4176,7 @@ msgstr ""
 msgid "Show card excerpts"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:122
+#: inc/class-gnn-elementor-module.php:124
 msgid "Show category filters"
 msgstr ""
 
@@ -4335,11 +4337,11 @@ msgstr ""
 msgid "Single post layout and details"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:151
+#: inc/class-gnn-elementor-module.php:153
 msgid "Single product"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:150
+#: inc/class-gnn-elementor-module.php:152
 msgid "Single project"
 msgstr ""
 
@@ -4486,7 +4488,7 @@ msgstr ""
 msgid "Sticky header"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:132
+#: inc/class-gnn-elementor-module.php:134
 msgid "Store collection"
 msgstr ""
 
@@ -4737,7 +4739,7 @@ msgstr ""
 msgid "The selected slider group does not exist."
 msgstr ""
 
-#: inc/frontend.php:381
+#: inc/frontend.php:385
 msgid "The site is under maintenance."
 msgstr ""
 
@@ -4763,7 +4765,7 @@ msgid "The update package could not be prepared. The installed theme has not bee
 msgstr ""
 
 #: inc/admin-screens.php:513
-#: inc/frontend.php:304
+#: inc/frontend.php:308
 #: inc/platform.php:520
 msgid "Theme"
 msgstr ""
@@ -4854,7 +4856,7 @@ msgstr ""
 msgid "Time limit"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:191
+#: inc/class-gnn-elementor-module.php:193
 msgid "Title"
 msgstr ""
 
@@ -4862,7 +4864,7 @@ msgstr ""
 msgid "Title bar"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:310
+#: inc/class-gnn-elementor-module.php:312
 msgid "Title color"
 msgstr ""
 
@@ -4872,7 +4874,7 @@ msgid "Title over featured image"
 msgstr ""
 
 #: header.php:90
-#: inc/frontend.php:301
+#: inc/frontend.php:305
 msgid "Toggle dark / light mode"
 msgstr ""
 
@@ -5118,7 +5120,7 @@ msgstr ""
 msgid "We are a collaborative architecture studio interested in how places can support a better everyday life."
 msgstr ""
 
-#: inc/frontend.php:335
+#: inc/frontend.php:339
 msgid "We are performing scheduled maintenance. Please check back soon."
 msgstr ""
 

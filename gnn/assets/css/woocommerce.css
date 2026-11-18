@@ -22,11 +22,36 @@
 
 ul.products {
 	display: grid !important;
-	grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+	grid-template-columns: repeat(var(--gnn-grid-columns, var(--gnn-mobile-columns, var(--gnn-shop-columns, 4))), minmax(0, 1fr));
 	gap: 24px;
 	list-style: none;
 	margin: 36px 0 0 !important;
 	padding: 0 !important;
+}
+ul.products.columns-1 { --gnn-shop-columns: 1; }
+ul.products.columns-2 { --gnn-shop-columns: 2; }
+ul.products.columns-3 { --gnn-shop-columns: 3; }
+ul.products.columns-4 { --gnn-shop-columns: 4; }
+ul.products.columns-5 { --gnn-shop-columns: 5; }
+ul.products.columns-6 { --gnn-shop-columns: 6; }
+@media (min-width: 761px) and (max-width: 1024px) {
+	ul.products.columns-5,
+	ul.products.columns-6 { --gnn-mobile-columns: 3; }
+}
+@media (min-width: 541px) and (max-width: 760px) {
+	ul.products.columns-3,
+	ul.products.columns-4,
+	ul.products.columns-5,
+	ul.products.columns-6 { --gnn-mobile-columns: 2; }
+}
+@media (max-width: 540px) {
+	ul.products,
+	ul.products.columns-1,
+	ul.products.columns-2,
+	ul.products.columns-3,
+	ul.products.columns-4,
+	ul.products.columns-5,
+	ul.products.columns-6 { --gnn-mobile-columns: 1; }
 }
 /* WooCommerce's clearfix pseudo-elements become grid items and steal the
    first cell — remove them outright (content:none beats display overrides). */

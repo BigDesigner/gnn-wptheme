@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.11.0
+Stable tag: 2.11.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -194,6 +194,13 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.11.1 =
+* Fixed column priority across catalogue, portfolio, gallery and WooCommerce grids (responsive Elementor styles > Content > Theme Settings > mobile narrowing), added 3-column tablet support for 5–6 shop columns, and relabeled column/ratio defaults.
+* Fixed switching header presets away from legacy centered mode and preserved empty light-mode accent overrides so light mode inherits the dark accent.
+* Fixed item limits for portfolio/catalogue (default 0 uses "Items per page"), gallery albums/records (0 = all), sliders (hiding unused columns) and WooCommerce products (default 12, max 24).
+* Preserved query parameters on plain-permalink dropdown filters without JavaScript, and moved mobile slider arrows clear of content with 44px touch targets.
+* Collection card H3 headings now follow the theme H3 font size (default card title size may render smaller), Elementor button styles target inner `.elementor-button` elements, and shared blocks warn when an ID override is active.
 
 = 2.11.0 =
 * Fixed demo package and snapshot settings that were silently not applied; failures are now reported.

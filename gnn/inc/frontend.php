@@ -31,7 +31,11 @@ function gnn_header_is_centered() {
 	if ( ! empty( $meta['header_preset'] ) && 'legacy' !== $meta['header_preset'] ) {
 		return 'centered' === $meta['header_preset'];
 	}
-	return 'centered' === gnn_option( 'header_layout' ) || 'centered' === gnn_layout_value( 'header_preset' );
+	$preset = gnn_layout_value( 'header_preset' );
+	if ( '' !== $preset && 'legacy' !== $preset ) {
+		return 'centered' === $preset;
+	}
+	return 'centered' === gnn_option( 'header_layout' );
 }
 
 /**

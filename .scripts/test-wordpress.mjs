@@ -66,6 +66,10 @@ try {
  }
  const {testPlatformBrowser}=await import('./tests/platform-browser.mjs');
  results.browser.push(...await testPlatformBrowser({browser,server,php,out}));
+ if(process.env.GNN_QA_ONLY_PLATFORM!=='1' || process.env.GNN_CONTROLS_STAGES){
+ const {testControlsBrowser}=await import('./tests/controls-browser.mjs');
+ results.browser.push(...await testControlsBrowser({browser,server,php,out,plugins}));
+ }
 } catch(error) {
  results.environmentError=String(error.stack || error);
  console.error(String(error).slice(0,1600));
