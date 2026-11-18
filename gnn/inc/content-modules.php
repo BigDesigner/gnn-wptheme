@@ -547,7 +547,11 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		foreach ( $query->posts as $project ) {
 			$url   = get_permalink( $project );
 			$terms = get_the_terms( $project, 'gnn_project_category' );
-			$html .= '<article class="gnn-module-project"><a class="gnn-module-project-image" aria-label="' . esc_attr( get_the_title( $project ) ) . '" href="' . esc_url( $url ) . '">' . gnn_project_image( $project->ID ) . '</a><p class="gnn-module-kicker">' . esc_html( $terms && ! is_wp_error( $terms ) ? implode( ' / ', wp_list_pluck( $terms, 'name' ) ) : '' ) . '</p><h3><a href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $project ) ) . '</a></h3><p>' . esc_html( wp_trim_words( $project->post_excerpt, 24 ) ) . '</p></article>';
+			// Location and year sit between the title and the excerpt; the excerpt stays the card's last paragraph.
+			$meta  = array_filter( array( (string) get_post_meta( $project->ID, '_gnn_project_location', true ), (string) get_post_meta( $project->ID, '_gnn_project_year', true ) ), 'strlen' );
+			$image = gnn_project_image( $project->ID );
+			// The cue is decorative and only added with an image, so an image-less link stays :empty and hidden.
+			$html .= '<article class="gnn-module-project"><a class="gnn-module-project-image" aria-label="' . esc_attr( get_the_title( $project ) ) . '" href="' . esc_url( $url ) . '">' . $image . ( '' !== $image ? '<span class="gnn-module-cue" aria-hidden="true"></span>' : '' ) . '</a><p class="gnn-module-kicker">' . esc_html( $terms && ! is_wp_error( $terms ) ? implode( ' / ', wp_list_pluck( $terms, 'name' ) ) : '' ) . '</p><h3><a href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $project ) ) . '</a></h3>' . ( $meta ? '<span class="gnn-module-meta">' . esc_html( implode( ' · ', $meta ) ) . '</span>' : '' ) . '<p>' . esc_html( wp_trim_words( $project->post_excerpt, 24 ) ) . '</p></article>';
 		}
 		if ( ! $query->posts ) {
 			$html .= '<p>' . esc_html__( 'No projects have been published in this selection yet.', 'gnn' ) . '</p>';
@@ -603,7 +607,9 @@ function gnn_render_module_inner( $module, $attrs = array() ) {
 		foreach ( $query->posts as $product ) {
 			$url   = get_permalink( $product );
 			$terms = get_the_terms( $product, 'gnn_product_category' );
-			$html .= '<article class="gnn-module-product"><a class="gnn-module-project-image" aria-label="' . esc_attr( get_the_title( $product ) ) . '" href="' . esc_url( $url ) . '">' . gnn_product_image( $product->ID ) . '</a><p class="gnn-module-kicker">' . esc_html( $terms && ! is_wp_error( $terms ) ? implode( ' / ', wp_list_pluck( $terms, 'name' ) ) : '' ) . '</p><h3><a href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $product ) ) . '</a></h3><p>' . esc_html( wp_trim_words( $product->post_excerpt, 24 ) ) . '</p></article>';
+			// The product code precedes the title; the excerpt stays the card's last paragraph.
+			$code  = (string) get_post_meta( $product->ID, '_gnn_product_code', true );
+			$html .= '<article class="gnn-module-product"><a class="gnn-module-project-image" aria-label="' . esc_attr( get_the_title( $product ) ) . '" href="' . esc_url( $url ) . '">' . gnn_product_image( $product->ID ) . '</a><p class="gnn-module-kicker">' . esc_html( $terms && ! is_wp_error( $terms ) ? implode( ' / ', wp_list_pluck( $terms, 'name' ) ) : '' ) . '</p>' . ( '' !== $code ? '<span class="gnn-module-code">' . esc_html( $code ) . '</span>' : '' ) . '<h3><a href="' . esc_url( $url ) . '">' . esc_html( get_the_title( $product ) ) . '</a></h3><p>' . esc_html( wp_trim_words( $product->post_excerpt, 24 ) ) . '</p></article>';
 		}
 		if ( ! $query->posts ) {
 			$html .= '<p>' . esc_html__( 'No products have been published in this selection yet.', 'gnn' ) . '</p>';

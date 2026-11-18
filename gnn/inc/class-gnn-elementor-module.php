@@ -302,7 +302,10 @@ class GNN_Elementor_Module extends \Elementor\Widget_Base {
 							'max' => 100,
 						),
 					),
-					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'border-radius:{{SIZE}}{{UNIT}};' ),
+					'selectors' => array(
+						'{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'border-radius:{{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .gnn-content-module' => '--gnn-card-radius:{{SIZE}}{{UNIT}};',
+					),
 				)
 			);
 			if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {

@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.11.1
+Stable tag: 2.11.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -194,6 +194,10 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.11.2 =
+* Portfolio and catalogue cards now look distinct: portfolio cards are image-led with a hover cue, category line and location/year; catalogue cards are framed product cards with a category label, product code and a fully clickable card.
+* Existing card classes and markup order are unchanged, and the new styles have low specificity, so site and Elementor card styles keep precedence. The Elementor corner radius control also rounds the catalogue card frame.
 
 = 2.11.1 =
 * Fixed column priority across catalogue, portfolio, gallery and WooCommerce grids (responsive Elementor styles > Content > Theme Settings > mobile narrowing), added 3-column tablet support for 5–6 shop columns, and relabeled column/ratio defaults.

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.11.1\n"
+"Project-Id-Version: GNN 2.11.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 06:24+0000\n"
-"PO-Revision-Date: 2026-11-18 06:24+0000\n"
+"POT-Creation-Date: 2026-11-18 10:11+0000\n"
+"PO-Revision-Date: 2026-11-18 10:11+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -435,7 +435,7 @@ msgstr ""
 msgid "All pages, posts, projects, galleries, slides, menus, comments, orders and media files will be permanently deleted. Your active theme, plugins and user accounts will remain. The selected demo will be installed."
 msgstr ""
 
-#: inc/content-modules.php:595
+#: inc/content-modules.php:599
 msgid "All products"
 msgstr ""
 
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #: inc/admin-panel.php:236
 #: inc/admin-screens.php:64
-#: inc/content-modules.php:643
+#: inc/content-modules.php:649
 msgid "Close"
 msgstr ""
 
@@ -1784,7 +1784,7 @@ msgstr ""
 msgid "Existing layout"
 msgstr ""
 
-#: inc/content-modules.php:660
+#: inc/content-modules.php:666
 msgid "Expand: %s"
 msgstr ""
 
@@ -2451,7 +2451,7 @@ msgstr ""
 msgid "Icons"
 msgstr ""
 
-#: inc/content-modules.php:657
+#: inc/content-modules.php:663
 msgid "Image"
 msgstr ""
 
@@ -3065,12 +3065,12 @@ msgstr ""
 msgid "News"
 msgstr ""
 
-#: inc/content-modules.php:734
+#: inc/content-modules.php:740
 msgid "Next product"
 msgstr ""
 
 #: inc/architecture.php:352
-#: inc/content-modules.php:711
+#: inc/content-modules.php:717
 msgid "Next project"
 msgstr ""
 
@@ -3115,11 +3115,11 @@ msgstr ""
 msgid "No pending changes"
 msgstr ""
 
-#: inc/content-modules.php:609
+#: inc/content-modules.php:615
 msgid "No products have been published in this selection yet."
 msgstr ""
 
-#: inc/content-modules.php:553
+#: inc/content-modules.php:557
 msgid "No projects have been published in this selection yet."
 msgstr ""
 
@@ -3484,12 +3484,12 @@ msgstr ""
 msgid "Preview installed design"
 msgstr ""
 
-#: inc/content-modules.php:734
+#: inc/content-modules.php:740
 msgid "Previous product"
 msgstr ""
 
 #: inc/architecture.php:352
-#: inc/content-modules.php:711
+#: inc/content-modules.php:717
 msgid "Previous project"
 msgstr ""
 
@@ -3527,7 +3527,7 @@ msgstr ""
 
 #: inc/class-gnn-elementor-module.php:138
 #: inc/content-modules.php:91
-#: inc/content-modules.php:595
+#: inc/content-modules.php:599
 msgid "Product categories"
 msgstr ""
 
@@ -3540,11 +3540,11 @@ msgstr ""
 msgid "Product code"
 msgstr ""
 
-#: inc/content-modules.php:733
+#: inc/content-modules.php:739
 msgid "Product navigation"
 msgstr ""
 
-#: inc/content-modules.php:613
+#: inc/content-modules.php:619
 msgid "Product pages"
 msgstr ""
 
@@ -3606,7 +3606,7 @@ msgstr ""
 msgid "Project location"
 msgstr ""
 
-#: inc/content-modules.php:710
+#: inc/content-modules.php:716
 msgid "Project navigation"
 msgstr ""
 
@@ -3614,7 +3614,7 @@ msgstr ""
 msgid "Project overview"
 msgstr ""
 
-#: inc/content-modules.php:557
+#: inc/content-modules.php:561
 msgid "Project pages"
 msgstr ""
 
@@ -4011,7 +4011,7 @@ msgstr ""
 msgid "Select"
 msgstr ""
 
-#: inc/content-modules.php:664
+#: inc/content-modules.php:670
 msgid "Select an album or publish projects with gallery images to populate this collection."
 msgstr ""
 
@@ -4864,7 +4864,7 @@ msgstr ""
 msgid "Title bar"
 msgstr ""
 
-#: inc/class-gnn-elementor-module.php:312
+#: inc/class-gnn-elementor-module.php:315
 msgid "Title color"
 msgstr ""
 

@@ -6,3 +6,32 @@
 .gnn-content-module .gnn-module-project-image img{display:block;width:100%;height:100%;max-height:none;object-fit:var(--gnn-project-fit,cover)}
 .gnn-content-module .gnn-module-project-image{min-width:0;align-self:start}
 .gnn-module-filter-form{display:flex;align-items:center;gap:12px;max-width:420px;margin-block:24px}.gnn-module-filter-form .screen-reader-text{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.gnn-module-filter-select{display:block;flex:1;width:100%;min-width:0;padding:12px;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:var(--gnn-radius)}.gnn-module-filter-submit{padding:12px 16px;background:var(--accent);color:var(--accent-ink);border:0;border-radius:var(--gnn-button-radius);cursor:pointer}.gnn-module-filter-submit:focus-visible{outline:2px solid var(--accent);outline-offset:3px}@media(max-width:540px){.gnn-module-filter-form{max-width:none}}
+
+/* Collection card styles. Portfolio: image-led editorial cards. Catalog: framed product cards.
+   Wrapped in :where() so site and Elementor styles of equal or higher specificity keep precedence. */
+:where(.gnn-content-module){--gnn-card-radius:calc(var(--gnn-radius,12px) + 4px)}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project{gap:10px}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project-image{position:relative;isolation:isolate}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project-image::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.42));opacity:0;transition:opacity .4s ease;pointer-events:none}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project-image img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project:hover .gnn-module-project-image img{transform:scale(1.04)}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project:hover .gnn-module-project-image::after,:where([data-gnn-collection="portfolio"]) .gnn-module-project-image:focus-visible::after{opacity:1}
+.gnn-module-cue{position:absolute;inset-block-end:16px;inset-inline-end:16px;z-index:1;width:44px;height:44px;border-radius:50%;background:var(--bg);color:var(--fg);opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
+.gnn-module-cue::before{content:"";position:absolute;top:50%;left:50%;width:10px;height:10px;border-top:2px solid currentColor;border-inline-end:2px solid currentColor;transform:translate(-65%,-50%) rotate(45deg)}
+[dir="rtl"] .gnn-module-cue::before{transform:translate(-35%,-50%) rotate(-45deg)}
+.gnn-module-project:hover .gnn-module-cue,.gnn-module-project-image:focus-visible .gnn-module-cue{opacity:1;transform:none}
+:where([data-gnn-collection="portfolio"]) .gnn-module-kicker{display:flex;align-items:center;gap:10px;margin-top:6px;letter-spacing:.12em;color:var(--fg2)}
+:where([data-gnn-collection="portfolio"]) .gnn-module-kicker:not(:empty)::before{content:"";width:20px;height:1px;background:var(--accent-text,var(--accent))}
+.gnn-module-meta{font-size:14px;color:var(--fg2)}
+:where([data-gnn-collection="portfolio"]) .gnn-module-project>p:last-child{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+:where([data-gnn-collection="catalog"]) .gnn-module-product{position:relative;gap:8px;padding:10px 10px 18px;background:var(--bg);border:1px solid var(--line);border-radius:var(--gnn-card-radius);transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease}
+:where([data-gnn-collection="catalog"]) .gnn-module-product:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 35%,var(--line));box-shadow:0 18px 40px -26px rgba(0,0,0,.4)}
+:where([data-gnn-collection="catalog"]) .gnn-module-product:focus-within{border-color:var(--accent)}
+:where([data-gnn-collection="catalog"]) .gnn-module-product .gnn-module-project-image{background:var(--bg2);border-radius:calc(var(--gnn-card-radius) - 6px)}
+:where([data-gnn-collection="catalog"] .gnn-module-product>:not(.gnn-module-project-image)){margin-inline:8px}
+:where([data-gnn-collection="catalog"]) .gnn-module-kicker{justify-self:start;margin-top:8px;padding:4px 10px;border-radius:999px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent-text,var(--fg));font-size:11px;font-weight:600;letter-spacing:.06em}
+:where([data-gnn-collection="catalog"]) .gnn-module-kicker:empty{display:none}
+.gnn-module-code{font-size:12px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--fg2)}
+:where([data-gnn-collection="catalog"]) .gnn-module-product h3 a::after{content:"";position:absolute;inset:0;border-radius:inherit}
+:where([data-gnn-collection="catalog"]) .gnn-module-product>p:last-child{font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media(prefers-reduced-motion:reduce){.gnn-module-cue,:where([data-gnn-collection]) .gnn-module-project-image img,:where([data-gnn-collection="catalog"]) .gnn-module-product{transition:none}:where([data-gnn-collection="portfolio"]) .gnn-module-project:hover .gnn-module-project-image img,:where([data-gnn-collection="catalog"]) .gnn-module-product:hover{transform:none}}
