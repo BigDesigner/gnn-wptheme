@@ -847,6 +847,13 @@ function gnn_panel_render() {
 					<?php
 					$gnn_hdr_release    = function_exists( 'gnn_updater' ) ? gnn_updater()->get_remote_release() : false;
 					$gnn_hdr_has_update = $gnn_hdr_release && version_compare( $gnn_hdr_release->version, GNN_VERSION, '>' );
+					if ( $gnn_hdr_has_update ) {
+						// WordPress installs from its own update list; keep it in step with the release shown here.
+						$gnn_wp_updates = get_site_transient( 'update_themes' );
+						if ( ! is_object( $gnn_wp_updates ) || ! isset( $gnn_wp_updates->response[ get_template() ] ) ) {
+							wp_update_themes();
+						}
+					}
 					?>
 					<?php if ( $gnn_hdr_has_update ) : ?>
 						<a class="button button-primary gnn-update-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-theme&theme=' . rawurlencode( get_template() ) ), 'upgrade-theme_' . get_template() ) ); ?>">
