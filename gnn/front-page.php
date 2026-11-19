@@ -31,7 +31,13 @@ get_header();
 
 <main id="primary" class="site-main front-page-main">
 
-	<?php get_template_part( 'template-parts/hero-slider' ); ?>
+	<?php
+	if ( gnn_revslider_active() ) {
+		gnn_render_revslider();
+	} else {
+		get_template_part( 'template-parts/hero-slider' );
+	}
+	?>
 
 	<?php
 	// The latest-posts path has already delegated to the blog template.

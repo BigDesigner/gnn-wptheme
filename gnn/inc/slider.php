@@ -302,3 +302,45 @@ function gnn_get_slides( $group = null, $limit = 0 ) {
 	}
 	return $slides;
 }
+
+/**
+ * Slider Revolution alias chosen for the front-page hero, or '' when unavailable.
+ * The plugin is optional; without it the GNN Slider is used.
+ *
+ * @return string
+ */
+function gnn_revslider_alias() {
+	if ( 'revslider' !== gnn_option( 'hero_engine' ) || ! shortcode_exists( 'rev_slider' ) ) {
+		return '';
+	}
+	$alias = gnn_option( 'hero_revslider' );
+	return is_string( $alias ) ? (string) preg_replace( '/[^A-Za-z0-9_-]/', '', $alias ) : '';
+}
+
+/** Whether the hero is a Slider Revolution slider. */
+function gnn_revslider_active() {
+	return is_front_page()
+		&& 'page' === get_option( 'show_on_front' )
+		&& ! is_page_template( 'page-templates/tpl-architecture.php' )
+		&& ! is_page_template( 'page-templates/tpl-starter.php' )
+		&& 'none' !== gnn_layout_value( 'hero_style' )
+		&& '' !== gnn_revslider_alias();
+}
+
+/** Print the hero slider through the plugin's public shortcode. */
+function gnn_render_revslider() {
+	$alias = gnn_revslider_active() ? gnn_revslider_alias() : '';
+	if ( '' === $alias ) {
+		return;
+	}
+	echo '<div class="gnn-revslider">' . do_shortcode( '[rev_slider alias="' . $alias . '"]' ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput -- plugin markup; alias is restricted to [A-Za-z0-9_-].
+}
+
+/** Layout hook for Slider Revolution heroes. */
+function gnn_revslider_body_class( $classes ) {
+	if ( is_front_page() && function_exists( 'gnn_revslider_active' ) && gnn_revslider_active() ) {
+		$classes[] = 'gnn-has-revslider';
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'gnn_revslider_body_class' );

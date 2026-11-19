@@ -38,10 +38,10 @@ try {
    {hostPath:path.join(root,'.scripts/tests'),vfsPath:'/gnn-qa'}, {hostPath:path.join(root,'packages'),vfsPath:'/gnn-packages'}],blueprint:{steps},verbosity:'normal'});
  console.log('QA: WordPress and plugins ready');
  results.runtime=JSON.parse(await php("echo wp_json_encode(array('wordpress'=>get_bloginfo('version'),'php'=>PHP_VERSION,'elementor'=>defined('ELEMENTOR_VERSION')?ELEMENTOR_VERSION:null,'woocommerce'=>defined('WC_VERSION')?WC_VERSION:null));"));
- for (const suite of (process.env.GNN_QA_ONLY_PLATFORM==='1'?(process.env.GNN_QA_INTEGRATIONS==='1'?['platform','compatibility']:['platform']):['updater','templates','woocommerce','reset','hardening','platform'])) {
+ for (const suite of (process.env.GNN_QA_ONLY_PLATFORM==='1'?(process.env.GNN_QA_INTEGRATIONS==='1'?['platform','compatibility']:['platform']):['updater','templates','woocommerce','reset','hardening','platform','revslider'])) {
   if(!plugins && ['templates','woocommerce'].includes(suite)) continue;
   console.log('QA suite:',suite);
-  const text=await php(`$suite=${JSON.stringify(suite)}; require '/gnn-qa/${['hardening','platform','compatibility'].includes(suite)?suite+'.php':'wordpress.php'}';`,['reset','hardening','platform','compatibility'].includes(suite));
+  const text=await php(`$suite=${JSON.stringify(suite)}; require '/gnn-qa/${['hardening','platform','compatibility','revslider'].includes(suite)?suite+'.php':'wordpress.php'}';`,['reset','hardening','platform','compatibility','revslider'].includes(suite));
   const marker=text.indexOf('GNN_QA_RESULT:');
   if(marker<0) throw new Error('Missing suite output: '+text);
   const observed=JSON.parse(text.slice(marker+14));

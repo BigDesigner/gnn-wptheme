@@ -188,6 +188,9 @@ function gnn_import_demo_site( $profile, $confirmed = false, $revision = null ) 
 	if ( ! current_user_can( 'manage_options' ) || true !== $confirmed ) {
 		return new WP_Error( 'gnn_demo_confirm', __( 'Confirm the complete site installation.', 'gnn' ) );
 	}
+	if ( gnn_st_has( $profile ) ) {
+		return gnn_dp_import( $profile, $revision );
+	}
 	if ( 'architecture' !== $profile || ! gnn_starter_elementor_available() ) {
 		return new WP_Error( 'gnn_demo_editor', __( 'This demo requires Elementor.', 'gnn' ) );
 	}
@@ -308,7 +311,7 @@ function gnn_import_demo_site( $profile, $confirmed = false, $revision = null ) 
 		if ( gnn_demo_writable( $id ) ) {
 			set_post_thumbnail( $id, $result['media'][ $project[2][0] ] );
 			wp_set_object_terms( $id, $group, 'gnn_slide_group' );
-			update_post_meta( $id, '_gnn_slide_kicker', __( 'Architecture / Selected projects', 'gnn' ) );
+			update_post_meta( $id, '_gnn_slide_kicker', $project[0] . ' · ' . __( 'Concept location', 'gnn' ) . ' · ' . $project[4] );
 			update_post_meta( $id, '_gnn_slide_text', $project[1] );
 			update_post_meta( $id, '_gnn_slide_cta_label', __( 'View project', 'gnn' ) );
 			update_post_meta( $id, '_gnn_slide_cta_url', get_permalink( $result['projects'][ $key ] ) );

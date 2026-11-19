@@ -1756,3 +1756,464 @@ TRANSLATIONS.update({
     'Portfolio and catalog columns': 'Portföy ve katalog sütunları',
     'Other block ID overrides the selected block.': 'Diğer blok kimliği seçilen bloğun önüne geçer.',
 })
+
+# GNN_TEMPLATES_2_12
+TRANSLATIONS.update({'A calm dashboard that turns busy data into clear next actions.': 'Yoğun veriyi net sonraki adımlara çeviren sakin '
+                                                                   'bir panel.',
+ 'A confident identity for a travel start-up: logo, colour, type and guidelines.': 'Bir seyahat girişimi için '
+                                                                                   'özgüvenli kimlik: logo, renk, yazı '
+                                                                                   'tipi ve kılavuz.',
+ 'A fast, accessible website with motion that supports the story instead of hiding it.': 'Hikâyeyi gizlemek yerine '
+                                                                                         'destekleyen hareketli, hızlı '
+                                                                                         've erişilebilir web sitesi.',
+ 'A few simple habits keep glazed pieces looking new for years: gentle washing, careful stacking and sensible heat.': 'Birkaç '
+                                                                                                                      'basit '
+                                                                                                                      'alışkanlık '
+                                                                                                                      'sırlı '
+                                                                                                                      'parçaları '
+                                                                                                                      'yıllarca '
+                                                                                                                      'yeni '
+                                                                                                                      'tutar: '
+                                                                                                                      'nazik '
+                                                                                                                      'yıkama, '
+                                                                                                                      'dikkatli '
+                                                                                                                      'istifleme '
+                                                                                                                      've '
+                                                                                                                      'ölçülü '
+                                                                                                                      'ısı.',
+ 'A focused week to explore a problem and test a first solution.': 'Bir sorunu keşfetmek ve ilk çözümü test etmek için '
+                                                                   'odaklı bir hafta.',
+ 'A good framework is short, visible and owned by the people who use it. Start with the three questions every decision must answer.': 'İyi '
+                                                                                                                                      'bir '
+                                                                                                                                      'çerçeve '
+                                                                                                                                      'kısa, '
+                                                                                                                                      'görünür '
+                                                                                                                                      've '
+                                                                                                                                      'kullananlar '
+                                                                                                                                      'tarafından '
+                                                                                                                                      'sahiplenilir. '
+                                                                                                                                      'Her '
+                                                                                                                                      'kararın '
+                                                                                                                                      'yanıtlaması '
+                                                                                                                                      'gereken '
+                                                                                                                                      'üç '
+                                                                                                                                      'soruyla '
+                                                                                                                                      'başlayın.',
+ 'A habit-tracking app designed and prototyped from first sketch to store release.': 'İlk eskizden mağaza yayınına '
+                                                                                     'kadar tasarlanan ve '
+                                                                                     'prototiplenen alışkanlık takip '
+                                                                                     'uygulaması.',
+ 'A hand-glazed mug that feels good in the hand and survives the dishwasher.': 'Elde güzel duran, bulaşık makinesine '
+                                                                               'dayanıklı el sırlı kupa.',
+ 'A hardy houseplant in a glazed pot, easy to care for.': 'Sırlı saksıda, bakımı kolay dayanıklı salon bitkisi.',
+ 'A hospital network shortened waiting times by redesigning how referrals move between teams.': 'Bir hastane ağı, '
+                                                                                                'sevklerin ekipler '
+                                                                                                'arasında akışını '
+                                                                                                'yeniden tasarlayarak '
+                                                                                                'bekleme sürelerini '
+                                                                                                'kısalttı.',
+ 'A low, comfortable chair with a solid frame and washable cover.': 'Sağlam gövdeli, yıkanabilir kılıflı alçak ve '
+                                                                    'rahat koltuk.',
+ 'A regional finance group simplified approvals and reporting across five departments.': 'Bölgesel bir finans grubu '
+                                                                                         'beş departmanda onay ve '
+                                                                                         'raporlamayı sadeleştirdi.',
+ 'A rough prototype answers questions a polished mock-up cannot. Test the idea first, then refine the details.': 'Kaba '
+                                                                                                                 'bir '
+                                                                                                                 'prototip, '
+                                                                                                                 'cilalı '
+                                                                                                                 'bir '
+                                                                                                                 'taslağın '
+                                                                                                                 'yanıtlayamadığı '
+                                                                                                                 'soruları '
+                                                                                                                 'yanıtlar. '
+                                                                                                                 'Önce '
+                                                                                                                 'fikri '
+                                                                                                                 'test '
+                                                                                                                 'edin, '
+                                                                                                                 'sonra '
+                                                                                                                 'ayrıntıları '
+                                                                                                                 'inceltin.',
+ 'A simple path from question to result': 'Sorudan sonuca basit bir yol',
+ 'A small design system that scales': 'Büyüyen küçük bir tasarım sistemi',
+ 'A soft, warm light with a simple shade and a weighted base.': 'Sade abajurlu ve ağır tabanlı, yumuşak ve sıcak ışık.',
+ 'A sturdy everyday tote with a roomy interior and reinforced handles.': 'Geniş iç hacimli, güçlendirilmiş saplı '
+                                                                         'sağlam günlük çanta.',
+ 'A technology company planned a staged move to a new platform without interrupting customers.': 'Bir teknoloji '
+                                                                                                 'şirketi müşterileri '
+                                                                                                 'aksatmadan yeni '
+                                                                                                 'platforma kademeli '
+                                                                                                 'geçişi planladı.',
+ 'About the firm': 'Firma hakkında',
+ 'Abstract city towers at dusk': 'Alacakaranlıkta soyut şehir kuleleri',
+ 'Abstract concentric arcs': 'Soyut eş merkezli yaylar',
+ 'Abstract portrait': 'Soyut portre',
+ 'Accessories': 'Aksesuarlar',
+ 'Accountability': 'Sorumluluk',
+ 'Add a few personal details that help clients connect with you.': 'Müşterilerin sizinle bağ kurmasına yardım eden '
+                                                                   'birkaç kişisel ayrıntı ekleyin.',
+ 'Add milestones, certifications and the values that guide your decisions.': 'Kilometre taşlarını, sertifikaları ve '
+                                                                             'kararlarınıza yön veren değerleri '
+                                                                             'ekleyin.',
+ 'Add your address here.': 'Adresinizi buraya ekleyin.',
+ 'Add your contact form here with the form plugin you use.': 'Kullandığınız form eklentisiyle iletişim formunuzu '
+                                                             'buraya ekleyin.',
+ 'Add your delivery areas, times and costs.': 'Teslimat bölgelerinizi, sürelerinizi ve ücretlerinizi ekleyin.',
+ 'Add your rate or scope here.': 'Ücretinizi veya kapsamınızı buraya ekleyin.',
+ 'Advice that serves your interests only.': 'Yalnız sizin çıkarınıza hizmet eden tavsiye.',
+ 'Advisory and delivery': 'Danışmanlık ve uygulama',
+ 'Advisory and delivery for growing organisations': 'Büyüyen kuruluşlar için danışmanlık ve uygulama',
+ 'All case studies': 'Tüm vaka çalışmaları',
+ 'All work': 'Tüm işler',
+ 'An independent firm with a practical approach.': 'Pratik yaklaşımlı bağımsız bir firma.',
+ 'App': 'Uygulama',
+ 'Articles, guidance and company news.': 'Yazılar, rehberlik ve şirket haberleri.',
+ 'Ask about scope, who does the work and how success will be measured. Clear answers save time and money later.': 'Kapsamı, '
+                                                                                                                  'işi '
+                                                                                                                  'kimin '
+                                                                                                                  'yapacağını '
+                                                                                                                  've '
+                                                                                                                  'başarının '
+                                                                                                                  'nasıl '
+                                                                                                                  'ölçüleceğini '
+                                                                                                                  'sorun. '
+                                                                                                                  'Net '
+                                                                                                                  'yanıtlar '
+                                                                                                                  'sonradan '
+                                                                                                                  'zaman '
+                                                                                                                  've '
+                                                                                                                  'para '
+                                                                                                                  'kazandırır.',
+ 'Ask about this': 'Bunu sor',
+ 'Assess where you are, define where you are going and agree the route.': 'Neredeyseniz değerlendirin, nereye '
+                                                                          'gittiğinizi belirleyin, yolu birlikte '
+                                                                          'kararlaştırın.',
+ 'Atlas brand identity': 'Atlas marka kimliği',
+ 'Available for new projects': 'Yeni projelere açığım',
+ 'Beyond work': 'İşin dışında',
+ 'Book a consultation': 'Görüşme ayarla',
+ 'Brand identity': 'Marka kimliği',
+ 'Brand identity, interface and product design.': 'Marka kimliği, arayüz ve ürün tasarımı.',
+ 'Brighten your space': 'Mekânınızı aydınlatın',
+ 'Browse': 'Göz at',
+ 'Build': 'Geliştir',
+ 'Canvas tote bag': 'Kanvas çanta',
+ 'Case studies': 'Vaka çalışmaları',
+ 'Choose a single engagement or a longer partnership.': 'Tek bir iş birliğini ya da daha uzun bir ortaklığı seçin.',
+ 'Choosing a bag that lasts': 'Uzun ömürlü çanta seçimi',
+ 'Clarity': 'Açıklık',
+ 'Clean code and careful details.': 'Temiz kod ve özenli ayrıntılar.',
+ 'Clear advice. Steady delivery.': 'Net tavsiye. Sağlam uygulama.',
+ 'Client director': 'Müşteri direktörü',
+ 'Code': 'Kod',
+ 'Collaboration': 'İş birliği',
+ 'Collection': 'Koleksiyon',
+ 'Comfortable over-ear headphones with a long-lasting battery.': 'Uzun pil ömürlü, rahat kulak üstü kulaklık.',
+ 'Concepts, prototypes and feedback.': 'Konseptler, prototipler ve geri bildirim.',
+ 'Considered products for everyday life, delivered to your door.': 'Günlük yaşam için seçilmiş ürünler, kapınıza '
+                                                                   'kadar.',
+ 'Curious, careful and direct.': 'Meraklı, özenli ve doğrudan.',
+ 'Delivery and returns': 'Teslimat ve iade',
+ 'Describe each service, who it helps and what clients receive.': 'Her hizmeti, kime yardım ettiğini ve müşterilerin '
+                                                                  'ne aldığını anlatın.',
+ 'Design and build a complete website or product from brief to launch.': 'Brifingden yayına kadar eksiksiz bir web '
+                                                                         'sitesi veya ürün tasarlayıp geliştirme.',
+ 'Design systems': 'Tasarım sistemleri',
+ 'Development': 'Geliştirme',
+ 'Discuss this service': 'Bu hizmeti konuş',
+ 'Easy returns': 'Kolay iade',
+ 'Easy returns and secure checkout': 'Kolay iade ve güvenli ödeme',
+ 'Education': 'Eğitim',
+ 'Essentials': 'Temel ürünler',
+ 'Everyday essentials': 'Günlük temel ürünler',
+ 'Everyday favourites': 'Günlük favoriler',
+ 'Explain how long customers have and how to send items back.': 'Müşterilerin ne kadar süresi olduğunu ve ürünü nasıl '
+                                                                'geri göndereceğini anlatın.',
+ 'Explain how products are chosen and made.': 'Ürünlerin nasıl seçildiğini ve üretildiğini anlatın.',
+ 'Explore home': 'Evi keşfet',
+ 'Fast dispatch': 'Hızlı gönderim',
+ 'Fast, accessible websites and web apps.': 'Hızlı ve erişilebilir web siteleri ve uygulamaları.',
+ 'Featured': 'Öne çıkanlar',
+ 'Fern packaging': 'Fern ambalaj',
+ 'Filter by discipline to explore the work.': 'İşleri keşfetmek için alana göre filtreleyin.',
+ 'Filter by sector to see how similar organisations achieved their goals.': 'Benzer kuruluşların hedeflerine nasıl '
+                                                                            'ulaştığını görmek için sektöre göre '
+                                                                            'filtreleyin.',
+ 'Finance': 'Finans',
+ 'Find something you love': 'Seveceğiniz bir şey bulun',
+ 'Five ways to refresh a room': 'Bir odayı yenilemenin beş yolu',
+ 'Fixed scope and clear fees': 'Sabit kapsam ve net ücret',
+ 'Floating': 'Yüzen',
+ 'For the home': 'Ev için',
+ 'Friendly support': 'Güler yüzlü destek',
+ 'From brief to launch': 'Brifingden yayına',
+ 'Front-end': 'Ön yüz',
+ 'Get in touch': 'İletişime geçin',
+ 'Goals, limits and success measures.': 'Hedefler, sınırlar ve başarı ölçütleri.',
+ 'Goals, users and constraints.': 'Hedefler, kullanıcılar ve kısıtlar.',
+ 'Good things, carefully chosen': 'Özenle seçilmiş güzel şeyler',
+ 'Handover your team can run': 'Ekibinizin sürdürebileceği devir',
+ 'Have a similar challenge?': 'Benzer bir zorluğunuz mu var?',
+ 'Have an idea? Let’s make it real.': 'Bir fikriniz mi var? Gerçeğe dönüştürelim.',
+ 'Head of delivery': 'Uygulama direktörü',
+ 'Head of strategy': 'Strateji direktörü',
+ 'Health': 'Sağlık',
+ 'Hello, I’m your designer and developer.': 'Merhaba, tasarımcı ve geliştiriciniz benim.',
+ 'Home collection': 'Ev koleksiyonu',
+ 'How I can help': 'Nasıl yardımcı olabilirim',
+ 'How an engagement runs': 'Bir iş birliği nasıl yürür',
+ 'How it works': 'Nasıl işler',
+ 'How to care for everyday ceramics': 'Günlük seramikler nasıl bakılır',
+ 'How to run a change programme without losing momentum': 'İvmeyi kaybetmeden değişim programı nasıl yürütülür',
+ 'I design and build things people enjoy using.': 'İnsanların kullanmaktan keyif aldığı şeyler tasarlıyor ve '
+                                                  'geliştiriyorum.',
+ 'Ideas': 'Fikirler',
+ 'Improve how work flows through your teams, systems and suppliers.': 'İşin ekipleriniz, sistemleriniz ve '
+                                                                      'tedarikçilerinizde akışını iyileştirin.',
+ 'Independence': 'Bağımsızlık',
+ 'Independent designer and developer working with startups, studios and brands.': 'Girişimler, stüdyolar ve markalarla '
+                                                                                  'çalışan bağımsız tasarımcı ve '
+                                                                                  'geliştirici.',
+ 'Independent view': 'Bağımsız bakış',
+ 'Industry': 'Sanayi',
+ 'Insights and announcements.': 'Görüşler ve duyurular.',
+ 'Introduce the people and ideas behind the store.': 'Mağazanın arkasındaki insanları ve fikirleri tanıtın.',
+ 'Introduce yourself in a few honest sentences.': 'Kendinizi birkaç dürüst cümleyle tanıtın.',
+ 'Joint work with regular reporting.': 'Düzenli raporlamayla ortak çalışma.',
+ 'Keeps drinks cold for a day and hot for hours. Leak-proof lid.': 'İçecekleri bir gün soğuk, saatlerce sıcak tutar. '
+                                                                   'Sızdırmaz kapak.',
+ 'Kitchen': 'Mutfak',
+ 'Kite analytics dashboard': 'Kite analiz paneli',
+ 'Launch': 'Yayınla',
+ 'Let’s work together': 'Birlikte çalışalım',
+ 'Lifestyle': 'Yaşam',
+ 'Lighting, plants and small details that change a room.': 'Bir odayı değiştiren aydınlatma, bitki ve küçük '
+                                                           'ayrıntılar.',
+ 'Like what you see?': 'Gördüklerinizi beğendiniz mi?',
+ 'Linen notebook': 'Keten defter',
+ 'List the payment methods you accept.': 'Kabul ettiğiniz ödeme yöntemlerini listeleyin.',
+ 'Listen': 'Dinle',
+ 'Look at the stitching, the handles and the lining. Good construction matters more than the label.': 'Dikişlere, '
+                                                                                                      'saplara ve '
+                                                                                                      'astara bakın. '
+                                                                                                      'İyi işçilik '
+                                                                                                      'markadan daha '
+                                                                                                      'önemlidir.',
+ 'Lounge chair': 'Dinlenme koltuğu',
+ 'Lumen design system': 'Lumen tasarım sistemi',
+ 'Made well. Made to last.': 'İyi yapılmış. Uzun ömürlü.',
+ 'Made with care': 'Özenle yapıldı',
+ 'Making a decision framework people actually use': 'İnsanların gerçekten kullandığı bir karar çerçevesi kurmak',
+ 'Managing partner': 'Yönetici ortak',
+ 'Market and organisation review, options appraisal and a roadmap your leadership can sign off.': 'Pazar ve '
+                                                                                                  'organizasyon '
+                                                                                                  'incelemesi, seçenek '
+                                                                                                  'değerlendirmesi ve '
+                                                                                                  'yönetimin '
+                                                                                                  'onaylayabileceği '
+                                                                                                  'yol haritası.',
+ 'Momentum comes from small, visible wins. Plan the first ninety days around results your team can see.': 'İvme küçük '
+                                                                                                          've görünür '
+                                                                                                          'kazanımlardan '
+                                                                                                          'gelir. İlk '
+                                                                                                          'doksan günü '
+                                                                                                          'ekibinizin '
+                                                                                                          'görebileceği '
+                                                                                                          'sonuçlar '
+                                                                                                          'etrafında '
+                                                                                                          'planlayın.',
+ 'More about me': 'Hakkımda daha fazla',
+ 'Motion': 'Hareket',
+ 'Motion should guide attention, respect reduced-motion settings and never block the task at hand.': 'Hareket dikkati '
+                                                                                                     'yönlendirmeli, '
+                                                                                                     'azaltılmış '
+                                                                                                     'hareket ayarına '
+                                                                                                     'uymalı ve işi '
+                                                                                                     'asla '
+                                                                                                     'engellememeli.',
+ 'Name Surname': 'Ad Soyad',
+ 'New season': 'Yeni sezon',
+ 'Not sure where to start?': 'Nereden başlayacağınızı bilmiyor musunuz?',
+ 'Notes': 'Notlar',
+ 'Notes on accessible motion': 'Erişilebilir hareket üzerine notlar',
+ 'One accountable team': 'Tek sorumlu ekip',
+ 'Ongoing design and development support, month by month.': 'Ay ay süren tasarım ve geliştirme desteği.',
+ 'Operating model redesign': 'Operasyon modeli yeniden tasarımı',
+ 'Operations': 'Operasyon',
+ 'Options, timeline and team.': 'Seçenekler, takvim ve ekip.',
+ 'Orbit marketing site': 'Orbit tanıtım sitesi',
+ 'Orders leave quickly': 'Siparişler hızla yola çıkar',
+ 'Our principles': 'İlkelerimiz',
+ 'Our story': 'Hikâyemiz',
+ 'Outcome and next steps.': 'Sonuç ve sonraki adımlar.',
+ 'Packaging and label system for a small-batch tea producer.': 'Küçük partili bir çay üreticisi için ambalaj ve etiket '
+                                                               'sistemi.',
+ 'Patient flow programme': 'Hasta akışı programı',
+ 'Payment': 'Ödeme',
+ 'People you will work with': 'Birlikte çalışacağınız kişiler',
+ 'Pick the format that fits the size of your project.': 'Projenizin büyüklüğüne uyan biçimi seçin.',
+ 'Plain language and honest options.': 'Sade dil ve dürüst seçenekler.',
+ 'Plain-language reports': 'Sade dilli raporlar',
+ 'Plan': 'Planla',
+ 'Plan and lead change programmes with clear milestones and owners.': 'Net kilometre taşları ve sorumlularla değişim '
+                                                                      'programlarını planlayın ve yönetin.',
+ 'Platform migration roadmap': 'Platform geçiş yol haritası',
+ 'Popular right now': 'Şu an popüler',
+ 'Potted plant': 'Saksı bitkisi',
+ 'Process': 'Süreç',
+ 'Process design, performance measures and supplier management that remove friction.': 'Sürtünmeyi gideren süreç '
+                                                                                       'tasarımı, performans ölçütleri '
+                                                                                       've tedarikçi yönetimi.',
+ 'Product care, new arrivals and ideas.': 'Ürün bakımı, yeni gelenler ve fikirler.',
+ 'Programme setup, change planning and delivery support from kick-off to handover.': 'Başlangıçtan devire program '
+                                                                                     'kurulumu, değişim planlaması ve '
+                                                                                     'uygulama desteği.',
+ 'Project brief': 'Proje özeti',
+ 'Prototyping': 'Prototipleme',
+ 'Public sector': 'Kamu',
+ 'Publish articles from Posts and link this page to your blog in Settings.': 'Yazıları Yazılar bölümünden yayımlayın '
+                                                                             "ve bu sayfayı Ayarlar'dan blogunuza "
+                                                                             'bağlayın.',
+ 'Publish articles from Posts.': 'Yazıları Yazılar bölümünden yayımlayın.',
+ 'Pulse mobile app': 'Pulse mobil uygulaması',
+ 'Questions about an order?': 'Siparişle ilgili sorunuz mu var?',
+ 'Questions about products or an order? Get in touch.': 'Ürünler veya sipariş hakkında sorunuz mu var? Bize ulaşın.',
+ 'Quiet design for busy days': 'Yoğun günler için sakin tasarım',
+ 'Ready to talk it through?': 'Konuşmaya hazır mısınız?',
+ 'Real people to help': 'Yardım eden gerçek insanlar',
+ 'Recent case studies': 'Son vaka çalışmaları',
+ 'Recent projects': 'Son projeler',
+ 'Regular progress reviews': 'Düzenli ilerleme toplantıları',
+ 'Release, measure and improve.': 'Yayınla, ölç ve geliştir.',
+ 'Replace this text with your history, your people and the way you work.': 'Bu metni geçmişiniz, ekibiniz ve çalışma '
+                                                                           'biçiminizle değiştirin.',
+ 'Retainer': 'Aylık destek',
+ 'Returns': 'İadeler',
+ 'Say hello.': 'Merhaba deyin.',
+ 'Say how customers can reach you about an order.': 'Müşterilerin sipariş için size nasıl ulaşacağını yazın.',
+ 'Sectors we work in': 'Çalıştığımız sektörler',
+ 'Secure payment': 'Güvenli ödeme',
+ 'See my work': 'İşlerimi gör',
+ 'Send a message': 'Mesaj gönderin',
+ 'Senior people on every engagement': 'Her işte kıdemli uzmanlar',
+ 'Services built around your goals': 'Hedeflerinize göre kurulan hizmetler',
+ 'Share your experience, the tools you use and what you care about in your work.': 'Deneyiminizi, kullandığınız '
+                                                                                   'araçları ve işinizde önem '
+                                                                                   'verdiklerinizi paylaşın.',
+ 'Shop essentials': 'Temel ürünleri keşfet',
+ 'Shop now': 'Alışverişe başla',
+ 'Shop the edit': 'Seçkiyi keşfet',
+ 'Short articles, process notes and tools.': 'Kısa yazılar, süreç notları ve araçlar.',
+ 'Show search field in the header': 'Arama alanını başlıkta göster',
+ 'Simple, clear process': 'Basit ve net süreç',
+ 'Simple, durable pieces that earn their place at home.': 'Evde yerini hak eden sade ve dayanıklı parçalar.',
+ 'Slider Revolution': 'Slider Revolution',
+ 'Slider Revolution alias': 'Slider Revolution takma adı',
+ 'Slider Revolution etkin değil.': 'Slider Revolution etkin değil.',
+ 'Slider source': 'Slider kaynağı',
+ 'Small changes in light, texture and plants can change how a room feels without a big budget.': 'Işık, doku ve '
+                                                                                                 'bitkilerdeki küçük '
+                                                                                                 'değişiklikler büyük '
+                                                                                                 'bütçe gerektirmeden '
+                                                                                                 'odanın havasını '
+                                                                                                 'değiştirir.',
+ 'Sprint': 'Sprint',
+ 'Start with colour, type and spacing tokens. Add components only when you have used them twice.': 'Renk, yazı tipi ve '
+                                                                                                   'boşluk '
+                                                                                                   'jetonlarıyla '
+                                                                                                   'başlayın. '
+                                                                                                   'Bileşenleri yalnız '
+                                                                                                   'iki kez '
+                                                                                                   'kullandıktan sonra '
+                                                                                                   'ekleyin.',
+ 'Stay in touch': 'İletişimde kalın',
+ 'Steel water bottle': 'Çelik su şişesi',
+ 'Still need help?': 'Hâlâ yardıma mı ihtiyacınız var?',
+ 'Stitched pages and a linen cover for notes you want to keep.': 'Saklamak istediğiniz notlar için dikişli sayfalar ve '
+                                                                 'keten kapak.',
+ 'Stoneware mug': 'Taş seramik kupa',
+ 'Storefront highlights': 'Mağaza öne çıkanlar',
+ 'Stories and guides.': 'Yazılar ve rehberler.',
+ 'Strategy · Delivery · Support': 'Strateji · Uygulama · Destek',
+ 'Support for every stage of the work.': 'İşin her aşaması için destek.',
+ 'Table lamp': 'Masa lambası',
+ 'Technology': 'Teknoloji',
+ 'Tell customers how you select products, who makes them and what you stand for.': 'Müşterilere ürünleri nasıl '
+                                                                                   'seçtiğinizi, kimin ürettiğini ve '
+                                                                                   'neyi savunduğunuzu anlatın.',
+ 'Tell me about your idea, timeline and budget.': 'Fikrinizi, takviminizi ve bütçenizi anlatın.',
+ 'Tell me about your project': 'Projenizi anlatın',
+ 'Tell us what you are working on. We reply within a working day.': 'Üzerinde çalıştığınız işi anlatın. Bir iş günü '
+                                                                    'içinde yanıtlarız.',
+ 'Tell us what you need and we will suggest the next step.': 'İhtiyacınızı anlatın, sonraki adımı önerelim.',
+ 'Tell visitors why the firm exists, who it serves and what makes its approach different.': 'Ziyaretçilere firmanın '
+                                                                                            'neden var olduğunu, kime '
+                                                                                            'hizmet verdiğini ve '
+                                                                                            'yaklaşımını neyin farklı '
+                                                                                            'kıldığını anlatın.',
+ 'The team': 'Ekip',
+ 'Thoughts on design and code.': 'Tasarım ve kod üzerine düşünceler.',
+ 'Tokens, components and documentation shared by design and engineering teams.': 'Tasarım ve mühendislik ekiplerinin '
+                                                                                 'ortak kullandığı jetonlar, '
+                                                                                 'bileşenler ve belgeler.',
+ 'Track orders and manage your details.': 'Siparişleri takip edin, bilgilerinizi yönetin.',
+ 'Transformation': 'Dönüşüm',
+ 'Trusted checkout': 'Güvenilir ödeme adımı',
+ 'View all products': 'Tüm ürünleri gör',
+ 'Ways to work together.': 'Birlikte çalışma biçimleri.',
+ 'We do the work alongside your team and report as we go.': 'İşi ekibinizle birlikte yapar, ilerledikçe raporlarız.',
+ 'We help organisations decide with confidence and carry the work through, from first assessment to lasting results.': 'Kuruluşların '
+                                                                                                                       'güvenle '
+                                                                                                                       'karar '
+                                                                                                                       'vermesine '
+                                                                                                                       've '
+                                                                                                                       'işi '
+                                                                                                                       'ilk '
+                                                                                                                       'değerlendirmeden '
+                                                                                                                       'kalıcı '
+                                                                                                                       'sonuca '
+                                                                                                                       'taşımasına '
+                                                                                                                       'yardım '
+                                                                                                                       'ediyoruz.',
+ 'We learn your goals, limits and what success looks like.': 'Hedeflerinizi, sınırlarınızı ve başarının neye '
+                                                             'benzediğini öğreniriz.',
+ 'We measure the outcome and agree what comes next.': 'Sonucu ölçer ve sonraki adımı kararlaştırırız.',
+ 'We propose options, a timeline and the people involved.': 'Seçenekleri, takvimi ve görev alacak kişileri öneririz.',
+ 'We stay with the work until it delivers.': 'İş sonuç verene kadar yanındayız.',
+ 'Web': 'Web',
+ 'We’re here to help.': 'Yardıma hazırız.',
+ 'What guides our work': 'İşimize yön verenler',
+ 'What to ask before hiring an advisor': 'Danışman tutmadan önce neler sorulmalı',
+ 'What to expect after you order.': 'Sipariş sonrası neler olur.',
+ 'What we do': 'Ne yapıyoruz',
+ 'Why I prototype before I polish': 'Cilalamadan önce neden prototip yapıyorum',
+ 'Why teams choose us': 'Ekipler bizi neden seçiyor',
+ 'Why we do what we do.': 'Bunu neden yapıyoruz.',
+ 'Wireless headphones': 'Kablosuz kulaklık',
+ 'Work': 'İşler',
+ 'Work we are proud of.': 'Gurur duyduğumuz işler.',
+ 'Work with us': 'Bizimle çalışın',
+ 'Workshops, reviews and long-term partnerships.': 'Atölyeler, incelemeler ve uzun vadeli ortaklıklar.',
+ 'Write a short introduction about your background, your way of working and the kind of projects you enjoy.': 'Geçmişiniz, '
+                                                                                                              'çalışma '
+                                                                                                              'biçiminiz '
+                                                                                                              've '
+                                                                                                              'sevdiğiniz '
+                                                                                                              'projeler '
+                                                                                                              'hakkında '
+                                                                                                              'kısa '
+                                                                                                              'bir '
+                                                                                                              'tanıtım '
+                                                                                                              'yazın.',
+ 'You work with the experts you meet at the start. We listen first, explain the options and agree the scope before any work begins.': 'Başta '
+                                                                                                                                      'tanıştığınız '
+                                                                                                                                      'uzmanlarla '
+                                                                                                                                      'çalışırsınız. '
+                                                                                                                                      'Önce '
+                                                                                                                                      'dinler, '
+                                                                                                                                      'seçenekleri '
+                                                                                                                                      'anlatır '
+                                                                                                                                      've '
+                                                                                                                                      'iş '
+                                                                                                                                      'başlamadan '
+                                                                                                                                      'kapsamı '
+                                                                                                                                      'kararlaştırırız.'})

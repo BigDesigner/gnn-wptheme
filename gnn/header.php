@@ -77,6 +77,8 @@
 					?>
 				</nav><!-- #site-navigation -->
 
+				<?php gnn_header_search_bar(); ?>
+
 			<?php endif; ?>
 
 			<div class="header-actions"><?php gnn_header_components(); ?>

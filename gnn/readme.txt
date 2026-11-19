@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.11.2
+Stable tag: 2.12.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,12 @@ GNN is a classic (PHP-template) WordPress theme:
 6. Add static front-page content with blocks or Elementor. Latest-posts mode
    uses the blog listing. Designed sections are available as block patterns
    and Elementor Saved Templates; no demo sections are inserted into pages automatically.
+
+== Slider Revolution ==
+
+Slider Revolution is optional and purchased separately; choose its source and alias under General. Without its shortcode, GNN Slider is used; No theme slider hides either hero.
+In Elementor, use the plugin's Slider Revolution widget.
+Alternatively, use Elementor's Shortcode widget with [rev_slider alias="your-alias"].
 
 == Setup and shared content ==
 
@@ -194,6 +200,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.12.0 =
+* GNNpro, GNNcommerce and GNNdesign are rebuilt as distinct Elementor Free starter sites with their own header, hero, sections, cards, typography and sample content. Each has a complete demo install (WooCommerce required for GNNcommerce).
+* New header styles: Shop (search field with a category row) and Floating (centered glass bar). New option to show a search field in the header.
+* Added Slider Revolution support: choose it as the front-page hero, with a fallback to the GNN Slider when the plugin is missing. Real plugin compatibility is not verified.
+* Starter styles now load only on starter sites and pages; switching designs resets header options.
 
 = 2.11.2 =
 * Portfolio and catalogue cards now look distinct: portfolio cards are image-led with a hover cue, category line and location/year; catalogue cards are framed product cards with a category label, product code and a fully clickable card.

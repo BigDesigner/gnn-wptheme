@@ -137,10 +137,10 @@ function gnn_setup_wizard_content() {
 	}
 	echo '<div class="gnn-choice-grid">';
 	foreach ( $profiles as $slug => $item ) {
-		$preview = 'architecture' === $slug ? 'demo/architecture/image-18.jpg' : 'profiles/' . $slug . '.svg';
+		$preview = 'architecture' === $slug ? 'demo/architecture/image-18.jpg' : ( 'pro' === $slug ? 'demo/pro/hero.jpg' : ( 'commerce' === $slug ? 'demo/commerce/slide-1.jpg' : 'demo/design/work-1.jpg' ) );
 		echo '<article class="gnn-settings-card gnn-profile-card"><img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . '/assets/images/' . $preview ) . '" alt="' . esc_attr( $item['label'] ) . '" width="1600" height="1100"><h2>' . esc_html( $item['label'] ) . '</h2>';
-		if ( 'architecture' === $slug ) {
-			echo '<button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $slug ) . '" data-label="' . esc_attr( $item['label'] ) . '"' . disabled( ! $ready, true, false ) . '>' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
+		if ( 'architecture' === $slug || gnn_st_has( $slug ) ) {
+			echo '<button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $slug ) . '" data-label="' . esc_attr( $item['label'] ) . '"' . disabled( ! $ready || ( 'commerce' === $slug && ! class_exists( 'WooCommerce' ) ), true, false ) . '>' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
 		} else {
 			gnn_management_form_open( 'import' );
 			echo '<input type="hidden" name="profile" value="' . esc_attr( $slug ) . '">';

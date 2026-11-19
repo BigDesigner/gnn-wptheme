@@ -32,8 +32,11 @@ function gnn_platform_schema() {
 					'stacked'     => __( 'Stacked', 'gnn' ),
 					'transparent' => __( 'Transparent', 'gnn' ),
 					'minimal'     => __( 'Minimal', 'gnn' ),
+					'shop'        => __( 'Shop', 'gnn' ),
+					'floating'    => __( 'Floating', 'gnn' ),
 				),
 			),
+			'header_search_bar'       => array( __( 'Show search field in the header', 'gnn' ), 'bool', 0, 'header' ),
 			'header_cta_label'        => array( __( 'Header action label', 'gnn' ), 'text', '', 'header' ),
 			'header_cta_url'          => array( __( 'Header action URL', 'gnn' ), 'url', '', 'header' ),
 			'header_contact'          => array( __( 'Show contact information in the header', 'gnn' ), 'bool', 0, 'header' ),
@@ -132,6 +135,17 @@ function gnn_platform_schema() {
 				),
 			),
 			'hero_group'              => array( __( 'Slider group', 'gnn' ), 'slide_group', 0, 'global' ),
+			'hero_engine'             => array(
+				__( 'Slider source', 'gnn' ),
+				'select',
+				'gnn',
+				'global',
+				array(
+					'gnn'       => __( 'GNN Slider', 'gnn' ),
+					'revslider' => __( 'Slider Revolution', 'gnn' ),
+				),
+			),
+			'hero_revslider'          => array( __( 'Slider Revolution alias', 'gnn' ), 'text', '', 'global' ),
 			'mobile_actions'          => array( __( 'Mobile actions', 'gnn' ), 'actions', '[]', 'header' ),
 			'analytics_delivery'      => array(
 				__( 'Analytics delivery', 'gnn' ),
@@ -444,6 +458,25 @@ function gnn_platform_fields( $group, $exclude = array() ) {
 	}
 	foreach ( gnn_platform_schema() as $key => $field ) {
 		if ( $field[3] !== $group || in_array( $key, $exclude, true ) ) {
+			continue;
+		}
+		if ( 'hero_engine' === $key ) {
+			gnn_field_select( $key, $field[0], $field[4] );
+			if ( ! shortcode_exists( 'rev_slider' ) ) {
+				?>
+				<p id="gnn-revslider-hint" class="description"<?php echo 'revslider' !== gnn_option( 'hero_engine' ) ? ' hidden' : ''; ?>><?php esc_html_e( 'Slider Revolution etkin değil.', 'gnn' ); ?></p>
+				<script>
+				(function () {
+					var source = document.getElementById('gnn-hero_engine');
+					var hint = document.getElementById('gnn-revslider-hint');
+					if (source && hint) {
+						source.setAttribute('aria-describedby', hint.id);
+						source.addEventListener('change', function () { hint.hidden = source.value !== 'revslider'; });
+					}
+				}());
+				</script>
+				<?php
+			}
 			continue;
 		}
 		switch ( $field[1] ) {

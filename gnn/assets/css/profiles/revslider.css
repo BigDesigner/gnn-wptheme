@@ -1,0 +1,55 @@
+﻿/* Keep vertical controls visible without creating horizontal scrolling. */
+.gnn-revslider,
+.elementor-widget-shortcode:has(:where(rs-module-wrap, .rev_slider_wrapper)) {
+	position: relative;
+	z-index: 1;
+	min-width: 0;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	overflow-x: clip;
+	overflow-y: visible;
+}
+
+/* Public wrappers fit the available width; the plugin sizes its modules. */
+:where(.gnn-revslider, .elementor-widget-shortcode) :where(rs-module-wrap, .rev_slider_wrapper) {
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+/* Plugin layer dimensions must not inherit the theme image constraint. */
+:where(.gnn-revslider, .elementor-widget-shortcode) :where(rs-module, .rev_slider) img {
+	max-width: none;
+}
+
+/* The mobile drawer shares the header stacking context, above the slider. */
+.gnn-has-revslider .site-header {
+	z-index: 200;
+	top: var(--gnn-revslider-toolbar-offset, 0px);
+}
+
+.gnn-has-revslider:where(.admin-bar) {
+	--gnn-revslider-toolbar-offset: 32px;
+}
+
+/* Only transparent headers overlay the hero; other headers retain sticky. */
+.gnn-has-revslider.gnn-header-transparent .site-header {
+	position: absolute;
+	inset-inline: 0;
+	width: 100%;
+	background: transparent;
+	border-color: transparent;
+}
+
+@media (max-width: 782px) {
+	.gnn-has-revslider:where(.admin-bar) {
+		--gnn-revslider-toolbar-offset: 46px;
+	}
+}
+
+/* The WordPress toolbar scrolls away on small screens. */
+@media (max-width: 600px) {
+	.gnn-has-revslider:where(.admin-bar):not(.gnn-header-transparent) .site-header {
+		top: 0;
+	}
+}

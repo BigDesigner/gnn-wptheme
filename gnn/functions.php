@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.11.2' );
+define( 'GNN_VERSION', '2.12.0' );
 
 /**
  * Theme setup.
@@ -170,6 +170,9 @@ function gnn_front_hero_renders() {
 	}
 	if ( is_page_template( 'page-templates/tpl-architecture.php' ) || is_page_template( 'page-templates/tpl-starter.php' ) ) {
 		return false;
+	}
+	if ( function_exists( 'gnn_revslider_active' ) && gnn_revslider_active() ) {
+		return true;
 	}
 	if ( 'none' === gnn_layout_value( 'hero_style' ) || ! function_exists( 'gnn_get_slides' ) ) {
 		return false;
@@ -348,9 +351,14 @@ require get_template_directory() . '/inc/shared-library.php';
 require get_template_directory() . '/inc/layout-system.php';
 require get_template_directory() . '/inc/design-system.php';
 require get_template_directory() . '/inc/integrations.php';
+require get_template_directory() . '/inc/templates/common.php';
+require get_template_directory() . '/inc/templates/pro.php';
+require get_template_directory() . '/inc/templates/commerce.php';
+require get_template_directory() . '/inc/templates/design.php';
 require get_template_directory() . '/inc/starters.php';
 require get_template_directory() . '/inc/architecture.php';
 require get_template_directory() . '/inc/starter-layouts.php';
+require get_template_directory() . '/inc/site-profiles.php';
 require get_template_directory() . '/inc/content-modules.php';
 // Hooked here, after content-modules.php, to keep the frontend stylesheet order.
 add_action( 'wp_enqueue_scripts', 'gnn_demo_site_styles', 17 );
@@ -373,6 +381,7 @@ if ( is_admin() ) {
 // WP-Cron (package expiry) and WP-CLI; visitor and REST requests never call them.
 if ( is_admin() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 	require get_template_directory() . '/inc/starter-editors.php';
+	require get_template_directory() . '/inc/demo/demo-profiles.php';
 	require get_template_directory() . '/inc/starter-maintenance.php';
 	require get_template_directory() . '/inc/demo/demo-site.php';
 	require get_template_directory() . '/inc/portability.php';

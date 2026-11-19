@@ -11,33 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Small, distinct profiles rather than copied commercial demo sites. */
 function gnn_starter_profiles() {
 	return array(
-		'pro'          => array(
-			'label'       => __( 'GNNpro', 'gnn' ),
-			'accent'      => '#24415c',
-			'header'      => 'classic',
-			'radius'      => 2,
-			'font'        => 'manrope',
-			'heading'     => __( 'Expertise that moves you forward.', 'gnn' ),
-			'description' => __( 'A complete business website for companies, teams and professional services.', 'gnn' ),
-		),
-		'commerce'     => array(
-			'label'       => __( 'GNNcommerce', 'gnn' ),
-			'accent'      => '#12644a',
-			'header'      => 'classic',
-			'radius'      => 8,
-			'font'        => 'manrope',
-			'heading'     => __( 'Considered products. Everyday possibilities.', 'gnn' ),
-			'description' => __( 'A WooCommerce storefront with live products, categories, cart, checkout and customer account links.', 'gnn' ),
-		),
-		'design'       => array(
-			'label'       => __( 'GNNdesign', 'gnn' ),
-			'accent'      => '#7045aa',
-			'header'      => 'minimal',
-			'radius'      => 16,
-			'font'        => 'space',
-			'heading'     => __( 'Design. Code. Make an impact.', 'gnn' ),
-			'description' => __( 'A personal portfolio for developers, designers and independent creative professionals.', 'gnn' ),
-		),
+		'pro'          => gnn_st_profile_pro(),
+		'commerce'     => gnn_st_profile_commerce(),
+		'design'       => gnn_st_profile_design(),
 		'architecture' => array(
 			'label'        => __( 'GNNarchitecture', 'gnn' ),
 			'accent'       => '#855c40',
@@ -89,6 +65,8 @@ function gnn_apply_design_preset( $name, $reset = false ) {
 			$options[ $key ] = $defaults[ $key ];
 		}
 	}
+	$light   = $profile['light'] ?? array( '#fafafa', '#f0f1f3', '#e5e7eb', '#18212b', '#515d69', '#d4d9df' );
+	$dark    = $profile['dark'] ?? null;
 	$options = array_replace(
 		$options,
 		array(
@@ -101,37 +79,51 @@ function gnn_apply_design_preset( $name, $reset = false ) {
 			'heading_font'        => $profile['heading_font'] ?? $profile['font'],
 			'hero_style'          => 'none',
 			'container_width'     => 1440,
-			'heading_size'        => 'architecture' === $name || 'design' === $name ? 100 : 80,
+			'heading_size'        => in_array( $name, array( 'architecture', 'design' ), true ) ? 100 : 80,
 			'heading_mobile_size' => 42,
-			'accent_light'        => $profile['accent'],
+			'accent_light'        => $profile['accent_light'] ?? $profile['accent'],
 			'accent_ink_light'    => '#ffffff',
-			'color_bg_light'      => '#fafafa',
-			'color_bg2_light'     => '#f0f1f3',
-			'color_bg3_light'     => '#e5e7eb',
-			'color_fg_light'      => '#18212b',
-			'color_fg2_light'     => '#515d69',
-			'color_line_light'    => '#d4d9df',
+			'color_bg_light'      => $light[0],
+			'color_bg2_light'     => $light[1],
+			'color_bg3_light'     => $light[2],
+			'color_fg_light'      => $light[3],
+			'color_fg2_light'     => $light[4],
+			'color_line_light'    => $light[5],
 		)
 	);
-	if ( 'architecture' === $name ) {
+	if ( $dark ) {
 		$options = array_replace(
 			$options,
 			array(
-				'color_bg_light'   => '#f4f1e9',
-				'color_bg2_light'  => '#ebe6dc',
-				'color_bg3_light'  => '#ded6c9',
-				'color_fg_light'   => '#262b27',
-				'color_fg2_light'  => '#62665f',
-				'color_line_light' => '#d2cabb',
-				'accent_light'     => '#855c40',
-				'accent_ink_light' => '#ffffff',
-				'hero_style'       => 'none',
-				'container_width'  => 1440,
+				'accent_ink_dark' => $profile['accent_ink'] ?? '#06150f',
+				'color_bg_dark'   => $dark[0],
+				'color_bg2_dark'  => $dark[1],
+				'color_bg3_dark'  => $dark[2],
+				'color_fg_dark'   => $dark[3],
+				'color_fg2_dark'  => $dark[4],
+				'color_line_dark' => $dark[5],
 			)
 		);
 	}
+	if ( ! empty( $profile['accent_ink'] ) ) {
+		$options['accent_ink_light'] = '#ffffff';
+	}
+	// Header-related options start from neutral values, so switching designs leaves no leftovers.
+	$options = array_replace(
+		$options,
+		array(
+			'header_height'     => 64,
+			'header_search_bar' => 0,
+			'header_cta_label'  => '',
+			'show_search'       => 1,
+			'show_cart'         => 1,
+			'topbar_enable'     => 0,
+			'portfolio_columns' => 2,
+		),
+		$profile['options'] ?? array()
+	);
 	update_option( 'gnn_options', $options );
-	set_theme_mod( 'gnn_default_theme', 'light' );
+	set_theme_mod( 'gnn_default_theme', $profile['mode'] ?? 'light' );
 	set_theme_mod( 'gnn_accent_color', $profile['accent'] );
 	return true;
 }

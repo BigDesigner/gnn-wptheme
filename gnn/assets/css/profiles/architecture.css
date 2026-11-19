@@ -1,0 +1,10 @@
+/* =====================================================================
+   GNNarchitecture header: quiet, technical
+   ===================================================================== */
+.gnn-site-architecture .site-header{background:var(--bg);backdrop-filter:none;border-bottom:1px solid var(--line)}
+.gnn-site-architecture .site-header__inner{height:84px;max-width:var(--gnn-container,1440px)}
+.gnn-site-architecture .main-navigation ul.menu{gap:34px;font:500 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}
+.gnn-site-architecture .main-navigation ul.menu>li>a{padding-block:30px;border-bottom:1px solid transparent}
+.gnn-site-architecture .main-navigation ul.menu>li:hover>a,.gnn-site-architecture .main-navigation ul.menu>li.current-menu-item>a{border-bottom-color:var(--fg)}
+.gnn-site-architecture .site-title{font-weight:400;letter-spacing:.02em}
+.gnn-site-architecture .header-cta{border-radius:0;background:transparent;color:var(--fg);border:1px solid var(--fg)}

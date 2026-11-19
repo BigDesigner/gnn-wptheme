@@ -332,7 +332,10 @@ function gnn_install_profile_pages( $profile, $editor ) {
 		'news'     => __( 'News', 'gnn' ),
 		'contact'  => __( 'Contact', 'gnn' ),
 	);
-	if ( 'architecture' === $profile ) {
+	$native = 'elementor' === $editor && gnn_st_has( $profile );
+	if ( $native ) {
+		$pages = gnn_st_pages( $profile );
+	} elseif ( 'architecture' === $profile ) {
 		$pages = array(
 			'home'      => __( 'Architecture Home', 'gnn' ),
 			'studio'    => __( 'Studio', 'gnn' ),
@@ -342,7 +345,7 @@ function gnn_install_profile_pages( $profile, $editor ) {
 			'contact'   => __( 'Contact', 'gnn' ),
 		);
 	}
-	if ( 'design' === $profile ) {
+	if ( 'design' === $profile && ! $native ) {
 		$pages['portfolio'] = __( 'Portfolio', 'gnn' );
 		$pages['gallery']   = __( 'Gallery', 'gnn' );
 	}
@@ -404,12 +407,18 @@ function gnn_install_profile_pages( $profile, $editor ) {
 			continue;
 		}
 		if ( $refresh || ( '' === trim( (string) get_post_field( 'post_content', $id ) ) && ! get_post_meta( $id, '_elementor_data', true ) ) ) {
-			$content = 'architecture' === $profile ? gnn_architecture_page_content( $key, $ids ) : gnn_profile_page_content( $profile, $key, $ids );
-			if ( 'architecture' === $profile ) {
-				$content = gnn_starter_live_architecture( $content, 'home' === $key );
+			$elements = null;
+			$content  = '';
+			if ( $native ) {
+				$elements = gnn_st_page( $profile, $key, $ids );
+			} else {
+				$content = 'architecture' === $profile ? gnn_architecture_page_content( $key, $ids ) : gnn_profile_page_content( $profile, $key, $ids );
+				if ( 'architecture' === $profile ) {
+					$content = gnn_starter_live_architecture( $content, 'home' === $key );
+				}
 			}
 			if ( 'elementor' === $editor ) {
-				$elements = gnn_starter_elementor_elements( parse_blocks( $content ) );
+				$elements = $native ? $elements : gnn_starter_elementor_elements( parse_blocks( $content ) );
 				$result   = is_wp_error( $elements ) ? $elements : gnn_starter_save_elementor( $id, $elements );
 			} else {
 				$result = wp_update_post(
