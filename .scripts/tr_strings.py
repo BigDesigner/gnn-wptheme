@@ -2217,3 +2217,42 @@ TRANSLATIONS.update({'A calm dashboard that turns busy data into clear next acti
                                                                                                                                       'başlamadan '
                                                                                                                                       'kapsamı '
                                                                                                                                       'kararlaştırırız.'})
+
+# GNN_ARCH_2_12_1
+TRANSLATIONS.update({'A collaborative studio interested in how places can support everyday life.': 'Mekânların gündelik yaşamı nasıl '
+                                                                               'destekleyebileceğiyle ilgilenen ortak '
+                                                                               'çalışan bir stüdyo.',
+ 'Add your first story': 'İlk yazınızı ekleyin',
+ 'Approach': 'Yaklaşım',
+ 'Architecture, interiors and landscape, shaped by light, material and the way people use space.': 'Işığın, malzemenin '
+                                                                                                   've mekânı kullanış '
+                                                                                                   'biçiminin '
+                                                                                                   'şekillendirdiği '
+                                                                                                   'mimarlık, iç mekân '
+                                                                                                   've peyzaj.',
+ 'Choose a single service or work with the studio from the first sketch to the keys.': 'Tek bir hizmeti seçin ya da '
+                                                                                       'stüdyoyla ilk eskizden anahtar '
+                                                                                       'teslimine çalışın.',
+ 'Detail': 'Detaylandır',
+ 'Disciplines': 'Disiplinler',
+ 'Explore options with drawings and models.': 'Seçenekleri çizim ve maketlerle keşfedin.',
+ 'Follow': 'Takip et',
+ 'From the first sketch to the finished building.': 'İlk eskizden tamamlanmış yapıya.',
+ 'From the studio': 'Stüdyodan',
+ 'Gardens and courtyards that extend the home outdoors.': 'Evi dışarıya uzatan bahçeler ve avlular.',
+ 'Interiors': 'İç mekân',
+ 'Landscape': 'Peyzaj',
+ 'Let’s talk about your site.': 'Mekânınızı konuşalım.',
+ 'Residential building with planted terraces': 'Bitkilendirilmiş teraslı konut binası',
+ 'Resolve materials and junctions.': 'Malzemeleri ve birleşimleri çözün.',
+ 'Rooms planned around daily use, light and materials.': 'Günlük kullanım, ışık ve malzeme etrafında planlanan odalar.',
+ 'Specialists and builders brought together under one plan.': 'Uzmanlar ve yapımcılar tek planda bir araya getirilir.',
+ 'Stay close through construction.': 'İnşaat boyunca yakın durun.',
+ 'Studio drawings and material samples': 'Stüdyo çizimleri ve malzeme örnekleri',
+ 'Support from idea to handover.': 'Fikirden teslime destek.',
+ 'Tell us about the place, the people who will use it and what you would like to create.': 'Mekânı, onu kullanacak '
+                                                                                           'kişileri ve yaratmak '
+                                                                                           'istediğinizi anlatın.',
+ 'Test': 'Dene',
+ 'Understand the brief and the site.': 'İsteği ve araziyi anlayın.',
+ 'We design places that feel natural to live in.': 'Yaşamaya doğal gelen mekânlar tasarlıyoruz.'})

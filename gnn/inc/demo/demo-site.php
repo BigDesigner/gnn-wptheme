@@ -75,7 +75,7 @@ function gnn_demo_save( $id, $content, $elementor = false ) {
 		return true;
 	}
 	if ( $elementor ) {
-		$elements = gnn_starter_elementor_elements( parse_blocks( $content ) );
+		$elements = is_array( $content ) ? $content : gnn_starter_elementor_elements( parse_blocks( $content ) );
 		$result   = is_wp_error( $elements ) ? $elements : gnn_starter_save_elementor( $id, $elements );
 	} else {
 		$result = wp_update_post(
@@ -188,7 +188,7 @@ function gnn_import_demo_site( $profile, $confirmed = false, $revision = null ) 
 	if ( ! current_user_can( 'manage_options' ) || true !== $confirmed ) {
 		return new WP_Error( 'gnn_demo_confirm', __( 'Confirm the complete site installation.', 'gnn' ) );
 	}
-	if ( gnn_st_has( $profile ) ) {
+	if ( gnn_dp_has( $profile ) ) {
 		return gnn_dp_import( $profile, $revision );
 	}
 	if ( 'architecture' !== $profile || ! gnn_starter_elementor_available() ) {
@@ -371,7 +371,7 @@ function gnn_demo_finish( $result, $group ) {
 		if ( ! gnn_demo_writable( $id ) ) {
 			continue;
 		}
-		$content = gnn_demo_page_content( $key, $pages, $result, $group );
+		$content = 'news' === $key ? gnn_demo_page_content( $key, $pages, $result, $group ) : gnn_st_architecture_page( $key, $pages, $result, $group );
 		$saved   = gnn_demo_save( $id, $content, 'news' !== $key );
 		if ( is_wp_error( $saved ) ) {
 			return $saved;

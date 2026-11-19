@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.12.0
+Stable tag: 2.12.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,10 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.12.1 =
+* GNNarchitecture is redesigned as a native Elementor Free site with a new editorial language: full-bleed slider, mono captions, light display type, numbered sections and a dark closing band. Existing pages and sample content are not rewritten.
+* Starter pages for sections now share one page generator for all four designs; new installs title the portfolio page "Projects".
 
 = 2.12.0 =
 * GNNpro, GNNcommerce and GNNdesign are rebuilt as distinct Elementor Free starter sites with their own header, hero, sections, cards, typography and sample content. Each has a complete demo install (WooCommerce required for GNNcommerce).

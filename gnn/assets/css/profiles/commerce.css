@@ -35,11 +35,11 @@
 .gnn-story .elementor-widget-text-editor p{margin-inline:auto}
 .elementor .e-con.gnn-st.gnn-shop-story{background:var(--bg2)}
 .elementor .e-con.gnn-st.gnn-shop-cta{background:var(--accent);color:var(--accent-ink)}
-.gnn-shop-cta .gnn-wrap{display:grid;gap:20px;justify-items:center;text-align:center}
+.elementor .gnn-shop-cta .e-con.gnn-st.gnn-wrap{display:grid;gap:20px;justify-items:center;text-align:center}
 .gnn-shop-cta h2,.elementor .gnn-st.gnn-shop-cta .elementor-widget-text-editor p{color:var(--accent-ink)}
 .gnn-shop-cta .gnn-btn-main .elementor-button{background:var(--bg);color:var(--accent-text);border-color:var(--bg)}
 .elementor .e-con.gnn-st.gnn-shop-pagehead{background:var(--bg2);padding-block:clamp(44px,6vw,80px)}
-.gnn-shop-pagehead .gnn-wrap{display:grid;gap:16px}
+.elementor .gnn-shop-pagehead .e-con.gnn-st.gnn-wrap{display:grid;gap:16px}
 .gnn-shop .gnn-card{border-radius:18px}
 @media(max-width:900px){.elementor .e-con.gnn-st.gnn-usp{grid-template-columns:repeat(2,minmax(0,1fr))}.elementor .e-con.gnn-st.gnn-banners{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:560px){.elementor .e-con.gnn-st.gnn-usp{grid-template-columns:minmax(0,1fr)}.gnn-usp-item{border-inline-end:0;border-bottom:1px solid var(--line)}}

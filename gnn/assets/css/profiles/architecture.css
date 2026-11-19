@@ -1,6 +1,6 @@
-/* =====================================================================
-   GNNarchitecture header: quiet, technical
-   ===================================================================== */
+/* GNNarchitecture: monograph language. Thin lines, mono captions, light display type, square corners. */
+
+/* ---------- Header ---------- */
 .gnn-site-architecture .site-header{background:var(--bg);backdrop-filter:none;border-bottom:1px solid var(--line)}
 .gnn-site-architecture .site-header__inner{height:84px;max-width:var(--gnn-container,1440px)}
 .gnn-site-architecture .main-navigation ul.menu{gap:34px;font:500 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}
@@ -8,3 +8,71 @@
 .gnn-site-architecture .main-navigation ul.menu>li:hover>a,.gnn-site-architecture .main-navigation ul.menu>li.current-menu-item>a{border-bottom-color:var(--fg)}
 .gnn-site-architecture .site-title{font-weight:400;letter-spacing:.02em}
 .gnn-site-architecture .header-cta{border-radius:0;background:transparent;color:var(--fg);border:1px solid var(--fg)}
+
+/* ---------- Type and controls ---------- */
+.elementor .e-con.gnn-st.gnn-ar{padding-block:clamp(56px,8vw,120px)}
+.elementor .e-con.gnn-st.gnn-ar .gnn-wrap{max-width:var(--gnn-container,1440px)}
+.gnn-ar h1{font-size:clamp(44px,7vw,112px);line-height:1;font-weight:300;max-width:13ch}
+.gnn-ar h2{font-size:clamp(30px,4.2vw,64px);line-height:1.08;font-weight:300;max-width:20ch}
+.gnn-ar h3{font-size:clamp(20px,1.8vw,26px);line-height:1.25;font-weight:500}
+.gnn-ar .gnn-eyebrow p{font:500 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--fg2)}
+.gnn-ar .gnn-num p{font:500 12px/1 ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--fg2)}
+.gnn-ar .gnn-lead p{font-size:clamp(17px,1.5vw,21px);max-width:48ch}
+.gnn-ar .elementor-button{border-radius:0}
+.gnn-ar .gnn-btn-main .elementor-button{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.gnn-ar .gnn-btn-main .elementor-button:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);transform:none;filter:none}
+.gnn-ar .gnn-link .elementor-button{border-bottom:1px solid var(--fg);color:var(--fg);padding-inline:0;min-height:34px}
+.gnn-ar .gnn-link .elementor-button::after{content:'\2197'}
+.gnn-ar .gnn-link .elementor-button:hover::after{transform:translate(3px,-3px)}
+
+/* ---------- Hero slider ---------- */
+.gnn-ar-slider .gnn-hero{height:clamp(520px,86vh,820px);min-height:0;max-height:none}
+.gnn-ar-slider .gnn-hero__bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,16,14,.72),rgba(14,16,14,0) 62%),linear-gradient(90deg,rgba(14,16,14,.5),rgba(14,16,14,0) 60%)}
+.gnn-ar-slider .gnn-hero__slide{align-items:flex-end;justify-content:flex-start}
+.gnn-ar-slider .gnn-hero__content{text-align:start;max-width:var(--gnn-container,1440px);width:100%;margin-inline:auto;padding:0 clamp(20px,4vw,48px) clamp(48px,7vw,88px);color:#fff}
+.gnn-ar-slider .gnn-hero__title{font-weight:300;font-size:clamp(38px,6.2vw,100px);line-height:1;max-width:14ch;text-align:start;color:#fff}
+.gnn-ar-slider .gnn-hero__text{text-align:start;margin-inline:0;max-width:46ch;color:rgba(255,255,255,.85)}
+.gnn-ar-slider .entry-kicker{font:500 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.gnn-ar-slider .gnn-hero__actions{justify-content:flex-start}
+.gnn-ar-slider .gnn-hero__actions .gnn-btn{border-radius:0;background:transparent;color:#fff;border:1px solid #fff}
+.gnn-ar-slider .gnn-hero__arrow{border-radius:0}
+.elementor .e-con.gnn-st.gnn-ar-static{display:grid;min-height:clamp(480px,80vh,760px);position:relative;overflow:hidden}
+.gnn-ar-static>*{grid-area:1/1}
+.gnn-ar-static img{width:100%;height:100%;object-fit:cover;display:block}
+.elementor .e-con.gnn-st.gnn-ar-static-copy{align-content:end;gap:12px;padding:clamp(24px,4vw,56px);background:linear-gradient(0deg,rgba(14,16,14,.7),rgba(14,16,14,0) 60%);z-index:1}
+.gnn-ar-static-copy h1,.elementor .gnn-st .gnn-ar-static-copy .gnn-eyebrow p{color:#fff}
+
+/* ---------- Sections ---------- */
+.elementor .gnn-ar-manifesto .e-con.gnn-st.gnn-wrap,.elementor .gnn-ar-pagehead .e-con.gnn-st.gnn-wrap{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,9fr);gap:24px clamp(24px,4vw,64px);align-items:start}
+.elementor .e-con.gnn-st.gnn-ar-statement{display:grid;gap:28px;justify-items:start}
+.elementor .gnn-ar-pagehead .e-con.gnn-st.gnn-wrap{grid-template-columns:minmax(0,3fr) minmax(0,9fr);grid-template-rows:auto auto}
+.gnn-ar-pagehead .gnn-eyebrow{grid-row:1/3}
+.elementor .e-con.gnn-st.gnn-ar-pagehead{padding-block:clamp(56px,8vw,112px) clamp(32px,4vw,56px);border-bottom:1px solid var(--line)}
+.elementor .e-con.gnn-st.gnn-ar-disciplines{border-block:1px solid var(--line)}
+.elementor .gnn-ar-disciplines .e-con.gnn-st.gnn-card,.elementor .gnn-ar-about .e-con.gnn-st.gnn-card{background:transparent;border:0;border-top:1px solid var(--fg);border-radius:0;padding:22px 0 0}
+.gnn-ar-disciplines .gnn-eyebrow{margin-bottom:24px}
+.gnn-ar-work .gnn-head,.gnn-ar-journal .gnn-head{margin-bottom:clamp(24px,3vw,44px)}
+.gnn-ar [data-gnn-collection="portfolio"] .gnn-module-project-image,.gnn-ar [data-gnn-collection="portfolio"] .gnn-module-project-image img{border-radius:0}
+.gnn-ar [data-gnn-collection="portfolio"] .gnn-module-project h3{font-weight:400;font-size:clamp(20px,2vw,28px)}
+.gnn-ar [data-gnn-collection="portfolio"] .gnn-module-kicker{font:500 11px/1.4 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.14em;text-transform:uppercase}
+.gnn-ar-approach .gnn-visual{border-radius:0;aspect-ratio:4/5;max-height:720px}
+.elementor .e-con.gnn-st.gnn-ar-rows{gap:0}
+.elementor .e-con.gnn-st.gnn-ar-row{display:grid;grid-template-columns:56px minmax(0,1fr) minmax(0,1.5fr);gap:20px;align-items:baseline;padding-block:22px;border-top:1px solid var(--line)}
+.gnn-ar-rows .gnn-ar-row:last-child{border-bottom:1px solid var(--line)}
+.elementor .e-con.gnn-st.gnn-ar-journal{background:var(--bg2)}
+.elementor .e-con.gnn-st.gnn-ar-stories{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,36px)}
+.elementor .e-con.gnn-st.gnn-ar-story{display:grid;gap:12px;align-content:start}
+.gnn-ar-story img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.elementor .e-con.gnn-st.gnn-ar-cta{background:var(--fg);color:var(--bg)}
+.elementor .gnn-ar-cta .e-con.gnn-st.gnn-wrap{display:grid;gap:22px;justify-items:start}
+.gnn-ar-cta h2{color:var(--bg)}
+.elementor .gnn-st.gnn-ar-cta .elementor-widget-text-editor p{color:color-mix(in srgb,var(--bg) 78%,transparent)}
+.gnn-ar-cta .gnn-btn-main .elementor-button{background:var(--bg);color:var(--fg);border-color:var(--bg)}
+.gnn-ar-gallery [data-gnn-collection] img{border-radius:0}
+.gnn-ar-contact .gnn-visual{border-radius:0;aspect-ratio:4/5;max-height:640px}
+@media(max-width:900px){.elementor .gnn-ar-manifesto .e-con.gnn-st.gnn-wrap,.elementor .gnn-ar-pagehead .e-con.gnn-st.gnn-wrap{grid-template-columns:minmax(0,1fr)}.gnn-ar-pagehead .gnn-eyebrow{grid-row:auto}.elementor .e-con.gnn-st.gnn-ar-stories{grid-template-columns:repeat(2,minmax(0,1fr))}.gnn-site-architecture .site-header__inner{height:68px}}
+@media(max-width:600px){.elementor .e-con.gnn-st.gnn-ar-stories{grid-template-columns:minmax(0,1fr)}.elementor .e-con.gnn-st.gnn-ar-row{grid-template-columns:40px minmax(0,1fr);gap:6px 14px}.gnn-ar-row>.elementor-widget:last-child{grid-column:2}}
+
+.gnn-site-architecture .site-branding{min-width:0}
+.gnn-site-architecture .site-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
+@media(max-width:600px){.gnn-ar-slider .gnn-hero__text{display:none}}

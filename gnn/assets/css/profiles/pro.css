@@ -12,7 +12,7 @@
 .gnn-pro .gnn-float{position:absolute;inset-inline-start:20px;bottom:20px;width:auto!important}
 .gnn-pro .gnn-float p{background:#fff;color:#12263a;font:700 13px/1 var(--font-body);padding:13px 18px;border-radius:4px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
 .elementor .e-con.gnn-st.gnn-pro-sectors{padding-block:34px;border-block:1px solid var(--line)}
-.gnn-pro-sectors .gnn-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.elementor .gnn-pro-sectors .e-con.gnn-st.gnn-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
 .gnn-pro-sectors .gnn-eyebrow{width:auto}
 .gnn-pro-services .gnn-card,.gnn-pro-values .gnn-card{border-radius:4px;border-top:3px solid var(--accent);transition:transform .25s,box-shadow .25s}
 .gnn-pro-services .gnn-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(18,38,58,.12)}
@@ -22,12 +22,12 @@
 .gnn-pro-process .gnn-steps .gnn-num p{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-size:14px}
 .elementor .e-con.gnn-st.gnn-pro-cases{background:var(--bg2)}
 .elementor .e-con.gnn-st.gnn-pro-cta,.elementor .e-con.gnn-st.gnn-pro-pagehead{background:var(--pro-navy);color:#fff}
-.gnn-pro-cta .gnn-wrap{display:grid;gap:20px;justify-items:start}
+.elementor .gnn-pro-cta .e-con.gnn-st.gnn-wrap{display:grid;gap:20px;justify-items:start}
 .gnn-pro-cta h2,.gnn-pro-pagehead h1{color:#fff}
 .elementor .gnn-st.gnn-pro-cta .elementor-widget-text-editor p,.elementor .gnn-st.gnn-pro-pagehead .elementor-widget-text-editor p{color:rgba(255,255,255,.8)}.elementor .gnn-st.gnn-pro-pagehead .gnn-eyebrow p{color:var(--pro-sand)}
 .gnn-pro-cta .gnn-btn-main .elementor-button{background:#fff;color:var(--pro-navy);border-color:#fff}
 .elementor .e-con.gnn-st.gnn-pro-pagehead{padding-block:clamp(56px,7vw,96px)}
-.gnn-pro-pagehead .gnn-wrap{display:grid;gap:18px}
+.elementor .gnn-pro-pagehead .e-con.gnn-st.gnn-wrap{display:grid;gap:18px}
 .gnn-pro-pagehead .gnn-eyebrow p{color:var(--pro-sand)}
 .elementor .e-con.gnn-st.gnn-rows{gap:0}
 .elementor .e-con.gnn-st.gnn-row{grid-template-columns:70px minmax(0,1fr) minmax(0,1.4fr) auto;gap:24px;align-items:center;padding-block:30px;border-top:1px solid var(--line)}

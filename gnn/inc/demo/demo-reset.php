@@ -108,7 +108,7 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 		if ( is_wp_error( $validated ) ) {
 			return $validated;
 		}
-	} elseif ( ( 'architecture' !== $profile && ! gnn_st_has( $profile ) ) || ! gnn_starter_elementor_available() || ( 'commerce' === $profile && ! class_exists( 'WooCommerce' ) ) ) {
+	} elseif ( ( 'architecture' !== $profile && ! gnn_dp_has( $profile ) ) || ! gnn_starter_elementor_available() || ( 'commerce' === $profile && ! class_exists( 'WooCommerce' ) ) ) {
 		return new WP_Error( 'gnn_demo_editor', 'commerce' === $profile ? __( 'Activate WooCommerce and complete store setup before importing GNNcommerce.', 'gnn' ) : __( 'This demo requires Elementor.', 'gnn' ) );
 	}
 	foreach ( array( 'publish_pages', 'edit_pages', 'edit_posts', 'upload_files' ) as $capability ) {
@@ -116,12 +116,12 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 			return new WP_Error( 'gnn_demo_permission', __( 'Permission denied.', 'gnn' ) );
 		}
 	}
-	foreach ( gnn_st_has( $profile ) ? gnn_dp_images( $profile ) : array() as $name ) {
+	foreach ( gnn_dp_has( $profile ) ? gnn_dp_images( $profile ) : array() as $name ) {
 		if ( ! is_readable( get_template_directory() . '/assets/images/demo/' . $profile . '/' . $name . '.jpg' ) ) {
 			return new WP_Error( 'gnn_demo_image', __( 'A demo image is missing. Reinstall the theme.', 'gnn' ) );
 		}
 	}
-	foreach ( $package || gnn_st_has( $profile ) ? array() : range( 0, 28 ) as $number ) {
+	foreach ( $package || gnn_dp_has( $profile ) ? array() : range( 0, 28 ) as $number ) {
 		if ( 5 !== $number && ! is_readable( get_template_directory() . '/assets/images/demo/architecture/image-' . sprintf( '%02d', $number ) . '.jpg' ) ) {
 			return new WP_Error( 'gnn_demo_image', __( 'A demo image is missing. Reinstall the theme.', 'gnn' ) );
 		}
@@ -331,7 +331,7 @@ function gnn_demo_replace_step( $job_id ) {
 		}
 		// Generate one attachment's derivatives per request before saving the page graph.
 		$cursor = (int) ( $job['media_cursor'] ?? 0 );
-		if ( gnn_st_has( $job['profile'] ) ) {
+		if ( gnn_dp_has( $job['profile'] ) ) {
 			$cursor = 29;
 		}
 		if ( 5 === $cursor ) {

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.12.0\n"
+"Project-Id-Version: GNN 2.12.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 02:42+0000\n"
-"PO-Revision-Date: 2026-11-19 02:42+0000\n"
+"POT-Creation-Date: 2026-11-19 03:39+0000\n"
+"PO-Revision-Date: 2026-11-19 03:39+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +103,12 @@ msgstr ""
 msgid "A clear way of working"
 msgstr ""
 
+#: inc/templates/architecture.php:197
+msgid "A collaborative studio interested in how places can support everyday life."
+msgstr ""
+
 #: inc/demo/demo-site.php:501
+#: inc/templates/architecture.php:254
 msgid "A collection of places."
 msgstr ""
 
@@ -252,6 +257,7 @@ msgid "A rough prototype answers questions a polished mock-up cannot. Test the i
 msgstr ""
 
 #: inc/demo/demo-site.php:521
+#: inc/templates/architecture.php:206
 msgid "A shared design process."
 msgstr ""
 
@@ -458,7 +464,7 @@ msgstr ""
 msgid "Add to saved templates"
 msgstr ""
 
-#: inc/templates/common.php:173
+#: inc/templates/common.php:180
 msgid "Add your address here."
 msgstr ""
 
@@ -469,6 +475,10 @@ msgstr ""
 
 #: inc/templates/commerce.php:198
 msgid "Add your delivery areas, times and costs."
+msgstr ""
+
+#: inc/templates/architecture.php:93
+msgid "Add your first story"
 msgstr ""
 
 #: inc/elementor-templates.php:240
@@ -583,6 +593,7 @@ msgstr ""
 
 #: inc/architecture.php:308
 #: inc/content-modules.php:539
+#: inc/templates/architecture.php:135
 msgid "All projects"
 msgstr ""
 
@@ -702,7 +713,12 @@ msgstr ""
 msgid "Apply this design profile after successful import"
 msgstr ""
 
+#: inc/templates/architecture.php:172
+msgid "Approach"
+msgstr ""
+
 #: inc/demo/demo-site.php:521
+#: inc/templates/architecture.php:206
 msgid "Architects, interior designers and project coordinators work together from the first conversation. Each project grows through close dialogue with its users and a careful reading of its surroundings."
 msgstr ""
 
@@ -718,6 +734,7 @@ msgstr ""
 
 #: inc/architecture.php:264
 #: inc/platform.php:174
+#: inc/templates/architecture.php:153
 msgid "Architecture"
 msgstr ""
 
@@ -730,6 +747,7 @@ msgid "Architecture / Interiors / Landscape"
 msgstr ""
 
 #: inc/demo/demo-reset.php:341
+#: inc/templates/architecture.php:112
 msgid "Architecture / Selected projects"
 msgstr ""
 
@@ -775,11 +793,17 @@ msgid "Architecture services"
 msgstr ""
 
 #: inc/demo/demo-site.php:278
+#: inc/templates/architecture.php:93
+#: inc/templates/architecture.php:301
 msgid "Architecture studio: drawings, materials and places"
 msgstr ""
 
 #: inc/architecture.php:299
 msgid "Architecture with a sense of place"
+msgstr ""
+
+#: inc/templates/architecture.php:124
+msgid "Architecture, interiors and landscape, shaped by light, material and the way people use space."
 msgstr ""
 
 #: inc/demo/demo-site.php:388
@@ -1267,6 +1291,10 @@ msgstr ""
 msgid "Choose a single engagement or a longer partnership."
 msgstr ""
 
+#: inc/templates/architecture.php:233
+msgid "Choose a single service or work with the studio from the first sketch to the keys."
+msgstr ""
+
 #: template-parts/hero-slider.php:79
 msgid "Choose a slide"
 msgstr ""
@@ -1655,6 +1683,7 @@ msgid "Crop"
 msgstr ""
 
 #: inc/demo/demo-site.php:520
+#: inc/templates/architecture.php:197
 msgid "Curiosity. Clarity. Care."
 msgstr ""
 
@@ -1870,6 +1899,10 @@ msgstr ""
 msgid "Desktop size"
 msgstr ""
 
+#: inc/templates/architecture.php:178
+msgid "Detail"
+msgstr ""
+
 #: inc/architecture.php:323
 msgid "Develop"
 msgstr ""
@@ -1907,6 +1940,10 @@ msgstr ""
 
 #: inc/architecture.php:339
 msgid "Discipline"
+msgstr ""
+
+#: inc/templates/architecture.php:150
+msgid "Disciplines"
 msgstr ""
 
 #: inc/architecture.php:322
@@ -2084,6 +2121,8 @@ msgid "Every commission has its own setting and ambitions. Our role is to turn t
 msgstr ""
 
 #: inc/demo/demo-site.php:538
+#: inc/templates/architecture.php:51
+#: inc/templates/architecture.php:292
 msgid "Every project begins with a conversation."
 msgstr ""
 
@@ -2143,6 +2182,11 @@ msgstr ""
 
 #: inc/templates/commerce.php:61
 msgid "Explore home"
+msgstr ""
+
+#: inc/templates/architecture.php:177
+#: inc/templates/architecture.php:220
+msgid "Explore options with drawings and models."
 msgstr ""
 
 #: inc/starter-layouts.php:22
@@ -2320,6 +2364,11 @@ msgstr ""
 msgid "Focused advice, considered decisions and a clear path forward for your organisation."
 msgstr ""
 
+#: inc/templates/architecture.php:179
+#: inc/templates/architecture.php:221
+msgid "Follow"
+msgstr ""
+
 #: inc/integrations.php:67
 msgid "Follow us"
 msgstr ""
@@ -2471,11 +2520,21 @@ msgid "From the first site reading to a clear spatial concept, we shape building
 msgstr ""
 
 #: inc/demo/demo-site.php:493
+#: inc/templates/architecture.php:173
 msgid "From the first sketch to the final detail."
+msgstr ""
+
+#: inc/templates/architecture.php:153
+#: inc/templates/architecture.php:240
+msgid "From the first sketch to the finished building."
 msgstr ""
 
 #: inc/demo/demo-site.php:499
 msgid "From the journal"
+msgstr ""
+
+#: inc/templates/architecture.php:190
+msgid "From the studio"
 msgstr ""
 
 #: inc/templates/design.php:77
@@ -2609,6 +2668,11 @@ msgstr ""
 
 #: inc/demo/demo-site.php:225
 msgid "Garden homes"
+msgstr ""
+
+#: inc/templates/architecture.php:155
+#: inc/templates/architecture.php:242
+msgid "Gardens and courtyards that extend the home outdoors."
 msgstr ""
 
 #: inc/authoring.php:14
@@ -2907,6 +2971,7 @@ msgid "How we can help"
 msgstr ""
 
 #: inc/demo/demo-site.php:522
+#: inc/templates/architecture.php:216
 msgid "How we work"
 msgstr ""
 
@@ -2988,6 +3053,7 @@ msgid "Improve how work flows through your teams, systems and suppliers."
 msgstr ""
 
 #: inc/demo/demo-site.php:510
+#: inc/templates/architecture.php:284
 msgid "In the details."
 msgstr ""
 
@@ -3116,6 +3182,11 @@ msgstr ""
 msgid "Interior material and daylight study"
 msgstr ""
 
+#: inc/templates/architecture.php:154
+#: inc/templates/architecture.php:241
+msgid "Interiors"
+msgstr ""
+
 #: inc/templates/commerce.php:188
 msgid "Introduce the people and ideas behind the store."
 msgstr ""
@@ -3163,8 +3234,8 @@ msgid "Joint work with regular reporting."
 msgstr ""
 
 #: inc/demo/demo-site.php:338
+#: inc/templates/architecture.php:190
 #: inc/templates/commerce.php:42
-#: inc/templates/commerce.php:216
 msgid "Journal"
 msgstr ""
 
@@ -3182,6 +3253,11 @@ msgstr ""
 
 #: inc/templates/design.php:57
 msgid "Kite analytics dashboard"
+msgstr ""
+
+#: inc/templates/architecture.php:155
+#: inc/templates/architecture.php:242
+msgid "Landscape"
 msgstr ""
 
 #: inc/elementor-templates.php:708
@@ -3272,8 +3348,12 @@ msgstr ""
 
 #: inc/architecture.php:354
 #: inc/demo/demo-site.php:538
-#: inc/templates/pro.php:263
+#: inc/templates/architecture.php:292
 msgid "Let’s talk about your project."
+msgstr ""
+
+#: inc/templates/architecture.php:51
+msgid "Let’s talk about your site."
 msgstr ""
 
 #: inc/templates/design.php:196
@@ -3322,8 +3402,9 @@ msgstr ""
 msgid "List the payment methods you accept."
 msgstr ""
 
+#: inc/templates/architecture.php:176
+#: inc/templates/architecture.php:219
 #: inc/templates/pro.php:152
-#: inc/templates/pro.php:223
 msgid "Listen"
 msgstr ""
 
@@ -3504,6 +3585,7 @@ msgid "Materials Studio"
 msgstr ""
 
 #: inc/demo/demo-site.php:510
+#: inc/templates/architecture.php:284
 msgid "Materials, rooms and landscape from our projects and studio."
 msgstr ""
 
@@ -3543,6 +3625,7 @@ msgstr ""
 
 #: inc/architecture.php:301
 #: inc/demo/demo-site.php:475
+#: inc/templates/architecture.php:125
 msgid "Meet the studio"
 msgstr ""
 
@@ -4354,6 +4437,7 @@ msgid "Project category"
 msgstr ""
 
 #: inc/architecture.php:267
+#: inc/templates/architecture.php:243
 msgid "Project coordination"
 msgstr ""
 
@@ -4363,6 +4447,7 @@ msgstr ""
 
 #: inc/architecture.php:355
 #: inc/demo/demo-site.php:532
+#: inc/templates/architecture.php:300
 msgid "Project enquiries"
 msgstr ""
 
@@ -4402,6 +4487,7 @@ msgstr ""
 
 #: inc/site-platform.php:27
 #: inc/site-platform.php:145
+#: inc/templates/architecture.php:19
 msgid "Projects"
 msgstr ""
 
@@ -4446,6 +4532,7 @@ msgstr ""
 msgid "Publish articles from Posts and link this page to your blog in Settings."
 msgstr ""
 
+#: inc/templates/architecture.php:93
 #: inc/templates/commerce.php:217
 #: inc/templates/design.php:205
 msgid "Publish articles from Posts."
@@ -4492,6 +4579,7 @@ msgid "Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_
 msgstr ""
 
 #: inc/demo/demo-site.php:497
+#: inc/templates/architecture.php:86
 msgid "Read story"
 msgstr ""
 
@@ -4529,6 +4617,7 @@ msgstr ""
 msgid "Recent configuration changes"
 msgstr ""
 
+#: inc/templates/architecture.php:135
 #: inc/templates/design.php:101
 msgid "Recent projects"
 msgstr ""
@@ -4674,11 +4763,20 @@ msgid "Residential"
 msgstr ""
 
 #: inc/demo/demo-site.php:501
+#: inc/templates/architecture.php:254
 msgid "Residential architecture, interiors and shared spaces. Explore the projects by category."
+msgstr ""
+
+#: inc/templates/architecture.php:112
+msgid "Residential building with planted terraces"
 msgstr ""
 
 #: inc/demo/demo-site.php:224
 msgid "Residential towers"
+msgstr ""
+
+#: inc/templates/architecture.php:178
+msgid "Resolve materials and junctions."
 msgstr ""
 
 #: inc/admin-screens.php:503
@@ -4756,6 +4854,11 @@ msgstr ""
 
 #: inc/page-layouts.php:104
 msgid "Right Sidebar"
+msgstr ""
+
+#: inc/templates/architecture.php:154
+#: inc/templates/architecture.php:241
+msgid "Rooms planned around daily use, light and materials."
 msgstr ""
 
 #: inc/admin-panel.php:1298
@@ -4900,8 +5003,8 @@ msgid "Selected projects"
 msgstr ""
 
 #: inc/architecture.php:302
+#: inc/templates/architecture.php:135
 #: inc/templates/design.php:101
-#: inc/templates/pro.php:165
 msgid "Selected work"
 msgstr ""
 
@@ -5370,6 +5473,7 @@ msgstr ""
 
 #: inc/architecture.php:299
 #: inc/starters.php:24
+#: inc/templates/architecture.php:112
 msgid "Space. Light. Life."
 msgstr ""
 
@@ -5379,6 +5483,10 @@ msgstr ""
 
 #: inc/demo/demo-site.php:292
 msgid "Spaces, details and the work behind each project."
+msgstr ""
+
+#: inc/templates/architecture.php:243
+msgid "Specialists and builders brought together under one plan."
 msgstr ""
 
 #: inc/templates/design.php:177
@@ -5406,8 +5514,8 @@ msgid "Start a conversation"
 msgstr ""
 
 #: inc/demo/demo-site.php:466
+#: inc/templates/architecture.php:51
 #: inc/templates/design.php:26
-#: inc/templates/design.php:90
 msgid "Start a project"
 msgstr ""
 
@@ -5425,6 +5533,11 @@ msgstr ""
 
 #: inc/starter-maintenance.php:207
 msgid "Status"
+msgstr ""
+
+#: inc/templates/architecture.php:179
+#: inc/templates/architecture.php:221
+msgid "Stay close through construction."
 msgstr ""
 
 #: inc/templates/pro.php:256
@@ -5483,11 +5596,17 @@ msgstr ""
 
 #: inc/architecture.php:388
 #: inc/starter-editors.php:341
+#: inc/templates/architecture.php:17
 msgid "Studio"
 msgstr ""
 
 #: inc/demo/demo-site.php:284
 msgid "Studio Journal"
+msgstr ""
+
+#: inc/templates/architecture.php:168
+#: inc/templates/architecture.php:205
+msgid "Studio drawings and material samples"
 msgstr ""
 
 #: inc/demo/demo-site.php:537
@@ -5520,6 +5639,10 @@ msgstr ""
 
 #: inc/templates/pro.php:221
 msgid "Support for every stage of the work."
+msgstr ""
+
+#: inc/templates/architecture.php:233
+msgid "Support from idea to handover."
 msgstr ""
 
 #: inc/workspace.php:182
@@ -5598,6 +5721,10 @@ msgstr ""
 msgid "Tell me about your project"
 msgstr ""
 
+#: inc/templates/architecture.php:300
+msgid "Tell us about the place, the people who will use it and what you would like to create."
+msgstr ""
+
 #: inc/demo/demo-site.php:532
 msgid "Tell us about the place, the people who will use it and what you would like to create. We welcome conversations about new homes, shared buildings and interior spaces."
 msgstr ""
@@ -5620,6 +5747,11 @@ msgstr ""
 
 #: inc/templates/pro.php:189
 msgid "Tell visitors why the firm exists, who it serves and what makes its approach different."
+msgstr ""
+
+#: inc/templates/architecture.php:177
+#: inc/templates/architecture.php:220
+msgid "Test"
 msgstr ""
 
 #: inc/workspace.php:31
@@ -6000,6 +6132,11 @@ msgstr ""
 msgid "Unchanged demo draft"
 msgstr ""
 
+#: inc/templates/architecture.php:176
+#: inc/templates/architecture.php:219
+msgid "Understand the brief and the site."
+msgstr ""
+
 #: inc/architecture.php:322
 msgid "Understand the brief, the site and the priorities."
 msgstr ""
@@ -6181,6 +6318,10 @@ msgstr ""
 
 #: inc/demo/demo-site.php:475
 msgid "We connect thoughtful architecture with the life around it. From a private home to a shared neighbourhood, our work brings light, landscape and carefully chosen materials into balance."
+msgstr ""
+
+#: inc/templates/architecture.php:123
+msgid "We design places that feel natural to live in."
 msgstr ""
 
 #: inc/templates/pro.php:154

@@ -7,7 +7,7 @@
 .gnn-dz h2{font-size:clamp(32px,5vw,72px);line-height:1;font-weight:700}
 .gnn-dz h3{font-size:clamp(22px,2.4vw,32px);line-height:1.15;font-weight:600}
 .elementor .e-con.gnn-st.gnn-dz-hero{padding-block:clamp(120px,14vw,190px) 0;min-height:92vh;display:grid;align-content:space-between;overflow:hidden}
-.gnn-dz-hero .gnn-wrap{display:grid;gap:clamp(28px,4vw,56px)}
+.elementor .gnn-dz-hero .e-con.gnn-st.gnn-wrap{display:grid;gap:clamp(28px,4vw,56px)}
 .gnn-dz .gnn-status p{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--font-body);color:var(--fg);padding:10px 16px;border:1px solid var(--line);border-radius:999px;width:fit-content}
 .gnn-dz .gnn-status p::before{content:'';width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:gnn-pulse 2s infinite}
 @keyframes gnn-pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
@@ -27,7 +27,7 @@
 .gnn-listrow:hover{padding-inline:18px;background:var(--bg2)}
 .gnn-dz-about .gnn-visual{border-radius:28px;aspect-ratio:4/5;max-height:620px}
 .elementor .e-con.gnn-st.gnn-dz-cta{text-align:center;padding-block:clamp(80px,12vw,170px)}
-.gnn-dz-cta .gnn-wrap{display:grid;gap:30px;justify-items:center}
+.elementor .gnn-dz-cta .e-con.gnn-st.gnn-wrap{display:grid;gap:30px;justify-items:center}
 .gnn-dz-cta h2{font-size:clamp(34px,6vw,96px);max-width:14ch}
 .gnn-dz .gnn-bigmail .elementor-button{background:transparent;color:var(--accent);font:700 clamp(22px,4.4vw,64px)/1.1 var(--font-heading);padding:0 0 10px;border-radius:0;border-bottom:3px solid var(--accent);min-height:0;overflow-wrap:anywhere}
 .gnn-dz .gnn-bigmail .elementor-button:hover{color:var(--fg);border-color:var(--fg)}
@@ -37,7 +37,7 @@
 .gnn-dz .gnn-card.is-featured .gnn-btn-main .elementor-button{background:var(--accent-ink);color:#fff;border-color:var(--accent-ink)}
 .gnn-dz .gnn-price p{font-weight:700;color:var(--fg)}
 .elementor .e-con.gnn-st.gnn-dz-pagehead{padding-top:clamp(120px,14vw,180px);padding-bottom:clamp(40px,5vw,72px)}
-.gnn-dz-pagehead .gnn-wrap{display:grid;gap:22px}
+.elementor .gnn-dz-pagehead .e-con.gnn-st.gnn-wrap{display:grid;gap:22px}
 .gnn-dz .gnn-chip p{background:transparent}
 .gnn-dz-process .gnn-steps .gnn-card{background:transparent}
 @media(max-width:700px){.elementor .e-con.gnn-st.gnn-herofoot{grid-template-columns:minmax(0,1fr)}.elementor .e-con.gnn-st.gnn-listrow{grid-template-columns:minmax(0,1fr);gap:8px}}

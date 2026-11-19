@@ -19,9 +19,16 @@ function gnn_st_pages( $profile ) {
 			return gnn_st_pages_commerce();
 		case 'design':
 			return gnn_st_pages_design();
+		case 'architecture':
+			return gnn_st_pages_architecture();
 		default:
 			return array();
 	}
+}
+
+/** Whether a design has a bundled one-step demo with its own sample records (not Architecture). */
+function gnn_dp_has( $profile ) {
+	return in_array( $profile, array( 'pro', 'commerce', 'design' ), true );
 }
 
 /** Whether a profile uses the dedicated page generator. */

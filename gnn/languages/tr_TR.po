@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.12.0\n"
+"Project-Id-Version: GNN 2.12.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-19 02:42+0000\n"
-"PO-Revision-Date: 2026-11-19 02:42+0000\n"
+"POT-Creation-Date: 2026-11-19 03:39+0000\n"
+"PO-Revision-Date: 2026-11-19 03:39+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,6 +82,9 @@ msgstr "Net bir süreç. Ortak bir yön."
 
 msgid "A clear way of working"
 msgstr "Açık bir çalışma yöntemi"
+
+msgid "A collaborative studio interested in how places can support everyday life."
+msgstr "Mekânların gündelik yaşamı nasıl destekleyebileceğiyle ilgilenen ortak çalışan bir stüdyo."
 
 msgid "A collection of places."
 msgstr "Yaşamın şekillendirdiği mekânlar."
@@ -347,6 +350,9 @@ msgstr "Kullandığınız form eklentisiyle iletişim formunuzu buraya ekleyin."
 msgid "Add your delivery areas, times and costs."
 msgstr "Teslimat bölgelerinizi, sürelerinizi ve ücretlerinizi ekleyin."
 
+msgid "Add your first story"
+msgstr "İlk yazınızı ekleyin"
+
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
 msgstr "Giriş metninizi buraya ekleyin. Öne çıkarmak istediğiniz özelliği, ürünü ya da hikayeyi birkaç kısa cümleyle anlatın."
 
@@ -512,6 +518,9 @@ msgstr "İncelenen değişiklikleri uygula ve kurtarma kaydı oluştur."
 msgid "Apply this design profile after successful import"
 msgstr "Başarılı içe aktarmadan sonra bu tasarım profilini uygula"
 
+msgid "Approach"
+msgstr "Yaklaşım"
+
 msgid "Architects, interior designers and project coordinators work together from the first conversation. Each project grows through close dialogue with its users and a careful reading of its surroundings."
 msgstr "Mimarlar, iç mimarlar ve proje koordinatörleri ilk görüşmeden itibaren birlikte çalışır. Her proje, kullanıcılarıyla kurulan diyalog ve çevresinin dikkatli incelenmesiyle gelişir."
 
@@ -568,6 +577,9 @@ msgstr "Mimarlık stüdyosu: çizimler, malzemeler ve mekânlar"
 
 msgid "Architecture with a sense of place"
 msgstr "Yerle bağ kuran mimarlık"
+
+msgid "Architecture, interiors and landscape, shaped by light, material and the way people use space."
+msgstr "Işığın, malzemenin ve mekânı kullanış biçiminin şekillendirdiği mimarlık, iç mekân ve peyzaj."
 
 msgid "Architecture, interiors and places for everyday life."
 msgstr "Günlük yaşam için mimarlık, iç mekân ve çevre tasarımı."
@@ -907,6 +919,9 @@ msgstr "Bu siteden bir referans seçin"
 
 msgid "Choose a single engagement or a longer partnership."
 msgstr "Tek bir iş birliğini ya da daha uzun bir ortaklığı seçin."
+
+msgid "Choose a single service or work with the studio from the first sketch to the keys."
+msgstr "Tek bir hizmeti seçin ya da stüdyoyla ilk eskizden anahtar teslimine çalışın."
 
 msgid "Choose a slide"
 msgstr "Slayt seç"
@@ -1328,6 +1343,9 @@ msgstr "Gün ışığıyla tasarlamak"
 msgid "Desktop size"
 msgstr "Masaüstü boyutu"
 
+msgid "Detail"
+msgstr "Detaylandır"
+
 msgid "Develop"
 msgstr "Geliştir"
 
@@ -1354,6 +1372,9 @@ msgstr "Devre dışı"
 
 msgid "Discipline"
 msgstr "Alan"
+
+msgid "Disciplines"
+msgstr "Disiplinler"
 
 msgid "Discover"
 msgstr "Keşfet"
@@ -1523,6 +1544,9 @@ msgstr "Keşfet"
 msgid "Explore home"
 msgstr "Evi keşfet"
 
+msgid "Explore options with drawings and models."
+msgstr "Seçenekleri çizim ve maketlerle keşfedin."
+
 msgid "Explore our collection, compare products and find the right fit for your everyday needs."
 msgstr "Koleksiyonumuzu keşfedin, ürünleri karşılaştırın ve günlük ihtiyaçlarınıza uygun seçimi bulun."
 
@@ -1649,6 +1673,9 @@ msgstr "Odak kalınlığı"
 msgid "Focused advice, considered decisions and a clear path forward for your organisation."
 msgstr "Kuruluşunuz için odaklı danışmanlık, düşünülmüş kararlar ve açık bir yol haritası."
 
+msgid "Follow"
+msgstr "Takip et"
+
 msgid "Follow us"
 msgstr "Bizi takip edin"
 
@@ -1760,8 +1787,14 @@ msgstr "İlk arazi incelemesinden mekânsal konsepte kadar yapıları bulundukla
 msgid "From the first sketch to the final detail."
 msgstr "İlk eskizden son detaya."
 
+msgid "From the first sketch to the finished building."
+msgstr "İlk eskizden tamamlanmış yapıya."
+
 msgid "From the journal"
 msgstr "Blogdan"
+
+msgid "From the studio"
+msgstr "Stüdyodan"
 
 msgid "Front-end"
 msgstr "Ön yüz"
@@ -1855,6 +1888,9 @@ msgstr "Sayfa içeriği ile alt bölüm arasındaki boşluk."
 
 msgid "Garden homes"
 msgstr "Bahçeli konutlar"
+
+msgid "Gardens and courtyards that extend the home outdoors."
+msgstr "Evi dışarıya uzatan bahçeler ve avlular."
 
 msgid "General purpose"
 msgstr "Genel"
@@ -2216,6 +2252,9 @@ msgstr "İç mekân tasarımı"
 msgid "Interior material and daylight study"
 msgstr "İç mekân malzeme ve gün ışığı çalışması"
 
+msgid "Interiors"
+msgstr "İç mekân"
+
 msgid "Introduce the people and ideas behind the store."
 msgstr "Mağazanın arkasındaki insanları ve fikirleri tanıtın."
 
@@ -2263,6 +2302,9 @@ msgstr "Mutfak"
 
 msgid "Kite analytics dashboard"
 msgstr "Kite analiz paneli"
+
+msgid "Landscape"
+msgstr "Peyzaj"
 
 msgid "Large header over cover (left text)"
 msgstr "Kapak üzerinde büyük başlık (sol metin)"
@@ -2323,6 +2365,9 @@ msgstr "Yeni mekânınızı birlikte tasarlayalım."
 
 msgid "Let’s talk about your project."
 msgstr "Projenizi konuşalım."
+
+msgid "Let’s talk about your site."
+msgstr "Mekânınızı konuşalım."
 
 msgid "Let’s work together"
 msgstr "Birlikte çalışalım"
@@ -3308,8 +3353,14 @@ msgstr "Konut"
 msgid "Residential architecture, interiors and shared spaces. Explore the projects by category."
 msgstr "Konut mimarisi, iç mekânlar ve ortak alanlar. Projeleri kategorilerine göre inceleyin."
 
+msgid "Residential building with planted terraces"
+msgstr "Bitkilendirilmiş teraslı konut binası"
+
 msgid "Residential towers"
 msgstr "Yüksek konutlar"
+
+msgid "Resolve materials and junctions."
+msgstr "Malzemeleri ve birleşimleri çözün."
 
 msgid "Restore"
 msgstr "Geri yükle"
@@ -3364,6 +3415,9 @@ msgstr "Sağ"
 
 msgid "Right Sidebar"
 msgstr "Sağ Kenar Çubuğu"
+
+msgid "Rooms planned around daily use, light and materials."
+msgstr "Günlük kullanım, ışık ve malzeme etrafında planlanan odalar."
 
 msgid "Rounded"
 msgstr "Yuvarlak"
@@ -3806,6 +3860,9 @@ msgstr "Yaşam biçimimize uygun mekânlar."
 msgid "Spaces, details and the work behind each project."
 msgstr "Mekânlar, detaylar ve her projenin ardındaki çalışma."
 
+msgid "Specialists and builders brought together under one plan."
+msgstr "Uzmanlar ve yapımcılar tek planda bir araya getirilir."
+
 msgid "Sprint"
 msgstr "Sprint"
 
@@ -3838,6 +3895,9 @@ msgstr "İstatistik kartları"
 
 msgid "Status"
 msgstr "Durum"
+
+msgid "Stay close through construction."
+msgstr "İnşaat boyunca yakın durun."
 
 msgid "Stay in touch"
 msgstr "İletişimde kalın"
@@ -3884,6 +3944,9 @@ msgstr "Stüdyo"
 msgid "Studio Journal"
 msgstr "Stüdyo Günlüğü"
 
+msgid "Studio drawings and material samples"
+msgstr "Stüdyo çizimleri ve malzeme örnekleri"
+
 msgid "Studio visits by appointment."
 msgstr "Stüdyo ziyaretleri randevuludur."
 
@@ -3907,6 +3970,9 @@ msgstr "Açık bir teslim sürecini destekleyin ve tamamlanan çalışmayı değ
 
 msgid "Support for every stage of the work."
 msgstr "İşin her aşaması için destek."
+
+msgid "Support from idea to handover."
+msgstr "Fikirden teslime destek."
 
 msgid "Surface"
 msgstr "Yüzey"
@@ -3962,6 +4028,9 @@ msgstr "Fikrinizi, takviminizi ve bütçenizi anlatın."
 msgid "Tell me about your project"
 msgstr "Projenizi anlatın"
 
+msgid "Tell us about the place, the people who will use it and what you would like to create."
+msgstr "Mekânı, onu kullanacak kişileri ve yaratmak istediğinizi anlatın."
+
 msgid "Tell us about the place, the people who will use it and what you would like to create. We welcome conversations about new homes, shared buildings and interior spaces."
 msgstr "Mekânı, onu kullanacak kişileri ve hayalinizdeki projeyi anlatın. Yeni konutlar, ortak yapılar ve iç mekânlar üzerine konuşalım."
 
@@ -3979,6 +4048,9 @@ msgstr "İhtiyacınızı anlatın, sonraki adımı önerelim."
 
 msgid "Tell visitors why the firm exists, who it serves and what makes its approach different."
 msgstr "Ziyaretçilere firmanın neden var olduğunu, kime hizmet verdiğini ve yaklaşımını neyin farklı kıldığını anlatın."
+
+msgid "Test"
+msgstr "Dene"
 
 msgid "Test compatibility changes before applying them."
 msgstr "Uyumluluk değişikliklerini uygulamadan önce test edin."
@@ -4244,6 +4316,9 @@ msgstr "Genel"
 msgid "Unchanged demo draft"
 msgstr "Değiştirilmemiş örnek taslak"
 
+msgid "Understand the brief and the site."
+msgstr "İsteği ve araziyi anlayın."
+
 msgid "Understand the brief, the site and the priorities."
 msgstr "İhtiyaçları, alanı ve öncelikleri anlayın."
 
@@ -4375,6 +4450,9 @@ msgstr "Gözlemi, ustalığı ve mekânın nasıl üretildiğine dair uygulama b
 
 msgid "We connect thoughtful architecture with the life around it. From a private home to a shared neighbourhood, our work brings light, landscape and carefully chosen materials into balance."
 msgstr "Mimarlığı çevresindeki yaşamla buluşturuyoruz. Bir evden ortak bir mahalleye kadar ışığı, peyzajı ve özenle seçilmiş malzemeleri dengeliyoruz."
+
+msgid "We design places that feel natural to live in."
+msgstr "Yaşamaya doğal gelen mekânlar tasarlıyoruz."
 
 msgid "We do the work alongside your team and report as we go."
 msgstr "İşi ekibinizle birlikte yapar, ilerledikçe raporlarız."
