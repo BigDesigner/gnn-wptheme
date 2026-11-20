@@ -66,10 +66,13 @@ function gnn_dp_data_design() {
 	);
 }
 
-/* ---------------------------------------------------------------------------
- * GNNdesign - independent designers and developers
- * ------------------------------------------------------------------------- */
+/* GNNdesign - independent designers and developers. */
 
+/**
+ * Build the design home page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_design_home( $ids ) {
 	$s       = 'gnn-dz';
 	$contact = gnn_st_link( $ids, 'contact' );
@@ -148,6 +151,11 @@ function gnn_st_design_home( $ids ) {
 	);
 }
 
+/**
+ * Build the design work page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_design_work( $ids ) {
 	$s = 'gnn-dz';
 	return array(
@@ -170,6 +178,11 @@ function gnn_st_design_work( $ids ) {
 	);
 }
 
+/**
+ * Build the design services page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_design_services( $ids ) {
 	$s     = 'gnn-dz';
 	$plans = array();
@@ -188,6 +201,11 @@ function gnn_st_design_services( $ids ) {
 	);
 }
 
+/**
+ * Build the design about page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_design_about( $ids ) {
 	$s = 'gnn-dz';
 	return array(
@@ -197,6 +215,11 @@ function gnn_st_design_about( $ids ) {
 	);
 }
 
+/**
+ * Build the design news page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_design_news( $ids ) {
 	$s    = 'gnn-dz';
 	$blog = (int) get_option( 'page_for_posts' );
@@ -206,6 +229,11 @@ function gnn_st_design_news( $ids ) {
 	);
 }
 
+/**
+ * Build the design contact page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_design_contact( $ids ) {
 	$s = 'gnn-dz';
 	return array(

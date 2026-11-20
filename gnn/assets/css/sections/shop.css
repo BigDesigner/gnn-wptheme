@@ -1,0 +1,314 @@
+/* =====================================================================
+   Section library: WooCommerce storefront sections (.gnn-sec scoped)
+   ===================================================================== */
+
+/* ---------- Shared shop section spacing ---------- */
+.gnn-sec.gnn-sec-product-categories,
+.gnn-sec.gnn-sec-featured-products,
+.gnn-sec.gnn-sec-promo-banners {
+	padding-block: clamp(48px, 6vw, 88px);
+	background: var(--bg);
+}
+
+.gnn-sec.gnn-sec-featured-products {
+	background: var(--bg2);
+}
+
+.gnn-sec.gnn-sec-product-categories .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-featured-products .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-promo-banners .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: clamp(24px, 3.5vw, 40px);
+}
+
+.gnn-sec.gnn-sec-product-categories .gnn-head,
+.gnn-sec.gnn-sec-featured-products .gnn-head,
+.gnn-sec.gnn-sec-featured-products .gnn-headrow .gnn-head,
+.gnn-sec.gnn-sec-promo-banners .gnn-head {
+	margin-bottom: 0;
+}
+
+.gnn-sec.gnn-sec-featured-products .gnn-headrow > .elementor-widget {
+	margin-bottom: 0;
+}
+
+/* ---------- Product Categories (product-categories) ---------- */
+.gnn-sec.gnn-sec-product-categories ul.products {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: clamp(16px, 2vw, 24px);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.gnn-sec.gnn-sec-product-categories.gnn-sec--cols-3 ul.products {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gnn-sec.gnn-sec-product-categories ul.products::before,
+.gnn-sec.gnn-sec-product-categories ul.products::after {
+	content: none;
+}
+
+.gnn-sec.gnn-sec-product-categories li.product-category {
+	float: none;
+	width: auto;
+	margin: 0;
+	min-width: 0;
+}
+
+.gnn-sec.gnn-sec-product-categories li.product-category > a {
+	display: block;
+	overflow: hidden;
+	background: var(--bg2);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+	text-decoration: none;
+	transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.gnn-sec.gnn-sec-product-categories li.product-category > a:hover {
+	transform: translateY(-2px);
+	border-color: var(--accent);
+}
+
+.gnn-sec.gnn-sec-product-categories li.product-category img {
+	display: block;
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	margin: 0;
+}
+
+.gnn-sec.gnn-sec-product-categories .woocommerce-loop-category__title {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 8px;
+	margin: 0;
+	padding: 14px 18px;
+	font: 700 16px/1.3 var(--font-heading);
+	color: var(--fg);
+}
+
+.gnn-sec.gnn-sec-product-categories .woocommerce-loop-category__title mark.count {
+	background: transparent;
+	color: var(--fg2);
+	font-weight: 600;
+}
+
+/* ---------- Featured Products (featured-products) ---------- */
+.gnn-sec.gnn-sec-featured-products ul.products {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: clamp(16px, 2vw, 24px);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.gnn-sec.gnn-sec-featured-products.gnn-sec--cols-3 ul.products {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gnn-sec.gnn-sec-featured-products ul.products::before,
+.gnn-sec.gnn-sec-featured-products ul.products::after {
+	content: none;
+}
+
+.gnn-sec.gnn-sec-featured-products ul.products li.product {
+	float: none;
+	width: auto;
+	margin: 0;
+	min-width: 0;
+}
+
+/* ---------- Promotional Banners (promo-banners) ---------- */
+.gnn-sec .gnn-banners {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(16px, 2.2vw, 28px);
+}
+
+.gnn-sec .gnn-banner {
+	display: grid;
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--gnn-radius, 8px);
+	border: 1px solid var(--line);
+	background: var(--bg2);
+	min-width: 0;
+}
+
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--overlay .gnn-banner {
+	min-height: 320px;
+}
+
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--overlay .gnn-banner > * {
+	grid-area: 1 / 1;
+}
+
+.gnn-sec .gnn-banner-media,
+.gnn-sec .gnn-banner-media .elementor-widget-container {
+	height: 100%;
+}
+
+.gnn-sec .gnn-banner img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.5s ease;
+}
+
+.gnn-sec .gnn-banner:hover img {
+	transform: scale(1.03);
+}
+
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--overlay .gnn-banner-copy {
+	display: grid;
+	align-content: end;
+	justify-items: start;
+	gap: 12px;
+	padding: clamp(22px, 3vw, 38px);
+	background: linear-gradient(0deg, rgba(10, 14, 20, 0.82) 0%, rgba(10, 14, 20, 0.36) 62%, rgba(10, 14, 20, 0) 100%);
+	z-index: 1;
+}
+
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--overlay .gnn-banner-copy h3,
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--overlay .gnn-banner-copy p {
+	color: #ffffff;
+}
+
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--split-card .gnn-banner-media img {
+	aspect-ratio: 16 / 9;
+}
+
+.gnn-sec.gnn-sec-promo-banners.gnn-sec--split-card .gnn-banner-copy {
+	display: grid;
+	align-content: start;
+	justify-items: start;
+	gap: 12px;
+	padding: clamp(22px, 2.8vw, 32px);
+}
+
+/* ---------- USP Strip (usp-strip) ---------- */
+.gnn-sec.gnn-sec-usp-strip {
+	padding-block: 0;
+	background: var(--bg);
+	border-block: 1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-usp-strip.gnn-sec--cards {
+	padding-block: clamp(36px, 5vw, 64px);
+	border-block: 0;
+}
+
+.gnn-sec .gnn-usp {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gnn-sec.gnn-sec-usp-strip.gnn-sec--cards .gnn-usp {
+	gap: clamp(14px, 2vw, 24px);
+}
+
+.gnn-sec .gnn-usp-item {
+	display: grid;
+	align-content: start;
+	gap: 6px;
+	padding: 24px 20px 24px 48px;
+	border-inline-end: 1px solid var(--line);
+	position: relative;
+	min-width: 0;
+}
+
+.gnn-sec .gnn-usp-item:last-child {
+	border-inline-end: 0;
+}
+
+.gnn-sec .gnn-usp-item::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 20px;
+	top: 28px;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: var(--accent);
+}
+
+.gnn-sec.gnn-sec-usp-strip.gnn-sec--cards .gnn-usp-item {
+	background: var(--bg2);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+}
+
+.gnn-sec .gnn-usp-item h3 {
+	font: 700 16px/1.3 var(--font-heading);
+	color: var(--fg);
+	margin: 0;
+}
+
+.gnn-sec .gnn-usp-item p {
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--fg2);
+	margin: 0;
+}
+
+/* ---------- Responsive & Reduced Motion ---------- */
+@media (max-width: 900px) {
+	.gnn-sec.gnn-sec-product-categories ul.products,
+	.gnn-sec.gnn-sec-product-categories.gnn-sec--cols-3 ul.products,
+	.gnn-sec.gnn-sec-featured-products ul.products,
+	.gnn-sec.gnn-sec-featured-products.gnn-sec--cols-3 ul.products,
+	.gnn-sec .gnn-usp {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.gnn-sec .gnn-banners {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.gnn-sec.gnn-sec-usp-strip.gnn-sec--strip .gnn-usp-item:nth-child(2) {
+		border-inline-end: 0;
+	}
+
+	.gnn-sec.gnn-sec-usp-strip.gnn-sec--strip .gnn-usp-item:nth-child(-n+2) {
+		border-bottom: 1px solid var(--line);
+	}
+}
+
+@media (max-width: 600px) {
+	.gnn-sec.gnn-sec-product-categories ul.products,
+	.gnn-sec.gnn-sec-product-categories.gnn-sec--cols-3 ul.products,
+	.gnn-sec.gnn-sec-featured-products ul.products,
+	.gnn-sec.gnn-sec-featured-products.gnn-sec--cols-3 ul.products,
+	.gnn-sec .gnn-usp {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.gnn-sec.gnn-sec-usp-strip.gnn-sec--strip .gnn-usp-item {
+		border-inline-end: 0;
+		border-bottom: 1px solid var(--line);
+	}
+
+	.gnn-sec.gnn-sec-usp-strip.gnn-sec--strip .gnn-usp-item:last-child {
+		border-bottom: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-sec.gnn-sec-product-categories li.product-category > a,
+	.gnn-sec .gnn-banner img {
+		transition: none;
+	}
+
+	.gnn-sec.gnn-sec-product-categories li.product-category > a:hover,
+	.gnn-sec .gnn-banner:hover img {
+		transform: none;
+	}
+}

@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GNN_VERSION', '2.12.2' );
+define( 'GNN_VERSION', '2.13.0' );
 
 /**
  * Theme setup.
@@ -352,6 +352,7 @@ require get_template_directory() . '/inc/layout-system.php';
 require get_template_directory() . '/inc/design-system.php';
 require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/templates/common.php';
+require get_template_directory() . '/inc/sections/registry.php';
 require get_template_directory() . '/inc/templates/pro.php';
 require get_template_directory() . '/inc/templates/commerce.php';
 require get_template_directory() . '/inc/templates/design.php';
@@ -360,6 +361,7 @@ require get_template_directory() . '/inc/starters.php';
 require get_template_directory() . '/inc/architecture.php';
 require get_template_directory() . '/inc/starter-layouts.php';
 require get_template_directory() . '/inc/site-profiles.php';
+require get_template_directory() . '/inc/template-loader.php';
 require get_template_directory() . '/inc/content-modules.php';
 // Hooked here, after content-modules.php, to keep the frontend stylesheet order.
 add_action( 'wp_enqueue_scripts', 'gnn_demo_site_styles', 17 );
@@ -383,6 +385,7 @@ if ( is_admin() ) {
 if ( is_admin() || wp_doing_cron() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 	require get_template_directory() . '/inc/starter-editors.php';
 	require get_template_directory() . '/inc/demo/demo-profiles.php';
+	require get_template_directory() . '/inc/demo/demo-templates.php';
 	require get_template_directory() . '/inc/starter-maintenance.php';
 	require get_template_directory() . '/inc/demo/demo-site.php';
 	require get_template_directory() . '/inc/portability.php';
@@ -420,6 +423,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 
 if ( defined( 'ELEMENTOR_VERSION' ) ) {
 	require get_template_directory() . '/inc/elementor.php';
+	require get_template_directory() . '/inc/elementor-kit-sync.php';
 	add_action(
 		'elementor/widgets/register',
 		function ( $manager ) {

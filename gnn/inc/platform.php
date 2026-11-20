@@ -134,6 +134,7 @@ function gnn_platform_schema() {
 					'none'     => __( 'No theme slider', 'gnn' ),
 				),
 			),
+			'elementor_kit_sync'       => array( __( 'Sync colors and fonts with Elementor', 'gnn' ), 'bool', 0, 'global' ),
 			'hero_group'              => array( __( 'Slider group', 'gnn' ), 'slide_group', 0, 'global' ),
 			'hero_engine'             => array(
 				__( 'Slider source', 'gnn' ),

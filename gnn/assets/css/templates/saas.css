@@ -1,0 +1,164 @@
+/* =====================================================================
+   GNNapp (saas): modern software showcase, crisp UI frames, indigo glow
+   Scoped strictly to .gnn-site-saas and .gnn-sec; token-driven, no !important
+   ===================================================================== */
+
+/* ---------- Header & Navigation (.gnn-site-saas) ---------- */
+.gnn-site-saas .site-header {
+	background: color-mix(in srgb, var(--bg) 84%, transparent);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border-bottom: 1px solid var(--line);
+}
+
+.gnn-site-saas .site-header__inner {
+	height: 68px;
+}
+
+.gnn-site-saas .main-navigation ul.menu {
+	gap: 8px;
+	padding: 4px;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	background: var(--bg2);
+}
+
+.gnn-site-saas .main-navigation ul.menu > li > a {
+	padding: 8px 16px;
+	border-radius: 999px;
+	font-size: 14px;
+	font-weight: 600;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.gnn-site-saas .main-navigation ul.menu > li:hover > a,
+.gnn-site-saas .main-navigation ul.menu > li.current-menu-item > a {
+	background: var(--bg3);
+	color: var(--fg);
+}
+
+.gnn-site-saas .header-cta {
+	border-radius: 10px;
+	font-weight: 700;
+	box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+/* ---------- Typography & Technical Eyebrow Pills ---------- */
+.gnn-site-saas .gnn-sec :is(h1, h2) {
+	letter-spacing: -0.025em;
+}
+
+.gnn-site-saas .gnn-sec .gnn-eyebrow p {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px 14px;
+	border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line));
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--accent) 12%, var(--bg2));
+	color: var(--accent-text);
+	font-size: 11px;
+	letter-spacing: 0.12em;
+}
+
+.gnn-site-saas .gnn-sec .gnn-eyebrow p::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: var(--accent);
+}
+
+/* ---------- Hero Video Frame & App Window Chrome ---------- */
+.gnn-site-saas .gnn-sec.gnn-sec-hero {
+	background:
+		radial-gradient(circle at 82% 24%, color-mix(in srgb, var(--accent) 16%, transparent) 0%, transparent 48%),
+		var(--bg);
+	border-bottom: 1px solid var(--line);
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .gnn-sec-hero__video,
+.gnn-site-saas .gnn-sec.gnn-sec-about-split .gnn-visual,
+.gnn-site-saas .gnn-sec.gnn-sec-features .gnn-visual {
+	padding-top: 28px;
+	background: var(--bg3);
+	border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .gnn-sec-hero__video::before,
+.gnn-site-saas .gnn-sec.gnn-sec-about-split .gnn-visual::before,
+.gnn-site-saas .gnn-sec.gnn-sec-features .gnn-visual::before {
+	content: "\2022\00a0\2022\00a0\2022";
+	position: absolute;
+	top: 0;
+	inset-inline: 0;
+	height: 28px;
+	padding-inline: 14px;
+	display: flex;
+	align-items: center;
+	font: 700 14px/1 var(--font-heading);
+	letter-spacing: 2px;
+	color: var(--fg2);
+	background: var(--bg2);
+	border-bottom: 1px solid var(--line);
+}
+
+/* ---------- Bento Feature Cards & Pricing Tiers ---------- */
+.gnn-site-saas .gnn-sec .gnn-card {
+	background: linear-gradient(180deg, color-mix(in srgb, var(--bg3) 45%, var(--bg2)) 0%, var(--bg2) 100%);
+	border: 1px solid var(--line);
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.gnn-site-saas .gnn-sec .gnn-card:hover {
+	border-color: color-mix(in srgb, var(--accent) 60%, var(--line));
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-pricing .gnn-sec-plan.is-featured {
+	background:
+		radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 65%),
+		var(--bg2);
+	border-width: 2px;
+	border-color: var(--accent);
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-pricing .gnn-sec-plan-badge p {
+	padding: 5px 12px;
+	border-radius: 999px;
+	background: var(--accent);
+	color: var(--accent-ink);
+	border: 0;
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-pricing .gnn-sec-plan-badge p::before {
+	content: none;
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-logos.gnn-sec--strip {
+	background: var(--bg2);
+}
+
+.gnn-site-saas .gnn-sec.gnn-sec-logos .gnn-sec-logo-box {
+	border-style: solid;
+	background: var(--bg);
+}
+
+@media (max-width: 600px) {
+	.gnn-site-saas .main-navigation ul.menu {
+		border-radius: var(--gnn-radius, 16px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-site-saas .main-navigation ul.menu > li > a,
+	.gnn-site-saas .gnn-sec .gnn-card {
+		transition: none;
+	}
+}
+
+/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
+@media (max-width: 600px) {
+	.gnn-site-saas .header-cta { display: none; }
+	.gnn-site-saas .header-actions { gap: 8px; }
+}

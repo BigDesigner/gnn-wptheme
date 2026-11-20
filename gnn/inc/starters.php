@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /** Small, distinct profiles rather than copied commercial demo sites. */
 function gnn_starter_profiles() {
-	return array(
+	$profiles = array(
 		'pro'          => gnn_st_profile_pro(),
 		'commerce'     => gnn_st_profile_commerce(),
 		'design'       => gnn_st_profile_design(),
@@ -25,6 +25,7 @@ function gnn_starter_profiles() {
 			'description'  => __( 'Architecture and construction with a live two-column portfolio, gallery, studio and services.', 'gnn' ),
 		),
 	);
+	return apply_filters( 'gnn_starter_profiles', $profiles );
 }
 
 /**
@@ -33,12 +34,15 @@ function gnn_starter_profiles() {
  * @param string $name Profile key.
  */
 function gnn_starter_profile_key( $name ) {
-	$aliases = array(
-		'general'      => 'pro',
-		'professional' => 'pro',
-		'original'     => 'pro',
-		'industrial'   => 'commerce',
-		'creative'     => 'design',
+	$aliases = apply_filters(
+		'gnn_starter_profile_aliases',
+		array(
+			'general'      => 'pro',
+			'professional' => 'pro',
+			'original'     => 'pro',
+			'industrial'   => 'commerce',
+			'creative'     => 'design',
+		)
 	);
 	return $aliases[ $name ] ?? $name;
 }

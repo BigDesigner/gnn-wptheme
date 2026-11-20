@@ -10,7 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-/** Page keys and titles for each design that has its own Elementor page set. */
+/**
+ * Page keys and titles for each design that has its own Elementor page set.
+ *
+ * @param string $profile Design key.
+ */
 function gnn_st_pages( $profile ) {
 	switch ( $profile ) {
 		case 'pro':
@@ -26,12 +30,20 @@ function gnn_st_pages( $profile ) {
 	}
 }
 
-/** Whether a design has a bundled one-step demo with its own sample records (not Architecture). */
+/**
+ * Whether a design has a bundled one-step demo with its own sample records (not Architecture).
+ *
+ * @param string $profile Design key.
+ */
 function gnn_dp_has( $profile ) {
 	return in_array( $profile, array( 'pro', 'commerce', 'design' ), true );
 }
 
-/** Whether a profile uses the dedicated page generator. */
+/**
+ * Whether a profile uses the dedicated page generator.
+ *
+ * @param string $profile Design key.
+ */
 function gnn_st_has( $profile ) {
 	return array() !== gnn_st_pages( $profile );
 }
@@ -62,7 +74,13 @@ function gnn_st_c( $class, $children = array(), $inner = false ) {
 	);
 }
 
-/** Widget element. */
+/**
+ * Widget element.
+ *
+ * @param string $type Element or post type.
+ * @param array  $settings Widget settings.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_w( $type, $settings, $class = '' ) {
 	if ( '' !== $class ) {
 		$settings['_css_classes'] = $class;
@@ -76,7 +94,13 @@ function gnn_st_w( $type, $settings, $class = '' ) {
 	);
 }
 
-/** Heading widget. */
+/**
+ * Heading widget.
+ *
+ * @param string $text Text content.
+ * @param int    $level Heading level.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_h( $text, $level = 2, $class = '' ) {
 	return gnn_st_w(
 		'heading',
@@ -88,12 +112,23 @@ function gnn_st_h( $text, $level = 2, $class = '' ) {
 	);
 }
 
-/** Paragraph widget. */
+/**
+ * Paragraph widget.
+ *
+ * @param string $text Text content.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_p( $text, $class = '' ) {
 	return gnn_st_w( 'text-editor', array( 'editor' => '<p>' . esc_html( $text ) . '</p>' ), $class );
 }
 
-/** Button widget. */
+/**
+ * Button widget.
+ *
+ * @param string $label Visible label.
+ * @param string $url Destination URL.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_b( $label, $url, $class = '' ) {
 	return gnn_st_w(
 		'button',
@@ -105,12 +140,24 @@ function gnn_st_b( $label, $url, $class = '' ) {
 	);
 }
 
-/** Bundled demo image URL. */
+/**
+ * Bundled demo image URL.
+ *
+ * @param string $profile Design key.
+ * @param string $name Image name or section key.
+ */
 function gnn_st_url( $profile, $name ) {
 	return get_template_directory_uri() . '/assets/images/demo/' . $profile . '/' . $name . '.jpg';
 }
 
-/** Image widget from a bundled demo file. */
+/**
+ * Image widget from a bundled demo file.
+ *
+ * @param string $profile Design key.
+ * @param string $name Image name or section key.
+ * @param string $alt Alternative text.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_img( $profile, $name, $alt, $class = '' ) {
 	return gnn_st_w(
 		'image',
@@ -127,12 +174,23 @@ function gnn_st_img( $profile, $name, $alt, $class = '' ) {
 	);
 }
 
-/** One of the GNN collection widgets. */
+/**
+ * One of the GNN collection widgets.
+ *
+ * @param string $module Collection module name.
+ * @param array  $settings Widget settings.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_mod( $module, $settings, $class = '' ) {
 	return gnn_st_w( 'gnn-' . $module, $settings, $class );
 }
 
-/** Small marked-up block for details a Free widget does not cover. */
+/**
+ * Small marked-up block for details a Free widget does not cover.
+ *
+ * @param string $html HTML content.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_html( $html, $class = '' ) {
 	return gnn_st_w( 'html', array( 'html' => $html ), $class );
 }
@@ -148,7 +206,14 @@ function gnn_st_band( $scope, $name, $children ) {
 	return gnn_st_c( $scope . ' ' . $scope . '-' . $name, array( gnn_st_c( 'gnn-wrap', $children, true ) ) );
 }
 
-/** Eyebrow, heading and optional lead for a section head. */
+/**
+ * Eyebrow, heading and optional lead for a section head.
+ *
+ * @param string $eyebrow Section eyebrow.
+ * @param string $title Heading text.
+ * @param string $lead Introductory text.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_head( $eyebrow, $title, $lead = '', $class = '' ) {
 	return gnn_st_c(
 		'gnn-head ' . $class,
@@ -161,18 +226,27 @@ function gnn_st_head( $eyebrow, $title, $lead = '', $class = '' ) {
 	);
 }
 
-/** Permalink of an installed page, or the home page. */
+/**
+ * Permalink of an installed page, or the home page.
+ *
+ * @param array  $ids Installed page IDs.
+ * @param string $key Page key.
+ */
 function gnn_st_link( $ids, $key ) {
 	return isset( $ids[ $key ] ) ? get_permalink( $ids[ $key ] ) : home_url( '/' );
 }
 
-/** Contact lines from the saved company details, never invented ones. */
+/**
+ * Contact lines from the saved company details, never invented ones.
+ *
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_contact( $class = 'gnn-contact-list' ) {
-	$items = array();
-	$email = sanitize_email( (string) gnn_option( 'company_email' ) );
-	$phone = (string) gnn_option( 'company_phone' );
-	$addr  = (string) gnn_option( 'company_address' );
-	$hours = (string) gnn_option( 'company_hours' );
+	$items   = array();
+	$email   = sanitize_email( (string) gnn_option( 'company_email' ) );
+	$phone   = (string) gnn_option( 'company_phone' );
+	$addr    = (string) gnn_option( 'company_address' );
+	$hours   = (string) gnn_option( 'company_hours' );
 	$items[] = gnn_st_b( $email ? $email : 'hello@example.com', 'mailto:' . ( $email ? $email : 'hello@example.com' ), 'gnn-link' );
 	if ( preg_match( '/^\+?[0-9\s().-]{5,30}$/', $phone ) ) {
 		$items[] = gnn_st_b( $phone, 'tel:' . preg_replace( '/[^0-9+]/', '', $phone ), 'gnn-link' );
@@ -184,12 +258,27 @@ function gnn_st_contact( $class = 'gnn-contact-list' ) {
 	return gnn_st_c( $class, $items, true );
 }
 
-/** Closing call-to-action band. */
+/**
+ * Closing call-to-action band.
+ *
+ * @param string $scope Design scope class.
+ * @param string $title Heading text.
+ * @param string $label Visible label.
+ * @param string $url Destination URL.
+ * @param string $text Text content.
+ */
 function gnn_st_cta( $scope, $title, $label, $url, $text = '' ) {
 	return gnn_st_band( $scope, 'cta', array( gnn_st_h( $title, 2 ), $text ? gnn_st_p( $text, 'gnn-lead' ) : null, gnn_st_b( $label, $url, 'gnn-btn-main' ) ) );
 }
 
-/** Numbered cards (services, steps, values). */
+/**
+ * Numbered cards (services, steps, values).
+ *
+ * @param array  $items Section items.
+ * @param string $class Extra CSS classes.
+ * @param string $link Optional destination URL.
+ * @param string $link_label Optional link label.
+ */
 function gnn_st_cards( $items, $class, $link = '', $link_label = '' ) {
 	$cards = array();
 	foreach ( $items as $index => $item ) {
@@ -207,7 +296,14 @@ function gnn_st_cards( $items, $class, $link = '', $link_label = '' ) {
 	return gnn_st_c( 'gnn-cards ' . $class, $cards, true );
 }
 
-/** Page opening for inner pages. */
+/**
+ * Page opening for inner pages.
+ *
+ * @param string $scope Design scope class.
+ * @param string $eyebrow Section eyebrow.
+ * @param string $title Heading text.
+ * @param string $lead Introductory text.
+ */
 function gnn_st_page_head( $scope, $eyebrow, $title, $lead ) {
 	return gnn_st_band( $scope, 'pagehead', array( gnn_st_p( $eyebrow, 'gnn-eyebrow' ), gnn_st_h( $title, 1 ), gnn_st_p( $lead, 'gnn-lead' ) ) );
 }
@@ -224,4 +320,3 @@ function gnn_st_page( $profile, $key, $ids ) {
 	$fn = 'gnn_st_' . $profile . '_' . $key;
 	return function_exists( $fn ) ? $fn( $ids ) : array();
 }
-

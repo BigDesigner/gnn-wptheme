@@ -12,7 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable WordPress.DB.SlowDBQuery -- bounded administrator-only ownership queries.
 
-/** Bundled profile data. */
+/**
+ * Bundled profile data.
+ *
+ * @param string $profile Design key.
+ */
 function gnn_dp_data( $profile ) {
 	switch ( $profile ) {
 		case 'pro':
@@ -26,7 +30,11 @@ function gnn_dp_data( $profile ) {
 	}
 }
 
-/** Image names bundled for each design, used for the pre-install readiness check. */
+/**
+ * Image names bundled for each design, used for the pre-install readiness check.
+ *
+ * @param string $profile Design key.
+ */
 function gnn_dp_images( $profile ) {
 	return gnn_dp_data( $profile )['images'] ?? array();
 }
@@ -124,7 +132,12 @@ function gnn_dp_media( $profile, $name, $title ) {
 	return $id;
 }
 
-/** Term ID by name for a taxonomy, creating it when missing. */
+/**
+ * Term ID by name for a taxonomy, creating it when missing.
+ *
+ * @param string $name Term name.
+ * @param string $taxonomy Taxonomy name.
+ */
 function gnn_dp_term( $name, $taxonomy ) {
 	$term = term_exists( sanitize_title( $name ), $taxonomy );
 	if ( ! $term ) {
@@ -136,17 +149,30 @@ function gnn_dp_term( $name, $taxonomy ) {
 	return (int) ( is_array( $term ) ? $term['term_id'] : $term );
 }
 
-/** Sample records for the portfolio of GNNpro and GNNdesign. */
+/**
+ * Sample records for the portfolio of GNNpro and GNNdesign.
+ *
+ * @param string $profile Design key.
+ */
 function gnn_dp_projects( $profile ) {
 	return gnn_dp_data( 'pro' === $profile ? 'pro' : 'design' )['projects'];
 }
 
-/** Journal articles for each design. */
+/**
+ * Journal articles for each design.
+ *
+ * @param string $profile Design key.
+ */
 function gnn_dp_articles( $profile ) {
 	return gnn_dp_data( $profile )['articles'];
 }
 
-/** Complete Slider group for the storefront hero. */
+/**
+ * Complete Slider group for the storefront hero.
+ *
+ * @param string $profile Design key.
+ * @param array  $media Imported image IDs.
+ */
 function gnn_dp_slides( $profile, $media ) {
 	$group = gnn_dp_term( gnn_dp_data( $profile )['slide_group'], 'gnn_slide_group' );
 	if ( is_wp_error( $group ) ) {
@@ -177,7 +203,12 @@ function gnn_dp_slides( $profile, $media ) {
 	return $group;
 }
 
-/** WooCommerce sample products. */
+/**
+ * WooCommerce sample products.
+ *
+ * @param string $profile Design key.
+ * @param array  $media Imported image IDs.
+ */
 function gnn_dp_products( $profile, $media ) {
 	$cats  = gnn_dp_data( $profile )['product_categories'];
 	$terms = array();
@@ -363,7 +394,13 @@ function gnn_dp_import( $profile, $revision ) {
 	update_term_meta( $menu, '_gnn_demo', $profile . ':menu' );
 	$order = array_keys( gnn_st_pages( $profile ) );
 	if ( 'commerce' === $profile && function_exists( 'wc_get_page_id' ) && wc_get_page_id( 'shop' ) > 0 ) {
-		$pages = array_merge( array( 'home' => $pages['home'], 'shop' => wc_get_page_id( 'shop' ) ), array_diff_key( $pages, array( 'home' => 1 ) ) );
+		$pages = array_merge(
+			array(
+				'home' => $pages['home'],
+				'shop' => wc_get_page_id( 'shop' ),
+			),
+			array_diff_key( $pages, array( 'home' => 1 ) )
+		);
 		$order = array_keys( $pages );
 	}
 	$linked = array_map( 'intval', wp_list_pluck( (array) wp_get_nav_menu_items( $menu ), 'object_id' ) );
@@ -390,10 +427,10 @@ function gnn_dp_import( $profile, $revision ) {
 	if ( is_wp_error( $preset ) ) {
 		return $preset;
 	}
-	$options                       = (array) get_option( 'gnn_options', array() );
-	$options['contact_page_id']    = $pages['contact'];
-	$options['hero_style']         = 'none';
-	$options['header_cta_url']     = get_permalink( $pages['contact'] );
+	$options                    = (array) get_option( 'gnn_options', array() );
+	$options['contact_page_id'] = $pages['contact'];
+	$options['hero_style']      = 'none';
+	$options['header_cta_url']  = get_permalink( $pages['contact'] );
 	if ( 'commerce' === $profile ) {
 		$options['header_cta_label'] = '';
 	}

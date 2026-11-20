@@ -1,0 +1,467 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: GNN Content\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%1$d of %2$d"
+msgstr "%1$d / %2$d"
+
+msgid "Activate WooCommerce to display the live product collection."
+msgstr "Güncel ürün koleksiyonunu göstermek için WooCommerce eklentisini etkinleştirin."
+
+msgid "Add New Slide"
+msgstr "Yeni Slayt Ekle"
+
+msgid "Add Slide"
+msgstr "Slayt Ekle"
+
+msgid "Add new album"
+msgstr "Yeni albüm ekle"
+
+msgid "Add new product"
+msgstr "Yeni ürün ekle"
+
+msgid "Add new project"
+msgstr "Yeni proje ekle"
+
+msgid "Add reusable block"
+msgstr "Yeniden kullanılabilir blok ekle"
+
+msgid "Album"
+msgstr "Albüm"
+
+msgid "All Slides"
+msgstr "Slaytlar"
+
+msgid "All categories"
+msgstr "Tüm kategoriler"
+
+msgid "All products"
+msgstr "Tüm ürünler"
+
+msgid "All projects"
+msgstr "Tüm projeler"
+
+msgid "All uses"
+msgstr "Tüm kullanımlar"
+
+msgid "Analytics delivery"
+msgstr "Analiz kodlarının yüklenmesi"
+
+msgid "Appearance"
+msgstr "Görünüm"
+
+msgid "Ascending"
+msgstr "Artan"
+
+msgid "Background image (1×)"
+msgstr "Arka plan görseli (1×)"
+
+msgid "Background image (2× retina)"
+msgstr "Arka plan görseli (2× retina)"
+
+msgid "Block role"
+msgstr "Blok türü"
+
+msgid "Body HTML"
+msgstr "Body HTML"
+
+msgid "Button URL"
+msgstr "Düğme URL’si"
+
+msgid "Button label"
+msgstr "Düğme etiketi"
+
+msgid "Category"
+msgstr "Kategori"
+
+msgid "Category or slider group"
+msgstr "Kategori veya slider grubu"
+
+msgid "Central content source"
+msgstr "Merkezi içerik kaynağı"
+
+msgid "Choose"
+msgstr "Seç"
+
+msgid "Choose a published project, product or album"
+msgstr "Yayımlanmış bir proje, ürün veya albüm seçin"
+
+msgid "Choose a slide"
+msgstr "Slayt seç"
+
+msgid "Choose and order gallery images"
+msgstr "Galeri görsellerini seç ve sırala"
+
+msgid "Clear selection"
+msgstr "Seçimi temizle"
+
+msgid "Client or project context"
+msgstr "Müşteri veya proje bağlamı"
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Columns"
+msgstr "Sütunlar"
+
+msgid "Consent"
+msgstr "Onay"
+
+msgid "Contain"
+msgstr "Sığdır"
+
+msgid "Contain (fit, no crop)"
+msgstr "Sığdır (kırpmadan)"
+
+msgid "Content"
+msgstr "İçerik"
+
+msgid "Corner radius"
+msgstr "Köşe yarıçapı"
+
+msgid "Cover"
+msgstr "Kapla"
+
+msgid "Cover (fill, cropped)"
+msgstr "Kapla (doldur, kırpılmış)"
+
+msgid "Cover — bottom"
+msgstr "Kapla — alt"
+
+msgid "Cover — centered"
+msgstr "Kapla — ortalı"
+
+msgid "Cover — top"
+msgstr "Kapla — üst"
+
+msgid "Date"
+msgstr "Tarih"
+
+msgid "Default columns"
+msgstr "Varsayılan sütun"
+
+msgid "Descending"
+msgstr "Azalan"
+
+msgid "Dimensions"
+msgstr "Ölçüler"
+
+msgid "Disable embeds"
+msgstr "Gömmeleri kapat"
+
+msgid "Dropdown"
+msgstr "Açılır liste"
+
+msgid "Edit Slide"
+msgstr "Slaytı Düzenle"
+
+msgid "Edit album"
+msgstr "Albümü düzenle"
+
+msgid "Edit product"
+msgstr "Ürünü düzenle"
+
+msgid "Edit project"
+msgstr "Projeyi düzenle"
+
+msgid "Excluded product IDs"
+msgstr "Hariç tutulan ürün kimlikleri"
+
+msgid "Excluded project IDs"
+msgstr "Hariç tutulan proje kimlikleri"
+
+msgid "Expand: %s"
+msgstr "Büyüt: %s"
+
+msgid "External"
+msgstr "Harici"
+
+msgid "Filter"
+msgstr "Filtrele"
+
+msgid "Filter display"
+msgstr "Filtre görünümü"
+
+msgid "Footer"
+msgstr "Alt Bölüm"
+
+msgid "Footer JavaScript"
+msgstr "Alt JavaScript"
+
+msgid "GA4 ID"
+msgstr "GA4 kimliği"
+
+msgid "GNN Gallery"
+msgstr "GNN Galeri"
+
+msgid "GNN Portfolio"
+msgstr "GNN Portföy"
+
+msgid "GNN Product catalogue"
+msgstr "GNN Ürün Kataloğu"
+
+msgid "GNN Products"
+msgstr "GNN Ürünler"
+
+msgid "GNN Shared Block"
+msgstr "GNN Ortak Blok"
+
+msgid "GNN Slider"
+msgstr "GNN Slider"
+
+msgid "GTM ID"
+msgstr "GTM kimliği"
+
+msgid "Gallery"
+msgstr "Galeri"
+
+msgid "Gallery images"
+msgstr "Galeri görselleri"
+
+msgid "Gallery source"
+msgstr "Galeri kaynağı"
+
+msgid "Gap"
+msgstr "Aralık"
+
+msgid "General purpose"
+msgstr "Genel"
+
+msgid "Go to slide %d"
+msgstr "%d. slayta git"
+
+msgid "Head HTML"
+msgstr "Head HTML"
+
+msgid "Head JavaScript"
+msgstr "Head JavaScript"
+
+msgid "Header"
+msgstr "Üst Bölüm"
+
+msgid "Highlights"
+msgstr "Öne çıkanlar"
+
+msgid "Image"
+msgstr "Görsel"
+
+msgid "Image fit"
+msgstr "Görsel sığdırma"
+
+msgid "Image ratio"
+msgstr "Görsel oranı"
+
+msgid "Independent album"
+msgstr "Bağımsız albüm"
+
+msgid "Items per page"
+msgstr "Sayfa başına öğe"
+
+msgid "Kicker"
+msgstr "Üst başlık"
+
+msgid "Layout"
+msgstr "Düzen"
+
+msgid "Links"
+msgstr "Bağlantılar"
+
+msgid "Material"
+msgstr "Malzeme"
+
+msgid "Menu order"
+msgstr "Menü sırası"
+
+msgid "Natural"
+msgstr "Doğal"
+
+msgid "Next product"
+msgstr "Sonraki ürün"
+
+msgid "Next project"
+msgstr "Sonraki proje"
+
+msgid "Next slide"
+msgstr "Sonraki slayt"
+
+msgid "No products have been published in this selection yet."
+msgstr "Bu seçimde henüz yayımlanmış ürün yok."
+
+msgid "No projects have been published in this selection yet."
+msgstr "Bu seçimde henüz yayımlanmış proje yok."
+
+msgid "No slides yet."
+msgstr "Henüz slayt yok."
+
+msgid "Not assigned"
+msgstr "Atanmamış"
+
+msgid "Order"
+msgstr "Sıralama"
+
+msgid "Order by"
+msgstr "Sıralama ölçütü"
+
+msgid "Other block ID"
+msgstr "Diğer blok kimliği"
+
+msgid "Other block ID overrides the selected block."
+msgstr "Diğer blok kimliği seçilen bloğun önüne geçer."
+
+msgid "Pause slides"
+msgstr "Slaytları duraklat"
+
+msgid "Permission denied."
+msgstr "İzin reddedildi."
+
+msgid "Portfolio"
+msgstr "Portföy"
+
+msgid "Previous product"
+msgstr "Önceki ürün"
+
+msgid "Previous project"
+msgstr "Önceki proje"
+
+msgid "Previous slide"
+msgstr "Önceki slayt"
+
+msgid "Product"
+msgstr "Ürün"
+
+msgid "Product categories"
+msgstr "Ürün kategorileri"
+
+msgid "Product category"
+msgstr "Ürün kategorisi"
+
+msgid "Product code"
+msgstr "Ürün kodu"
+
+msgid "Product navigation"
+msgstr "Ürünler arasında gezinme"
+
+msgid "Product pages"
+msgstr "Ürün sayfaları"
+
+msgid "Product selection"
+msgstr "Ürün seçimi"
+
+msgid "Products"
+msgstr "Ürünler"
+
+msgid "Project"
+msgstr "Proje"
+
+msgid "Project categories"
+msgstr "Proje kategorileri"
+
+msgid "Project category"
+msgstr "Proje kategorisi"
+
+msgid "Project location"
+msgstr "Proje konumu"
+
+msgid "Project navigation"
+msgstr "Projeler arasında gezinme"
+
+msgid "Project pages"
+msgstr "Proje sayfaları"
+
+msgid "Project selection"
+msgstr "Proje seçimi"
+
+msgid "Project year"
+msgstr "Proje yılı"
+
+msgid "Project, product or album"
+msgstr "Proje, ürün veya albüm"
+
+msgid "Related products"
+msgstr "İlgili ürünler"
+
+msgid "Related projects"
+msgstr "İlgili projeler"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid "Reusable blocks"
+msgstr "Ortak Bloklar"
+
+msgid "Select an album or publish projects with gallery images to populate this collection."
+msgstr "Bu koleksiyonu doldurmak için albüm seçin veya galeri görselleri olan projeleri yayımlayın."
+
+msgid "Select image"
+msgstr "Görsel seç"
+
+msgid "Select images in display order. Removing a selection never deletes media from the library."
+msgstr "Görselleri gösterim sırasıyla seçin. Seçimden çıkarmak dosyaları ortam kütüphanesinden silmez."
+
+msgid "Set background image"
+msgstr "Arka plan görseli seç"
+
+msgid "Set the main image in Featured Image. The optional 2× image is used on high-density screens."
+msgstr "Ana görseli Öne Çıkan Görsel alanından ayarlayın. İsteğe bağlı 2× görsel, yüksek yoğunluklu ekranlarda kullanılır."
+
+msgid "Shared block"
+msgstr "Ortak blok"
+
+msgid "Show category filters"
+msgstr "Kategori filtrelerini göster"
+
+msgid "Sidebar"
+msgstr "Kenar Çubuğu"
+
+msgid "Single product"
+msgstr "Tek ürün"
+
+msgid "Single project"
+msgstr "Tek proje"
+
+msgid "Slide"
+msgstr "Slayt"
+
+msgid "Slide Details"
+msgstr "Slayt Ayrıntıları"
+
+msgid "Slider"
+msgstr "Slider"
+
+msgid "Slider groups"
+msgstr "Slayt grupları"
+
+msgid "Sorry, you are not allowed to do that."
+msgstr "Bu işlem için yetkiniz yok."
+
+msgid "Store collection"
+msgstr "Mağaza koleksiyonu"
+
+msgid "Text"
+msgstr "Metin"
+
+msgid "Theme default"
+msgstr "Tema varsayılanı"
+
+msgid "Title"
+msgstr "Başlık"
+
+msgid "Title bar"
+msgstr "Başlık çubuğu"
+
+msgid "Title color"
+msgstr "Başlık rengi"
+
+msgid "Usage indexing is in progress. Reload to continue."
+msgstr "Kullanım listesi hazırlanıyor. Devam etmek için sayfayı yenileyin."
+
+msgid "Use Order in Page Attributes to set the sequence."
+msgstr "Sıralamayı Sayfa Öznitelikleri içindeki Sıra alanından belirleyin."
+
+msgid "Used in"
+msgstr "Şurada kullanıldı"

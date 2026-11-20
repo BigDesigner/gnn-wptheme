@@ -1,0 +1,170 @@
+/* =====================================================================
+   Section library: Portfolio, gallery, blog and catalog (.gnn-sec scoped)
+   ===================================================================== */
+
+/* ---------- Shared content section spacing ---------- */
+.gnn-sec.gnn-sec-portfolio,
+.gnn-sec.gnn-sec-gallery,
+.gnn-sec.gnn-sec-blog,
+.gnn-sec.gnn-sec-catalog {
+	padding-block: clamp(56px, 7vw, 104px);
+	background: var(--bg);
+}
+
+.gnn-sec.gnn-sec-portfolio .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-gallery .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-blog .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-catalog .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: clamp(24px, 3.5vw, 44px);
+}
+
+.gnn-sec.gnn-sec-portfolio .gnn-head,
+.gnn-sec.gnn-sec-gallery .gnn-head,
+.gnn-sec.gnn-sec-blog .gnn-head,
+.gnn-sec.gnn-sec-catalog .gnn-head,
+.gnn-sec.gnn-sec-portfolio .gnn-headrow .gnn-head,
+.gnn-sec.gnn-sec-blog .gnn-headrow .gnn-head,
+.gnn-sec.gnn-sec-catalog .gnn-headrow .gnn-head {
+	margin-bottom: 0;
+}
+
+.gnn-sec.gnn-sec-portfolio .gnn-headrow > .elementor-widget,
+.gnn-sec.gnn-sec-blog .gnn-headrow > .elementor-widget,
+.gnn-sec.gnn-sec-catalog .gnn-headrow > .elementor-widget {
+	margin-bottom: 0;
+}
+
+/* ---------- Portfolio, Gallery & Catalog module wrappers ---------- */
+.gnn-sec .gnn-content-module {
+	width: 100%;
+	min-width: 0;
+}
+
+.gnn-sec .gnn-module-filters a {
+	min-height: 44px;
+	display: inline-flex;
+	align-items: center;
+}
+
+/* ---------- Blog post cards (blog) ---------- */
+.gnn-sec .gnn-blog-grid {
+	display: grid;
+	gap: clamp(18px, 2.4vw, 28px);
+}
+
+.gnn-sec .gnn-post-card {
+	display: grid;
+	align-content: start;
+	gap: 12px;
+	padding: clamp(18px, 2.2vw, 24px);
+	background: var(--bg2);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+	min-width: 0;
+	transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.gnn-sec .gnn-post-card:hover {
+	border-color: var(--accent);
+	transform: translateY(-2px);
+}
+
+.gnn-sec .gnn-post-card--placeholder {
+	border-style: dashed;
+}
+
+.gnn-sec .gnn-post-card__media {
+	overflow: hidden;
+	border-radius: calc(var(--gnn-radius, 8px) - 2px);
+	background: var(--bg3);
+	aspect-ratio: 16 / 10;
+}
+
+.gnn-sec .gnn-post-card__media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gnn-sec .gnn-post-card__date {
+	font: 600 13px/1.4 var(--font-body);
+	color: var(--fg2);
+	margin: 4px 0 0;
+}
+
+.gnn-sec .gnn-post-card__title h3 {
+	font-size: clamp(18px, 1.8vw, 22px);
+	line-height: 1.3;
+	color: var(--fg);
+	margin: 0;
+}
+
+.gnn-sec .gnn-post-card__excerpt p {
+	font-size: 15px;
+	line-height: 1.65;
+	color: var(--fg2);
+	margin: 0;
+}
+
+.gnn-sec .gnn-post-card .gnn-link .elementor-button {
+	min-height: 44px;
+	padding: 6px 0;
+}
+
+/* Blog variant: Editorial list (list) */
+.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-blog-grid--list {
+	grid-template-columns: minmax(0, 1fr);
+}
+
+.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-post-card {
+	grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+	column-gap: clamp(20px, 3vw, 32px);
+	row-gap: 8px;
+	align-items: center;
+}
+
+.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-post-card__media {
+	grid-row: 1 / span 4;
+	grid-column: 1;
+	height: 100%;
+	min-height: 160px;
+}
+
+.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-post-card > :not(.gnn-post-card__media) {
+	grid-column: 2;
+}
+
+/* ---------- Responsive & Reduced Motion ---------- */
+@media (max-width: 900px) {
+	.gnn-sec.gnn-sec-blog .gnn-cols-3 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 680px) {
+	.gnn-sec.gnn-sec-blog .gnn-cols-3,
+	.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-post-card {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-post-card__media {
+		grid-row: auto;
+		grid-column: 1;
+	}
+
+	.gnn-sec.gnn-sec-blog.gnn-sec--list .gnn-post-card > :not(.gnn-post-card__media) {
+		grid-column: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-sec .gnn-post-card {
+		transition: none;
+	}
+
+	.gnn-sec .gnn-post-card:hover {
+		transform: none;
+	}
+}

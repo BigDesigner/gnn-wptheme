@@ -1,0 +1,370 @@
+/* Reusable Elementor Free sections: token-driven base styles scoped to .gnn-sec. */
+
+.elementor .e-con.gnn-st.gnn-sec,
+.elementor .gnn-sec .e-con:where(.gnn-st),
+.e-con.gnn-st.gnn-sec,
+.gnn-sec .e-con:where(.gnn-st) {
+	--padding-top: 0px;
+	--padding-right: 0px;
+	--padding-bottom: 0px;
+	--padding-left: 0px;
+	--margin-top: 0px;
+	--margin-bottom: 0px;
+	--gap: 0px;
+	--row-gap: 0px;
+	--column-gap: 0px;
+	--container-widget-width: 100%;
+	--container-widget-flex-grow: 0;
+	--widgets-spacing: 0px 0px;
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	min-width: 0;
+	box-sizing: border-box;
+}
+
+.elementor .gnn-sec,
+.gnn-sec {
+	padding-block: clamp(56px, 7vw, var(--gnn-section-space, 96px));
+	background: var(--bg);
+	color: var(--fg);
+}
+
+.elementor .gnn-sec .gnn-st > .elementor-widget,
+.elementor .gnn-sec.gnn-st > .elementor-widget,
+.gnn-sec .gnn-st > .elementor-widget,
+.gnn-sec.gnn-st > .elementor-widget {
+	width: 100%;
+	margin: 0;
+	--container-widget-width: 100%;
+}
+
+.elementor .gnn-sec .elementor-widget-container,
+.gnn-sec .elementor-widget-container {
+	margin: 0;
+}
+
+.elementor .gnn-sec .elementor-widget:not(:last-child),
+.gnn-sec .elementor-widget:not(:last-child) {
+	margin-block-end: 0;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-wrap,
+.gnn-sec .e-con:where(.gnn-st).gnn-wrap {
+	width: 100%;
+	max-width: var(--gnn-container, 1240px);
+	margin-inline: auto;
+	padding-inline: clamp(20px, 4vw, 48px);
+}
+
+.gnn-sec :is(h1, h2, h3, h4) {
+	font-family: var(--font-heading);
+	color: var(--fg);
+	margin: 0;
+	letter-spacing: 0;
+	overflow-wrap: break-word;
+}
+
+.gnn-sec h1 {
+	font-size: clamp(34px, 4.8vw, 60px);
+	line-height: 1.08;
+	font-weight: 800;
+}
+
+.gnn-sec h2 {
+	font-size: clamp(26px, 3.4vw, 44px);
+	line-height: 1.14;
+	font-weight: 800;
+}
+
+.gnn-sec h3 {
+	font-size: clamp(19px, 2vw, 24px);
+	line-height: 1.25;
+	font-weight: 700;
+}
+
+.gnn-sec h4 {
+	font-size: 16px;
+	line-height: 1.3;
+	font-weight: 700;
+}
+
+.gnn-sec .elementor-widget-text-editor,
+.gnn-sec .elementor-widget-text-editor p {
+	color: var(--fg2);
+	font-family: var(--font-body);
+	line-height: 1.7;
+	margin: 0;
+}
+
+.gnn-sec .gnn-eyebrow p {
+	font: 700 12px/1.4 var(--font-body);
+	text-transform: uppercase;
+	letter-spacing: 0.14em;
+	color: var(--accent-text);
+	margin: 0;
+}
+
+.gnn-sec .gnn-lead p {
+	font-size: clamp(17px, 1.5vw, 20px);
+	line-height: 1.65;
+	max-width: 56ch;
+}
+
+.gnn-sec .gnn-num p {
+	font: 700 13px/1 var(--font-heading);
+	color: var(--accent-text);
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st):is(.gnn-head, .gnn-copy, .gnn-visual, .gnn-cards, .gnn-card, .gnn-split, .gnn-headrow, .gnn-rows, .gnn-row, .gnn-list, .gnn-listrow, .gnn-contact-list, .gnn-banners, .gnn-banner, .gnn-banner-copy, .gnn-usp, .gnn-usp-item),
+.gnn-sec .e-con:where(.gnn-st):is(.gnn-head, .gnn-copy, .gnn-visual, .gnn-cards, .gnn-card, .gnn-split, .gnn-headrow, .gnn-rows, .gnn-row, .gnn-list, .gnn-listrow, .gnn-contact-list, .gnn-banners, .gnn-banner, .gnn-banner-copy, .gnn-usp, .gnn-usp-item) {
+	display: grid;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-head,
+.gnn-sec .e-con:where(.gnn-st).gnn-head {
+	gap: 14px;
+	margin-bottom: clamp(28px, 4vw, 52px);
+	max-width: 62ch;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-copy,
+.gnn-sec .e-con:where(.gnn-st).gnn-copy {
+	gap: 22px;
+	align-content: center;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st):is(.gnn-actions, .gnn-chips, .gnn-ticks, .gnn-headrow),
+.gnn-sec .e-con:where(.gnn-st):is(.gnn-actions, .gnn-chips, .gnn-ticks, .gnn-headrow) {
+	--container-widget-width: auto;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st):is(.gnn-actions, .gnn-chips, .gnn-ticks),
+.gnn-sec .e-con:where(.gnn-st):is(.gnn-actions, .gnn-chips, .gnn-ticks) {
+	--flex-direction: row;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st):is(.gnn-actions, .gnn-chips, .gnn-ticks) > .elementor-widget,
+.gnn-sec .e-con:where(.gnn-st):is(.gnn-actions, .gnn-chips, .gnn-ticks) > .elementor-widget {
+	flex: 0 0 auto;
+	width: auto;
+	max-width: 100%;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-actions,
+.gnn-sec .e-con:where(.gnn-st).gnn-actions {
+	gap: 12px;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-split,
+.gnn-sec .e-con:where(.gnn-st).gnn-split {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: clamp(28px, 6vw, 88px);
+	align-items: center;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-visual,
+.gnn-sec .e-con:where(.gnn-st).gnn-visual {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--gnn-radius, 8px);
+	background: var(--bg2);
+}
+
+.gnn-sec .gnn-visual img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-cards,
+.gnn-sec .e-con:where(.gnn-st).gnn-cards {
+	gap: clamp(16px, 2vw, 28px);
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-cols-2,
+.gnn-sec .e-con:where(.gnn-st).gnn-cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-cols-3,
+.gnn-sec .e-con:where(.gnn-st).gnn-cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-cols-4,
+.gnn-sec .e-con:where(.gnn-st).gnn-cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-card,
+.gnn-sec .e-con:where(.gnn-st).gnn-card {
+	gap: 14px;
+	align-content: start;
+	padding: clamp(22px, 2.6vw, 34px);
+	background: var(--bg2);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-chips,
+.gnn-sec .e-con:where(.gnn-st).gnn-chips {
+	gap: 10px;
+}
+
+.gnn-sec .gnn-chip p {
+	font: 600 14px/1 var(--font-body);
+	color: var(--fg);
+	padding: 11px 18px;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	background: var(--bg2);
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-headrow,
+.gnn-sec .e-con:where(.gnn-st).gnn-headrow {
+	grid-template-columns: 1fr auto;
+	align-items: end;
+	gap: 24px;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-headrow .gnn-head,
+.gnn-sec .e-con:where(.gnn-st).gnn-headrow .gnn-head {
+	margin-bottom: clamp(28px, 4vw, 52px);
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-headrow > .elementor-widget,
+.gnn-sec .e-con:where(.gnn-st).gnn-headrow > .elementor-widget {
+	width: auto;
+	margin-bottom: clamp(28px, 4vw, 52px);
+}
+
+.gnn-sec .elementor-button {
+	font: 700 14px/1.2 var(--font-body);
+	text-decoration: none;
+	min-height: 46px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+	border-radius: var(--gnn-button-radius, 8px);
+	padding: 14px 26px;
+	transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.gnn-sec .gnn-btn-main .elementor-button {
+	background: var(--accent);
+	color: var(--accent-ink);
+	border-color: var(--accent);
+}
+
+.gnn-sec .gnn-btn-main .elementor-button:hover {
+	transform: translateY(-2px);
+	filter: brightness(1.06);
+}
+
+.gnn-sec .gnn-btn-ghost .elementor-button {
+	background: transparent;
+	color: var(--fg);
+	border-color: var(--fg);
+}
+
+.gnn-sec .gnn-btn-ghost .elementor-button:hover {
+	background: var(--fg);
+	color: var(--bg);
+}
+
+.gnn-sec .gnn-link .elementor-button {
+	background: transparent;
+	color: var(--accent-text);
+	padding: 6px 0;
+	min-height: 44px;
+	justify-content: flex-start;
+	border: 0;
+	border-radius: 0;
+}
+
+.gnn-sec .gnn-link .elementor-button::after {
+	content: "\2192";
+	margin-inline-start: 10px;
+	transition: transform 0.2s;
+}
+
+.gnn-sec .gnn-link .elementor-button:hover::after {
+	transform: translateX(5px);
+}
+
+.gnn-sec a:focus-visible,
+.gnn-sec .elementor-button:focus-visible {
+	outline: 2px solid var(--accent-text);
+	outline-offset: 3px;
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-ticks,
+.gnn-sec .e-con:where(.gnn-st).gnn-ticks {
+	gap: 10px 26px;
+}
+
+.gnn-sec .gnn-ticks p {
+	font-weight: 600;
+	color: var(--fg);
+	padding-inline-start: 26px;
+	position: relative;
+}
+
+.gnn-sec .gnn-ticks p::before {
+	content: "";
+	position: absolute;
+	inset-inline-start: 0;
+	top: 0.45em;
+	width: 14px;
+	height: 8px;
+	border-inline-start: 2.5px solid var(--accent-text);
+	border-block-end: 2.5px solid var(--accent-text);
+	transform: rotate(-45deg);
+}
+
+.elementor .gnn-sec .e-con:where(.gnn-st).gnn-contact-list,
+.gnn-sec .e-con:where(.gnn-st).gnn-contact-list {
+	gap: 10px;
+}
+
+.gnn-sec .gnn-contact-list .gnn-link .elementor-button::after {
+	content: none;
+}
+
+@media (max-width: 900px) {
+	.elementor .gnn-sec .e-con:where(.gnn-st):is(.gnn-cols-3, .gnn-cols-4),
+	.gnn-sec .e-con:where(.gnn-st):is(.gnn-cols-3, .gnn-cols-4) {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.elementor .gnn-sec .e-con:where(.gnn-st).gnn-split,
+	.gnn-sec .e-con:where(.gnn-st).gnn-split {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.elementor .gnn-sec .e-con:where(.gnn-st):is(.gnn-cols-2, .gnn-cols-3, .gnn-cols-4, .gnn-headrow, .gnn-split),
+	.gnn-sec .e-con:where(.gnn-st):is(.gnn-cols-2, .gnn-cols-3, .gnn-cols-4, .gnn-headrow, .gnn-split) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-sec .elementor-button,
+	.gnn-sec .gnn-link .elementor-button::after {
+		transition: none;
+	}
+
+	.gnn-sec .gnn-btn-main .elementor-button:hover,
+	.gnn-sec .gnn-link .elementor-button:hover::after {
+		transform: none;
+	}
+}

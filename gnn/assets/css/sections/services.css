@@ -1,0 +1,275 @@
+/* =====================================================================
+   GNN Sections: Services, Features, Process, About-Split, Values
+   Scoped strictly to .gnn-sec; uses theme design tokens only.
+   ===================================================================== */
+
+/* ---------- Shared inner layout containers under .gnn-sec ---------- */
+.elementor .e-con.gnn-sec :is(.gnn-rows,.gnn-row,.gnn-sec-timeline,.gnn-sec-timeline-item,.gnn-sec-timeline-marker,.gnn-sec-timeline-body,.gnn-sec-point-list,.gnn-sec-point-item){
+	display:grid;
+}
+
+.elementor .e-con.gnn-sec .gnn-sec-split-top{
+	align-items:start;
+}
+
+.elementor .e-con.gnn-sec .gnn-sec-split-top .gnn-head{
+	margin-bottom:0;
+}
+
+/* ---------- 1. Services (.gnn-sec-services) ---------- */
+.gnn-sec.gnn-sec-services .gnn-card{
+	border-radius:var(--gnn-radius,8px);
+	transition:transform .22s ease,border-color .22s ease,background-color .22s ease;
+}
+
+.gnn-sec.gnn-sec-services.gnn-sec--cards-3 .gnn-card,
+.gnn-sec.gnn-sec-services.gnn-sec--cards-4 .gnn-card{
+	border-top:3px solid var(--accent);
+}
+
+.gnn-sec.gnn-sec-services.gnn-sec--cards-3 .gnn-card:hover,
+.gnn-sec.gnn-sec-services.gnn-sec--cards-4 .gnn-card:hover{
+	transform:translateY(-3px);
+	border-color:var(--accent);
+}
+
+/* Services: Numbered row list (.gnn-sec--rows) */
+.elementor .e-con.gnn-sec .gnn-rows{
+	gap:0;
+}
+
+.elementor .e-con.gnn-sec .gnn-row{
+	grid-template-columns:56px minmax(0,1fr) minmax(0,1.4fr) auto;
+	gap:clamp(16px,2.5vw,32px);
+	align-items:center;
+	padding-block:clamp(22px,2.8vw,34px);
+	border-top:1px solid var(--line);
+	transition:background-color .2s ease,padding-inline .2s ease;
+}
+
+.gnn-sec .gnn-rows .gnn-row:last-child{
+	border-bottom:1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-services.gnn-sec--rows .gnn-row:hover{
+	background:var(--bg2);
+	padding-inline:16px;
+}
+
+/* Services: Iconless minimal lined grid (.gnn-sec--lined) */
+.elementor .e-con.gnn-sec.gnn-sec-services.gnn-sec--lined .gnn-sec-lined-card{
+	background:transparent;
+	border:0;
+	border-top:2px solid var(--fg);
+	border-radius:0;
+	padding-inline:0;
+	padding-block:clamp(20px,2.4vw,28px) 0;
+}
+
+.gnn-sec.gnn-sec-services.gnn-sec--lined .gnn-sec-lined-card:hover{
+	border-top-color:var(--accent);
+}
+
+/* ---------- 2. Features (.gnn-sec-features) ---------- */
+.gnn-sec.gnn-sec-features .gnn-card{
+	border-radius:var(--gnn-radius,8px);
+}
+
+.gnn-sec.gnn-sec-features.gnn-sec--grid-2x2 .gnn-card{
+	background:var(--bg2);
+	border:1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-features.gnn-sec--split-image .gnn-head{
+	margin-bottom:12px;
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-features .gnn-sec-feature-subgrid{
+	gap:clamp(14px,1.8vw,22px);
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-features .gnn-sec-feature-item{
+	background:var(--bg2);
+	border:1px solid var(--line);
+	border-radius:var(--gnn-radius,8px);
+	padding:clamp(18px,2vw,24px);
+	gap:10px;
+}
+
+.gnn-sec.gnn-sec-features .gnn-visual{
+	border-radius:var(--gnn-radius,8px);
+	aspect-ratio:4/3;
+	background:var(--bg2);
+	border:1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-features.gnn-sec--split-head .gnn-card{
+	background:var(--bg2);
+	border:1px solid var(--line);
+}
+
+/* ---------- 3. Process (.gnn-sec-process) ---------- */
+/* Process: Horizontal steps (.gnn-sec--horizontal) */
+.elementor .e-con.gnn-sec.gnn-sec-process.gnn-sec--horizontal .gnn-steps .gnn-card{
+	background:transparent;
+	border:0;
+	border-top:2px solid var(--line);
+	border-radius:0;
+	padding-inline:0;
+	padding-block:clamp(20px,2.4vw,28px) 0;
+}
+
+.gnn-sec.gnn-sec-process.gnn-sec--horizontal .gnn-steps .gnn-num p{
+	display:inline-grid;
+	place-items:center;
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	background:var(--accent);
+	color:var(--accent-ink);
+	font:700 13px/1 var(--font-heading);
+}
+
+/* Process: Vertical timeline (.gnn-sec--timeline, .gnn-sec--split-timeline) */
+.elementor .e-con.gnn-sec .gnn-sec-timeline{
+	gap:0;
+	max-width:76ch;
+}
+
+.elementor .e-con.gnn-sec .gnn-sec-timeline-item{
+	grid-template-columns:52px minmax(0,1fr);
+	gap:clamp(16px,2.4vw,28px);
+	align-items:start;
+	position:relative;
+	padding-bottom:clamp(24px,3vw,36px);
+}
+
+.gnn-sec .gnn-sec-timeline-item:last-child{
+	padding-bottom:0;
+}
+
+.gnn-sec .gnn-sec-timeline-item:not(:last-child)::before{
+	content:'';
+	position:absolute;
+	inset-inline-start:21px;
+	top:44px;
+	bottom:0;
+	width:2px;
+	background:var(--line);
+}
+
+.gnn-sec .gnn-sec-timeline-marker .gnn-num p{
+	display:inline-grid;
+	place-items:center;
+	width:44px;
+	height:44px;
+	border-radius:50%;
+	background:var(--bg2);
+	border:2px solid var(--accent);
+	color:var(--fg);
+	font:700 13px/1 var(--font-heading);
+}
+
+.elementor .e-con.gnn-sec .gnn-sec-timeline-body{
+	gap:10px;
+	padding:clamp(18px,2.2vw,26px);
+	background:var(--bg2);
+	border:1px solid var(--line);
+	border-radius:var(--gnn-radius,8px);
+}
+
+/* ---------- 4. About Split (.gnn-sec-about-split) ---------- */
+.gnn-sec.gnn-sec-about-split .gnn-visual{
+	border-radius:var(--gnn-radius,8px);
+	aspect-ratio:4/3;
+	background:var(--bg2);
+	border:1px solid var(--line);
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-about-split .gnn-sec-checklist{
+	display:grid;
+	gap:12px;
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-about-split .gnn-sec-checklist>.elementor-widget{
+	width:100%;
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-about-split .gnn-sec-point-list{
+	gap:12px;
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-about-split .gnn-sec-point-item{
+	grid-template-columns:44px minmax(0,1fr);
+	gap:14px;
+	align-items:center;
+	padding:14px 18px;
+	background:var(--bg2);
+	border:1px solid var(--line);
+	border-radius:var(--gnn-radius,8px);
+}
+
+/* ---------- 5. Values (.gnn-sec-values) ---------- */
+.gnn-sec.gnn-sec-values.gnn-sec--cards .gnn-card{
+	border-radius:var(--gnn-radius,8px);
+	border-top:3px solid var(--accent);
+}
+
+.elementor .e-con.gnn-sec.gnn-sec-values.gnn-sec--minimal .gnn-sec-values-minimal .gnn-card{
+	background:transparent;
+	border:0;
+	border-top:1px solid var(--line);
+	border-radius:0;
+	padding-inline:0;
+	padding-block:clamp(20px,2.4vw,28px) 0;
+}
+
+.gnn-sec.gnn-sec-values.gnn-sec--split .gnn-row{
+	grid-template-columns:48px minmax(0,1fr) minmax(0,1.5fr);
+}
+
+/* ---------- Touch targets & Reduced motion ---------- */
+.gnn-sec .gnn-link .elementor-button{
+	min-height:44px;
+}
+
+@media (prefers-reduced-motion:reduce){
+	.gnn-sec.gnn-sec-services .gnn-card,
+	.elementor .e-con.gnn-sec .gnn-row{
+		transition:none;
+	}
+	.gnn-sec.gnn-sec-services.gnn-sec--cards-3 .gnn-card:hover,
+	.gnn-sec.gnn-sec-services.gnn-sec--cards-4 .gnn-card:hover{
+		transform:none;
+	}
+}
+
+/* ---------- Responsive (900px and 600px / 390px single-column) ---------- */
+@media (max-width:900px){
+	.elementor .e-con.gnn-sec .gnn-row{
+		grid-template-columns:48px minmax(0,1fr);
+		gap:10px 16px;
+	}
+	.gnn-sec .gnn-row>.elementor-widget:nth-child(n+3){
+		grid-column:1 / -1;
+	}
+}
+
+@media (max-width:600px){
+	.elementor .e-con.gnn-sec .gnn-row,
+	.gnn-sec.gnn-sec-values.gnn-sec--split .gnn-row{
+		grid-template-columns:minmax(0,1fr);
+		gap:8px;
+	}
+	.elementor .e-con.gnn-sec .gnn-sec-timeline-item{
+		grid-template-columns:minmax(0,1fr);
+		gap:12px;
+	}
+	.gnn-sec .gnn-sec-timeline-item:not(:last-child)::before{
+		display:none;
+	}
+	.elementor .e-con.gnn-sec.gnn-sec-about-split .gnn-sec-point-item{
+		grid-template-columns:minmax(0,1fr);
+		gap:6px;
+	}
+}

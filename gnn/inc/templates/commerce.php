@@ -54,7 +54,7 @@ function gnn_dp_data_commerce() {
 			array( __( 'Five ways to refresh a room', 'gnn' ), __( 'Small changes in light, texture and plants can change how a room feels without a big budget.', 'gnn' ) ),
 			array( __( 'Choosing a bag that lasts', 'gnn' ), __( 'Look at the stitching, the handles and the lining. Good construction matters more than the label.', 'gnn' ) ),
 		),
-		'slide_group' => __( 'Storefront highlights', 'gnn' ),
+		'slide_group'        => __( 'Storefront highlights', 'gnn' ),
 		'slides'             => array(
 			'slide-1' => array( __( 'Made well. Made to last.', 'gnn' ), __( 'New season', 'gnn' ), __( 'Considered products for everyday life, delivered to your door.', 'gnn' ), __( 'Shop now', 'gnn' ) ),
 			'slide-2' => array( __( 'Quiet design for busy days', 'gnn' ), __( 'Essentials', 'gnn' ), __( 'Simple, durable pieces that earn their place at home.', 'gnn' ), __( 'Shop essentials', 'gnn' ) ),
@@ -79,11 +79,13 @@ function gnn_dp_data_commerce() {
 	);
 }
 
-/* ---------------------------------------------------------------------------
- * GNNcommerce - WooCommerce storefront
- * ------------------------------------------------------------------------- */
+/* GNNcommerce - WooCommerce storefront. */
 
-/** WooCommerce page URL or the home page. */
+/**
+ * WooCommerce page URL or the home page.
+ *
+ * @param string $utility WooCommerce page key.
+ */
 function gnn_st_shop_url( $utility ) {
 	if ( function_exists( 'wc_get_page_id' ) ) {
 		$id = wc_get_page_id( $utility );
@@ -94,11 +96,16 @@ function gnn_st_shop_url( $utility ) {
 	return home_url( '/' );
 }
 
+/**
+ * Build the commerce home page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_commerce_home( $ids ) {
-	$s      = 'gnn-shop';
-	$shop   = gnn_st_shop_url( 'shop' );
-	$group  = (int) get_option( 'gnn_demo_slide_group_commerce', 0 );
-	$hero   = $group
+	$s     = 'gnn-shop';
+	$shop  = gnn_st_shop_url( 'shop' );
+	$group = (int) get_option( 'gnn_demo_slide_group_commerce', 0 );
+	$hero  = $group
 		? gnn_st_mod(
 			'slider',
 			array(
@@ -108,7 +115,7 @@ function gnn_st_commerce_home( $ids ) {
 			'gnn-shop-slider'
 		)
 		: gnn_st_c( $s . ' ' . $s . '-hero', array( gnn_st_c( 'gnn-wrap gnn-copy', array( gnn_st_p( __( 'New season', 'gnn' ), 'gnn-eyebrow' ), gnn_st_h( __( 'Made well. Made to last.', 'gnn' ), 1 ), gnn_st_b( __( 'Shop now', 'gnn' ), $shop, 'gnn-btn-main' ) ), true ) ) );
-	$usp    = array();
+	$usp   = array();
 	foreach ( array(
 		array( __( 'Fast dispatch', 'gnn' ), __( 'Orders leave quickly', 'gnn' ) ),
 		array( __( 'Easy returns', 'gnn' ), __( 'Simple, clear process', 'gnn' ) ),
@@ -182,6 +189,11 @@ function gnn_st_commerce_home( $ids ) {
 	);
 }
 
+/**
+ * Build the commerce about page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_commerce_about( $ids ) {
 	$s = 'gnn-shop';
 	return array(
@@ -191,6 +203,11 @@ function gnn_st_commerce_about( $ids ) {
 	);
 }
 
+/**
+ * Build the commerce delivery page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_commerce_delivery( $ids ) {
 	$s     = 'gnn-shop';
 	$items = array();
@@ -209,6 +226,11 @@ function gnn_st_commerce_delivery( $ids ) {
 	);
 }
 
+/**
+ * Build the commerce news page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_commerce_news( $ids ) {
 	$s    = 'gnn-shop';
 	$blog = (int) get_option( 'page_for_posts' );
@@ -218,6 +240,11 @@ function gnn_st_commerce_news( $ids ) {
 	);
 }
 
+/**
+ * Build the commerce contact page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_commerce_contact( $ids ) {
 	$s = 'gnn-shop';
 	return array(
@@ -225,4 +252,3 @@ function gnn_st_commerce_contact( $ids ) {
 		gnn_st_band( $s, 'contact', array( gnn_st_c( 'gnn-split', array( gnn_st_c( 'gnn-copy', array( gnn_st_h( __( 'Customer care', 'gnn' ), 2 ), gnn_st_contact() ), true ), gnn_st_c( 'gnn-card gnn-note', array( gnn_st_h( __( 'My account', 'gnn' ), 3 ), gnn_st_p( __( 'Track orders and manage your details.', 'gnn' ) ), gnn_st_b( __( 'My account', 'gnn' ), gnn_st_shop_url( 'myaccount' ), 'gnn-btn-main' ) ), true ) ), true ) ) ),
 	);
 }
-

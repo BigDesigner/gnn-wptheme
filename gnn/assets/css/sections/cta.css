@@ -1,0 +1,227 @@
+/* =====================================================================
+   Section library: CTA, contact and newsletter (.gnn-sec scoped)
+   ===================================================================== */
+
+/* ---------- Call to Action (cta) ---------- */
+.gnn-sec.gnn-sec-cta {
+	padding-block: clamp(56px, 8vw, 112px);
+	background: var(--bg2);
+	border-block: 1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-cta .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: 20px;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--band .e-con.gnn-st.gnn-wrap {
+	justify-items: center;
+	text-align: center;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--band h2 {
+	max-width: 22ch;
+	margin-inline: auto;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--band .gnn-lead p {
+	margin-inline: auto;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--band .gnn-actions {
+	justify-content: center;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--split .gnn-split {
+	grid-template-columns: minmax(0, 1.4fr) auto;
+	gap: clamp(24px, 4vw, 56px);
+	align-items: center;
+	padding: clamp(28px, 4vw, 48px);
+	background: var(--bg);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--split .gnn-copy {
+	display: grid;
+	gap: 14px;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--email .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-cta.gnn-sec--big-email .e-con.gnn-st.gnn-wrap {
+	justify-items: center;
+	text-align: center;
+	gap: 24px;
+}
+
+.gnn-sec.gnn-sec-cta.gnn-sec--email h2,
+.gnn-sec.gnn-sec-cta.gnn-sec--big-email h2 {
+	font-size: clamp(30px, 5vw, 68px);
+	line-height: 1.05;
+	max-width: 16ch;
+	margin-inline: auto;
+}
+
+.gnn-sec .gnn-bigmail .elementor-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 48px;
+	padding: 8px 0 12px;
+	background: transparent;
+	color: var(--accent-text);
+	font: 700 clamp(20px, 3.8vw, 52px)/1.15 var(--font-heading);
+	border: 0;
+	border-bottom: 3px solid var(--accent);
+	border-radius: 0;
+	text-decoration: none;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.gnn-sec .gnn-bigmail .elementor-button:hover,
+.gnn-sec .gnn-bigmail .elementor-button:focus-visible {
+	color: var(--fg);
+	border-color: var(--fg);
+}
+
+/* ---------- Contact (contact) ---------- */
+.gnn-sec.gnn-sec-contact {
+	padding-block: clamp(56px, 7vw, 104px);
+	background: var(--bg);
+}
+
+.gnn-sec.gnn-sec-contact .gnn-split {
+	align-items: start;
+	gap: clamp(28px, 5vw, 64px);
+}
+
+.gnn-sec.gnn-sec-contact .gnn-head {
+	margin-bottom: 24px;
+}
+
+.gnn-sec .gnn-contact-cards {
+	display: grid;
+	gap: 16px;
+}
+
+.gnn-sec.gnn-sec-contact.gnn-sec--cards .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: clamp(24px, 3.5vw, 40px);
+}
+
+.gnn-sec.gnn-sec-contact.gnn-sec--cards .gnn-head {
+	margin-bottom: 0;
+}
+
+.gnn-sec .gnn-contact-card {
+	display: grid;
+	gap: 8px;
+	align-content: start;
+	padding: clamp(20px, 2.4vw, 28px);
+	background: var(--bg2);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.gnn-sec .gnn-contact-card h3 {
+	font-size: 16px;
+	line-height: 1.3;
+	color: var(--fg);
+}
+
+.gnn-sec .gnn-contact-card .gnn-link .elementor-button {
+	min-height: 44px;
+	padding: 6px 0;
+	font-weight: 600;
+	overflow-wrap: anywhere;
+	text-align: start;
+	justify-content: flex-start;
+}
+
+.gnn-sec .gnn-contact-hours p {
+	font-size: 14px;
+	color: var(--fg2);
+}
+
+.gnn-sec .gnn-form-placeholder {
+	display: grid;
+	gap: 14px;
+	align-content: start;
+	padding: clamp(24px, 3vw, 40px);
+	background: var(--bg2);
+	border: 1px dashed var(--line);
+	border-radius: var(--gnn-radius, 8px);
+	min-width: 0;
+}
+
+/* ---------- Newsletter (newsletter) ---------- */
+.gnn-sec.gnn-sec-newsletter {
+	padding-block: clamp(48px, 6vw, 88px);
+	background: var(--bg2);
+	border-block: 1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-newsletter .gnn-split {
+	grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+	gap: clamp(24px, 4vw, 56px);
+	align-items: center;
+}
+
+.gnn-sec.gnn-sec-newsletter .gnn-newsletter-box {
+	background: var(--bg);
+	border-style: solid;
+}
+
+.gnn-sec.gnn-sec-newsletter.gnn-sec--centered .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: 24px;
+	justify-items: center;
+	text-align: center;
+}
+
+.gnn-sec.gnn-sec-newsletter.gnn-sec--centered .gnn-head {
+	margin-bottom: 0;
+	justify-items: center;
+}
+
+.gnn-sec.gnn-sec-newsletter.gnn-sec--centered .gnn-lead p {
+	margin-inline: auto;
+}
+
+.gnn-sec.gnn-sec-newsletter.gnn-sec--centered .gnn-newsletter-box {
+	width: 100%;
+	max-width: 560px;
+	justify-items: center;
+}
+
+.gnn-sec.gnn-sec-newsletter.gnn-sec--centered .gnn-actions {
+	justify-content: center;
+}
+
+/* ---------- Responsive & Reduced Motion ---------- */
+@media (max-width: 900px) {
+	.gnn-sec.gnn-sec-cta.gnn-sec--split .gnn-split,
+	.gnn-sec.gnn-sec-newsletter .gnn-split {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.gnn-sec.gnn-sec-contact.gnn-sec--cards .gnn-contact-cards {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 600px) {
+	.gnn-sec.gnn-sec-contact.gnn-sec--cards .gnn-contact-cards {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-sec .gnn-bigmail .elementor-button {
+		transition: none;
+	}
+}

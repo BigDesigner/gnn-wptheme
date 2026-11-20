@@ -1,0 +1,338 @@
+<?php
+/**
+ * Native Free Elementor widgets for centrally managed content.
+ *
+ * @package GNN_Content
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/** Query controls are editable in Elementor; content remains in the central records. */
+class GNN_Elementor_Module extends \Elementor\Widget_Base {
+	/** Module identifier.
+	 *
+	 * @var string
+	 */
+	protected $module = 'portfolio';
+
+	/** Widget identifier. */
+	public function get_name() {
+		return 'gnn-' . $this->module;
+	}
+
+	/** Visible translated name. */
+	public function get_title() {
+		$names = array(
+			'portfolio' => __( 'GNN Portfolio', 'gnn-content' ),
+			'catalog'   => __( 'GNN Product catalogue', 'gnn-content' ),
+			'gallery'   => __( 'GNN Gallery', 'gnn-content' ),
+			'products'  => __( 'GNN Products', 'gnn-content' ),
+			'slider'    => __( 'GNN Slider', 'gnn-content' ),
+		);
+		return $names[ $this->module ];
+	}
+
+	/** Native library icon. */
+	public function get_icon() {
+		return 'eicon-gallery-grid';
+	}
+
+	/** Available without Pro or another widget library. */
+	public function get_categories() {
+		return array( 'general' );
+	}
+
+	/** Load only the module presentation on the editor canvas. */
+	public function get_style_depends() {
+		return array( 'gnn-content-modules' );
+	}
+
+	/** Native editor loads collection interactions when a widget is inserted dynamically. */
+	public function get_script_depends() {
+		return 'slider' === $this->module ? array( 'gnn-content-modules', 'gnn-slider' ) : array( 'gnn-content-modules' );
+	}
+
+	/** Always query live content; Elementor element caching must not freeze projects. */
+	protected function is_dynamic_content(): bool {
+		return true;
+	}
+
+	/** Shared, server-validated query controls. */
+	protected function register_controls() {
+		$this->start_controls_section( 'query', array( 'label' => __( 'Central content source', 'gnn-content' ) ) );
+		if ( 'slider' !== $this->module ) {
+			$this->add_control(
+				'columns',
+				array(
+					'label'   => __( 'Default columns', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::NUMBER,
+					'default' => 0,
+					'min'     => 0,
+					'max'     => 4,
+				)
+			);
+		}
+		$this->add_control(
+			'limit',
+			array(
+				'label'   => __( 'Items per page', 'gnn-content' ),
+				'type'    => \Elementor\Controls_Manager::NUMBER,
+				'default' => 'products' === $this->module ? 12 : 0,
+				'min'     => 0,
+				'max'     => 'products' === $this->module ? 24 : 48,
+			)
+		);
+		$taxonomy = 'slider' === $this->module ? 'gnn_slide_group' : ( 'products' === $this->module ? 'product_cat' : ( 'catalog' === $this->module ? 'gnn_product_category' : 'gnn_project_category' ) );
+		$options  = array( 0 => __( 'All categories', 'gnn-content' ) );
+		$terms    = get_terms(
+			array(
+				'taxonomy'   => $taxonomy,
+				'hide_empty' => false,
+				'number'     => 100,
+			)
+		);
+		foreach ( is_wp_error( $terms ) ? array() : $terms as $term ) {
+			$options[ $term->term_id ] = $term->name;
+		}
+		$this->add_control(
+			'category',
+			array(
+				'label'   => 'catalog' === $this->module ? __( 'Product category', 'gnn-content' ) : __( 'Category or slider group', 'gnn-content' ),
+				'type'    => \Elementor\Controls_Manager::SELECT,
+				'options' => $options,
+				'default' => 0,
+			)
+		);
+		if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
+			$this->add_control(
+				'filter_layout',
+				array(
+					'label'   => __( 'Filter display', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => 'links',
+					'options' => array(
+						'links'  => __( 'Links', 'gnn-content' ),
+						'select' => __( 'Dropdown', 'gnn-content' ),
+					),
+				)
+			);
+			$this->add_control(
+				'filters',
+				array(
+					'label'   => __( 'Show category filters', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SWITCHER,
+					'default' => 'yes',
+				)
+			);
+		}
+		if ( 'products' === $this->module ) {
+			$this->add_control(
+				'source',
+				array(
+					'label'   => __( 'Store collection', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'options' => array(
+						'products'   => __( 'Products', 'gnn-content' ),
+						'categories' => __( 'Product categories', 'gnn-content' ),
+					),
+					'default' => 'products',
+				)
+			);
+		}
+		if ( 'gallery' === $this->module ) {
+			$this->add_control(
+				'source',
+				array(
+					'label'   => __( 'Gallery source', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'options' => array(
+						'projects' => __( 'Project category', 'gnn-content' ),
+						'project'  => __( 'Single project', 'gnn-content' ),
+						'product'  => __( 'Single product', 'gnn-content' ),
+						'album'    => __( 'Independent album', 'gnn-content' ),
+					),
+					'default' => 'projects',
+				)
+			);
+			$records = array( 0 => __( 'Choose a published project, product or album', 'gnn-content' ) );
+			foreach ( get_posts(
+				array(
+					'post_type'      => array( 'gnn_project', 'gnn_product', 'gnn_album' ),
+					'post_status'    => 'publish',
+					'posts_per_page' => 100,
+					'orderby'        => 'title',
+					'order'          => 'ASC',
+				)
+			) as $record ) {
+				$records[ $record->ID ] = $record->post_title . ' (#' . $record->ID . ')';
+			}
+			$this->add_control(
+				'record',
+				array(
+					'label'   => __( 'Project, product or album', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SELECT2,
+					'options' => $records,
+					'default' => 0,
+				)
+			);
+		}
+		$this->end_controls_section();
+		if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
+			$this->start_controls_section( 'selection', array( 'label' => 'catalog' === $this->module ? __( 'Product selection', 'gnn-content' ) : __( 'Project selection', 'gnn-content' ) ) );
+			$this->add_control(
+				'orderby',
+				array(
+					'label'   => __( 'Order by', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => '',
+					'options' => array(
+						''           => __( 'Theme default', 'gnn-content' ),
+						'date'       => __( 'Date', 'gnn-content' ),
+						'title'      => __( 'Title', 'gnn-content' ),
+						'menu_order' => __( 'Menu order', 'gnn-content' ),
+					),
+				)
+			);
+			$this->add_control(
+				'order',
+				array(
+					'label'   => __( 'Order', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SELECT,
+					'default' => 'DESC',
+					'options' => array(
+						'ASC'  => __( 'Ascending', 'gnn-content' ),
+						'DESC' => __( 'Descending', 'gnn-content' ),
+					),
+				)
+			);
+			$this->add_control(
+				'exclude_ids',
+				array(
+					'label'   => 'catalog' === $this->module ? __( 'Excluded product IDs', 'gnn-content' ) : __( 'Excluded project IDs', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::TEXT,
+					'default' => '',
+				)
+			);
+			$this->add_control(
+				'related',
+				array(
+					'label'   => 'catalog' === $this->module ? __( 'Related products', 'gnn-content' ) : __( 'Related projects', 'gnn-content' ),
+					'type'    => \Elementor\Controls_Manager::SWITCHER,
+					'default' => '',
+				)
+			);
+			$this->end_controls_section();
+		}
+		if ( in_array( $this->module, array( 'portfolio', 'catalog', 'gallery' ), true ) ) {
+			$this->start_controls_section(
+				'appearance',
+				array(
+					'label' => __( 'Appearance', 'gnn-content' ),
+					'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+				)
+			);
+			$this->add_responsive_control(
+				'display_columns',
+				array(
+					'label'     => __( 'Columns', 'gnn-content' ),
+					'type'      => \Elementor\Controls_Manager::SELECT,
+					'options'   => array(
+						''  => __( 'Theme default', 'gnn-content' ),
+						'1' => '1',
+						'2' => '2',
+						'3' => '3',
+						'4' => '4',
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-grid' => '--gnn-grid-columns:{{VALUE}};' ),
+				)
+			);
+			$this->add_responsive_control(
+				'item_gap',
+				array(
+					'label'     => __( 'Gap', 'gnn-content' ),
+					'type'      => \Elementor\Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-grid' => 'gap:{{SIZE}}{{UNIT}};' ),
+				)
+			);
+			$this->add_control(
+				'image_ratio',
+				array(
+					'label'     => __( 'Image ratio', 'gnn-content' ),
+					'type'      => \Elementor\Controls_Manager::SELECT,
+					'options'   => array(
+						''     => 'gallery' === $this->module ? __( 'Natural', 'gnn-content' ) : __( 'Theme default', 'gnn-content' ),
+						'auto' => __( 'Natural', 'gnn-content' ),
+						'1/1'  => '1:1',
+						'4/3'  => '4:3',
+						'16/9' => '16:9',
+						'3/4'  => '3:4',
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'aspect-ratio:{{VALUE}};' ),
+				)
+			);
+			$this->add_control(
+				'image_fit',
+				array(
+					'label'     => __( 'Image fit', 'gnn-content' ),
+					'type'      => \Elementor\Controls_Manager::SELECT,
+					'options'   => array(
+						''        => __( 'Theme default', 'gnn-content' ),
+						'cover'   => __( 'Cover', 'gnn-content' ),
+						'contain' => __( 'Contain', 'gnn-content' ),
+					),
+					'selectors' => array( '{{WRAPPER}} .gnn-module-project-image img, {{WRAPPER}} .gnn-module-gallery img' => 'object-fit:{{VALUE}};' ),
+				)
+			);
+			$this->add_control(
+				'card_radius',
+				array(
+					'label'     => __( 'Corner radius', 'gnn-content' ),
+					'type'      => \Elementor\Controls_Manager::SLIDER,
+					'range'     => array(
+						'px' => array(
+							'min' => 0,
+							'max' => 100,
+						),
+					),
+					'selectors' => array(
+						'{{WRAPPER}} .gnn-module-project-image, {{WRAPPER}} .gnn-module-gallery img' => 'border-radius:{{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .gnn-content-module' => '--gnn-card-radius:{{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+			if ( in_array( $this->module, array( 'portfolio', 'catalog' ), true ) ) {
+				$this->add_control(
+					'title_color',
+					array(
+						'label'     => __( 'Title color', 'gnn-content' ),
+						'type'      => \Elementor\Controls_Manager::COLOR,
+						'selectors' => array( '{{WRAPPER}} .gnn-module-project h3, {{WRAPPER}} .gnn-module-project h3 a, {{WRAPPER}} .gnn-module-product h3, {{WRAPPER}} .gnn-module-product h3 a' => 'color:{{VALUE}};' ),
+					)
+				);
+				$this->add_group_control(
+					\Elementor\Group_Control_Typography::get_type(),
+					array(
+						'name'     => 'card_title',
+						'selector' => '{{WRAPPER}} .gnn-module-project h3, {{WRAPPER}} .gnn-module-product h3',
+					)
+				);
+			}
+			$this->end_controls_section();
+		}
+	}
+
+	/** Read current records on every render, including editor preview. */
+	protected function render() {
+		$attrs            = $this->get_settings_for_display();
+		$attrs['filters'] = 'yes' === ( $attrs['filters'] ?? 'yes' );
+		echo gnn_render_module( $this->module, $attrs ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the shared renderer.
+	}
+}

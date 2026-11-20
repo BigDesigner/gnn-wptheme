@@ -1,0 +1,229 @@
+/* Hero section styles and 8 layout variants, scoped to .gnn-sec. */
+
+.elementor .e-con.gnn-st.gnn-sec.gnn-sec-hero,
+.e-con.gnn-st.gnn-sec.gnn-sec-hero {
+	padding-block: clamp(56px, 8vw, 112px);
+}
+
+/* 1. split — text column + visual column */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--split .e-con.gnn-st.gnn-split,
+.gnn-sec.gnn-sec-hero.gnn-sec--split .e-con.gnn-st.gnn-split {
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--split .gnn-visual {
+	aspect-ratio: 4 / 3;
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+}
+
+/* 2. centered — centered headline, lead and actions */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--centered .e-con.gnn-st.gnn-sec-hero__center,
+.gnn-sec.gnn-sec-hero.gnn-sec--centered .e-con.gnn-st.gnn-sec-hero__center {
+	max-width: 760px;
+	margin-inline: auto;
+	text-align: center;
+	justify-items: center;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--centered .gnn-lead p {
+	margin-inline: auto;
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--centered .e-con.gnn-st.gnn-actions,
+.gnn-sec.gnn-sec-hero.gnn-sec--centered .e-con.gnn-st.gnn-actions {
+	justify-content: center;
+}
+
+/* 3. left-large — oversized display heading with bottom lead/CTA bar */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--left-large .e-con.gnn-st.gnn-sec-hero__large,
+.gnn-sec.gnn-sec-hero.gnn-sec--left-large .e-con.gnn-st.gnn-sec-hero__large {
+	gap: clamp(24px, 4vw, 48px);
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--left-large h1 {
+	font-size: clamp(40px, 7.2vw, 92px);
+	line-height: 0.98;
+	letter-spacing: -0.02em;
+	max-width: 15ch;
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--left-large .e-con.gnn-st.gnn-sec-hero__foot,
+.gnn-sec.gnn-sec-hero.gnn-sec--left-large .e-con.gnn-st.gnn-sec-hero__foot {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 24px;
+	align-items: end;
+	padding-top: clamp(20px, 3vw, 36px);
+	border-top: 1px solid var(--line);
+}
+
+/* 4. image-bg — background image with readable dark scrim */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--image-bg .e-con.gnn-st.gnn-sec-hero__stage,
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .e-con.gnn-st.gnn-sec-hero__stage {
+	position: relative;
+	overflow: hidden;
+	display: grid;
+	align-items: end;
+	min-height: clamp(380px, 52vw, 560px);
+	border-radius: var(--gnn-radius, 8px);
+	border: 1px solid var(--line);
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--image-bg .e-con.gnn-st.gnn-sec-hero__bg,
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .e-con.gnn-st.gnn-sec-hero__bg {
+	position: absolute;
+	inset: 0;
+	border-radius: 0;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .gnn-sec-hero__bg .elementor-widget,
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .gnn-sec-hero__bg .elementor-widget-container {
+	height: 100%;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .gnn-sec-hero__bg::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 10, 14, 0.48) 0%, rgba(10, 10, 14, 0.84) 100%);
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--image-bg .e-con.gnn-st.gnn-sec-hero__overlay,
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .e-con.gnn-st.gnn-sec-hero__overlay {
+	position: relative;
+	z-index: 1;
+	padding: clamp(28px, 5vw, 64px);
+	max-width: 68ch;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .gnn-sec-hero__overlay h1,
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .gnn-sec-hero__overlay .gnn-eyebrow p {
+	color: #ffffff;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--image-bg .gnn-sec-hero__overlay .elementor-widget-text-editor p {
+	color: rgba(255, 255, 255, 0.88);
+}
+
+/* 5. minimal — restrained typography and compact spacing */
+.elementor .e-con.gnn-st.gnn-sec.gnn-sec-hero.gnn-sec--minimal,
+.e-con.gnn-st.gnn-sec.gnn-sec-hero.gnn-sec--minimal {
+	padding-block: clamp(40px, 5vw, 72px);
+	border-bottom: 1px solid var(--line);
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--minimal .e-con.gnn-st.gnn-sec-hero__minimal,
+.gnn-sec.gnn-sec-hero.gnn-sec--minimal .e-con.gnn-st.gnn-sec-hero__minimal {
+	max-width: 64ch;
+	gap: 18px;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--minimal h1 {
+	font-size: clamp(30px, 3.8vw, 48px);
+}
+
+/* 6. stacked-cta — dual action buttons with plain-text trust items */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-sec-hero__stack,
+.gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-sec-hero__stack {
+	max-width: 780px;
+	margin-inline: auto;
+	text-align: center;
+	justify-items: center;
+	gap: 24px;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .gnn-lead p {
+	margin-inline: auto;
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-actions,
+.gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-actions {
+	justify-content: center;
+}
+
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-sec-hero__notes,
+.gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-sec-hero__notes {
+	justify-content: center;
+	padding-top: 16px;
+	border-top: 1px solid var(--line);
+}
+
+/* 7. video-placeholder — visual frame with static play badge overlay */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .e-con.gnn-st.gnn-sec-hero__video,
+.gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .e-con.gnn-st.gnn-sec-hero__video {
+	position: relative;
+	aspect-ratio: 16 / 10;
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 8px);
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .gnn-sec-hero__play {
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	pointer-events: none;
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .gnn-sec-hero__play p {
+	display: inline-flex;
+	align-items: center;
+	gap: 12px;
+	min-height: 48px;
+	padding: 12px 22px;
+	border-radius: 999px;
+	background: var(--bg);
+	color: var(--fg);
+	border: 1px solid var(--line);
+	font: 700 14px/1.2 var(--font-body);
+	box-shadow: 0 12px 32px color-mix(in srgb, var(--fg) 22%, transparent);
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .gnn-sec-hero__play p::before {
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px 0 6px 10px;
+	border-color: transparent transparent transparent var(--accent-text);
+}
+
+/* 8. cards — hero top row with 3 highlight cards below */
+.elementor .gnn-sec.gnn-sec-hero.gnn-sec--cards .e-con.gnn-st.gnn-wrap,
+.gnn-sec.gnn-sec-hero.gnn-sec--cards .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: clamp(32px, 5vw, 56px);
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--cards .gnn-sec-hero__top .gnn-visual {
+	aspect-ratio: 16 / 10;
+	border: 1px solid var(--line);
+}
+
+.gnn-sec.gnn-sec-hero.gnn-sec--cards .gnn-sec-hero__cards .gnn-card {
+	border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 900px) {
+	.elementor .gnn-sec.gnn-sec-hero.gnn-sec--split .e-con.gnn-st.gnn-split,
+	.gnn-sec.gnn-sec-hero.gnn-sec--split .e-con.gnn-st.gnn-split,
+	.elementor .gnn-sec.gnn-sec-hero.gnn-sec--left-large .e-con.gnn-st.gnn-sec-hero__foot,
+	.gnn-sec.gnn-sec-hero.gnn-sec--left-large .e-con.gnn-st.gnn-sec-hero__foot {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 600px) {
+	.gnn-sec.gnn-sec-hero.gnn-sec--left-large h1 {
+		font-size: clamp(32px, 9vw, 44px);
+	}
+
+	.elementor .gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-sec-hero__notes,
+	.gnn-sec.gnn-sec-hero.gnn-sec--stacked-cta .e-con.gnn-st.gnn-sec-hero__notes {
+		flex-direction: column;
+		align-items: flex-start;
+		text-align: start;
+	}
+}

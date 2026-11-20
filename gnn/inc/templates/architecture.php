@@ -36,22 +36,42 @@ function gnn_st_arch_ctx( $set = null ) {
 	return $ctx;
 }
 
-/** Bundled photograph. */
+/**
+ * Bundled photograph.
+ *
+ * @param int    $number Bundled image number.
+ * @param string $alt Alternative text.
+ * @param string $class Extra CSS classes.
+ */
 function gnn_st_arch_img( $number, $alt, $class = '' ) {
 	return gnn_st_img( 'architecture', 'image-' . sprintf( '%02d', $number ), $alt, $class );
 }
 
-/** Opening block of an inner page. */
+/**
+ * Opening block of an inner page.
+ *
+ * @param string $label Visible label.
+ * @param string $title Heading text.
+ * @param string $lead Introductory text.
+ */
 function gnn_st_arch_head( $label, $title, $lead ) {
 	return gnn_st_band( 'gnn-ar', 'pagehead', array( gnn_st_p( $label, 'gnn-eyebrow' ), gnn_st_h( $title, 1 ), gnn_st_p( $lead, 'gnn-lead' ) ) );
 }
 
-/** Dark closing band. */
+/**
+ * Dark closing band.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_arch_cta( $ids ) {
 	return gnn_st_band( 'gnn-ar', 'cta', array( gnn_st_h( __( 'Let’s talk about your site.', 'gnn' ), 2 ), gnn_st_p( __( 'Every project begins with a conversation.', 'gnn' ), 'gnn-lead' ), gnn_st_b( __( 'Start a project', 'gnn' ), gnn_st_link( $ids, 'contact' ), 'gnn-btn-main' ) ) );
 }
 
-/** Numbered rows. */
+/**
+ * Numbered rows.
+ *
+ * @param array $items Section items.
+ */
 function gnn_st_arch_rows( $items ) {
 	$rows = array();
 	foreach ( $items as $index => $item ) {
@@ -96,6 +116,11 @@ function gnn_st_arch_journal() {
 	return gnn_st_c( 'gnn-ar-stories', $cards, true );
 }
 
+/**
+ * Build the architecture home page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_architecture_home( $ids ) {
 	$s     = 'gnn-ar';
 	$ctx   = gnn_st_arch_ctx();
@@ -192,6 +217,11 @@ function gnn_st_architecture_home( $ids ) {
 	);
 }
 
+/**
+ * Build the architecture studio page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_architecture_studio( $ids ) {
 	return array(
 		gnn_st_arch_head( __( 'Studio', 'gnn' ), __( 'Curiosity. Clarity. Care.', 'gnn' ), __( 'A collaborative studio interested in how places can support everyday life.', 'gnn' ) ),
@@ -228,6 +258,11 @@ function gnn_st_architecture_studio( $ids ) {
 	);
 }
 
+/**
+ * Build the architecture services page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_architecture_services( $ids ) {
 	return array(
 		gnn_st_arch_head( __( 'Services', 'gnn' ), __( 'Support from idea to handover.', 'gnn' ), __( 'Choose a single service or work with the studio from the first sketch to the keys.', 'gnn' ) ),
@@ -249,6 +284,11 @@ function gnn_st_architecture_services( $ids ) {
 	);
 }
 
+/**
+ * Build the architecture portfolio page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_architecture_portfolio( $ids ) {
 	return array(
 		gnn_st_arch_head( __( 'Projects', 'gnn' ), __( 'A collection of places.', 'gnn' ), __( 'Residential architecture, interiors and shared spaces. Explore the projects by category.', 'gnn' ) ),
@@ -270,6 +310,11 @@ function gnn_st_architecture_portfolio( $ids ) {
 	);
 }
 
+/**
+ * Build the architecture gallery page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_architecture_gallery( $ids ) {
 	$ctx      = gnn_st_arch_ctx();
 	$settings = array(
@@ -287,6 +332,11 @@ function gnn_st_architecture_gallery( $ids ) {
 	);
 }
 
+/**
+ * Build the architecture contact page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_architecture_contact( $ids ) {
 	return array(
 		gnn_st_arch_head( __( 'Contact', 'gnn' ), __( 'Let’s talk about your project.', 'gnn' ), __( 'Every project begins with a conversation.', 'gnn' ) ),

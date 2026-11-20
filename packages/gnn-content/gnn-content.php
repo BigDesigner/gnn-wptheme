@@ -1,52 +1,59 @@
 <?php
 /**
- * Plugin Name: GNN Content Continuity
- * Description: Keeps GNN slides, reusable layouts, portfolio projects, categories and gallery collections available when the presentation theme changes.
- * Version: 2.12.2
+ * Plugin Name: GNN Content
+ * Description: Portfolio, collections, slides and reusable content.
+ * Version: 2.13.0
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * License: GPL-2.0-or-later
  * Text Domain: gnn-content
+ * Domain Path: /languages
  *
  * @package GNN_Content
  */
-if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-/** Register existing keys, never copy or delete customer records. */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+define( 'GNN_CONTENT_API_VERSION', '1.0.0' );
+define( 'GNN_CONTENT_VERSION', '2.13.0' );
+define( 'GNN_CONTENT_PATH', plugin_dir_path( __FILE__ ) );
+define( 'GNN_CONTENT_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
+require_once GNN_CONTENT_PATH . 'includes/lifecycle.php';
+/** Load only after the active theme has declared its API support. */
+function gnn_content_bootstrap() {
+	if ( 'gnn' === get_template() && ( ! defined( 'GNN_CONTENT_THEME_API_VERSION' ) || version_compare( GNN_CONTENT_THEME_API_VERSION, GNN_CONTENT_API_VERSION, '<' ) ) ) {
+		return;
+	}
+	foreach ( array( 'api', 'modules', 'slides', 'layout-access', 'shared-content', 'shared-library', 'block-roles', 'roles', 'tracking', 'settings' ) as $module ) {
+		require_once GNN_CONTENT_PATH . 'includes/' . $module . '.php';
+	}
+}
+add_action( 'after_setup_theme', 'gnn_content_bootstrap', 20 );
+/** Backward compatible registration entry point. */
 function gnn_content_register_types() {
-	$gnn = 'gnn' === get_template();
-
-	foreach ( array( 'gnn_project' => __( 'Portfolio projects', 'gnn-content' ), 'gnn_album' => __( 'Gallery albums', 'gnn-content' ) ) as $type => $label ) {
-		if ( ! $gnn && ! post_type_exists( $type ) ) {
-			register_post_type( $type, array( 'label' => $label, 'public' => 'gnn_project' === $type, 'show_ui' => true, 'show_in_rest' => true, 'show_in_menu' => $gnn ? 'gnn-panel' : true, 'has_archive' => false, 'rewrite' => 'gnn_project' === $type ? array( 'slug' => 'projects', 'with_front' => false ) : false, 'supports' => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'page-attributes', 'custom-fields' ), 'capability_type' => 'page', 'map_meta_cap' => true ) );
-		}
-		register_post_meta( $type, '_gnn_gallery_ids', array( 'type' => 'array', 'single' => true, 'default' => array(), 'show_in_rest' => array( 'schema' => array( 'type' => 'array', 'items' => array( 'type' => 'integer' ) ) ), 'sanitize_callback' => function ( $ids ) { return array_values( array_unique( array_filter( array_map( 'absint', array_slice( (array) $ids, 0, 100 ) ), 'wp_attachment_is_image' ) ) ); }, 'auth_callback' => function ( $allowed, $key, $id ) { return current_user_can( 'edit_post', $id ); } ) );
-	}
-	if ( ! $gnn && ! taxonomy_exists( 'gnn_project_category' ) ) {
-		register_taxonomy( 'gnn_project_category', 'gnn_project', array( 'label' => __( 'Project categories', 'gnn-content' ), 'public' => true, 'show_ui' => true, 'show_in_rest' => true, 'hierarchical' => true, 'rewrite' => array( 'slug' => 'project-category', 'with_front' => false ) ) );
-	}
-	foreach ( array( '_gnn_project_location', '_gnn_project_year', '_gnn_project_client' ) as $key ) {
-		register_post_meta( 'gnn_project', $key, array( 'type' => 'string', 'single' => true, 'show_in_rest' => true, 'sanitize_callback' => 'sanitize_text_field', 'auth_callback' => function ( $allowed, $key, $id ) { return current_user_can( 'edit_post', $id ); } ) );
-	}
-
-	if ( ! post_type_exists( 'gnn_slide' ) ) {
-		register_post_type( 'gnn_slide', array( 'label' => __( 'Slides', 'gnn-content' ), 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'show_in_menu' => $gnn ? 'gnn-panel' : true, 'supports' => array( 'title', 'thumbnail', 'page-attributes' ), 'capability_type' => 'page' ) );
-	}
-	if ( ! post_type_exists( 'gnn_layout' ) ) {
-		register_post_type( 'gnn_layout', array( 'label' => __( 'Reusable layouts', 'gnn-content' ), 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'show_in_menu' => $gnn ? 'gnn-panel' : true, 'supports' => array( 'title', 'editor', 'revisions' ), 'capability_type' => array( 'gnn_layout', 'gnn_layouts' ), 'map_meta_cap' => true ) );
-	}
-	if ( ! taxonomy_exists( 'gnn_slide_group' ) ) { register_taxonomy( 'gnn_slide_group', 'gnn_slide', array( 'label' => __( 'Slider groups', 'gnn-content' ), 'public' => false, 'show_ui' => true, 'show_in_rest' => true, 'hierarchical' => true ) ); }
-	foreach ( array( '_gnn_slide_kicker', '_gnn_slide_text', '_gnn_slide_cta_label', '_gnn_slide_cta_url', '_gnn_slide_fit' ) as $key ) {
-		register_post_meta( 'gnn_slide', $key, array( 'type' => 'string', 'single' => true, 'show_in_rest' => true, 'sanitize_callback' => '_gnn_slide_cta_url' === $key ? 'esc_url_raw' : 'sanitize_textarea_field', 'auth_callback' => function ( $allowed, $key, $id ) { return current_user_can( 'edit_post', $id ); } ) );
+	if ( function_exists( 'gnn_register_content_modules' ) ) {
+		if ( ! post_type_exists( 'gnn_project' ) || ! post_type_exists( 'gnn_product' ) ) {
+			gnn_register_content_modules(); }
+		gnn_register_slide_cpt();
+		gnn_register_slide_meta();
+		gnn_register_layout_content();
 	}
 }
-add_action( 'init', 'gnn_content_register_types', 8 );
-
-/** Preserve the same role boundaries after a theme switch. */
+/**
+ * Preserve the legacy effective-capabilities callback.
+ *
+ * @param array $allcaps Capabilities.
+ */
 function gnn_content_capabilities( $allcaps ) {
- if ( ! empty( $allcaps['manage_options'] ) || ! empty( $allcaps['gnn_manage_design'] ) ) {
-  foreach ( array( 'edit_gnn_layouts', 'edit_others_gnn_layouts', 'edit_published_gnn_layouts', 'edit_private_gnn_layouts', 'publish_gnn_layouts', 'read_private_gnn_layouts', 'delete_gnn_layouts', 'delete_others_gnn_layouts', 'delete_published_gnn_layouts', 'delete_private_gnn_layouts' ) as $cap ) { $allcaps[ $cap ] = true; }
- }
- return $allcaps;
+	if ( function_exists( 'gnn_layout_capabilities' ) ) {
+		return gnn_layout_capabilities( $allcaps );
+	}
+	return $allcaps;
 }
-add_filter( 'user_has_cap', 'gnn_content_capabilities' );
+
+/** Load plugin translations after WordPress locale initialization. */
+function gnn_content_load_textdomain() {
+	load_plugin_textdomain( 'gnn-content', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+add_action( 'init', 'gnn_content_load_textdomain', 0 );

@@ -26,7 +26,7 @@ function gnn_st_profile_pro() {
 			'topbar_enable'     => 1,
 			'topbar_text'       => __( 'Advisory and delivery for growing organisations', 'gnn' ),
 			'header_cta_label'  => __( 'Book a consultation', 'gnn' ),
-				'show_cart'         => 0,
+			'show_cart'         => 0,
 			'portfolio_columns' => 3,
 		),
 		'heading'      => __( 'Expertise that moves you forward.', 'gnn' ),
@@ -65,10 +65,13 @@ function gnn_dp_data_pro() {
 	);
 }
 
-/* ---------------------------------------------------------------------------
- * GNNpro - corporate and professional services
- * ------------------------------------------------------------------------- */
+/* GNNpro - corporate and professional services. */
 
+/**
+ * Build the pro home page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_pro_home( $ids ) {
 	$s       = 'gnn-pro';
 	$contact = gnn_st_link( $ids, 'contact' );
@@ -178,6 +181,11 @@ function gnn_st_pro_home( $ids ) {
 	);
 }
 
+/**
+ * Build the pro about page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_pro_about( $ids ) {
 	$s    = 'gnn-pro';
 	$team = array();
@@ -207,6 +215,11 @@ function gnn_st_pro_about( $ids ) {
 	);
 }
 
+/**
+ * Build the pro services page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_pro_services( $ids ) {
 	$s    = 'gnn-pro';
 	$rows = array();
@@ -225,6 +238,11 @@ function gnn_st_pro_services( $ids ) {
 	);
 }
 
+/**
+ * Build the pro cases page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_pro_cases( $ids ) {
 	$s = 'gnn-pro';
 	return array(
@@ -247,6 +265,11 @@ function gnn_st_pro_cases( $ids ) {
 	);
 }
 
+/**
+ * Build the pro news page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_pro_news( $ids ) {
 	$s    = 'gnn-pro';
 	$blog = (int) get_option( 'page_for_posts' );
@@ -257,6 +280,11 @@ function gnn_st_pro_news( $ids ) {
 	);
 }
 
+/**
+ * Build the pro contact page.
+ *
+ * @param array $ids Installed page IDs.
+ */
 function gnn_st_pro_contact( $ids ) {
 	$s = 'gnn-pro';
 	return array(
@@ -264,4 +292,3 @@ function gnn_st_pro_contact( $ids ) {
 		gnn_st_band( $s, 'contact', array( gnn_st_c( 'gnn-split', array( gnn_st_c( 'gnn-copy', array( gnn_st_h( __( 'Get in touch', 'gnn' ), 2 ), gnn_st_contact() ), true ), gnn_st_c( 'gnn-card gnn-note', array( gnn_st_h( __( 'Send a message', 'gnn' ), 3 ), gnn_st_p( __( 'Add your contact form here with the form plugin you use.', 'gnn' ) ) ), true ) ), true ) ) ),
 	);
 }
-

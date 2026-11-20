@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.12.2
+Stable tag: 2.13.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,14 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.13.0 =
+* Added 16 ready-made site templates (restaurant, clinic, education, event, real estate, fitness, app, nonprofit, agency, photography, wedding, legal, travel, magazine, personal, hotel), each with its own header, palette, section order, content and demo install.
+* Added a section library for Elementor Free pages: hero, services, features, process, pricing, FAQ, team, logos, testimonial, call to action, contact, newsletter, portfolio, gallery, blog, catalogue and shop sections with several variants each.
+* Added an optional setting to sync theme colors and fonts with Elementor, off by default and reversible.
+* GNN Content plugin now provides the content types, blocks, shortcode, Elementor widgets and custom code settings on its own; the theme keeps its current behavior.
+* Added user documentation in English and Turkish, and completed the Turkish translation.
+* Fixed code style issues in the starter template files.
 
 = 2.12.2 =
 * Fixed the panel Update button opening "The theme is at the latest version" when WordPress had not refreshed its own update list yet; the list is now refreshed before the button is shown.

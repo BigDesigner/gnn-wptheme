@@ -66,7 +66,7 @@ function gnn_support_summary() {
 	return array(
 		'authoring_checks'       => is_array( $checks ) ? $checks : array(),
 		'theme'                  => GNN_VERSION,
-		'wordpress'              => get_bloginfo( 'version' ),
+		'WordPress'              => get_bloginfo( 'version' ),
 		'php'                    => PHP_VERSION,
 		'multisite'              => is_multisite(),
 		'integrations'           => gnn_integration_status(),
@@ -221,7 +221,7 @@ function gnn_workspace_legacy() {
 		echo '<section id="gnn-workspace-diagnostics" class="gnn-settings-card"><h2>' . esc_html__( 'Diagnostics and integration status', 'gnn' ) . '</h2><div class="gnn-workspace-section"><table class="gnn-diagnostic-table"><tbody>';
 		$labels = array(
 			'theme'                  => __( 'Theme version', 'gnn' ),
-			'wordpress'              => __( 'WordPress version', 'gnn' ),
+			'WordPress'              => __( 'WordPress version', 'gnn' ),
 			'php'                    => __( 'PHP version', 'gnn' ),
 			'multisite'              => __( 'Multisite', 'gnn' ),
 			'integrations'           => __( 'Integrations', 'gnn' ),

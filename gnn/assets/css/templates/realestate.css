@@ -1,0 +1,172 @@
+/* =====================================================================
+   GNNestate: architectural real estate brokerage, limestone & bronze
+   Scoped strictly to .gnn-site-realestate and .gnn-sec; token-driven.
+   ===================================================================== */
+
+/* ---------- Centered Header & Topbar ---------- */
+.gnn-site-realestate .gnn-topbar {
+	background: var(--bg2);
+	color: var(--fg2);
+	border-bottom: 1px solid var(--line);
+	font-size: 13px;
+	letter-spacing: 0.04em;
+}
+
+.gnn-site-realestate .site-header {
+	background: var(--bg);
+	backdrop-filter: none;
+	border-bottom: 1px solid var(--line);
+}
+
+.gnn-site-realestate .site-header__inner {
+	min-height: 80px;
+}
+
+.gnn-site-realestate .site-title {
+	font-family: var(--font-heading);
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.gnn-site-realestate .main-navigation ul.menu {
+	gap: 28px;
+}
+
+.gnn-site-realestate .main-navigation ul.menu > li > a {
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding-block: 10px;
+	border-bottom: 2px solid transparent;
+	transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.gnn-site-realestate .main-navigation ul.menu > li:hover > a,
+.gnn-site-realestate .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--accent-text);
+	border-bottom-color: var(--accent);
+}
+
+.gnn-site-realestate .header-cta {
+	border-radius: var(--gnn-radius, 6px);
+	background: var(--accent);
+	color: var(--accent-ink);
+	border: 1px solid var(--accent);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	padding: 11px 20px;
+}
+
+/* ---------- Typography & Eyebrow Framing ---------- */
+.gnn-site-realestate .gnn-sec h1 {
+	font-size: clamp(34px, 4.6vw, 58px);
+	line-height: 1.07;
+	font-weight: 700;
+	letter-spacing: -0.015em;
+}
+
+.gnn-site-realestate .gnn-sec h2 {
+	font-size: clamp(26px, 3.2vw, 42px);
+	line-height: 1.13;
+	font-weight: 700;
+}
+
+.gnn-site-realestate .gnn-sec .gnn-eyebrow p {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	letter-spacing: 0.16em;
+	color: var(--accent-text);
+}
+
+.gnn-site-realestate .gnn-sec .gnn-eyebrow p::before {
+	content: "";
+	display: inline-block;
+	width: 22px;
+	height: 1.5px;
+	background: var(--accent);
+}
+
+/* ---------- Hero with Cards (.gnn-sec-hero.gnn-sec--cards) ---------- */
+.gnn-site-realestate .gnn-sec.gnn-sec-hero.gnn-sec--cards {
+	background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+	border-bottom: 1px solid var(--line);
+}
+
+.gnn-site-realestate .gnn-sec.gnn-sec-hero.gnn-sec--cards .gnn-sec-hero__top .gnn-visual {
+	aspect-ratio: 16 / 11;
+	border-radius: var(--gnn-radius, 6px);
+	box-shadow: 0 22px 48px rgba(28, 25, 23, 0.12);
+}
+
+.gnn-site-realestate .gnn-sec.gnn-sec-hero.gnn-sec--cards .gnn-sec-hero__cards .gnn-card {
+	background: var(--bg);
+	border: 1px solid var(--line);
+	border-top: 3px solid var(--accent);
+	border-radius: var(--gnn-radius, 6px);
+	padding: clamp(22px, 2.4vw, 30px);
+}
+
+/* ---------- Listings Grid & Architectural Cards ---------- */
+.gnn-site-realestate .gnn-sec .gnn-card {
+	border-radius: var(--gnn-radius, 6px);
+	border-color: var(--line);
+	transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.gnn-site-realestate .gnn-sec .gnn-card:hover {
+	border-color: var(--accent);
+	box-shadow: 0 14px 32px rgba(28, 25, 23, 0.08);
+}
+
+.gnn-site-realestate .gnn-sec.gnn-sec-portfolio [data-gnn-collection="portfolio"] .gnn-module-project {
+	background: var(--bg2);
+	border: 1px solid var(--line);
+	border-radius: var(--gnn-radius, 6px);
+	overflow: hidden;
+	transition: border-color 0.22s ease, transform 0.22s ease;
+}
+
+.gnn-site-realestate .gnn-sec.gnn-sec-portfolio [data-gnn-collection="portfolio"] .gnn-module-project:hover {
+	border-color: var(--accent);
+	transform: translateY(-3px);
+}
+
+.gnn-site-realestate .gnn-sec.gnn-sec-features .gnn-sec-feature-item,
+.gnn-site-realestate .gnn-sec.gnn-sec-about-split .gnn-sec-point-item {
+	background: var(--bg);
+	border-inline-start: 3px solid var(--accent);
+}
+
+.gnn-site-realestate .gnn-sec.gnn-sec-cta.gnn-sec--split .gnn-split {
+	background: var(--bg2);
+	border-inline-start: 4px solid var(--accent);
+}
+
+@media (max-width: 900px) {
+	.gnn-site-realestate .site-header__inner {
+		min-height: 68px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-site-realestate .main-navigation ul.menu > li > a,
+	.gnn-site-realestate .gnn-sec .gnn-card,
+	.gnn-site-realestate .gnn-sec.gnn-sec-portfolio [data-gnn-collection="portfolio"] .gnn-module-project {
+		transition: none;
+	}
+
+	.gnn-site-realestate .gnn-sec.gnn-sec-portfolio [data-gnn-collection="portfolio"] .gnn-module-project:hover {
+		transform: none;
+	}
+}
+
+/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
+@media (max-width: 600px) {
+	.gnn-site-realestate .header-cta { display: none; }
+	.gnn-site-realestate .header-actions { gap: 8px; }
+}
