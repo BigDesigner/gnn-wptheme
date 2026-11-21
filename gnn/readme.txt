@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.13.0
+Stable tag: 2.13.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,11 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.13.1 =
+* Reworked the theme panel for easier use: a new Start screen with a setup checklist, quick actions and status; sections renamed and grouped by task (Appearance, Content, Site, Advanced); the General tab split into focused groups.
+* Display rules are now collapsible cards that open only when a rule is set; a duplicate "Product categories" card is fixed.
+* Panel buttons now follow the panel color, and long or technical help texts were shortened.
 
 = 2.13.0 =
 * Added 16 ready-made site templates (restaurant, clinic, education, event, real estate, fitness, app, nonprofit, agency, photography, wedding, legal, travel, magazine, personal, hotel), each with its own header, palette, section order, content and demo install.

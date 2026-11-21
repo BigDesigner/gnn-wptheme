@@ -11426,3 +11426,65 @@ TRANSLATIONS.update({
     'Required plugins for this demo are not active.': 'Bu demo için gerekli eklentiler etkin değil.',
     'This demo template is not available.': 'Bu demo şablonu kullanılamıyor.',
 })
+
+# GNN_PANEL_UX_1
+TRANSLATIONS.update({
+    'Start': 'Başlangıç',
+    'Colors and buttons': 'Renkler ve düğmeler',
+    'Fonts': 'Yazı tipleri',
+    'Display rules': 'Gösterim kuralları',
+    'General': 'Genel',
+    'Ready-made sites': 'Hazır siteler',
+    'Custom code': 'Özel kod',
+    'Content': 'İçerik',
+    'Content library': 'İçerik kitaplığı',
+    'Choose a design': 'Bir tasarım seçin',
+    'Add your logo': 'Logonuzu ekleyin',
+    'Add logo': 'Logo ekle',
+    'Set colors and fonts': 'Renk ve yazı tiplerini ayarlayın',
+    'Open colors': 'Renkleri aç',
+    'Create the menu': 'Menüyü oluşturun',
+    'Open menus': 'Menüleri aç',
+    'Choose a home page': 'Ana sayfa seçin',
+    'Open settings': 'Ayarları aç',
+    'Add contact details': 'İletişim bilgilerini ekleyin',
+    'Add details': 'Bilgileri ekle',
+    'Open plugins': 'Eklentileri aç',
+    'Logo, menu and top bar': 'Logo, menü ve üst çubuk',
+    'Columns, contact and legal text': 'Sütunlar, iletişim ve yasal metin',
+    'Accent, surfaces and buttons': 'Vurgu, yüzeyler ve düğmeler',
+    'Headings and body text': 'Başlıklar ve gövde metni',
+    'Width, spacing and titles': 'Genişlik, boşluk ve başlıklar',
+    'Post lists and single posts': 'Yazı listeleri ve tekil yazılar',
+    'Install a complete design': 'Hazır bir tasarım yükleyin',
+    'Elementor, WooCommerce and more': 'Elementor, WooCommerce ve diğerleri',
+    'Not active': 'Etkin değil',
+    'Set up your site': 'Sitenizi kurun',
+    '%1$d of %2$d done': '%1$d / %2$d tamamlandı',
+    'Setup progress': 'Kurulum ilerlemesi',
+    'Done': 'Tamam',
+    'What do you want to change?': 'Neyi değiştirmek istiyorsunuz?',
+    'Catalogue categories': 'Katalog kategorileri',
+})
+
+# GNN_PANEL_UX_2
+TRANSLATIONS.update({
+    'Turn off to show only the default mode.': 'Kapatırsanız yalnız varsayılan mod gösterilir.',
+    'Applies while the toggle is visible.': 'Anahtar görünürken geçerlidir.',
+    'Remember each visitor\'s choice': 'Her ziyaretçinin seçimini hatırla',
+    'Reveal blocks on scroll': 'Bloklar kaydırınca belirsin',
+    'Blocks fade in as they scroll into view.': 'Bloklar görünüme kaydıkça yumuşakça belirir.',
+    'Full-height slider': 'Tam yükseklikte slider',
+    'Fills the screen below the header.': 'Header altındaki ekranı doldurur.',
+    'Loading': 'Yükleme',
+    'Site design': 'Site tasarımı',
+    'Slider Revolution is not active.': 'Slider Revolution etkin değil.',
+})
+
+# GNN_PANEL_UX_3
+TRANSLATIONS.update({
+    'Inherits': 'Üst kuralı izler',
+})
+PLURALS.update({
+    '%d custom rule': ('%d özel kural', '%d özel kural'),
+})

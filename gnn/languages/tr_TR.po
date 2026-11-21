@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.13.0\n"
+"Project-Id-Version: GNN 2.13.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 04:18+0000\n"
-"PO-Revision-Date: 2026-11-20 04:18+0000\n"
+"POT-Creation-Date: 2026-11-21 02:51+0000\n"
+"PO-Revision-Date: 2026-11-21 02:51+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,10 +16,18 @@ msgstr ""
 msgid "%1$d of %2$d"
 msgstr "%1$d / %2$d"
 
+msgid "%1$d of %2$d done"
+msgstr "%1$d / %2$d tamamlandı"
+
 msgid "%1$s result for “%2$s”"
 msgid_plural "%1$s results for “%2$s”"
 msgstr[0] "“%2$s” için %1$s sonuç"
 msgstr[1] "“%2$s” için %1$s sonuç"
+
+msgid "%d custom rule"
+msgid_plural "%d custom rules"
+msgstr[0] "%d özel kural"
+msgstr[1] "%d özel kural"
 
 msgid "%d min read"
 msgid_plural "%d min read"
@@ -587,6 +595,9 @@ msgstr "Vurgu rengi — Açık"
 msgid "Accent — light mode"
 msgstr "Vurgu — açık mod"
 
+msgid "Accent, surfaces and buttons"
+msgstr "Vurgu, yüzeyler ve düğmeler"
+
 msgid "Access to any scheduled group session"
 msgstr "Programdaki herhangi bir grup seansına erişim"
 
@@ -797,8 +808,17 @@ msgstr "Online mağaza ve ödeme sayfası ekler."
 msgid "Add clinical qualifications, focus areas and registration details here."
 msgstr "Buraya klinik yetkinlikleri, uzmanlık alanlarını ve kayıt ayrıntılarını ekleyin."
 
+msgid "Add contact details"
+msgstr "İletişim bilgilerini ekleyin"
+
+msgid "Add details"
+msgstr "Bilgileri ekle"
+
 msgid "Add draft pages"
 msgstr "Taslak sayfaları ekle"
+
+msgid "Add logo"
+msgstr "Logo ekle"
 
 msgid "Add milestones, certifications and the values that guide your decisions."
 msgstr "Kilometre taşlarını, sertifikaları ve kararlarınıza yön veren değerleri ekleyin."
@@ -869,6 +889,9 @@ msgstr "İlk yazınızı ekleyin"
 msgid "Add your introductory copy here. Describe the feature, product or story you want to highlight in a couple of short sentences."
 msgstr "Giriş metninizi buraya ekleyin. Öne çıkarmak istediğiniz özelliği, ürünü ya da hikayeyi birkaç kısa cümleyle anlatın."
 
+msgid "Add your logo"
+msgstr "Logonuzu ekleyin"
+
 msgid "Add your newsletter form shortcode or block here with the form plugin you use."
 msgstr "Kullandığınız form eklentisiyle bülten formu kısa kodunu veya bloğunu buraya ekleyin."
 
@@ -908,14 +931,8 @@ msgstr "Kullandığınız form eklentisiyle düğün başvuru veya iletişim for
 msgid "Address"
 msgstr "Adres"
 
-msgid "Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion)."
-msgstr "gnn-anim sınıflı öğelere kaydırınca beliren efekt ekler (reduced-motion desteği dahil)."
-
 msgid "Adds the font stylesheet site-wide so .material-symbols-* classes render."
 msgstr "Site genelinde .material-symbols-* sınıflarının çalışması için font stil dosyasını ekler."
-
-msgid "Administration"
-msgstr "Yönetim"
 
 msgid "Administrator access required."
 msgstr "Yönetici yetkisi gerekli."
@@ -1261,6 +1278,9 @@ msgstr "Uygulamalı vaka çalışmaları"
 
 msgid "Applied workshops"
 msgstr "Uygulamalı atölyeler"
+
+msgid "Applies while the toggle is visible."
+msgstr "Anahtar görünürken geçerlidir."
 
 msgid "Apply"
 msgstr "Uygula"
@@ -1724,6 +1744,9 @@ msgstr "Boş Tuval (başlık/altbilgi yok)"
 msgid "Block role"
 msgstr "Blok türü"
 
+msgid "Blocks fade in as they scroll into view."
+msgstr "Bloklar görünüme kaydıkça yumuşakça belirir."
+
 msgid "Blog"
 msgstr "Blog"
 
@@ -1873,9 +1896,6 @@ msgstr "Kutulu şablon maksimum genişliği (px)"
 
 msgid "Brand"
 msgstr "Marka"
-
-msgid "Brand and appearance"
-msgstr "Marka ve görünüm"
 
 msgid "Brand assets"
 msgstr "Marka varlıkları"
@@ -2038,9 +2058,6 @@ msgstr "Konferansa birlikte katılan ekipler için toplu kayıt."
 
 msgid "Business profile and hero"
 msgstr "İşletme profili ve karşılama alanı"
-
-msgid "Business segment"
-msgstr "İşletme alanı"
 
 msgid "Button Styles"
 msgstr "Buton Stilleri"
@@ -2282,6 +2299,9 @@ msgstr "Örnek olay incelemesi ↗"
 msgid "Catalog"
 msgstr "Katalog"
 
+msgid "Catalogue categories"
+msgstr "Katalog kategorileri"
+
 msgid "Categories"
 msgstr "Kategoriler"
 
@@ -2417,8 +2437,14 @@ msgstr "Gutenberg veya Elementor seçin."
 msgid "Choose a departure date and match your physical fitness to the route tier."
 msgstr "Bir hareket tarihi seçin ve fiziksel kondisyonunuzu rota seviyesiyle eşleştirin."
 
+msgid "Choose a design"
+msgstr "Bir tasarım seçin"
+
 msgid "Choose a digital or combined print subscription to support independent cultural criticism."
 msgstr "Bağımsız kültürel eleştiriyi desteklemek için dijital veya basılıyla birleşik abonelik seçin."
+
+msgid "Choose a home page"
+msgstr "Ana sayfa seçin"
 
 msgid "Choose a plan"
 msgstr "Bir plan seçin"
@@ -2798,11 +2824,20 @@ msgstr "Renk"
 msgid "Color name"
 msgstr "Renk adı"
 
+msgid "Colors"
+msgstr "Renkler"
+
+msgid "Colors and buttons"
+msgstr "Renkler ve düğmeler"
+
 msgid "Column gap"
 msgstr "Sütun aralığı"
 
 msgid "Columns"
 msgstr "Sütunlar"
+
+msgid "Columns, contact and legal text"
+msgstr "Sütunlar, iletişim ve yasal metin"
 
 msgid "Combine and rearrange sections to match the exact flow of your content."
 msgstr "İçeriğinizin tam akışına uyacak şekilde bölümleri birleştirin ve yeniden düzenleyin."
@@ -3278,6 +3313,9 @@ msgstr "Çağdaş kültür merkezi fuayesi ve konferans salonu girişi"
 msgid "Contemporary dance artist in dynamic motion with directional rim light"
 msgstr "Yönlü kenar ışığı altında dinamik hareket halindeki çağdaş dans sanatçısı"
 
+msgid "Content"
+msgstr "İçerik"
+
 msgid "Content and blog layout"
 msgstr "İçerik ve blog düzeni"
 
@@ -3286,6 +3324,9 @@ msgstr "İçerik alt boşluğu (px)"
 
 msgid "Content could not be deleted. Check the server and retry."
 msgstr "İçerik silinemedi. Sunucuyu kontrol edip yeniden deneyin."
+
+msgid "Content library"
+msgstr "İçerik kitaplığı"
 
 msgid "Content replacement is unavailable for this database."
 msgstr "Bu veritabanında içerik sıfırlanamıyor."
@@ -3527,6 +3568,9 @@ msgstr "Yapılandırma kurtarma kaydı oluştur"
 msgid "Create snapshot"
 msgstr "Ayar yedeği oluştur"
 
+msgid "Create the menu"
+msgstr "Menüyü oluşturun"
+
 msgid "Create workspace"
 msgstr "Çalışma alanı oluşturun"
 
@@ -3647,9 +3691,6 @@ msgstr "Özel"
 msgid "Custom CSS"
 msgstr "Özel CSS"
 
-msgid "Custom Code"
-msgstr "Özel Kod"
-
 msgid "Custom JavaScript — footer"
 msgstr "Özel JavaScript — footer"
 
@@ -3658,6 +3699,9 @@ msgstr "Özel JavaScript — head"
 
 msgid "Custom automation rules and webhooks"
 msgstr "Özel otomasyon kuralları ve web kancaları"
+
+msgid "Custom code"
+msgstr "Özel kod"
 
 msgid "Custom cohort"
 msgstr "Özel grup"
@@ -4238,6 +4282,9 @@ msgstr "Yemekler ve atmosfer"
 msgid "Dishes are cooked to order over the hearth and pass."
 msgstr "Yemekler ocakta sipariş üzerine pişirilir ve tezgâhtan servis edilir."
 
+msgid "Display rules"
+msgstr "Gösterim kuralları"
+
 msgid "Dispute resolution"
 msgstr "Uyuşmazlık çözümü"
 
@@ -4306,6 +4353,9 @@ msgstr "Şimdi bağış yapın"
 
 msgid "Donate, volunteer or start a conversation."
 msgstr "Bağış yapın, gönüllü olun veya bir sohbet başlatın."
+
+msgid "Done"
+msgstr "Tamam"
 
 msgid "Dossiers & series"
 msgstr "Dosyalar ve seriler"
@@ -4478,6 +4528,9 @@ msgstr "Eğitim"
 msgid "Education & credentials"
 msgstr "Eğitim ve yetkinlikler"
 
+msgid "Elementor"
+msgstr "Elementor"
+
 msgid "Elementor Free edition. Only this design’s page documents are imported; no second editor edition or automatic saved-template library is created."
 msgstr "Ücretsiz Elementor sürümü. Yalnızca bu tasarımın sayfa belgeleri içe aktarılır; ikinci bir editör sürümü veya otomatik şablon kütüphanesi oluşturulmaz."
 
@@ -4495,6 +4548,9 @@ msgstr "Elementor şablonları"
 
 msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr "Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu."
+
+msgid "Elementor, WooCommerce and more"
+msgstr "Elementor, WooCommerce ve diğerleri"
 
 msgid "Elevated surface"
 msgstr "Yükseltilmiş yüzey"
@@ -5243,6 +5299,9 @@ msgstr "Doldur (uzat)"
 msgid "Filled"
 msgstr "Dolu"
 
+msgid "Fills the screen below the header."
+msgstr "Header altındaki ekranı doldurur."
+
 msgid "Filter"
 msgstr "Filtrele"
 
@@ -5419,6 +5478,9 @@ msgstr "Yazı boyutu"
 
 msgid "Font weight"
 msgstr "Yazı kalınlığı"
+
+msgid "Fonts"
+msgstr "Yazı tipleri"
 
 msgid "Fonts by element"
 msgstr "Öğeye göre yazı tipleri"
@@ -5765,8 +5827,8 @@ msgstr "Tam günlük yerinde prodüksiyon"
 msgid "Full-day on-location production for architectural series and publications."
 msgstr "Mimari seriler ve yayınlar için tam günlük yerinde prodüksiyon."
 
-msgid "Full-height slider (fills the screen below the header)"
-msgstr "Tam yükseklik slider (üst bölümün altında ekranı kaplar)"
+msgid "Full-height slider"
+msgstr "Tam yükseklikte slider"
 
 msgid "Full-lifecycle digital product development."
 msgstr "Tam yaşam döngülü dijital ürün geliştirme."
@@ -5942,6 +6004,9 @@ msgstr "Merkez ofis ve saha üssü ayrıntıları"
 msgid "Gather"
 msgstr "Buluşma"
 
+msgid "General"
+msgstr "Genel"
+
 msgid "General & family medicine unit"
 msgstr "Genel ve aile hekimliği birimi"
 
@@ -6022,9 +6087,6 @@ msgstr "Buzul Vadisi Ana Kampı"
 
 msgid "Glasshouse botanical styling with suspended greenery, vintage crystal and acoustic quartet."
 msgstr "Sarkan yeşillikler, vintage kristaller ve akustik yaylı dörtlüsü ile botanik sera düzenlemesi."
-
-msgid "Global"
-msgstr "Genel"
 
 msgid "Global Letters"
 msgstr "Küresel Yazılar"
@@ -6310,6 +6372,9 @@ msgstr "Başlık satır yüksekliği (%)"
 
 msgid "Heading with 2x2 feature grid"
 msgstr "2x2 özellik ızgaralı başlık"
+
+msgid "Headings and body text"
+msgstr "Başlıklar ve gövde metni"
 
 msgid "Headline with links, gradient background"
 msgstr "Bağlantılı başlık, degrade arka plan"
@@ -6956,6 +7021,9 @@ msgstr "Altyapı sunucu telemetri izleme konsolu"
 msgid "Inherit"
 msgstr "Varsayılanı kullan"
 
+msgid "Inherits"
+msgstr "Üst kuralı izler"
+
 msgid "Initial consultation"
 msgstr "İlk konsültasyon"
 
@@ -7033,6 +7101,9 @@ msgstr "Yükle"
 
 msgid "Install Elementor"
 msgstr "Elementor’u yükle"
+
+msgid "Install a complete design"
+msgstr "Hazır bir tasarım yükleyin"
 
 msgid "Install and activate WooCommerce first so the demo products import correctly."
 msgstr "Demo ürünlerin doğru içe aktarılması için önce WooCommerce’i kurup etkinleştirin."
@@ -7649,6 +7720,9 @@ msgstr "Demo paketi yükle"
 msgid "Loaded barbell and chalk bowl on a dark lifting platform"
 msgstr "Koyu bir ağırlık kaldırma platformunda takılı halter ve tebeşir kasesi"
 
+msgid "Loading"
+msgstr "Yükleme"
+
 msgid "Loading fonts…"
 msgstr "Yazı tipleri yükleniyor…"
 
@@ -7732,6 +7806,9 @@ msgstr "Logo — açık mod (1×)"
 
 msgid "Logo — light mode (2× retina)"
 msgstr "Logo — açık mod (2× retina)"
+
+msgid "Logo, menu and top bar"
+msgstr "Logo, menü ve üst çubuk"
 
 msgid "Lone wooden park bench in an urban square in quiet morning mist"
 msgstr "Sessiz sabah sisinde bir kent meydanında yalnız ahşap park bankı"
@@ -8510,6 +8587,9 @@ msgstr "İskandinav doğal ışık editoryal portreleri"
 msgid "Normal"
 msgstr "Normal"
 
+msgid "Not active"
+msgstr "Etkin değil"
+
 msgid "Not assigned"
 msgstr "Atanmamış"
 
@@ -8630,9 +8710,6 @@ msgstr "Çevrim içi prova baskısı ve önizlemeler"
 msgid "Online contact sheet review"
 msgstr "Çevrim içi prova baskısı incelemesi"
 
-msgid "Only applies while the toggle above is visible."
-msgstr "Yalnızca yukarıdaki düğme görünürken geçerlidir."
-
 msgid "Only the administrator who started this installation can continue."
 msgstr "Yalnızca kurulumu başlatan yönetici devam edebilir."
 
@@ -8653,6 +8730,9 @@ msgstr "Her hibe ve proje hakkında açık yıllık raporlama"
 
 msgid "Open by default"
 msgstr "Varsayılan olarak açık"
+
+msgid "Open colors"
+msgstr "Renkleri aç"
 
 msgid "Open debate"
 msgstr "Açık tartışma"
@@ -8681,14 +8761,23 @@ msgstr "Serbest antrenman saatleri"
 msgid "Open kitchen counter service"
 msgstr "Açık mutfak tezgâh servisi"
 
+msgid "Open menus"
+msgstr "Menüleri aç"
+
 msgid "Open notebook with fountain pen and morning light on oak desk"
 msgstr "Meşe masada sabah ışığı altında dolma kalemle açık not defteri"
+
+msgid "Open plugins"
+msgstr "Eklentileri aç"
 
 msgid "Open print magazine on a dark wooden library desk with fountain pen"
 msgstr "Koyu ahşap kütüphane masasında dolma kalemle birlikte açık basılı dergi"
 
 msgid "Open reporting"
 msgstr "Açık raporlama"
+
+msgid "Open settings"
+msgstr "Ayarları aç"
 
 msgid "Open spaces"
 msgstr "Açık alanlar"
@@ -8971,9 +9060,6 @@ msgstr "Sayfa Şablonları"
 
 msgid "Pages"
 msgstr "Sayfalar"
-
-msgid "Pages Layout"
-msgstr "Sayfa Düzeni"
 
 msgid "Pages:"
 msgstr "Sayfalar:"
@@ -9352,6 +9438,9 @@ msgstr "Portre"
 
 msgid "Post"
 msgstr "Yazı"
+
+msgid "Post lists and single posts"
+msgstr "Yazı listeleri ve tekil yazılar"
 
 msgid "Post-injury assessment, posture and movement guidance tailored to daily comfort."
 msgstr "Yaralanma sonrası değerlendirme, günlük rahatlığa göre uyarlanmış duruş ve hareket rehberliği."
@@ -10145,6 +10234,9 @@ msgstr "Kendi iş akışınızla test etmeye hazır mısınız?"
 msgid "Ready-made site"
 msgstr "Hazır site"
 
+msgid "Ready-made sites"
+msgstr "Hazır siteler"
+
 msgid "Ready-made sites use Elementor Free. Install or activate it before importing a design. Nothing is installed automatically."
 msgstr "Hazır siteler ücretsiz Elementor kullanır. Tasarımı içe aktarmadan önce eklentiyi kurun veya etkinleştirin. Hiçbir eklenti otomatik kurulmaz."
 
@@ -10367,8 +10459,8 @@ msgstr "Sürüm özeti"
 msgid "Release, measure and improve."
 msgstr "Yayınla, ölç ve geliştir."
 
-msgid "Remember each visitor's choice (localStorage)"
-msgstr "Her ziyaretçinin seçimini hatırla (localStorage)"
+msgid "Remember each visitor's choice"
+msgstr "Her ziyaretçinin seçimini hatırla"
 
 msgid "Remote river valleys, peat ridges and wild camping under expansive northern skies."
 msgstr "Uzak nehir vadileri, turba sırtları ve geniş kuzey gökyüzü altında vahşi kamp."
@@ -10775,6 +10867,9 @@ msgstr "Yeniden kullanılabilir altbilgi"
 msgid "Reusable header"
 msgstr "Yeniden kullanılabilir üstbilgi"
 
+msgid "Reveal blocks on scroll"
+msgstr "Bloklar kaydırınca belirsin"
+
 msgid "Review"
 msgstr "İncele"
 
@@ -11005,9 +11100,6 @@ msgstr "Sıfırdan mutfak hazırlığı"
 
 msgid "Scroll to top"
 msgstr "Yukarı çık"
-
-msgid "Scroll-in animations for blocks/images"
-msgstr "Bloklar/görseller için kaydırma animasyonları"
 
 msgid "Sea kayakers paddling through a calm coastal fjord beside steep cliffs"
 msgstr "Dik kayalıkların yanında sakin bir kıyı fiyordunda kürek çeken deniz kanocuları"
@@ -11318,6 +11410,9 @@ msgstr "Arka plan görseli seç"
 msgid "Set clear rules that route incoming requests, assign reviewers and notify channels when blockers appear."
 msgstr "Gelen talepleri yönlendiren, inceleyenleri atayan ve engeller ortaya çıktığında kanalları bilgilendiren net kurallar belirleyin."
 
+msgid "Set colors and fonts"
+msgstr "Renk ve yazı tiplerini ayarlayın"
+
 msgid "Set menus"
 msgstr "Fiks menüler"
 
@@ -11329,6 +11424,9 @@ msgstr "Ana görseli Öne Çıkan Görsel alanından ayarlayın. İsteğe bağl�
 
 msgid "Set up a trial workspace or book a live walkthrough with our product team."
 msgstr "Bir deneme çalışma alanı oluşturun veya ürün ekibimizle canlı tanıtım planlayın."
+
+msgid "Set up your site"
+msgstr "Sitenizi kurun"
 
 msgid "Set up your team structure, cycles and default workflow states."
 msgstr "Ekip yapınızı, döngülerinizi ve varsayılan iş akışı durumlarınızı ayarlayın."
@@ -11371,6 +11469,9 @@ msgstr "Ayar yedekleri içerik ve dosyaları kapsamaz."
 
 msgid "Settings were not saved: a field has an invalid value type."
 msgstr "Ayarlar kaydedilmedi: bir alanın değer türü geçersiz."
+
+msgid "Setup progress"
+msgstr "Kurulum ilerlemesi"
 
 msgid "Setup wizard"
 msgstr "Kurulum Sihirbazı"
@@ -11711,6 +11812,9 @@ msgstr "Taş teraslı tek katlı bahçe köşkü konut"
 msgid "Site"
 msgstr "Site"
 
+msgid "Site design"
+msgstr "Site tasarımı"
+
 msgid "Site layout"
 msgstr "Site düzeni"
 
@@ -11728,12 +11832,6 @@ msgstr "Site ayarları (özel yapılandırmayı içerir)"
 
 msgid "Site settings could not be reset."
 msgstr "Site ayarları sıfırlanamadı."
-
-msgid "Site structure"
-msgstr "Site yapısı"
-
-msgid "Site tools"
-msgstr "Site araçları"
 
 msgid "Six weeks of intensive coordination, timeline creation, vendor briefings and on-the-day management."
 msgstr "Altı haftalık yoğun koordinasyon, zaman çizelgesi oluşturma, tedarikçi bilgilendirmeleri ve gün içi yönetim."
@@ -11756,7 +11854,7 @@ msgstr "Slider Revolution"
 msgid "Slider Revolution alias"
 msgstr "Slider Revolution takma adı"
 
-msgid "Slider Revolution etkin değil."
+msgid "Slider Revolution is not active."
 msgstr "Slider Revolution etkin değil."
 
 msgid "Slider group"
@@ -12004,6 +12102,9 @@ msgstr "Her işleme rehberlik eden standartlar"
 
 msgid "Stargazing expeditions, canyon gorges and supported desert camp logistics."
 msgstr "Yıldız gözlem keşifleri, kanyon boğazları ve destekli çöl kampı lojistiği."
+
+msgid "Start"
+msgstr "Başlangıç"
 
 msgid "Start a conversation"
 msgstr "İletişime geçin"
@@ -12340,9 +12441,6 @@ msgstr "Stil %d"
 
 msgid "Style %d name"
 msgstr "Stil %d adı"
-
-msgid "Styles"
-msgstr "Stiller"
 
 msgid "Stylised stage speaker portrait silhouette with coral rim lighting"
 msgstr "Mercan kenar ışıklı stilize sahne konuşmacısı silueti"
@@ -13175,8 +13273,8 @@ msgstr "Farklı bir arama terimi deneyin ya da menüden kataloğa ve bloga göz 
 msgid "Tuition & fees"
 msgstr "Öğrenim ücretleri"
 
-msgid "Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice)."
-msgstr "Tüm siteyi tek bir stile kilitlemek için bunu kapatın — yukarıda seçilen Varsayılan mod, her ziyaretçinin göreceği tek stil olur, geçiş yapma imkanı kalmaz (bu ayrıca daha önce hatırlanan ziyaretçi bazlı seçimleri de kaldırır)."
+msgid "Turn off to show only the default mode."
+msgstr "Kapatırsanız yalnız varsayılan mod gösterilir."
 
 msgid "Tuscan villa garden celebration"
 msgstr "Toskana villası bahçe kutlaması"
@@ -14087,6 +14185,9 @@ msgstr "Danışmanlık pratiğimizi tanımlayan ilkeler"
 msgid "What deposit is needed to secure a departure?"
 msgstr "Bir turu kesinleştirmek için ne kadar depozito gereklidir?"
 
+msgid "What do you want to change?"
+msgstr "Neyi değiştirmek istiyorsunuz?"
+
 msgid "What documentation should we bring?"
 msgstr "Hangi belgeleri getirmeliyiz?"
 
@@ -14272,6 +14373,9 @@ msgstr "Bunu neden yapıyoruz."
 
 msgid "Width"
 msgstr "Genişlik"
+
+msgid "Width, spacing and titles"
+msgstr "Genişlik, boşluk ve başlıklar"
 
 msgid "Wilderness"
 msgstr "Vahşi Doğa"

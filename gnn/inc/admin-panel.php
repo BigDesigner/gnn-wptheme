@@ -792,23 +792,25 @@ function gnn_panel_render() {
 	}
 
 	$tabs = array(
-		'global'      => __( 'Global', 'gnn' ),
+		'start'       => __( 'Start', 'gnn' ),
+		'styles'      => __( 'Colors and buttons', 'gnn' ),
+		'typography'  => __( 'Fonts', 'gnn' ),
 		'header'      => __( 'Header', 'gnn' ),
 		'footer'      => __( 'Footer', 'gnn' ),
-		'pages'       => __( 'Pages Layout', 'gnn' ),
+		'pages'       => __( 'Pages', 'gnn' ),
 		'blog'        => __( 'Blog', 'gnn' ),
-		'styles'      => __( 'Styles', 'gnn' ),
-		'typography'  => __( 'Typography', 'gnn' ),
 		'templates'   => __( 'Page templates', 'gnn' ),
-		'layouts'     => __( 'Layouts', 'gnn' ),
-		'setup'       => __( 'Setup wizard', 'gnn' ),
+		'layouts'     => __( 'Display rules', 'gnn' ),
+		'global'      => __( 'General', 'gnn' ),
+		'setup'       => __( 'Ready-made sites', 'gnn' ),
 		'plugins'     => __( 'Plugins', 'gnn' ),
+		'code'        => __( 'Custom code', 'gnn' ),
 		'maintenance' => __( 'Maintenance', 'gnn' ),
-		'code'        => __( 'Custom Code', 'gnn' ),
 		'advanced'    => __( 'Advanced', 'gnn' ),
 	);
 
 	$tab_icons = array(
+		'start'       => 'dashboard',
 		'global'      => 'admin-generic',
 		'header'      => 'align-center',
 		'footer'      => 'arrow-down-alt2',
@@ -832,7 +834,7 @@ function gnn_panel_render() {
 				<span class="gnn-brand-title">GNN</span>
 			</div>
 			<div class="gnn-panel-header-center">
-				<h1 id="gnn-page-heading" class="gnn-panel-title"><?php echo esc_html( $tabs['global'] ); ?></h1>
+				<h1 id="gnn-page-heading" class="gnn-panel-title"><?php echo esc_html( $tabs['start'] ); ?></h1>
 			</div>
 			<div class="gnn-panel-header-actions">
 				<button type="submit" form="gnn-settings-form" class="gnn-save-btn" id="gnn-save-header">
@@ -887,14 +889,14 @@ function gnn_panel_render() {
 			<aside class="gnn-panel-sidebar">
 				<nav class="gnn-sidebar-nav gnn-tabs" aria-label="<?php esc_attr_e( 'Theme sections', 'gnn' ); ?>">
 					<?php foreach ( $tabs as $id => $label ) : ?>
-						<?php if ( 'global' === $id ) : ?>
-							<div class="gnn-nav-group-title"><?php esc_html_e( 'Site structure', 'gnn' ); ?></div>
-						<?php elseif ( 'styles' === $id ) : ?>
-							<div class="gnn-nav-group-title"><?php esc_html_e( 'Brand and appearance', 'gnn' ); ?></div>
-						<?php elseif ( 'templates' === $id ) : ?>
-							<div class="gnn-nav-group-title"><?php esc_html_e( 'Site tools', 'gnn' ); ?></div>
+						<?php if ( 'styles' === $id ) : ?>
+							<div class="gnn-nav-group-title"><?php esc_html_e( 'Appearance', 'gnn' ); ?></div>
+						<?php elseif ( 'pages' === $id ) : ?>
+							<div class="gnn-nav-group-title"><?php esc_html_e( 'Content', 'gnn' ); ?></div>
+						<?php elseif ( 'global' === $id ) : ?>
+							<div class="gnn-nav-group-title"><?php esc_html_e( 'Site', 'gnn' ); ?></div>
 						<?php elseif ( 'code' === $id ) : ?>
-							<div class="gnn-nav-group-title"><?php esc_html_e( 'Administration', 'gnn' ); ?></div>
+							<div class="gnn-nav-group-title"><?php esc_html_e( 'Advanced', 'gnn' ); ?></div>
 						<?php endif; ?>
 						<a id="gnn-nav-<?php echo esc_attr( $id ); ?>" href="#gnn-tab-<?php echo esc_attr( $id ); ?>" class="nav-tab gnn-nav-item" data-tab="<?php echo esc_attr( $id ); ?>" data-title="<?php echo esc_attr( $label ); ?>">
 							<span class="dashicons dashicons-<?php echo esc_attr( $tab_icons[ $id ] ); ?>" aria-hidden="true"></span>
@@ -903,6 +905,7 @@ function gnn_panel_render() {
 					<?php endforeach; ?>
 				</nav>
 				<div class="gnn-sidebar-secondary">
+					<div class="gnn-nav-group-title"><?php esc_html_e( 'Content library', 'gnn' ); ?></div>
 					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_layout' ) ); ?>"><span class="dashicons dashicons-layout" aria-hidden="true"></span><?php esc_html_e( 'Reusable blocks', 'gnn' ); ?></a>
 					<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=gnn_slide' ) ); ?>"><span class="dashicons dashicons-images-alt2" aria-hidden="true"></span><?php esc_html_e( 'Slider', 'gnn' ); ?></a>
 				</div>
@@ -945,23 +948,27 @@ function gnn_panel_render() {
 							get_theme_mod( 'gnn_default_theme', 'dark' )
 						);
 						?>
-						<?php gnn_field_checkbox( 'show_toggle', __( 'Show the dark/light toggle in the header', 'gnn' ), __( 'Turn this off to lock the whole site to a single style — the Default mode selected above becomes the only style every visitor sees, with no way to switch (this also removes any previously remembered per-visitor choice).', 'gnn' ) ); ?>
-						<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice (localStorage)', 'gnn' ), __( 'Only applies while the toggle above is visible.', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'show_toggle', __( 'Show the dark/light toggle in the header', 'gnn' ), __( 'Turn off to show only the default mode.', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice', 'gnn' ), __( 'Applies while the toggle is visible.', 'gnn' ) ); ?>
 						<?php gnn_field_media( 'site_icon', __( 'Favicon (site icon, 512×512)', 'gnn' ), (int) get_option( 'site_icon', 0 ) ); ?>
 
 						<?php gnn_section_bar( __( 'Interactions', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'smooth_scroll', __( 'Smooth scroll for anchor links', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'scroll_top', __( 'Show the “Scroll to top” button', 'gnn' ) ); ?>
-						<?php gnn_field_checkbox( 'scroll_anim', __( 'Scroll-in animations for blocks/images', 'gnn' ), __( 'Adds reveal-on-scroll to elements with the gnn-anim class (respects reduced-motion).', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'scroll_anim', __( 'Reveal blocks on scroll', 'gnn' ), __( 'Blocks fade in as they scroll into view.', 'gnn' ) ); ?>
 
 						<?php gnn_section_bar( __( 'Hero slider', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'slider_autoplay', __( 'Autoplay', 'gnn' ) ); ?>
 						<?php gnn_field_number( 'slider_interval', __( 'Autoplay interval (seconds)', 'gnn' ), 2, 30 ); ?>
-						<?php gnn_field_checkbox( 'slider_full_height', __( 'Full-height slider (fills the screen below the header)', 'gnn' ) ); ?>
+						<?php gnn_field_checkbox( 'slider_full_height', __( 'Full-height slider', 'gnn' ), __( 'Fills the screen below the header.', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'global', array(), array( 'hero_engine', 'hero_revslider', 'hero_style', 'hero_group' ), '' ); ?>
+
+						<?php gnn_section_bar( __( 'Loading', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'preloader', __( 'Top loading progress bar', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'loading_screen', __( 'Full-screen loading overlay', 'gnn' ) ); ?>
 
-						<?php gnn_platform_fields( 'global' ); ?>
+						<?php gnn_platform_fields( 'global', array(), array( 'elementor_kit_sync' ), __( 'Elementor', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'global', array(), array( 'site_segment' ), __( 'Site design', 'gnn' ) ); ?>
 					</section>
 
 					<section id="gnn-tab-header" class="gnn-tab">
@@ -1344,6 +1351,10 @@ function gnn_panel_render() {
 						<?php gnn_panel_submit_button( __( 'Save Settings', 'gnn' ), 'primary gnn-btn-save', 'submit', false ); ?>
 					</div>
 				</form>
+
+				<section id="gnn-tab-start" class="gnn-tab">
+					<?php gnn_start_content(); ?>
+				</section>
 
 				<section id="gnn-tab-templates" class="gnn-tab">
 					<?php gnn_management_tab_content( 'templates' ); ?>

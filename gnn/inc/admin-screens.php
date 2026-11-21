@@ -285,7 +285,14 @@ function gnn_assignment_fields() {
 	gnn_management_form_open( 'assignments' );
 	echo '<div class="gnn-choice-grid">';
 	foreach ( gnn_site_contexts() as $context => $label ) {
-		echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html( $label ) . '</h2>';
+		$custom = 0;
+		foreach ( array_keys( gnn_site_regions() ) as $count_region ) {
+			$count_key = ( 'site' === $context ? '' : $context . '_' ) . $count_region . '_template';
+			if ( isset( $stored[ $count_key ] ) && (int) $stored[ $count_key ] > -1 && ! ( empty( $stored['region_contract'] ) && 0 === (int) $stored[ $count_key ] && 'site' !== $context ) ) {
+				++$custom;
+			}
+		}
+		echo '<details class="gnn-settings-card gnn-card-content gnn-rule-card"' . ( 'site' === $context || $custom ? ' open' : '' ) . '><summary><span>' . esc_html( $label ) . '</span><em>' . ( $custom ? esc_html( sprintf( /* translators: %d: number of custom rules. */ _n( '%d custom rule', '%d custom rules', $custom, 'gnn' ), $custom ) ) : esc_html__( 'Inherits', 'gnn' ) ) . '</em></summary>';
 		foreach ( gnn_site_regions() as $region => $name ) {
 			$key   = ( 'site' === $context ? '' : $context . '_' ) . $region . '_template';
 			$value = isset( $stored[ $key ] ) ? (int) $stored[ $key ] : -1;
@@ -329,7 +336,7 @@ function gnn_assignment_fields() {
 			}
 			echo '</div>';
 		}
-		echo '</section>';
+		echo '</details>';
 	}
 	echo '</div>';
 	gnn_panel_submit_button( __( 'Save', 'gnn' ) );

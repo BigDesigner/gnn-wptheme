@@ -160,7 +160,7 @@ function gnn_platform_schema() {
 				),
 			),
 			'site_segment'            => array(
-				__( 'Business segment', 'gnn' ),
+				__( 'Site design', 'gnn' ),
 				'select',
 				'general',
 				'global',
@@ -438,7 +438,7 @@ function gnn_option_sanitize_field( $key, $field, $value, $saved = array() ) {
  * @param string $group Settings group.
  * @param array  $exclude Keys rendered by another control.
  */
-function gnn_platform_fields( $group, $exclude = array() ) {
+function gnn_platform_fields( $group, $exclude = array(), $only = array(), $title = null ) {
 	$titles = array(
 		'global'       => __( 'Business profile and hero', 'gnn' ),
 		'header'       => __( 'Company and header configuration', 'gnn' ),
@@ -452,20 +452,23 @@ function gnn_platform_fields( $group, $exclude = array() ) {
 		'blog_single'  => __( 'Single post layout and details', 'gnn' ),
 		'blog_media'   => __( 'Single featured image', 'gnn' ),
 	);
-	if ( function_exists( 'gnn_section_bar' ) ) {
-		gnn_section_bar( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) );
-	} else {
-		echo '<div class="gnn-section-bar" aria-hidden="true"><span>' . esc_html( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) ) . '</span></div>';
+	$bar = null === $title ? ( $titles[ $group ] ?? __( 'Site platform', 'gnn' ) ) : $title;
+	if ( '' !== $bar ) {
+		if ( function_exists( 'gnn_section_bar' ) ) {
+			gnn_section_bar( $bar );
+		} else {
+			echo '<div class="gnn-section-bar" aria-hidden="true"><span>' . esc_html( $bar ) . '</span></div>';
+		}
 	}
 	foreach ( gnn_platform_schema() as $key => $field ) {
-		if ( $field[3] !== $group || in_array( $key, $exclude, true ) ) {
+		if ( $field[3] !== $group || in_array( $key, $exclude, true ) || ( $only && ! in_array( $key, $only, true ) ) ) {
 			continue;
 		}
 		if ( 'hero_engine' === $key ) {
 			gnn_field_select( $key, $field[0], $field[4] );
 			if ( ! shortcode_exists( 'rev_slider' ) ) {
 				?>
-				<p id="gnn-revslider-hint" class="description"<?php echo 'revslider' !== gnn_option( 'hero_engine' ) ? ' hidden' : ''; ?>><?php esc_html_e( 'Slider Revolution etkin değil.', 'gnn' ); ?></p>
+				<p id="gnn-revslider-hint" class="description"<?php echo 'revslider' !== gnn_option( 'hero_engine' ) ? ' hidden' : ''; ?>><?php esc_html_e( 'Slider Revolution is not active.', 'gnn' ); ?></p>
 				<script>
 				(function () {
 					var source = document.getElementById('gnn-hero_engine');

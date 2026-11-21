@@ -153,7 +153,12 @@ function gnn_site_contexts() {
 	);
 	foreach ( get_taxonomies( array( 'public' => true ), 'objects' ) as $taxonomy ) {
 		if ( ! isset( $contexts[ $taxonomy->name ] ) && 'post_format' !== $taxonomy->name ) {
-			$contexts[ $taxonomy->name ] = $taxonomy->label;
+			$label = $taxonomy->label;
+			if ( in_array( $label, $contexts, true ) ) {
+				// Two taxonomies can share a label (store and catalogue categories); keep every card distinct.
+				$label = 'gnn_product_category' === $taxonomy->name ? __( 'Catalogue categories', 'gnn' ) : $label . ' (' . $taxonomy->name . ')';
+			}
+			$contexts[ $taxonomy->name ] = $label;
 		}
 	}
 	return $contexts;

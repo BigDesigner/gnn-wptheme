@@ -22,7 +22,7 @@
 	var search    = panel.querySelector( '#gnn-settings-search' );
 	var feedback  = panel.querySelector( '.gnn-search-feedback' );
 	var pageTitle = document.getElementById( 'gnn-page-heading' );
-	var active    = 'global';
+	var active    = 'start';
 	var dirty     = false;
 	var status    = form && form.querySelector( '.gnn-save-status' );
 
@@ -139,7 +139,7 @@
 
 	function activate( id, remember ) {
 		if ( ! panes.some( function ( p ) { return p.id === 'gnn-tab-' + id; } ) ) {
-			id = 'global';
+			id = 'start';
 		}
 		active = id;
 
@@ -168,7 +168,7 @@
 			}
 		} );
 
-		var toolTabs = [ 'advanced', 'templates', 'layouts', 'setup', 'plugins', 'maintenance' ];
+		var toolTabs = [ 'start', 'advanced', 'templates', 'layouts', 'setup', 'plugins', 'maintenance' ];
 		panel.querySelectorAll( '#gnn-save-header, .gnn-savebar' ).forEach( function ( el ) {
 			el.hidden = toolTabs.includes( id );
 		} );
@@ -215,9 +215,9 @@
 	var initial = location.hash.replace( '#gnn-tab-', '' );
 	if ( ! initial ) {
 		try {
-			initial = sessionStorage.getItem( 'gnn-panel-tab' ) || 'global';
+			initial = sessionStorage.getItem( 'gnn-panel-tab' ) || 'start';
 		} catch ( e ) {
-			initial = 'global';
+			initial = 'start';
 		}
 	}
 
