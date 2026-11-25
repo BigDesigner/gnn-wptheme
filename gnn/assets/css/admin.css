@@ -1739,6 +1739,15 @@
 	.gnn-panel .gnn-savebar .gnn-btn-save {
 		padding-inline: 12px !important;
 	}
+
+	#gnn-theme-panel .gnn-setting-row.gnn-setting-row--switch {
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: center;
+	}
+
+	#gnn-theme-panel .gnn-setting-row--switch .gnn-setting-control-col {
+		width: auto;
+	}
 }
 
 @container (max-width: 560px) {

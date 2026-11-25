@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function gnn_template_data_agency() {
 	return array(
 		'slug'        => 'agency',
-		'label'       => __( 'GNNagency', 'gnn' ),
+		'label'       => __( 'GNNagency Classic', 'gnn' ),
 		'description' => __( 'A bold digital agency template focused on case studies, senior craftsmanship and multi-disciplinary product delivery.', 'gnn' ),
 		'requires'    => array( 'elementor' ),
 		'tokens'      => array(
