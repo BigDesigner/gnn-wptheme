@@ -315,10 +315,12 @@ function gnn_starter_owned_page( $profile, $editor, $key = 'home' ) {
  * Isolated, retryable installations. No editor conversion, publication, menu or homepage mutation.
  *
  * @param string $profile Validated profile key.
- * @param string $editor Validated editor key.
+ * @param string $editor  Validated editor key.
+ * @param array  $data    Optional created sample records for registered demo page builders.
+ * @param mixed  $group   Optional slide group ID for registered demo page builders.
  * @return array|WP_Error
  */
-function gnn_install_profile_pages( $profile, $editor ) {
+function gnn_install_profile_pages( $profile, $editor, $data = array(), $group = 0 ) {
 	if ( ! current_user_can( 'manage_options' ) || ! isset( gnn_starter_profiles()[ $profile ] ) || ! in_array( $editor, array( 'gutenberg', 'elementor' ), true ) ) {
 		return new WP_Error( 'gnn_starter', __( 'Invalid starter profile.', 'gnn' ) );
 	}
@@ -410,7 +412,7 @@ function gnn_install_profile_pages( $profile, $editor ) {
 			$elements = null;
 			$content  = '';
 			if ( $native ) {
-				$elements = gnn_st_page( $profile, $key, $ids );
+				$elements = gnn_st_page( $profile, $key, $ids, $data, $group );
 			} else {
 				$content = 'architecture' === $profile ? gnn_architecture_page_content( $key, $ids ) : gnn_profile_page_content( $profile, $key, $ids );
 				if ( 'architecture' === $profile ) {

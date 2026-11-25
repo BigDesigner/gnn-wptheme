@@ -11,9 +11,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Small, distinct profiles rather than copied commercial demo sites. */
 function gnn_starter_profiles() {
 	$profiles = array(
-		'pro'          => gnn_st_profile_pro(),
-		'commerce'     => gnn_st_profile_commerce(),
-		'design'       => gnn_st_profile_design(),
+		'pro'          => array_merge(
+			gnn_st_profile_pro(),
+			array(
+				'featured' => false,
+				'order'    => 200,
+			)
+		),
+		'commerce'     => array_merge(
+			gnn_st_profile_commerce(),
+			array(
+				'featured' => false,
+				'order'    => 210,
+			)
+		),
+		'design'       => array_merge(
+			gnn_st_profile_design(),
+			array(
+				'featured' => false,
+				'order'    => 220,
+			)
+		),
 		'architecture' => array(
 			'label'        => __( 'GNNarchitecture', 'gnn' ),
 			'accent'       => '#855c40',
@@ -23,7 +41,37 @@ function gnn_starter_profiles() {
 			'heading_font' => 'space',
 			'heading'      => __( 'Space. Light. Life.', 'gnn' ),
 			'description'  => __( 'Architecture and construction with a live two-column portfolio, gallery, studio and services.', 'gnn' ),
+			'featured'     => false,
+			'order'        => 230,
 		),
+	);
+	if ( function_exists( 'gnn_demo_registry' ) ) {
+		foreach ( gnn_demo_registry() as $key => $demo ) {
+			if ( isset( $profiles[ $key ] ) ) {
+				continue;
+			}
+			$profiles[ $key ] = array_merge(
+				$demo['profile'],
+				array(
+					'label'       => $demo['label'],
+					'description' => $demo['description'],
+					'featured'    => $demo['featured'],
+					'order'       => $demo['order'],
+					'preview'     => $demo['preview'],
+				)
+			);
+		}
+	}
+	uksort(
+		$profiles,
+		static function ( $a, $b ) use ( $profiles ) {
+			$order_a = (int) ( $profiles[ $a ]['order'] ?? 100 );
+			$order_b = (int) ( $profiles[ $b ]['order'] ?? 100 );
+			if ( $order_a !== $order_b ) {
+				return $order_a <=> $order_b;
+			}
+			return strcmp( (string) $a, (string) $b );
+		}
 	);
 	return apply_filters( 'gnn_starter_profiles', $profiles );
 }

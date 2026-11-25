@@ -138,7 +138,11 @@ function gnn_workspace_legacy() {
 			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p>';
 			if ( ! empty( $profile['description'] ) ) {
 				echo '<p class="description">' . esc_html( $profile['description'] ) . '</p>';
-				$preview = 'architecture' === $slug ? '/assets/images/architecture/courtyard.svg' : '/assets/images/profiles/' . $slug . '.svg';
+				if ( ! empty( $profile['preview'] ) && is_string( $profile['preview'] ) ) {
+					$preview = '/' . ltrim( $profile['preview'], '/' );
+				} else {
+					$preview = 'architecture' === $slug ? '/assets/images/architecture/courtyard.svg' : '/assets/images/profiles/' . $slug . '.svg';
+				}
 				/* translators: %s: Ready-made site profile name. */
 				$preview_label = sprintf( __( '%s design concept preview', 'gnn' ), $profile['label'] );
 				echo '<img class="gnn-profile-preview" src="' . esc_url( get_template_directory_uri() . $preview ) . '" alt="' . esc_attr( $preview_label ) . '" width="1600" height="1100">';

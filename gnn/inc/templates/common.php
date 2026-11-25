@@ -26,6 +26,11 @@ function gnn_st_pages( $profile ) {
 		case 'architecture':
 			return gnn_st_pages_architecture();
 		default:
+			$demo = function_exists( 'gnn_demo_get' ) ? gnn_demo_get( (string) $profile ) : null;
+			if ( $demo && is_callable( $demo['pages'] ) ) {
+				$pages = call_user_func( $demo['pages'] );
+				return is_array( $pages ) ? $pages : array();
+			}
 			return array();
 	}
 }
@@ -36,7 +41,10 @@ function gnn_st_pages( $profile ) {
  * @param string $profile Design key.
  */
 function gnn_dp_has( $profile ) {
-	return in_array( $profile, array( 'pro', 'commerce', 'design' ), true );
+	if ( in_array( $profile, array( 'pro', 'commerce', 'design' ), true ) ) {
+		return true;
+	}
+	return function_exists( 'gnn_demo_get' ) && null !== gnn_demo_get( (string) $profile );
 }
 
 /**
@@ -141,13 +149,47 @@ function gnn_st_b( $label, $url, $class = '' ) {
 }
 
 /**
+ * Locate a bundled demo image file on disk.
+ * Registered demos may ship `.jpg`, `.webp`, or `.png`; existing demos keep `.jpg`.
+ *
+ * @param string $profile Design key.
+ * @param string $name    Image name without extension.
+ * @return array|null Associative array with `path`, `ext`, `mime`, or null when missing.
+ */
+function gnn_dp_media_file( $profile, $name ) {
+	$base = get_template_directory() . '/assets/images/demo/' . $profile . '/' . $name;
+	$exts = function_exists( 'gnn_demo_get' ) && null !== gnn_demo_get( (string) $profile )
+		? array(
+			'jpg'  => 'image/jpeg',
+			'webp' => 'image/webp',
+			'png'  => 'image/png',
+		)
+		: array(
+			'jpg' => 'image/jpeg',
+		);
+	foreach ( $exts as $ext => $mime ) {
+		$path = $base . '.' . $ext;
+		if ( is_readable( $path ) ) {
+			return array(
+				'path' => $path,
+				'ext'  => $ext,
+				'mime' => $mime,
+			);
+		}
+	}
+	return null;
+}
+
+/**
  * Bundled demo image URL.
  *
  * @param string $profile Design key.
  * @param string $name Image name or section key.
  */
 function gnn_st_url( $profile, $name ) {
-	return get_template_directory_uri() . '/assets/images/demo/' . $profile . '/' . $name . '.jpg';
+	$found = gnn_dp_media_file( $profile, $name );
+	$ext   = $found ? $found['ext'] : 'jpg';
+	return get_template_directory_uri() . '/assets/images/demo/' . $profile . '/' . $name . '.' . $ext;
 }
 
 /**
@@ -311,12 +353,22 @@ function gnn_st_page_head( $scope, $eyebrow, $title, $lead ) {
 /**
  * Elements for one page of a design.
  *
- * @param string $profile pro, commerce or design.
- * @param string $key Page key.
- * @param array  $ids Installed page IDs.
+ * @param string $profile Design key.
+ * @param string $key     Page key.
+ * @param array  $ids     Installed page IDs.
+ * @param array  $data    Optional created sample records passed to registered demos.
+ * @param mixed  $group   Optional slide group ID passed to registered demos.
  * @return array
  */
-function gnn_st_page( $profile, $key, $ids ) {
+function gnn_st_page( $profile, $key, $ids, $data = array(), $group = 0 ) {
 	$fn = 'gnn_st_' . $profile . '_' . $key;
-	return function_exists( $fn ) ? $fn( $ids ) : array();
+	if ( function_exists( $fn ) ) {
+		return $fn( $ids );
+	}
+	$demo = function_exists( 'gnn_demo_get' ) ? gnn_demo_get( (string) $profile ) : null;
+	if ( $demo && is_callable( $demo['page'] ) ) {
+		$elements = call_user_func( $demo['page'], (string) $key, (array) $ids, (array) $data, $group );
+		return is_array( $elements ) ? $elements : array();
+	}
+	return array();
 }
