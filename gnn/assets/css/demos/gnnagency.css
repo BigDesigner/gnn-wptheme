@@ -1,0 +1,709 @@
+/* GNNagency */
+.gnn-gnnagency,
+.gnn-site-gnnagency {
+	--agency-edge: clamp(20px, 4.5vw, 72px);
+	--agency-small: clamp(12px, 1.5vw, 22px);
+	--agency-gap: clamp(20px, 3.2vw, 48px);
+	--agency-large: clamp(38px, 6vw, 88px);
+	--agency-section: clamp(66px, 9vw, 136px);
+	--agency-display: clamp(54px, 10.4vw, 144px);
+	--agency-heading: clamp(38px, 6vw, 90px);
+	--agency-subhead: clamp(24px, 3vw, 44px);
+	--agency-lime: #c6f432;
+	--agency-ink: #11140a;
+}
+
+.elementor .e-con.gnn-st.gnn-gnnagency {
+	padding-block: var(--agency-section);
+	background-color: var(--bg);
+	color: var(--fg);
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-wrap {
+	max-width: 1600px;
+	padding-inline: var(--agency-edge);
+}
+
+.gnn-gnnagency .elementor-heading-title {
+	font-weight: 700;
+	line-height: 1.02;
+	letter-spacing: 0;
+}
+
+/* Elementor's kit uses its global primary colour for headings. */
+.elementor .gnn-gnnagency .elementor-widget-heading .elementor-heading-title {
+	color: var(--agency-title, var(--fg));
+}
+
+.gnn-gnnagency h1.elementor-heading-title {
+	font-size: var(--agency-display);
+	line-height: .9;
+}
+
+.gnn-gnnagency h2.elementor-heading-title {
+	font-size: var(--agency-heading);
+}
+
+.gnn-gnnagency h3.elementor-heading-title {
+	font-size: var(--agency-subhead);
+}
+
+.gnn-gnnagency .elementor-widget-text-editor :is(p, li) {
+	max-width: 66ch;
+}
+
+.gnn-gnnagency .gnn-lead p {
+	font-size: clamp(17px, 1.7vw, 23px);
+	line-height: 1.5;
+}
+
+.gnn-gnnagency .gnn-eyebrow p,
+.gnn-gnnagency .gnn-gnnagency-index p,
+.gnn-gnnagency .gnn-num p {
+	color: var(--fg);
+	font: 700 12px/1.4 var(--font-body);
+	letter-spacing: 0;
+	text-transform: uppercase;
+}
+
+.gnn-gnnagency .gnn-eyebrow p::before {
+	display: inline-block;
+	width: 20px;
+	height: 3px;
+	margin-inline-end: 9px;
+	vertical-align: middle;
+	background: var(--agency-lime);
+	content: '';
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-head,
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-headrow > .elementor-widget {
+	max-width: none;
+	margin-block-end: var(--agency-gap);
+}
+
+.gnn-gnnagency .elementor-widget-button .elementor-button {
+	min-height: 44px;
+	border-radius: 0;
+}
+
+.gnn-gnnagency .gnn-link .elementor-button {
+	color: var(--fg);
+	border-block-end: 2px solid var(--agency-lime);
+}
+
+.gnn-gnnagency :is(a, button):focus-visible,
+.gnn-site-gnnagency .site-header :is(a, button):focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 4px;
+}
+
+/* The hero stays dark so the image and text use the same contrast in both modes. */
+.elementor .e-con.gnn-st.gnn-gnnagency-hero {
+	--bg: #111210;
+	--fg: #f5f4ee;
+	--fg2: #e0e2d8;
+	--accent: var(--agency-lime);
+	--accent-ink: #11140a;
+	--agency-title: var(--agency-lime);
+	position: relative;
+	isolation: isolate;
+	display: grid;
+	align-items: end;
+	min-height: clamp(610px, 56vw, 860px);
+	padding-block: clamp(124px, 14vw, 212px) var(--agency-large);
+}
+
+.gnn-gnnagency-hero .gnn-gnnagency-hero-image,
+.gnn-gnnagency-hero::after {
+	position: absolute;
+	inset: 0;
+}
+
+.gnn-gnnagency-hero .gnn-gnnagency-hero-image {
+	z-index: -2;
+}
+
+.gnn-gnnagency-hero::after {
+	z-index: -1;
+	background:
+		linear-gradient(180deg, rgba(12, 13, 12, .9), transparent 25%, transparent 62%, rgba(12, 13, 12, .76)),
+		linear-gradient(90deg, rgba(12, 13, 12, .94), rgba(12, 13, 12, .65) 43%, transparent 82%);
+	pointer-events: none;
+	content: '';
+}
+
+.gnn-gnnagency-hero-image .elementor-widget-container,
+.gnn-gnnagency-hero-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.gnn-gnnagency .gnn-gnnagency-hero-image img {
+	object-fit: cover;
+	object-position: 62% center;
+}
+
+.elementor .gnn-gnnagency-hero .e-con.gnn-st.gnn-gnnagency-hero-copy,
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-hero-note {
+	display: grid;
+	justify-items: start;
+	gap: var(--agency-small);
+}
+
+.gnn-gnnagency-hero h1.elementor-heading-title {
+	max-width: 10ch;
+	margin-block: var(--agency-small);
+}
+
+.gnn-gnnagency-hero .gnn-lead p {
+	max-width: 32ch;
+}
+
+.elementor .e-con.gnn-st.gnn-gnnagency-marquee {
+	overflow: hidden;
+	padding-block: var(--agency-small);
+	background: var(--agency-lime);
+}
+
+.gnn-gnnagency-marquee .elementor-widget-text-editor p {
+	max-width: none;
+	overflow: hidden;
+	color: var(--agency-ink);
+	font: 700 clamp(12px, 2.4vw, 35px)/1.25 var(--font-heading);
+	text-align: center;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+@media (min-width: 650px) and (prefers-reduced-motion: no-preference) {
+	.gnn-gnnagency-marquee .elementor-widget-text-editor {
+		animation: gnn-gnnagency-marquee 4.8s ease-out both;
+	}
+}
+
+@keyframes gnn-gnnagency-marquee {
+	from { transform: translateX(11%); }
+	to { transform: translateX(0); }
+}
+
+/* Offset each pair while keeping the project reading order. */
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-projects {
+	display: grid;
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+	gap: var(--agency-large) var(--agency-gap);
+	align-items: start;
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project {
+	grid-column: span 5;
+	display: grid;
+	gap: var(--agency-small);
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project:nth-child(even) {
+	grid-column: span 7;
+	margin-block-start: clamp(30px, 8vw, 124px);
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project:nth-child(4n + 3) {
+	margin-block-start: var(--agency-large);
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project:nth-child(4n + 4) {
+	margin-block-start: 0;
+}
+
+.gnn-gnnagency-project-image,
+.gnn-gnnagency-studio-image {
+	aspect-ratio: 4 / 5;
+	overflow: hidden;
+	background: var(--bg3);
+}
+
+.gnn-gnnagency-project:nth-child(even) .gnn-gnnagency-project-image {
+	aspect-ratio: 16 / 10;
+}
+
+.gnn-gnnagency :is(.gnn-gnnagency-project-image, .gnn-gnnagency-studio-image) .elementor-widget-container,
+.gnn-gnnagency :is(.gnn-gnnagency-project-image, .gnn-gnnagency-studio-image) img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.gnn-gnnagency :is(.gnn-gnnagency-project-image, .gnn-gnnagency-studio-image) img {
+	object-fit: cover;
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project-caption {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto;
+	gap: 8px var(--agency-small);
+	align-items: end;
+}
+
+.gnn-gnnagency-project-caption > .gnn-eyebrow {
+	grid-column: 1 / -1;
+}
+
+.gnn-gnnagency-project-caption h3.elementor-heading-title {
+	font-size: clamp(22px, 3vw, 44px);
+}
+
+.gnn-gnnagency-project-caption .gnn-link .elementor-button {
+	white-space: nowrap;
+}
+
+.gnn-gnnagency-work .gnn-module-grid {
+	--gnn-module-gap: var(--agency-gap);
+}
+
+.gnn-gnnagency-work .gnn-module-project-image {
+	--gnn-project-ratio: 16 / 10;
+	border-radius: 0;
+}
+
+.gnn-gnnagency-work .gnn-module-filters {
+	margin: 0 0 var(--agency-gap);
+	gap: 8px var(--agency-gap);
+}
+
+.elementor .gnn-gnnagency-work .gnn-content-module :is(.gnn-module-filters a, .gnn-module-pagination a, .gnn-module-project h3 a) {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	color: var(--fg);
+}
+
+.gnn-gnnagency-work .gnn-module-filters a[aria-current] {
+	border-block-end: 3px solid var(--agency-lime);
+	font-weight: 700;
+}
+
+.gnn-gnnagency-work .gnn-module-kicker {
+	letter-spacing: 0;
+}
+
+.elementor .gnn-gnnagency .gnn-gnnagency-accessible {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Editorial lists, process cards and studio panels. */
+.elementor .e-con.gnn-st:is(.gnn-gnnagency-capabilities, .gnn-gnnagency-recognition, .gnn-gnnagency-faq, .gnn-gnnagency-team, .gnn-gnnagency-pagehead) {
+	background: var(--bg2);
+}
+
+.elementor :is(.gnn-gnnagency-capabilities, .gnn-gnnagency-recognition, .gnn-gnnagency-faq, .gnn-gnnagency-team) > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	grid-template-columns: minmax(0, 3fr) minmax(0, 5fr);
+	gap: var(--agency-small) var(--agency-gap);
+	align-items: start;
+}
+
+.gnn-gnnagency-capabilities > .gnn-wrap > .gnn-link {
+	grid-column: 2;
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st:is(.gnn-gnnagency-row, .gnn-gnnagency-service) {
+	display: grid;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+	align-items: baseline;
+	gap: var(--agency-small);
+	padding-block: var(--agency-gap);
+	border-block-start: 1px solid var(--line);
+}
+
+.elementor .gnn-gnnagency .gnn-gnnagency-rows-numbered .e-con.gnn-st.gnn-gnnagency-row,
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-service {
+	grid-template-columns: 2.4rem minmax(0, 1.05fr) minmax(0, 1fr);
+}
+
+.gnn-gnnagency-row h3.elementor-heading-title {
+	font-size: clamp(20px, 2.4vw, 34px);
+}
+
+.gnn-gnnagency-service .elementor-widget-text-editor ul {
+	margin: 0;
+	padding-inline-start: 1.1em;
+}
+
+.elementor .gnn-gnnagency :is(.gnn-gnnagency-steps, .gnn-cols-3) .e-con.gnn-st.gnn-card {
+	background: transparent;
+	border: 0;
+	border-block-start: 1px solid var(--line);
+	padding: var(--agency-small) 0 0;
+}
+
+.gnn-gnnagency .gnn-card h3.elementor-heading-title {
+	font-size: clamp(23px, 2.75vw, 40px);
+}
+
+.elementor .e-con.gnn-st.gnn-gnnagency-studio-band {
+	background: var(--bg2);
+	padding-block: 0;
+}
+
+.elementor .gnn-gnnagency-studio-band > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	max-width: 1600px;
+	padding-inline: 0;
+}
+
+.gnn-gnnagency-studio-band .gnn-gnnagency-studio-image {
+	aspect-ratio: 5 / 4;
+	height: 100%;
+}
+
+.elementor .gnn-gnnagency-studio-band .e-con.gnn-st.gnn-copy {
+	padding: var(--agency-gap) var(--agency-edge);
+}
+
+.elementor .gnn-gnnagency-studio-band .e-con.gnn-st.gnn-head,
+.elementor .gnn-gnnagency-manifesto .e-con.gnn-st.gnn-head {
+	margin-block-end: 0;
+}
+
+.elementor .gnn-gnnagency-manifesto > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: var(--agency-gap);
+}
+
+.gnn-gnnagency-manifesto h2.elementor-heading-title {
+	max-width: 17ch;
+}
+
+.elementor .e-con.gnn-st.gnn-gnnagency-studio-pair {
+	padding-block-start: 0;
+}
+
+.elementor .gnn-gnnagency-studio-pair > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+	align-items: end;
+	gap: var(--agency-gap);
+}
+
+.gnn-gnnagency-studio-pair .gnn-gnnagency-studio-image {
+	aspect-ratio: 4 / 3;
+}
+
+/* Inner page title treatments. */
+.elementor .e-con.gnn-st.gnn-gnnagency-pagehead {
+	border-block-end: 1px solid var(--line);
+}
+
+.elementor .gnn-gnnagency-pagehead > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: var(--agency-gap);
+}
+
+.gnn-gnnagency-pagehead h1.elementor-heading-title {
+	max-width: 12ch;
+}
+
+.gnn-gnnagency-pagehead-work h1.elementor-heading-title {
+	max-width: 10ch;
+}
+
+.gnn-gnnagency-pagehead-services .gnn-lead,
+.gnn-gnnagency-pagehead-journal .gnn-lead {
+	max-width: 46ch;
+	justify-self: end;
+}
+
+.gnn-gnnagency-pagehead-studio h1.elementor-heading-title {
+	max-width: 14ch;
+}
+
+/* Native live posts block. */
+.gnn-gnnagency-journal .wp-block-latest-posts {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--agency-gap);
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gnn-gnnagency-journal .wp-block-latest-posts > li {
+	min-width: 0;
+	padding-block-end: var(--agency-small);
+	border-block-end: 1px solid var(--line);
+	overflow: visible;
+}
+
+.gnn-gnnagency-journal .wp-block-latest-posts__featured-image {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	margin-block-end: var(--agency-small);
+	background: var(--bg3);
+}
+
+.gnn-gnnagency-journal .wp-block-latest-posts__featured-image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.elementor .gnn-gnnagency-journal .wp-block-latest-posts a.wp-block-latest-posts__post-title {
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+	color: var(--fg);
+	font: 700 clamp(22px, 2.6vw, 38px)/1.12 var(--font-heading);
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.elementor .gnn-gnnagency-journal .wp-block-latest-posts a.wp-block-latest-posts__post-title:is(:hover, :focus-visible) {
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: .16em;
+}
+
+.gnn-gnnagency-journal .wp-block-latest-posts__post-date,
+.gnn-gnnagency-journal .wp-block-latest-posts__post-excerpt {
+	margin-block: 12px 0;
+	color: var(--fg2);
+}
+
+/* Closing invitation and Contact. */
+.elementor .e-con.gnn-st.gnn-gnnagency-cta {
+	--bg: var(--agency-lime);
+	--fg: var(--agency-ink);
+	--fg2: var(--agency-ink);
+	--accent-text: var(--agency-ink);
+}
+
+.elementor .gnn-gnnagency-cta > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	gap: var(--agency-small);
+}
+
+.gnn-gnnagency-cta h2.elementor-heading-title {
+	font-size: var(--agency-display);
+}
+
+.elementor .gnn-gnnagency-cta :is(.gnn-eyebrow p, .elementor-widget-button .elementor-button) {
+	color: var(--agency-ink);
+}
+
+.gnn-gnnagency-cta .gnn-eyebrow p::before {
+	background: currentColor;
+}
+
+.gnn-gnnagency-cta .gnn-link .elementor-button {
+	border-color: currentColor;
+}
+
+.gnn-gnnagency .gnn-gnnagency-mail .elementor-button {
+	justify-content: flex-start;
+	max-width: 100%;
+	padding: 8px 0;
+	text-align: start;
+	background: transparent;
+	color: var(--fg);
+	font: 500 clamp(22px, 6vw, 88px)/1.1 var(--font-heading);
+	overflow-wrap: anywhere;
+	text-decoration: underline;
+	text-decoration-thickness: .035em;
+	text-underline-offset: .15em;
+}
+
+.gnn-gnnagency-mail .elementor-button-content-wrapper,
+.gnn-gnnagency-mail .elementor-button-text {
+	min-width: 0;
+}
+
+.elementor .e-con.gnn-st.gnn-gnnagency-contact-mail {
+	padding-block: var(--agency-large);
+	border-block-end: 1px solid var(--line);
+}
+
+.elementor .gnn-gnnagency-contact > .e-con.gnn-st.gnn-wrap {
+	display: grid;
+	grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+	align-items: start;
+	gap: var(--agency-gap);
+}
+
+.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-enquiry {
+	background: var(--bg2);
+	padding: var(--agency-gap);
+}
+
+.gnn-gnnagency-contact h2.elementor-heading-title {
+	font-size: var(--agency-subhead);
+}
+
+/* Header and footer keep theme controls and navigation. */
+.gnn-site-gnnagency .site-header__inner {
+	max-width: 1600px;
+	padding-inline: var(--agency-edge);
+}
+
+.gnn-site-gnnagency .main-navigation ul.menu {
+	gap: clamp(12px, 1.6vw, 26px);
+}
+
+.gnn-site-gnnagency .main-navigation ul.menu > li > a {
+	min-height: 44px;
+	padding-inline: 0;
+}
+
+.gnn-site-gnnagency .main-navigation ul.menu > li:is(.current-menu-item, :hover) > a {
+	color: var(--fg);
+	text-decoration: underline;
+	text-decoration-color: var(--agency-lime);
+	text-decoration-thickness: 2px;
+	text-underline-offset: .4em;
+}
+
+.gnn-site-gnnagency .site-header :is(.menu-toggle, .theme-toggle) {
+	min-width: 44px;
+	min-height: 44px;
+}
+
+.gnn-site-gnnagency .mobile-navigation ul.menu > li > a {
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+}
+
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar):has(.gnn-gnnagency-hero) #page {
+	position: relative;
+}
+
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar):has(.gnn-gnnagency-hero) .site-header {
+	--bg: #111210;
+	--bg2: #191b17;
+	--bg3: #242620;
+	--fg: #f5f4ee;
+	--fg2: #b9bcb0;
+	--line: #3a3d33;
+	--accent-text: var(--agency-lime);
+	position: absolute;
+	inset: 0 0 auto;
+	background: transparent;
+}
+
+.gnn-site-gnnagency .site-footer__bottom {
+	max-width: 1600px;
+	padding-inline: var(--agency-edge);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+	.gnn-gnnagency-project-image img {
+		transition: transform .55s ease;
+	}
+
+	.gnn-gnnagency-project:is(:hover, :focus-within) .gnn-gnnagency-project-image img {
+		transform: scale(1.045);
+	}
+}
+
+@media (max-width: 900px) {
+	.elementor :is(.gnn-gnnagency-capabilities, .gnn-gnnagency-recognition, .gnn-gnnagency-faq, .gnn-gnnagency-team) > .e-con.gnn-st.gnn-wrap {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.gnn-gnnagency-capabilities > .gnn-wrap > .gnn-link {
+		grid-column: auto;
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project-caption {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.gnn-gnnagency-project-caption > .gnn-eyebrow {
+		grid-column: auto;
+	}
+
+	.gnn-gnnagency-studio-band .gnn-gnnagency-studio-image {
+		aspect-ratio: 4 / 5;
+	}
+}
+
+@media (max-width: 640px) {
+	.elementor .e-con.gnn-st.gnn-gnnagency-hero {
+		min-height: 610px;
+	}
+
+	.gnn-gnnagency-hero::after {
+		background:
+			linear-gradient(180deg, rgba(12, 13, 12, .94), transparent 22%, rgba(12, 13, 12, .83) 65%, #111210),
+			linear-gradient(90deg, rgba(12, 13, 12, .57), transparent 90%);
+	}
+
+	.gnn-gnnagency-hero h1.elementor-heading-title {
+		font-size: clamp(55px, 13.4vw, 84px);
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-projects,
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-headrow,
+	.elementor :is(.gnn-gnnagency-studio-band, .gnn-gnnagency-studio-pair, .gnn-gnnagency-contact) > .e-con.gnn-st.gnn-wrap,
+	.gnn-gnnagency-journal .wp-block-latest-posts {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-headrow {
+		gap: 0;
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-headrow > .gnn-head {
+		margin-block-end: var(--agency-small);
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-project:nth-child(n) {
+		grid-column: auto;
+		grid-row: auto;
+		margin-block-start: 0;
+	}
+
+	.gnn-gnnagency-project-image,
+	.gnn-gnnagency-studio-band .gnn-gnnagency-studio-image {
+		aspect-ratio: 4 / 3;
+	}
+
+	.gnn-gnnagency-work .gnn-module-grid {
+		--gnn-grid-columns: 1;
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st:is(.gnn-gnnagency-row, .gnn-gnnagency-service),
+	.elementor .gnn-gnnagency .gnn-gnnagency-rows-numbered .e-con.gnn-st.gnn-gnnagency-row {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.elementor .gnn-gnnagency .e-con.gnn-st.gnn-gnnagency-steps {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.gnn-gnnagency-pagehead-services .gnn-lead,
+	.gnn-gnnagency-pagehead-journal .gnn-lead {
+		justify-self: start;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-gnnagency :is(.elementor-button, .gnn-module-cue, img),
+	.gnn-gnnagency .elementor-button::after,
+	.gnn-gnnagency .gnn-module-project-image::after {
+		transition: none;
+	}
+
+	.gnn-gnnagency .gnn-btn-main .elementor-button:hover,
+	.gnn-gnnagency .gnn-link .elementor-button:hover::after,
+	.gnn-gnnagency .gnn-module-cue,
+	.gnn-gnnagency .gnn-module-project:hover .gnn-module-project-image img {
+		transform: none;
+	}
+}
