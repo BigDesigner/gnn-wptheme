@@ -84,8 +84,9 @@ try {
 	remove_filter( 'gnn_starter_profiles', 'gnn_template_register_starter_profiles' );
 	$without_filter = gnn_starter_profiles();
 	add_filter( 'gnn_starter_profiles', 'gnn_template_register_starter_profiles' );
-	$core_unchanged = 4 === count( $without_filter );
-	foreach ( array( 'pro', 'commerce', 'design', 'architecture' ) as $core_slug ) {
+	$registered     = function_exists( 'gnn_demo_registry' ) ? array_keys( gnn_demo_registry() ) : array();
+	$core_unchanged = 4 + count( $registered ) === count( $without_filter );
+	foreach ( array_merge( array( 'pro', 'commerce', 'design', 'architecture' ), $registered ) as $core_slug ) {
 		if ( ! isset( $with_filter[ $core_slug ], $without_filter[ $core_slug ] ) || $with_filter[ $core_slug ] !== $without_filter[ $core_slug ] ) {
 			$core_unchanged = false;
 		}
