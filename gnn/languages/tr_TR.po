@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.14.1\n"
+"Project-Id-Version: GNN 2.14.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 01:50+0000\n"
-"PO-Revision-Date: 2026-11-26 01:50+0000\n"
+"POT-Creation-Date: 2026-11-26 02:30+0000\n"
+"PO-Revision-Date: 2026-11-26 02:30+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -7060,6 +7060,9 @@ msgstr "Üstbilgi işlem URL’si"
 msgid "Header action label"
 msgstr "Üstbilgi işlem etiketi"
 
+msgid "Header background"
+msgstr "Üst bölüm arka planı"
+
 msgid "Header height"
 msgstr "Üstbilgi yüksekliği"
 
@@ -8374,6 +8377,9 @@ msgstr "Yorum yazın"
 msgid "Leave empty to match the theme automatically."
 msgstr "Otomatik olarak temayla eşleşmesi için boş bırakın."
 
+msgid "Leave empty to use the design default."
+msgstr "Tasarımın varsayılan rengini kullanmak için boş bırakın."
+
 msgid "Led cross-functional teams across delivery, finance and organizational transformation."
 msgstr "Teslimat, finans ve organizasyonel dönüşüm alanlarında fonksiyonlar arası ekipleri yönetti."
 
@@ -9681,9 +9687,6 @@ msgstr "Ofis konumları"
 
 msgid "Offices, phone and secure correspondence"
 msgstr "Ofisler, telefon ve güvenli yazışma"
-
-msgid "Olen Hub · Matte ceramic coat · Ships Autumn 2026"
-msgstr "Olen Hub · Mat seramik kaplama · Teslimat Sonbahar 2026"
 
 msgid "Olen Mist bedside humidifier on a wooden nightstand"
 msgstr "Ahşap komodin üzerinde Olen Mist başucu nemlendiricisi"
@@ -12993,6 +12996,9 @@ msgstr "Yasal metni göster"
 
 msgid "Show footer tagline"
 msgstr "Alt bölüm sloganını göster"
+
+msgid "Show header action button"
+msgstr "Üstbilgi işlem düğmesini göster"
 
 msgid "Show listing date and reading time"
 msgstr "Listede tarih ve okuma bilgisini göster"

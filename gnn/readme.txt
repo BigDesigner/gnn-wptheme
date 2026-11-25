@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.14.1
+Stable tag: 2.14.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,14 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.14.2 =
+* Fix saving registered starter designs in Theme Settings.
+* Add a visibility switch for the header action button.
+* Use a single search icon inside the header search field across header layouts.
+* Refresh the GNNonepage hero with a frameless product stage and a scroll-driven 360-degree product illustration.
+* Add separate light and dark header background colors.
+* Keep the header background behind both rows in the stacked layout.
 
 = 2.14.1 =
 * Synchronize the theme update button with the WordPress update list.

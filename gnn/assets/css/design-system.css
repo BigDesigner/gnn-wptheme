@@ -25,6 +25,14 @@ h1.entry-title,h1.page-title,.editor-styles-wrapper h1 { font-size:var(--gnn-h1-
 .gnn-header-stacked .site-header__inner { flex-wrap:wrap;justify-content:center; }
 .gnn-header-stacked .site-branding { flex-basis:100%;justify-content:center; }
 .gnn-header-stacked .main-navigation { margin-inline:auto; }
+/* The header surface must enclose both rows, including in fixed-height presets. */
+@media (min-width: 601px) {
+	.gnn-header-stacked #masthead.site-header > .site-header__inner {
+		height: auto;
+		min-height: var(--gnn-header-height, 64px);
+		row-gap: 12px;
+	}
+}
 .gnn-header-transparent .site-header { background:transparent;backdrop-filter:none;border:0; }
 .gnn-header-minimal .site-header { backdrop-filter:none;background:var(--bg);border:0; }
 .gnn-header-minimal .site-header__inner { max-width:var(--gnn-full-width,1520px); }

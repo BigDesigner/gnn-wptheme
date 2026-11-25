@@ -204,7 +204,6 @@ function gnn_gnnonepage_home( $page_ids ) {
 						),
 						true
 					),
-					gnn_st_p( __( 'Olen Hub · Matte ceramic coat · Ships Autumn 2026', 'gnn' ), 'gnn-gnnonepage-caption' ),
 				),
 				true
 			),

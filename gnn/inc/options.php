@@ -160,6 +160,8 @@ function gnn_options_schema() {
 		'topbar_email'                 => $typed( 'email' ),
 		'topbar_phone'                 => $text,
 		'topbar_bg'                    => $color,
+		'header_bg_dark'               => $color,
+		'header_bg_light'              => $color,
 		'topbar_text_color'            => $color,
 		// Footer.
 		'footer_brand_type'            => $enum( 'text', array( 'text', 'image', 'both', 'none' ) ),

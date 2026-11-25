@@ -274,6 +274,6 @@ function gnn_header_components() {
 			echo '</ul>'; } elseif ( has_action( 'wpml_add_language_selector' ) ) {
 			do_action( 'wpml_add_language_selector' ); }
 	}
-	if ( gnn_option( 'header_cta_label' ) && gnn_option( 'header_cta_url' ) ) {
+	if ( gnn_option( 'header_cta_show' ) && gnn_option( 'header_cta_label' ) && gnn_option( 'header_cta_url' ) ) {
 		echo '<a class="gnn-btn header-cta" href="' . esc_url( gnn_option( 'header_cta_url' ) ) . '">' . esc_html( gnn_translated_option( 'header_cta_label' ) ) . '</a>'; }
 }

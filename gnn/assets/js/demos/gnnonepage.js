@@ -10,6 +10,40 @@
 		return;
 	}
 
+	var stage = document.querySelector('.gnn-gnnonepage-hero-stage');
+	if (stage && !document.body.classList.contains('elementor-editor-active') && !document.body.classList.contains('elementor-editor-preview')) {
+		var turntable = document.createElement('div');
+		turntable.className = 'gnn-onepage-turntable';
+		turntable.setAttribute('aria-hidden', 'true');
+		var product = document.createElement('div');
+		product.className = 'gnn-onepage-product';
+		for (var depth = -10; depth <= 10; depth += 1) {
+			var layer = document.createElement('span');
+			layer.style.setProperty('--product-depth', depth + 'px');
+			product.appendChild(layer);
+		}
+		turntable.appendChild(product);
+		stage.appendChild(turntable);
+		stage.classList.add('has-product-turn');
+
+		var frame = 0;
+		function drawProduct() {
+			frame = 0;
+			var bounds = stage.getBoundingClientRect();
+			var progress = Math.max(0, Math.min(1, (window.innerHeight * 0.75 - bounds.top) / (bounds.height * 0.85)));
+			product.style.setProperty('--product-angle', (-24 + progress * 360) + 'deg');
+			product.style.setProperty('--product-drift', (24 - progress * 48) + 'px');
+		}
+		function scheduleProduct() {
+			if (!frame) {
+				frame = window.requestAnimationFrame(drawProduct);
+			}
+		}
+		window.addEventListener('scroll', scheduleProduct, { passive: true });
+		window.addEventListener('resize', scheduleProduct);
+		scheduleProduct();
+	}
+
 	var navLinks = Array.prototype.slice.call(
 		document.querySelectorAll('.main-navigation a[href*="#"], #mobile-navigation a[href*="#"]')
 	);

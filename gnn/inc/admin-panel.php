@@ -1034,6 +1034,7 @@ function gnn_panel_render() {
 
 						<?php gnn_card_close(); ?>
 						<?php gnn_card_open( __( 'More header options', 'gnn' ) ); ?>
+						<?php gnn_field_color_pair( 'header_bg', __( 'Header background', 'gnn' ), '#141416', '#fafafa', __( 'Leave empty to use the design default.', 'gnn' ) ); ?>
 						<?php gnn_platform_fields( 'header', array( 'header_preset' ), array(), '' ); ?>
 						<?php gnn_card_close(); ?>
 					</section>

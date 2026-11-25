@@ -27,8 +27,20 @@
 	if ( ! gnn_render_layout_region( 'header' ) && ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) ) :
 		gnn_render_topbar();
 		$gnn_centered = gnn_header_is_centered();
+		$gnn_header_classes = array( 'site-header' );
+		$gnn_header_colors  = array();
+		if ( $gnn_centered ) {
+			$gnn_header_classes[] = 'gnn-header-centered';
+		}
+		foreach ( array( 'dark', 'light' ) as $gnn_mode ) {
+			$gnn_color = sanitize_hex_color( (string) gnn_option( 'header_bg_' . $gnn_mode ) );
+			if ( $gnn_color ) {
+				$gnn_header_classes[] = 'gnn-header-bg-' . $gnn_mode;
+				$gnn_header_colors[]  = '--gnn-header-bg-' . $gnn_mode . ':' . $gnn_color;
+			}
+		}
 		?>
-	<header id="masthead" class="site-header<?php echo $gnn_centered ? ' gnn-header-centered' : ''; ?>">
+	<header id="masthead" class="<?php echo esc_attr( implode( ' ', $gnn_header_classes ) ); ?>"<?php if ( $gnn_header_colors ) : ?> style="<?php echo esc_attr( implode( ';', $gnn_header_colors ) ); ?>"<?php endif; ?>>
 		<div class="site-header__inner">
 
 			<button class="menu-toggle" aria-controls="mobile-navigation" aria-expanded="false">
@@ -82,7 +94,10 @@
 			<?php endif; ?>
 
 			<div class="header-actions"><?php gnn_header_components(); ?>
-				<?php if ( gnn_option( 'show_search' ) ) : ?>
+				<?php if ( $gnn_centered ) : ?>
+					<?php gnn_header_search_bar(); ?>
+				<?php endif; ?>
+				<?php if ( gnn_option( 'show_search' ) && ! gnn_option( 'header_search_bar' ) ) : ?>
 					<a class="header-search-link" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" aria-label="<?php esc_attr_e( 'Search', 'gnn' ); ?>">
 						<svg class="gnn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 					</a>

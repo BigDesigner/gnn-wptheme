@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GNN Content
  * Description: Portfolio, collections, slides and reusable content.
- * Version: 2.14.1
+ * Version: 2.14.2
  * Requires at least: 6.0
  * Requires PHP: 7.4
  * License: GPL-2.0-or-later
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 define( 'GNN_CONTENT_API_VERSION', '1.0.0' );
-define( 'GNN_CONTENT_VERSION', '2.14.1' );
+define( 'GNN_CONTENT_VERSION', '2.14.2' );
 define( 'GNN_CONTENT_PATH', plugin_dir_path( __FILE__ ) );
 define( 'GNN_CONTENT_URL', untrailingslashit( plugin_dir_url( __FILE__ ) ) );
 require_once GNN_CONTENT_PATH . 'includes/lifecycle.php';

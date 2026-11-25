@@ -52,12 +52,8 @@
 .gnn-header-shop .header-actions{grid-area:actions;justify-self:end}
 .gnn-header-shop #site-navigation{grid-area:nav;margin-top:12px;border-top:1px solid var(--line)}
 .gnn-header-shop #site-navigation ul.menu>li>a{padding-block:14px}
-.gnn-header-search{display:flex;align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:0 6px 0 20px;height:48px;max-width:640px;width:100%;justify-self:center}
-.gnn-header-search input[type=search]{flex:1;min-width:0;background:transparent;border:0;outline:0;color:var(--fg);font:500 15px/1 var(--font-body);height:100%;padding:0;box-shadow:none}
-.gnn-header-search button{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:50%;background:var(--accent);color:var(--accent-ink);cursor:pointer}
-.gnn-header-search:focus-within{border-color:var(--accent)}
 .gnn-header-shop .cart-link{background:var(--accent);color:var(--accent-ink);padding:10px 18px;border-radius:999px;font-weight:700}
-@media(max-width:899px){.gnn-header-shop .site-header__inner{display:flex;height:64px;padding-block:0}.gnn-header-shop .gnn-header-search{display:none}}
+@media(max-width:899px){.gnn-header-shop .site-header__inner{display:flex;height:64px;padding-block:0}}
 
 
 /* Category cards (WooCommerce category list) */

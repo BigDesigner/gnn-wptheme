@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.14.1\n"
+"Project-Id-Version: GNN 2.14.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 01:50+0000\n"
-"PO-Revision-Date: 2026-11-26 01:50+0000\n"
+"POT-Creation-Date: 2026-11-26 02:30+0000\n"
+"PO-Revision-Date: 2026-11-26 02:30+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -12,15 +12,15 @@ msgstr ""
 "Language: \n"
 
 
-#: inc/demos/gnnonepage.php:524
+#: inc/demos/gnnonepage.php:523
 msgid "$180"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:537
+#: inc/demos/gnnonepage.php:536
 msgid "$320"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:551
+#: inc/demos/gnnonepage.php:550
 msgid "$490"
 msgstr ""
 
@@ -84,47 +84,47 @@ msgstr ""
 msgid "(Untitled)"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:342
+#: inc/demos/gnnonepage.php:341
 msgid "0.9 L capacity"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:423
+#: inc/demos/gnnonepage.php:422
 msgid "01 / Olen Mist — Bedside"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:321
+#: inc/demos/gnnonepage.php:320
 msgid "01 · Bedroom"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:258
+#: inc/demos/gnnonepage.php:257
 msgid "01 · Surface"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:428
+#: inc/demos/gnnonepage.php:427
 msgid "02 / Olen Tone — Workspace"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:265
+#: inc/demos/gnnonepage.php:264
 msgid "02 · Touch"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:330
+#: inc/demos/gnnonepage.php:329
 msgid "02 · Workspace"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:433
+#: inc/demos/gnnonepage.php:432
 msgid "03 / Olen Pour — Kitchen"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:339
+#: inc/demos/gnnonepage.php:338
 msgid "03 · Kitchen"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:272
+#: inc/demos/gnnonepage.php:271
 msgid "03 · Presence"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:438
+#: inc/demos/gnnonepage.php:437
 msgid "04 / Packaging — Molded pulp"
 msgstr ""
 
@@ -136,7 +136,7 @@ msgstr ""
 msgid "1 project shown"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:342
+#: inc/demos/gnnonepage.php:341
 msgid "1 °C precision"
 msgstr ""
 
@@ -168,7 +168,7 @@ msgstr ""
 msgid "14"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:324
+#: inc/demos/gnnonepage.php:323
 msgid "14 h runtime"
 msgstr ""
 
@@ -184,7 +184,7 @@ msgstr ""
 msgid "17:30 · Welcome reception"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:473
+#: inc/demos/gnnonepage.php:472
 msgid "18 mo"
 msgstr ""
 
@@ -208,7 +208,7 @@ msgstr ""
 msgid "2025"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:324
+#: inc/demos/gnnonepage.php:323
 msgid "24 dB night mode"
 msgstr ""
 
@@ -244,24 +244,24 @@ msgstr ""
 msgid "4-column card grid"
 msgstr ""
 
-#: inc/admin-panel.php:1170
+#: inc/admin-panel.php:1171
 msgid "404 description"
 msgstr ""
 
-#: inc/admin-panel.php:1173
+#: inc/admin-panel.php:1174
 msgid "404 image"
 msgstr ""
 
-#: inc/admin-panel.php:1168
+#: inc/admin-panel.php:1169
 #: inc/site-platform.php:152
 msgid "404 page"
 msgstr ""
 
-#: inc/admin-panel.php:1169
+#: inc/admin-panel.php:1170
 msgid "404 title"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:474
+#: inc/demos/gnnonepage.php:473
 msgid "42"
 msgstr ""
 
@@ -277,13 +277,13 @@ msgstr ""
 msgid "5 days saved on each month-end close after a regional lender consolidated reconciliations across six business units."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:475
+#: inc/demos/gnnonepage.php:474
 msgid "5 yr"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:529
-#: inc/demos/gnnonepage.php:543
-#: inc/demos/gnnonepage.php:557
+#: inc/demos/gnnonepage.php:528
+#: inc/demos/gnnonepage.php:542
+#: inc/demos/gnnonepage.php:556
 msgid "5-year modular repair guarantee"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgstr ""
 msgid "78%"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:323
+#: inc/demos/gnnonepage.php:322
 msgid "A 2.2-litre top-fill vessel runs through the night at 24 dB with zero glowing indicators. Lift the lid to refill from a carafe and rinse the stainless basin in seconds."
 msgstr ""
 
@@ -568,7 +568,7 @@ msgstr ""
 msgid "A journal founded on the belief that ideas matter."
 msgstr ""
 
-#: inc/platform.php:289
+#: inc/platform.php:290
 msgid "A link action needs a valid URL."
 msgstr ""
 
@@ -592,7 +592,7 @@ msgstr ""
 msgid "A manager toolkit and an adoption plan"
 msgstr ""
 
-#: inc/platform.php:286
+#: inc/platform.php:287
 msgid "A mobile action is invalid."
 msgstr ""
 
@@ -880,7 +880,7 @@ msgstr ""
 msgid "A warm website for restaurants, cafes and hospitality venues with seasonal menus, gallery and table reservations."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:267
+#: inc/demos/gnnonepage.php:266
 msgid "A weighted physical ring replaces menus and apps. Turn for intensity, press to pause, and feel each detent without looking."
 msgstr ""
 
@@ -1036,21 +1036,21 @@ msgstr ""
 msgid "Academic values"
 msgstr ""
 
-#: inc/admin-panel.php:1200
+#: inc/admin-panel.php:1201
 msgid "Accent"
 msgstr ""
 
-#: inc/admin-panel.php:1207
+#: inc/admin-panel.php:1208
 #: inc/admin-screens.php:126
 #: inc/customizer.php:59
 msgid "Accent color"
 msgstr ""
 
-#: inc/admin-panel.php:1214
+#: inc/admin-panel.php:1215
 msgid "Accent color — Dark"
 msgstr ""
 
-#: inc/admin-panel.php:1220
+#: inc/admin-panel.php:1221
 msgid "Accent color — Light"
 msgstr ""
 
@@ -1123,19 +1123,19 @@ msgstr ""
 msgid "Acoustic auditorium ceiling and stage production lighting rig"
 msgstr ""
 
-#: inc/platform.php:566
+#: inc/platform.php:567
 msgid "Action %d type"
 msgstr ""
 
-#: inc/platform.php:569
+#: inc/platform.php:570
 msgid "Action URL"
 msgstr ""
 
-#: inc/platform.php:571
+#: inc/platform.php:572
 msgid "Action editing requires JavaScript. Existing actions are preserved."
 msgstr ""
 
-#: inc/platform.php:569
+#: inc/platform.php:570
 msgid "Action label"
 msgstr ""
 
@@ -1522,7 +1522,7 @@ msgstr ""
 msgid "Add your rate or scope here."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:667
+#: inc/demos/gnnonepage.php:666
 #: inc/template-data/restaurant.php:491
 msgid "Add your reservation or contact form here with the form plugin you use."
 msgstr ""
@@ -1548,7 +1548,7 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: inc/admin-panel.php:1357
+#: inc/admin-panel.php:1358
 msgid "Adds the font stylesheet site-wide so .material-symbols-* classes render."
 msgstr ""
 
@@ -1647,11 +1647,11 @@ msgstr ""
 msgid "Advisory work is evaluated against tangible operational and financial improvements."
 msgstr ""
 
-#: inc/admin-panel.php:1404
+#: inc/admin-panel.php:1405
 msgid "After <body> HTML"
 msgstr ""
 
-#: inc/platform.php:158
+#: inc/platform.php:159
 msgid "After analytics consent"
 msgstr ""
 
@@ -1730,7 +1730,7 @@ msgstr ""
 msgid "All days"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:616
+#: inc/demos/gnnonepage.php:615
 msgid "All enclosures fasten with standard hex screws instead of glue. We stock replacement pumps, seals, acoustic drivers and power boards for at least five years, with step-by-step repair guides or studio servicing."
 msgstr ""
 
@@ -1808,7 +1808,7 @@ msgstr ""
 msgid "All services"
 msgstr ""
 
-#: inc/platform.php:516
+#: inc/platform.php:517
 msgid "All slides"
 msgstr ""
 
@@ -1844,7 +1844,7 @@ msgstr ""
 msgid "Alpine trekking & ridge walks"
 msgstr ""
 
-#: inc/admin-panel.php:1242
+#: inc/admin-panel.php:1243
 msgid "Alternate surface background"
 msgstr ""
 
@@ -1952,11 +1952,11 @@ msgstr ""
 msgid "An upload file could not be removed. Check file permissions."
 msgstr ""
 
-#: inc/admin-panel.php:1392
+#: inc/admin-panel.php:1393
 msgid "Analytics and consent"
 msgstr ""
 
-#: inc/platform.php:152
+#: inc/platform.php:153
 msgid "Analytics delivery"
 msgstr ""
 
@@ -2043,7 +2043,7 @@ msgstr ""
 msgid "Antique metal typesetting blocks arranged in a printmaker tray with black ink"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:540
+#: inc/demos/gnnonepage.php:539
 msgid "Any two Series 01 devices"
 msgstr ""
 
@@ -2195,7 +2195,7 @@ msgid "Architectural plan concept"
 msgstr ""
 
 #: inc/architecture.php:264
-#: inc/platform.php:175
+#: inc/platform.php:176
 #: inc/template-data/magazine.php:567
 msgid "Architecture"
 msgstr ""
@@ -2304,11 +2304,11 @@ msgstr ""
 msgid "Archive & issues"
 msgstr ""
 
-#: inc/platform.php:68
+#: inc/platform.php:69
 msgid "Archive footer override"
 msgstr ""
 
-#: inc/platform.php:67
+#: inc/platform.php:68
 msgid "Archive header override"
 msgstr ""
 
@@ -2561,7 +2561,7 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: inc/admin-panel.php:1104
+#: inc/admin-panel.php:1105
 msgid "Auto-detect (default)"
 msgstr ""
 
@@ -2624,16 +2624,16 @@ msgid "Bachelor of Science in Engineering"
 msgstr ""
 
 #: 404.php:18
-#: inc/admin-panel.php:1172
+#: inc/admin-panel.php:1173
 #: template-parts/content-none.php:33
 msgid "Back to Home"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:686
+#: inc/demos/gnnonepage.php:685
 msgid "Back to pre-order"
 msgstr ""
 
-#: inc/admin-panel.php:1309
+#: inc/admin-panel.php:1310
 #: inc/elementor-kit-sync.php:117
 #: inc/site-platform.php:94
 msgid "Background"
@@ -2667,7 +2667,7 @@ msgstr ""
 msgid "Bakery"
 msgstr ""
 
-#: inc/platform.php:53
+#: inc/platform.php:54
 msgid "Balanced columns"
 msgstr ""
 
@@ -2675,7 +2675,7 @@ msgstr ""
 msgid "Balanced plates paired with seasonal sides and house sauces."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:274
+#: inc/demos/gnnonepage.php:273
 msgid "Balanced proportions and a single recessed cord let each object sit beside books and ceramics rather than hiding behind furniture."
 msgstr ""
 
@@ -2787,7 +2787,7 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: inc/platform.php:124
+#: inc/platform.php:125
 msgid "Blog columns on desktop"
 msgstr ""
 
@@ -2803,8 +2803,8 @@ msgstr ""
 msgid "Blog image height (px)"
 msgstr ""
 
-#: inc/admin-panel.php:1184
-#: inc/platform.php:450
+#: inc/admin-panel.php:1185
+#: inc/platform.php:451
 msgid "Blog listing"
 msgstr ""
 
@@ -2820,11 +2820,11 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: inc/platform.php:97
+#: inc/platform.php:98
 msgid "Body font size"
 msgstr ""
 
-#: inc/platform.php:100
+#: inc/platform.php:101
 msgid "Body line height (%)"
 msgstr ""
 
@@ -2950,7 +2950,7 @@ msgstr ""
 msgid "Booking process"
 msgstr ""
 
-#: inc/admin-panel.php:1311
+#: inc/admin-panel.php:1312
 #: inc/elementor-kit-sync.php:118
 #: inc/site-platform.php:96
 msgid "Border"
@@ -2968,7 +2968,7 @@ msgstr ""
 msgid "Borders"
 msgstr ""
 
-#: inc/admin-panel.php:1250
+#: inc/admin-panel.php:1251
 msgid "Borders / dividers"
 msgstr ""
 
@@ -2976,7 +2976,7 @@ msgstr ""
 msgid "Botanical Toiletries"
 msgstr ""
 
-#: inc/admin-panel.php:1143
+#: inc/admin-panel.php:1144
 #: inc/blog.php:60
 #: inc/blog.php:93
 msgid "Bottom"
@@ -2994,11 +2994,11 @@ msgstr ""
 msgid "Boxed (max 1200px)"
 msgstr ""
 
-#: inc/admin-panel.php:1121
+#: inc/admin-panel.php:1122
 msgid "Boxed template max width (px)"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:528
+#: inc/demos/gnnonepage.php:527
 msgid "Braided linen power cord"
 msgstr ""
 
@@ -3275,7 +3275,7 @@ msgstr ""
 msgid "Built to last"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:307
+#: inc/demos/gnnonepage.php:306
 msgid "Built to stay out of the way."
 msgstr ""
 
@@ -3287,11 +3287,11 @@ msgstr ""
 msgid "Business district seen from above at dusk"
 msgstr ""
 
-#: inc/platform.php:443
+#: inc/platform.php:444
 msgid "Business profile and hero"
 msgstr ""
 
-#: inc/admin-panel.php:1275
+#: inc/admin-panel.php:1276
 msgid "Button Styles"
 msgstr ""
 
@@ -3299,7 +3299,7 @@ msgstr ""
 msgid "Button URL"
 msgstr ""
 
-#: inc/platform.php:106
+#: inc/platform.php:107
 msgid "Button corner radius"
 msgstr ""
 
@@ -3315,7 +3315,7 @@ msgstr ""
 msgid "Button styles"
 msgstr ""
 
-#: inc/platform.php:107
+#: inc/platform.php:108
 msgid "Button vertical padding"
 msgstr ""
 
@@ -3331,7 +3331,7 @@ msgstr ""
 msgid "By keeping our active portfolio selective, senior advisors stay personally involved in every viewing, valuation and negotiation."
 msgstr ""
 
-#: inc/platform.php:553
+#: inc/platform.php:554
 msgid "Call"
 msgstr ""
 
@@ -3394,7 +3394,7 @@ msgstr ""
 msgid "Can I cancel or pause my subscription?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:620
+#: inc/demos/gnnonepage.php:619
 msgid "Can I change which devices are in my bundle later?"
 msgstr ""
 
@@ -3552,11 +3552,11 @@ msgstr ""
 msgid "Carbon offset"
 msgstr ""
 
-#: inc/admin-panel.php:1241
+#: inc/admin-panel.php:1242
 msgid "Card / panel background"
 msgstr ""
 
-#: inc/platform.php:105
+#: inc/platform.php:106
 msgid "Card and image corner radius"
 msgstr ""
 
@@ -3628,9 +3628,9 @@ msgstr ""
 msgid "Carefully routed trekking, coastal journeys and alpine expeditions led by certified local guides."
 msgstr ""
 
-#: header.php:100
+#: header.php:115
 #: inc/frontend.php:288
-#: inc/platform.php:556
+#: inc/platform.php:557
 msgid "Cart"
 msgstr ""
 
@@ -3698,7 +3698,7 @@ msgstr ""
 
 #: inc/authoring.php:480
 #: inc/platform.php:31
-#: inc/platform.php:54
+#: inc/platform.php:55
 msgid "Centered"
 msgstr ""
 
@@ -3762,7 +3762,7 @@ msgstr ""
 msgid "Check Elementor activation and the shared block preview route."
 msgstr ""
 
-#: inc/admin-panel.php:1582
+#: inc/admin-panel.php:1583
 msgid "Check GitHub for new releases"
 msgstr ""
 
@@ -3910,7 +3910,7 @@ msgstr ""
 msgid "Choose and order gallery images"
 msgstr ""
 
-#: inc/platform.php:282
+#: inc/platform.php:283
 msgid "Choose at most six valid mobile actions."
 msgstr ""
 
@@ -3938,7 +3938,7 @@ msgstr ""
 msgid "Choose how you learn"
 msgstr ""
 
-#: inc/platform.php:536
+#: inc/platform.php:537
 msgid "Choose local WOFF2 font"
 msgstr ""
 
@@ -3975,7 +3975,7 @@ msgstr ""
 msgid "Choose your expedition format"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:587
+#: inc/demos/gnnonepage.php:586
 msgid "Choose your starting set."
 msgstr ""
 
@@ -4293,7 +4293,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:257
+#: inc/demos/gnnonepage.php:256
 msgid "Close-up of a rounded matte ceramic-coated device edge"
 msgstr ""
 
@@ -4645,23 +4645,23 @@ msgstr ""
 msgid "Community workshop space with natural daylight and wooden tables"
 msgstr ""
 
-#: inc/platform.php:52
+#: inc/platform.php:53
 msgid "Compact"
 msgstr ""
 
-#: inc/platform.php:133
+#: inc/platform.php:134
 msgid "Compact banner"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:264
+#: inc/demos/gnnonepage.php:263
 msgid "Compact white Olen device resting comfortably in a hand"
 msgstr ""
 
-#: inc/platform.php:445
+#: inc/platform.php:446
 msgid "Company and footer configuration"
 msgstr ""
 
-#: inc/platform.php:444
+#: inc/platform.php:445
 msgid "Company and header configuration"
 msgstr ""
 
@@ -4677,7 +4677,7 @@ msgstr ""
 msgid "Compare plans"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:408
+#: inc/demos/gnnonepage.php:407
 msgid "Compare pre-order sets"
 msgstr ""
 
@@ -4689,7 +4689,7 @@ msgstr ""
 msgid "Compare tiers"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:550
+#: inc/demos/gnnonepage.php:549
 msgid "Complete Family"
 msgstr ""
 
@@ -5077,7 +5077,7 @@ msgstr ""
 msgid "Contact our team to receive our security documentation, data processing agreement and architecture overview."
 msgstr ""
 
-#: inc/admin-panel.php:1110
+#: inc/admin-panel.php:1111
 msgid "Contact page"
 msgstr ""
 
@@ -5118,7 +5118,7 @@ msgid "Contact with social links"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:289
-#: inc/platform.php:200
+#: inc/platform.php:201
 msgid "Contain"
 msgstr ""
 
@@ -5128,7 +5128,7 @@ msgstr ""
 
 #: inc/admin-panel.php:635
 #: inc/admin-panel.php:649
-#: inc/admin-panel.php:1133
+#: inc/admin-panel.php:1134
 msgid "Contain (show the whole image)"
 msgstr ""
 
@@ -5148,12 +5148,12 @@ msgstr ""
 msgid "Content & layout architecture"
 msgstr ""
 
-#: inc/admin-panel.php:1176
-#: inc/platform.php:446
+#: inc/admin-panel.php:1177
+#: inc/platform.php:447
 msgid "Content and blog layout"
 msgstr ""
 
-#: inc/admin-panel.php:1116
+#: inc/admin-panel.php:1117
 msgid "Content bottom spacing (px)"
 msgstr ""
 
@@ -5172,7 +5172,7 @@ msgstr ""
 msgid "Content replacement is unavailable for this database."
 msgstr ""
 
-#: inc/admin-panel.php:1115
+#: inc/admin-panel.php:1116
 msgid "Content top spacing (px)"
 msgstr ""
 
@@ -5212,7 +5212,7 @@ msgstr ""
 msgid "Control who can view, edit or approve items across internal teams and external guests."
 msgstr ""
 
-#: inc/admin-panel.php:1064
+#: inc/admin-panel.php:1065
 msgid "Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow."
 msgstr ""
 
@@ -5228,7 +5228,7 @@ msgstr ""
 msgid "Cooked over gentle heat with rosemary jus and charred shallots."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:342
+#: inc/demos/gnnonepage.php:341
 msgid "Cool-touch wall"
 msgstr ""
 
@@ -5355,7 +5355,7 @@ msgstr ""
 msgid "Cotton rag archival print in a black wood gallery frame"
 msgstr ""
 
-#: inc/admin-panel.php:1570
+#: inc/admin-panel.php:1571
 msgid "Could not reach GitHub to check for updates."
 msgstr ""
 
@@ -5438,13 +5438,13 @@ msgid "Courtyard suite living area with stone fireplace and freestanding bath"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:288
-#: inc/platform.php:199
+#: inc/platform.php:200
 msgid "Cover"
 msgstr ""
 
 #: inc/admin-panel.php:631
 #: inc/admin-panel.php:645
-#: inc/admin-panel.php:1132
+#: inc/admin-panel.php:1133
 msgid "Cover (fill and crop)"
 msgstr ""
 
@@ -5487,7 +5487,7 @@ msgstr ""
 msgid "Cover: poster left, text right"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:306
+#: inc/demos/gnnonepage.php:305
 msgid "Craft & Form"
 msgstr ""
 
@@ -5535,7 +5535,7 @@ msgstr ""
 msgid "Creating quiet spaces: natural materials and restorative light"
 msgstr ""
 
-#: inc/platform.php:174
+#: inc/platform.php:175
 msgid "Creative agency"
 msgstr ""
 
@@ -5685,16 +5685,16 @@ msgstr ""
 msgid "Custom"
 msgstr ""
 
-#: inc/admin-panel.php:1388
 #: inc/admin-panel.php:1389
+#: inc/admin-panel.php:1390
 msgid "Custom CSS"
 msgstr ""
 
-#: inc/admin-panel.php:1399
+#: inc/admin-panel.php:1400
 msgid "Custom JavaScript — footer"
 msgstr ""
 
-#: inc/admin-panel.php:1398
+#: inc/admin-panel.php:1399
 msgid "Custom JavaScript — head"
 msgstr ""
 
@@ -5722,7 +5722,7 @@ msgstr ""
 msgid "Custom journey"
 msgstr ""
 
-#: inc/platform.php:555
+#: inc/platform.php:556
 msgid "Custom link"
 msgstr ""
 
@@ -5734,7 +5734,7 @@ msgstr ""
 msgid "Custom responsive design"
 msgstr ""
 
-#: inc/platform.php:385
+#: inc/platform.php:386
 #: inc/settings-transfer.php:133
 msgid "Custom script fields were not saved: your account lacks the unfiltered_html capability."
 msgstr ""
@@ -5970,7 +5970,7 @@ msgstr ""
 msgid "Default mode"
 msgstr ""
 
-#: inc/admin-panel.php:1097
+#: inc/admin-panel.php:1098
 msgid "Default sidebar position"
 msgstr ""
 
@@ -6179,7 +6179,7 @@ msgstr ""
 msgid "Design systems"
 msgstr ""
 
-#: inc/platform.php:447
+#: inc/platform.php:448
 msgid "Design tokens"
 msgstr ""
 
@@ -6279,7 +6279,7 @@ msgstr ""
 msgid "Detailed timeline finalisation, supplier logistics handover and seamless day-of direction."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:629
+#: inc/demos/gnnonepage.php:628
 msgid "Details before you order."
 msgstr ""
 
@@ -6525,7 +6525,7 @@ msgid "Disable the emoji script"
 msgstr ""
 
 #: inc/admin-screens.php:585
-#: inc/platform.php:157
+#: inc/platform.php:158
 #: inc/workspace.php:241
 msgid "Disabled"
 msgstr ""
@@ -6625,7 +6625,7 @@ msgstr ""
 msgid "Do I need prior lifting experience to join?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:605
+#: inc/demos/gnnonepage.php:604
 msgid "Do the devices require an app or subscription?"
 msgstr ""
 
@@ -6709,7 +6709,7 @@ msgstr ""
 msgid "Domain expertise"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:231
+#: inc/demos/gnnonepage.php:230
 msgid "Domestic Review"
 msgstr ""
 
@@ -6739,7 +6739,7 @@ msgstr ""
 msgid "Doughs are baked, stocks simmered and vegetables trimmed."
 msgstr ""
 
-#: inc/admin-panel.php:1464
+#: inc/admin-panel.php:1465
 msgid "Download all GNN Theme settings as a JSON file for backup or transfer."
 msgstr ""
 
@@ -6783,7 +6783,7 @@ msgstr ""
 msgid "E-Commerce"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:382
+#: inc/demos/gnnonepage.php:381
 msgid "Each appliance works on its own, or links to the Olen Hub for shared morning and evening routines."
 msgstr ""
 
@@ -6823,7 +6823,7 @@ msgstr ""
 msgid "Each tour lists an explicit fitness grade from moderate day walks to strenuous mountain passes. We advise six to eight weeks of cardiovascular prep for alpine routes."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:248
+#: inc/demos/gnnonepage.php:247
 msgid "Early impressions"
 msgstr ""
 
@@ -6996,12 +6996,12 @@ msgstr ""
 msgid "Elementor is active."
 msgstr ""
 
-#: inc/admin-panel.php:1523
-#: inc/admin-panel.php:1526
+#: inc/admin-panel.php:1524
+#: inc/admin-panel.php:1527
 msgid "Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1746
+#: inc/admin-panel.php:1747
 msgid "Elementor templates refreshed. Edited templates were preserved."
 msgstr ""
 
@@ -7022,7 +7022,7 @@ msgid "Elias Varen wearing a grey suit"
 msgstr ""
 
 #: inc/admin-panel.php:1032
-#: inc/platform.php:554
+#: inc/platform.php:555
 #: inc/workspace.php:169
 msgid "Email"
 msgstr ""
@@ -7088,7 +7088,7 @@ msgstr ""
 msgid "Enable the top announcement bar"
 msgstr ""
 
-#: inc/admin-panel.php:1579
+#: inc/admin-panel.php:1580
 msgid "Enable theme updates"
 msgstr ""
 
@@ -7296,7 +7296,7 @@ msgstr ""
 msgid "Evening intensive"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:405
+#: inc/demos/gnnonepage.php:404
 msgid "Evening mode"
 msgstr ""
 
@@ -7332,7 +7332,7 @@ msgstr ""
 msgid "Events analyzed daily"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:507
+#: inc/demos/gnnonepage.php:506
 msgid "Every Series 01 enclosure opens with standard hex screws, carries replaceable gaskets and runs local firmware that continues working even if you never connect it to the internet."
 msgstr ""
 
@@ -7458,7 +7458,7 @@ msgstr ""
 msgid "Every route is designed around small group dynamics and low-impact outdoor ethics."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:260
+#: inc/demos/gnnonepage.php:259
 msgid "Every shell is bead-blasted and sealed in a low-sheen mineral finish that diffuses daylight and resists fingerprints."
 msgstr ""
 
@@ -7615,7 +7615,7 @@ msgid "Executive transition leadership"
 msgstr ""
 
 #: inc/platform.php:29
-#: inc/platform.php:51
+#: inc/platform.php:52
 msgid "Existing layout"
 msgstr ""
 
@@ -7897,7 +7897,7 @@ msgstr ""
 msgid "Explore workspace modules"
 msgstr ""
 
-#: inc/admin-panel.php:1477
+#: inc/admin-panel.php:1478
 msgid "Export JSON"
 msgstr ""
 
@@ -7906,12 +7906,12 @@ msgstr ""
 msgid "Export demo package"
 msgstr ""
 
-#: inc/admin-panel.php:1470
+#: inc/admin-panel.php:1471
 msgid "Export scope"
 msgstr ""
 
-#: inc/admin-panel.php:1460
-#: inc/admin-panel.php:1463
+#: inc/admin-panel.php:1461
+#: inc/admin-panel.php:1464
 msgid "Export settings"
 msgstr ""
 
@@ -7935,7 +7935,7 @@ msgstr ""
 msgid "External consent bridge required when analytics is used"
 msgstr ""
 
-#: inc/admin-panel.php:1403
+#: inc/admin-panel.php:1404
 msgid "Extra <head> HTML (meta/verification tags)"
 msgstr ""
 
@@ -8024,7 +8024,7 @@ msgstr ""
 msgid "Feature description goes here."
 msgstr ""
 
-#: inc/platform.php:120
+#: inc/platform.php:121
 msgid "Feature the first blog post"
 msgstr ""
 
@@ -8053,7 +8053,7 @@ msgstr ""
 msgid "Featured courses"
 msgstr ""
 
-#: inc/admin-panel.php:1125
+#: inc/admin-panel.php:1126
 msgid "Featured image"
 msgstr ""
 
@@ -8135,11 +8135,11 @@ msgstr ""
 
 #: inc/admin-panel.php:639
 #: inc/admin-panel.php:653
-#: inc/admin-panel.php:1134
+#: inc/admin-panel.php:1135
 msgid "Fill (stretch)"
 msgstr ""
 
-#: inc/admin-panel.php:1366
+#: inc/admin-panel.php:1367
 msgid "Filled"
 msgstr ""
 
@@ -8293,11 +8293,11 @@ msgstr ""
 msgid "First wave of keynote speakers and workshop hosts announced"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:556
+#: inc/demos/gnnonepage.php:555
 msgid "First-batch numbered edition"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:601
+#: inc/demos/gnnonepage.php:600
 msgid "First-batch reservations ship in Autumn 2026 in order of reservation. You receive an address confirmation email four weeks before dispatch and can cancel for a full refund at any time beforehand."
 msgstr ""
 
@@ -8411,15 +8411,15 @@ msgstr ""
 msgid "Follow us"
 msgstr ""
 
-#: inc/admin-panel.php:1345
+#: inc/admin-panel.php:1346
 msgid "Font family"
 msgstr ""
 
-#: inc/admin-panel.php:1375
+#: inc/admin-panel.php:1376
 msgid "Font files and sizes"
 msgstr ""
 
-#: inc/admin-panel.php:1330
+#: inc/admin-panel.php:1331
 msgid "Font loading"
 msgstr ""
 
@@ -8427,7 +8427,7 @@ msgstr ""
 msgid "Font size"
 msgstr ""
 
-#: inc/admin-panel.php:1346
+#: inc/admin-panel.php:1347
 msgid "Font weight"
 msgstr ""
 
@@ -8436,7 +8436,7 @@ msgstr ""
 msgid "Fonts"
 msgstr ""
 
-#: inc/admin-panel.php:1340
+#: inc/admin-panel.php:1341
 msgid "Fonts by element"
 msgstr ""
 
@@ -8474,64 +8474,64 @@ msgstr ""
 msgid "Footer Column 4"
 msgstr ""
 
-#: inc/admin-panel.php:1051
+#: inc/admin-panel.php:1052
 msgid "Footer brand"
 msgstr ""
 
-#: inc/admin-panel.php:1046
+#: inc/admin-panel.php:1047
 msgid "Footer branding"
 msgstr ""
 
-#: inc/admin-panel.php:1081
+#: inc/admin-panel.php:1082
 msgid "Footer copyright line"
 msgstr ""
 
-#: inc/admin-panel.php:1083
+#: inc/admin-panel.php:1084
 #: inc/customizer.php:76
 msgid "Footer legal text"
 msgstr ""
 
-#: inc/admin-panel.php:1064
+#: inc/admin-panel.php:1065
 #: inc/workspace.php:182
 msgid "Footer logo max height (px)"
 msgstr ""
 
-#: inc/admin-panel.php:1062
+#: inc/admin-panel.php:1063
 #: inc/workspace.php:177
 msgid "Footer logo — dark mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:1063
+#: inc/admin-panel.php:1064
 msgid "Footer logo — dark mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:1060
+#: inc/admin-panel.php:1061
 #: inc/workspace.php:176
 msgid "Footer logo — light mode (1×)"
 msgstr ""
 
-#: inc/admin-panel.php:1061
+#: inc/admin-panel.php:1062
 msgid "Footer logo — light mode (2× retina)"
 msgstr ""
 
-#: inc/admin-panel.php:1072
+#: inc/admin-panel.php:1073
 msgid "Footer menu alignment"
 msgstr ""
 
-#: inc/platform.php:46
+#: inc/platform.php:47
 msgid "Footer style"
 msgstr ""
 
-#: inc/admin-panel.php:1066
+#: inc/admin-panel.php:1067
 #: inc/workspace.php:170
 msgid "Footer tagline"
 msgstr ""
 
-#: inc/admin-panel.php:1042
+#: inc/admin-panel.php:1043
 msgid "Footer visibility"
 msgstr ""
 
-#: inc/platform.php:57
+#: inc/platform.php:58
 msgid "Footer widget columns"
 msgstr ""
 
@@ -8567,7 +8567,7 @@ msgstr ""
 msgid "Force on for this page"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:227
+#: inc/demos/gnnonepage.php:226
 msgid "Form Notes"
 msgstr ""
 
@@ -8761,7 +8761,7 @@ msgstr ""
 msgid "From an idea to a place."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:464
+#: inc/demos/gnnonepage.php:463
 msgid "From bedside and desk to the molded-pulp box they arrive in."
 msgstr ""
 
@@ -8883,7 +8883,7 @@ msgstr ""
 msgid "Front-end"
 msgstr ""
 
-#: inc/admin-panel.php:1122
+#: inc/admin-panel.php:1123
 msgid "Full Width template max width (px)"
 msgstr ""
 
@@ -9057,7 +9057,7 @@ msgid "GNN Shared Block"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:32
-#: inc/platform.php:145
+#: inc/platform.php:146
 #: inc/slider.php:29
 msgid "GNN Slider"
 msgstr ""
@@ -9100,7 +9100,7 @@ msgstr ""
 msgid "GNNclinic"
 msgstr ""
 
-#: inc/platform.php:169
+#: inc/platform.php:170
 #: inc/templates/commerce.php:15
 msgid "GNNcommerce"
 msgstr ""
@@ -9110,7 +9110,7 @@ msgstr ""
 msgid "GNNdefault"
 msgstr ""
 
-#: inc/platform.php:170
+#: inc/platform.php:171
 #: inc/templates/design.php:15
 msgid "GNNdesign"
 msgstr ""
@@ -9152,7 +9152,7 @@ msgstr ""
 msgid "GNNpersonal"
 msgstr ""
 
-#: inc/platform.php:168
+#: inc/platform.php:169
 #: inc/demos/gnnpro.php:18
 #: inc/demos/gnnpro.php:23
 msgid "GNNpro"
@@ -9184,7 +9184,7 @@ msgstr ""
 msgid "Gallery"
 msgstr ""
 
-#: inc/platform.php:203
+#: inc/platform.php:204
 msgid "Gallery columns"
 msgstr ""
 
@@ -9200,11 +9200,11 @@ msgstr ""
 msgid "Gap"
 msgstr ""
 
-#: inc/admin-panel.php:1115
+#: inc/admin-panel.php:1116
 msgid "Gap between the header and the page content — or between the featured image and the content, when the page has one."
 msgstr ""
 
-#: inc/admin-panel.php:1116
+#: inc/admin-panel.php:1117
 msgid "Gap between the page content and the footer."
 msgstr ""
 
@@ -9268,7 +9268,7 @@ msgstr ""
 msgid "General purpose"
 msgstr ""
 
-#: inc/platform.php:171
+#: inc/platform.php:172
 msgid "General services"
 msgstr ""
 
@@ -9426,11 +9426,11 @@ msgstr ""
 msgid "Good work is rarely loud. It is clear, well-proportioned and built to stay useful long after launch day."
 msgstr ""
 
-#: inc/admin-panel.php:1393
+#: inc/admin-panel.php:1394
 msgid "Google Analytics 4 ID"
 msgstr ""
 
-#: inc/admin-panel.php:1394
+#: inc/admin-panel.php:1395
 msgid "Google Tag Manager ID"
 msgstr ""
 
@@ -9603,7 +9603,7 @@ msgstr ""
 msgid "H6"
 msgstr ""
 
-#: inc/admin-panel.php:1066
+#: inc/admin-panel.php:1067
 msgid "HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline."
 msgstr ""
 
@@ -9615,7 +9615,7 @@ msgstr ""
 msgid "Half-day working session"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:474
+#: inc/demos/gnnonepage.php:473
 msgid "Hand-carved clay form studies"
 msgstr ""
 
@@ -9745,12 +9745,16 @@ msgstr ""
 msgid "Header Right (centered layout)"
 msgstr ""
 
-#: inc/platform.php:41
+#: inc/platform.php:42
 msgid "Header action URL"
 msgstr ""
 
-#: inc/platform.php:40
+#: inc/platform.php:41
 msgid "Header action label"
+msgstr ""
+
+#: inc/admin-panel.php:1037
+msgid "Header background"
 msgstr ""
 
 #: inc/platform.php:21
@@ -9761,11 +9765,11 @@ msgstr ""
 msgid "Header layout"
 msgstr ""
 
-#: header.php:43
+#: header.php:55
 msgid "Header left"
 msgstr ""
 
-#: header.php:53
+#: header.php:65
 msgid "Header right"
 msgstr ""
 
@@ -9783,11 +9787,11 @@ msgstr ""
 msgid "Heading & paragraph with image"
 msgstr ""
 
-#: inc/platform.php:104
+#: inc/platform.php:105
 msgid "Heading letter spacing (hundredths of em)"
 msgstr ""
 
-#: inc/platform.php:101
+#: inc/platform.php:102
 msgid "Heading line height (%)"
 msgstr ""
 
@@ -9904,7 +9908,7 @@ msgstr ""
 msgid "Hero"
 msgstr ""
 
-#: inc/platform.php:126
+#: inc/platform.php:127
 msgid "Hero layout"
 msgstr ""
 
@@ -9917,7 +9921,7 @@ msgid "Hero with cards"
 msgstr ""
 
 #: inc/admin-panel.php:625
-#: inc/admin-panel.php:1056
+#: inc/admin-panel.php:1057
 #: inc/admin-screens.php:354
 msgid "Hide"
 msgstr ""
@@ -10028,12 +10032,12 @@ msgstr ""
 msgid "History management"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:341
+#: inc/demos/gnnonepage.php:340
 msgid "Hold any temperature between 60 °C and 100 °C in one-degree steps. The insulated matte exterior stays cool to the touch while the internal spout guides a steady stream."
 msgstr ""
 
 #: inc/frontend.php:298
-#: inc/platform.php:550
+#: inc/platform.php:551
 #: inc/starter-editors.php:331
 msgid "Home"
 msgstr ""
@@ -10193,7 +10197,7 @@ msgstr ""
 msgid "How does ongoing support work?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:615
+#: inc/demos/gnnonepage.php:614
 msgid "How does the 5-year repair guarantee work?"
 msgstr ""
 
@@ -10501,11 +10505,11 @@ msgstr ""
 msgid "I undertake diagnostic sprints (1–2 weeks), strategic project leadership, and ongoing monthly advisory retainers."
 msgstr ""
 
-#: inc/admin-panel.php:1361
+#: inc/admin-panel.php:1362
 msgid "Icon style"
 msgstr ""
 
-#: inc/admin-panel.php:1356
+#: inc/admin-panel.php:1357
 msgid "Icons"
 msgstr ""
 
@@ -10538,7 +10542,7 @@ msgid "Image"
 msgstr ""
 
 #: inc/admin-panel.php:621
-#: inc/admin-panel.php:1055
+#: inc/admin-panel.php:1056
 msgid "Image + text"
 msgstr ""
 
@@ -10556,7 +10560,7 @@ msgid "Image left, numbered points right"
 msgstr ""
 
 #: inc/admin-panel.php:617
-#: inc/admin-panel.php:1054
+#: inc/admin-panel.php:1055
 msgid "Image logo"
 msgstr ""
 
@@ -10588,7 +10592,7 @@ msgstr ""
 msgid "Import Elementor starter pages"
 msgstr ""
 
-#: inc/admin-panel.php:1744
+#: inc/admin-panel.php:1745
 #: inc/settings-transfer.php:42
 msgid "Import failed: the file is not a valid GNN settings export."
 msgstr ""
@@ -10597,8 +10601,8 @@ msgstr ""
 msgid "Import records"
 msgstr ""
 
-#: inc/admin-panel.php:1483
-#: inc/admin-panel.php:1486
+#: inc/admin-panel.php:1484
+#: inc/admin-panel.php:1487
 msgid "Import settings"
 msgstr ""
 
@@ -10623,7 +10627,7 @@ msgstr ""
 msgid "In the field"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:463
+#: inc/demos/gnnonepage.php:462
 msgid "In the rooms they were made for."
 msgstr ""
 
@@ -10643,7 +10647,7 @@ msgstr ""
 msgid "Included with membership"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:541
+#: inc/demos/gnnonepage.php:540
 msgid "Includes Olen Hub ambient dock"
 msgstr ""
 
@@ -10763,11 +10767,11 @@ msgstr ""
 msgid "Individualised programming and private coaching alongside full studio access."
 msgstr ""
 
-#: inc/platform.php:173
+#: inc/platform.php:174
 msgid "Industrial and B2B"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:497
+#: inc/demos/gnnonepage.php:496
 msgid "Industrial designer holding a hand-shaped clay prototype in the studio"
 msgstr ""
 
@@ -10940,7 +10944,7 @@ msgstr ""
 msgid "Installation stopped. Check the server and retry."
 msgstr ""
 
-#: inc/admin-panel.php:1553
+#: inc/admin-panel.php:1554
 msgid "Installed version: %s"
 msgstr ""
 
@@ -11092,7 +11096,7 @@ msgstr ""
 msgid "Introductory movement screen"
 msgstr ""
 
-#: inc/platform.php:237
+#: inc/platform.php:238
 msgid "Invalid field value type. No settings were changed."
 msgstr ""
 
@@ -11109,7 +11113,7 @@ msgstr ""
 msgid "Invalid starter profile."
 msgstr ""
 
-#: inc/platform.php:265
+#: inc/platform.php:266
 msgid "Invalid value for %s. No settings were changed."
 msgstr ""
 
@@ -11142,7 +11146,7 @@ msgid "Is step-free access available at the clinic?"
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:80
-#: inc/platform.php:179
+#: inc/platform.php:180
 msgid "Items per page"
 msgstr ""
 
@@ -11150,7 +11154,7 @@ msgstr ""
 msgid "Ivo Fenmere"
 msgstr ""
 
-#: inc/admin-panel.php:1397
+#: inc/admin-panel.php:1398
 msgid "JavaScript"
 msgstr ""
 
@@ -11476,7 +11480,7 @@ msgstr ""
 msgid "Layout settings version"
 msgstr ""
 
-#: inc/admin-panel.php:1119
+#: inc/admin-panel.php:1120
 msgid "Layout widths"
 msgstr ""
 
@@ -11560,9 +11564,13 @@ msgstr ""
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/admin-panel.php:1261
-#: inc/admin-panel.php:1269
+#: inc/admin-panel.php:1262
+#: inc/admin-panel.php:1270
 msgid "Leave empty to match the theme automatically."
+msgstr ""
+
+#: inc/admin-panel.php:1037
+msgid "Leave empty to use the design default."
 msgstr ""
 
 #: inc/template-data/personal.php:83
@@ -11583,7 +11591,7 @@ msgstr ""
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/platform.php:132
+#: inc/platform.php:133
 msgid "Left aligned"
 msgstr ""
 
@@ -11805,8 +11813,8 @@ msgstr ""
 msgid "Listing content width (px, 0 = global container)"
 msgstr ""
 
-#: inc/admin-panel.php:1187
-#: inc/platform.php:451
+#: inc/admin-panel.php:1188
+#: inc/platform.php:452
 msgid "Listing images"
 msgstr ""
 
@@ -11842,7 +11850,7 @@ msgstr ""
 msgid "Live workshop sessions"
 msgstr ""
 
-#: inc/admin-panel.php:1357
+#: inc/admin-panel.php:1358
 msgid "Load Google Material Symbols"
 msgstr ""
 
@@ -11862,7 +11870,7 @@ msgstr ""
 msgid "Loading fonts…"
 msgstr ""
 
-#: inc/admin-panel.php:1335
+#: inc/admin-panel.php:1336
 msgid "Loads the selected fonts from Google. Empty fields use the local font."
 msgstr ""
 
@@ -11870,19 +11878,19 @@ msgstr ""
 msgid "Local Producers"
 msgstr ""
 
-#: inc/platform.php:536
+#: inc/platform.php:537
 msgid "Local WOFF2 font"
 msgstr ""
 
-#: inc/platform.php:96
+#: inc/platform.php:97
 msgid "Local WOFF2 font attachment ID"
 msgstr ""
 
-#: inc/platform.php:73
+#: inc/platform.php:74
 msgid "Local body font"
 msgstr ""
 
-#: inc/platform.php:448
+#: inc/platform.php:449
 msgid "Local fonts and type scale"
 msgstr ""
 
@@ -11890,7 +11898,7 @@ msgstr ""
 msgid "Local groups identify a concrete need and outline a practical plan."
 msgstr ""
 
-#: inc/platform.php:85
+#: inc/platform.php:86
 msgid "Local heading font"
 msgstr ""
 
@@ -12058,7 +12066,7 @@ msgstr ""
 msgid "Macro textural study exploring hand-loomed textiles, forged metals and raw woodworking tools in natural atelier light."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:273
+#: inc/demos/gnnonepage.php:272
 msgid "Made to live in plain sight"
 msgstr ""
 
@@ -12148,7 +12156,7 @@ msgstr ""
 msgid "Make the hard decisions count."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:504
+#: inc/demos/gnnonepage.php:503
 msgid "Maker story"
 msgstr ""
 
@@ -12168,7 +12176,7 @@ msgstr ""
 msgid "Managed 30+ specialists across operational delivery, process compliance and financial reporting."
 msgstr ""
 
-#: inc/platform.php:159
+#: inc/platform.php:160
 msgid "Managed entirely outside the theme"
 msgstr ""
 
@@ -12313,7 +12321,7 @@ msgstr ""
 msgid "Matters"
 msgstr ""
 
-#: inc/platform.php:98
+#: inc/platform.php:99
 msgid "Maximum H1 size"
 msgstr ""
 
@@ -12493,7 +12501,7 @@ msgstr ""
 msgid "Mention the listing in your message and we will send the full specification sheet and measured plans."
 msgstr ""
 
-#: header.php:38
+#: header.php:50
 #: inc/template-data/restaurant.php:146
 #: inc/template-data/restaurant.php:152
 msgid "Menu"
@@ -12576,19 +12584,19 @@ msgstr ""
 msgid "Minimalist white floral installations and sea views paired with sunset dinner music."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:611
+#: inc/demos/gnnonepage.php:610
 msgid "Mist, Tone and the Hub ship with universal 100–240 V USB-C adapters and regional blades. Pour is built in dedicated 120 V (North America) and 230 V (Europe, UK and Australia) editions selected at checkout."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:554
+#: inc/demos/gnnonepage.php:553
 msgid "Mist, Tone, Pour and Olen Hub"
 msgstr ""
 
-#: header.php:112
+#: header.php:127
 msgid "Mobile"
 msgstr ""
 
-#: inc/platform.php:99
+#: inc/platform.php:100
 msgid "Mobile H1 size"
 msgstr ""
 
@@ -12597,11 +12605,11 @@ msgid "Mobile Menu"
 msgstr ""
 
 #: inc/integrations.php:86
-#: inc/platform.php:150
+#: inc/platform.php:151
 msgid "Mobile actions"
 msgstr ""
 
-#: inc/platform.php:548
+#: inc/platform.php:549
 msgid "Mobile actions in display order (leave labels empty to use the existing dock)"
 msgstr ""
 
@@ -12673,7 +12681,7 @@ msgstr ""
 msgid "Modular code structure and geometric component tree"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:475
+#: inc/demos/gnnonepage.php:474
 msgid "Modular parts and repair guarantee"
 msgstr ""
 
@@ -12713,7 +12721,7 @@ msgstr ""
 msgid "Monochromatic architectural facade with striking morning light and shadows"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:219
+#: inc/demos/gnnonepage.php:218
 msgid "Monograph Daily"
 msgstr ""
 
@@ -12757,7 +12765,7 @@ msgstr ""
 msgid "More about us"
 msgstr ""
 
-#: inc/admin-panel.php:1087
+#: inc/admin-panel.php:1088
 msgid "More footer options"
 msgstr ""
 
@@ -12797,7 +12805,7 @@ msgstr ""
 msgid "Morning, midday and evening timetable blocks across the week"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:535
+#: inc/demos/gnnonepage.php:534
 msgid "Most chosen"
 msgstr ""
 
@@ -12900,7 +12908,7 @@ msgstr ""
 msgid "Museum-grade archival prints and commercial digital delivery"
 msgstr ""
 
-#: inc/admin-panel.php:1249
+#: inc/admin-panel.php:1250
 msgid "Muted text"
 msgstr ""
 
@@ -12910,7 +12918,7 @@ msgstr ""
 msgid "My account"
 msgstr ""
 
-#: inc/admin-panel.php:1307
+#: inc/admin-panel.php:1308
 msgid "Name (e.g. Primary) — leave empty to skip"
 msgstr ""
 
@@ -12941,7 +12949,7 @@ msgstr ""
 msgid "Natural"
 msgstr ""
 
-#: inc/platform.php:190
+#: inc/platform.php:191
 msgid "Natural image ratio"
 msgstr ""
 
@@ -12965,7 +12973,7 @@ msgstr ""
 msgid "Navigating recent commercial contract compliance changes"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:333
+#: inc/demos/gnnonepage.php:332
 msgid "Near-field tuned"
 msgstr ""
 
@@ -13121,7 +13129,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:407
+#: inc/demos/gnnonepage.php:406
 msgid "No chimes at midnight, no forced firmware pop-ups and no subscriptions. Set a single quiet schedule once and let the room take care of itself."
 msgstr ""
 
@@ -13135,7 +13143,7 @@ msgid "No eligible demo drafts are available. Review the protection reasons belo
 msgstr ""
 
 #: inc/admin-panel.php:243
-#: inc/platform.php:536
+#: inc/platform.php:537
 msgid "No font selected"
 msgstr ""
 
@@ -13152,7 +13160,7 @@ msgid "No imported starter pages were found."
 msgstr ""
 
 #: inc/admin-panel.php:244
-#: inc/admin-panel.php:1413
+#: inc/admin-panel.php:1414
 #: inc/workspace.php:219
 msgid "No pending changes"
 msgstr ""
@@ -13190,7 +13198,7 @@ msgid "No settings match your search. Try another keyword."
 msgstr ""
 
 #: inc/admin-panel.php:579
-#: inc/admin-panel.php:1101
+#: inc/admin-panel.php:1102
 msgid "No sidebar"
 msgstr ""
 
@@ -13198,7 +13206,7 @@ msgstr ""
 msgid "No slides yet."
 msgstr ""
 
-#: inc/platform.php:134
+#: inc/platform.php:135
 msgid "No theme slider"
 msgstr ""
 
@@ -13211,7 +13219,7 @@ msgstr ""
 msgid "No unused starter page path is available."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:606
+#: inc/demos/gnnonepage.php:605
 msgid "No. Every device operates completely offline with its physical controls. Connecting to the Olen Hub adds optional local scheduling over your home Wi-Fi with no account or monthly fee."
 msgstr ""
 
@@ -13231,7 +13239,7 @@ msgstr ""
 msgid "Nolan Merrow wearing a navy sweater"
 msgstr ""
 
-#: inc/platform.php:115
+#: inc/platform.php:116
 msgid "None"
 msgstr ""
 
@@ -13332,7 +13340,7 @@ msgstr ""
 msgid "Numbered row list"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:223
+#: inc/demos/gnnonepage.php:222
 msgid "Object & Room"
 msgstr ""
 
@@ -13352,7 +13360,7 @@ msgstr ""
 msgid "Occasional updates when the seasonal menu changes or special dinners open for booking."
 msgstr ""
 
-#: inc/admin-panel.php:1155
+#: inc/admin-panel.php:1156
 msgid "Off by default. Replaces the normal title above the content with a centered title overlaid on the featured image itself. Any page can override this individually — see \"Title over featured image\" in its GNN Display Options box."
 msgstr ""
 
@@ -13376,31 +13384,27 @@ msgstr ""
 msgid "Offices, phone and secure correspondence"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:207
-msgid "Olen Hub · Matte ceramic coat · Ships Autumn 2026"
-msgstr ""
-
-#: inc/demos/gnnonepage.php:320
+#: inc/demos/gnnonepage.php:319
 msgid "Olen Mist bedside humidifier on a wooden nightstand"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:422
+#: inc/demos/gnnonepage.php:421
 msgid "Olen Mist humidifier on a bedside table"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:322
+#: inc/demos/gnnonepage.php:321
 msgid "Olen Mist — Whisper-quiet bedside humidity"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:432
+#: inc/demos/gnnonepage.php:431
 msgid "Olen Pour kettle on a light kitchen counter"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:338
+#: inc/demos/gnnonepage.php:337
 msgid "Olen Pour precision kettle on a kitchen counter"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:340
+#: inc/demos/gnnonepage.php:339
 msgid "Olen Pour — Measured heat, balanced pour"
 msgstr ""
 
@@ -13412,23 +13416,23 @@ msgstr ""
 msgid "Olen Series 01 · Pre-orders open"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:685
+#: inc/demos/gnnonepage.php:684
 msgid "Olen Series 01 — shipping Autumn 2026."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:329
+#: inc/demos/gnnonepage.php:328
 msgid "Olen Tone desk speaker beside a workspace"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:427
+#: inc/demos/gnnonepage.php:426
 msgid "Olen Tone speaker on a minimal desk"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:331
+#: inc/demos/gnnonepage.php:330
 msgid "Olen Tone — Focused near-field sound"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:506
+#: inc/demos/gnnonepage.php:505
 msgid "Olen started in a small industrial design studio tired of appliances that looked like server racks. We spent a year carving full-scale clay forms to get the weight, curve and finger feel right before choosing internal components."
 msgstr ""
 
@@ -13468,7 +13472,7 @@ msgstr ""
 msgid "Once an offer is agreed, we track every survey and legal milestone through to exchange and handover."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:527
+#: inc/demos/gnnonepage.php:526
 msgid "One Series 01 device of your choice"
 msgstr ""
 
@@ -13480,7 +13484,7 @@ msgstr ""
 msgid "One colour, five materials"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:381
+#: inc/demos/gnnonepage.php:380
 msgid "One design language across three rooms."
 msgstr ""
 
@@ -13492,7 +13496,7 @@ msgstr ""
 msgid "One workspace for product, workflows and releases."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:266
+#: inc/demos/gnnonepage.php:265
 msgid "One-thumb tactile control"
 msgstr ""
 
@@ -13604,7 +13608,7 @@ msgstr ""
 msgid "Open notebook with fountain pen and morning light on oak desk"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:437
+#: inc/demos/gnnonepage.php:436
 msgid "Open plastic-free molded-pulp packaging box for Olen Series 01"
 msgstr ""
 
@@ -13964,7 +13968,7 @@ msgstr ""
 msgid "Outline"
 msgstr ""
 
-#: inc/admin-panel.php:1363
+#: inc/admin-panel.php:1364
 msgid "Outlined"
 msgstr ""
 
@@ -13976,15 +13980,15 @@ msgstr ""
 msgid "Over three years of gentle conservation, we worked with regional craftsmen to restore lime plasters, local terracotta tiles and aged oak joinery."
 msgstr ""
 
-#: inc/admin-panel.php:1158
+#: inc/admin-panel.php:1159
 msgid "Overlay title background color"
 msgstr ""
 
-#: inc/admin-panel.php:1159
+#: inc/admin-panel.php:1160
 msgid "Overlay title background opacity (%)"
 msgstr ""
 
-#: inc/admin-panel.php:1157
+#: inc/admin-panel.php:1158
 msgid "Overlay title font size (px)"
 msgstr ""
 
@@ -14057,28 +14061,28 @@ msgstr ""
 msgid "Page architecture and editorial copy support"
 msgstr ""
 
-#: inc/admin-panel.php:1240
+#: inc/admin-panel.php:1241
 msgid "Page background"
 msgstr ""
 
-#: inc/admin-panel.php:1139
+#: inc/admin-panel.php:1140
 msgid "Page image alignment"
 msgstr ""
 
-#: inc/admin-panel.php:1130
+#: inc/admin-panel.php:1131
 msgid "Page image fit"
 msgstr ""
 
-#: inc/admin-panel.php:1126
+#: inc/admin-panel.php:1127
 msgid "Page image height (px)"
 msgstr ""
 
 #: 404.php:16
-#: inc/admin-panel.php:1169
+#: inc/admin-panel.php:1170
 msgid "Page not found"
 msgstr ""
 
-#: inc/admin-panel.php:1093
+#: inc/admin-panel.php:1094
 msgid "Page structure"
 msgstr ""
 
@@ -14349,13 +14353,13 @@ msgstr ""
 msgid "Permanently delete selected demo drafts and their metadata instead of moving to Trash. This cannot be undone; a settings snapshot does not back up pages."
 msgstr ""
 
-#: inc/admin-panel.php:1617
-#: inc/admin-panel.php:1635
-#: inc/admin-panel.php:1667
+#: inc/admin-panel.php:1618
+#: inc/admin-panel.php:1636
+#: inc/admin-panel.php:1668
 msgid "Permission denied."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:395
+#: inc/demos/gnnonepage.php:394
 msgid "Person relaxing on a sofa in a calm living room with a tablet on the side table"
 msgstr ""
 
@@ -14409,7 +14413,7 @@ msgstr ""
 msgid "Physical samples and working models connect an early idea to the finished space. Testing junctions, textures and proportions together helps the team make deliberate decisions before construction begins."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:333
+#: inc/demos/gnnonepage.php:332
 msgid "Physical volume ring"
 msgstr ""
 
@@ -14437,7 +14441,7 @@ msgstr ""
 msgid "Placeholder article image"
 msgstr ""
 
-#: inc/admin-panel.php:1081
+#: inc/admin-panel.php:1082
 msgid "Placeholders: %year% and %site%. Leave empty for the default."
 msgstr ""
 
@@ -14637,7 +14641,7 @@ msgstr ""
 msgid "Port Cities of the Eastern Mediterranean"
 msgstr ""
 
-#: inc/admin-panel.php:1472
+#: inc/admin-panel.php:1473
 msgid "Portable design profile (no site identity or code)"
 msgstr ""
 
@@ -14653,11 +14657,11 @@ msgstr ""
 msgid "Portfolio / 2 Columns"
 msgstr ""
 
-#: inc/platform.php:178
+#: inc/platform.php:179
 msgid "Portfolio and catalog columns"
 msgstr ""
 
-#: inc/platform.php:204
+#: inc/platform.php:205
 msgid "Portfolio and gallery spacing"
 msgstr ""
 
@@ -14665,11 +14669,11 @@ msgstr ""
 msgid "Portfolio archive"
 msgstr ""
 
-#: inc/platform.php:194
+#: inc/platform.php:195
 msgid "Portfolio image fit"
 msgstr ""
 
-#: inc/platform.php:181
+#: inc/platform.php:182
 msgid "Portfolio image ratio"
 msgstr ""
 
@@ -14829,7 +14833,7 @@ msgid "Practitioners guiding the hands-on afternoon labs and Q&A rooms."
 msgstr ""
 
 #: inc/demos/gnnonepage.php:71
-#: inc/demos/gnnonepage.php:586
+#: inc/demos/gnnonepage.php:585
 msgid "Pre-order"
 msgstr ""
 
@@ -14837,7 +14841,7 @@ msgstr ""
 msgid "Pre-order Series 01"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:657
+#: inc/demos/gnnonepage.php:656
 msgid "Pre-order, studio or press enquiries."
 msgstr ""
 
@@ -14853,7 +14857,7 @@ msgstr ""
 msgid "Predictable plans for every stage"
 msgstr ""
 
-#: inc/platform.php:206
+#: inc/platform.php:207
 #: inc/workspace.php:42
 msgid "Prefer third-party plugin compatibility"
 msgstr ""
@@ -14914,7 +14918,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: inc/admin-panel.php:1497
+#: inc/admin-panel.php:1498
 msgid "Preview import"
 msgstr ""
 
@@ -14953,7 +14957,7 @@ msgstr ""
 msgid "Pricing tiers"
 msgstr ""
 
-#: header.php:65
+#: header.php:77
 #: inc/design-system.php:311
 msgid "Primary"
 msgstr ""
@@ -14978,7 +14982,7 @@ msgstr ""
 msgid "Primary consultations, acute symptoms, ongoing condition reviews and referrals."
 msgstr ""
 
-#: inc/admin-panel.php:1248
+#: inc/admin-panel.php:1249
 #: inc/workspace.php:188
 msgid "Primary text"
 msgstr ""
@@ -15037,7 +15041,7 @@ msgstr ""
 msgid "Prioritised action plan"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:542
+#: inc/demos/gnnonepage.php:541
 msgid "Priority Autumn 2026 dispatch"
 msgstr ""
 
@@ -15215,7 +15219,7 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-#: inc/admin-panel.php:1164
+#: inc/admin-panel.php:1165
 msgid "Products per page"
 msgstr ""
 
@@ -15228,7 +15232,7 @@ msgstr ""
 msgid "Professional roles, appointments and credentials."
 msgstr ""
 
-#: inc/platform.php:172
+#: inc/platform.php:173
 msgid "Professional services"
 msgstr ""
 
@@ -15335,7 +15339,7 @@ msgstr ""
 msgid "Project coordination"
 msgstr ""
 
-#: inc/platform.php:205
+#: inc/platform.php:206
 msgid "Project detail maximum width"
 msgstr ""
 
@@ -15548,7 +15552,7 @@ msgstr ""
 msgid "Question two goes here?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:628
+#: inc/demos/gnnonepage.php:627
 #: inc/template-data/clinic.php:475
 msgid "Questions"
 msgstr ""
@@ -15633,7 +15637,7 @@ msgstr ""
 msgid "Rates include organic farmhouse breakfast, pool access and afternoon tea."
 msgstr ""
 
-#: inc/admin-panel.php:1398
+#: inc/admin-panel.php:1399
 msgid "Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_html capability."
 msgstr ""
 
@@ -16080,15 +16084,15 @@ msgstr ""
 msgid "Reflections on lens compression, sensor area and how optical gradation shapes the emotional resonance of a photograph."
 msgstr ""
 
-#: inc/admin-panel.php:1533
+#: inc/admin-panel.php:1534
 msgid "Refresh Elementor templates"
 msgstr ""
 
-#: inc/admin-panel.php:1527
+#: inc/admin-panel.php:1528
 msgid "Refresh untouched GNN Saved Templates and add missing sections. Your edited templates and their IDs are preserved. Legacy templates without a baseline are preserved."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:588
+#: inc/demos/gnnonepage.php:587
 msgid "Refundable at any time before dispatch. No subscriptions or hidden software fees."
 msgstr ""
 
@@ -16213,7 +16217,7 @@ msgid "Remote river valleys, peat ridges and wild camping under expansive northe
 msgstr ""
 
 #: inc/admin-panel.php:484
-#: inc/platform.php:536
+#: inc/platform.php:537
 #: inc/slider.php:156
 msgid "Remove"
 msgstr ""
@@ -16548,15 +16552,15 @@ msgstr ""
 msgid "Reservations open thirty days ahead. Weekend evenings fill quickly, while weekday lunches often have same-day tables."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:559
+#: inc/demos/gnnonepage.php:558
 msgid "Reserve Complete"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:545
+#: inc/demos/gnnonepage.php:544
 msgid "Reserve Room Pair"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:531
+#: inc/demos/gnnonepage.php:530
 msgid "Reserve Single"
 msgstr ""
 
@@ -16584,7 +16588,7 @@ msgstr ""
 msgid "Reserve now"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:666
+#: inc/demos/gnnonepage.php:665
 msgid "Reserve or send a note"
 msgstr ""
 
@@ -16628,7 +16632,7 @@ msgstr ""
 msgid "Reset WordPress"
 msgstr ""
 
-#: inc/admin-panel.php:1510
+#: inc/admin-panel.php:1511
 msgid "Reset all GNN Theme settings to defaults?"
 msgstr ""
 
@@ -16652,8 +16656,8 @@ msgstr ""
 msgid "Reset presentation settings when applying a new profile. Identity, integrations, customer code and central content are preserved. A configuration snapshot is created first."
 msgstr ""
 
-#: inc/admin-panel.php:1503
-#: inc/admin-panel.php:1506
+#: inc/admin-panel.php:1504
+#: inc/admin-panel.php:1507
 msgid "Reset settings"
 msgstr ""
 
@@ -16661,7 +16665,7 @@ msgstr ""
 msgid "Reset stopped. Check the server and retry."
 msgstr ""
 
-#: inc/admin-panel.php:1516
+#: inc/admin-panel.php:1517
 msgid "Reset to defaults"
 msgstr ""
 
@@ -16745,7 +16749,7 @@ msgstr ""
 msgid "Restore"
 msgstr ""
 
-#: inc/admin-panel.php:1507
+#: inc/admin-panel.php:1508
 msgid "Restore panel settings, accent color, default mode and footer legal text. Site icon and update preferences are preserved. This cannot be undone."
 msgstr ""
 
@@ -16799,11 +16803,11 @@ msgstr ""
 msgid "Reusable blocks"
 msgstr ""
 
-#: inc/platform.php:66
+#: inc/platform.php:67
 msgid "Reusable footer"
 msgstr ""
 
-#: inc/platform.php:44
+#: inc/platform.php:45
 msgid "Reusable header"
 msgstr ""
 
@@ -16922,7 +16926,7 @@ msgstr ""
 msgid "Romantic wedding reception table with delicate florals and soft candlelight"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:536
+#: inc/demos/gnnonepage.php:535
 msgid "Room Pair"
 msgstr ""
 
@@ -16953,7 +16957,7 @@ msgstr ""
 msgid "Root vegetables, roasted squash and wood-fired grains prepared for the autumn evening menu."
 msgstr ""
 
-#: inc/admin-panel.php:1364
+#: inc/admin-panel.php:1365
 msgid "Rounded"
 msgstr ""
 
@@ -17045,14 +17049,14 @@ msgstr ""
 msgid "Saturday – Sunday"
 msgstr ""
 
-#: inc/admin-panel.php:1583
+#: inc/admin-panel.php:1584
 #: inc/admin-screens.php:390
 #: inc/admin-screens.php:489
 msgid "Save"
 msgstr ""
 
 #: inc/admin-panel.php:864
-#: inc/admin-panel.php:1414
+#: inc/admin-panel.php:1415
 msgid "Save Settings"
 msgstr ""
 
@@ -17171,7 +17175,7 @@ msgstr ""
 msgid "Seamless execution"
 msgstr ""
 
-#: header.php:86
+#: header.php:101
 #: search.php:14
 #: searchform.php:14
 msgid "Search"
@@ -17254,7 +17258,7 @@ msgstr ""
 msgid "Section library"
 msgstr ""
 
-#: inc/platform.php:108
+#: inc/platform.php:109
 msgid "Section spacing"
 msgstr ""
 
@@ -17658,7 +17662,7 @@ msgstr ""
 msgid "Setting groups"
 msgstr ""
 
-#: inc/admin-panel.php:1496
+#: inc/admin-panel.php:1497
 msgid "Settings JSON file"
 msgstr ""
 
@@ -17682,15 +17686,15 @@ msgstr ""
 msgid "Settings could not be saved. Reload and try again."
 msgstr ""
 
-#: inc/platform.php:229
+#: inc/platform.php:230
 msgid "Settings exceed the 1 MB limit. Nothing was changed."
 msgstr ""
 
-#: inc/admin-panel.php:1743
+#: inc/admin-panel.php:1744
 msgid "Settings imported successfully."
 msgstr ""
 
-#: inc/admin-panel.php:1745
+#: inc/admin-panel.php:1746
 msgid "Settings reset to defaults."
 msgstr ""
 
@@ -17720,11 +17724,11 @@ msgstr ""
 msgid "Seven days traversing high mountain passes, glacier moraines and wilderness huts."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:505
+#: inc/demos/gnnonepage.php:504
 msgid "Shaped in clay before a circuit was drawn."
 msgstr ""
 
-#: inc/admin-panel.php:1323
+#: inc/admin-panel.php:1324
 msgid "Shapes and spacing"
 msgstr ""
 
@@ -17833,7 +17837,7 @@ msgstr ""
 msgid "Shareholder dispute arbitration settlement"
 msgstr ""
 
-#: inc/admin-panel.php:1365
+#: inc/admin-panel.php:1366
 msgid "Sharp"
 msgstr ""
 
@@ -17857,7 +17861,7 @@ msgstr ""
 msgid "Shop by category"
 msgstr ""
 
-#: inc/admin-panel.php:1163
+#: inc/admin-panel.php:1164
 msgid "Shop columns"
 msgstr ""
 
@@ -17914,11 +17918,11 @@ msgstr ""
 msgid "Shortlist, 2025"
 msgstr ""
 
-#: inc/admin-panel.php:1171
+#: inc/admin-panel.php:1172
 msgid "Show a search box on the 404 page"
 msgstr ""
 
-#: inc/platform.php:122
+#: inc/platform.php:123
 msgid "Show author information"
 msgstr ""
 
@@ -17934,41 +17938,45 @@ msgstr ""
 msgid "Show category filters"
 msgstr ""
 
-#: inc/platform.php:42
+#: inc/platform.php:43
 msgid "Show contact information in the header"
 msgstr ""
 
-#: inc/admin-panel.php:1047
-#: inc/platform.php:60
+#: inc/admin-panel.php:1048
+#: inc/platform.php:61
 msgid "Show footer brand"
-msgstr ""
-
-#: inc/admin-panel.php:1067
-#: inc/platform.php:62
-msgid "Show footer columns"
 msgstr ""
 
 #: inc/admin-panel.php:1068
 #: inc/platform.php:63
+msgid "Show footer columns"
+msgstr ""
+
+#: inc/admin-panel.php:1069
+#: inc/platform.php:64
 msgid "Show footer contact details"
 msgstr ""
 
-#: inc/admin-panel.php:1079
-#: inc/platform.php:64
+#: inc/admin-panel.php:1080
+#: inc/platform.php:65
 msgid "Show footer copyright"
 msgstr ""
 
-#: inc/admin-panel.php:1082
-#: inc/platform.php:65
+#: inc/admin-panel.php:1083
+#: inc/platform.php:66
 msgid "Show footer legal text"
 msgstr ""
 
-#: inc/admin-panel.php:1065
-#: inc/platform.php:61
+#: inc/admin-panel.php:1066
+#: inc/platform.php:62
 msgid "Show footer tagline"
 msgstr ""
 
-#: inc/platform.php:121
+#: inc/platform.php:40
+msgid "Show header action button"
+msgstr ""
+
+#: inc/platform.php:122
 msgid "Show listing date and reading time"
 msgstr ""
 
@@ -17980,7 +17988,7 @@ msgstr ""
 msgid "Show post tags"
 msgstr ""
 
-#: inc/platform.php:123
+#: inc/platform.php:124
 msgid "Show previous and next posts"
 msgstr ""
 
@@ -17988,8 +17996,8 @@ msgstr ""
 msgid "Show search field in the header"
 msgstr ""
 
-#: inc/admin-panel.php:1043
-#: inc/platform.php:58
+#: inc/admin-panel.php:1044
+#: inc/platform.php:59
 msgid "Show shared footer"
 msgstr ""
 
@@ -18009,7 +18017,7 @@ msgstr ""
 msgid "Show the dark/light toggle in the header"
 msgstr ""
 
-#: inc/platform.php:71
+#: inc/platform.php:72
 msgid "Show the decorative dot after the text logo"
 msgstr ""
 
@@ -18017,11 +18025,11 @@ msgstr ""
 msgid "Show the featured image caption"
 msgstr ""
 
-#: inc/platform.php:43
+#: inc/platform.php:44
 msgid "Show the language switcher when supported"
 msgstr ""
 
-#: inc/admin-panel.php:1154
+#: inc/admin-panel.php:1155
 msgid "Show the page title centered inside the featured image"
 msgstr ""
 
@@ -18037,8 +18045,8 @@ msgstr ""
 msgid "Show the “Scroll to top” button"
 msgstr ""
 
-#: inc/admin-panel.php:1044
-#: inc/platform.php:59
+#: inc/admin-panel.php:1045
+#: inc/platform.php:60
 msgid "Show theme footer with shared footer"
 msgstr ""
 
@@ -18046,7 +18054,7 @@ msgstr ""
 msgid "Showers & secure lockers"
 msgstr ""
 
-#: inc/admin-panel.php:1083
+#: inc/admin-panel.php:1084
 msgid "Shown bottom-right in the footer. Leave empty to hide."
 msgstr ""
 
@@ -18067,11 +18075,11 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-#: inc/admin-panel.php:1120
+#: inc/admin-panel.php:1121
 msgid "Sidebar column width."
 msgstr ""
 
-#: inc/admin-panel.php:1120
+#: inc/admin-panel.php:1121
 msgid "Sidebar width (px)"
 msgstr ""
 
@@ -18149,7 +18157,7 @@ msgstr ""
 msgid "Single / Pack"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:523
+#: inc/demos/gnnonepage.php:522
 msgid "Single Object"
 msgstr ""
 
@@ -18165,8 +18173,8 @@ msgstr ""
 msgid "Single day"
 msgstr ""
 
-#: inc/admin-panel.php:1193
-#: inc/platform.php:453
+#: inc/admin-panel.php:1194
+#: inc/platform.php:454
 msgid "Single featured image"
 msgstr ""
 
@@ -18190,16 +18198,16 @@ msgstr ""
 msgid "Single post content width (px)"
 msgstr ""
 
-#: inc/platform.php:70
+#: inc/platform.php:71
 msgid "Single post footer override"
 msgstr ""
 
-#: inc/platform.php:69
+#: inc/platform.php:70
 msgid "Single post header override"
 msgstr ""
 
-#: inc/admin-panel.php:1190
-#: inc/platform.php:452
+#: inc/admin-panel.php:1191
+#: inc/platform.php:453
 msgid "Single post layout and details"
 msgstr ""
 
@@ -18237,7 +18245,7 @@ msgid "Site"
 msgstr ""
 
 #: inc/admin-panel.php:992
-#: inc/platform.php:163
+#: inc/platform.php:164
 msgid "Site design"
 msgstr ""
 
@@ -18249,7 +18257,7 @@ msgstr ""
 msgid "Site layout overrides"
 msgstr ""
 
-#: inc/platform.php:455
+#: inc/platform.php:456
 msgid "Site platform"
 msgstr ""
 
@@ -18257,7 +18265,7 @@ msgstr ""
 msgid "Site response"
 msgstr ""
 
-#: inc/admin-panel.php:1473
+#: inc/admin-panel.php:1474
 msgid "Site settings (includes private configuration)"
 msgstr ""
 
@@ -18294,19 +18302,19 @@ msgstr ""
 msgid "Slider"
 msgstr ""
 
-#: inc/platform.php:146
+#: inc/platform.php:147
 msgid "Slider Revolution"
 msgstr ""
 
-#: inc/platform.php:149
+#: inc/platform.php:150
 msgid "Slider Revolution alias"
 msgstr ""
 
-#: inc/platform.php:471
+#: inc/platform.php:472
 msgid "Slider Revolution is not active."
 msgstr ""
 
-#: inc/platform.php:138
+#: inc/platform.php:139
 msgid "Slider group"
 msgstr ""
 
@@ -18314,7 +18322,7 @@ msgstr ""
 msgid "Slider groups"
 msgstr ""
 
-#: inc/platform.php:140
+#: inc/platform.php:141
 msgid "Slider source"
 msgstr ""
 
@@ -18386,11 +18394,11 @@ msgstr ""
 msgid "Social profile URL"
 msgstr ""
 
-#: inc/platform.php:116
+#: inc/platform.php:117
 msgid "Soft"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:259
+#: inc/demos/gnnonepage.php:258
 msgid "Soft matte ceramic coat"
 msgstr ""
 
@@ -18406,7 +18414,7 @@ msgstr ""
 msgid "Solve the core workflow cleanly before adding configuration knobs."
 msgstr ""
 
-#: inc/admin-panel.php:1747
+#: inc/admin-panel.php:1748
 msgid "Some Elementor templates could not be saved. Please retry."
 msgstr ""
 
@@ -18436,7 +18444,7 @@ msgstr ""
 msgid "Spaces, details and the work behind each project."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:555
+#: inc/demos/gnnonepage.php:554
 msgid "Spare gasket and filter pack"
 msgstr ""
 
@@ -18729,7 +18737,7 @@ msgstr ""
 msgid "Start with colour, type and spacing tokens. Add components only when you have used them twice."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:525
+#: inc/demos/gnnonepage.php:524
 msgid "Start with one room—choose Mist, Tone or Pour."
 msgstr ""
 
@@ -19001,7 +19009,7 @@ msgstr ""
 msgid "Strict professional confidentiality and data security"
 msgstr ""
 
-#: inc/platform.php:117
+#: inc/platform.php:118
 msgid "Strong"
 msgstr ""
 
@@ -19177,11 +19185,11 @@ msgstr ""
 msgid "Study notes and course planning desk"
 msgstr ""
 
-#: inc/admin-panel.php:1302
+#: inc/admin-panel.php:1303
 msgid "Style %d"
 msgstr ""
 
-#: inc/admin-panel.php:1285
+#: inc/admin-panel.php:1286
 msgid "Style %d name"
 msgstr ""
 
@@ -19355,11 +19363,11 @@ msgstr ""
 msgid "Surface"
 msgstr ""
 
-#: inc/platform.php:110
+#: inc/platform.php:111
 msgid "Surface shadow"
 msgstr ""
 
-#: inc/admin-panel.php:1238
+#: inc/admin-panel.php:1239
 msgid "Surfaces"
 msgstr ""
 
@@ -19379,12 +19387,12 @@ msgstr ""
 msgid "Syllabus & method"
 msgstr ""
 
-#: inc/platform.php:137
+#: inc/platform.php:138
 msgid "Sync colors and fonts with Elementor"
 msgstr ""
 
-#: inc/platform.php:80
-#: inc/platform.php:92
+#: inc/platform.php:81
+#: inc/platform.php:93
 msgid "System fonts"
 msgstr ""
 
@@ -19558,7 +19566,7 @@ msgstr ""
 msgid "Technology & intellectual property"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:406
+#: inc/demos/gnnonepage.php:405
 msgid "Technology that settles into the room."
 msgstr ""
 
@@ -19711,7 +19719,7 @@ msgstr ""
 msgid "Test the options and agree which trade-offs are worth making."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:473
+#: inc/demos/gnnonepage.php:472
 msgid "Tested in 24 apartments before tooling"
 msgstr ""
 
@@ -19723,18 +19731,18 @@ msgstr ""
 msgid "Tests & assessment"
 msgstr ""
 
-#: inc/admin-panel.php:1310
+#: inc/admin-panel.php:1311
 #: inc/design-system.php:314
 #: inc/site-platform.php:95
 msgid "Text"
 msgstr ""
 
-#: inc/admin-panel.php:1246
+#: inc/admin-panel.php:1247
 msgid "Text & Borders"
 msgstr ""
 
 #: inc/admin-panel.php:613
-#: inc/admin-panel.php:1053
+#: inc/admin-panel.php:1054
 msgid "Text (site title)"
 msgstr ""
 
@@ -19742,7 +19750,7 @@ msgstr ""
 msgid "Text case"
 msgstr ""
 
-#: inc/admin-panel.php:1230
+#: inc/admin-panel.php:1231
 msgid "Text on accent"
 msgstr ""
 
@@ -19758,7 +19766,7 @@ msgstr ""
 msgid "The Estate Cottage"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:380
+#: inc/demos/gnnonepage.php:379
 msgid "The Family"
 msgstr ""
 
@@ -19778,7 +19786,7 @@ msgstr ""
 msgid "The agency model"
 msgstr ""
 
-#: inc/platform.php:269
+#: inc/platform.php:270
 msgid "The analytics ID is invalid. No settings were changed."
 msgstr ""
 
@@ -19852,7 +19860,7 @@ msgstr ""
 msgid "The founding partners start an independent practice in London."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:552
+#: inc/demos/gnnonepage.php:551
 msgid "The full Series 01 collection for every room."
 msgstr ""
 
@@ -19988,7 +19996,7 @@ msgstr ""
 msgid "The team"
 msgstr ""
 
-#: inc/admin-panel.php:1233
+#: inc/admin-panel.php:1234
 msgid "The text/icon color painted on top of the accent color (e.g. button labels). If you pick a bright custom accent, set this for readable contrast."
 msgstr ""
 
@@ -20024,7 +20032,7 @@ msgid "Theme Mode"
 msgstr ""
 
 #: inc/admin-panel.php:217
-#: inc/admin-panel.php:1345
+#: inc/admin-panel.php:1346
 #: inc/admin-screens.php:353
 msgid "Theme default"
 msgstr ""
@@ -20041,7 +20049,7 @@ msgstr ""
 msgid "Theme settings"
 msgstr ""
 
-#: inc/admin-panel.php:1748
+#: inc/admin-panel.php:1749
 msgid "Theme update settings saved."
 msgstr ""
 
@@ -20049,8 +20057,8 @@ msgstr ""
 msgid "Theme updates"
 msgstr ""
 
-#: inc/admin-panel.php:1546
-#: inc/admin-panel.php:1549
+#: inc/admin-panel.php:1547
+#: inc/admin-panel.php:1550
 msgid "Theme updates (GitHub)"
 msgstr ""
 
@@ -20171,7 +20179,7 @@ msgstr ""
 msgid "Three principles we hold to"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:308
+#: inc/demos/gnnonepage.php:307
 msgid "Three shared details connect every object in Series 01, from the bedside to the kitchen counter."
 msgstr ""
 
@@ -20227,7 +20235,7 @@ msgstr ""
 msgid "Title color"
 msgstr ""
 
-#: inc/admin-panel.php:1150
+#: inc/admin-panel.php:1151
 #: inc/page-meta.php:114
 msgid "Title over featured image"
 msgstr ""
@@ -20236,7 +20244,7 @@ msgstr ""
 msgid "To maintain high craft standards, we only deliver curated, master-retouched plates in high-resolution formats."
 msgstr ""
 
-#: header.php:92
+#: header.php:107
 #: inc/frontend.php:305
 msgid "Toggle dark / light mode"
 msgstr ""
@@ -20249,22 +20257,22 @@ msgstr ""
 msgid "Tools that fit how software teams actually ship."
 msgstr ""
 
-#: inc/admin-panel.php:1141
+#: inc/admin-panel.php:1142
 #: inc/blog.php:58
 #: inc/blog.php:91
 msgid "Top"
 msgstr ""
 
 #: inc/admin-panel.php:1029
-#: inc/admin-panel.php:1254
+#: inc/admin-panel.php:1255
 msgid "Top bar"
 msgstr ""
 
-#: inc/admin-panel.php:1258
+#: inc/admin-panel.php:1259
 msgid "Top bar background color"
 msgstr ""
 
-#: inc/admin-panel.php:1266
+#: inc/admin-panel.php:1267
 msgid "Top bar text color"
 msgstr ""
 
@@ -20272,7 +20280,7 @@ msgstr ""
 msgid "Top loading progress bar"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:324
+#: inc/demos/gnnonepage.php:323
 msgid "Top-fill basin"
 msgstr ""
 
@@ -20316,11 +20324,11 @@ msgstr ""
 msgid "Track tasks, code branches and review queues with real-time status updates."
 msgstr ""
 
-#: inc/platform.php:449
+#: inc/platform.php:450
 msgid "Tracking delivery"
 msgstr ""
 
-#: inc/admin-panel.php:1407
+#: inc/admin-panel.php:1408
 msgid "Tracking options"
 msgstr ""
 
@@ -20476,7 +20484,7 @@ msgstr ""
 msgid "Tuition & fees"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:332
+#: inc/demos/gnnonepage.php:331
 msgid "Tuned for low-volume listening at a desk or reading chair. A milled acoustic grille replaces fabric mesh, pairing over USB-C or local Wi-Fi with zero cloud account required."
 msgstr ""
 
@@ -20526,7 +20534,7 @@ msgstr ""
 msgid "Two dedicated coordinators on the wedding day"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:538
+#: inc/demos/gnnonepage.php:537
 msgid "Two devices paired together for bedroom and workspace."
 msgstr ""
 
@@ -20600,7 +20608,7 @@ msgstr ""
 msgid "Typography, spacing and colours adapt automatically to your active theme settings."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:333
+#: inc/demos/gnnonepage.php:332
 msgid "USB-C & Wi-Fi"
 msgstr ""
 
@@ -20715,11 +20723,11 @@ msgstr ""
 msgid "Update Elementor before loading this package."
 msgstr ""
 
-#: inc/admin-panel.php:1564
+#: inc/admin-panel.php:1565
 msgid "Update available: version %s."
 msgstr ""
 
-#: inc/admin-panel.php:1749
+#: inc/admin-panel.php:1750
 msgid "Update check complete."
 msgstr ""
 
@@ -20748,7 +20756,7 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: inc/admin-panel.php:1487
+#: inc/admin-panel.php:1488
 msgid "Upload a GNN settings JSON file (maximum 1 MB). Fields absent from the file keep their current values."
 msgstr ""
 
@@ -20761,8 +20769,8 @@ msgstr ""
 msgid "Upload limit"
 msgstr ""
 
-#: inc/platform.php:81
-#: inc/platform.php:93
+#: inc/platform.php:82
+#: inc/platform.php:94
 msgid "Uploaded local font"
 msgstr ""
 
@@ -20796,7 +20804,7 @@ msgstr ""
 msgid "Usage indexing is in progress. Reload to continue."
 msgstr ""
 
-#: inc/admin-panel.php:1334
+#: inc/admin-panel.php:1335
 msgid "Use Google Fonts instead"
 msgstr ""
 
@@ -20820,7 +20828,7 @@ msgstr ""
 msgid "Use individual modules or run your entire delivery cycle in one place."
 msgstr ""
 
-#: inc/admin-panel.php:1369
+#: inc/admin-panel.php:1370
 msgid "Use it in content with e.g. %s"
 msgstr ""
 
@@ -20848,7 +20856,7 @@ msgstr ""
 msgid "Use your booking form or reach our dining room directly by phone or email."
 msgstr ""
 
-#: inc/admin-panel.php:1112
+#: inc/admin-panel.php:1113
 msgid "Used by the mobile dock's Contact link (and anywhere else the theme links to \"get in touch\"). Auto-detect looks for a page slugged \"contact\" or \"iletisim\"."
 msgstr ""
 
@@ -20910,7 +20918,7 @@ msgstr ""
 msgid "Venue styling and table design concept"
 msgstr ""
 
-#: inc/admin-panel.php:1402
+#: inc/admin-panel.php:1403
 msgid "Verification and custom markup"
 msgstr ""
 
@@ -21114,7 +21122,7 @@ msgstr ""
 msgid "Viscous Matter"
 msgstr ""
 
-#: inc/admin-panel.php:1145
+#: inc/admin-panel.php:1146
 msgid "Visible area when cropped."
 msgstr ""
 
@@ -22102,7 +22110,7 @@ msgstr ""
 msgid "What usage rights are included with delivered images?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:610
+#: inc/demos/gnnonepage.php:609
 msgid "What voltage and plug types are supported?"
 msgstr ""
 
@@ -22144,7 +22152,7 @@ msgstr ""
 msgid "When do applications close for the next term?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:600
+#: inc/demos/gnnonepage.php:599
 msgid "When does Series 01 ship?"
 msgstr ""
 
@@ -22192,7 +22200,7 @@ msgstr ""
 msgid "Which insurance plans or payment methods do you accept?"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:271
+#: inc/demos/gnnonepage.php:270
 msgid "White Olen device placed on a shelf beside a blue ceramic vase"
 msgstr ""
 
@@ -22432,7 +22440,7 @@ msgstr ""
 msgid "Write to our partnerships coordinator"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:658
+#: inc/demos/gnnonepage.php:657
 msgid "Write to our team about reservations, architectural specifications or press samples. We reply within one working day."
 msgstr ""
 
@@ -22592,7 +22600,7 @@ msgstr ""
 msgid "Yes. You can add seats or switch between tiers at any time from your billing settings."
 msgstr ""
 
-#: inc/demos/gnnonepage.php:621
+#: inc/demos/gnnonepage.php:620
 msgid "Yes. You can swap models, change voltage region or upgrade from a Single Object to a Room Pair any time before your batch locks for final assembly."
 msgstr ""
 
@@ -22604,7 +22612,7 @@ msgstr ""
 msgid "You are not allowed to restore configuration snapshots."
 msgstr ""
 
-#: inc/admin-panel.php:1568
+#: inc/admin-panel.php:1569
 msgid "You are running the latest version."
 msgstr ""
 
@@ -22694,19 +22702,19 @@ msgstr ""
 msgid "— second line"
 msgstr ""
 
-#: inc/admin-panel.php:1172
+#: inc/admin-panel.php:1173
 msgid "“Back to home” button text"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:230
+#: inc/demos/gnnonepage.php:229
 msgid "“No blinking LEDs, no subscriptions, no plastic foam in the box.”"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:218
+#: inc/demos/gnnonepage.php:217
 msgid "“Quietly solved the visual clutter on our nightstand.”"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:222
+#: inc/demos/gnnonepage.php:221
 msgid "“Tactile hardware that refuses to beg for attention.”"
 msgstr ""
 
@@ -22714,7 +22722,7 @@ msgstr ""
 msgid "“They listened carefully, asked the right questions early and delivered a site our whole team enjoys updating. Enquiries improved within the first month.”"
 msgstr ""
 
-#: inc/demos/gnnonepage.php:226
+#: inc/demos/gnnonepage.php:225
 msgid "“Three everyday appliances that finally share one silhouette.”"
 msgstr ""
 

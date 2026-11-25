@@ -331,18 +331,21 @@
 
 .elementor .e-con.gnn-st.gnn-gnnonepage-hero-stage {
 	display: grid;
-	gap: 14px;
+	position: relative;
 	justify-items: center;
-	padding: clamp(14px, 2vw, 24px);
-	border-radius: var(--op-radius-xl);
-	background: var(--op-stage-grad);
-	border: 1px solid var(--op-glass-border);
-	box-shadow: var(--op-shadow-lg);
+	padding: 0;
+	background: transparent;
+	border: 0;
+	box-shadow: none;
+}
+
+.gnn-gnnonepage-hero-stage > .gnn-gnnonepage-caption {
+	display: none;
 }
 
 .gnn-gnnonepage-hero-media {
 	width: 100%;
-	border-radius: var(--op-radius-lg);
+	border-radius: 0;
 	aspect-ratio: 16 / 9;
 	overflow: hidden;
 }
@@ -351,6 +354,50 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.gnn-gnnonepage-hero-stage.has-product-turn .gnn-gnnonepage-hero-media {
+		opacity: 0;
+		aspect-ratio: auto;
+		height: clamp(380px, 76svh, 740px);
+	}
+
+	.gnn-onepage-turntable {
+		position: absolute;
+		inset: 0;
+		display: grid;
+		place-items: center;
+		perspective: 950px;
+		pointer-events: none;
+		background: radial-gradient(ellipse at center, rgba(101, 133, 255, .24), transparent 64%);
+	}
+
+	.gnn-onepage-product {
+		position: relative;
+		width: clamp(142px, 23vw, 305px);
+		aspect-ratio: 0.66;
+		transform-style: preserve-3d;
+		transform: translateY(var(--product-drift, 0px)) rotateX(9deg) rotateY(var(--product-angle, -24deg)) rotateZ(-10deg);
+	}
+
+	.gnn-onepage-product span {
+		position: absolute;
+		inset: 0;
+		border-radius: 18% / 12%;
+		background: #454754;
+		transform: translateZ(var(--product-depth));
+	}
+
+	.gnn-onepage-product span:first-child,
+	.gnn-onepage-product span:last-child {
+		background: linear-gradient(145deg, #b3b4bc, #666874 42%, #292a34 85%);
+		box-shadow: inset 0 0 0 1px #898b98, inset 0 0 16px rgba(12, 14, 22, .6);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.gnn-onepage-turntable { display: none; }
 }
 
 /* ---------- 2. Press / Proof Strip ---------- */

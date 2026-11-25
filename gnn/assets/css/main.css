@@ -193,6 +193,10 @@ input[type="submit"].gnn-btn,
 /* ---------------------------------------------------------------------------
  * 4. Header
  * ------------------------------------------------------------------------- */
+/* An explicit header color takes priority over the active design preset. */
+:root:not([data-theme="light"]) .site-header.gnn-header-bg-dark { background: var(--gnn-header-bg-dark) !important; }
+:root[data-theme="light"] .site-header.gnn-header-bg-light { background: var(--gnn-header-bg-light) !important; }
+
 .site-header {
 	position: sticky;
 	top: 0;
@@ -345,6 +349,44 @@ input[type="submit"].gnn-btn,
 
 /* Header actions */
 .header-actions { margin-inline-start: auto; display: flex; align-items: center; gap: 18px; }
+.gnn-header-search {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	min-width: 0;
+	max-width: 240px;
+	height: 40px;
+	padding-inline-start: 12px;
+	border: 1px solid var(--line);
+	border-radius: 999px;
+	background: var(--bg2);
+}
+.gnn-header-shop .gnn-header-search { max-width: 640px; justify-self: center; }
+.gnn-header-search:focus-within { border-color: var(--accent); }
+.gnn-header-search input[type="search"] {
+	flex: 1;
+	min-width: 0;
+	height: 100%;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+	color: var(--fg);
+	box-shadow: none;
+}
+.gnn-header-search button {
+	flex: 0 0 36px;
+	display: grid;
+	place-items: center;
+	height: 36px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--fg2);
+	cursor: pointer;
+}
+.gnn-header-search button:hover { color: var(--fg); }
 .header-search-link { font-size: 14px; font-weight: 600; color: var(--fg2); }
 .theme-toggle {
 	width: 34px; height: 34px;
