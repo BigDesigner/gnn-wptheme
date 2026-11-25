@@ -25,6 +25,7 @@
 	var active    = 'start';
 	var dirty     = false;
 	var status    = form && form.querySelector( '.gnn-save-status' );
+	var saveControls = panel.querySelectorAll( '#gnn-save-header, .gnn-savebar' );
 
 	if ( form && ! status ) {
 		status = document.createElement( 'p' );
@@ -168,10 +169,7 @@
 			}
 		} );
 
-		var toolTabs = [ 'start', 'advanced', 'templates', 'layouts', 'setup', 'plugins', 'maintenance' ];
-		panel.querySelectorAll( '#gnn-save-header, .gnn-savebar' ).forEach( function ( el ) {
-			el.hidden = toolTabs.includes( id );
-		} );
+		updateSaveControls();
 
 		if ( remember ) {
 			history.replaceState( null, '', '#gnn-tab-' + id );
@@ -181,6 +179,13 @@
 				/* Session storage is optional. */
 			}
 		}
+	}
+
+	function updateSaveControls() {
+		var visible = form && form.querySelector( '.gnn-tab:not([hidden])' );
+		saveControls.forEach( function ( el ) {
+			el.hidden = ! visible;
+		} );
 	}
 
 	tabs.forEach( function ( tab, index ) {
@@ -227,14 +232,57 @@
 	}
 
 	window.addEventListener( 'hashchange', function () {
-		if ( tabs.length ) {
+		if ( tabs.length && ( ! location.hash || location.hash.startsWith( '#gnn-tab-' ) ) ) {
+			if ( search && search.value ) {
+				search.value = '';
+				applySearch();
+			}
 			activate( location.hash.replace( '#gnn-tab-', '' ), false );
 		}
+	} );
+
+	// Card navigation uses buttons so the tab hash stays available for tab routing.
+	panes.forEach( function ( pane ) {
+		var cards = Array.from( pane.querySelectorAll(
+			':scope > .gnn-settings-card, :scope > form > .gnn-settings-card, :scope > form > .gnn-choice-grid > .gnn-rule-card, ' +
+			':scope > .gnn-start > .gnn-start-card, :scope > .gnn-choice-grid > .gnn-plugin-card'
+		) );
+		var targets = cards.map( function ( card ) {
+			return card.querySelector( ':scope > .gnn-settings-group__header > h2, :scope > .gnn-start-head > h2, :scope > h2, :scope > h3, :scope > summary' );
+		} ).filter( Boolean );
+
+		if ( targets.length < 3 ) {
+			return;
+		}
+
+		var nav = document.createElement( 'nav' );
+		nav.className = 'gnn-card-nav';
+		nav.setAttribute( 'aria-label', text.groupsLabel );
+		targets.forEach( function ( target ) {
+			var button = document.createElement( 'button' );
+			button.type = 'button';
+			button.textContent = ( target.querySelector( ':scope > span' ) || target ).textContent.trim();
+			button.addEventListener( 'click', function () {
+				var details = target.closest( 'details' );
+				if ( details ) {
+					details.open = true;
+				}
+				target.tabIndex = -1;
+				target.focus( { preventScroll: true } );
+				target.scrollIntoView( { block: 'start' } );
+			} );
+			nav.appendChild( button );
+		} );
+		pane.prepend( nav );
 	} );
 
 	// ==========================================================================
 	// 4. Live Search Filtering
 	// ==========================================================================
+	var searchRows = '.gnn-setting-row, .gnn-typo-row, .gnn-field';
+	var searchGroups = '.gnn-settings-group, .gnn-btn-style-card, .gnn-design-group, .gnn-design-subgroup, .gnn-rule-card';
+	var searchOpened = new Set();
+
 	function applySearch() {
 		if ( ! search ) {
 			return;
@@ -242,61 +290,51 @@
 		var term = search.value.trim().toLocaleLowerCase();
 		panel.classList.toggle( 'gnn-searching', !! term );
 
-		if ( ! term ) {
-			if ( feedback ) {
-				feedback.hidden = true;
-			}
-			panes.forEach( function ( pane ) {
-				pane.querySelectorAll( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ).forEach( function ( row ) {
-					row.hidden = false;
-					row.classList.remove( 'is-search-match' );
-				} );
-				pane.querySelectorAll( '.gnn-section-bar' ).forEach( function ( bar ) {
-					bar.hidden = false;
-				} );
-			} );
-			activate( active, false );
-			return;
-		}
+		searchOpened.forEach( function ( details ) { details.open = false; } );
+		searchOpened.clear();
 
 		var count = 0;
 		panes.forEach( function ( pane ) {
 			var paneMatches = 0;
-			var rows = Array.from( pane.querySelectorAll( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ) );
-
-			rows.forEach( function ( row ) {
-				var match = ( row.textContent + ' ' + Array.from( row.querySelectorAll( 'input,select' ) ).map( function ( el ) { return el.getAttribute( 'aria-label' ) || ''; } ).join( ' ' ) ).toLocaleLowerCase().includes( term );
-				row.hidden = ! match;
+			pane.querySelectorAll( searchRows ).forEach( function ( row ) {
+				var match = !! term && ( row.textContent + ' ' + Array.from( row.querySelectorAll( 'input,select' ) ).map( function ( el ) { return el.getAttribute( 'aria-label' ) || ''; } ).join( ' ' ) ).toLocaleLowerCase().includes( term );
+				row.hidden = !! term && ! match;
 				row.classList.toggle( 'is-search-match', match );
 				if ( match ) {
-					count++;
 					paneMatches++;
 				}
 			} );
 
-			// Hide section bars that have no visible rows immediately after them
-			var bars = Array.from( pane.querySelectorAll( '.gnn-section-bar' ) );
-			bars.forEach( function ( bar ) {
-				var next = bar.nextElementSibling;
-				var hasVisibleRow = false;
-				while ( next && ! next.classList.contains( 'gnn-section-bar' ) ) {
-					if ( ( next.matches( '.gnn-setting-row, .gnn-typo-row, .gnn-field' ) || next.querySelector( '.gnn-setting-row:not([hidden]), .gnn-typo-row:not([hidden]), .gnn-field:not([hidden])' ) ) && ! next.hidden ) {
-						hasVisibleRow = true;
-						break;
-					}
-					next = next.nextElementSibling;
+			pane.querySelectorAll( searchGroups ).forEach( function ( card ) {
+				var match = !! card.querySelector( '.is-search-match' );
+				card.hidden = !! term && ! match;
+				if ( term && match && card.tagName === 'DETAILS' && ! card.open ) {
+					card.open = true;
+					searchOpened.add( card );
 				}
-				bar.hidden = ! hasVisibleRow;
 			} );
 
-			pane.hidden = ! paneMatches;
+			if ( term ) {
+				pane.hidden = ! paneMatches;
+				if ( paneMatches ) {
+					refreshEditors( pane );
+				}
+			}
+			count += paneMatches;
 		} );
 
 		if ( feedback ) {
-			feedback.hidden = false;
+			feedback.hidden = ! term;
 			feedback.textContent = count
 				? ( text.searchResults || '%d setting groups found' ).replace( '%d', count )
 				: ( text.noResults || 'No settings match your search. Try another keyword.' );
+		}
+
+		if ( term ) {
+			updateSaveControls();
+		} else {
+			syncBlogControls();
+			activate( active, false );
 		}
 	}
 
@@ -635,9 +673,6 @@
 	}
 
 	panel.addEventListener( 'change', syncBlogControls );
-	if ( search ) {
-		search.addEventListener( 'input', syncBlogControls );
-	}
 	syncBlogControls();
 	var headerPreset = document.getElementById( 'gnn-header_preset' );
 	var legacyHeader = panel.querySelector( '[data-gnn-legacy-header]' );

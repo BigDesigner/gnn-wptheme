@@ -135,7 +135,45 @@ function gnn_setup_wizard_content() {
 	if ( ! $ready ) {
 		gnn_plugin_cards();
 	}
-	echo '<div class="gnn-choice-grid">';
+	$featured = array_filter(
+		$profiles,
+		static function ( $profile ) {
+			return true === ( $profile['featured'] ?? false );
+		}
+	);
+	if ( $featured ) {
+		$positions = array_flip( array_keys( $profiles ) );
+		uksort(
+			$profiles,
+			static function ( $first, $second ) use ( $profiles, $positions ) {
+				$first_order  = $profiles[ $first ]['order'] ?? null;
+				$second_order = $profiles[ $second ]['order'] ?? null;
+				$by_order     = ( is_int( $first_order ) ? $first_order : PHP_INT_MAX ) <=> ( is_int( $second_order ) ? $second_order : PHP_INT_MAX );
+				return 0 === $by_order ? $positions[ $first ] <=> $positions[ $second ] : $by_order;
+			}
+		);
+		$featured = array_slice( array_intersect_key( $profiles, $featured ), 0, 4, true );
+		$profiles = array_diff_key( $profiles, $featured );
+		gnn_ready_design_grid( $featured, $ready, 'featured' );
+	}
+	if ( $profiles ) {
+		if ( $featured ) {
+			echo '<h2 class="gnn-design-grid-title">' . esc_html__( 'Other designs', 'gnn' ) . '</h2>';
+		}
+		gnn_ready_design_grid( $profiles, $ready, $featured ? 'other' : '' );
+	}
+	gnn_demo_confirmation();
+}
+
+/**
+ * Render designs using the existing install and draft import actions.
+ *
+ * @param array  $profiles Profiles to display.
+ * @param bool   $ready    Whether Elementor is available.
+ * @param string $variant Grid layout.
+ */
+function gnn_ready_design_grid( $profiles, $ready, $variant ) {
+	echo '<div class="gnn-choice-grid gnn-ready-designs' . ( $variant ? ' gnn-ready-designs--' . esc_attr( $variant ) : '' ) . '">';
 	foreach ( $profiles as $slug => $item ) {
 		$tpl = function_exists( 'gnn_template' ) ? gnn_template( $slug ) : null;
 		if ( $tpl ) {
@@ -147,7 +185,18 @@ function gnn_setup_wizard_content() {
 			$preview_url = get_template_directory_uri() . '/assets/images/' . $preview;
 			$can_install = $ready && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) );
 		}
-		echo '<article class="gnn-settings-card gnn-profile-card"><img class="gnn-profile-preview" src="' . esc_url( $preview_url ) . '" alt="' . esc_attr( $item['label'] ) . '" width="1600" height="1100"><h2>' . esc_html( $item['label'] ) . '</h2>';
+		$custom_preview = $item['preview'] ?? '';
+		if ( is_string( $custom_preview ) && preg_match( '~\A[\w.-]+(?:/[\w.-]+)*\z~', $custom_preview ) && 0 === validate_file( $custom_preview ) ) {
+			$preview_file = get_theme_file_path( $custom_preview );
+			if ( is_file( $preview_file ) && is_readable( $preview_file ) ) {
+				$preview_url = get_theme_file_uri( $custom_preview );
+			}
+		}
+		echo '<article class="gnn-settings-card gnn-profile-card"><img class="gnn-profile-preview" src="' . esc_url( $preview_url ) . '" alt="" width="1600" height="1100"><h2>' . esc_html( $item['label'] ) . '</h2>';
+		if ( 'featured' === $variant && ! empty( $item['description'] ) ) {
+			echo '<p class="gnn-profile-description">' . esc_html( $item['description'] ) . '</p>';
+		}
+		echo '<div class="gnn-profile-action">';
 		if ( 'architecture' === $slug || gnn_st_has( $slug ) || $tpl ) {
 			echo '<button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $slug ) . '" data-label="' . esc_attr( $item['label'] ) . '"' . disabled( ! $can_install, true, false ) . '>' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
 		} else {
@@ -156,10 +205,9 @@ function gnn_setup_wizard_content() {
 			gnn_panel_submit_button( __( 'Add draft pages', 'gnn' ), 'secondary', 'submit', true, $can_install ? array() : array( 'disabled' => 'disabled' ) );
 			echo '<p class="gnn-operation-status" role="status"></p></form>';
 		}
-		echo '</article>';
+		echo '</div></article>';
 	}
 	echo '</div>';
-	gnn_demo_confirmation();
 }
 
 /** One explicit confirmation for replacing site content with a demo. */

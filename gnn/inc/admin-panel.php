@@ -284,16 +284,38 @@ function gnn_panel_code_editors() {
 // ----- Visual Component and Field Helpers -------------------------------------
 
 /**
- * Render a section divider bar.
+ * Render a standalone section heading for existing callers.
  *
- * @param string $title Section bar title.
+ * @param string $title Section title.
  */
 function gnn_section_bar( $title ) {
 	?>
-	<div class="gnn-section-bar" aria-hidden="true">
-		<span><?php echo esc_html( $title ); ?></span>
-	</div>
+	<h2 class="gnn-section-bar"><?php echo esc_html( $title ); ?></h2>
 	<?php
+}
+
+/**
+ * Open a settings card and its body.
+ *
+ * @param string $title Card title.
+ * @param string $hint  Optional description.
+ */
+function gnn_card_open( $title, $hint = '' ) {
+	?>
+	<section class="gnn-settings-card gnn-settings-group">
+		<header class="gnn-settings-group__header">
+			<h2 class="gnn-settings-group__title"><?php echo esc_html( $title ); ?></h2>
+			<?php if ( $hint ) : ?>
+				<p><?php echo esc_html( $hint ); ?></p>
+			<?php endif; ?>
+		</header>
+		<div class="gnn-settings-group__body">
+	<?php
+}
+
+/** Close a settings card and its body. */
+function gnn_card_close() {
+	echo '</div></section>';
 }
 
 /**
@@ -930,7 +952,7 @@ function gnn_panel_render() {
 					<input type="hidden" name="gnn_options[platform_fields_present]" value="1">
 
 					<section id="gnn-tab-global" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Appearance and behavior', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Appearance and behavior', 'gnn' ) ); ?>
 						<?php
 						gnn_field_cards(
 							'default_mode',
@@ -952,38 +974,45 @@ function gnn_panel_render() {
 						<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice', 'gnn' ), __( 'Applies while the toggle is visible.', 'gnn' ) ); ?>
 						<?php gnn_field_media( 'site_icon', __( 'Favicon (site icon, 512×512)', 'gnn' ), (int) get_option( 'site_icon', 0 ) ); ?>
 
-						<?php gnn_section_bar( __( 'Interactions', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Interactions', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'smooth_scroll', __( 'Smooth scroll for anchor links', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'scroll_top', __( 'Show the “Scroll to top” button', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'scroll_anim', __( 'Reveal blocks on scroll', 'gnn' ), __( 'Blocks fade in as they scroll into view.', 'gnn' ) ); ?>
 
-						<?php gnn_section_bar( __( 'Hero slider', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Hero slider', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'slider_autoplay', __( 'Autoplay', 'gnn' ) ); ?>
 						<?php gnn_field_number( 'slider_interval', __( 'Autoplay interval (seconds)', 'gnn' ), 2, 30 ); ?>
 						<?php gnn_field_checkbox( 'slider_full_height', __( 'Full-height slider', 'gnn' ), __( 'Fills the screen below the header.', 'gnn' ) ); ?>
 						<?php gnn_platform_fields( 'global', array(), array( 'hero_engine', 'hero_revslider', 'hero_style', 'hero_group' ), '' ); ?>
 
-						<?php gnn_section_bar( __( 'Loading', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Loading', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'preloader', __( 'Top loading progress bar', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'loading_screen', __( 'Full-screen loading overlay', 'gnn' ) ); ?>
 
-						<?php gnn_platform_fields( 'global', array(), array( 'elementor_kit_sync' ), __( 'Elementor', 'gnn' ) ); ?>
-						<?php gnn_platform_fields( 'global', array(), array( 'site_segment' ), __( 'Site design', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Elementor', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'global', array(), array( 'elementor_kit_sync' ), '' ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Site design', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'global', array(), array( 'site_segment' ), '' ); ?>
+						<?php gnn_card_close(); ?>
 					</section>
 
 					<section id="gnn-tab-header" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Brand assets', 'gnn' ) ); ?>
-						<div class="gnn-logo-grid">
-							<?php // Stored legacy URLs stay in the form so an untouched save keeps them. ?>
-							<?php gnn_field_media( 'logo_light', __( 'Logo — light mode (1×)', 'gnn' ), gnn_option( 'logo_light' ) ); ?>
-							<?php gnn_field_media( 'logo_light_2x', __( 'Logo — light mode (2× retina)', 'gnn' ), gnn_option( 'logo_light_2x' ) ); ?>
-							<?php gnn_field_media( 'logo_dark', __( 'Logo — dark mode (1×)', 'gnn' ), gnn_option( 'logo_dark' ) ); ?>
-							<?php gnn_field_media( 'logo_dark_2x', __( 'Logo — dark mode (2× retina)', 'gnn' ), gnn_option( 'logo_dark_2x' ) ); ?>
-						</div>
+						<?php gnn_card_open( __( 'Brand assets', 'gnn' ) ); ?>
+						<?php // Stored legacy URLs stay in the form so an untouched save keeps them. ?>
+						<?php gnn_field_media( 'logo_light', __( 'Logo — light mode (1×)', 'gnn' ), gnn_option( 'logo_light' ) ); ?>
+						<?php gnn_field_media( 'logo_light_2x', __( 'Logo — light mode (2× retina)', 'gnn' ), gnn_option( 'logo_light_2x' ) ); ?>
+						<?php gnn_field_media( 'logo_dark', __( 'Logo — dark mode (1×)', 'gnn' ), gnn_option( 'logo_dark' ) ); ?>
+						<?php gnn_field_media( 'logo_dark_2x', __( 'Logo — dark mode (2× retina)', 'gnn' ), gnn_option( 'logo_dark_2x' ) ); ?>
 						<?php gnn_field_number( 'logo_max_height', __( 'Logo max height — desktop (px)', 'gnn' ), 12, 200 ); ?>
 						<?php gnn_field_number( 'logo_max_height_mobile', __( 'Logo max height — mobile (px)', 'gnn' ), 12, 200 ); ?>
 
-						<?php gnn_section_bar( __( 'Layout', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Layout', 'gnn' ) ); ?>
 						<?php
 						$gnn_header_schema = gnn_platform_schema();
 						gnn_field_select( 'header_preset', __( 'Header style', 'gnn' ), $gnn_header_schema['header_preset'][4] );
@@ -1003,20 +1032,25 @@ function gnn_panel_render() {
 						<?php gnn_field_checkbox( 'show_cart', __( 'Show the cart link (WooCommerce)', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'mobile_dock', __( 'Mobile bottom app dock (≤600px)', 'gnn' ) ); ?>
 
-						<?php gnn_section_bar( __( 'Top bar', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Top bar', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'topbar_enable', __( 'Enable the top announcement bar', 'gnn' ) ); ?>
 						<?php gnn_field_text( 'topbar_text', __( 'Announcement text', 'gnn' ), (string) gnn_option( 'topbar_text' ) ); ?>
 						<?php gnn_field_text( 'topbar_email', __( 'Email', 'gnn' ), (string) gnn_option( 'topbar_email' ) ); ?>
 						<?php gnn_field_text( 'topbar_phone', __( 'Phone', 'gnn' ), (string) gnn_option( 'topbar_phone' ) ); ?>
 
-						<?php gnn_platform_fields( 'header', array( 'header_preset' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Company and header configuration', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'header', array( 'header_preset' ), array(), '' ); ?>
+						<?php gnn_card_close(); ?>
 					</section>
 
 					<section id="gnn-tab-footer" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Footer visibility', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Footer visibility', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'footer_show_shared', __( 'Show shared footer', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'footer_show_with_shared', __( 'Show theme footer with shared footer', 'gnn' ) ); ?>
-						<?php gnn_section_bar( __( 'Footer branding', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Footer branding', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'footer_show_brand', __( 'Show footer brand', 'gnn' ) ); ?>
 						<?php
 						gnn_field_select(
@@ -1030,12 +1064,10 @@ function gnn_panel_render() {
 							)
 						);
 						?>
-						<div class="gnn-logo-grid">
-							<?php gnn_field_media( 'footer_logo_light', __( 'Footer logo — light mode (1×)', 'gnn' ), (int) gnn_option( 'footer_logo_light' ) ); ?>
-							<?php gnn_field_media( 'footer_logo_light_2x', __( 'Footer logo — light mode (2× retina)', 'gnn' ), (int) gnn_option( 'footer_logo_light_2x' ) ); ?>
-							<?php gnn_field_media( 'footer_logo_dark', __( 'Footer logo — dark mode (1×)', 'gnn' ), (int) gnn_option( 'footer_logo_dark' ) ); ?>
-							<?php gnn_field_media( 'footer_logo_dark_2x', __( 'Footer logo — dark mode (2× retina)', 'gnn' ), (int) gnn_option( 'footer_logo_dark_2x' ) ); ?>
-						</div>
+						<?php gnn_field_media( 'footer_logo_light', __( 'Footer logo — light mode (1×)', 'gnn' ), (int) gnn_option( 'footer_logo_light' ) ); ?>
+						<?php gnn_field_media( 'footer_logo_light_2x', __( 'Footer logo — light mode (2× retina)', 'gnn' ), (int) gnn_option( 'footer_logo_light_2x' ) ); ?>
+						<?php gnn_field_media( 'footer_logo_dark', __( 'Footer logo — dark mode (1×)', 'gnn' ), (int) gnn_option( 'footer_logo_dark' ) ); ?>
+						<?php gnn_field_media( 'footer_logo_dark_2x', __( 'Footer logo — dark mode (2× retina)', 'gnn' ), (int) gnn_option( 'footer_logo_dark_2x' ) ); ?>
 						<?php gnn_field_number( 'footer_logo_height', __( 'Footer logo max height (px)', 'gnn' ), 12, 200, __( 'Controls logo height while preserving aspect ratio (default: 40px). Very wide banner-style logos may render slightly shorter if the footer column is narrow.', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'footer_show_tagline', __( 'Show footer tagline', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'footer_tagline', __( 'Footer tagline', 'gnn' ), (string) gnn_option( 'footer_tagline' ), 3, __( 'HTML tags allowed (e.g. <a>, <br>, <strong>, <span>). Leave empty to use the site tagline.', 'gnn' ) ); ?>
@@ -1058,11 +1090,14 @@ function gnn_panel_render() {
 						gnn_field_text( 'footer_legal', __( 'Footer legal text', 'gnn' ), (string) get_theme_mod( 'gnn_footer_legal', '' ), 'Privacy — Terms', __( 'Shown bottom-right in the footer. Leave empty to hide.', 'gnn' ) );
 						?>
 
-						<?php gnn_platform_fields( 'footer', array( 'footer_show_shared', 'footer_show_with_shared', 'footer_show_brand', 'footer_show_tagline', 'footer_show_widgets', 'footer_show_company', 'footer_show_copyright', 'footer_show_legal' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Company and footer configuration', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'footer', array( 'footer_show_shared', 'footer_show_with_shared', 'footer_show_brand', 'footer_show_tagline', 'footer_show_widgets', 'footer_show_company', 'footer_show_copyright', 'footer_show_legal' ), array(), '' ); ?>
+						<?php gnn_card_close(); ?>
 					</section>
 
 					<section id="gnn-tab-pages" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Page structure', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Page structure', 'gnn' ) ); ?>
 						<?php
 						gnn_field_select(
 							'sidebar_position',
@@ -1087,12 +1122,14 @@ function gnn_panel_render() {
 						<?php gnn_field_number( 'content_top_padding', __( 'Content top spacing (px)', 'gnn' ), 0, 200, __( 'Gap between the header and the page content — or between the featured image and the content, when the page has one.', 'gnn' ) ); ?>
 						<?php gnn_field_number( 'content_bottom_padding', __( 'Content bottom spacing (px)', 'gnn' ), 0, 300, __( 'Gap between the page content and the footer.', 'gnn' ) ); ?>
 
-						<?php gnn_section_bar( __( 'Layout widths', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Layout widths', 'gnn' ) ); ?>
 						<?php gnn_field_number( 'sidebar_width', __( 'Sidebar width (px)', 'gnn' ), 200, 500, __( 'Sidebar column width.', 'gnn' ) ); ?>
 						<?php gnn_field_number( 'boxed_width', __( 'Boxed template max width (px)', 'gnn' ), 600, 1600 ); ?>
 						<?php gnn_field_number( 'full_width', __( 'Full Width template max width (px)', 'gnn' ), 900, 1920 ); ?>
 
-						<?php gnn_section_bar( __( 'Featured image', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Featured image', 'gnn' ) ); ?>
 						<?php gnn_field_number( 'page_featured_image_height', __( 'Page image height (px)', 'gnn' ), 80, 600 ); ?>
 						<?php
 						gnn_field_select(
@@ -1116,7 +1153,8 @@ function gnn_panel_render() {
 						);
 						?>
 
-						<?php gnn_section_bar( __( 'Title over featured image', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Title over featured image', 'gnn' ) ); ?>
 						<?php
 						gnn_field_checkbox(
 							'title_overlay_enable',
@@ -1133,28 +1171,40 @@ function gnn_panel_render() {
 							<?php gnn_field_number( 'shop_per_page', __( 'Products per page', 'gnn' ), 2, 48 ); ?>
 						<?php endif; ?>
 
-						<?php gnn_section_bar( __( '404 page', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( '404 page', 'gnn' ) ); ?>
 						<?php gnn_field_text( 'error404_title', __( '404 title', 'gnn' ), (string) gnn_option( 'error404_title' ), __( 'Page not found', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'error404_text', __( '404 description', 'gnn' ), (string) gnn_option( 'error404_text' ), 2 ); ?>
 						<?php gnn_field_checkbox( 'error404_search', __( 'Show a search box on the 404 page', 'gnn' ) ); ?>
 						<?php gnn_field_text( 'error404_button', __( '“Back to home” button text', 'gnn' ), (string) gnn_option( 'error404_button' ), __( 'Back to Home', 'gnn' ) ); ?>
 						<?php gnn_field_media( 'error404_image', __( '404 image', 'gnn' ), (int) gnn_option( 'error404_image' ) ); ?>
 
-						<?php gnn_platform_fields( 'pages' ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Content and blog layout', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'pages', array(), array(), '' ); ?>
+						<?php gnn_card_close(); ?>
 						<?php gnn_design_fields( array( 'geometry', 'images' ), false ); ?>
 					</section>
 
 					<section id="gnn-tab-blog" class="gnn-tab">
 						<?php
-						gnn_platform_fields( 'blog_archive' );
-						gnn_platform_fields( 'blog_cards' );
-						gnn_platform_fields( 'blog_single' );
-						gnn_platform_fields( 'blog_media' );
+						gnn_card_open( __( 'Blog listing', 'gnn' ) );
+						gnn_platform_fields( 'blog_archive', array(), array(), '' );
+						gnn_card_close();
+						gnn_card_open( __( 'Listing images', 'gnn' ) );
+						gnn_platform_fields( 'blog_cards', array(), array(), '' );
+						gnn_card_close();
+						gnn_card_open( __( 'Single post layout and details', 'gnn' ) );
+						gnn_platform_fields( 'blog_single', array(), array(), '' );
+						gnn_card_close();
+						gnn_card_open( __( 'Single featured image', 'gnn' ) );
+						gnn_platform_fields( 'blog_media', array(), array(), '' );
+						gnn_card_close();
 						?>
 					</section>
 
 					<section id="gnn-tab-styles" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Accent', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Accent', 'gnn' ) ); ?>
 						<?php
 						$gnn_accent_dark  = (string) get_theme_mod( 'gnn_accent_color', '#34d399' );
 						$gnn_accent_light = (string) gnn_option( 'accent_light' );
@@ -1191,21 +1241,24 @@ function gnn_panel_render() {
 						);
 						?>
 
-						<?php gnn_section_bar( __( 'Surfaces', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Surfaces', 'gnn' ) ); ?>
 						<?php
 						gnn_field_color_pair( 'color_bg', __( 'Page background', 'gnn' ), '#0a0a0b', '#fafafa' );
 						gnn_field_color_pair( 'color_bg2', __( 'Card / panel background', 'gnn' ), '#121214', '#ffffff' );
 						gnn_field_color_pair( 'color_bg3', __( 'Alternate surface background', 'gnn' ), '#1b1b1f', '#efeff1' );
 						?>
 
-						<?php gnn_section_bar( __( 'Text & Borders', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Text & Borders', 'gnn' ) ); ?>
 						<?php
 						gnn_field_color_pair( 'color_fg', __( 'Primary text', 'gnn' ), '#f5f5f4', '#101013' );
 						gnn_field_color_pair( 'color_fg2', __( 'Muted text', 'gnn' ), '#9d9da4', '#5c5c64' );
 						gnn_field_color_pair( 'color_line', __( 'Borders / dividers', 'gnn' ), '#232328', '#e5e5e9' );
 						?>
 
-						<?php gnn_section_bar( __( 'Top bar', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Top bar', 'gnn' ) ); ?>
 						<?php
 						gnn_field_color(
 							'topbar_bg',
@@ -1225,7 +1278,8 @@ function gnn_panel_render() {
 						);
 						?>
 
-						<?php gnn_section_bar( __( 'Button Styles', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Button Styles', 'gnn' ) ); ?>
 						<div class="gnn-btn-styles">
 							<?php foreach ( gnn_button_style_slots() as $gnn_btn_slot ) : ?>
 								<?php
@@ -1272,12 +1326,15 @@ function gnn_panel_render() {
 							<?php endforeach; ?>
 						</div>
 
-						<?php gnn_platform_fields( 'styles' ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Design tokens', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'styles', array(), array(), '' ); ?>
+						<?php gnn_card_close(); ?>
 						<?php gnn_design_fields( array( 'fields', 'global_colors' ), false ); ?>
 					</section>
 
 					<section id="gnn-tab-typography" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Font loading', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Font loading', 'gnn' ) ); ?>
 						<?php
 						gnn_field_checkbox(
 							'typography_google_enable',
@@ -1286,7 +1343,8 @@ function gnn_panel_render() {
 						);
 						?>
 
-						<?php gnn_section_bar( __( 'Fonts by element', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Fonts by element', 'gnn' ) ); ?>
 						<div class="gnn-typo-grid">
 							<?php foreach ( gnn_typography_roles() as $gnn_typo_role => $gnn_typo_label ) : ?>
 								<div class="gnn-typo-row">
@@ -1301,7 +1359,8 @@ function gnn_panel_render() {
 							<?php endforeach; ?>
 						</div>
 
-						<?php gnn_section_bar( __( 'Icons', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Icons', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'google_material_icons', __( 'Load Google Material Symbols', 'gnn' ), __( 'Adds the font stylesheet site-wide so .material-symbols-* classes render.', 'gnn' ) ); ?>
 						<?php
 						gnn_field_select(
@@ -1319,31 +1378,42 @@ function gnn_panel_render() {
 						?>
 
 						<?php
+						gnn_card_close();
+						gnn_card_open( __( 'Local fonts and type scale', 'gnn' ) );
 						gnn_platform_fields(
 							'typography',
-							array( 'body_size', 'heading_size', 'heading_mobile_size', 'body_line_height', 'heading_line_height', 'heading_tracking' )
+							array( 'body_size', 'heading_size', 'heading_mobile_size', 'body_line_height', 'heading_line_height', 'heading_tracking' ),
+							array(),
+							''
 						);
+						gnn_card_close();
 						gnn_design_fields( array( 'type_scale' ), false );
 						?>
 					</section>
 
 					<section id="gnn-tab-code" class="gnn-tab">
-						<?php gnn_section_bar( __( 'Custom CSS', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Custom CSS', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'custom_css', __( 'Custom CSS', 'gnn' ), (string) gnn_option( 'custom_css' ), 8 ); ?>
 
-						<?php gnn_section_bar( __( 'Analytics and consent', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Analytics and consent', 'gnn' ) ); ?>
 						<?php gnn_field_text( 'ga4_id', __( 'Google Analytics 4 ID', 'gnn' ), (string) gnn_option( 'ga4_id' ), 'G-XXXXXXXXXX' ); ?>
 						<?php gnn_field_text( 'gtm_id', __( 'Google Tag Manager ID', 'gnn' ), (string) gnn_option( 'gtm_id' ), 'GTM-XXXXXXX' ); ?>
 
-						<?php gnn_section_bar( __( 'JavaScript', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'JavaScript', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'custom_js_head', __( 'Custom JavaScript — head', 'gnn' ), (string) gnn_option( 'custom_js_head' ), 5, __( 'Raw JS, printed inside a <script> tag in <head>. Requires the unfiltered_html capability.', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'custom_js_footer', __( 'Custom JavaScript — footer', 'gnn' ), (string) gnn_option( 'custom_js_footer' ), 5 ); ?>
 
-						<?php gnn_section_bar( __( 'Verification and custom markup', 'gnn' ) ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Verification and custom markup', 'gnn' ) ); ?>
 						<?php gnn_field_textarea( 'head_html', __( 'Extra <head> HTML (meta/verification tags)', 'gnn' ), (string) gnn_option( 'head_html' ), 4 ); ?>
 						<?php gnn_field_textarea( 'body_html', __( 'After <body> HTML', 'gnn' ), (string) gnn_option( 'body_html' ), 4 ); ?>
 
-						<?php gnn_platform_fields( 'code' ); ?>
+						<?php gnn_card_close(); ?>
+						<?php gnn_card_open( __( 'Tracking delivery', 'gnn' ) ); ?>
+						<?php gnn_platform_fields( 'code', array(), array(), '' ); ?>
+						<?php gnn_card_close(); ?>
 					</section>
 
 					<div class="gnn-savebar">
@@ -1394,7 +1464,7 @@ function gnn_panel_advanced_tab() {
 	?>
 	<section id="gnn-tab-advanced" class="gnn-tab">
 		<?php gnn_design_fields( array( 'search' ) ); ?>
-		<?php gnn_section_bar( __( 'Export settings', 'gnn' ) ); ?>
+		<?php gnn_card_open( __( 'Export settings', 'gnn' ) ); ?>
 		<div class="gnn-setting-row">
 			<div class="gnn-setting-label-col">
 				<span class="gnn-setting-label"><?php esc_html_e( 'Export settings', 'gnn' ); ?></span>
@@ -1415,8 +1485,9 @@ function gnn_panel_advanced_tab() {
 				</form>
 			</div>
 		</div>
+		<?php gnn_card_close(); ?>
 
-		<?php gnn_section_bar( __( 'Import settings', 'gnn' ) ); ?>
+		<?php gnn_card_open( __( 'Import settings', 'gnn' ) ); ?>
 		<div class="gnn-setting-row">
 			<div class="gnn-setting-label-col">
 				<span class="gnn-setting-label"><?php esc_html_e( 'Import settings', 'gnn' ); ?></span>
@@ -1434,8 +1505,9 @@ function gnn_panel_advanced_tab() {
 				</form>
 			</div>
 		</div>
+		<?php gnn_card_close(); ?>
 
-		<?php gnn_section_bar( __( 'Reset settings', 'gnn' ) ); ?>
+		<?php gnn_card_open( __( 'Reset settings', 'gnn' ) ); ?>
 		<div class="gnn-setting-row">
 			<div class="gnn-setting-label-col">
 				<span class="gnn-setting-label"><?php esc_html_e( 'Reset settings', 'gnn' ); ?></span>
@@ -1452,9 +1524,10 @@ function gnn_panel_advanced_tab() {
 				</form>
 			</div>
 		</div>
+		<?php gnn_card_close(); ?>
 
 		<?php if ( defined( 'ELEMENTOR_VERSION' ) ) : ?>
-			<?php gnn_section_bar( __( 'Elementor templates', 'gnn' ) ); ?>
+			<?php gnn_card_open( __( 'Elementor templates', 'gnn' ) ); ?>
 			<div class="gnn-setting-row">
 				<div class="gnn-setting-label-col">
 					<span class="gnn-setting-label"><?php esc_html_e( 'Elementor templates', 'gnn' ); ?></span>
@@ -1468,6 +1541,7 @@ function gnn_panel_advanced_tab() {
 					</form>
 				</div>
 			</div>
+			<?php gnn_card_close(); ?>
 		<?php endif; ?>
 
 		<?php if ( function_exists( 'gnn_updates_enabled' ) ) : ?>
@@ -1476,7 +1550,7 @@ function gnn_panel_advanced_tab() {
 			$gnn_release    = ( $gnn_updates_on && function_exists( 'gnn_updater' ) ) ? gnn_updater()->get_remote_release() : false;
 			$gnn_has_update = $gnn_release && version_compare( $gnn_release->version, GNN_VERSION, '>' );
 			?>
-			<?php gnn_section_bar( __( 'Theme updates (GitHub)', 'gnn' ) ); ?>
+			<?php gnn_card_open( __( 'Theme updates (GitHub)', 'gnn' ) ); ?>
 			<div class="gnn-setting-row">
 				<div class="gnn-setting-label-col">
 					<span class="gnn-setting-label"><?php esc_html_e( 'Theme updates (GitHub)', 'gnn' ); ?></span>
@@ -1517,6 +1591,7 @@ function gnn_panel_advanced_tab() {
 					</form>
 				</div>
 			</div>
+			<?php gnn_card_close(); ?>
 		<?php endif; ?>
 	</section>
 	<?php
