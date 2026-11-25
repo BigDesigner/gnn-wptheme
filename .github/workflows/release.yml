@@ -9,8 +9,22 @@ on:
         default: ''
 
 jobs:
+  # Tests are not repeated here: the push run of "Verify theme" must already be green.
   verify:
-    uses: ./.github/workflows/verify.yml
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    steps:
+      - name: Require a green Verify run for this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          count=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/verify.yml/runs?head_sha=$GITHUB_SHA&event=push&status=success" --jq '.total_count')
+          if [ "$count" -eq 0 ]; then
+            echo "::error::Verify has not passed for $GITHUB_SHA. Wait for a green Verify run, then start the release again."
+            exit 1
+          fi
+          echo "Verify passed for $GITHUB_SHA."
   build-and-release:
     needs: verify
     runs-on: ubuntu-latest
