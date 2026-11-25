@@ -12,7 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Normalised ready-made site key, or '' for a site without one. */
 function gnn_site_profile() {
 	$key = gnn_starter_profile_key( (string) gnn_option( 'site_segment' ) );
-	return in_array( $key, array( 'pro', 'commerce', 'design', 'architecture' ), true ) ? $key : '';
+	if ( in_array( $key, array( 'pro', 'commerce', 'design', 'architecture' ), true ) ) {
+		return $key;
+	}
+	return function_exists( 'gnn_demo_get' ) && null !== gnn_demo_get( $key ) ? $key : '';
 }
 
 /**
@@ -49,6 +52,17 @@ function gnn_site_profile_assets() {
 	foreach ( array_unique( $profiles ) as $key ) {
 		if ( in_array( $key, array( 'pro', 'commerce', 'design', 'architecture' ), true ) ) {
 			wp_enqueue_style( 'gnn-profile-' . $key, $uri . $key . '.css', array( 'gnn-profile-common' ), GNN_VERSION );
+			continue;
+		}
+		$demo = function_exists( 'gnn_demo_get' ) ? gnn_demo_get( (string) $key ) : null;
+		if ( ! $demo ) {
+			continue;
+		}
+		if ( '' !== $demo['css'] ) {
+			wp_enqueue_style( 'gnn-demo-' . $key, get_template_directory_uri() . '/assets/css/' . ltrim( $demo['css'], '/' ), array( 'gnn-profile-common' ), GNN_VERSION );
+		}
+		if ( '' !== $demo['js'] ) {
+			wp_enqueue_script( 'gnn-demo-' . $key, get_template_directory_uri() . '/assets/js/' . ltrim( $demo['js'], '/' ), array(), GNN_VERSION, true );
 		}
 	}
 	if ( $revslider ) {

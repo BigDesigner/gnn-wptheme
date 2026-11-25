@@ -352,6 +352,16 @@ require get_template_directory() . '/inc/layout-system.php';
 require get_template_directory() . '/inc/design-system.php';
 require get_template_directory() . '/inc/integrations.php';
 require get_template_directory() . '/inc/templates/common.php';
+require get_template_directory() . '/inc/demos/registry.php';
+$gnn_demo_files = glob( get_template_directory() . '/inc/demos/*.php' );
+if ( is_array( $gnn_demo_files ) ) {
+	sort( $gnn_demo_files );
+	foreach ( $gnn_demo_files as $gnn_demo_file ) {
+		if ( 'registry.php' !== basename( $gnn_demo_file ) ) {
+			require $gnn_demo_file;
+		}
+	}
+}
 require get_template_directory() . '/inc/sections/registry.php';
 require get_template_directory() . '/inc/templates/pro.php';
 require get_template_directory() . '/inc/templates/commerce.php';

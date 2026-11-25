@@ -129,7 +129,7 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 		}
 	}
 	foreach ( gnn_dp_has( $profile ) ? gnn_dp_images( $profile ) : array() as $name ) {
-		if ( ! is_readable( get_template_directory() . '/assets/images/demo/' . $profile . '/' . $name . '.jpg' ) ) {
+		if ( ! gnn_dp_media_file( $profile, $name ) ) {
 			return new WP_Error( 'gnn_demo_image', __( 'A demo image is missing. Reinstall the theme.', 'gnn' ) );
 		}
 	}
@@ -203,6 +203,12 @@ function gnn_demo_clear_references() {
 	if ( function_exists( 'gnn_templates' ) ) {
 		foreach ( array_keys( gnn_templates() ) as $tpl_slug ) {
 			$complete_options[] = 'gnn_demo_' . $tpl_slug . '_complete';
+		}
+	}
+	if ( function_exists( 'gnn_demo_registry' ) ) {
+		foreach ( array_keys( gnn_demo_registry() ) as $demo_key ) {
+			$complete_options[] = 'gnn_demo_' . $demo_key . '_complete';
+			$complete_options[] = 'gnn_demo_slide_group_' . $demo_key;
 		}
 	}
 	foreach ( array_unique( $complete_options ) as $option ) {

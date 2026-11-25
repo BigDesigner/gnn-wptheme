@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Starter profile settings. */
 function gnn_st_profile_pro() {
 	return array(
-		'label'        => __( 'GNNpro', 'gnn' ),
+		'label'        => __( 'GNNpro Classic', 'gnn' ),
 		'accent'       => '#2f7fb8',
 		'accent_light' => '#1f4e79',
 		'header'       => 'classic',
