@@ -1040,7 +1040,7 @@ function gnn_panel_render() {
 						<?php gnn_field_text( 'topbar_phone', __( 'Phone', 'gnn' ), (string) gnn_option( 'topbar_phone' ) ); ?>
 
 						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Company and header configuration', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'More header options', 'gnn' ) ); ?>
 						<?php gnn_platform_fields( 'header', array( 'header_preset' ), array(), '' ); ?>
 						<?php gnn_card_close(); ?>
 					</section>
@@ -1091,7 +1091,7 @@ function gnn_panel_render() {
 						?>
 
 						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Company and footer configuration', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'More footer options', 'gnn' ) ); ?>
 						<?php gnn_platform_fields( 'footer', array( 'footer_show_shared', 'footer_show_with_shared', 'footer_show_brand', 'footer_show_tagline', 'footer_show_widgets', 'footer_show_company', 'footer_show_copyright', 'footer_show_legal' ), array(), '' ); ?>
 						<?php gnn_card_close(); ?>
 					</section>
@@ -1327,7 +1327,7 @@ function gnn_panel_render() {
 						</div>
 
 						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Design tokens', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Shapes and spacing', 'gnn' ) ); ?>
 						<?php gnn_platform_fields( 'styles', array(), array(), '' ); ?>
 						<?php gnn_card_close(); ?>
 						<?php gnn_design_fields( array( 'fields', 'global_colors' ), false ); ?>
@@ -1379,7 +1379,7 @@ function gnn_panel_render() {
 
 						<?php
 						gnn_card_close();
-						gnn_card_open( __( 'Local fonts and type scale', 'gnn' ) );
+						gnn_card_open( __( 'Font files and sizes', 'gnn' ) );
 						gnn_platform_fields(
 							'typography',
 							array( 'body_size', 'heading_size', 'heading_mobile_size', 'body_line_height', 'heading_line_height', 'heading_tracking' ),
@@ -1411,7 +1411,7 @@ function gnn_panel_render() {
 						<?php gnn_field_textarea( 'body_html', __( 'After <body> HTML', 'gnn' ), (string) gnn_option( 'body_html' ), 4 ); ?>
 
 						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Tracking delivery', 'gnn' ) ); ?>
+						<?php gnn_card_open( __( 'Tracking options', 'gnn' ) ); ?>
 						<?php gnn_platform_fields( 'code', array(), array(), '' ); ?>
 						<?php gnn_card_close(); ?>
 					</section>
