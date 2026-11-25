@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.13.1
+Stable tag: 2.14.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,12 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.14.0 =
+* Four new flagship ready-made sites: GNNdefault (versatile business), GNNpro (corporate and consulting), GNNagency (creative studio, dark first) and GNNonepage (single-page product launch). Each has its own pages, sample content, images, and light and dark styling.
+* Ready-made sites shows the four flagship designs first; earlier designs are listed under "Other designs". The original GNNpro is now GNNpro Classic and the GNNagency template is GNNagency Classic.
+* Ready-made sites can now be added from a single file in inc/demos/ through the gnn_register_demos action.
+* Theme settings are grouped into cards with quick jump links, a save bar that stays visible and switches that stay beside their labels on phones.
 
 = 2.13.1 =
 * Reworked the theme panel for easier use: a new Start screen with a setup checklist, quick actions and status; sections renamed and grouped by task (Appearance, Content, Site, Advanced); the General tab split into focused groups.
