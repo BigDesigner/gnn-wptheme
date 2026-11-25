@@ -869,15 +869,8 @@ function gnn_panel_render() {
 				<span class="gnn-header-badge">v<?php echo esc_html( GNN_VERSION ); ?></span>
 				<?php if ( function_exists( 'gnn_updates_enabled' ) && gnn_updates_enabled() ) : ?>
 					<?php
-					$gnn_hdr_release    = function_exists( 'gnn_updater' ) ? gnn_updater()->get_remote_release() : false;
-					$gnn_hdr_has_update = $gnn_hdr_release && version_compare( $gnn_hdr_release->version, GNN_VERSION, '>' );
-					if ( $gnn_hdr_has_update ) {
-						// WordPress installs from its own update list; keep it in step with the release shown here.
-						$gnn_wp_updates = get_site_transient( 'update_themes' );
-						if ( ! is_object( $gnn_wp_updates ) || ! isset( $gnn_wp_updates->response[ get_template() ] ) ) {
-							wp_update_themes();
-						}
-					}
+					$gnn_hdr_release = current_user_can( 'update_themes' ) && function_exists( 'gnn_updater' ) ? gnn_updater()->get_remote_release() : false;
+					$gnn_hdr_has_update = $gnn_hdr_release && gnn_updater()->prepare_update( $gnn_hdr_release );
 					?>
 					<?php if ( $gnn_hdr_has_update ) : ?>
 						<a class="button button-primary gnn-update-btn" href="<?php echo esc_url( wp_nonce_url( self_admin_url( 'update.php?action=upgrade-theme&theme=' . rawurlencode( get_template() ) ), 'upgrade-theme_' . get_template() ) ); ?>">

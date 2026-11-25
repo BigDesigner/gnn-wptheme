@@ -201,7 +201,28 @@ class GNN_GitHub_Updater {
 		if ( empty( $transient->checked ) ) {
 			return $transient;
 		}
-		$release = $this->get_remote_release();
+		return $this->apply_release( $transient, $this->get_remote_release() );
+	}
+
+	/** Synchronize the installable release with the WordPress update list. */
+	public function prepare_update( $release ) {
+		$updates = get_site_transient( 'update_themes' );
+		$updates = is_object( $updates ) ? $updates : new stdClass();
+		$entry   = $updates->response[ $this->theme_slug ] ?? null;
+		$updates = $this->apply_release( $updates, $release );
+		$pending = $updates->response[ $this->theme_slug ] ?? null;
+		if ( ! $pending ) {
+			return false;
+		}
+		if ( $entry !== $pending ) {
+			set_site_transient( 'update_themes', $updates );
+		}
+		$stored = get_site_transient( 'update_themes' );
+		return $pending === ( $stored->response[ $this->theme_slug ] ?? null );
+	}
+
+	/** Apply a validated release using the installed parent theme version. */
+	private function apply_release( $transient, $release ) {
 		unset( $transient->response[ $this->theme_slug ], $transient->no_update[ $this->theme_slug ] );
 		if ( ! $release || empty( $release->download_url ) ) {
 			return $transient;
