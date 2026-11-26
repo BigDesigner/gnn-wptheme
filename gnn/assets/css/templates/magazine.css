@@ -4,22 +4,18 @@
    ===================================================================== */
 
 /* ---------- Header & Masthead ---------- */
-.gnn-site-magazine .gnn-topbar {
-	background: var(--bg2);
-	color: var(--fg2);
+.gnn-site-magazine .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--bg2));
+	color: var(--gnn-topbar-fg, var(--fg2));
 	border-bottom: 1px solid var(--line);
 	font-size: 12px;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 }
 
-.gnn-site-magazine .site-header {
-	background: var(--bg);
-	border-bottom: 3px double var(--line);
-}
-
-.gnn-site-magazine .site-header__inner {
-	height: 84px;
+.gnn-site-magazine #masthead.site-header::before {
+	border-bottom: 3px double var(--gnn-header-line);
+	box-shadow: none;
 }
 
 .gnn-site-magazine .site-title {
@@ -29,44 +25,37 @@
 	text-transform: uppercase;
 }
 
-.gnn-site-magazine .main-navigation ul.menu {
-	gap: 24px;
-}
-
-.gnn-site-magazine .main-navigation ul.menu > li > a {
+.gnn-site-magazine [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 600;
 	font-size: 14px;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
 	position: relative;
-	padding-block: 6px;
 	transition: color 0.2s ease;
 }
 
-.gnn-site-magazine .main-navigation ul.menu > li > a::after {
+.gnn-site-magazine [data-gnn-header] .main-navigation ul.menu > li > a::after {
 	content: "";
 	position: absolute;
 	inset-inline: 0;
 	bottom: 0;
 	height: 2px;
-	background: var(--accent);
+	background: var(--gnn-header-row-accent, var(--gnn-header-accent));
 	transform: scaleX(0);
 	transition: transform 0.2s ease;
 }
 
-.gnn-site-magazine .main-navigation ul.menu > li:hover > a::after,
-.gnn-site-magazine .main-navigation ul.menu > li.current-menu-item > a::after {
+.gnn-site-magazine [data-gnn-header] .main-navigation ul.menu > li:hover > a::after,
+.gnn-site-magazine [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a::after {
 	transform: scaleX(1);
 }
 
-.gnn-site-magazine .header-cta {
+.gnn-site-magazine .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 0;
-	padding-inline: 22px;
 	font-weight: 700;
 	font-size: 13px;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	border: 1px solid var(--accent);
 }
 
 /* ---------- Typography & Editorial Eyebrows ---------- */
@@ -199,27 +188,11 @@
 	padding: 4px 10px;
 }
 
-/* ---------- Responsive & Motion ---------- */
-@media (max-width: 768px) {
-	.gnn-site-magazine .site-header__inner {
-		height: 72px;
-	}
-
-	.gnn-site-magazine .main-navigation ul.menu {
-		gap: 16px;
-	}
-}
-
+/* ---------- Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-magazine .main-navigation ul.menu > li > a::after,
+	.gnn-site-magazine [data-gnn-header] .main-navigation ul.menu > li > a::after,
 	.gnn-site-magazine .gnn-sec .gnn-card {
 		transition: none;
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-magazine .header-cta { display: none; }
-	.gnn-site-magazine .header-actions { gap: 8px; }
 }

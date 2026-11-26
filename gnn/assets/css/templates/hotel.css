@@ -4,65 +4,40 @@
    ===================================================================== */
 
 /* ---------- Classic Header & Topbar ---------- */
-.gnn-site-hotel .gnn-topbar {
-	background: var(--bg2);
-	color: var(--fg2);
+.gnn-site-hotel .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--bg2));
+	color: var(--gnn-topbar-fg, var(--fg2));
 	border-bottom: 1px solid var(--line);
-	font-size: 13px;
 	letter-spacing: 0.04em;
-	padding-block: 8px;
-}
-
-.gnn-site-hotel .site-header {
-	background: var(--bg);
-	border-bottom: 1px solid var(--line);
-	transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.gnn-site-hotel .site-header__inner {
-	min-height: 82px;
-	padding-inline: clamp(16px, 3.5vw, 44px);
 }
 
 .gnn-site-hotel .site-title {
 	font-family: var(--font-heading);
 	font-weight: 700;
 	letter-spacing: -0.01em;
-	font-size: 21px;
 }
 
-.gnn-site-hotel .main-navigation ul.menu {
-	gap: 30px;
-}
-
-.gnn-site-hotel .main-navigation ul.menu > li > a {
-	font-size: 14px;
+.gnn-site-hotel [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 500;
-	color: var(--fg2);
-	padding-block: 10px;
 	border-bottom: 2px solid transparent;
 	transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.gnn-site-hotel .main-navigation ul.menu > li:hover > a,
-.gnn-site-hotel .main-navigation ul.menu > li.current-menu-item > a {
-	color: var(--fg);
-	border-bottom-color: var(--accent);
+.gnn-site-hotel [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-hotel [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--gnn-header-row-fg, var(--gnn-header-fg));
+	border-bottom-color: var(--gnn-header-row-accent, var(--gnn-header-accent));
 }
 
-.gnn-site-hotel .header-cta {
+.gnn-site-hotel .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnn-radius, 12px);
-	background: var(--accent);
-	color: var(--accent-ink);
-	border: 1px solid var(--accent);
 	font-size: 13px;
 	font-weight: 600;
 	letter-spacing: 0.03em;
-	padding: 11px 22px;
 	transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
-.gnn-site-hotel .header-cta:hover {
+.gnn-site-hotel .gnn-header-controls[data-gnn-header] .header-cta:hover {
 	opacity: 0.92;
 	transform: translateY(-1px);
 }
@@ -224,10 +199,6 @@
 
 /* ---------- Responsive & Reduced Motion ---------- */
 @media (max-width: 768px) {
-	.gnn-site-hotel .site-header__inner {
-		min-height: 72px;
-	}
-
 	.gnn-site-hotel .gnn-sec.gnn-sec-hero .gnn-sec-hero__center .gnn-actions {
 		flex-direction: column;
 		align-items: stretch;
@@ -235,18 +206,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-hotel .main-navigation ul.menu > li > a,
-	.gnn-site-hotel .header-cta,
+	.gnn-site-hotel [data-gnn-header] .main-navigation ul.menu > li > a,
+	.gnn-site-hotel .gnn-header-controls[data-gnn-header] .header-cta,
 	.gnn-site-hotel .gnn-btn-main,
 	.gnn-site-hotel .gnn-btn-ghost,
 	.gnn-site-hotel .gnn-sec.gnn-sec-services .gnn-card {
 		transition: none;
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-hotel .header-cta { display: none; }
-	.gnn-site-hotel .header-actions { gap: 8px; }
 }

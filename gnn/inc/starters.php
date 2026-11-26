@@ -39,6 +39,15 @@ function gnn_starter_profiles() {
 			'radius'       => 2,
 			'font'         => 'manrope',
 			'heading_font' => 'space',
+			'options'      => array(
+				'header_structure' => 'classic',
+				'header_surface'   => 'solid',
+				'header_shape'     => 'full',
+				'header_width'     => 'wide',
+				'header_behavior'  => 'sticky',
+				'header_overlay'   => 0,
+				'header_height'    => 84,
+			),
 			'heading'      => __( 'Space. Light. Life.', 'gnn' ),
 			'description'  => __( 'Architecture and construction with a live two-column portfolio, gallery, studio and services.', 'gnn' ),
 			'featured'     => false,
@@ -160,18 +169,52 @@ function gnn_apply_design_preset( $name, $reset = false ) {
 	if ( ! empty( $profile['accent_ink'] ) ) {
 		$options['accent_ink_light'] = '#ffffff';
 	}
-	// Header-related options start from neutral values, so switching designs leaves no leftovers.
+	// Header-related design options start from schema defaults, so switching designs leaves no leftovers.
+	$defaults          = gnn_option_defaults();
+	$header_reset_keys = array_unique(
+		array_merge(
+			array(
+				'header_preset',
+				'header_layout',
+				'header_menu_align',
+				'header_height',
+				'sticky_header',
+				'show_search',
+				'show_toggle',
+				'show_cart',
+				'header_search_bar',
+				'header_cta_show',
+				'header_cta_label',
+				'header_cta_url',
+				'header_contact',
+				'header_language',
+				'header_bg_dark',
+				'header_bg_light',
+				'logo_overlay',
+				'topbar_enable',
+				'topbar_text',
+				'topbar_bg',
+				'topbar_text_color',
+				'topbar_mobile',
+				'mobile_dock',
+				'mobile_actions',
+				'brand_dot',
+			),
+			function_exists( 'gnn_header_schema' ) ? array_keys( gnn_header_schema() ) : array()
+		)
+	);
+	$header_defaults   = array( 'portfolio_columns' => 2 );
+	foreach ( $header_reset_keys as $key ) {
+		if ( array_key_exists( $key, $defaults ) ) {
+			$header_defaults[ $key ] = $defaults[ $key ];
+		}
+	}
+	if ( ! empty( $profile['header'] ) ) {
+		$header_defaults['header_preset'] = $profile['header'];
+	}
 	$options = array_replace(
 		$options,
-		array(
-			'header_height'     => 64,
-			'header_search_bar' => 0,
-			'header_cta_label'  => '',
-			'show_search'       => 1,
-			'show_cart'         => 1,
-			'topbar_enable'     => 0,
-			'portfolio_columns' => 2,
-		),
+		$header_defaults,
 		$profile['options'] ?? array()
 	);
 	update_option( 'gnn_options', $options );

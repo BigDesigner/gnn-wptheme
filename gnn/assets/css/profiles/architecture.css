@@ -1,13 +1,12 @@
 /* GNNarchitecture: monograph language. Thin lines, mono captions, light display type, square corners. */
 
 /* ---------- Header ---------- */
-.gnn-site-architecture .site-header{background:var(--bg);backdrop-filter:none;border-bottom:1px solid var(--line)}
-.gnn-site-architecture .site-header__inner{height:84px;max-width:var(--gnn-container,1440px)}
-.gnn-site-architecture .main-navigation ul.menu{gap:34px;font:500 11px/1 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.13em;text-transform:uppercase}
-.gnn-site-architecture .main-navigation ul.menu>li>a{padding-block:30px;border-bottom:1px solid transparent}
-.gnn-site-architecture .main-navigation ul.menu>li:hover>a,.gnn-site-architecture .main-navigation ul.menu>li.current-menu-item>a{border-bottom-color:var(--fg)}
+.gnn-site-architecture #masthead[data-minimal]::before{box-shadow:inset 0 -1px var(--gnn-header-line)}
+.gnn-site-architecture [data-gnn-header] .main-navigation>ul.menu{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase}
+.gnn-site-architecture [data-gnn-header] .main-navigation ul.menu>li>a{border-bottom:1px solid transparent}
+.gnn-site-architecture [data-gnn-header] .main-navigation ul.menu>li:hover>a,.gnn-site-architecture [data-gnn-header] .main-navigation ul.menu>li.current-menu-item>a{border-bottom-color:var(--gnn-header-row-fg,var(--gnn-header-fg))}
 .gnn-site-architecture .site-title{font-weight:400;letter-spacing:.02em}
-.gnn-site-architecture .header-cta{border-radius:0;background:transparent;color:var(--fg);border:1px solid var(--fg)}
+.gnn-site-architecture .gnn-header-controls[data-gnn-header] .header-cta{border-radius:0;background:transparent;color:var(--gnn-header-row-fg,var(--gnn-header-fg));border:1px solid var(--gnn-header-row-fg,var(--gnn-header-fg))}
 
 /* ---------- Type and controls ---------- */
 .elementor .e-con.gnn-st.gnn-ar{padding-block:clamp(56px,8vw,120px)}
@@ -70,9 +69,7 @@
 .gnn-ar-cta .gnn-btn-main .elementor-button{background:var(--bg);color:var(--fg);border-color:var(--bg)}
 .gnn-ar-gallery [data-gnn-collection] img{border-radius:0}
 .gnn-ar-contact .gnn-visual{border-radius:0;aspect-ratio:4/5;max-height:640px}
-@media(max-width:900px){.elementor .gnn-ar-manifesto .e-con.gnn-st.gnn-wrap,.elementor .gnn-ar-pagehead .e-con.gnn-st.gnn-wrap{grid-template-columns:minmax(0,1fr)}.gnn-ar-pagehead .gnn-eyebrow{grid-row:auto}.elementor .e-con.gnn-st.gnn-ar-stories{grid-template-columns:repeat(2,minmax(0,1fr))}.gnn-site-architecture .site-header__inner{height:68px}}
+@media(max-width:900px){.elementor .gnn-ar-manifesto .e-con.gnn-st.gnn-wrap,.elementor .gnn-ar-pagehead .e-con.gnn-st.gnn-wrap{grid-template-columns:minmax(0,1fr)}.gnn-ar-pagehead .gnn-eyebrow{grid-row:auto}.elementor .e-con.gnn-st.gnn-ar-stories{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.elementor .e-con.gnn-st.gnn-ar-stories{grid-template-columns:minmax(0,1fr)}.elementor .e-con.gnn-st.gnn-ar-row{grid-template-columns:40px minmax(0,1fr);gap:6px 14px}.gnn-ar-row>.elementor-widget:last-child{grid-column:2}}
 
-.gnn-site-architecture .site-branding{min-width:0}
-.gnn-site-architecture .site-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
 @media(max-width:600px){.gnn-ar-slider .gnn-hero__text{display:none}}

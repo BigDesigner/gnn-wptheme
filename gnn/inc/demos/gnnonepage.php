@@ -67,6 +67,12 @@ function gnn_gnnonepage_profile() {
 		'light'        => array( '#ffffff', '#f5f7fb', '#e9eef8', '#0d152b', '#4b5670', '#dce3f0' ),
 		'dark'         => array( '#070d1f', '#0d1630', '#162347', '#f2f5fc', '#a3b1cf', '#1f2f57' ),
 		'options'      => array(
+			'header_structure' => 'classic',
+			'header_surface'   => 'glass',
+			'header_shape'     => 'floating',
+			'header_width'     => 'contained',
+			'header_behavior'  => 'sticky',
+			'header_overlay'   => 0,
 			'header_height'    => 60,
 			'header_cta_label' => __( 'Pre-order', 'gnn' ),
 			'header_cta_url'   => home_url( '/#pricing' ),

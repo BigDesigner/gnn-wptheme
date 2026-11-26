@@ -35,6 +35,12 @@ function gnn_template_data_hotel() {
 			'preset'    => 'classic',
 			'cta_label' => __( 'Book your stay', 'gnn' ),
 			'options'   => array(
+				'header_structure'  => 'classic',
+				'header_surface'    => 'solid',
+				'header_shape'      => 'full',
+				'header_width'      => 'contained',
+				'header_behavior'   => 'sticky',
+				'header_overlay'    => 0,
 				'topbar_enable'     => 1,
 				'header_height'     => 82,
 				'header_search_bar' => 0,

@@ -35,6 +35,12 @@ function gnn_template_data_photography() {
 			'preset'    => 'minimal',
 			'cta_label' => __( 'Book a session', 'gnn' ),
 			'options'   => array(
+				'header_structure'  => 'classic',
+				'header_surface'    => 'solid',
+				'header_shape'      => 'full',
+				'header_width'      => 'wide',
+				'header_behavior'   => 'sticky',
+				'header_overlay'    => 0,
 				'topbar_enable'     => 0,
 				'header_height'     => 72,
 				'header_search_bar' => 0,

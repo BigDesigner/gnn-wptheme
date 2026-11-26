@@ -43,5 +43,5 @@
 @media(max-width:700px){.elementor .e-con.gnn-st.gnn-herofoot{grid-template-columns:minmax(0,1fr)}.elementor .e-con.gnn-st.gnn-listrow{grid-template-columns:minmax(0,1fr);gap:8px}}
 
 /* GNNdesign header: floating pill */
-.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li>a:hover,.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li.current-menu-item>a{background:var(--bg3)}
+.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li>a:hover,.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li.current-menu-item>a{background:var(--gnn-header-hover)}
 

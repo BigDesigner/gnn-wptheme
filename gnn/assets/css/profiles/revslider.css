@@ -21,35 +21,3 @@
 :where(.gnn-revslider, .elementor-widget-shortcode) :where(rs-module, .rev_slider) img {
 	max-width: none;
 }
-
-/* The mobile drawer shares the header stacking context, above the slider. */
-.gnn-has-revslider .site-header {
-	z-index: 200;
-	top: var(--gnn-revslider-toolbar-offset, 0px);
-}
-
-.gnn-has-revslider:where(.admin-bar) {
-	--gnn-revslider-toolbar-offset: 32px;
-}
-
-/* Only transparent headers overlay the hero; other headers retain sticky. */
-.gnn-has-revslider.gnn-header-transparent .site-header {
-	position: absolute;
-	inset-inline: 0;
-	width: 100%;
-	background: transparent;
-	border-color: transparent;
-}
-
-@media (max-width: 782px) {
-	.gnn-has-revslider:where(.admin-bar) {
-		--gnn-revslider-toolbar-offset: 46px;
-	}
-}
-
-/* The WordPress toolbar scrolls away on small screens. */
-@media (max-width: 600px) {
-	.gnn-has-revslider:where(.admin-bar):not(.gnn-header-transparent) .site-header {
-		top: 0;
-	}
-}

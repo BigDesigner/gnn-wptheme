@@ -32,6 +32,12 @@ function gnn_gnnpro_register(): void {
 				'light'        => array( '#ffffff', '#f1f5f9', '#e6eef6', '#10243b', '#40556d', '#cedae6' ),
 				'dark'         => array( '#0b1420', '#111f30', '#182a40', '#f0f5fa', '#b8c9dc', '#34485c' ),
 				'options'      => array(
+					'header_structure'  => 'classic',
+					'header_surface'    => 'solid',
+					'header_shape'      => 'full',
+					'header_width'      => 'contained',
+					'header_behavior'   => 'sticky',
+					'header_overlay'    => 0,
 					'header_height'     => 76,
 					'topbar_enable'     => 1,
 					'topbar_text'       => __( 'Independent strategy and operations advisory', 'gnn' ),

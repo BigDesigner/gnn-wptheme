@@ -4,43 +4,23 @@
    ===================================================================== */
 
 /* ---------- Header & Navigation (.gnn-site-saas) ---------- */
-.gnn-site-saas .site-header {
-	background: color-mix(in srgb, var(--bg) 84%, transparent);
-	backdrop-filter: blur(16px);
-	-webkit-backdrop-filter: blur(16px);
-	border-bottom: 1px solid var(--line);
-}
-
-.gnn-site-saas .site-header__inner {
-	height: 68px;
-}
-
-.gnn-site-saas .main-navigation ul.menu {
-	gap: 8px;
-	padding: 4px;
-	border: 1px solid var(--line);
+.gnn-site-saas [data-gnn-header] .main-navigation ul.menu > li > a {
+	padding-inline: 12px;
 	border-radius: 999px;
-	background: var(--bg2);
-}
-
-.gnn-site-saas .main-navigation ul.menu > li > a {
-	padding: 8px 16px;
-	border-radius: 999px;
-	font-size: 14px;
 	font-weight: 600;
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.gnn-site-saas .main-navigation ul.menu > li:hover > a,
-.gnn-site-saas .main-navigation ul.menu > li.current-menu-item > a {
-	background: var(--bg3);
-	color: var(--fg);
+.gnn-site-saas [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-saas [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	background: var(--gnn-header-hover);
+	color: var(--gnn-header-row-fg, var(--gnn-header-fg));
 }
 
-.gnn-site-saas .header-cta {
+.gnn-site-saas .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 10px;
 	font-weight: 700;
-	box-shadow: 0 8px 24px color-mix(in srgb, var(--accent) 28%, transparent);
+	box-shadow: 0 8px 24px color-mix(in srgb, var(--gnn-header-accent) 28%, transparent);
 }
 
 /* ---------- Typography & Technical Eyebrow Pills ---------- */
@@ -144,21 +124,9 @@
 	background: var(--bg);
 }
 
-@media (max-width: 600px) {
-	.gnn-site-saas .main-navigation ul.menu {
-		border-radius: var(--gnn-radius, 16px);
-	}
-}
-
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-saas .main-navigation ul.menu > li > a,
+	.gnn-site-saas [data-gnn-header] .main-navigation ul.menu > li > a,
 	.gnn-site-saas .gnn-sec .gnn-card {
 		transition: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-saas .header-cta { display: none; }
-	.gnn-site-saas .header-actions { gap: 8px; }
 }

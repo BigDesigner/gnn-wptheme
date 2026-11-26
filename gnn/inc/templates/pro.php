@@ -22,6 +22,12 @@ function gnn_st_profile_pro() {
 		'light'        => array( '#ffffff', '#f4f6f9', '#e6ebf1', '#12263a', '#4f5f70', '#dbe2ea' ),
 		'dark'         => array( '#0c1621', '#121f2d', '#1a2a3b', '#eef3f8', '#9fb0c2', '#233447' ),
 		'options'      => array(
+			'header_structure'  => 'classic',
+			'header_surface'    => 'solid',
+			'header_shape'      => 'full',
+			'header_width'      => 'contained',
+			'header_behavior'   => 'sticky',
+			'header_overlay'    => 0,
 			'header_height'     => 78,
 			'topbar_enable'     => 1,
 			'topbar_text'       => __( 'Advisory and delivery for growing organisations', 'gnn' ),

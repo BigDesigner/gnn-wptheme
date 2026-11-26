@@ -4,22 +4,11 @@
    ===================================================================== */
 
 /* ---------- Centered Header & Topbar ---------- */
-.gnn-site-realestate .gnn-topbar {
-	background: var(--bg2);
-	color: var(--fg2);
+.gnn-site-realestate .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--bg2));
+	color: var(--gnn-topbar-fg, var(--fg2));
 	border-bottom: 1px solid var(--line);
-	font-size: 13px;
 	letter-spacing: 0.04em;
-}
-
-.gnn-site-realestate .site-header {
-	background: var(--bg);
-	backdrop-filter: none;
-	border-bottom: 1px solid var(--line);
-}
-
-.gnn-site-realestate .site-header__inner {
-	min-height: 80px;
 }
 
 .gnn-site-realestate .site-title {
@@ -29,36 +18,27 @@
 	text-transform: uppercase;
 }
 
-.gnn-site-realestate .main-navigation ul.menu {
-	gap: 28px;
-}
-
-.gnn-site-realestate .main-navigation ul.menu > li > a {
+.gnn-site-realestate [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-size: 13px;
 	font-weight: 600;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	padding-block: 10px;
 	border-bottom: 2px solid transparent;
 	transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.gnn-site-realestate .main-navigation ul.menu > li:hover > a,
-.gnn-site-realestate .main-navigation ul.menu > li.current-menu-item > a {
-	color: var(--accent-text);
-	border-bottom-color: var(--accent);
+.gnn-site-realestate [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-realestate [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
+	border-bottom-color: var(--gnn-header-row-accent, var(--gnn-header-accent));
 }
 
-.gnn-site-realestate .header-cta {
+.gnn-site-realestate .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnn-radius, 6px);
-	background: var(--accent);
-	color: var(--accent-ink);
-	border: 1px solid var(--accent);
 	font-size: 13px;
 	font-weight: 700;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	padding: 11px 20px;
 }
 
 /* ---------- Typography & Eyebrow Framing ---------- */
@@ -147,14 +127,8 @@
 	border-inline-start: 4px solid var(--accent);
 }
 
-@media (max-width: 900px) {
-	.gnn-site-realestate .site-header__inner {
-		min-height: 68px;
-	}
-}
-
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-realestate .main-navigation ul.menu > li > a,
+	.gnn-site-realestate [data-gnn-header] .main-navigation ul.menu > li > a,
 	.gnn-site-realestate .gnn-sec .gnn-card,
 	.gnn-site-realestate .gnn-sec.gnn-sec-portfolio [data-gnn-collection="portfolio"] .gnn-module-project {
 		transition: none;
@@ -163,10 +137,4 @@
 	.gnn-site-realestate .gnn-sec.gnn-sec-portfolio [data-gnn-collection="portfolio"] .gnn-module-project:hover {
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-realestate .header-cta { display: none; }
-	.gnn-site-realestate .header-actions { gap: 8px; }
 }

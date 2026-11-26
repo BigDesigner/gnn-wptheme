@@ -23,6 +23,12 @@ function gnn_st_profile_design() {
 		'light'        => array( '#f6f6f2', '#ffffff', '#ecece6', '#0d0d10', '#55555e', '#dcdcd4' ),
 		'dark'         => array( '#0d0d10', '#16161b', '#1f1f26', '#f4f4f0', '#a3a3ad', '#2a2a33' ),
 		'options'      => array(
+			'header_structure'  => 'classic',
+			'header_surface'    => 'glass',
+			'header_shape'      => 'floating',
+			'header_width'      => 'contained',
+			'header_behavior'   => 'sticky',
+			'header_overlay'    => 0,
 			'header_cta_label'  => __( 'Start a project', 'gnn' ),
 			'portfolio_columns' => 2,
 			'show_cart'         => 0,

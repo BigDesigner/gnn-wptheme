@@ -4,54 +4,37 @@
    ===================================================================== */
 
 /* ---------- Header & Navigation ---------- */
-.gnn-site-wedding .site-header {
-	background: var(--bg);
-	border-bottom: 1px solid var(--line);
-	transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.gnn-site-wedding .site-header__inner {
-	height: 76px;
-}
-
 .gnn-site-wedding .site-title {
 	font-family: var(--font-heading);
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
-	font-size: 1.15rem;
 }
 
-.gnn-site-wedding .main-navigation ul.menu {
-	gap: 32px;
-}
-
-.gnn-site-wedding .main-navigation ul.menu > li > a {
+.gnn-site-wedding [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 500;
 	letter-spacing: 0.04em;
-	padding-block: 6px;
 	position: relative;
 	transition: color 0.2s ease;
 }
 
-.gnn-site-wedding .main-navigation ul.menu > li > a::after {
+.gnn-site-wedding [data-gnn-header] .main-navigation ul.menu > li > a::after {
 	content: "";
 	position: absolute;
 	inset-inline: 15%;
 	bottom: 0;
 	height: 1px;
-	background: var(--accent);
+	background: var(--gnn-header-row-accent, var(--gnn-header-accent));
 	transform: scaleX(0);
 	transition: transform 0.24s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.gnn-site-wedding .main-navigation ul.menu > li:hover > a::after,
-.gnn-site-wedding .main-navigation ul.menu > li.current-menu-item > a::after {
+.gnn-site-wedding [data-gnn-header] .main-navigation ul.menu > li:hover > a::after,
+.gnn-site-wedding [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a::after {
 	transform: scaleX(1);
 }
 
-.gnn-site-wedding .header-cta {
+.gnn-site-wedding .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 999px;
-	padding-inline: 24px;
 	letter-spacing: 0.03em;
 	font-weight: 500;
 }
@@ -192,26 +175,16 @@
 
 /* ---------- Responsive & Motion Adjustments ---------- */
 @media (max-width: 900px) {
-	.gnn-site-wedding .site-header__inner {
-		height: 68px;
-	}
-
 	.gnn-site-wedding .gnn-sec.gnn-sec-hero.gnn-sec--centered {
 		padding-block: clamp(48px, 8vw, 72px);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-wedding .main-navigation ul.menu > li > a::after,
+	.gnn-site-wedding [data-gnn-header] .main-navigation ul.menu > li > a::after,
 	.gnn-site-wedding .gnn-sec .gnn-card,
 	.gnn-site-wedding .gnn-sec .elementor-button {
 		transition: none;
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-wedding .header-cta { display: none; }
-	.gnn-site-wedding .header-actions { gap: 8px; }
 }

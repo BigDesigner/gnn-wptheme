@@ -79,9 +79,7 @@
 .gnn-architecture h1{font-family:var(--font-h1,var(--font-heading,sans-serif));font-weight:var(--font-h1-weight,400);}
 .gnn-architecture h2{font-family:var(--font-h2,var(--font-heading,sans-serif));font-weight:var(--font-h2-weight,400);}
 .gnn-architecture h3{font-family:var(--font-h3,var(--font-heading,sans-serif));font-weight:var(--font-h3-weight,400);}
-.page-template-tpl-architecture .site-header__inner,.page-template-tpl-architecture .site-footer__widgets,.page-template-tpl-architecture .site-footer__bottom{padding-inline:clamp(20px,5vw,88px);}
-
-@media(max-width:700px){.page-template-tpl-architecture .site-header__inner{gap:12px;}.page-template-tpl-architecture .site-branding{min-width:0;}.page-template-tpl-architecture .site-logo{max-width:100%;white-space:normal;overflow-wrap:anywhere;}.page-template-tpl-architecture .header-actions{flex-shrink:0;gap:8px;}}
+.page-template-tpl-architecture .site-footer__widgets,.page-template-tpl-architecture .site-footer__bottom{padding-inline:clamp(20px,5vw,88px);}
 
 .gnn-architecture .gnn-architecture{padding:0;width:100%;}
 

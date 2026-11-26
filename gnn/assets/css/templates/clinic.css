@@ -4,40 +4,26 @@
    ===================================================================== */
 
 /* ---------- Header & Navigation ---------- */
-.gnn-site-clinic .gnn-topbar {
-	background: var(--accent);
-	color: var(--accent-ink);
+.gnn-site-clinic .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--accent));
+	color: var(--gnn-topbar-fg, var(--accent-ink));
 	font-weight: 600;
 }
 
-.gnn-site-clinic .site-header {
-	background: var(--bg);
-	border-bottom: 1px solid var(--line);
-	box-shadow: 0 2px 12px rgba(16, 42, 46, 0.04);
-}
-
-.gnn-site-clinic .site-header__inner {
-	min-height: 74px;
-}
-
-.gnn-site-clinic .main-navigation ul.menu {
-	gap: 24px;
-}
-
-.gnn-site-clinic .main-navigation ul.menu > li > a {
+.gnn-site-clinic [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 600;
-	padding: 8px 12px;
+	padding-inline: 12px;
 	border-radius: var(--gnn-radius, 10px);
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.gnn-site-clinic .main-navigation ul.menu > li:hover > a,
-.gnn-site-clinic .main-navigation ul.menu > li.current-menu-item > a {
-	background: var(--bg2);
-	color: var(--accent-text);
+.gnn-site-clinic [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-clinic [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	background: var(--gnn-header-hover);
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
 }
 
-.gnn-site-clinic .header-cta {
+.gnn-site-clinic .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnn-radius, 10px);
 	font-weight: 700;
 }
@@ -115,13 +101,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-clinic .main-navigation ul.menu > li > a {
+	.gnn-site-clinic [data-gnn-header] .main-navigation ul.menu > li > a {
 		transition: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-clinic .header-cta { display: none; }
-	.gnn-site-clinic .header-actions { gap: 8px; }
 }

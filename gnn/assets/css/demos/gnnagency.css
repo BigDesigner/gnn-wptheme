@@ -93,7 +93,7 @@
 }
 
 .gnn-gnnagency :is(a, button):focus-visible,
-.gnn-site-gnnagency .site-header :is(a, button):focus-visible {
+.gnn-site-gnnagency .gnn-header-controls :is(a, button):focus-visible {
 	outline: 2px solid currentColor;
 	outline-offset: 4px;
 }
@@ -546,54 +546,40 @@
 }
 
 /* Header and footer keep theme controls and navigation. */
-.gnn-site-gnnagency .site-header__inner {
-	max-width: 1600px;
-	padding-inline: var(--agency-edge);
-}
-
-.gnn-site-gnnagency .main-navigation ul.menu {
-	gap: clamp(12px, 1.6vw, 26px);
-}
-
-.gnn-site-gnnagency .main-navigation ul.menu > li > a {
-	min-height: 44px;
-	padding-inline: 0;
-}
-
-.gnn-site-gnnagency .main-navigation ul.menu > li:is(.current-menu-item, :hover) > a {
-	color: var(--fg);
+.gnn-site-gnnagency [data-gnn-header] .main-navigation ul.menu > li:is(.current-menu-item, :hover) > a {
+	color: var(--gnn-header-row-fg, var(--gnn-header-fg));
 	text-decoration: underline;
-	text-decoration-color: var(--agency-lime);
+	text-decoration-color: var(--gnn-header-row-accent, var(--gnn-header-accent, var(--agency-lime)));
 	text-decoration-thickness: 2px;
 	text-underline-offset: .4em;
 }
 
-.gnn-site-gnnagency .site-header :is(.menu-toggle, .theme-toggle) {
-	min-width: 44px;
-	min-height: 44px;
+.gnn-site-gnnagency .gnn-header-controls[data-gnn-header] .header-cta {
+	border-radius: 0;
 }
 
-.gnn-site-gnnagency .mobile-navigation ul.menu > li > a {
-	display: flex;
-	align-items: center;
-	min-height: 44px;
+.gnn-site-gnnagency .gnn-header-shell[data-overlay-active]:not(.is-scrolled):not(.is-interacting) #masthead {
+	--gnn-header-row-accent: var(--gnn-header-overlay-accent, var(--agency-lime));
 }
 
-.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar):has(.gnn-gnnagency-hero) #page {
-	position: relative;
-}
-
-.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar):has(.gnn-gnnagency-hero) .site-header {
-	--bg: #111210;
-	--bg2: #191b17;
-	--bg3: #242620;
-	--fg: #f5f4ee;
-	--fg2: #b9bcb0;
-	--line: #3a3d33;
-	--accent-text: var(--agency-lime);
-	position: absolute;
-	inset: 0 0 auto;
+.gnn-site-gnnagency .gnn-header-shell[data-overlay-active]:not(.is-scrolled):not(.is-interacting) #masthead::before {
 	background: transparent;
+}
+
+/* Compatibility fallback for existing GNNagency installs created before header_overlay. */
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"]:not([data-overlay-active]) {
+	margin-block-end: calc(-1 * var(--gnn-header-stack-h));
+}
+
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"]:not([data-overlay-active]):not(.is-scrolled):not(.is-interacting) #masthead {
+	--gnn-header-row-fg: var(--gnn-header-custom-text, #f5f4ee);
+	--gnn-header-row-accent: var(--gnn-header-custom-accent, var(--agency-lime));
+	color: var(--gnn-header-row-fg);
+}
+
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"]:not([data-overlay-active]):not(.is-scrolled):not(.is-interacting) #masthead::before {
+	background: transparent;
+	box-shadow: none;
 }
 
 .gnn-site-gnnagency .site-footer__bottom {

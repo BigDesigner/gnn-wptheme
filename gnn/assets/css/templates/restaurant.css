@@ -4,21 +4,12 @@
    ===================================================================== */
 
 /* ---------- Header & Navigation ---------- */
-.gnn-site-restaurant .gnn-topbar {
-	background: var(--bg3);
-	color: var(--fg);
+.gnn-site-restaurant .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--bg3));
+	color: var(--gnn-topbar-fg, var(--fg));
 	border-bottom: 1px solid var(--line);
 	font-weight: 600;
 	letter-spacing: 0.04em;
-}
-
-.gnn-site-restaurant .site-header {
-	background: var(--bg);
-	border-bottom: 1px solid var(--line);
-}
-
-.gnn-site-restaurant .site-header__inner {
-	height: 80px;
 }
 
 .gnn-site-restaurant .site-title {
@@ -26,36 +17,30 @@
 	letter-spacing: 0.03em;
 }
 
-.gnn-site-restaurant .main-navigation ul.menu {
-	gap: 28px;
-}
-
-.gnn-site-restaurant .main-navigation ul.menu > li > a {
+.gnn-site-restaurant [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 600;
 	position: relative;
-	padding-block: 8px;
 }
 
-.gnn-site-restaurant .main-navigation ul.menu > li > a::after {
+.gnn-site-restaurant [data-gnn-header] .main-navigation ul.menu > li > a::after {
 	content: "";
 	position: absolute;
 	inset-inline: 0;
 	bottom: 0;
 	height: 2px;
 	border-radius: 999px;
-	background: var(--accent);
+	background: var(--gnn-header-row-accent, var(--gnn-header-accent));
 	transform: scaleX(0);
 	transition: transform 0.22s ease;
 }
 
-.gnn-site-restaurant .main-navigation ul.menu > li:hover > a::after,
-.gnn-site-restaurant .main-navigation ul.menu > li.current-menu-item > a::after {
+.gnn-site-restaurant [data-gnn-header] .main-navigation ul.menu > li:hover > a::after,
+.gnn-site-restaurant [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a::after {
 	transform: scaleX(1);
 }
 
-.gnn-site-restaurant .header-cta {
+.gnn-site-restaurant .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 999px;
-	padding-inline: 22px;
 }
 
 /* ---------- Typography & Buttons inside .gnn-sec ---------- */
@@ -141,20 +126,8 @@
 	border-color: var(--accent);
 }
 
-@media (max-width: 900px) {
-	.gnn-site-restaurant .site-header__inner {
-		height: 68px;
-	}
-}
-
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-restaurant .main-navigation ul.menu > li > a::after {
+	.gnn-site-restaurant [data-gnn-header] .main-navigation ul.menu > li > a::after {
 		transition: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-restaurant .header-cta { display: none; }
-	.gnn-site-restaurant .header-actions { gap: 8px; }
 }

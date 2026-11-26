@@ -35,6 +35,12 @@ function gnn_template_data_travel() {
 			'preset'    => 'classic',
 			'cta_label' => __( 'Book a trip', 'gnn' ),
 			'options'   => array(
+				'header_structure'  => 'classic',
+				'header_surface'    => 'glass',
+				'header_shape'      => 'full',
+				'header_width'      => 'contained',
+				'header_behavior'   => 'sticky',
+				'header_overlay'    => 0,
 				'topbar_enable'     => 1,
 				'header_height'     => 76,
 				'header_search_bar' => 0,
