@@ -131,31 +131,6 @@ function gnn_brand_design_tokens( $mode ) {
 }
 
 /**
- * Server-side estimate of the space above page content (admin bar, top bar,
- * header) so full-height sections render at their final size before
- * layout-geometry.js measures the real value.
- *
- * @return string CSS.
- */
-function gnn_header_occupied_css() {
-	$height = max( 48, (int) gnn_option( 'header_height' ) ) + 1; // Header bottom border.
-	if ( gnn_option( 'topbar_enable' ) ) {
-		$read = function_exists( 'gnn_translated_option' ) ? 'gnn_translated_option' : 'gnn_option';
-		foreach ( array( 'topbar_text', 'topbar_email', 'topbar_phone' ) as $key ) {
-			if ( '' !== trim( (string) call_user_func( $read, $key ) ) ) {
-				$height += 41; // 13px text, body line height, 9px vertical padding.
-				break;
-			}
-		}
-	}
-	$css = ':root{--gnn-header-occupied:' . $height . 'px;}';
-	if ( is_admin_bar_showing() ) {
-		$css = ':root{--gnn-header-occupied:' . ( $height + 32 ) . 'px;}@media screen and (max-width:782px){:root{--gnn-header-occupied:' . ( $height + 46 ) . 'px;}}';
-	}
-	return $css;
-}
-
-/**
  * The same variables are emitted into both editing and viewing contexts.
  *
  * @param string $scope Export scope or CSS selector.
@@ -167,7 +142,6 @@ function gnn_design_css( $scope = ':root' ) {
 		'project_detail_width' => 'project-width',
 		'container_width'      => 'container',
 		'full_width'           => 'full-width',
-		'header_height'        => 'header-height',
 		'body_size'            => 'body-size',
 		'heading_size'         => 'heading-size',
 		'heading_mobile_size'  => 'heading-mobile-size',
@@ -204,11 +178,16 @@ function gnn_design_css( $scope = ':root' ) {
 /** Native and custom headers share the configured geometry. */
 function gnn_enqueue_design_system() {
 	wp_enqueue_style( 'gnn-design-system', get_template_directory_uri() . '/assets/css/design-system.css', array( 'gnn-main' ), GNN_VERSION );
-	wp_add_inline_style( 'gnn-design-system', gnn_design_css() . gnn_header_occupied_css() . ':root{' . gnn_brand_design_tokens( 'dark' ) . '}[data-theme="light"]{' . gnn_brand_design_tokens( 'light' ) . '}' );
+	wp_add_inline_style( 'gnn-design-system', gnn_design_css() . ':root{' . gnn_brand_design_tokens( 'dark' ) . '}[data-theme="light"]{' . gnn_brand_design_tokens( 'light' ) . '}' );
 	wp_enqueue_script( 'gnn-layout-geometry', get_template_directory_uri() . '/assets/js/layout-geometry.js', array(), GNN_VERSION, true );
+	wp_enqueue_style( 'gnn-header', get_template_directory_uri() . '/assets/css/header.css', array( 'gnn-design-system' ), GNN_VERSION );
+	wp_add_inline_style( 'gnn-header', gnn_header_css() );
+	if ( function_exists( 'wc_get_cart_url' ) && ( gnn_option( 'show_cart' ) || gnn_option( 'mobile_dock' ) ) ) {
+		wp_enqueue_script( 'wc-cart-fragments' );
+	}
 	$styles = wp_styles();
 	if ( isset( $styles->registered['gnn-style'] ) ) {
-		$styles->registered['gnn-style']->deps = array( 'gnn-design-system' ); }
+		$styles->registered['gnn-style']->deps = array( 'gnn-header' ); }
 }
 add_action( 'wp_enqueue_scripts', 'gnn_enqueue_design_system', 25 );
 
@@ -298,7 +277,6 @@ add_filter( 'wp_theme_json_data_theme', 'gnn_sync_design_theme_json', 30 );
  * @param array $classes Current body classes.
  */
 function gnn_platform_body_classes( $classes ) {
-	$classes[] = 'gnn-header-' . sanitize_html_class( gnn_layout_value( 'header_preset' ) );
 	$classes[] = 'gnn-footer-' . sanitize_html_class( gnn_option( 'footer_preset' ) );
 	$classes[] = 'gnn-hero-style-' . sanitize_html_class( gnn_layout_value( 'hero_style' ) );
 	return $classes;

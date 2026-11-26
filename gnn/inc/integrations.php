@@ -68,55 +68,49 @@ function gnn_footer_company_details() {
 	echo '</div>';
 }
 
-/** Render configured mobile actions; an empty list retains the legacy dock. */
-function gnn_render_configured_actions() {
-	$items = json_decode( (string) gnn_option( 'mobile_actions' ), true );
+/** Resolve configured and default dock actions before drawing either header or dock. */
+function gnn_dock_items( $config ) {
+	$raw    = gnn_option( 'mobile_actions' );
+	$items  = is_string( $raw ) ? json_decode( $raw, true, 8 ) : null;
+	$woo    = function_exists( 'wc_get_cart_url' );
 	if ( ! is_array( $items ) || ! $items ) {
-		return false; }
-	$glyphs = array(
-		'home'    => '⌂',
-		'search'  => '⌕',
-		'contact' => '✉',
-		'phone'   => '☎',
-		'email'   => '✉',
-		'cart'    => '▣',
-		'theme'   => '◐',
-		'link'    => '↗',
-	);
-	echo '<nav class="gnn-dock" aria-label="' . esc_attr__( 'Mobile actions', 'gnn' ) . '">';
-	foreach ( $items as $i => $item ) {
-		$type = $item['type'];
-		$url  = $item['url'];
-		if ( 'home' === $type ) {
-			$url = home_url( '/' ); }
-		if ( 'search' === $type ) {
-			$url = home_url( '/?s=' ); }
-		if ( 'contact' === $type ) {
-			$url = gnn_contact_url(); }
-		if ( 'phone' === $type ) {
-			if ( ! gnn_option( 'company_phone' ) ) {
-				continue; }
-			$url = 'tel:' . preg_replace( '/[^0-9+]/', '', gnn_option( 'company_phone' ) ); }
-		if ( 'email' === $type ) {
-			if ( ! gnn_option( 'company_email' ) ) {
-				continue; }
-			$url = 'mailto:' . gnn_option( 'company_email' ); }
-		if ( 'cart' === $type ) {
-			if ( ! function_exists( 'wc_get_cart_url' ) ) {
-				continue;
-			} $url = wc_get_cart_url(); }
-		if ( 'theme' === $type && ! gnn_option( 'show_toggle' ) ) {
-			continue; }
-		$label   = function_exists( 'pll__' ) ? pll__( $item['label'] ) : apply_filters( 'wpml_translate_single_string', $item['label'], 'GNN', 'action_' . $i );
-		$content = '<span class="gnn-dock__glyph" aria-hidden="true">' . esc_html( $glyphs[ $type ] ?? '↗' ) . '</span><span class="gnn-dock__lbl">' . esc_html( $label ) . '</span>';
-		if ( 'theme' === $type ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput -- content is escaped above.
-			echo '<button class="gnn-dock__item theme-toggle" type="button">' . $content . '</button>';
-		} elseif ( $url ) {
-			echo '<a class="gnn-dock__item" href="' . esc_url( $url ) . '">' . $content . '</a>'; } // phpcs:ignore WordPress.Security.EscapeOutput -- content is escaped above.
+		$items = array(
+			array( 'type' => 'home', 'label' => __( 'Home', 'gnn' ) ),
+			array( 'type' => 'search', 'label' => __( 'Search', 'gnn' ) ),
+			array( 'type' => 'theme', 'label' => __( 'Theme', 'gnn' ) ),
+			$woo ? array( 'type' => 'cart', 'label' => __( 'Cart', 'gnn' ) ) : array( 'type' => 'contact', 'label' => __( 'Contact', 'gnn' ) ),
+		);
+	} else {
+		foreach ( $items as $index => &$item ) {
+			if ( is_array( $item ) && isset( $item['label'] ) && is_string( $item['label'] ) ) {
+				$item['label'] = function_exists( 'pll__' ) ? pll__( $item['label'] ) : apply_filters( 'wpml_translate_single_string', $item['label'], 'GNN', 'action_' . $index );
+			}
+		}
+		unset( $item );
 	}
-	echo '</nav>';
-	return true;
+	$phone = preg_replace( '/[^0-9+]/', '', $config['contact']['phone'] );
+	$email = sanitize_email( $config['contact']['email'] );
+	$urls  = array(
+		'home'    => home_url( '/' ),
+		'search'  => gnn_header_search_url( $config ),
+		'contact' => gnn_contact_url(),
+		'phone'   => $phone ? 'tel:' . $phone : '',
+		'email'   => $email ? 'mailto:' . $email : '',
+		'cart'    => $woo ? wc_get_cart_url() : '',
+	);
+	$list = array();
+	foreach ( $items as $item ) {
+		if ( ! is_array( $item ) || ! isset( $item['label'], $item['type'] ) || ! is_string( $item['label'] ) || ! is_string( $item['type'] ) ) {
+			continue;
+		}
+		$type = $item['type'];
+		$url  = $urls[ $type ] ?? ( 'link' === $type && isset( $item['url'] ) && is_string( $item['url'] ) ? $item['url'] : '' );
+		$url  = esc_url_raw( $url, array( 'http', 'https', 'mailto', 'tel' ) );
+		if ( $url || ( 'theme' === $type && $config['enabled']['theme'] ) ) {
+			$list[] = array( 'type' => $type, 'label' => $item['label'], 'url' => $url );
+		}
+	}
+	return $list;
 }
 
 /** Only one tag owner is emitted; consent is handled before any network request. */

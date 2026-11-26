@@ -206,6 +206,7 @@ function gnn_platform_schema() {
 			'project_detail_width'    => array( __( 'Project detail maximum width', 'gnn' ), 'number', 1280, 'pages', 800, 1920 ),
 			'compatibility_mode'      => array( __( 'Prefer third-party plugin compatibility', 'gnn' ), 'bool', 1, 'advanced' ),
 		),
+		gnn_header_schema(),
 		gnn_blog_schema(),
 		function_exists( 'gnn_site_schema' ) ? gnn_site_schema() : array()
 	);
@@ -247,6 +248,18 @@ function gnn_validate_platform_input( $input ) {
 			$invalid = true; }
 		if ( 'url' === $type && '' !== $value && ! esc_url_raw( $value ) ) {
 			$invalid = true; }
+		if ( 'header_elements' === $type && is_wp_error( gnn_parse_header_elements( $value ) ) ) {
+			$invalid = true;
+		}
+		if ( 'header_overlay' === $key && ! in_array( $value, array( '', 0, 1, '0', '1', false, true ), true ) ) {
+			$invalid = true;
+		}
+		if ( 'topbar_mobile' === $key && ! in_array( $value, array( 0, 1, '0', '1', false, true ), true ) ) {
+			$invalid = true;
+		}
+		if ( 'logo_overlay' === $key && '' !== $value && ( ! preg_match( '/^[0-9]+$/D', (string) $value ) || ( (int) $value && ! wp_attachment_is_image( (int) $value ) ) ) ) {
+			$invalid = true;
+		}
 		if ( 'actions' === $type && is_wp_error( gnn_sanitize_actions( (string) $value ) ) ) {
 			$invalid = true; }
 		if ( 'hex' === $type && '' !== $value && ! sanitize_hex_color( $value ) ) {
@@ -373,6 +386,9 @@ function gnn_option_sanitize_field( $key, $field, $value, $saved = array() ) {
 			return array( true, min( $field['max'], max( $field['min'], absint( $value ) ) ) );
 		case 'checkbox':
 		case 'bool':
+			if ( 'header_overlay' === $key && '' === $value ) {
+				return array( true, '' );
+			}
 			return array( true, empty( $value ) ? 0 : 1 );
 		case 'family':
 			return array( true, substr( trim( (string) preg_replace( '/[^A-Za-z0-9 ]/', '', $value ) ), 0, 60 ) );
@@ -419,6 +435,9 @@ function gnn_option_sanitize_field( $key, $field, $value, $saved = array() ) {
 			return array( true, $value );
 		case 'slide_group':
 			return array( true, absint( $value ) );
+		case 'header_elements':
+			$elements = gnn_parse_header_elements( $value );
+			return is_wp_error( $elements ) ? array( false, null ) : array( true, null === $elements ? '' : wp_json_encode( $elements ) );
 		case 'actions':
 			$value = gnn_sanitize_actions( $value );
 			if ( is_wp_error( $value ) ) {
@@ -484,9 +503,23 @@ function gnn_platform_fields( $group, $exclude = array(), $only = array(), $titl
 			}
 			continue;
 		}
+		if ( 'header_overlay' === $key ) {
+			gnn_field_select( $key, $field[0], gnn_header_overlay_choices() );
+			continue;
+		}
+		if ( 'topbar_mobile' === $key ) {
+			gnn_field_select( $key, $field[0], array( 1 => __( 'Show', 'gnn' ), 0 => __( 'Hide', 'gnn' ) ) );
+			continue;
+		}
 		switch ( $field[1] ) {
 			case 'bool':
 				gnn_field_checkbox( $key, $field[0] );
+				break;
+			case 'media':
+				gnn_field_media( $key, $field[0], gnn_option( $key ) );
+				break;
+			case 'hex':
+				gnn_field_color( $key, $field[0], gnn_option( $key ), '#000000', '', true );
 				break;
 			case 'number':
 				gnn_field_number( $key, $field[0], $field[4], $field[5] );
