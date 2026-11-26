@@ -72,7 +72,6 @@ function gnn_gnnonepage_profile() {
 			'header_shape'     => 'floating',
 			'header_width'     => 'contained',
 			'header_behavior'  => 'sticky',
-			'header_overlay'   => 0,
 			'header_height'    => 60,
 			'header_cta_label' => __( 'Pre-order', 'gnn' ),
 			'header_cta_url'   => home_url( '/#pricing' ),

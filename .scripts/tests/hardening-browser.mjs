@@ -13,6 +13,7 @@ export async function testHardeningBrowser({browser,server,php,out,modules}) {
   new PerformanceObserver(list=>list.getEntries().forEach(e=>window.gnnMetrics.lcp=e.startTime)).observe({type:'largest-contentful-paint',buffered:true});
  });
  const page=await context.newPage();
+ const desktopThemeToggle=page.locator('#masthead .gnn-header-row .theme-toggle');
  const errors=[];page.on('pageerror',error=>errors.push(String(error)));
  await php("update_option('gnn_options',array_merge(gnn_option_defaults(),array('loading_screen'=>1,'scroll_anim'=>1,'mobile_dock'=>1,'google_material_icons'=>0))); update_option('show_on_front','page'); update_option('page_on_front',get_option('gnn_qa_home_id')); wp_update_post(array('ID'=>get_option('gnn_qa_home_id'),'post_content'=>'<h2>Accessible content</h2><p>Local theme verification.</p><h3>More information</h3><p>Keyboard and layout checks.</p>')); ",true);
  await page.goto(server.serverUrl,{waitUntil:'networkidle'});
@@ -33,7 +34,7 @@ export async function testHardeningBrowser({browser,server,php,out,modules}) {
  }
  await record('Dark desktop WCAG automation',()=>audit('dark desktop'));
  await record('Light desktop WCAG automation',async()=>{
-  await page.locator('.header-actions .theme-toggle').click();await audit('light desktop');
+  await desktopThemeToggle.click();await audit('light desktop');
  });
  await record('Mobile menu opens and Escape restores focus',async()=>{
   await page.setViewportSize({width:390,height:844});
@@ -112,7 +113,7 @@ export async function testHardeningBrowser({browser,server,php,out,modules}) {
   await php("$o=get_option('gnn_options'); unset($o['logo_light'],$o['logo_light_2x'],$o['logo_dark'],$o['logo_dark_2x']); update_option('gnn_options',$o); set_theme_mod('logo_light',get_template_directory_uri().'/screenshot.png'); remove_theme_mod('logo_dark');",true);
   await page.goto(server.serverUrl,{waitUntil:'networkidle'});
   assert.equal(await page.locator('.site-logo img.gnn-logo--shared').isVisible(),true);
-  await page.locator('.header-actions .theme-toggle').click();
+  await desktopThemeToggle.click();
   assert.equal(await page.locator('.site-logo img.gnn-logo--shared').isVisible(),true);
  });
  await record('Subscriber cannot access import/export handlers',async()=>{

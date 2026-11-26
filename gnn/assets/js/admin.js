@@ -478,6 +478,10 @@
 		}
 
 		form.addEventListener( 'submit', function () {
+			var scope = form.querySelector( '[name="gnn_form_scope"]' );
+			if ( scope && scope.value === 'design' && active === 'header' && ! dirty ) {
+				scope.value = 'header-unchanged';
+			}
 			form.querySelectorAll( '.CodeMirror' ).forEach( function ( el ) {
 				if ( el.CodeMirror ) {
 					el.CodeMirror.save();
@@ -684,6 +688,7 @@
 	var headerMeta = headerPane && headerPane.querySelector( '[data-gnn-header-admin]' );
 	var heEditor   = headerPane && headerPane.querySelector( '[data-gnn-he-editor]' );
 	var hpRoot     = headerPane && headerPane.querySelector( '[data-gnn-header-preview]' );
+	var hpLabels   = hpRoot && JSON.parse( hpRoot.dataset.previewLabels );
 	var elementsTouched = false;
 
 	function headerVal( key ) {
@@ -883,7 +888,7 @@
 		}
 		var tbText = hpRoot.querySelector( '[data-hp-topbar-text]' );
 		if ( tbText ) {
-			tbText.textContent = headerVal( 'topbar_text' ).trim() || 'Announcement bar';
+		tbText.textContent = headerVal( 'topbar_text' ).trim() || hpLabels.announcement;
 		}
 		var tbContact = hpRoot.querySelector( '[data-hp-topbar-contact]' );
 		if ( tbContact ) {
@@ -939,10 +944,9 @@
 
 		var metaEl = hpRoot.querySelector( '[data-hp-meta]' );
 		if ( metaEl ) {
-			var cap = function ( s ) { return s ? s.charAt( 0 ).toUpperCase() + s.slice( 1 ) : ''; };
 			metaEl.textContent = isMobile
-				? 'Mobile \u2264 ' + state.breakpoint + ' px'
-				: cap( state.structure ) + ' \u00b7 ' + cap( state.surface ) + ' \u00b7 ' + cap( state.shape ) + ' \u00b7 ' + state.height + ' px';
+				? hpLabels.mobile.replace( /%(?:1\$)?s/, state.breakpoint )
+				: [ hpLabels.structure[state.structure], hpLabels.surface[state.surface], hpLabels.shape[state.shape], state.height + ' px' ].join( ' \u00b7 ' );
 		}
 	}
 

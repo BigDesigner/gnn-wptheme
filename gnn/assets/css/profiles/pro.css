@@ -36,9 +36,11 @@
 
 /* GNNpro header */
 .gnn-site-pro .gnn-header-shell>.gnn-topbar{background:var(--gnn-topbar-bg,#12263a);color:var(--gnn-topbar-fg,#dfe7ef)}
+.gnn-site-pro [data-gnn-header]{--gnn-header-menu-gap:clamp(14px,2.1vw,30px)}
 .gnn-site-pro [data-gnn-header] .main-navigation>ul.menu{font-weight:700}
 .gnn-site-pro [data-gnn-header] .main-navigation ul.menu>li>a{position:relative}
 .gnn-site-pro [data-gnn-header] .main-navigation ul.menu>li>a::after{content:'';position:absolute;inset-inline:0;bottom:0;height:2px;background:var(--gnn-header-row-accent,var(--gnn-header-accent));transform:scaleX(0);transition:transform .25s;transform-origin:left}
 .gnn-site-pro [data-gnn-header] .main-navigation ul.menu>li:hover>a::after,.gnn-site-pro [data-gnn-header] .main-navigation ul.menu>li.current-menu-item>a::after{transform:scaleX(1)}
-.gnn-site-pro .gnn-header-controls[data-gnn-header] .header-cta{border-radius:3px}
+.gnn-site-pro .gnn-header-controls[data-gnn-header] .header-cta{border-radius:3px;min-block-size:44px;padding:12px clamp(18px,2vw,28px);font-size:15px;font-weight:800}
+.gnn-site-pro #masthead .gnn-header-row .header-cta{min-block-size:min(54px,calc(var(--gnn-active-row-height,var(--gnn-header-height,64px)) - 8px))}
 

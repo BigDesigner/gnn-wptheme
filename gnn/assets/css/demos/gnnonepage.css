@@ -54,6 +54,8 @@
 .gnn-site-gnnonepage #masthead[data-shape="floating"] {
 	--gnn-header-bg: var(--gnn-header-custom-bg, var(--op-glass-strong));
 	--gnn-header-line: var(--op-glass-border);
+	--gnn-header-floating-width: 1140px;
+	--gnn-header-menu-gap: 4px;
 	border-radius: var(--op-radius-pill);
 }
 

@@ -125,7 +125,8 @@ function gnn_header_config() {
 	if ( isset( $meta['header_overlay'] ) && in_array( $meta['header_overlay'], array( 0, 1, '0', '1', false, true ), true ) ) {
 		$overlay = $meta['header_overlay'];
 	}
-	$config['header_overlay'] = in_array( $overlay, array( 0, 1, '0', '1', false, true ), true ) ? (bool) $overlay : 'transparent' === $preset;
+	$config['overlay_inherited'] = ! in_array( $overlay, array( 0, 1, '0', '1', false, true ), true );
+	$config['header_overlay'] = $config['overlay_inherited'] ? 'transparent' === $preset : (bool) $overlay;
 
 	$config['header_behavior'] = $config['header_behavior'] ?: ( gnn_option( 'sticky_header' ) ? 'sticky' : 'static' );
 	$legacy_field = '' === $config['header_search_mode'] && gnn_option( 'header_search_bar' );

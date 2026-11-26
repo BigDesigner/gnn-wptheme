@@ -567,17 +567,17 @@
 }
 
 /* Compatibility fallback for existing GNNagency installs created before header_overlay. */
-.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"]:not([data-overlay-active]) {
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"][data-overlay-inherited]:not([data-overlay-active]) {
 	margin-block-end: calc(-1 * var(--gnn-header-stack-h));
 }
 
-.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"]:not([data-overlay-active]):not(.is-scrolled):not(.is-interacting) #masthead {
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"][data-overlay-inherited]:not([data-overlay-active]):not(.is-scrolled):not(.is-interacting) #masthead {
 	--gnn-header-row-fg: var(--gnn-header-custom-text, #f5f4ee);
 	--gnn-header-row-accent: var(--gnn-header-custom-accent, var(--agency-lime));
 	color: var(--gnn-header-row-fg);
 }
 
-.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"]:not([data-overlay-active]):not(.is-scrolled):not(.is-interacting) #masthead::before {
+.gnn-site-gnnagency.home.gnn-header-minimal:not(.gnn-has-topbar) .gnn-header-shell[data-overlay="0"][data-overlay-inherited]:not([data-overlay-active]):not(.is-scrolled):not(.is-interacting) #masthead::before {
 	background: transparent;
 	box-shadow: none;
 }

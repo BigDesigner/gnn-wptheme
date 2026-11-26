@@ -116,9 +116,14 @@ add_action( 'admin_init', 'gnn_panel_settings' );
  * theme_mods so the Customizer live preview stays in sync (single source of truth).
  *
  * @param array $input Raw POST values.
- * @return array Stored option array.
+ * @return array|false Stored option array, or false for an unchanged missing option.
  */
 function gnn_options_sanitize( $input ) {
+	// A pristine Header form must not materialize defaults or normalize legacy values.
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Settings API checks the form nonce.
+	if ( isset( $_POST['gnn_form_scope'] ) && 'header-unchanged' === $_POST['gnn_form_scope'] ) {
+		return get_option( 'gnn_options' );
+	}
 	$saved = (array) get_option( 'gnn_options', array() );
 	$out   = wp_parse_args( $saved, gnn_option_defaults() );
 	if ( ! array_key_exists( 'post_meta', $saved ) && array_key_exists( 'blog_meta', $saved ) ) {

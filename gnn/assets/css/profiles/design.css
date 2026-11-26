@@ -45,3 +45,4 @@
 /* GNNdesign header: floating pill */
 .gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li>a:hover,.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li.current-menu-item>a{background:var(--gnn-header-hover)}
 
+.gnn-site-design #masthead[data-shape="floating"]{--gnn-header-menu-gap:6px}

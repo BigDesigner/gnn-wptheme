@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Compute the legacy baseline values that empty ("Use existing setting") header
+ * Compute the legacy baseline values that empty header
  * fields resolve to, matching gnn_header_config().
  *
  * @param array $config Resolved header configuration from gnn_header_config().
@@ -47,7 +47,7 @@ function gnn_header_admin_baselines( $config ) {
 }
 
 /**
- * Add the resolved value to the empty ("Use existing setting") select option.
+ * Show the resolved default in the empty select option.
  *
  * @param array  $choices      Allowed value => label map.
  * @param string $resolved_key Key inside $choices that '' currently resolves to.
@@ -55,8 +55,8 @@ function gnn_header_admin_baselines( $config ) {
  */
 function gnn_header_admin_inherit_choices( $choices, $resolved_key ) {
 	if ( isset( $choices[''], $choices[ $resolved_key ] ) ) {
-		/* translators: 1: inherit option label, 2: resolved setting label. */
-		$choices[''] = sprintf( __( '%1$s (%2$s)', 'gnn' ), $choices[''], $choices[ $resolved_key ] );
+		/* translators: %s: resolved setting label. */
+		$choices[''] = sprintf( __( 'Default (%s)', 'gnn' ), $choices[ $resolved_key ] );
 	}
 	return $choices;
 }
@@ -204,28 +204,24 @@ function gnn_header_admin_elements_state() {
 function gnn_header_admin_structure_cards( $current, $resolved_label ) {
 	$cards = array(
 		''         => array(
-			'label' => __( 'Use existing setting', 'gnn' ),
-			'sub'   => $resolved_label,
+			/* translators: %s: resolved structure label. */
+			'label' => sprintf( __( 'Default (%s)', 'gnn' ), $resolved_label ),
 			'wire'  => 'inherit',
 		),
 		'classic'  => array(
 			'label' => __( 'Classic', 'gnn' ),
-			'sub'   => '',
 			'wire'  => 'classic',
 		),
 		'centered' => array(
 			'label' => __( 'Centered', 'gnn' ),
-			'sub'   => '',
 			'wire'  => 'centered',
 		),
 		'stacked'  => array(
 			'label' => __( 'Stacked', 'gnn' ),
-			'sub'   => '',
 			'wire'  => 'stacked',
 		),
 		'shop'     => array(
 			'label' => __( 'Shop', 'gnn' ),
-			'sub'   => '',
 			'wire'  => 'shop',
 		),
 	);
@@ -288,9 +284,6 @@ function gnn_header_admin_structure_cards( $current, $resolved_label ) {
 							<?php endif; ?>
 						</span>
 						<span class="gnn-hs-label"><?php echo esc_html( $card['label'] ); ?></span>
-						<?php if ( '' !== $card['sub'] ) : ?>
-							<span class="gnn-hs-sub"><?php echo esc_html( $card['sub'] ); ?></span>
-						<?php endif; ?>
 					</label>
 				<?php endforeach; ?>
 			</fieldset>
@@ -304,13 +297,22 @@ function gnn_header_admin_structure_cards( $current, $resolved_label ) {
  *
  * @param array $config         Resolved header config from gnn_header_config().
  * @param array $elements_state Prepared elements state.
+ * @param array $schema         Header setting definitions.
  */
-function gnn_header_admin_live_preview( $config, $elements_state ) {
+function gnn_header_admin_live_preview( $config, $elements_state, $schema ) {
 	$default_mode = 'light' === get_theme_mod( 'gnn_default_theme', 'dark' ) ? 'light' : 'dark';
 	$woo_active   = class_exists( 'WooCommerce' );
 	$site_name    = get_bloginfo( 'name' ) ?: __( 'Site title', 'gnn' );
+	$labels       = array(
+		'structure'    => $schema['header_structure'][4],
+		'surface'      => $schema['header_surface'][4],
+		'shape'        => $schema['header_shape'][4],
+		'announcement' => __( 'Announcement bar', 'gnn' ),
+		/* translators: %s: mobile breakpoint in pixels. */
+		'mobile'       => __( 'Mobile < %s px', 'gnn' ),
+	);
 	?>
-	<div class="gnn-hp" data-gnn-header-preview data-mode="<?php echo esc_attr( $default_mode ); ?>" data-device="desktop">
+	<div class="gnn-hp" data-gnn-header-preview data-preview-labels="<?php echo esc_attr( wp_json_encode( $labels ) ); ?>" data-mode="<?php echo esc_attr( $default_mode ); ?>" data-device="desktop">
 		<div class="gnn-hp__toolbar">
 			<div class="gnn-hp__devices" role="group" aria-label="<?php esc_attr_e( 'Preview device', 'gnn' ); ?>">
 				<button type="button" class="button gnn-hp__device is-active" data-hp-device="desktop" aria-pressed="true"><?php esc_html_e( 'Desktop', 'gnn' ); ?></button>
@@ -319,9 +321,9 @@ function gnn_header_admin_live_preview( $config, $elements_state ) {
 			<span class="gnn-hp__meta" data-hp-meta>
 				<?php
 				echo esc_html(
-					ucfirst( $config['header_structure'] ) . ' · ' .
-					ucfirst( $config['header_surface'] ) . ' · ' .
-					ucfirst( $config['header_shape'] ) . ' · ' .
+					$labels['structure'][ $config['header_structure'] ] . ' · ' .
+					$labels['surface'][ $config['header_surface'] ] . ' · ' .
+					$labels['shape'][ $config['header_shape'] ] . ' · ' .
 					(int) $config['header_height'] . ' px'
 				);
 				?>
@@ -341,7 +343,7 @@ function gnn_header_admin_live_preview( $config, $elements_state ) {
 		>
 			<div class="gnn-hp__canvas">
 				<div class="gnn-hp__topbar" data-hp-topbar<?php echo gnn_option( 'topbar_enable' ) ? '' : ' hidden'; ?>>
-					<span class="gnn-hp__topbar-text" data-hp-topbar-text><?php echo esc_html( (string) gnn_option( 'topbar_text' ) ?: __( 'Announcement bar', 'gnn' ) ); ?></span>
+				<span class="gnn-hp__topbar-text" data-hp-topbar-text><?php echo esc_html( trim( (string) gnn_option( 'topbar_text' ) ) ?: $labels['announcement'] ); ?></span>
 					<span class="gnn-hp__topbar-contact" data-hp-topbar-contact><?php esc_html_e( 'Contact', 'gnn' ); ?></span>
 				</div>
 
@@ -479,12 +481,12 @@ function gnn_render_header_tab() {
 	$woo_active     = class_exists( 'WooCommerce' );
 
 	$structure_labels = $schema['header_structure'][4];
-	$resolved_struct  = $structure_labels[ $baselines['header_structure'] ] ?? ucfirst( $baselines['header_structure'] );
+	$resolved_struct  = $structure_labels[ $baselines['header_structure'] ];
 
 	$overlay_choices = gnn_header_overlay_choices();
 	$overlay_resolved = $baselines['header_overlay'] ? __( 'On', 'gnn' ) : __( 'Off', 'gnn' );
-	/* translators: 1: inherit label, 2: resolved On/Off label. */
-	$overlay_choices[''] = sprintf( __( '%1$s (%2$s)', 'gnn' ), $overlay_choices[''], $overlay_resolved );
+	/* translators: %s: resolved On/Off label. */
+	$overlay_choices[''] = sprintf( __( 'Default (%s)', 'gnn' ), $overlay_resolved );
 
 	$shared_active = (int) gnn_option( 'header_template' ) > 0
 		|| (int) gnn_option( 'archive_header_template' ) > 0
@@ -564,7 +566,7 @@ function gnn_render_header_tab() {
 
 		<?php // 2. Live preview ?>
 		<?php gnn_card_open( __( 'Live preview', 'gnn' ) ); ?>
-		<?php gnn_header_admin_live_preview( $config, $elements_state ); ?>
+		<?php gnn_header_admin_live_preview( $config, $elements_state, $schema ); ?>
 		<?php gnn_card_close(); ?>
 
 		<?php // 3. Elements ?>
