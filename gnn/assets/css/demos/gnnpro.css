@@ -788,6 +788,10 @@
 	text-decoration: underline;
 }
 
+.gnn-site-gnnpro [data-gnn-header] {
+	--gnn-header-menu-gap: clamp(12px, 1.6vw, 24px);
+}
+
 .gnn-site-gnnpro [data-gnn-header] .main-navigation > ul.menu {
 	font-weight: 700;
 }
@@ -803,6 +807,10 @@
 
 .gnn-site-gnnpro .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnnpro-radius);
+	min-block-size: 44px;
+	padding: 11px clamp(18px, 2vw, 26px);
+	font-size: 14px;
+	font-weight: 700;
 }
 
 .gnn-site-gnnpro .site-footer {

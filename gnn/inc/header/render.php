@@ -30,7 +30,7 @@ function gnn_header_css() {
 	}
 	$mobile_height = $hidden ? 0 : $main + $space;
 	$mobile_max    = number_format( $config['header_mobile_breakpoint'] - 0.02, 2, '.', '' );
-	$css .= '@media(max-width:' . $mobile_max . 'px){:root{--gnn-header-h:' . $mobile_height . 'px;--gnn-topbar-h:' . ( $config['topbar_mobile'] ? $bar : 0 ) . 'px;--gnn-header-fallback-position:relative;--gnn-header-fallback-inset:auto;--gnn-header-desktop:none;--gnn-header-mobile:block;--gnn-header-mobile-grid:auto minmax(0,1fr);--gnn-header-brand-column:2;--gnn-header-brand-max:100%;--gnn-header-logo-limit:var(--gnn-logo-h-mobile,34px);--gnn-header-topbar:' . ( $config['topbar_mobile'] ? 'block' : 'none' ) . '}}';
+	$css .= '@media(max-width:' . $mobile_max . 'px){:root{--gnn-header-h:' . $mobile_height . 'px;--gnn-topbar-h:' . ( $config['topbar_mobile'] ? $bar : 0 ) . 'px;--gnn-header-fallback-position:relative;--gnn-header-fallback-inset:auto;--gnn-header-desktop:none;--gnn-header-mobile:block;--gnn-header-mobile-grid:auto minmax(0,1fr);--gnn-header-brand-column:2;--gnn-header-brand-max:100%;--gnn-header-logo-limit:var(--gnn-logo-h-mobile,34px);--gnn-header-floating-radius:28px;--gnn-header-topbar:' . ( $config['topbar_mobile'] ? 'block' : 'none' ) . '}}';
 
 	foreach ( array( 'dark', 'light' ) as $mode ) {
 		$bg     = $config[ 'header_bg_' . $mode ];
@@ -70,7 +70,7 @@ function gnn_render_header() {
 		return;
 	}
 	?>
-	<div class="gnn-header-shell" data-gnn-header-shell data-behavior="<?php echo esc_attr( $config['header_behavior'] ); ?>" data-overlay="<?php echo $config['header_overlay'] ? '1' : '0'; ?>">
+	<div class="gnn-header-shell" data-gnn-header-shell data-behavior="<?php echo esc_attr( $config['header_behavior'] ); ?>" data-overlay="<?php echo $config['header_overlay'] ? '1' : '0'; ?>"<?php if ( $config['overlay_inherited'] ) { echo ' data-overlay-inherited'; } ?>>
 		<?php
 		gnn_render_topbar( $config );
 		if ( ! gnn_render_layout_region( 'header' ) && ( ! function_exists( 'elementor_theme_do_location' ) || ! elementor_theme_do_location( 'header' ) ) ) {
@@ -267,7 +267,9 @@ function gnn_render_header_tail( $config, $prefix ) {
 	?>
 	<div class="gnn-header-backdrop" hidden></div>
 	<nav id="<?php echo esc_attr( gnn_header_id( $prefix, 'mobile-navigation' ) ); ?>" class="mobile-navigation" aria-label="<?php echo esc_attr__( 'Mobile', 'gnn' ); ?>" tabindex="-1">
-		<button type="button" class="gnn-header-close" data-gnn-menu-close><?php echo esc_html__( 'Close menu', 'gnn' ); ?></button>
+		<button type="button" class="gnn-header-close" data-gnn-menu-close aria-label="<?php echo esc_attr__( 'Close menu', 'gnn' ); ?>">
+			<?php gnn_header_icon( 'close' ); ?>
+		</button>
 		<?php gnn_header_mobile_menus( $prefix ); ?>
 		<div class="header-actions gnn-mobile-actions"><?php gnn_render_header_actions( $config, 'mobile', $prefix ); ?></div>
 	</nav>
@@ -292,7 +294,8 @@ function gnn_render_header_actions( $config, $device, $prefix ) {
 			continue;
 		}
 		$duplicate = in_array( $id, array( 'search', 'theme', 'cart' ), true ) && in_array( $id, $dock, true );
-		echo '<div class="gnn-header-action gnn-header-action--' . esc_attr( $id ) . ( $duplicate ? ' gnn-dock-duplicate' : '' ) . '">';
+		$field = 'search' === $id && 'field' === $config['header_search_mode'];
+		echo '<div class="gnn-header-action gnn-header-action--' . esc_attr( $id ) . ( $field ? ' gnn-header-action--search-field' : '' ) . ( $duplicate ? ' gnn-dock-duplicate' : '' ) . '">';
 		switch ( $id ) {
 			case 'contact':
 				gnn_render_header_contact( $config['contact'], $dock );
@@ -418,6 +421,7 @@ function gnn_header_icon( $name, $class = 'gnn-icon' ) {
 		'email'   => '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
 		'sun'     => '<circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M1 12h2m18 0h2M4 4l1.5 1.5m13 13L20 20M4 20l1.5-1.5m13-13L20 4"/>',
 		'moon'    => '<path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/>',
+		'close'   => '<path d="M18 6 6 18M6 6l12 12"/>',
 		'link'    => '<path d="M6 18 18 6M8 6h10v10"/>',
 	);
 	$icon = $paths[ 'contact' === $name ? 'email' : $name ] ?? $paths['link'];

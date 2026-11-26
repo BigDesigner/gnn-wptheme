@@ -28,7 +28,6 @@ function gnn_st_profile_design() {
 			'header_shape'      => 'floating',
 			'header_width'      => 'contained',
 			'header_behavior'   => 'sticky',
-			'header_overlay'    => 0,
 			'header_cta_label'  => __( 'Start a project', 'gnn' ),
 			'portfolio_columns' => 2,
 			'show_cart'         => 0,

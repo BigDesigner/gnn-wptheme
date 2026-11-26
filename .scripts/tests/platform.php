@@ -52,7 +52,7 @@ wp_set_current_user( 1 );
 $identity = gnn_option( 'company_name' ); $private = gnn_option( 'custom_js_head' );
 $check( 'P21 professional preset can be applied', true === gnn_apply_design_preset( 'professional' ) );
 $check( 'P22 design preset preserves customer identity and code', $identity === gnn_option( 'company_name' ) && $private === gnn_option( 'custom_js_head' ) );
-$check( 'P23 design contract emits configured tokens', false !== strpos( gnn_design_css(), '--gnn-radius:4px' ) && false !== strpos( gnn_design_css(), '--gnn-header-height:' ) );
+$check( 'P23 design contract emits configured tokens', false !== strpos( gnn_design_css(), '--gnn-radius:4px' ) && false !== strpos( gnn_header_css(), '--gnn-header-height:' ) );
 $front = get_option( 'page_on_front' ); $menus = get_theme_mod( 'nav_menu_locations' );
 $first = gnn_install_starter( 'professional' );
 $check( 'P24 draft starter installation succeeds', is_array( $first ) && 5 === count( $first ) );

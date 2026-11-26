@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.14.2\n"
+"Project-Id-Version: GNN 2.15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 02:30+0000\n"
-"PO-Revision-Date: 2026-11-26 02:30+0000\n"
+"POT-Creation-Date: 2026-11-26 08:40+0000\n"
+"PO-Revision-Date: 2026-11-26 08:40+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -66,6 +66,11 @@ msgstr[1] "%s yorum"
 
 msgid "%s design concept preview"
 msgstr "%s tasarım konsepti önizlemesi"
+
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] "%s öğe"
+msgstr[1] "%s öğe"
 
 msgid "(Untitled)"
 msgstr "(Başlıksız)"
@@ -540,6 +545,9 @@ msgstr "Bir dizi sıvı krom döngüsü, deneysel bir ses programına özgün bi
 
 msgid "A shared design process."
 msgstr "Birlikte şekillenen tasarım."
+
+msgid "A shared header is selected. Layout, row and element settings above do not apply to it. Use [gnn_header_menu] to place the menu inside a shared header."
+msgstr "Ortak bir üst bölüm seçili. Yukarıdaki düzen, satır ve öğe ayarları buna uygulanmaz. Menüyü ortak üst bölüm içine yerleştirmek için [gnn_header_menu] kullanın."
 
 msgid "A short checklist of documents, medication notes and questions to bring so you get the most from your visit."
 msgstr "Ziyaretinizden en iyi şekilde yararlanmanız için getirilecek belgelerin, ilaç notlarının ve soruların kısa bir kontrol listesi."
@@ -1426,6 +1434,9 @@ msgstr "Analitik lideri"
 msgid "Ancient Silk Oasis Route"
 msgstr "Antik İpek Vahası Rotası"
 
+msgid "Announcement bar"
+msgstr "Duyuru çubuğu"
+
 msgid "Announcement text"
 msgstr "Duyuru metni"
 
@@ -1666,6 +1677,9 @@ msgstr "Arşiv ve sayılar"
 msgid "Archive footer override"
 msgstr "Arşiv altbilgi tercihi"
 
+msgid "Archive header"
+msgstr "Arşiv üst bölümü"
+
 msgid "Archive header override"
 msgstr "Arşiv üstbilgi tercihi"
 
@@ -1795,11 +1809,17 @@ msgstr "Değerlendirme ve portfolyo"
 msgid "Assessments and defined projects use a fixed scope and fee. For ongoing advisory work, we agree a monthly allocation and review it with you before changing it."
 msgstr "Değerlendirmeler ve tanımlı projeler sabit kapsam ve ücretle ilerler. Sürekli danışmanlıkta ise aylık bir süre belirler, değişiklik yapmadan önce sizinle gözden geçiririz."
 
+msgid "Assign a menu"
+msgstr "Menü ata"
+
 msgid "Assign member roles and run your first planning cycle together."
 msgstr "Üye rolleri atayın ve ilk planlama döngünüzü birlikte yürütün."
 
 msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr "Yönetici hesabını paylaşmak yerine müşteri veya tasarımcı rolü atayın."
+
+msgid "Assigned"
+msgstr "Atandı"
 
 msgid "Assigned settings"
 msgstr "Atanan ayarlar"
@@ -1908,6 +1928,9 @@ msgstr "Arka plan"
 
 msgid "Background & values"
 msgstr "Geçmiş ve değerler"
+
+msgid "Background color"
+msgstr "Arka plan rengi"
 
 msgid "Background image"
 msgstr "Arka plan görseli"
@@ -2167,8 +2190,8 @@ msgstr "Marka"
 msgid "Brand & Identity"
 msgstr "Marka ve Kimlik"
 
-msgid "Brand assets"
-msgstr "Marka varlıkları"
+msgid "Brand dot"
+msgstr "Marka noktası"
 
 msgid "Brand guidelines"
 msgstr "Marka kılavuzu"
@@ -2370,6 +2393,9 @@ msgstr "Alacakaranlıkta yukarıdan görülen iş merkezi"
 
 msgid "Business profile and hero"
 msgstr "İşletme profili ve karşılama alanı"
+
+msgid "Button"
+msgstr "Düğme"
 
 msgid "Button Styles"
 msgstr "Buton Stilleri"
@@ -2671,6 +2697,9 @@ msgstr "Ortalanmış"
 msgid "Centered (logo center, split menus)"
 msgstr "Ortalı (logo ortada, bölünmüş menüler)"
 
+msgid "Centered layout uses Header left (%1$s) and Header right (%2$s)."
+msgstr "Ortalanmış düzen Üst bölüm sol (%1$s) ve Üst bölüm sağ (%2$s) menülerini kullanır."
+
 msgid "Central content source"
 msgstr "Merkezi içerik kaynağı"
 
@@ -2829,6 +2858,9 @@ msgstr "Esnek seans paketleri, sınırsız grup antrenmanı veya bireysel koçlu
 
 msgid "Choose between technical deep-dives, case study talks and interactive Q&A rooms."
 msgstr "Teknik derinlemesine incelemeler, vaka analizi sunumları ve etkileşimli soru-cevap odaları arasından seçiminizi yapın."
+
+msgid "Choose card image"
+msgstr "Kart görseli seç"
 
 msgid "Choose color"
 msgstr "Renk seç"
@@ -3099,6 +3131,9 @@ msgstr "Görüşeceğiniz hekimler"
 
 msgid "Close"
 msgstr "Kapat"
+
+msgid "Close menu"
+msgstr "Menüyü kapat"
 
 msgid "Close-up of a rounded matte ceramic-coated device edge"
 msgstr "Yuvarlatılmış mat seramik kaplı cihaz kenarının yakın çekimi"
@@ -3712,6 +3747,9 @@ msgstr "Sığdır (kırpmadan)"
 msgid "Contain (show the whole image)"
 msgstr "Sığdır (görselin tamamını göster)"
 
+msgid "Contained"
+msgstr "Kapsayıcı"
+
 msgid "Contemporary cultural centre foyer and conference hall entrance"
 msgstr "Çağdaş kültür merkezi fuayesi ve konferans salonu girişi"
 
@@ -4216,6 +4254,12 @@ msgstr "Etkileyici turuncu kenar aydınlatmalı ve halter kafesli karanlık atle
 msgid "Dark banner, top-left heading"
 msgstr "Koyu afiş, sol üst başlık"
 
+msgid "Dark mode (1×)"
+msgstr "Koyu mod (1×)"
+
+msgid "Dark mode (2×)"
+msgstr "Koyu mod (2×)"
+
 msgid "Darkroom visits"
 msgstr "Karanlık oda ziyaretleri"
 
@@ -4314,6 +4358,9 @@ msgstr "Gün batımında sıcak ışıkla parlayan derin kumtaşı kanyonu"
 
 msgid "Deep sandstone labyrinth hikes and supported desert camps far from artificial light."
 msgstr "Yapay ışıktan uzak, derin kumtaşı labirent yürüyüşleri ve destekli çöl kampları."
+
+msgid "Default (%s)"
+msgstr "Varsayılan (%s)"
 
 msgid "Default columns"
 msgstr "Varsayılan sütun"
@@ -4518,6 +4565,12 @@ msgstr "Denetim komiteleri, risk kayıtları ve uyumluluk raporlama rutinleri ta
 
 msgid "Designing keyboard-first navigation for daily tools"
 msgstr "Günlük araçlar için klavye öncelikli gezinme tasarlama"
+
+msgid "Desktop"
+msgstr "Masaüstü"
+
+msgid "Desktop max height"
+msgstr "Masaüstü en fazla yükseklik"
 
 msgid "Desktop size"
 msgstr "Masaüstü boyutu"
@@ -5071,6 +5124,9 @@ msgstr "Elementor şablonları yenilendi. Düzenlenmiş şablonlar korundu."
 msgid "Elementor, WooCommerce and more"
 msgstr "Elementor, WooCommerce ve diğerleri"
 
+msgid "Elements"
+msgstr "Öğeler"
+
 msgid "Elevated surface"
 msgstr "Yükseltilmiş yüzey"
 
@@ -5125,11 +5181,11 @@ msgstr "Ziyaretçiler için bakım modunu etkinleştir"
 msgid "Enable the PHP ZIP extension to use demo packages."
 msgstr "Demo paketleri için PHP ZIP uzantısını etkinleştirin."
 
-msgid "Enable the top announcement bar"
-msgstr "Üst duyuru çubuğunu etkinleştir"
-
 msgid "Enable theme updates"
 msgstr "Tema güncellemelerini etkinleştir"
+
+msgid "Enable top bar"
+msgstr "Üst çubuğu etkinleştir"
 
 msgid "Enabled"
 msgstr "Etkin"
@@ -5214,6 +5270,9 @@ msgstr "Ultra geniş monitörde kurumsal analiz paneli"
 
 msgid "Enterprise clients"
 msgstr "Kurumsal müşteri"
+
+msgid "Entire site"
+msgstr "Tüm site"
 
 msgid "Entity structuring, cross-border mergers, commercial contracts and corporate governance advisory."
 msgstr "Şirket yapılandırması, sınır ötesi birleşmeler, ticari sözleşmeler ve kurumsal yönetim danışmanlığı."
@@ -5818,9 +5877,6 @@ msgstr "Öne çıkanlar"
 msgid "Featured card (second level)"
 msgstr "Öne çıkan kart (ikinci düzey)"
 
-msgid "Featured card image attachment ID"
-msgstr "Öne çıkan kart görselinin medya kimliği"
-
 msgid "Featured case studies"
 msgstr "Öne çıkan vaka çalışmaları"
 
@@ -5865,6 +5921,9 @@ msgstr "Ücret şeffaflığı"
 
 msgid "Fern packaging"
 msgstr "Fern ambalaj"
+
+msgid "Field"
+msgstr "Alan"
 
 msgid "Field accompaniment"
 msgstr "Saha desteği"
@@ -5997,6 +6056,9 @@ msgstr "İlk servis"
 
 msgid "First highlight"
 msgstr "İlk vurgu"
+
+msgid "First section (Hero)"
+msgstr "İlk bölüm (Hero)"
 
 msgid "First wave of keynote speakers and workshop hosts announced"
 msgstr "İlk açılış konuşmacıları ve atölye yürütücüleri açıklandı"
@@ -6430,6 +6492,9 @@ msgstr "Ön Yüz Mimarisi Stüdyosu"
 msgid "Front-end"
 msgstr "Ön yüz"
 
+msgid "Full"
+msgstr "Tam"
+
 msgid "Full Width template max width (px)"
 msgstr "Tam Genişlik şablonu maksimum genişliği (px)"
 
@@ -6778,6 +6843,9 @@ msgstr "Kullanıcılara web siteleri ve ürünler içinde net bir yol sunun."
 msgid "Glacier Valley Basecamp"
 msgstr "Buzul Vadisi Ana Kampı"
 
+msgid "Glass"
+msgstr "Cam"
+
 msgid "Glasshouse botanical styling with suspended greenery, vintage crystal and acoustic quartet."
 msgstr "Sarkan yeşillikler, vintage kristaller ve akustik yaylı dörtlüsü ile botanik sera düzenlemesi."
 
@@ -7054,20 +7122,23 @@ msgstr "Üst Bölüm Sol (ortalı düzen)"
 msgid "Header Right (centered layout)"
 msgstr "Üst Bölüm Sağ (ortalı düzen)"
 
+msgid "Header accent (dark)"
+msgstr "Üst bölüm vurgusu (koyu)"
+
+msgid "Header accent (light)"
+msgstr "Üst bölüm vurgusu (açık)"
+
 msgid "Header action URL"
 msgstr "Üstbilgi işlem URL’si"
 
 msgid "Header action label"
 msgstr "Üstbilgi işlem etiketi"
 
-msgid "Header background"
-msgstr "Üst bölüm arka planı"
+msgid "Header elements"
+msgstr "Üst bölüm öğeleri"
 
 msgid "Header height"
 msgstr "Üstbilgi yüksekliği"
-
-msgid "Header layout"
-msgstr "Üst bölüm düzeni"
 
 msgid "Header left"
 msgstr "Üst bölüm sol"
@@ -7077,6 +7148,12 @@ msgstr "Üst bölüm sağ"
 
 msgid "Header style"
 msgstr "Üstbilgi stili"
+
+msgid "Header text (dark)"
+msgstr "Üst bölüm metni (koyu)"
+
+msgid "Header text (light)"
+msgstr "Üst bölüm metni (açık)"
 
 msgid "Heading"
 msgstr "Başlık"
@@ -7186,8 +7263,14 @@ msgstr "Gizle"
 msgid "Hide Breadcrumb"
 msgstr "Breadcrumb’ı Gizle"
 
+msgid "Hide header"
+msgstr "Üst bölümü gizle"
+
 msgid "Hide image"
 msgstr "Görseli gizle"
+
+msgid "Hide on scroll"
+msgstr "Kaydırırken gizle"
 
 msgid "Hide the breadcrumb (Home / …)"
 msgstr "İçerik yolunu gizle (Ana Sayfa / …)"
@@ -8041,6 +8124,9 @@ msgstr "Başlangıç hareket değerlendirmesi"
 msgid "Invalid field value type. No settings were changed."
 msgstr "Alan değeri türü geçersiz. Hiçbir ayar değiştirilmedi."
 
+msgid "Invalid header elements."
+msgstr "Geçersiz üst bölüm öğeleri."
+
 msgid "Invalid operation."
 msgstr "Geçersiz işlem."
 
@@ -8236,6 +8322,9 @@ msgstr "Göl kenarı özel mülkte düğün"
 msgid "Landscape"
 msgstr "Peyzaj"
 
+msgid "Language"
+msgstr "Dil"
+
 msgid "Laptop and working materials on an office desk"
 msgstr "Ofis masasında dizüstü bilgisayar ve çalışma materyalleri"
 
@@ -8374,9 +8463,6 @@ msgstr "Leave No Trace sertifikalı"
 msgid "Leave a comment"
 msgstr "Yorum yazın"
 
-msgid "Leave empty to match the theme automatically."
-msgstr "Otomatik olarak temayla eşleşmesi için boş bırakın."
-
 msgid "Leave empty to use the design default."
 msgstr "Tasarımın varsayılan rengini kullanmak için boş bırakın."
 
@@ -8479,6 +8565,12 @@ msgstr "Yaşam"
 msgid "Light"
 msgstr "Açık"
 
+msgid "Light mode (1×)"
+msgstr "Açık mod (1×)"
+
+msgid "Light mode (2×)"
+msgstr "Açık mod (2×)"
+
 msgid "Light seasonal salads, daily soup, flatbreads and quick plates for lunch at the counter or terrace."
 msgstr "Tezgâhta veya terasta öğle yemeği için hafif mevsimlik salatalar, günün çorbası, pideler ve pratik tabaklar."
 
@@ -8514,6 +8606,9 @@ msgstr "Keten defter"
 
 msgid "Lineup announcements and attendee guides."
 msgstr "Konuşmacı duyuruları ve katılımcı rehberleri."
+
+msgid "Link"
+msgstr "Bağlantı"
 
 msgid "Link code repositories, notifications and single sign-on."
 msgstr "Kod depolarını, bildirimleri ve tek oturum açmayı bağlayın."
@@ -8574,6 +8669,9 @@ msgstr "Edebiyat ve mektuplar"
 
 msgid "Live notifications"
 msgstr "Canlı bildirimler"
+
+msgid "Live preview"
+msgstr "Canlı önizleme"
 
 msgid "Live studio hours"
 msgstr "Canlı stüdyo saatleri"
@@ -8649,6 +8747,9 @@ msgstr "Açıkta ahşap kirişli loft stüdyo çalışma alanı"
 
 msgid "Logistics & production manager"
 msgstr "Lojistik ve yapım müdürü"
+
+msgid "Logo"
+msgstr "Logo"
 
 msgid "Logo grid"
 msgstr "Logo ızgarası"
@@ -8748,6 +8849,9 @@ msgstr "Özenle yapıldı"
 
 msgid "Main Stage"
 msgstr "Ana Sahne"
+
+msgid "Main row height"
+msgstr "Ana satır yüksekliği"
 
 msgid "Main stage"
 msgstr "Ana sahne"
@@ -9061,6 +9165,12 @@ msgstr "Menü düzeni"
 msgid "Menu order"
 msgstr "Menü sırası"
 
+msgid "Menu overflow"
+msgstr "Menü taşması"
+
+msgid "Menus"
+msgstr "Menüler"
+
 msgid "Menus adapted for dietary needs on request"
 msgstr "Talep üzerine beslenme ihtiyaçlarına göre uyarlanan menüler"
 
@@ -9118,6 +9228,9 @@ msgstr "Mist, Tone, Pour ve Olen Hub"
 msgid "Mobile"
 msgstr "Mobil"
 
+msgid "Mobile < %s px"
+msgstr "Mobil < %s px"
+
 msgid "Mobile H1 size"
 msgstr "Mobil H1 boyutu"
 
@@ -9133,14 +9246,17 @@ msgstr "Görünüm sırasına göre mobil işlemler (mevcut çubuğu kullanmak i
 msgid "Mobile banking application interface design on a smartphone mockup"
 msgstr "Akıllı telefon maketinde mobil bankacılık uygulaması arayüz tasarımı"
 
-msgid "Mobile bottom app dock (≤600px)"
-msgstr "Mobil alt uygulama çubuğu (≤600px)"
+msgid "Mobile bottom dock"
+msgstr "Mobil alt çubuk"
 
 msgid "Mobile breakpoint"
 msgstr "Mobil kırılma noktası"
 
-msgid "Mobile navigation"
-msgstr "Mobil gezinme"
+msgid "Mobile max height"
+msgstr "Mobil en fazla yükseklik"
+
+msgid "Mobile menu"
+msgstr "Mobil menü"
 
 msgid "Mobile padding"
 msgstr "Mobil kenar boşluğu"
@@ -9235,6 +9351,9 @@ msgstr "Aylık / Yıllık"
 msgid "Monthly planning check-in"
 msgstr "Aylık planlama görüşmesi"
 
+msgid "More"
+msgstr "Diğer"
+
 msgid "More about me"
 msgstr "Hakkımda daha fazla"
 
@@ -9244,8 +9363,8 @@ msgstr "Hakkımızda daha fazlası"
 msgid "More footer options"
 msgstr "Diğer alt bölüm seçenekleri"
 
-msgid "More header options"
-msgstr "Diğer üst bölüm seçenekleri"
+msgid "More menu"
+msgstr "Diğer menüsü"
 
 msgid "More output from an existing line"
 msgstr "Mevcut hattan daha yüksek çıktı"
@@ -9303,6 +9422,12 @@ msgstr "Hareket setleri"
 
 msgid "Mountain Trek"
 msgstr "Dağ Yürüyüşü"
+
+msgid "Move %s down"
+msgstr "%s öğesini aşağı taşı"
+
+msgid "Move %s up"
+msgstr "%s öğesini yukarı taşı"
 
 msgid "Move your existing projects over without disrupting active sprints."
 msgstr "Mevcut projelerinizi aktif sprintleri kesintiye uğratmadan taşıyın."
@@ -9523,6 +9648,9 @@ msgstr "Patika başına vardığınızda gizli ücret veya beklenmeyen masraf yo
 msgid "No imported starter pages were found."
 msgstr "İçe aktarılmış başlangıç sayfası bulunamadı."
 
+msgid "No menu is assigned to the header. Assign a menu in Appearance > Menus."
+msgstr "Üst bölüme atanmış menü yok. Görünüm > Menüler bölümünden bir menü atayın."
+
 msgid "No pending changes"
 msgstr "Kaydedilmemiş değişiklik yok"
 
@@ -9549,6 +9677,12 @@ msgstr "Hiçbir ayar değiştirilmedi. Etkilenen alanları inceleyip bu siteye a
 
 msgid "No settings match your search. Try another keyword."
 msgstr "Aramanızla eşleşen ayar bulunamadı. Başka bir sözcük deneyin."
+
+msgid "No side menus are assigned. Mobile menu (%s) is split between left and right."
+msgstr "Yan menü atanmamış. Mobil menü (%s) sol ve sağ arasında bölünür."
+
+msgid "No side menus are assigned. Primary menu (%s) is split between left and right."
+msgstr "Yan menü atanmamış. Birincil menü (%s) sol ve sağ arasında bölünür."
 
 msgid "No sidebar"
 msgstr "Kenar çubuğu yok"
@@ -9670,6 +9804,9 @@ msgstr "Planlama kontrol listeleri, öne çıkan mekânlar ve stil önerileri e-
 msgid "Occasional updates when the seasonal menu changes or special dinners open for booking."
 msgstr "Mevsim menüsü değiştiğinde veya özel akşam yemekleri rezervasyona açıldığında dönemsel güncellemeler."
 
+msgid "Off"
+msgstr "Kapalı"
+
 msgid "Off by default. Replaces the normal title above the content with a centered title overlaid on the featured image itself. Any page can override this individually — see \"Title over featured image\" in its GNN Display Options box."
 msgstr "Varsayılan olarak kapalıdır. İçeriğin üstündeki normal başlığın yerine, öne çıkarılan görselin üzerinde ortalanmış bir başlık gösterir. Her sayfa bunu kendi \"GNN Görüntüleme Seçenekleri\" kutusundaki \"Öne çıkarılan görsel üzerinde başlık\" ile ayrı ayrı geçersiz kılabilir."
 
@@ -9733,6 +9870,9 @@ msgstr "Zeytin Bahçesi Evi"
 msgid "Olive Groves"
 msgstr "Zeytinlikler"
 
+msgid "On"
+msgstr "Açık"
+
 msgid "On the record."
 msgstr "Kayıtlara geçenler."
 
@@ -9793,6 +9933,12 @@ msgstr "Çevrim içi prova baskısı ve önizlemeler"
 msgid "Online contact sheet review"
 msgstr "Çevrim içi prova baskısı incelemesi"
 
+msgid "Only Header left (%s) is assigned. The right side will stay empty until Header right is assigned."
+msgstr "Yalnızca Üst bölüm sol (%s) atanmış. Üst bölüm sağ atanana kadar sağ taraf boş kalır."
+
+msgid "Only Header right (%s) is assigned. The left side will stay empty until Header left is assigned."
+msgstr "Yalnızca Üst bölüm sağ (%s) atanmış. Üst bölüm sol atanana kadar sol taraf boş kalır."
+
 msgid "Only the administrator who started this installation can continue."
 msgstr "Yalnızca kurulumu başlatan yönetici devam edebilir."
 
@@ -9804,6 +9950,9 @@ msgstr "Burada yalnızca rolünüze atanmış alanları değiştirebilirsiniz. K
 
 msgid "Open API and webhooks"
 msgstr "Açık API ve web kancaları"
+
+msgid "Open Appearance > Menus"
+msgstr "Görünüm > Menüler’i aç"
 
 msgid "Open Elementor activation"
 msgstr "Elementor etkinleştirme ekranını aç"
@@ -10120,6 +10269,15 @@ msgstr "Ayakta ve uzman tedavisi"
 msgid "Over three years of gentle conservation, we worked with regional craftsmen to restore lime plasters, local terracotta tiles and aged oak joinery."
 msgstr "Üç yıllık titiz bir koruma sürecinde kireç sıvaları, yerel pişmiş toprak karoları ve eskitme meşe doğramaları restore etmek için bölgedeki ustalarla çalıştık."
 
+msgid "Overlay"
+msgstr "Katman"
+
+msgid "Overlay first section"
+msgstr "İlk bölümün üzerine bindir"
+
+msgid "Overlay logo"
+msgstr "Üzerine bindirme logosu"
+
 msgid "Overlay title background color"
 msgstr "Kaplama başlığı arka plan rengi"
 
@@ -10128,6 +10286,9 @@ msgstr "Kaplama başlığı arka plan opaklığı (%)"
 
 msgid "Overlay title font size (px)"
 msgstr "Kaplama başlığı yazı boyutu (px)"
+
+msgid "Overlays the header on the page only when the first section is a hero."
+msgstr "Üst bölümü yalnızca ilk bölüm bir hero olduğunda sayfanın üzerine bindirir."
 
 msgid "Oversees delivery programmes and helps teams build the skills to run them."
 msgstr "Teslimat programlarını yönetir ve ekiplerin bu programları yürütecek yetkinlikleri kazanmasına destek olur."
@@ -10792,6 +10953,9 @@ msgstr "Koruyucu sağlık taramaları"
 msgid "Preview"
 msgstr "Önizle"
 
+msgid "Preview device"
+msgstr "Önizleme cihazı"
+
 msgid "Preview import"
 msgstr "İçe aktarmayı önizle"
 
@@ -10836,6 +11000,9 @@ msgstr "Günlük sağlık soruları, akut semptomlar ve koordineli uzman bakım�
 
 msgid "Primary consultations, acute symptoms, ongoing condition reviews and referrals."
 msgstr "Birinci basamak konsültasyonları, akut belirtiler, devam eden durum incelemeleri ve sevkler."
+
+msgid "Primary menu"
+msgstr "Birincil menü"
 
 msgid "Primary text"
 msgstr "Birincil metin"
@@ -11181,6 +11348,9 @@ msgstr "İletişim e-postası"
 
 msgid "Public ideas & commons"
 msgstr "Kamusal fikirler ve müşterekler"
+
+msgid "Public phone"
+msgstr "İletişim telefonu"
 
 msgid "Public phone number"
 msgstr "İletişim telefonu"
@@ -11730,6 +11900,9 @@ msgstr "Uzak nehir vadileri, turba sırtları ve geniş kuzey gökyüzü altınd
 
 msgid "Remove"
 msgstr "Kaldır"
+
+msgid "Remove image"
+msgstr "Görseli kaldır"
 
 msgid "Remove jQuery Migrate (front-end)"
 msgstr "jQuery Migrate’i kaldır (ön yüz)"
@@ -12412,6 +12585,9 @@ msgstr "Sıfırdan mutfak hazırlığı"
 msgid "Screen and type showcase"
 msgstr "Ekran ve tipografi vitrini"
 
+msgid "Scroll behavior"
+msgstr "Kaydırma davranışı"
+
 msgid "Scroll to top"
 msgstr "Yukarı çık"
 
@@ -12430,8 +12606,14 @@ msgstr "Ara"
 msgid "Search for:"
 msgstr "Şunu ara:"
 
+msgid "Search mode"
+msgstr "Arama modu"
+
 msgid "Search products, posts, pages…"
 msgstr "Ürün, yazı, sayfa arayın…"
+
+msgid "Search scope"
+msgstr "Arama kapsamı"
 
 msgid "Search settings…"
 msgstr "Ayarlarda ara…"
@@ -12823,6 +13005,9 @@ msgstr "Kurulum Sihirbazı"
 msgid "Seven days traversing high mountain passes, glacier moraines and wilderness huts."
 msgstr "Yüksek dağ geçitlerini, buzul morenlerini ve dağ kulübelerini aşan yedi gün."
 
+msgid "Shape"
+msgstr "Şekil"
+
 msgid "Shaped in clay before a circuit was drawn."
 msgstr "Tek bir devre çizilmeden önce kille şekillendirildi."
 
@@ -12961,6 +13146,9 @@ msgstr "Dört hastanede sevktan triyaja kadar geçen sürede kısalma"
 msgid "Shortlist, 2025"
 msgstr "Kısa liste, 2025"
 
+msgid "Show"
+msgstr "Göster"
+
 msgid "Show a search box on the 404 page"
 msgstr "404 sayfasında arama kutusu göster"
 
@@ -13006,6 +13194,9 @@ msgstr "Listede tarih ve okuma bilgisini göster"
 msgid "Show metadata on single posts"
 msgstr "Tekil yazıda tarih ve okuma bilgisini göster"
 
+msgid "Show on mobile"
+msgstr "Mobilde göster"
+
 msgid "Show post tags"
 msgstr "Yazı etiketlerini göster"
 
@@ -13021,14 +13212,8 @@ msgstr "Ortak alt bölümü göster"
 msgid "Show the author biography box"
 msgstr "Yazar biyografi kutusunu göster"
 
-msgid "Show the cart link (WooCommerce)"
-msgstr "Sepet bağlantısını göster (WooCommerce)"
-
 msgid "Show the comments section"
 msgstr "Yorum bölümünü göster"
-
-msgid "Show the dark/light toggle in the header"
-msgstr "Üst bölümde koyu/açık düğmesini göster"
 
 msgid "Show the decorative dot after the text logo"
 msgstr "Metin logosundan sonra dekoratif noktayı göster"
@@ -13041,9 +13226,6 @@ msgstr "Desteklendiğinde dil seçiciyi göster"
 
 msgid "Show the page title centered inside the featured image"
 msgstr "Sayfa başlığını öne çıkarılan görselin içinde ortalanmış göster"
-
-msgid "Show the search icon"
-msgstr "Arama ikonunu göster"
 
 msgid "Show the work early"
 msgstr "İşi erken gösterin"
@@ -13059,6 +13241,18 @@ msgstr "Duşlar ve kilitli dolaplar"
 
 msgid "Shown bottom-right in the footer. Leave empty to hide."
 msgstr "Footer’ın sağ altında görünür. Gizlemek için boş bırakın."
+
+msgid "Shown on screens up to 600 px."
+msgstr "600 px genişliğe kadar olan ekranlarda gösterilir."
+
+msgid "Shown over a hero before the page scrolls."
+msgstr "Sayfa kaydırılmadan önce hero üzerinde gösterilir."
+
+msgid "Shows a dot after the site title when no logo image is set."
+msgstr "Logo görseli seçilmediğinde site başlığının ardından nokta gösterir."
+
+msgid "Shrink on scroll"
+msgstr "Kaydırırken küçült"
 
 msgid "Side heading with 2x2 features"
 msgstr "2x2 özellikli yan başlık"
@@ -13165,6 +13359,9 @@ msgstr "Tekil yazı içerik genişliği (px)"
 msgid "Single post footer override"
 msgstr "Tekil yazı altbilgi tercihi"
 
+msgid "Single post header"
+msgstr "Tekil yazı üst bölümü"
+
 msgid "Single post header override"
 msgstr "Tekil yazı üstbilgi tercihi"
 
@@ -13198,6 +13395,9 @@ msgstr "Site"
 msgid "Site design"
 msgstr "Site tasarımı"
 
+msgid "Site header"
+msgstr "Site üst bölümü"
+
 msgid "Site layout"
 msgstr "Site düzeni"
 
@@ -13215,6 +13415,9 @@ msgstr "Site ayarları (özel yapılandırmayı içerir)"
 
 msgid "Site settings could not be reset."
 msgstr "Site ayarları sıfırlanamadı."
+
+msgid "Site title"
+msgstr "Site başlığı"
 
 msgid "Six people. One room."
 msgstr "Altı kişi. Tek oda."
@@ -13314,6 +13517,9 @@ msgstr "Yumuşak mat seramik kaplama"
 
 msgid "Software workspace interface preview with roadmap and task panels"
 msgstr "Yol haritası ve görev panellerini içeren yazılım çalışma alanı arayüzü önizlemesi"
+
+msgid "Solid"
+msgstr "Düz"
 
 msgid "Solid stone block and clean horizon representing leadership stability"
 msgstr "Liderlik istikrarını temsil eden yekpare taş blok ve net ufuk çizgisi"
@@ -13459,9 +13665,6 @@ msgstr "Aileler veya uzun süreli konaklamalar için müstakil tarihi kulübe."
 msgid "Standalone historic two-bedroom stone cottage with private kitchen, lawn garden and outdoor dining loggia."
 msgstr "Özel mutfak, çim bahçe ve açık yemek verandasına sahip müstakil tarihi iki yatak odalı taş kulübe."
 
-msgid "Standard"
-msgstr "Standart"
-
 msgid "Standard (logo left, menu right)"
 msgstr "Standart (logo solda, menü sağda)"
 
@@ -13573,6 +13776,9 @@ msgstr "Başlangıçlar ve paylaşımlı tabaklar"
 msgid "Starting a project with a one-page brief"
 msgstr "Projeye tek sayfalık bir brifle başlamak"
 
+msgid "Static"
+msgstr "Sabit"
+
 msgid "Statistics cards"
 msgstr "İstatistik kartları"
 
@@ -13618,8 +13824,8 @@ msgstr "Temiz bir klinik masasında stetoskop ve hasta dosyası"
 msgid "Stewardship"
 msgstr "Yönetim sorumluluğu"
 
-msgid "Sticky header"
-msgstr "Sabit üst bölüm"
+msgid "Sticky"
+msgstr "Yapışkan"
 
 msgid "Still need help?"
 msgstr "Hâlâ yardıma mı ihtiyacınız var?"
@@ -13755,6 +13961,9 @@ msgstr "Sıkı mesleki gizlilik ve veri güvenliği"
 
 msgid "Strong"
 msgstr "Belirgin"
+
+msgid "Structure"
+msgstr "Yapı"
 
 msgid "Structure team roles, guest access and audit trails before scaling your workspace across departments."
 msgstr "Çalışma alanınızı departmanlar arasında ölçeklendirmeden önce ekip rollerini, konuk erişimini ve denetim izlerini yapılandırın."
@@ -14296,6 +14505,9 @@ msgstr "Metin (site başlığı)"
 msgid "Text case"
 msgstr "Harf biçimi"
 
+msgid "Text color"
+msgstr "Metin rengi"
+
 msgid "Text on accent"
 msgstr "Vurgu üzerindeki metin"
 
@@ -14506,11 +14718,17 @@ msgstr "Tema varsayılanı"
 msgid "Theme default (currently %s)"
 msgstr "Tema varsayılanı (şu an %s)"
 
+msgid "Theme header"
+msgstr "Tema üst bölümü"
+
 msgid "Theme sections"
 msgstr "Tema bölümleri"
 
 msgid "Theme settings"
 msgstr "Tema Ayarları"
+
+msgid "Theme switch"
+msgstr "Tema anahtarı"
 
 msgid "Theme update settings saved."
 msgstr "Tema güncelleme ayarları kaydedildi."
@@ -14656,6 +14874,9 @@ msgstr "Yüksek zanaat standartlarını korumak için yalnızca özenle seçilmi
 msgid "Toggle dark / light mode"
 msgstr "Koyu / açık modu değiştir"
 
+msgid "Toggle submenu for %s"
+msgstr "%s alt menüsünü aç/kapat"
+
 msgid "Tokens, components and documentation shared by design and engineering teams."
 msgstr "Tasarım ve mühendislik ekiplerinin ortak kullandığı jetonlar, bileşenler ve belgeler."
 
@@ -14668,11 +14889,14 @@ msgstr "Üst"
 msgid "Top bar"
 msgstr "Üst çubuk"
 
-msgid "Top bar background color"
-msgstr "Üst çubuk zemin rengi"
+msgid "Top bar email"
+msgstr "Üst çubuk e-postası"
 
-msgid "Top bar text color"
-msgstr "Üst çubuk metin rengi"
+msgid "Top bar on mobile"
+msgstr "Mobilde üst çubuk"
+
+msgid "Top bar phone"
+msgstr "Üst çubuk telefonu"
 
 msgid "Top loading progress bar"
 msgstr "Üstte yükleme ilerleme çubuğu"
@@ -14833,9 +15057,6 @@ msgstr "Masa başında veya okuma koltuğunda düşük sesle dinlemek için ayar
 msgid "Turn a programme mandate into decisions, milestones and accountable work."
 msgstr "Bir program hedefini kararlara, kilometre taşlarına ve sorumluluk dağılımına dönüştürün."
 
-msgid "Turn off to show only the default mode."
-msgstr "Kapatırsanız yalnız varsayılan mod gösterilir."
-
 msgid "Tuscan villa garden celebration"
 msgstr "Toskana villası bahçe kutlaması"
 
@@ -14925,6 +15146,9 @@ msgstr "Kullanılamıyor"
 
 msgid "Unavailable block"
 msgstr "Kullanılamayan blok"
+
+msgid "Unavailable layout"
+msgstr "Kullanılamayan yerleşim"
 
 msgid "Uncategorized"
 msgstr "Genel"
@@ -15073,6 +15297,9 @@ msgstr "Eğitimler ve sertifikalar için yıllık bütçeden ve ayrılmış çal
 msgid "Use enhanced parental leave and agree a gradual return with your manager."
 msgstr "Genişletilmiş ebeveyn izninden yararlanın ve yöneticinizle kademeli dönüş planlayın."
 
+msgid "Use existing setting"
+msgstr "Mevcut ayarı kullan"
+
 msgid "Use individual modules or run your entire delivery cycle in one place."
 msgstr "Bağımsız modülleri kullanın veya tüm teslimat döngünüzü tek bir yerde yürütün."
 
@@ -15108,6 +15335,12 @@ msgstr "Kullanıcı ayarları sıfırlanamadı."
 
 msgid "Users could not be reset."
 msgstr "Kullanıcılar sıfırlanamadı."
+
+msgid "Uses the public email below when empty."
+msgstr "Boş bırakıldığında aşağıdaki iletişim e-postası kullanılır."
+
+msgid "Uses the public phone below when empty."
+msgstr "Boş bırakıldığında aşağıdaki iletişim telefonu kullanılır."
 
 msgid "Using the saved font list."
 msgstr "Kayıtlı yazı tipi listesi kullanılıyor."
@@ -16125,6 +16358,9 @@ msgstr "Neden biz"
 
 msgid "Why we do what we do."
 msgstr "Bunu neden yapıyoruz."
+
+msgid "Wide"
+msgstr "Geniş"
 
 msgid "Width"
 msgstr "Genişlik"

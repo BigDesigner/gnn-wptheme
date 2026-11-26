@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
  *     AJAX filter/pagination + popstate checks.
  *   - A1..A5: stage-specific acceptance checks.
  */
-export async function testControlsBrowser({ browser, server, php, plugins = true }) {
+export async function testControlsBrowser({ browser, server, php, out, plugins = true }) {
  const tests = [];
  const rawStages = process.env.GNN_CONTROLS_STAGES ?? 'all';
  const stages = new Set(
@@ -103,7 +103,19 @@ export async function testControlsBrowser({ browser, server, php, plugins = true
    } else {
     await widget.click({ position: { x: 20, y: 20 }, force: true });
    }
-   await page.locator('#elementor-controls .elementor-control').first().waitFor({ state: 'visible', timeout: 30000 });
+   try {
+    await page.locator('#elementor-controls .elementor-control').first().waitFor({ state: 'visible', timeout: 30000 });
+   } catch (error) {
+    const geometry=await widget.evaluate(el=>{
+     const doc=el.ownerDocument;
+     const root=el.getBoundingClientRect();
+     const header=doc.querySelector('#masthead')?.getBoundingClientRect();
+     const hit=doc.elementFromPoint(root.x+20,root.y+20);
+     return {widgetTop:root.top,headerBottom:header?.bottom,hit:hit?.className,insideWidget:el.contains(hit)};
+    }).catch(()=>null);
+    if(out) await page.screenshot({path:`${out}/elementor-${widgetId}-selection.png`,timeout:5000}).catch(()=>{});
+    throw new Error(`Elementor did not open controls for ${widgetId}. ${JSON.stringify(geometry)}\n${error.message}`,{cause:error});
+   }
   }
  }
 
@@ -730,8 +742,23 @@ export async function testControlsBrowser({ browser, server, php, plugins = true
 
     // Edit one control in Elementor UI and click Save so Elementor compiles frontend CSS naturally.
     await openElementorEditor(adminPage, matrixPageId, matrixWidgets[0].id);
-    await selectElementorWidget(adminPage, matrixWidgets[0].id);
-    await setElementorControl(adminPage, { tab: 'content', setting: 'limit', value: '6' });
+    const editorDialogs = adminPage.locator('.MuiDialog-root:visible').last();
+    await adminPage.addLocatorHandler(editorDialogs, async dialog => {
+     const close = dialog.getByRole('button', { name: /^(close|kapat)$/i }).first();
+     if (await close.isVisible()) await close.click();
+     else await adminPage.keyboard.press('Escape');
+    });
+    try {
+     const closeStructure = adminPage.locator('#elementor-navigator__close');
+     if (await closeStructure.isVisible()) await closeStructure.click();
+     const matrixWidget = adminPage.frameLocator('#elementor-preview-iframe').locator(`[data-id="${matrixWidgets[0].id}"]`);
+     // Catalog cards in the preview are interactive links. Use Elementor's own widget edit handle.
+     await matrixWidget.hover({ position: { x: 20, y: 20 } });
+     await matrixWidget.locator(':scope > .elementor-element-overlay .elementor-editor-element-edit').click();
+     await setElementorControl(adminPage, { tab: 'content', setting: 'limit', value: '6' });
+    } finally {
+     await adminPage.removeLocatorHandler(editorDialogs);
+    }
     await setElementorControl(adminPage, { tab: 'content', setting: 'limit', value: '6' });
     // Toggle columns once so document becomes dirty cleanly before real Publish click.
     await setElementorControl(adminPage, { tab: 'content', setting: 'columns', value: '1' });
@@ -829,7 +856,7 @@ export async function testControlsBrowser({ browser, server, php, plugins = true
   // Stage A2 — Hidden legacy header layout & empty accent_light preservation
   // =========================================================================
   if (stages.has('A2')) {
-   await record('A2-01 switching header preset from legacy+centered to classic removes gnn-header-centered', async () => {
+   await record('A2-01 explicit Classic structure overrides the centered legacy baseline', async () => {
     await runPhp(`
      $o = (array) get_option('gnn_options', array());
      $o['header_preset'] = 'legacy';
@@ -837,7 +864,7 @@ export async function testControlsBrowser({ browser, server, php, plugins = true
      update_option('gnn_options', $o);
     `, true);
     await openPanelTab(adminPage, 'header');
-    await adminPage.locator('#gnn-header_preset').selectOption('classic');
+    await adminPage.locator('label[for="gnn-header_structure-classic"]').click();
     await savePanel(adminPage);
 
     const fp = await context.newPage();
@@ -846,7 +873,7 @@ export async function testControlsBrowser({ browser, server, php, plugins = true
       await fp.setViewportSize(vp);
       await fp.goto(`${baseUrl}/?page_id=${fixtures.pages.front_page}`, { waitUntil: 'networkidle', timeout: 60000 });
       const hasCentered = await fp.locator('.site-header.gnn-header-centered, header.gnn-header-centered').count();
-      assert.equal(hasCentered, 0, `Unexpected .gnn-header-centered at ${vp.width}px after saving header_preset=classic`);
+      assert.equal(hasCentered, 0, `Unexpected .gnn-header-centered at ${vp.width}px after saving header_structure=classic`);
      }
     } finally {
      await fp.close();

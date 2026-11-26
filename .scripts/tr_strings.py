@@ -12147,7 +12147,7 @@ TRANSLATIONS.update({
     'Mobile bottom dock': 'Mobil alt çubuk',
     'Mobile max height': 'Mobil en fazla yükseklik',
     'Mobile menu': 'Mobil menü',
-    'Mobile ≤ %s px': 'Mobil ≤ %s px',
+    'Mobile < %s px': 'Mobil < %s px',
     'More': 'Diğer',
     'More menu': 'Diğer menüsü',
     'Move %s down': '%s öğesini aşağı taşı',
