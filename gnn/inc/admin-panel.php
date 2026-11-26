@@ -963,7 +963,6 @@ function gnn_panel_render() {
 							get_theme_mod( 'gnn_default_theme', 'dark' )
 						);
 						?>
-						<?php gnn_field_checkbox( 'show_toggle', __( 'Show the dark/light toggle in the header', 'gnn' ), __( 'Turn off to show only the default mode.', 'gnn' ) ); ?>
 						<?php gnn_field_checkbox( 'remember_mode', __( 'Remember each visitor\'s choice', 'gnn' ), __( 'Applies while the toggle is visible.', 'gnn' ) ); ?>
 						<?php gnn_field_media( 'site_icon', __( 'Favicon (site icon, 512×512)', 'gnn' ), (int) get_option( 'site_icon', 0 ) ); ?>
 
@@ -995,48 +994,7 @@ function gnn_panel_render() {
 					</section>
 
 					<section id="gnn-tab-header" class="gnn-tab">
-						<?php gnn_card_open( __( 'Brand assets', 'gnn' ) ); ?>
-						<?php // Stored legacy URLs stay in the form so an untouched save keeps them. ?>
-						<?php gnn_field_media( 'logo_light', __( 'Logo — light mode (1×)', 'gnn' ), gnn_option( 'logo_light' ) ); ?>
-						<?php gnn_field_media( 'logo_light_2x', __( 'Logo — light mode (2× retina)', 'gnn' ), gnn_option( 'logo_light_2x' ) ); ?>
-						<?php gnn_field_media( 'logo_dark', __( 'Logo — dark mode (1×)', 'gnn' ), gnn_option( 'logo_dark' ) ); ?>
-						<?php gnn_field_media( 'logo_dark_2x', __( 'Logo — dark mode (2× retina)', 'gnn' ), gnn_option( 'logo_dark_2x' ) ); ?>
-						<?php gnn_field_number( 'logo_max_height', __( 'Logo max height — desktop (px)', 'gnn' ), 12, 200 ); ?>
-						<?php gnn_field_number( 'logo_max_height_mobile', __( 'Logo max height — mobile (px)', 'gnn' ), 12, 200 ); ?>
-
-						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Layout', 'gnn' ) ); ?>
-						<?php
-						$gnn_header_schema = gnn_platform_schema();
-						gnn_field_select( 'header_preset', __( 'Header style', 'gnn' ), $gnn_header_schema['header_preset'][4] );
-						gnn_visual_header_layout();
-						gnn_field_select(
-							'header_menu_align',
-							__( 'Menu alignment', 'gnn' ),
-							array(
-								'left'   => __( 'Left', 'gnn' ),
-								'center' => __( 'Center', 'gnn' ),
-								'right'  => __( 'Right', 'gnn' ),
-							)
-						);
-						?>
-						<?php gnn_field_checkbox( 'sticky_header', __( 'Sticky header', 'gnn' ) ); ?>
-						<?php gnn_field_checkbox( 'show_search', __( 'Show the search icon', 'gnn' ) ); ?>
-						<?php gnn_field_checkbox( 'show_cart', __( 'Show the cart link (WooCommerce)', 'gnn' ) ); ?>
-						<?php gnn_field_checkbox( 'mobile_dock', __( 'Mobile bottom app dock (≤600px)', 'gnn' ) ); ?>
-
-						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Top bar', 'gnn' ) ); ?>
-						<?php gnn_field_checkbox( 'topbar_enable', __( 'Enable the top announcement bar', 'gnn' ) ); ?>
-						<?php gnn_field_text( 'topbar_text', __( 'Announcement text', 'gnn' ), (string) gnn_option( 'topbar_text' ) ); ?>
-						<?php gnn_field_text( 'topbar_email', __( 'Email', 'gnn' ), (string) gnn_option( 'topbar_email' ) ); ?>
-						<?php gnn_field_text( 'topbar_phone', __( 'Phone', 'gnn' ), (string) gnn_option( 'topbar_phone' ) ); ?>
-
-						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'More header options', 'gnn' ) ); ?>
-						<?php gnn_field_color_pair( 'header_bg', __( 'Header background', 'gnn' ), '#141416', '#fafafa', __( 'Leave empty to use the design default.', 'gnn' ) ); ?>
-						<?php gnn_platform_fields( 'header', array( 'header_preset' ), array(), '' ); ?>
-						<?php gnn_card_close(); ?>
+						<?php gnn_render_header_tab(); ?>
 					</section>
 
 					<section id="gnn-tab-footer" class="gnn-tab">
@@ -1249,27 +1207,6 @@ function gnn_panel_render() {
 						gnn_field_color_pair( 'color_fg', __( 'Primary text', 'gnn' ), '#f5f5f4', '#101013' );
 						gnn_field_color_pair( 'color_fg2', __( 'Muted text', 'gnn' ), '#9d9da4', '#5c5c64' );
 						gnn_field_color_pair( 'color_line', __( 'Borders / dividers', 'gnn' ), '#232328', '#e5e5e9' );
-						?>
-
-						<?php gnn_card_close(); ?>
-						<?php gnn_card_open( __( 'Top bar', 'gnn' ) ); ?>
-						<?php
-						gnn_field_color(
-							'topbar_bg',
-							__( 'Top bar background color', 'gnn' ),
-							(string) gnn_option( 'topbar_bg' ),
-							'#141416',
-							__( 'Leave empty to match the theme automatically.', 'gnn' ),
-							true
-						);
-						gnn_field_color(
-							'topbar_text_color',
-							__( 'Top bar text color', 'gnn' ),
-							(string) gnn_option( 'topbar_text_color' ),
-							'#9d9da4',
-							__( 'Leave empty to match the theme automatically.', 'gnn' ),
-							true
-						);
 						?>
 
 						<?php gnn_card_close(); ?>
