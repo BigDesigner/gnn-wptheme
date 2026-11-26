@@ -471,15 +471,3 @@ function gnn_authoring_checks_screen() {
 	}
 	echo '</section>';
 }
-
-/** Visual selection writes the existing header layout setting. */
-function gnn_visual_header_layout() {
-	echo '<fieldset class="gnn-visual-options" data-gnn-legacy-header' . ( 'legacy' === gnn_option( 'header_preset' ) ? '' : ' hidden' ) . '><legend>' . esc_html__( 'Header layout', 'gnn' ) . '</legend>';
-	foreach ( array(
-		'standard' => __( 'Standard', 'gnn' ),
-		'centered' => __( 'Centered', 'gnn' ),
-	) as $value => $label ) {
-		echo '<label><input type="radio" name="gnn_options[header_layout]" value="' . esc_attr( $value ) . '" ' . checked( gnn_option( 'header_layout' ), $value, false ) . '><span class="gnn-header-wireframe gnn-header-wireframe--' . esc_attr( $value ) . '" aria-hidden="true"><i></i><i></i><i></i></span><span>' . esc_html( $label ) . '</span></label>';
-	}
-	echo '</fieldset>';
-}
