@@ -3,16 +3,9 @@
    Scoped strictly to .gnn-site-fitness and .gnn-sec; token-driven.
    ===================================================================== */
 
-/* ---------- Transparent / Dark Athletic Header ---------- */
-.gnn-site-fitness .site-header {
-	background: color-mix(in srgb, var(--bg) 88%, transparent);
-	backdrop-filter: blur(14px);
-	-webkit-backdrop-filter: blur(14px);
-	border-bottom: 2px solid var(--line);
-}
-
-.gnn-site-fitness .site-header__inner {
-	min-height: 74px;
+/* ---------- Athletic Header ---------- */
+.gnn-site-fitness #masthead.site-header::before {
+	box-shadow: inset 0 -2px var(--gnn-header-line);
 }
 
 .gnn-site-fitness .site-title {
@@ -22,36 +15,27 @@
 	text-transform: uppercase;
 }
 
-.gnn-site-fitness .main-navigation ul.menu {
-	gap: 26px;
-}
-
-.gnn-site-fitness .main-navigation ul.menu > li > a {
+.gnn-site-fitness [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-family: var(--font-heading);
 	font-size: 13px;
 	font-weight: 700;
 	letter-spacing: 0.09em;
 	text-transform: uppercase;
-	padding-block: 8px;
 	transition: color 0.18s ease;
 }
 
-.gnn-site-fitness .main-navigation ul.menu > li:hover > a,
-.gnn-site-fitness .main-navigation ul.menu > li.current-menu-item > a {
-	color: var(--accent-text);
+.gnn-site-fitness [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-fitness [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
 }
 
-.gnn-site-fitness .header-cta {
+.gnn-site-fitness .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnn-radius, 10px);
-	background: var(--accent);
-	color: var(--accent-ink);
-	border: 1px solid var(--accent);
 	font-family: var(--font-heading);
 	font-size: 13px;
 	font-weight: 800;
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	padding: 11px 22px;
 }
 
 /* ---------- Bold Athletic Headings & Eyebrow Pills ---------- */
@@ -132,13 +116,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-fitness .main-navigation ul.menu > li > a {
+	.gnn-site-fitness [data-gnn-header] .main-navigation ul.menu > li > a {
 		transition: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-fitness .header-cta { display: none; }
-	.gnn-site-fitness .header-actions { gap: 8px; }
 }

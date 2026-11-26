@@ -105,8 +105,13 @@
 }
 
 .gnn-gnnpro :is(a, button, [role="button"]):focus-visible,
-.gnn-site-gnnpro :is(.site-header, .site-footer) a:focus-visible {
+.gnn-site-gnnpro .site-footer a:focus-visible {
 	outline: 2px solid var(--accent-text, var(--accent));
+	outline-offset: 4px;
+}
+
+.gnn-site-gnnpro .gnn-header-controls a:focus-visible {
+	outline: 2px solid var(--gnn-header-row-accent, var(--gnn-header-accent-text, var(--accent)));
 	outline-offset: 4px;
 }
 
@@ -773,7 +778,7 @@
 }
 
 /* Shared chrome */
-.gnn-site-gnnpro .gnn-topbar {
+.gnn-site-gnnpro .gnn-header-shell > .gnn-topbar {
 	background: var(--gnn-topbar-bg, var(--gnnpro-navy));
 	color: var(--gnn-topbar-fg, var(--gnnpro-on-navy));
 }
@@ -783,33 +788,21 @@
 	text-decoration: underline;
 }
 
-.gnn-site-gnnpro .site-header {
-	background: var(--bg);
-	backdrop-filter: none;
-}
-
-.gnn-site-gnnpro :is(.site-header__inner, .gnn-topbar__inner) {
-	max-width: var(--gnnpro-width);
-	padding-inline: var(--gnnpro-gutter);
-}
-
-.gnn-site-gnnpro .main-navigation ul.menu {
-	gap: clamp(12px, 1.6vw, 24px);
+.gnn-site-gnnpro [data-gnn-header] .main-navigation > ul.menu {
 	font-weight: 700;
 }
 
-.gnn-site-gnnpro .main-navigation ul.menu > li > a {
-	min-height: 44px;
+.gnn-site-gnnpro [data-gnn-header] .main-navigation ul.menu > li > a {
 	text-underline-offset: .45em;
 }
 
-.gnn-site-gnnpro .main-navigation ul.menu > li:is(.current-menu-item, :hover) > a {
-	color: var(--accent-text, var(--accent));
+.gnn-site-gnnpro [data-gnn-header] .main-navigation ul.menu > li:is(.current-menu-item, :hover) > a {
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
 	text-decoration: underline;
 }
 
-.gnn-site-gnnpro .header-cta {
-	min-height: 44px;
+.gnn-site-gnnpro .gnn-header-controls[data-gnn-header] .header-cta {
+	border-radius: var(--gnnpro-radius);
 }
 
 .gnn-site-gnnpro .site-footer {
@@ -940,10 +933,6 @@
 
 	.elementor .gnn-gnnpro-process .e-con.gnn-st.gnn-gnnpro-steps {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.gnn-site-gnnpro .header-cta {
-		display: none;
 	}
 }
 

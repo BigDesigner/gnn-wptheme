@@ -35,6 +35,12 @@ function gnn_template_data_event() {
 			'preset'    => 'centered',
 			'cta_label' => __( 'Get tickets', 'gnn' ),
 			'options'   => array(
+				'header_structure'  => 'centered',
+				'header_surface'    => 'glass',
+				'header_shape'      => 'full',
+				'header_width'      => 'contained',
+				'header_behavior'   => 'sticky',
+				'header_overlay'    => 0,
 				'topbar_enable'     => 1,
 				'header_height'     => 74,
 				'header_search_bar' => 0,

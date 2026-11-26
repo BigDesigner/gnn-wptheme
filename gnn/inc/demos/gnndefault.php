@@ -55,6 +55,12 @@ function gnn_gnndefault_profile() {
 		'light'        => array( '#f7f4ef', '#ffffff', '#ede8df', '#1d1c19', '#59554d', '#ddd6ca' ),
 		'dark'         => array( '#171614', '#201e1b', '#2a2723', '#f3efe8', '#b5afa4', '#34302b' ),
 		'options'      => array(
+			'header_structure'  => 'classic',
+			'header_surface'    => 'glass',
+			'header_shape'      => 'full',
+			'header_width'      => 'contained',
+			'header_behavior'   => 'sticky',
+			'header_overlay'    => 0,
 			'header_height'     => 76,
 			'topbar_enable'     => 0,
 			'header_cta_label'  => __( 'Get in touch', 'gnn' ),

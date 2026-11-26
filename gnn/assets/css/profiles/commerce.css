@@ -45,7 +45,7 @@
 @media(max-width:560px){.elementor .e-con.gnn-st.gnn-usp{grid-template-columns:minmax(0,1fr)}.gnn-usp-item{border-inline-end:0;border-bottom:1px solid var(--line)}}
 
 /* GNNcommerce header: search field with a category row below */
-.gnn-site-commerce .gnn-topbar{background:var(--gnn-topbar-bg,var(--accent));color:var(--gnn-topbar-fg,var(--accent-ink))}
+.gnn-site-commerce .gnn-header-shell>.gnn-topbar{background:var(--gnn-topbar-bg,var(--accent));color:var(--gnn-topbar-fg,var(--accent-ink))}
 .gnn-site-commerce .gnn-header-structure-shop .cart-link{background:var(--gnn-header-accent);color:var(--gnn-header-ink)}
 
 

@@ -35,6 +35,12 @@ function gnn_template_data_fitness() {
 			'preset'    => 'transparent',
 			'cta_label' => __( 'Join a session', 'gnn' ),
 			'options'   => array(
+				'header_structure'  => 'classic',
+				'header_surface'    => 'glass',
+				'header_shape'      => 'full',
+				'header_width'      => 'contained',
+				'header_behavior'   => 'sticky',
+				'header_overlay'    => 0,
 				'topbar_enable'     => 0,
 				'header_height'     => 74,
 				'header_search_bar' => 0,

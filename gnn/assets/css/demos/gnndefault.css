@@ -28,55 +28,40 @@
 }
 
 /* ---------- Site-wide header & footer polish ---------- */
-.gnn-site-gnndefault .site-header {
-	background: color-mix(in srgb, var(--bg) 92%, transparent);
-	backdrop-filter: blur(12px);
-	border-bottom: 1px solid var(--line);
-}
-
-.gnn-site-gnndefault .site-header__inner {
-	min-height: 76px;
-	max-width: var(--gnn-container, 1240px);
-}
-
 .gnn-site-gnndefault .site-title {
 	font-family: var(--font-heading);
 	font-weight: 600;
 	letter-spacing: -.02em;
 }
 
-.gnn-site-gnndefault .main-navigation ul.menu {
-	gap: 30px;
+.gnn-site-gnndefault [data-gnn-header] .main-navigation > ul.menu {
 	font-weight: 500;
 }
 
-.gnn-site-gnndefault .main-navigation ul.menu > li > a {
+.gnn-site-gnndefault [data-gnn-header] .main-navigation ul.menu > li > a {
 	position: relative;
-	padding-block: 8px;
 }
 
-.gnn-site-gnndefault .main-navigation ul.menu > li > a::after {
+.gnn-site-gnndefault [data-gnn-header] .main-navigation ul.menu > li > a::after {
 	content: '';
 	position: absolute;
 	inset-inline: 0;
 	bottom: 0;
 	height: 1.5px;
-	background: var(--accent-text);
+	background: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
 	transform: scaleX(0);
 	transform-origin: left;
 	transition: transform .25s var(--gd-ease);
 }
 
-.gnn-site-gnndefault .main-navigation ul.menu > li:hover > a::after,
-.gnn-site-gnndefault .main-navigation ul.menu > li.current-menu-item > a::after {
+.gnn-site-gnndefault [data-gnn-header] .main-navigation ul.menu > li:hover > a::after,
+.gnn-site-gnndefault [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a::after {
 	transform: scaleX(1);
 }
 
-.gnn-site-gnndefault .header-cta {
+.gnn-site-gnndefault .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 999px;
-	padding: 11px 22px;
 	font-weight: 600;
-	min-height: 44px;
 }
 
 .gnn-site-gnndefault .site-footer {
@@ -693,18 +678,9 @@
 	.gnn-gnndefault-hero-media {
 		aspect-ratio: 16 / 9;
 	}
-	.gnn-site-gnndefault .site-header__inner {
-		min-height: 66px;
-	}
 }
 
 @media (max-width: 600px) {
-	.gnn-site-gnndefault .header-cta {
-		display: none;
-	}
-	.gnn-site-gnndefault .header-actions {
-		gap: 8px;
-	}
 	.gnn-gnndefault-hero-media {
 		aspect-ratio: 4 / 3;
 	}
@@ -715,7 +691,7 @@
 
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-gnndefault .main-navigation ul.menu > li > a::after,
+	.gnn-site-gnndefault [data-gnn-header] .main-navigation ul.menu > li > a::after,
 	.gnn-gnndefault .elementor-button,
 	.gnn-gnndefault .gnn-visual img,
 	.gnn-gnndefault .gnn-card,

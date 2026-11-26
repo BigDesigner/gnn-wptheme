@@ -35,6 +35,12 @@ function gnn_template_data_clinic() {
 			'preset'    => 'stacked',
 			'cta_label' => __( 'Book an appointment', 'gnn' ),
 			'options'   => array(
+				'header_structure'  => 'stacked',
+				'header_surface'    => 'solid',
+				'header_shape'      => 'full',
+				'header_width'      => 'contained',
+				'header_behavior'   => 'sticky',
+				'header_overlay'    => 0,
 				'topbar_enable'     => 1,
 				'header_height'     => 74,
 				'header_search_bar' => 0,

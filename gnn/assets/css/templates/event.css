@@ -4,19 +4,12 @@
    ===================================================================== */
 
 /* ---------- Header & Ticket CTA (.gnn-site-event) ---------- */
-.gnn-site-event .gnn-topbar {
-	background: var(--accent);
-	color: var(--accent-ink);
+.gnn-site-event .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--accent));
+	color: var(--gnn-topbar-fg, var(--accent-ink));
 	font: 700 12px/1.4 var(--font-heading);
 	text-transform: uppercase;
 	letter-spacing: 0.12em;
-}
-
-.gnn-site-event .site-header {
-	background: color-mix(in srgb, var(--bg) 88%, transparent);
-	backdrop-filter: blur(16px);
-	-webkit-backdrop-filter: blur(16px);
-	border-bottom: 1px solid var(--line);
 }
 
 .gnn-site-event .site-title {
@@ -26,24 +19,26 @@
 	text-transform: uppercase;
 }
 
-.gnn-site-event .main-navigation ul.menu {
-	gap: 24px;
-	font: 700 13px/1 var(--font-heading);
+.gnn-site-event [data-gnn-header] .main-navigation > ul.menu {
+	font-family: var(--font-heading);
+	font-size: 13px;
+	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
 }
 
-.gnn-site-event .main-navigation ul.menu > li:hover > a,
-.gnn-site-event .main-navigation ul.menu > li.current-menu-item > a {
-	color: var(--accent-text);
+.gnn-site-event [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-event [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
 }
 
-.gnn-site-event .header-cta {
+.gnn-site-event .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 999px;
-	font: 700 13px/1 var(--font-heading);
+	font-family: var(--font-heading);
+	font-size: 13px;
+	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 0.08em;
-	padding-inline: 22px;
 }
 
 /* ---------- Display Typography & Stage Badges ---------- */
@@ -165,10 +160,4 @@
 	.gnn-site-event .gnn-sec-team .gnn-sec-member:hover {
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-event .header-cta { display: none; }
-	.gnn-site-event .header-actions { gap: 8px; }
 }

@@ -4,23 +4,11 @@
    ===================================================================== */
 
 /* ---------- Header & Topbar ---------- */
-.gnn-site-travel .gnn-topbar {
-	background: var(--bg3);
-	color: var(--fg);
+.gnn-site-travel .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--bg3));
+	color: var(--gnn-topbar-fg, var(--fg));
 	border-bottom: 1px solid var(--line);
-	font-size: 13px;
 	letter-spacing: 0.04em;
-}
-
-.gnn-site-travel .site-header {
-	background: color-mix(in srgb, var(--bg) 92%, transparent);
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px);
-	border-bottom: 1px solid var(--line);
-}
-
-.gnn-site-travel .site-header__inner {
-	height: 76px;
 }
 
 .gnn-site-travel .site-title {
@@ -29,29 +17,24 @@
 	letter-spacing: 0.02em;
 }
 
-.gnn-site-travel .main-navigation ul.menu {
-	gap: 22px;
-}
-
-.gnn-site-travel .main-navigation ul.menu > li > a {
+.gnn-site-travel [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 600;
-	padding: 6px 12px;
+	padding-inline: 12px;
 	border-radius: var(--gnn-radius, 12px);
 	transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.gnn-site-travel .main-navigation ul.menu > li:hover > a,
-.gnn-site-travel .main-navigation ul.menu > li.current-menu-item > a {
-	background: var(--bg2);
-	color: var(--accent);
+.gnn-site-travel [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-travel [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	background: var(--gnn-header-hover);
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
 }
 
-.gnn-site-travel .header-cta {
+.gnn-site-travel .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: 999px;
-	padding-inline: 22px;
 	font-weight: 700;
 	letter-spacing: 0.02em;
-	box-shadow: 0 4px 18px color-mix(in srgb, var(--accent) 26%, transparent);
+	box-shadow: 0 4px 18px color-mix(in srgb, var(--gnn-header-accent) 26%, transparent);
 }
 
 /* ---------- Typography & Badges in Sections ---------- */
@@ -179,27 +162,17 @@
 
 /* ---------- Responsive & Motion ---------- */
 @media (max-width: 768px) {
-	.gnn-site-travel .site-header__inner {
-		height: 68px;
-	}
-
 	.gnn-site-travel .gnn-sec h1 {
 		font-size: clamp(28px, 8vw, 42px);
 	}
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-travel .main-navigation ul.menu > li > a,
+	.gnn-site-travel [data-gnn-header] .main-navigation ul.menu > li > a,
 	.gnn-site-travel .gnn-sec .gnn-card,
 	.gnn-site-travel .gnn-sec.gnn-sec-hero.gnn-sec--video-placeholder .gnn-sec-hero__video img,
 	.gnn-site-travel .gnn-sec.gnn-sec-services.gnn-sec--rows .gnn-row {
 		transition: none;
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-travel .header-cta { display: none; }
-	.gnn-site-travel .header-actions { gap: 8px; }
 }

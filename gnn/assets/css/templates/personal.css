@@ -4,55 +4,32 @@
    ===================================================================== */
 
 /* ---------- Minimal Header & Navigation ---------- */
-.gnn-site-personal .site-header {
-	background: var(--bg);
-	border-bottom: 1px solid var(--line);
-	transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.gnn-site-personal .site-header__inner {
-	min-height: 64px;
-	padding-inline: clamp(16px, 3vw, 36px);
-}
-
 .gnn-site-personal .site-title {
 	font-family: var(--font-heading);
 	font-weight: 700;
 	letter-spacing: -0.02em;
-	font-size: 19px;
 }
 
-.gnn-site-personal .main-navigation ul.menu {
-	gap: 24px;
-}
-
-.gnn-site-personal .main-navigation ul.menu > li > a {
-	font-size: 14px;
+.gnn-site-personal [data-gnn-header] .main-navigation ul.menu > li > a {
 	font-weight: 500;
-	color: var(--fg2);
-	padding-block: 8px;
 	border-bottom: 1.5px solid transparent;
 	transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.gnn-site-personal .main-navigation ul.menu > li:hover > a,
-.gnn-site-personal .main-navigation ul.menu > li.current-menu-item > a {
-	color: var(--fg);
-	border-bottom-color: var(--accent);
+.gnn-site-personal [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-personal [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--gnn-header-row-fg, var(--gnn-header-fg));
+	border-bottom-color: var(--gnn-header-row-accent, var(--gnn-header-accent));
 }
 
-.gnn-site-personal .header-cta {
+.gnn-site-personal .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnn-radius, 8px);
-	background: var(--accent);
-	color: var(--accent-ink);
-	border: 1px solid var(--accent);
 	font-size: 13px;
 	font-weight: 600;
-	padding: 9px 18px;
 	transition: opacity 0.2s ease, transform 0.15s ease;
 }
 
-.gnn-site-personal .header-cta:hover {
+.gnn-site-personal .gnn-header-controls[data-gnn-header] .header-cta:hover {
 	opacity: 0.92;
 	transform: translateY(-1px);
 }
@@ -277,8 +254,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-personal .main-navigation ul.menu > li > a,
-	.gnn-site-personal .header-cta,
+	.gnn-site-personal [data-gnn-header] .main-navigation ul.menu > li > a,
+	.gnn-site-personal .gnn-header-controls[data-gnn-header] .header-cta,
 	.gnn-site-personal .gnn-btn-main,
 	.gnn-site-personal .gnn-btn-ghost,
 	.gnn-site-personal .gnn-sec-lined-card,
@@ -286,10 +263,4 @@
 		transition: none;
 		transform: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-personal .header-cta { display: none; }
-	.gnn-site-personal .header-actions { gap: 8px; }
 }

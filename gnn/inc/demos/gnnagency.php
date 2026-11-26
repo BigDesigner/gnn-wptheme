@@ -37,12 +37,18 @@ function gnn_gnnagency_register() {
 				'light'        => array( '#f5f4ee', '#eae9e1', '#dfded5', '#191a17', '#50524a', '#c6c6ba' ),
 				'dark'         => array( '#111210', '#191b17', '#242620', '#f5f4ee', '#b9bcb0', '#3a3d33' ),
 				'options'      => array(
-					'header_height' => 80,
-					'topbar_enable' => 0,
-					'sticky_header' => 0,
-					'show_search'   => 0,
-					'show_cart'     => 0,
-					'show_toggle'   => 1,
+					'header_structure' => 'classic',
+					'header_surface'   => 'solid',
+					'header_shape'     => 'full',
+					'header_width'     => 'wide',
+					'header_behavior'  => 'static',
+					'header_overlay'   => 1,
+					'header_height'    => 80,
+					'topbar_enable'    => 0,
+					'sticky_header'    => 0,
+					'show_search'      => 0,
+					'show_cart'        => 0,
+					'show_toggle'      => 1,
 				),
 			),
 			'pages'       => 'gnn_gnnagency_pages',
@@ -335,7 +341,7 @@ function gnn_gnnagency_selected_work( $ids, $data ) {
 function gnn_gnnagency_home( $ids, $data ) {
 	return array(
 		gnn_st_c(
-			'gnn-gnnagency gnn-gnnagency-hero',
+			'gnn-gnnagency gnn-gnnagency-hero gnn-header-overlay-target',
 			array(
 				gnn_gnnagency_image( 'hero', $data['media'] ?? array(), 'gnn-gnnagency-hero-image' ),
 				gnn_st_c(

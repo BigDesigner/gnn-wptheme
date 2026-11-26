@@ -4,17 +4,15 @@
    ===================================================================== */
 
 /* ---------- Header & Navigation (.gnn-site-education) ---------- */
-.gnn-site-education .gnn-topbar {
-	background: var(--accent);
-	color: var(--accent-ink);
+.gnn-site-education .gnn-header-shell > .gnn-topbar {
+	background: var(--gnn-topbar-bg, var(--accent));
+	color: var(--gnn-topbar-fg, var(--accent-ink));
 	font-weight: 600;
 	letter-spacing: 0.02em;
 }
 
-.gnn-site-education .site-header {
-	background: var(--bg);
-	border-bottom: 2px solid var(--line);
-	backdrop-filter: none;
+.gnn-site-education #masthead.site-header::before {
+	box-shadow: inset 0 -2px var(--gnn-header-line);
 }
 
 .gnn-site-education .site-title {
@@ -23,27 +21,25 @@
 	letter-spacing: -0.02em;
 }
 
-.gnn-site-education .main-navigation ul.menu {
-	gap: 26px;
+.gnn-site-education [data-gnn-header] .main-navigation > ul.menu {
 	font-weight: 600;
 }
 
-.gnn-site-education .main-navigation ul.menu > li > a {
-	padding-block: 10px;
+.gnn-site-education [data-gnn-header] .main-navigation ul.menu > li > a {
 	border-bottom: 2px solid transparent;
 	transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.gnn-site-education .main-navigation ul.menu > li:hover > a,
-.gnn-site-education .main-navigation ul.menu > li.current-menu-item > a {
-	color: var(--accent-text);
-	border-bottom-color: var(--accent);
+.gnn-site-education [data-gnn-header] .main-navigation ul.menu > li:hover > a,
+.gnn-site-education [data-gnn-header] .main-navigation ul.menu > li.current-menu-item > a {
+	color: var(--gnn-header-row-accent, var(--gnn-header-accent-text));
+	border-bottom-color: var(--gnn-header-row-accent, var(--gnn-header-accent));
 }
 
-.gnn-site-education .header-cta {
+.gnn-site-education .gnn-header-controls[data-gnn-header] .header-cta {
 	border-radius: var(--gnn-radius, 10px);
 	font-weight: 700;
-	box-shadow: 0 2px 0 var(--line);
+	box-shadow: 0 2px 0 var(--gnn-header-line);
 }
 
 /* ---------- Headings, Eyebrows & Ledger Accents ---------- */
@@ -156,13 +152,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.gnn-site-education .main-navigation ul.menu > li > a {
+	.gnn-site-education [data-gnn-header] .main-navigation ul.menu > li > a {
 		transition: none;
 	}
-}
-
-/* Header actions stay inside narrow screens; the call-to-action moves to page content. */
-@media (max-width: 600px) {
-	.gnn-site-education .header-cta { display: none; }
-	.gnn-site-education .header-actions { gap: 8px; }
 }
