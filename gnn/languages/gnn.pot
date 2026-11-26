@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.15.0\n"
+"Project-Id-Version: GNN 2.15.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 08:40+0000\n"
-"PO-Revision-Date: 2026-11-26 08:40+0000\n"
+"POT-Creation-Date: 2026-11-26 20:27+0000\n"
+"PO-Revision-Date: 2026-11-26 20:27+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -728,7 +728,7 @@ msgstr ""
 msgid "A shared design process."
 msgstr ""
 
-#: inc/header/admin.php:734
+#: inc/header/admin.php:746
 msgid "A shared header is selected. Layout, row and element settings above do not apply to it. Use [gnn_header_menu] to place the menu inside a shared header."
 msgstr ""
 
@@ -1047,7 +1047,7 @@ msgid "Academic values"
 msgstr ""
 
 #: inc/admin-panel.php:1164
-#: inc/header/admin.php:714
+#: inc/header/admin.php:726
 msgid "Accent"
 msgstr ""
 
@@ -1581,7 +1581,7 @@ msgstr ""
 
 #: inc/admin-panel.php:836
 #: inc/admin-panel.php:919
-#: inc/header/admin.php:732
+#: inc/header/admin.php:744
 msgid "Advanced"
 msgstr ""
 
@@ -1980,12 +1980,12 @@ msgstr ""
 msgid "Ancient Silk Oasis Route"
 msgstr ""
 
-#: inc/header/admin.php:310
+#: inc/header/admin.php:311
 msgid "Announcement bar"
 msgstr ""
 
 #: inc/workspace.php:167
-#: inc/header/admin.php:687
+#: inc/header/admin.php:699
 msgid "Announcement text"
 msgstr ""
 
@@ -2324,7 +2324,7 @@ msgstr ""
 msgid "Archive footer override"
 msgstr ""
 
-#: inc/header/admin.php:738
+#: inc/header/admin.php:750
 msgid "Archive header"
 msgstr ""
 
@@ -2513,7 +2513,7 @@ msgstr ""
 msgid "Assign the client or designer role instead of sharing an administrator account."
 msgstr ""
 
-#: inc/header/admin.php:423
+#: inc/header/admin.php:424
 msgid "Assigned"
 msgstr ""
 
@@ -2671,7 +2671,7 @@ msgstr ""
 msgid "Background & values"
 msgstr ""
 
-#: inc/header/admin.php:688
+#: inc/header/admin.php:700
 msgid "Background color"
 msgstr ""
 
@@ -2761,6 +2761,10 @@ msgstr ""
 
 #: inc/template-data/photography.php:434
 msgid "Behind-the-scenes production essays, camera reflections and location monographs."
+msgstr ""
+
+#: inc/header/admin.php:578
+msgid "Below this screen width, in px, the mobile menu is used."
 msgstr ""
 
 #: inc/template-data/travel.php:175
@@ -3045,7 +3049,7 @@ msgstr ""
 msgid "Brand & Identity"
 msgstr ""
 
-#: inc/header/admin.php:740
+#: inc/header/admin.php:752
 msgid "Brand dot"
 msgstr ""
 
@@ -3332,7 +3336,7 @@ msgid "Button Styles"
 msgstr ""
 
 #: inc/slider.php:172
-#: inc/header/admin.php:641
+#: inc/header/admin.php:652
 msgid "Button URL"
 msgstr ""
 
@@ -3341,7 +3345,7 @@ msgid "Button corner radius"
 msgstr ""
 
 #: inc/slider.php:168
-#: inc/header/admin.php:640
+#: inc/header/admin.php:651
 msgid "Button label"
 msgstr ""
 
@@ -3744,7 +3748,7 @@ msgstr ""
 msgid "Centered (logo center, split menus)"
 msgstr ""
 
-#: inc/header/admin.php:447
+#: inc/header/admin.php:448
 msgid "Centered layout uses Header left (%1$s) and Header right (%2$s)."
 msgstr ""
 
@@ -4079,6 +4083,10 @@ msgstr ""
 #: inc/header/admin.php:212
 #: inc/header/config.php:16
 msgid "Classic"
+msgstr ""
+
+#: inc/header/admin.php:232
+msgid "Classic: logo, menu and buttons in one row. Centered: logo in the middle, menu on both sides. Stacked: menu on a second row. Shop: search field in the top row, menu below."
 msgstr ""
 
 #: inc/template-data/personal.php:215
@@ -4486,7 +4494,7 @@ msgid "Color name"
 msgstr ""
 
 #: inc/admin-start.php:79
-#: inc/header/admin.php:710
+#: inc/header/admin.php:722
 msgid "Colors"
 msgstr ""
 
@@ -4719,7 +4727,7 @@ msgid "Company and header configuration"
 msgstr ""
 
 #: inc/platform.php:15
-#: inc/header/admin.php:703
+#: inc/header/admin.php:715
 msgid "Company name"
 msgstr ""
 
@@ -5188,6 +5196,10 @@ msgstr ""
 
 #: inc/header/config.php:19
 msgid "Contained"
+msgstr ""
+
+#: inc/header/admin.php:547
+msgid "Contained: lines up with the page content. Wide: uses the full screen width."
 msgstr ""
 
 #: inc/template-data/event.php:692
@@ -5886,11 +5898,11 @@ msgstr ""
 msgid "Dark banner, top-left heading"
 msgstr ""
 
-#: inc/header/admin.php:673
+#: inc/header/admin.php:685
 msgid "Dark mode (1×)"
 msgstr ""
 
-#: inc/header/admin.php:674
+#: inc/header/admin.php:686
 msgid "Dark mode (2×)"
 msgstr ""
 
@@ -6029,7 +6041,7 @@ msgstr ""
 
 #: inc/header/admin.php:59
 #: inc/header/admin.php:208
-#: inc/header/admin.php:489
+#: inc/header/admin.php:490
 msgid "Default (%s)"
 msgstr ""
 
@@ -6319,12 +6331,12 @@ msgstr ""
 msgid "Designing keyboard-first navigation for daily tools"
 msgstr ""
 
-#: inc/header/admin.php:318
-#: inc/header/admin.php:613
+#: inc/header/admin.php:319
+#: inc/header/admin.php:624
 msgid "Desktop"
 msgstr ""
 
-#: inc/header/admin.php:675
+#: inc/header/admin.php:687
 msgid "Desktop max height"
 msgstr ""
 
@@ -7090,7 +7102,7 @@ msgstr ""
 msgid "Elementor, WooCommerce and more"
 msgstr ""
 
-#: inc/header/admin.php:573
+#: inc/header/admin.php:584
 msgid "Elements"
 msgstr ""
 
@@ -7173,7 +7185,7 @@ msgstr ""
 msgid "Enable theme updates"
 msgstr ""
 
-#: inc/header/admin.php:683
+#: inc/header/admin.php:695
 msgid "Enable top bar"
 msgstr ""
 
@@ -8378,7 +8390,7 @@ msgstr ""
 msgid "First highlight"
 msgstr ""
 
-#: inc/header/admin.php:351
+#: inc/header/admin.php:352
 msgid "First section (Hero)"
 msgstr ""
 
@@ -9104,6 +9116,10 @@ msgstr ""
 
 #: inc/template-data/education.php:263
 msgid "Full-term structured course with mentor feedback and capstone review."
+msgstr ""
+
+#: inc/header/admin.php:541
+msgid "Full: edge-to-edge bar. Floating: rounded bar with space around it."
 msgstr ""
 
 #: inc/template-data/fitness.php:222
@@ -9871,12 +9887,12 @@ msgstr ""
 msgid "Header height"
 msgstr ""
 
-#: inc/header/admin.php:417
+#: inc/header/admin.php:418
 #: inc/header/render.php:199
 msgid "Header left"
 msgstr ""
 
-#: inc/header/admin.php:418
+#: inc/header/admin.php:419
 #: inc/header/render.php:199
 msgid "Header right"
 msgstr ""
@@ -9967,6 +9983,10 @@ msgstr ""
 
 #: inc/site-platform.php:108
 msgid "Height"
+msgstr ""
+
+#: inc/header/admin.php:559
+msgid "Height of the main header row, in px."
 msgstr ""
 
 #: inc/elementor-templates.php:305
@@ -11604,7 +11624,7 @@ msgstr ""
 
 #: inc/admin-screens.php:411
 #: inc/layout-system.php:19
-#: inc/header/admin.php:517
+#: inc/header/admin.php:528
 msgid "Layout"
 msgstr ""
 
@@ -11696,7 +11716,7 @@ msgstr ""
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/header/admin.php:710
+#: inc/header/admin.php:722
 msgid "Leave empty to use the design default."
 msgstr ""
 
@@ -11838,11 +11858,11 @@ msgstr ""
 msgid "Light"
 msgstr ""
 
-#: inc/header/admin.php:671
+#: inc/header/admin.php:683
 msgid "Light mode (1×)"
 msgstr ""
 
-#: inc/header/admin.php:672
+#: inc/header/admin.php:684
 msgid "Light mode (2×)"
 msgstr ""
 
@@ -11904,6 +11924,10 @@ msgstr ""
 
 #: inc/template-data/saas.php:588
 msgid "Link your developer portal or documentation pages here so engineers can explore endpoints directly."
+msgstr ""
+
+#: inc/header/admin.php:662
+msgid "Link: icon that opens the search page. Overlay: search box over the page. Field: search box in the header."
 msgstr ""
 
 #: inc/class-gnn-elementor-module.php:116
@@ -11981,7 +12005,7 @@ msgstr ""
 msgid "Live notifications"
 msgstr ""
 
-#: inc/header/admin.php:568
+#: inc/header/admin.php:520
 msgid "Live preview"
 msgstr ""
 
@@ -12085,7 +12109,7 @@ msgstr ""
 msgid "Logistics & production manager"
 msgstr ""
 
-#: inc/header/admin.php:668
+#: inc/header/admin.php:680
 msgid "Logo"
 msgstr ""
 
@@ -12224,7 +12248,7 @@ msgstr ""
 msgid "Main Stage"
 msgstr ""
 
-#: inc/header/admin.php:544
+#: inc/header/admin.php:559
 msgid "Main row height"
 msgstr ""
 
@@ -12652,7 +12676,7 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: inc/header/admin.php:537
+#: inc/header/admin.php:551
 msgid "Menu alignment"
 msgstr ""
 
@@ -12664,12 +12688,12 @@ msgstr ""
 msgid "Menu order"
 msgstr ""
 
-#: inc/header/admin.php:563
+#: inc/header/admin.php:579
 #: inc/header/config.php:24
 msgid "Menu overflow"
 msgstr ""
 
-#: inc/header/admin.php:663
+#: inc/header/admin.php:675
 msgid "Menus"
 msgstr ""
 
@@ -12746,13 +12770,13 @@ msgstr ""
 msgid "Mist, Tone, Pour and Olen Hub"
 msgstr ""
 
-#: inc/header/admin.php:319
-#: inc/header/admin.php:617
-#: inc/header/admin.php:719
+#: inc/header/admin.php:320
+#: inc/header/admin.php:628
+#: inc/header/admin.php:731
 msgid "Mobile"
 msgstr ""
 
-#: inc/header/admin.php:312
+#: inc/header/admin.php:313
 msgid "Mobile < %s px"
 msgstr ""
 
@@ -12766,7 +12790,7 @@ msgstr ""
 
 #: inc/frontend.php:229
 #: inc/platform.php:151
-#: inc/header/admin.php:723
+#: inc/header/admin.php:735
 msgid "Mobile actions"
 msgstr ""
 
@@ -12778,21 +12802,21 @@ msgstr ""
 msgid "Mobile banking application interface design on a smartphone mockup"
 msgstr ""
 
-#: inc/header/admin.php:720
+#: inc/header/admin.php:732
 msgid "Mobile bottom dock"
 msgstr ""
 
 #: inc/site-platform.php:46
-#: inc/header/admin.php:562
+#: inc/header/admin.php:578
 #: inc/header/config.php:23
 msgid "Mobile breakpoint"
 msgstr ""
 
-#: inc/header/admin.php:676
+#: inc/header/admin.php:688
 msgid "Mobile max height"
 msgstr ""
 
-#: inc/header/admin.php:416
+#: inc/header/admin.php:417
 #: inc/header/config.php:24
 msgid "Mobile menu"
 msgstr ""
@@ -13023,11 +13047,11 @@ msgstr ""
 msgid "Mountain Trek"
 msgstr ""
 
-#: inc/header/admin.php:630
+#: inc/header/admin.php:641
 msgid "Move %s down"
 msgstr ""
 
-#: inc/header/admin.php:624
+#: inc/header/admin.php:635
 msgid "Move %s up"
 msgstr ""
 
@@ -13339,7 +13363,7 @@ msgstr ""
 msgid "No imported starter pages were found."
 msgstr ""
 
-#: inc/header/admin.php:428
+#: inc/header/admin.php:429
 msgid "No menu is assigned to the header. Assign a menu in Appearance > Menus."
 msgstr ""
 
@@ -13381,11 +13405,11 @@ msgstr ""
 msgid "No settings match your search. Try another keyword."
 msgstr ""
 
-#: inc/header/admin.php:459
+#: inc/header/admin.php:460
 msgid "No side menus are assigned. Mobile menu (%s) is split between left and right."
 msgstr ""
 
-#: inc/header/admin.php:456
+#: inc/header/admin.php:457
 msgid "No side menus are assigned. Primary menu (%s) is split between left and right."
 msgstr ""
 
@@ -13452,7 +13476,7 @@ msgid "Not active"
 msgstr ""
 
 #: inc/shared-library.php:150
-#: inc/header/admin.php:437
+#: inc/header/admin.php:438
 msgid "Not assigned"
 msgstr ""
 
@@ -13553,7 +13577,7 @@ msgstr ""
 msgid "Occasional updates when the seasonal menu changes or special dinners open for booking."
 msgstr ""
 
-#: inc/header/admin.php:487
+#: inc/header/admin.php:488
 #: inc/header/render.php:14
 msgid "Off"
 msgstr ""
@@ -13642,7 +13666,7 @@ msgstr ""
 msgid "Olive Groves"
 msgstr ""
 
-#: inc/header/admin.php:487
+#: inc/header/admin.php:488
 #: inc/header/render.php:14
 msgid "On"
 msgstr ""
@@ -13727,11 +13751,11 @@ msgstr ""
 msgid "Online contact sheet review"
 msgstr ""
 
-#: inc/header/admin.php:450
+#: inc/header/admin.php:451
 msgid "Only Header left (%s) is assigned. The right side will stay empty until Header right is assigned."
 msgstr ""
 
-#: inc/header/admin.php:453
+#: inc/header/admin.php:454
 msgid "Only Header right (%s) is assigned. The left side will stay empty until Header left is assigned."
 msgstr ""
 
@@ -13751,7 +13775,7 @@ msgstr ""
 msgid "Open API and webhooks"
 msgstr ""
 
-#: inc/header/admin.php:468
+#: inc/header/admin.php:469
 msgid "Open Appearance > Menus"
 msgstr ""
 
@@ -14199,12 +14223,12 @@ msgstr ""
 msgid "Overlay"
 msgstr ""
 
-#: inc/header/admin.php:552
+#: inc/header/admin.php:568
 #: inc/header/config.php:21
 msgid "Overlay first section"
 msgstr ""
 
-#: inc/header/admin.php:558
+#: inc/header/admin.php:574
 #: inc/header/config.php:22
 msgid "Overlay logo"
 msgstr ""
@@ -14221,7 +14245,7 @@ msgstr ""
 msgid "Overlay title font size (px)"
 msgstr ""
 
-#: inc/header/admin.php:554
+#: inc/header/admin.php:570
 msgid "Overlays the header on the page only when the first section is a hero."
 msgstr ""
 
@@ -15150,7 +15174,7 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: inc/header/admin.php:317
+#: inc/header/admin.php:318
 msgid "Preview device"
 msgstr ""
 
@@ -15218,7 +15242,7 @@ msgstr ""
 msgid "Primary consultations, acute symptoms, ongoing condition reviews and referrals."
 msgstr ""
 
-#: inc/header/admin.php:415
+#: inc/header/admin.php:416
 msgid "Primary menu"
 msgstr ""
 
@@ -15702,7 +15726,7 @@ msgid "Public Ideas"
 msgstr ""
 
 #: inc/platform.php:19
-#: inc/header/admin.php:705
+#: inc/header/admin.php:717
 msgid "Public email"
 msgstr ""
 
@@ -15710,7 +15734,7 @@ msgstr ""
 msgid "Public ideas & commons"
 msgstr ""
 
-#: inc/header/admin.php:704
+#: inc/header/admin.php:716
 msgid "Public phone"
 msgstr ""
 
@@ -17408,7 +17432,7 @@ msgstr ""
 msgid "Screen and type showcase"
 msgstr ""
 
-#: inc/header/admin.php:547
+#: inc/header/admin.php:562
 #: inc/header/config.php:20
 msgid "Scroll behavior"
 msgstr ""
@@ -17439,7 +17463,7 @@ msgstr ""
 msgid "Search for:"
 msgstr ""
 
-#: inc/header/admin.php:649
+#: inc/header/admin.php:660
 #: inc/header/config.php:25
 msgid "Search mode"
 msgstr ""
@@ -17448,7 +17472,7 @@ msgstr ""
 msgid "Search products, posts, pages…"
 msgstr ""
 
-#: inc/header/admin.php:653
+#: inc/header/admin.php:665
 #: inc/header/config.php:26
 msgid "Search scope"
 msgstr ""
@@ -17456,6 +17480,10 @@ msgstr ""
 #: inc/admin-panel.php:941
 #: inc/admin-panel.php:941
 msgid "Search settings…"
+msgstr ""
+
+#: inc/header/admin.php:665
+msgid "Search the whole site or only products."
 msgstr ""
 
 #: inc/template-data/restaurant.php:159
@@ -17988,7 +18016,7 @@ msgstr ""
 msgid "Seven days traversing high mountain passes, glacier moraines and wilderness huts."
 msgstr ""
 
-#: inc/header/admin.php:527
+#: inc/header/admin.php:539
 #: inc/header/config.php:18
 msgid "Shape"
 msgstr ""
@@ -18188,7 +18216,7 @@ msgid "Shortlist, 2025"
 msgstr ""
 
 #: inc/platform.php:511
-#: inc/header/admin.php:694
+#: inc/header/admin.php:706
 msgid "Show"
 msgstr ""
 
@@ -18258,7 +18286,7 @@ msgstr ""
 msgid "Show metadata on single posts"
 msgstr ""
 
-#: inc/header/admin.php:692
+#: inc/header/admin.php:704
 msgid "Show on mobile"
 msgstr ""
 
@@ -18324,15 +18352,15 @@ msgstr ""
 msgid "Shown bottom-right in the footer. Leave empty to hide."
 msgstr ""
 
-#: inc/header/admin.php:720
+#: inc/header/admin.php:732
 msgid "Shown on screens up to 600 px."
 msgstr ""
 
-#: inc/header/admin.php:560
+#: inc/header/admin.php:576
 msgid "Shown over a hero before the page scrolls."
 msgstr ""
 
-#: inc/header/admin.php:740
+#: inc/header/admin.php:752
 msgid "Shows a dot after the site title when no logo image is set."
 msgstr ""
 
@@ -18484,7 +18512,7 @@ msgstr ""
 msgid "Single post footer override"
 msgstr ""
 
-#: inc/header/admin.php:739
+#: inc/header/admin.php:751
 msgid "Single post header"
 msgstr ""
 
@@ -18535,7 +18563,7 @@ msgstr ""
 msgid "Site design"
 msgstr ""
 
-#: inc/header/admin.php:737
+#: inc/header/admin.php:749
 msgid "Site header"
 msgstr ""
 
@@ -18563,7 +18591,7 @@ msgstr ""
 msgid "Site settings could not be reset."
 msgstr ""
 
-#: inc/header/admin.php:305
+#: inc/header/admin.php:306
 msgid "Site title"
 msgstr ""
 
@@ -18706,6 +18734,10 @@ msgstr ""
 
 #: inc/template-data/personal.php:573
 msgid "Solid stone block and clean horizon representing leadership stability"
+msgstr ""
+
+#: inc/header/admin.php:535
+msgid "Solid: filled background. Glass: see-through with blur. Transparent: no background."
 msgstr ""
 
 #: inc/template-data/saas.php:473
@@ -19063,6 +19095,10 @@ msgstr ""
 msgid "Static"
 msgstr ""
 
+#: inc/header/admin.php:564
+msgid "Static: scrolls away. Sticky: stays on top. Hide on scroll: hides when scrolling down, returns when scrolling up. Shrink on scroll: gets shorter."
+msgstr ""
+
 #: inc/patterns.php:71
 msgid "Statistics cards"
 msgstr ""
@@ -19314,7 +19350,7 @@ msgid "Strong"
 msgstr ""
 
 #: inc/header/admin.php:231
-#: inc/header/admin.php:235
+#: inc/header/admin.php:236
 #: inc/header/config.php:16
 msgid "Structure"
 msgstr ""
@@ -19666,7 +19702,7 @@ msgid "Supportive critique"
 msgstr ""
 
 #: inc/workspace.php:186
-#: inc/header/admin.php:522
+#: inc/header/admin.php:533
 #: inc/header/config.php:17
 msgid "Surface"
 msgstr ""
@@ -20058,7 +20094,7 @@ msgstr ""
 msgid "Text case"
 msgstr ""
 
-#: inc/header/admin.php:689
+#: inc/header/admin.php:701
 msgid "Text color"
 msgstr ""
 
@@ -20586,11 +20622,11 @@ msgstr ""
 msgid "Top"
 msgstr ""
 
-#: inc/header/admin.php:681
+#: inc/header/admin.php:693
 msgid "Top bar"
 msgstr ""
 
-#: inc/header/admin.php:699
+#: inc/header/admin.php:711
 msgid "Top bar email"
 msgstr ""
 
@@ -20598,7 +20634,7 @@ msgstr ""
 msgid "Top bar on mobile"
 msgstr ""
 
-#: inc/header/admin.php:698
+#: inc/header/admin.php:710
 msgid "Top bar phone"
 msgstr ""
 
@@ -21205,11 +21241,11 @@ msgstr ""
 msgid "Users could not be reset."
 msgstr ""
 
-#: inc/header/admin.php:699
+#: inc/header/admin.php:711
 msgid "Uses the public email below when empty."
 msgstr ""
 
-#: inc/header/admin.php:698
+#: inc/header/admin.php:710
 msgid "Uses the public phone below when empty."
 msgstr ""
 
@@ -22495,6 +22531,10 @@ msgstr ""
 msgid "When does Series 01 ship?"
 msgstr ""
 
+#: inc/header/admin.php:579
+msgid "When links do not fit. More menu: extra links go under More. Mobile menu: the mobile menu is used."
+msgstr ""
+
 #: inc/template-data/nonprofit.php:557
 msgid "When neighbourhood committees shape the budget, projects move faster and stay maintained long after launch."
 msgstr ""
@@ -22509,6 +22549,10 @@ msgstr ""
 
 #: inc/template-data/saas.php:587
 msgid "Where can we find API documentation?"
+msgstr ""
+
+#: inc/header/admin.php:557
+msgid "Where the menu links sit in the row."
 msgstr ""
 
 #: inc/template-data/nonprofit.php:102
@@ -22592,7 +22636,7 @@ msgid "Wide"
 msgstr ""
 
 #: inc/site-platform.php:107
-#: inc/header/admin.php:532
+#: inc/header/admin.php:545
 #: inc/header/config.php:19
 msgid "Width"
 msgstr ""

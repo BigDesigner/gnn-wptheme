@@ -229,6 +229,7 @@ function gnn_header_admin_structure_cards( $current, $resolved_label ) {
 	<div class="gnn-setting-row gnn-setting-row--cards" data-key="header_structure">
 		<div class="gnn-setting-label-col">
 			<span class="gnn-setting-label" id="label-gnn-header_structure"><?php esc_html_e( 'Structure', 'gnn' ); ?></span>
+			<span class="gnn-setting-hint"><?php esc_html_e( 'Classic: logo, menu and buttons in one row. Centered: logo in the middle, menu on both sides. Stacked: menu on a second row. Shop: search field in the top row, menu below.', 'gnn' ); ?></span>
 		</div>
 		<div class="gnn-setting-control-col">
 			<fieldset id="gnn-header_structure" class="gnn-header-structure-cards" aria-labelledby="label-gnn-header_structure">
@@ -513,24 +514,37 @@ function gnn_render_header_tab() {
 		<input type="hidden" id="gnn-header_search_bar" name="gnn_options[header_search_bar]" value="<?php echo esc_attr( (string) (int) (bool) gnn_option( 'header_search_bar' ) ); ?>">
 	</div>
 
-		<?php // 1. Layout ?>
+		<?php // 1. Live preview (stays at the top while the settings scroll) ?>
+		<section class="gnn-settings-card gnn-settings-group gnn-header-preview-card">
+			<header class="gnn-settings-group__header">
+				<h2 class="gnn-settings-group__title"><?php esc_html_e( 'Live preview', 'gnn' ); ?></h2>
+			</header>
+			<div class="gnn-settings-group__body">
+				<?php gnn_header_admin_live_preview( $config, $elements_state, $schema ); ?>
+			</div>
+		</section>
+
+		<?php // 2. Layout ?>
 		<?php gnn_card_open( __( 'Layout', 'gnn' ) ); ?>
 		<?php gnn_header_admin_structure_cards( (string) gnn_option( 'header_structure' ), $resolved_struct ); ?>
 		<?php
 		gnn_field_select(
 			'header_surface',
 			__( 'Surface', 'gnn' ),
-			gnn_header_admin_inherit_choices( $schema['header_surface'][4], $baselines['header_surface'] )
+			gnn_header_admin_inherit_choices( $schema['header_surface'][4], $baselines['header_surface'] ),
+			__( 'Solid: filled background. Glass: see-through with blur. Transparent: no background.', 'gnn' )
 		);
 		gnn_field_select(
 			'header_shape',
 			__( 'Shape', 'gnn' ),
-			gnn_header_admin_inherit_choices( $schema['header_shape'][4], $baselines['header_shape'] )
+			gnn_header_admin_inherit_choices( $schema['header_shape'][4], $baselines['header_shape'] ),
+			__( 'Full: edge-to-edge bar. Floating: rounded bar with space around it.', 'gnn' )
 		);
 		gnn_field_select(
 			'header_width',
 			__( 'Width', 'gnn' ),
-			gnn_header_admin_inherit_choices( $schema['header_width'][4], $baselines['header_width'] )
+			gnn_header_admin_inherit_choices( $schema['header_width'][4], $baselines['header_width'] ),
+			__( 'Contained: lines up with the page content. Wide: uses the full screen width.', 'gnn' )
 		);
 		gnn_field_select(
 			'header_menu_align',
@@ -539,13 +553,15 @@ function gnn_render_header_tab() {
 				'left'   => __( 'Left', 'gnn' ),
 				'center' => __( 'Center', 'gnn' ),
 				'right'  => __( 'Right', 'gnn' ),
-			)
+			),
+			__( 'Where the menu links sit in the row.', 'gnn' )
 		);
-		gnn_field_number( 'header_height', __( 'Main row height', 'gnn' ), 48, 160 );
+		gnn_field_number( 'header_height', __( 'Main row height', 'gnn' ), 48, 160, __( 'Height of the main header row, in px.', 'gnn' ) );
 		gnn_field_select(
 			'header_behavior',
 			__( 'Scroll behavior', 'gnn' ),
-			gnn_header_admin_inherit_choices( $schema['header_behavior'][4], $baselines['header_behavior'] )
+			gnn_header_admin_inherit_choices( $schema['header_behavior'][4], $baselines['header_behavior'] ),
+			__( 'Static: scrolls away. Sticky: stays on top. Hide on scroll: hides when scrolling down, returns when scrolling up. Shrink on scroll: gets shorter.', 'gnn' )
 		);
 		gnn_field_select(
 			'header_overlay',
@@ -559,14 +575,9 @@ function gnn_render_header_tab() {
 			gnn_option( 'logo_overlay' ),
 			__( 'Shown over a hero before the page scrolls.', 'gnn' )
 		);
-		gnn_field_number( 'header_mobile_breakpoint', __( 'Mobile breakpoint', 'gnn' ), 600, 1280 );
-		gnn_field_select( 'header_overflow', __( 'Menu overflow', 'gnn' ), $schema['header_overflow'][4] );
+		gnn_field_number( 'header_mobile_breakpoint', __( 'Mobile breakpoint', 'gnn' ), 600, 1280, __( 'Below this screen width, in px, the mobile menu is used.', 'gnn' ) );
+		gnn_field_select( 'header_overflow', __( 'Menu overflow', 'gnn' ), $schema['header_overflow'][4], __( 'When links do not fit. More menu: extra links go under More. Mobile menu: the mobile menu is used.', 'gnn' ) );
 		?>
-		<?php gnn_card_close(); ?>
-
-		<?php // 2. Live preview ?>
-		<?php gnn_card_open( __( 'Live preview', 'gnn' ) ); ?>
-		<?php gnn_header_admin_live_preview( $config, $elements_state, $schema ); ?>
 		<?php gnn_card_close(); ?>
 
 		<?php // 3. Elements ?>
@@ -647,10 +658,11 @@ function gnn_render_header_tab() {
 				gnn_field_select(
 					'header_search_mode',
 					__( 'Search mode', 'gnn' ),
-					gnn_header_admin_inherit_choices( $schema['header_search_mode'][4], $baselines['header_search_mode'] )
+					gnn_header_admin_inherit_choices( $schema['header_search_mode'][4], $baselines['header_search_mode'] ),
+					__( 'Link: icon that opens the search page. Overlay: search box over the page. Field: search box in the header.', 'gnn' )
 				);
 				if ( $woo_active ) {
-					gnn_field_select( 'header_search_scope', __( 'Search scope', 'gnn' ), $schema['header_search_scope'][4] );
+					gnn_field_select( 'header_search_scope', __( 'Search scope', 'gnn' ), $schema['header_search_scope'][4], __( 'Search the whole site or only products.', 'gnn' ) );
 				} else {
 					echo '<input type="hidden" id="gnn-header_search_scope" name="gnn_options[header_search_scope]" value="' . esc_attr( (string) gnn_option( 'header_search_scope' ) ) . '">';
 				}

@@ -12204,3 +12204,18 @@ TRANSLATIONS.update({
 PLURALS.update({
     '%s item': ('%s öğe', '%s öğe'),
 })
+
+# 2.15.1: Header settings hints.
+TRANSLATIONS.update({
+    'Solid: filled background. Glass: see-through with blur. Transparent: no background.': 'Düz: dolu arka plan. Cam: bulanık ve yarı saydam. Şeffaf: arka plan yok.',
+    'Full: edge-to-edge bar. Floating: rounded bar with space around it.': 'Tam: kenardan kenara şerit. Yüzen: çevresinde boşluk olan yuvarlak köşeli şerit.',
+    'Contained: lines up with the page content. Wide: uses the full screen width.': 'Kapsayıcı: sayfa içeriğiyle aynı hizada. Geniş: ekranın tamamını kullanır.',
+    'Where the menu links sit in the row.': 'Menü bağlantılarının satırdaki yeri.',
+    'Height of the main header row, in px.': 'Ana header satırının yüksekliği (px).',
+    'Static: scrolls away. Sticky: stays on top. Hide on scroll: hides when scrolling down, returns when scrolling up. Shrink on scroll: gets shorter.': 'Sabit: sayfayla birlikte kayar. Yapışkan: üstte kalır. Kaydırırken gizle: aşağı inerken gizlenir, yukarı çıkınca görünür. Kaydırırken küçült: kısalır.',
+    'Below this screen width, in px, the mobile menu is used.': 'Ekran bu genişliğin (px) altındaysa mobil menü kullanılır.',
+    'When links do not fit. More menu: extra links go under More. Mobile menu: the mobile menu is used.': 'Bağlantılar sığmadığında. Diğer menüsü: fazla bağlantılar Diğer altına geçer. Mobil menü: mobil menü kullanılır.',
+    'Classic: logo, menu and buttons in one row. Centered: logo in the middle, menu on both sides. Stacked: menu on a second row. Shop: search field in the top row, menu below.': 'Klasik: logo, menü ve düğmeler tek satırda. Ortalanmış: logo ortada, menü iki yanda. İki satırlı: menü ikinci satırda. Mağaza: üst satırda arama alanı, menü altta.',
+    'Link: icon that opens the search page. Overlay: search box over the page. Field: search box in the header.': 'Bağlantı: arama sayfasını açan simge. Katman: sayfanın üstünde arama kutusu. Alan: header içinde arama kutusu.',
+    'Search the whole site or only products.': 'Tüm sitede ya da yalnız ürünlerde arar.',
+})

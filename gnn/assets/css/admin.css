@@ -1898,6 +1898,28 @@
 	padding-block: 16px;
 }
 
+/* Keep the preview in view while the header settings below it scroll. */
+@media (min-width: 783px) and (min-height: 640px) {
+	.gnn-header-preview-card {
+		position: sticky;
+		top: calc(var(--wp-admin--admin-bar--height, 32px) + 8px);
+		z-index: 15;
+		box-shadow: 0 6px 18px rgba(27, 43, 58, 0.1);
+	}
+
+	.gnn-header-preview-card .gnn-settings-group__header {
+		padding-block: 10px;
+	}
+
+	.gnn-header-preview-card .gnn-hp {
+		padding-block: 10px;
+	}
+
+	.gnn-header-preview-card ~ .gnn-settings-card .gnn-settings-group__title {
+		scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 32px) + var(--gnn-hp-sticky-h, 300px) + 24px);
+	}
+}
+
 .gnn-hp__toolbar {
 	display: flex;
 	flex-wrap: wrap;

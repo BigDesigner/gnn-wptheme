@@ -691,6 +691,14 @@
 	var hpLabels   = hpRoot && JSON.parse( hpRoot.dataset.previewLabels );
 	var elementsTouched = false;
 
+	// The preview card is sticky; keep jump targets below it.
+	var hpCard = hpRoot && hpRoot.closest( '.gnn-header-preview-card' );
+	if ( hpCard && 'ResizeObserver' in window ) {
+		new ResizeObserver( function () {
+			headerPane.style.setProperty( '--gnn-hp-sticky-h', Math.ceil( hpCard.getBoundingClientRect().height ) + 'px' );
+		} ).observe( hpCard );
+	}
+
 	function headerVal( key ) {
 		var el = headerPane && headerPane.querySelector( '#gnn-' + key );
 		return el ? el.value : '';

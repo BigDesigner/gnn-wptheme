@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: GNN 2.15.0\n"
+"Project-Id-Version: GNN 2.15.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-26 08:40+0000\n"
-"PO-Revision-Date: 2026-11-26 08:40+0000\n"
+"POT-Creation-Date: 2026-11-26 20:27+0000\n"
+"PO-Revision-Date: 2026-11-26 20:27+0000\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1998,6 +1998,9 @@ msgstr "Gerçek projelerin perde arkası, çıkarılan dersler ve tercihler."
 msgid "Behind-the-scenes production essays, camera reflections and location monographs."
 msgstr "Kamera arkası prodüksiyon yazıları, fotoğraf makinesi değerlendirmeleri ve mekan monografileri."
 
+msgid "Below this screen width, in px, the mobile menu is used."
+msgstr "Ekran bu genişliğin (px) altındaysa mobil menü kullanılır."
+
 msgid "Bespoke itinerary tailored to your private group, dates and pace."
 msgstr "Özel grubunuza, tarihlerinize ve hızınıza göre uyarlanmış özel seyahat programı."
 
@@ -2943,6 +2946,9 @@ msgstr "Önce açıklık"
 msgid "Classic"
 msgstr "Klasik"
 
+msgid "Classic: logo, menu and buttons in one row. Centered: logo in the middle, menu on both sides. Stacked: menu on a second row. Shop: search field in the top row, menu below."
+msgstr "Klasik: logo, menü ve düğmeler tek satırda. Ortalanmış: logo ortada, menü iki yanda. İki satırlı: menü ikinci satırda. Mağaza: üst satırda arama alanı, menü altta."
+
 msgid "Clean Handover"
 msgstr "Sorunsuz Devir"
 
@@ -3749,6 +3755,9 @@ msgstr "Sığdır (görselin tamamını göster)"
 
 msgid "Contained"
 msgstr "Kapsayıcı"
+
+msgid "Contained: lines up with the page content. Wide: uses the full screen width."
+msgstr "Kapsayıcı: sayfa içeriğiyle aynı hizada. Geniş: ekranın tamamını kullanır."
 
 msgid "Contemporary cultural centre foyer and conference hall entrance"
 msgstr "Çağdaş kültür merkezi fuayesi ve konferans salonu girişi"
@@ -6588,6 +6597,9 @@ msgstr "Tam dönem sertifikası"
 msgid "Full-term structured course with mentor feedback and capstone review."
 msgstr "Mentor geri bildirimi ve bitirme projesi değerlendirmesi içeren tam dönemlik yapılandırılmış kurs."
 
+msgid "Full: edge-to-edge bar. Floating: rounded bar with space around it."
+msgstr "Tam: kenardan kenara şerit. Yüzen: çevresinde boşluk olan yuvarlak köşeli şerit."
+
 msgid "Functional hybrid"
 msgstr "Fonksiyonel hibrit"
 
@@ -7208,6 +7220,9 @@ msgstr "Isıtmalı kireçtaşı dalma havuzu ve sedir sauna"
 
 msgid "Height"
 msgstr "Yükseklik"
+
+msgid "Height of the main header row, in px."
+msgstr "Ana header satırının yüksekliği (px)."
 
 msgid "Held over a weekend, the event is structured around a series of exhibitions, workshops, and panel discussions. Replace this copy with your own."
 msgstr "Bir hafta sonu boyunca süren etkinlik; sergiler, atölyeler ve panel tartışmalarından oluşuyor. Bu metni kendi içeriğinizle değiştirin."
@@ -8615,6 +8630,9 @@ msgstr "Kod depolarını, bildirimleri ve tek oturum açmayı bağlayın."
 
 msgid "Link your developer portal or documentation pages here so engineers can explore endpoints directly."
 msgstr "Mühendislerin uç noktaları doğrudan inceleyebilmesi için geliştirici portalınızı veya dokümantasyon sayfalarınızı buraya bağlayın."
+
+msgid "Link: icon that opens the search page. Overlay: search box over the page. Field: search box in the header."
+msgstr "Bağlantı: arama sayfasını açan simge. Katman: sayfanın üstünde arama kutusu. Alan: header içinde arama kutusu."
 
 msgid "Links"
 msgstr "Bağlantılar"
@@ -12618,6 +12636,9 @@ msgstr "Arama kapsamı"
 msgid "Search settings…"
 msgstr "Ayarlarda ara…"
 
+msgid "Search the whole site or only products."
+msgstr "Tüm sitede ya da yalnız ürünlerde arar."
+
 msgid "Seasonal dishes cooked to order."
 msgstr "Sipariş üzerine hazırlanan mevsimlik tabaklar."
 
@@ -13524,6 +13545,9 @@ msgstr "Düz"
 msgid "Solid stone block and clean horizon representing leadership stability"
 msgstr "Liderlik istikrarını temsil eden yekpare taş blok ve net ufuk çizgisi"
 
+msgid "Solid: filled background. Glass: see-through with blur. Transparent: no background."
+msgstr "Düz: dolu arka plan. Cam: bulanık ve yarı saydam. Şeffaf: arka plan yok."
+
 msgid "Solve the core workflow cleanly before adding configuration knobs."
 msgstr "Yapılandırma seçenekleri eklemeden önce temel iş akışını temiz bir şekilde çözün."
 
@@ -13778,6 +13802,9 @@ msgstr "Projeye tek sayfalık bir brifle başlamak"
 
 msgid "Static"
 msgstr "Sabit"
+
+msgid "Static: scrolls away. Sticky: stays on top. Hide on scroll: hides when scrolling down, returns when scrolling up. Shrink on scroll: gets shorter."
+msgstr "Sabit: sayfayla birlikte kayar. Yapışkan: üstte kalır. Kaydırırken gizle: aşağı inerken gizlenir, yukarı çıkınca görünür. Kaydırırken küçült: kısalır."
 
 msgid "Statistics cards"
 msgstr "İstatistik kartları"
@@ -16290,6 +16317,9 @@ msgstr "Gelecek dönem için başvurular ne zaman kapanıyor?"
 msgid "When does Series 01 ship?"
 msgstr "Series 01 ne zaman gönderilecek?"
 
+msgid "When links do not fit. More menu: extra links go under More. Mobile menu: the mobile menu is used."
+msgstr "Bağlantılar sığmadığında. Diğer menüsü: fazla bağlantılar Diğer altına geçer. Mobil menü: mobil menü kullanılır."
+
 msgid "When neighbourhood committees shape the budget, projects move faster and stay maintained long after launch."
 msgstr "Bütçeyi mahalle komiteleri şekillendirdiğinde projeler daha hızlı ilerler ve açılıştan uzun süre sonra da bakımlı kalır."
 
@@ -16301,6 +16331,9 @@ msgstr "Nerede çalışmaya uygunsunuz?"
 
 msgid "Where can we find API documentation?"
 msgstr "API belgelerini nerede bulabiliriz?"
+
+msgid "Where the menu links sit in the row."
+msgstr "Menü bağlantılarının satırdaki yeri."
 
 msgid "Where we work"
 msgstr "Çalıştığımız alanlar"

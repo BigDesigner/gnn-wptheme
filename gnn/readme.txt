@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.15.0
+Stable tag: 2.15.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,10 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.15.1 =
+* The Header live preview now stays at the top of the screen while you scroll the settings.
+* Each header layout setting now explains what its choices do.
 
 = 2.15.0 =
 * Rebuilt the header: one layout model (Classic, Centered, Stacked, Shop) with surface, shape, width and scroll behaviour, working on every site.
