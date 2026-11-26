@@ -71,7 +71,7 @@ function gnn_options_schema() {
 			$entry['max'] = $field[5];
 		}
 		// A full panel form posts `platform_fields_present`; unchecked boxes are then off.
-		if ( 'bool' === $field[1] && ! isset( $site[ $key ] ) ) {
+		if ( 'bool' === $field[1] && ! isset( $site[ $key ] ) && ! in_array( $key, array( 'header_overlay', 'topbar_mobile' ), true ) ) {
 			$entry['form_flag'] = 'platform_fields_present';
 		}
 		// A positive listing width is never narrower than a readable column.
@@ -388,18 +388,27 @@ function gnn_logo_img( $id_1x, $id_2x, $css_class, $priority = 'eager' ) {
  * Output the site logo / title, honoring the panel's light+dark logo pair
  * with retina (2x) variants.
  */
-function gnn_the_logo() {
+function gnn_the_logo( $overlay_id = 0 ) {
 	$light    = gnn_option( 'logo_light' );
 	$light_2x = gnn_option( 'logo_light_2x' );
 	$dark     = gnn_option( 'logo_dark' );
 	$dark_2x  = gnn_option( 'logo_dark_2x' );
 
 	$markup = gnn_logo_pair( $light, $light_2x, $dark, $dark_2x, '', true );
-	if ( '' !== $markup ) {
+	$overlay = $overlay_id ? gnn_logo_img( $overlay_id, 0, 'gnn-logo--overlay', 'high' ) : '';
+	if ( '' !== $markup || '' !== $overlay ) {
 		$height        = max( 12, (int) gnn_option( 'logo_max_height' ) );
 		$height_mobile = max( 12, (int) gnn_option( 'logo_max_height_mobile' ) );
-		echo '<a class="site-logo" href="' . esc_url( home_url( '/' ) ) . '" rel="home" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '" style="--gnn-logo-h:' . esc_attr( $height ) . 'px;--gnn-logo-h-mobile:' . esc_attr( $height_mobile ) . 'px">';
+		echo '<a class="site-logo' . ( $overlay ? ' site-logo--has-overlay' : '' ) . '" href="' . esc_url( home_url( '/' ) ) . '" rel="home" aria-label="' . esc_attr( get_bloginfo( 'name' ) ) . '" style="--gnn-logo-h:' . esc_attr( $height ) . 'px;--gnn-logo-h-mobile:' . esc_attr( $height_mobile ) . 'px">';
 		echo $markup; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in gnn_logo_pair/gnn_logo_img.
+		echo $overlay; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in gnn_logo_img.
+		if ( '' === $markup ) {
+			echo '<span class="site-title">' . esc_html( get_bloginfo( 'name' ) );
+			if ( gnn_option( 'brand_dot' ) ) {
+				echo '<span class="site-title__dot">.</span>';
+			}
+			echo '</span>';
+		}
 		echo '</a>';
 		return;
 	}
@@ -408,7 +417,7 @@ function gnn_the_logo() {
 	// registered — logos live in GNN Theme Panel → Brand).
 	?>
 	<a class="site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-		<?php bloginfo( 'name' ); ?>
+		<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
 		<?php
 		if ( gnn_option( 'brand_dot' ) ) :
 			?>
@@ -534,20 +543,26 @@ add_action( 'wp_enqueue_scripts', 'gnn_color_tokens_inline_css', 15 );
  * @return string[]
  */
 function gnn_option_body_classes( $classes ) {
-	if ( ! gnn_option( 'sticky_header' ) ) {
+	$header = gnn_header_config();
+	if ( 'static' === $header['header_behavior'] ) {
 		$classes[] = 'gnn-no-sticky';
 	}
 	if ( 'left' === gnn_option( 'sidebar_position' ) ) {
 		$classes[] = 'gnn-sidebar-left';
 	}
-	if ( 'legacy' === gnn_layout_value( 'header_preset' ) ) {
-		$classes[] = 'gnn-header-' . sanitize_html_class( (string) gnn_option( 'header_layout' ) ); }
-	$classes[] = 'gnn-menu-' . sanitize_html_class( (string) gnn_option( 'header_menu_align' ) );
+	$classes[] = 'gnn-header-' . $header['preset'];
+	if ( 'legacy' === $header['preset'] ) {
+		$classes[] = 'gnn-header-' . ( 'centered' === $header['header_structure'] ? 'centered' : 'standard' );
+	}
+	$classes[] = 'gnn-menu-' . $header['header_menu_align'];
 	$classes[] = 'gnn-fmenu-' . sanitize_html_class( (string) gnn_option( 'footer_menu_align' ) );
 	if ( gnn_option( 'mobile_dock' ) ) {
 		$classes[] = 'gnn-has-dock';
+		if ( gnn_dock_items( $header ) ) {
+			$classes[] = 'gnn-dock-present';
+		}
 	}
-	if ( gnn_option( 'topbar_enable' ) ) {
+	if ( $header['topbar'] && -2 !== $header['header_template'] ) {
 		$classes[] = 'gnn-has-topbar';
 	}
 	return $classes;

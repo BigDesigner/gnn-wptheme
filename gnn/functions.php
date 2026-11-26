@@ -143,6 +143,7 @@ function gnn_scripts() {
 		wp_enqueue_style( 'gnn-woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css', array( 'gnn-main' ), GNN_VERSION );
 	}
 
+	wp_enqueue_script( 'gnn-header', get_template_directory_uri() . '/assets/js/header.js', array(), GNN_VERSION, true );
 	wp_enqueue_script( 'gnn-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), GNN_VERSION, true );
 
 	// The hero carries its own data-autoplay / data-interval attributes, so no
@@ -188,7 +189,7 @@ function gnn_front_hero_renders() {
  * @return string
  */
 function gnn_defer_scripts( $tag, $handle ) {
-	if ( in_array( $handle, array( 'gnn-theme', 'gnn-slider', 'gnn-layout-geometry' ), true ) && false === strpos( $tag, ' defer' ) ) {
+	if ( in_array( $handle, array( 'gnn-theme', 'gnn-slider', 'gnn-layout-geometry', 'gnn-header' ), true ) && false === strpos( $tag, ' defer' ) ) {
 		$tag = str_replace( ' src=', ' defer src=', $tag );
 	}
 	return $tag;
@@ -344,6 +345,7 @@ if ( ! gnn_block_patterns_eager() ) {
 }
 
 require get_template_directory() . '/inc/blog.php';
+require get_template_directory() . '/inc/header/config.php';
 require get_template_directory() . '/inc/platform.php';
 require get_template_directory() . '/inc/site-platform.php';
 require get_template_directory() . '/inc/authoring.php';
@@ -422,6 +424,8 @@ require get_template_directory() . '/inc/frontend.php';
 require get_template_directory() . '/inc/menu-controls.php';
 require get_template_directory() . '/inc/page-layouts.php';
 require get_template_directory() . '/inc/class-gnn-walker-nav-menu.php';
+require get_template_directory() . '/inc/header/class-gnn-walker-mobile-menu.php';
+require get_template_directory() . '/inc/header/render.php';
 require get_template_directory() . '/inc/class-gnn-walker-comment.php';
 require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/slider.php';

@@ -24,20 +24,6 @@ function gnn_register_extra_menus() {
 }
 add_action( 'after_setup_theme', 'gnn_register_extra_menus', 20 );
 
-/** Resolve the header arrangement while retaining explicit page overrides. */
-function gnn_header_is_centered() {
-	$id   = is_singular() ? get_queried_object_id() : 0;
-	$meta = $id ? (array) get_post_meta( $id, '_gnn_layout', true ) : array();
-	if ( ! empty( $meta['header_preset'] ) && 'legacy' !== $meta['header_preset'] ) {
-		return 'centered' === $meta['header_preset'];
-	}
-	$preset = gnn_layout_value( 'header_preset' );
-	if ( '' !== $preset && 'legacy' !== $preset ) {
-		return 'centered' === $preset;
-	}
-	return 'centered' === gnn_option( 'header_layout' );
-}
-
 /**
  * Keep each top-level menu branch together when splitting the primary menu.
  *
@@ -77,29 +63,6 @@ function gnn_split_header_items( $items, $args ) {
 add_filter( 'wp_nav_menu_objects', 'gnn_split_header_items', 20, 2 );
 
 /**
- * Render explicit side menus, or split the existing primary menu automatically.
- *
- * @param string $side Left or right.
- */
-function gnn_header_side_menu( $side ) {
-	$custom = has_nav_menu( 'header-left' ) || has_nav_menu( 'header-right' );
-	if ( $custom && ! has_nav_menu( 'header-' . $side ) ) {
-		return;
-	}
-	wp_nav_menu(
-		array(
-			'theme_location'  => $custom ? 'header-' . $side : 'primary',
-			'gnn_header_half' => $custom ? '' : $side,
-			'menu_id'         => 'header-' . $side . '-menu',
-			'menu_class'      => 'menu',
-			'container'       => false,
-			'fallback_cb'     => false,
-			'walker'          => new GNN_Walker_Nav_Menu(),
-		)
-	);
-}
-
-/**
  * Enqueue the small features script when any interactive option needs it.
  */
 function gnn_enqueue_features() {
@@ -127,50 +90,26 @@ add_action( 'wp_enqueue_scripts', 'gnn_enqueue_features' );
 /**
  * Render the top announcement bar (called from header.php).
  */
-function gnn_render_topbar() {
-	if ( ! gnn_option( 'topbar_enable' ) ) {
-		return;
-	}
-	$text  = trim( (string) gnn_translated_option( 'topbar_text' ) );
-	$email = trim( (string) gnn_translated_option( 'topbar_email' ) );
-	$phone = trim( (string) gnn_translated_option( 'topbar_phone' ) );
-	if ( '' === $text && '' === $email && '' === $phone ) {
+function gnn_render_topbar( $config = null ) {
+	$config = $config ?? gnn_header_config();
+	if ( ! $config['topbar'] ) {
 		return;
 	}
 
-	$bg   = (string) gnn_option( 'topbar_bg' );
-	$fg   = (string) gnn_option( 'topbar_text_color' );
 	$vars = array();
-	if ( $bg ) {
-		$vars[] = '--gnn-topbar-bg:' . $bg;
+	foreach ( array( 'bg' => 'topbar_bg', 'fg' => 'topbar_text_color' ) as $part => $key ) {
+		$color = sanitize_hex_color( (string) gnn_option( $key ) );
+		if ( $color ) {
+			$vars[] = '--gnn-topbar-' . $part . ':' . $color;
+		}
 	}
-	if ( $fg ) {
-		$vars[] = '--gnn-topbar-fg:' . $fg;
-	}
-	$style = $vars ? ' style="' . esc_attr( implode( ';', $vars ) ) . '"' : '';
 	?>
-	<div class="gnn-topbar"<?php echo $style; // phpcs:ignore WordPress.Security.EscapeOutput -- built from esc_attr()'d hex colors above. ?>>
+	<div class="gnn-topbar" style="<?php echo esc_attr( implode( ';', $vars ) ); ?>">
 		<div class="gnn-topbar__inner">
-			<?php if ( '' !== $text ) : ?>
-				<span class="gnn-topbar__text">
-					<svg class="gnn-topbar__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"></path><path d="M15.5 8.5a5 5 0 0 1 0 7"></path></svg>
-					<?php echo esc_html( $text ); ?>
-				</span>
+			<?php if ( '' !== $config['topbar_text'] ) : ?>
+				<span class="gnn-topbar__text"><?php echo esc_html( $config['topbar_text'] ); ?></span>
 			<?php endif; ?>
-			<span class="gnn-topbar__contact">
-				<?php if ( '' !== $phone ) : ?>
-					<a href="tel:<?php echo esc_attr( preg_replace( '/[^0-9+]/', '', $phone ) ); ?>">
-						<svg class="gnn-topbar__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-						<?php echo esc_html( $phone ); ?>
-					</a>
-				<?php endif; ?>
-				<?php if ( '' !== $email ) : ?>
-					<a href="mailto:<?php echo esc_attr( $email ); ?>">
-						<svg class="gnn-topbar__icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-						<?php echo esc_html( $email ); ?>
-					</a>
-				<?php endif; ?>
-			</span>
+			<div class="gnn-topbar__contact"><?php gnn_render_header_contact( $config['contact'] ); ?></div>
 		</div>
 	</div>
 	<?php
@@ -282,38 +221,29 @@ add_action( 'wp_update_nav_menu_item', 'gnn_save_menu_item_badge', 10, 2 );
  * Mobile bottom app dock.
  */
 function gnn_render_mobile_dock() {
-	if ( gnn_render_configured_actions() ) {
-		return; }
-	$cart_url = class_exists( 'WooCommerce' ) ? wc_get_cart_url() : gnn_contact_url();
-	$cart_lbl = class_exists( 'WooCommerce' ) ? __( 'Cart', 'gnn' ) : __( 'Contact', 'gnn' );
-	// Same Feather-style outline SVGs as the header (gnn-icon class), so the
-	// dock never depends on the optional Google Material Symbols toggle.
-	$cart_icon = class_exists( 'WooCommerce' )
-		? '<circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>'
-		: '<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22 6 12 13 2 6"></polyline>';
-	?>
-	<nav class="gnn-dock" aria-label="<?php esc_attr_e( 'Mobile navigation', 'gnn' ); ?>">
-		<a class="gnn-dock__item" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<svg class="gnn-dock__ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-			<span class="gnn-dock__lbl"><?php esc_html_e( 'Home', 'gnn' ); ?></span>
+	$config = gnn_header_config();
+	$items  = gnn_dock_items( $config );
+	if ( ! $items ) {
+		return;
+	}
+	echo '<nav class="gnn-dock" aria-label="' . esc_attr__( 'Mobile actions', 'gnn' ) . '">';
+	foreach ( $items as $item ) {
+		$type = $item['type'];
+		$label = '<span class="gnn-dock__lbl">' . esc_html( $item['label'] ) . '</span>';
+		if ( 'theme' === $type ) {
+			gnn_render_header_theme_toggle( 'gnn-dock__item', $item['label'] );
+			continue;
+		}
+		$search = 'search' === $type && 'link' !== $config['header_search_mode'];
+		?>
+		<a class="gnn-dock__item" href="<?php echo esc_url( $item['url'] ); ?>"<?php if ( $search ) : ?> data-gnn-dock-search<?php endif; ?>>
+			<?php gnn_header_icon( $type, 'gnn-dock__ico' ); ?>
+			<?php echo $label; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above. ?>
+			<?php if ( 'cart' === $type && function_exists( 'gnn_render_cart_count' ) ) { gnn_render_cart_count(); } ?>
 		</a>
-		<a class="gnn-dock__item" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>">
-			<svg class="gnn-dock__ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-			<span class="gnn-dock__lbl"><?php esc_html_e( 'Search', 'gnn' ); ?></span>
-		</a>
-		<?php if ( gnn_option( 'show_toggle' ) ) : ?>
-			<button class="gnn-dock__item theme-toggle" aria-label="<?php esc_attr_e( 'Toggle dark / light mode', 'gnn' ); ?>">
-				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="currentColor" stroke="none"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg>
-				<svg class="gnn-dock__ico theme-toggle__icon theme-toggle__icon--moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-				<span class="gnn-dock__lbl"><?php esc_html_e( 'Theme', 'gnn' ); ?></span>
-			</button>
-		<?php endif; ?>
-		<a class="gnn-dock__item" href="<?php echo esc_url( $cart_url ); ?>">
-			<svg class="gnn-dock__ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><?php echo $cart_icon; // phpcs:ignore WordPress.Security.EscapeOutput -- literal, hardcoded SVG markup, not user input. ?></svg>
-			<span class="gnn-dock__lbl"><?php echo esc_html( $cart_lbl ); ?></span>
-		</a>
-	</nav>
-	<?php
+		<?php
+	}
+	echo '</nav>';
 }
 
 /**

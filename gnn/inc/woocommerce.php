@@ -88,13 +88,21 @@ add_filter( 'woocommerce_output_related_products_args', 'gnn_related_products_ar
  */
 function gnn_cart_count_fragment( $fragments ) {
 	ob_start();
-	?>
-	<span class="cart-count"><?php echo esc_html( WC()->cart ? WC()->cart->get_cart_contents_count() : 0 ); ?></span>
-	<?php
+	gnn_render_cart_count();
 	$fragments['.cart-count'] = ob_get_clean();
 	return $fragments;
 }
 add_filter( 'woocommerce_add_to_cart_fragments', 'gnn_cart_count_fragment' );
+
+/** Shared initial and refreshed cart count. */
+function gnn_render_cart_count() {
+	$count = WC()->cart ? WC()->cart->get_cart_contents_count() : 0;
+	/* translators: %s: the number of items in the cart. */
+	$label = sprintf( _n( '%s item', '%s items', $count, 'gnn' ), number_format_i18n( $count ) );
+	?>
+	<span class="cart-count"><span aria-hidden="true"><?php echo esc_html( number_format_i18n( $count ) ); ?></span><span class="screen-reader-text"><?php echo esc_html( $label ); ?></span></span>
+	<?php
+}
 
 /**
  * Breadcrumb markup aligned with the theme's .gnn-breadcrumb style.

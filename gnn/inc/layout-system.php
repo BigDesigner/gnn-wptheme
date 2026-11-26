@@ -124,7 +124,7 @@ add_filter( 'user_has_cap', 'gnn_layout_capabilities' );
 
 /** Supported override keys have the same type/bounds as the global schema. */
 function gnn_layout_override_keys() {
-	return array( 'header_template', 'footer_template', 'titlebar_template', 'sidebar_template', 'content_template', 'header_preset', 'hero_style', 'hero_group', 'content_top_padding', 'content_bottom_padding', 'post_content_width', 'post_image_layout', 'post_image_width', 'post_image_height_mode', 'post_image_ratio', 'post_featured_image_height', 'post_featured_image_fit', 'post_featured_image_position' );
+	return array( 'header_template', 'footer_template', 'titlebar_template', 'sidebar_template', 'content_template', 'header_preset', 'header_surface', 'header_overlay', 'hero_style', 'hero_group', 'content_top_padding', 'content_bottom_padding', 'post_content_width', 'post_image_layout', 'post_image_width', 'post_image_height_mode', 'post_image_ratio', 'post_featured_image_height', 'post_featured_image_fit', 'post_featured_image_position' );
 }
 
 /**
@@ -198,7 +198,7 @@ function gnn_render_layout_meta_box( $post ) {
 		$schema = gnn_platform_schema();
 		$field  = $schema[ $key ] ?? array( ucwords( str_replace( '_', ' ', $key ) ), 'number', '', 'pages', 0, 300 );
 		echo '<p><label for="gnn-layout-' . esc_attr( $key ) . '">' . esc_html( $field[0] ) . '</label>';
-		if ( in_array( $field[1], array( 'layout', 'region', 'select' ), true ) ) {
+		if ( in_array( $field[1], array( 'layout', 'region', 'select', 'bool' ), true ) ) {
 			$choices = array( '' => __( 'Inherit', 'gnn' ) );
 			if ( in_array( $field[1], array( 'layout', 'region' ), true ) ) {
 				$choices[0]  = __( 'Native theme / builder fallback', 'gnn' );
@@ -210,8 +210,11 @@ function gnn_render_layout_meta_box( $post ) {
 					)
 				) as $layout ) {
 					$choices[ $layout->ID ] = $layout->post_title; }
+			} elseif ( 'bool' === $field[1] ) {
+				$choices += gnn_header_overlay_choices();
 			} else {
-				$choices += $field[4]; }
+				$choices += $field[4];
+			}
 			echo '<select id="gnn-layout-' . esc_attr( $key ) . '" name="gnn_layout[' . esc_attr( $key ) . ']">';
 			foreach ( $choices as $value => $label ) {
 				echo '<option value="' . esc_attr( $value ) . '" ' . selected( (string) ( $meta[ $key ] ?? '' ), (string) $value, false ) . '>' . esc_html( $label ) . '</option>'; }
@@ -238,6 +241,12 @@ function gnn_save_layout_meta( $id ) {
 			continue; }
 		if ( ! isset( $input[ $key ] ) || ! is_scalar( $input[ $key ] ) || '' === $input[ $key ] ) {
 			continue; }
+		if ( 'header_overlay' === $key ) {
+			if ( in_array( $input[ $key ], array( '0', '1' ), true ) ) {
+				$valid[ $key ] = (int) $input[ $key ];
+			}
+			continue;
+		}
 		if ( isset( $schema[ $key ] ) && 'select' === $schema[ $key ][1] ) {
 			if ( isset( $schema[ $key ][4][ $input[ $key ] ] ) ) {
 				$valid[ $key ] = $input[ $key ]; }
@@ -251,29 +260,3 @@ function gnn_save_layout_meta( $id ) {
 	update_post_meta( $id, '_gnn_layout', $valid );
 }
 add_action( 'save_post', 'gnn_save_layout_meta' );
-
-/** Header contact, action and language providers use escaped values. */
-function gnn_header_components() {
-	if ( gnn_option( 'header_contact' ) ) {
-		echo '<div class="header-contact">';
-		if ( gnn_option( 'company_phone' ) ) {
-			echo '<a href="tel:' . esc_attr( preg_replace( '/[^0-9+]/', '', gnn_option( 'company_phone' ) ) ) . '">' . esc_html( gnn_translated_option( 'company_phone' ) ) . '</a>'; }
-		if ( gnn_option( 'company_email' ) ) {
-			echo '<a href="mailto:' . esc_attr( gnn_option( 'company_email' ) ) . '">' . esc_html( gnn_translated_option( 'company_email' ) ) . '</a>'; }
-		echo '</div>';
-	}
-	if ( gnn_option( 'header_language' ) ) {
-		if ( function_exists( 'pll_the_languages' ) ) {
-			echo '<ul class="gnn-languages">';
-			pll_the_languages(
-				array(
-					'show_flags' => 0,
-					'show_names' => 1,
-				)
-			);
-			echo '</ul>'; } elseif ( has_action( 'wpml_add_language_selector' ) ) {
-			do_action( 'wpml_add_language_selector' ); }
-	}
-	if ( gnn_option( 'header_cta_show' ) && gnn_option( 'header_cta_label' ) && gnn_option( 'header_cta_url' ) ) {
-		echo '<a class="gnn-btn header-cta" href="' . esc_url( gnn_option( 'header_cta_url' ) ) . '">' . esc_html( gnn_translated_option( 'header_cta_label' ) ) . '</a>'; }
-}

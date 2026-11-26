@@ -43,15 +43,5 @@
 @media(max-width:700px){.elementor .e-con.gnn-st.gnn-herofoot{grid-template-columns:minmax(0,1fr)}.elementor .e-con.gnn-st.gnn-listrow{grid-template-columns:minmax(0,1fr);gap:8px}}
 
 /* GNNdesign header: floating pill */
-.gnn-header-floating .site-branding{white-space:nowrap}
-.gnn-header-floating .site-header{position:fixed;top:16px;inset-inline:0;margin-inline:auto;width:min(1080px,calc(100% - 32px));border:1px solid var(--line);border-radius:999px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 14px 40px rgba(0,0,0,.25)}
-.gnn-header-floating .site-header__inner{height:58px;padding-inline:24px;max-width:none}
-.gnn-header-floating .main-navigation{margin-inline:auto}
-.gnn-header-floating .main-navigation ul.menu{gap:6px}
-.gnn-header-floating .main-navigation ul.menu>li>a{padding:9px 16px;border-radius:999px;font-size:14px}
-.gnn-header-floating .main-navigation ul.menu>li>a:hover,.gnn-header-floating .main-navigation ul.menu>li.current-menu-item>a{background:var(--bg3)}
-.gnn-header-floating .header-cta{padding:10px 20px}
-.gnn-header-floating main:not(.gnn-starter-page){padding-top:96px}
-.admin-bar.gnn-header-floating .site-header{top:48px}
-@media(max-width:899px){.gnn-header-floating .site-header{border-radius:28px}.gnn-header-floating .site-header__inner{height:56px;padding-inline:16px}}
+.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li>a:hover,.gnn-site-design [data-shape="floating"] .main-navigation ul.menu>li.current-menu-item>a{background:var(--bg3)}
 
