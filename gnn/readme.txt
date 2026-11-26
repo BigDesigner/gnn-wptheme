@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.14.2
+Stable tag: 2.15.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -200,6 +200,14 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.15.0 =
+* Rebuilt the header: one layout model (Classic, Centered, Stacked, Shop) with surface, shape, width and scroll behaviour, working on every site.
+* New mobile menu with expandable submenus that includes the button, search, contact, language, theme switch and cart.
+* Desktop dropdowns work with touch and keyboard, stay on screen, and long menus move into a More menu. Mega menus open under the header.
+* Search overlay or field, overlay header with its own logo, element order and visibility per device, and header colours.
+* New Header settings screen with a live preview. Switching designs resets header settings.
+* Add the [gnn_header_menu] shortcode for shared headers.
 
 = 2.14.2 =
 * Fix saving registered starter designs in Theme Settings.
