@@ -157,7 +157,6 @@ function gnn_gnnpro_data(): array {
 				__( 'Pick one group that can try the new way of working in a fortnight. Give it a clear success measure and name the person who can remove obstacles. Use the results to decide what to expand, what to adjust and what to stop before committing more capacity.', 'gnn' ),
 			),
 		),
-		'slides'   => array(),
 		'products' => array(),
 	);
 }

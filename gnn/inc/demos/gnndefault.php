@@ -146,7 +146,6 @@ function gnn_gnndefault_data() {
 				__( 'Document decisions as you go, record a short walkthrough and leave files your team can edit easily.', 'gnn' ),
 			),
 		),
-		'slides'   => array(),
 		'products' => array(),
 	);
 }

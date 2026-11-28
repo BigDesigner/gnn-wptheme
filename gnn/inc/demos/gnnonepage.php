@@ -119,7 +119,6 @@ function gnn_gnnonepage_data() {
 		),
 		'projects' => array(),
 		'articles' => array(),
-		'slides'   => array(),
 		'products' => array(),
 	);
 }
@@ -647,7 +646,7 @@ function gnn_gnnonepage_home( $page_ids ) {
 		'faq'
 	);
 
-	// 10. Contact (same approach as gnn/inc/templates/pro.php).
+	// 10. Contact.
 	$contact = gnn_gnnonepage_band(
 		'contact',
 		array(

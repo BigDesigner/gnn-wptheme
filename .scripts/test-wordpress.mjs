@@ -55,11 +55,11 @@ try {
  const headerOnly=process.env.GNN_QA_ONLY_HEADER==='1';
  const platformOnly=process.env.GNN_QA_ONLY_PLATFORM==='1';
  const headerSuites=plugins?['header','header-no-woo']:['header-no-woo'];
- const suites=headerOnly?headerSuites:platformOnly?(process.env.GNN_QA_INTEGRATIONS==='1'?['platform','compatibility']:['platform']):['updater','templates','woocommerce','reset','hardening','platform','revslider','kitsync','content-plugin','sections','templates-data',...headerSuites];
+ const suites=headerOnly?headerSuites:platformOnly?(process.env.GNN_QA_INTEGRATIONS==='1'?['platform','compatibility']:['platform']):['updater','templates','woocommerce','reset','hardening','platform','revslider','kitsync','content-plugin','sections',...headerSuites];
  for (const suite of suites) {
-  if(!plugins && ['templates','woocommerce','templates-data'].includes(suite)) continue;
+  if(!plugins && ['templates','woocommerce'].includes(suite)) continue;
   console.log('QA suite:',suite);
-  const standalone=['hardening','platform','compatibility','revslider','kitsync','content-plugin','sections','templates-data'].includes(suite);
+  const standalone=['hardening','platform','compatibility','revslider','kitsync','content-plugin','sections'].includes(suite);
   const runSuite=`$suite=${JSON.stringify(suite)}; require '/gnn-qa/${suite.startsWith('header')?'header.php':standalone?suite+'.php':'wordpress.php'}';`;
   const text=suite==='header-no-woo' && plugins ? await withoutWoo(() => php(runSuite,true)) : await php(runSuite,standalone || suite==='reset' || suite.startsWith('header'));
   const marker=text.indexOf('GNN_QA_RESULT:');

@@ -12219,3 +12219,7 @@ TRANSLATIONS.update({
     'Link: icon that opens the search page. Overlay: search box over the page. Field: search box in the header.': 'Bağlantı: arama sayfasını açan simge. Katman: sayfanın üstünde arama kutusu. Alan: header içinde arama kutusu.',
     'Search the whole site or only products.': 'Tüm sitede ya da yalnız ürünlerde arar.',
 })
+
+TRANSLATIONS.update({
+    'Activate Elementor to import pages.': 'Sayfaları içe aktarmak için Elementor’u etkinleştirin.',
+})

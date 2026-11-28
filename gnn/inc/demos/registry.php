@@ -23,7 +23,7 @@
  * - `description` (string, translated, required)   — One-sentence summary.
  * - `featured`    (bool, default `false`)          — Whether highlighted in the gallery.
  * - `order`       (int, default `100`)             — Sort order (classic designs use 200-230).
- * - `profile`     (array, required)                — Design preset array matching `gnn_st_profile_pro()`
+ * - `profile`     (array, required)                — Design preset values
  *                                                    (accent, accent_light, header, radius, font,
  *                                                    heading_font, mode, light[6], dark[6], options[],
  *                                                    heading, description).
@@ -31,7 +31,7 @@
  *                                                    in menu order; must contain `home`.
  * - `page`        (callable, required)             — `function( string $page_key, array $page_ids, array $data, $group ): array`
  *                                                    returning Elementor elements built with `gnn/inc/templates/common.php` helpers.
- * - `data`        (callable, default empty arrays) — Returns `array( 'images' => [], 'projects' => [], 'articles' => [], 'slides' => [], 'products' => [] )`.
+ * - `data`        (callable, default empty arrays) — Returns `array( 'images' => [], 'projects' => [], 'articles' => [] )`.
  * - `css`         (string, default `''`)           — Stylesheet path relative to `gnn/assets/css/`, e.g. `demos/gnnpro.css`.
  * - `js`          (string, default `''`)           — Script path relative to `gnn/assets/js/`, e.g. `demos/gnnagency.js`.
  * - `preview`     (string, default `''`)           — Theme-relative gallery preview image path, e.g. `assets/images/demo/gnnpro/preview.jpg`.
@@ -55,8 +55,6 @@ function gnn_demo_empty_data(): array {
 		'images'   => array(),
 		'projects' => array(),
 		'articles' => array(),
-		'slides'   => array(),
-		'products' => array(),
 	);
 }
 

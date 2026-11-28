@@ -138,10 +138,10 @@ function gnn_workspace_legacy() {
 			echo '<article class="gnn-settings-card gnn-profile-card" data-profile="' . esc_attr( $slug ) . '"><span class="gnn-profile-swatch" style="background:' . esc_attr( $profile['accent'] ) . '" aria-hidden="true"></span><h3>' . esc_html( $profile['label'] ) . '</h3><p class="gnn-profile-meta">' . esc_html( $profile['accent'] ) . '</p>';
 			if ( ! empty( $profile['description'] ) ) {
 				echo '<p class="description">' . esc_html( $profile['description'] ) . '</p>';
-				if ( ! empty( $profile['preview'] ) && is_string( $profile['preview'] ) ) {
+				if ( 'architecture' !== $slug && ! empty( $profile['preview'] ) && is_string( $profile['preview'] ) ) {
 					$preview = '/' . ltrim( $profile['preview'], '/' );
 				} else {
-					$preview = 'architecture' === $slug ? '/assets/images/architecture/courtyard.svg' : '/assets/images/profiles/' . $slug . '.svg';
+					$preview = '/assets/images/architecture/courtyard.svg';
 				}
 				/* translators: %s: Ready-made site profile name. */
 				$preview_label = sprintf( __( '%s design concept preview', 'gnn' ), $profile['label'] );
@@ -153,10 +153,10 @@ function gnn_workspace_legacy() {
 			}
 			echo '<p class="description">' . esc_html__( 'Elementor Free edition. Only this design’s page documents are imported; no second editor edition or automatic saved-template library is created.', 'gnn' ) . '</p><details><summary>' . esc_html__( 'Profile actions', 'gnn' ) . '</summary>';
 			gnn_workspace_action_form( 'preset', __( 'Apply design profile', 'gnn' ), array( 'profile' => $slug ) );
-			if ( gnn_starter_elementor_available() && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) ) ) {
+			if ( gnn_starter_elementor_available() ) {
 				gnn_workspace_action_form( 'starter', __( 'Import Elementor starter pages', 'gnn' ), array( 'profile' => $slug ) );
 			} else {
-				echo '<p>' . esc_html__( 'Activate Elementor to import pages. GNNcommerce also requires WooCommerce. Plugins are never installed automatically.', 'gnn' ) . '</p>';
+				echo '<p>' . esc_html__( 'Activate Elementor to import pages.', 'gnn' ) . '</p>';
 			}
 			echo '</details></article>';
 		}

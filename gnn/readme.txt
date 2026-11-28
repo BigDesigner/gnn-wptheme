@@ -4,7 +4,7 @@ Tags: e-commerce, blog, one-column, two-columns, right-sidebar, custom-colors, c
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.15.2
+Stable tag: 2.16.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -56,10 +56,7 @@ Alternatively, use Elementor's Shortcode widget with [rev_slider alias="your-ali
 == Setup and shared content ==
 
 GNN > Setup wizard offers Ready-made site and Start from scratch.
-Ready-made sites use Elementor Free. Choose GNNpro, GNNcommerce, GNNdesign
-or GNNarchitecture. Review dependencies, then import only that design's draft
-pages. Existing content, homepage and menus are preserved. GNNcommerce needs
-WooCommerce and its published shop/cart/checkout/account pages.
+Ready-made sites use Elementor Free. Choose GNNdefault, GNNpro, GNNagency, GNNonepage or GNNarchitecture. Importing draft pages from the workspace preserves existing content, homepage and menus.
 
 Start from scratch applies selected header/footer, fonts and accent settings
 without creating sample content. GNN > Plugins provides installation/activation
@@ -200,6 +197,9 @@ Install the gnn-VERSION.zip asset from a GitHub release, or build gnn.zip locall
 This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Changelog ==
+
+= 2.16.0 =
+* Removed the unfinished ready-made designs. The theme now ships GNNdefault, GNNpro, GNNagency, GNNonepage and GNNarchitecture. Sites that used a removed design keep their content and use the base look.
 
 = 2.15.2 =
 * Add visible hover and keyboard focus feedback to the four featured demo menus.
@@ -739,7 +739,7 @@ This theme is distributed through GitHub/private ZIP, not WordPress.org.
 
 == Ready-made Elementor sites ==
 
-Site workspace offers GNNpro (business and professional services), GNNcommerce (WooCommerce), GNNdesign (independent designers/developers) and GNNarchitecture (architecture/construction). Activate Elementor Free before importing; GNNcommerce additionally requires WooCommerce and its store setup. Imports create editable draft page documents, do not publish or assign the homepage/menus, and never create a second editor edition or an automatic saved-template library. Preview installed drafts before publishing. Existing Gutenberg content remains supported and is not converted.
+Site workspace offers GNNdefault, GNNpro, GNNagency, GNNonepage and GNNarchitecture. Activate Elementor Free before importing. Imports create editable draft pages and preserve the homepage and menus. Preview installed drafts before publishing. Existing Gutenberg content remains supported.
 
 Portfolio projects and categories are managed under GNN. Publish a project to add it to live portfolio queries; category selection and pagination are automatic. Single project pages show native title, featured image, facts, editable body, central gallery and category-based previous/next links. Use featured images, excerpts, order and native editor content to customize projects. Project categories are shared across profiles.
 

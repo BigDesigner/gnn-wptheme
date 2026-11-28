@@ -191,6 +191,11 @@ function gnn_options_sanitize( $input ) {
 		}
 	}
 
+	// For a retired design, the form already displays None. Preserve the stored selection.
+	// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Settings API checks the form nonce.
+	if ( 'design' === ( $_POST['gnn_form_scope'] ?? '' ) && 'general' === ( $scoped['site_segment'] ?? null ) && gnn_is_legacy_site_design( $saved['site_segment'] ?? null ) ) {
+		unset( $scoped['site_segment'] );
+	}
 	$out = gnn_sanitize_platform_options( $out, $scoped );
 	if ( isset( $input['header_layout'] ) && in_array( $input['header_layout'], array( 'standard', 'centered' ), true ) && ( $saved['header_layout'] ?? 'standard' ) !== $input['header_layout'] ) {
 		$out['header_preset'] = 'centered' === $input['header_layout'] ? 'centered' : 'legacy';
@@ -556,8 +561,7 @@ function gnn_field_textarea( $key, $label, $value, $rows = 5, $hint = '' ) {
 function gnn_field_select( $key, $label, $options, $hint = '' ) {
 	$current = (string) gnn_option( $key );
 	if ( 'site_segment' === $key ) {
-		$current = gnn_starter_profile_key( $current );
-		$options = wp_list_pluck( gnn_starter_profiles(), 'label' );
+		$current = gnn_starter_profile_key( $current ) ?: 'general';
 	}
 
 	$card_presets = array(

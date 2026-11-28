@@ -50,15 +50,15 @@ wp_set_current_user( $designer );
 $check( 'P20 designer can edit layouts without raw script capability', current_user_can( 'edit_gnn_layouts' ) && ! current_user_can( 'unfiltered_html' ) && ! current_user_can( 'manage_options' ) );
 wp_set_current_user( 1 );
 $identity = gnn_option( 'company_name' ); $private = gnn_option( 'custom_js_head' );
-$check( 'P21 professional preset can be applied', true === gnn_apply_design_preset( 'professional' ) );
+$check( 'P21 GNNpro preset can be applied', true === gnn_apply_design_preset( 'gnnpro' ) );
 $check( 'P22 design preset preserves customer identity and code', $identity === gnn_option( 'company_name' ) && $private === gnn_option( 'custom_js_head' ) );
-$check( 'P23 design contract emits configured tokens', false !== strpos( gnn_design_css(), '--gnn-radius:4px' ) && false !== strpos( gnn_header_css(), '--gnn-header-height:' ) );
+$check( 'P23 design contract emits configured tokens', false !== strpos( gnn_design_css(), '--gnn-radius:3px' ) && false !== strpos( gnn_header_css(), '--gnn-header-height:' ) );
 $front = get_option( 'page_on_front' ); $menus = get_theme_mod( 'nav_menu_locations' );
-$first = gnn_install_starter( 'professional' );
+$first = gnn_install_starter( 'gnnpro' );
 $check( 'P24 draft starter installation succeeds', is_array( $first ) && 5 === count( $first ) );
 $check( 'P25 starter preserves live homepage and menu assignments', $front === get_option( 'page_on_front' ) && $menus === get_theme_mod( 'nav_menu_locations' ) );
 $id = $first['about']; wp_update_post( array( 'ID' => $id, 'post_content' => 'CUSTOMER EDIT' ) );
-$second = gnn_install_starter( 'professional' );
+$second = gnn_install_starter( 'gnnpro' );
 $check( 'P26 repeat starter preserves IDs and user edits', $second === $first && 'CUSTOMER EDIT' === get_post_field( 'post_content', $id ) );
 $check( 'P27 starter drafts are not auto-published', 'draft' === get_post_status( $first['contact'] ) || empty( get_post_meta( $first['contact'], '_gnn_starter', true ) ) );
 $region = wp_insert_post( array( 'post_type' => 'gnn_layout', 'post_status' => 'publish', 'post_title' => 'Reusable header', 'post_content' => '<!-- wp:paragraph --><p>NATIVE REGION</p><!-- /wp:paragraph -->' ) );
@@ -75,6 +75,123 @@ foreach ( gnn_starter_profiles() as $slug => $profile ) {
  $ratios=array((max($brand,$ink)+0.05)/(min($brand,$ink)+0.05));
  foreach(array('#fafafa','#0a0a0b') as $surface){$link=gnn_color_luminance(gnn_readable_brand_color($profile['accent'],$surface));$bg=gnn_color_luminance($surface);$ratios[]=(max($link,$bg)+0.05)/(min($link,$bg)+0.05);}
  $check('Brand contrast: '.$slug.' primary ink and light/dark links',min($ratios)>=4.5,wp_json_encode($ratios));
+}
+$options = (array) get_option( 'gnn_options' );
+$choices = gnn_platform_schema()['site_segment'][4];
+$expected = array( 'architecture', 'general', 'gnnagency', 'gnndefault', 'gnnonepage', 'gnnpro' );
+$actual = array_keys( $choices );
+sort( $actual );
+$check( 'Site design offers the five retained designs and None', $expected === $actual && __( 'None', 'gnn' ) === $choices['general'] );
+
+$original_get = $_GET;
+$_GET['path'] = 'ready';
+ob_start();
+gnn_setup_wizard_content();
+$ready_html = ob_get_clean();
+$_GET = $original_get;
+$ready = new DOMDocument();
+$ready->loadHTML( $ready_html, LIBXML_NOERROR | LIBXML_NOWARNING );
+$xpath = new DOMXPath( $ready );
+$previews = array();
+foreach ( $xpath->query( '//article[contains(@class,"gnn-profile-card")]' ) as $card ) {
+	$button = $xpath->query( './/button[@data-profile]', $card )->item( 0 );
+	$image = $xpath->query( './/img[@src]', $card )->item( 0 );
+	if ( $button && $image ) {
+		$uri = get_template_directory_uri() . '/';
+		$src = $image->getAttribute( 'src' );
+		$previews[ $button->getAttribute( 'data-profile' ) ] = 0 === strpos( $src, $uri )
+			&& is_readable( get_template_directory() . '/' . substr( $src, strlen( $uri ) ) );
+	}
+}
+ksort( $previews );
+$check(
+	'Ready-made sites lists five designs with bundled previews',
+	array_values( array_diff( $expected, array( 'general' ) ) ) === array_keys( $previews )
+		&& array( true, true, true, true, true ) === array_values( $previews )
+);
+$legacy = array(
+	'', 'general', 'professional', 'original', 'industrial', 'creative', 'pro', 'commerce', 'design',
+	'agency', 'clinic', 'education', 'event', 'fitness', 'hotel', 'legal', 'magazine',
+	'nonprofit', 'personal', 'photography', 'realestate', 'restaurant', 'saas', 'travel', 'wedding',
+);
+$notices = array();
+set_error_handler( static function ( $severity, $message ) use ( &$notices ) {
+	$notices[] = $message;
+	return true;
+}, E_WARNING | E_NOTICE | E_USER_WARNING | E_USER_NOTICE | E_DEPRECATED | E_USER_DEPRECATED );
+try {
+	foreach ( $legacy as $value ) {
+		$notices = array();
+		$options['site_segment'] = $value;
+		update_option( 'gnn_options', $options );
+		$check(
+			'Legacy Site design uses the base theme: ' . var_export( $value, true ),
+			'' === gnn_starter_profile_key( $value ) && '' === gnn_site_profile()
+				&& array() === gnn_site_profile_body_class( array() )
+				&& $value === get_option( 'gnn_options' )['site_segment'] && ! $notices,
+			implode( "\n", $notices )
+		);
+	}
+
+	$options['site_segment'] = 'commerce';
+	update_option( 'gnn_options', $options );
+	$original_post = $_POST;
+	$_POST['gnn_form_scope'] = 'design';
+	try {
+		gnn_configuration_rejection( null, true );
+		$updated = gnn_options_sanitize( array( 'site_segment' => 'general', 'company_phone' => 'Saved legacy settings' ) );
+		$result = gnn_configuration_write( $updated, false );
+		$check(
+			'Saving settings with None displayed preserves a retired design value and saves other fields',
+			! is_wp_error( $result ) && 'Saved legacy settings' === gnn_option( 'company_phone' )
+				&& 'commerce' === get_option( 'gnn_options' )['site_segment'] && ! gnn_configuration_rejection()
+		);
+	} finally {
+		$_POST = $original_post;
+	}
+
+	$notices = array();
+	$content = 'Legacy page content remains visible.';
+	$page = wp_insert_post( array(
+		'post_type' => 'page', 'post_status' => 'publish', 'post_title' => 'Legacy page',
+		'post_content' => $content,
+		'meta_input' => array( '_gnn_starter' => 'clinic:home', '_wp_page_template' => 'page-templates/tpl-starter.php' ),
+	) );
+	$GLOBALS['wp_query'] = new WP_Query( array( 'page_id' => $page ) );
+	ob_start();
+	require get_theme_file_path( get_page_template_slug( $page ) );
+	$html = ob_get_clean();
+	$check(
+		'Legacy clinic starter template renders saved content without a retired profile',
+		false !== strpos( $html, $content ) && ! wp_style_is( 'gnn-template-clinic' ) && ! wp_style_is( 'gnn-profile-commerce' )
+			&& false === strpos( $html, 'gnn-site-commerce' ) && ! $notices,
+		implode( "\n", $notices )
+	);
+	wp_reset_query();
+	wp_delete_post( $page, true );
+
+	if ( gnn_starter_elementor_available() ) {
+		$url = get_template_directory_uri() . '/assets/images/demo/pro/hero.jpg';
+		$widget = Elementor\Plugin::instance()->elements_manager->create_element_instance(
+			array(
+				'id' => 'legacyimage',
+				'elType' => 'widget',
+				'widgetType' => 'image',
+				'settings' => array( 'image' => array( 'url' => $url, 'id' => '' ) ),
+			)
+		);
+		ob_start();
+		$widget->print_element();
+		$image_html = ob_get_clean();
+		$check(
+			'Retired Elementor image widgets render a working placeholder and retain their saved URL',
+			false !== strpos( $image_html, '/assets/img/placeholder-cover.svg' )
+				&& false === strpos( $image_html, $url ) && $url === $widget->get_settings( 'image' )['url']
+		);
+	}
+
+} finally {
+	restore_error_handler();
 }
 gnn_reset_panel_settings();
 echo 'GNN_QA_RESULT:' . wp_json_encode( $checks );

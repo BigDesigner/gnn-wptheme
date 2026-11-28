@@ -347,10 +347,6 @@ function gnn_install_profile_pages( $profile, $editor, $data = array(), $group =
 			'contact'   => __( 'Contact', 'gnn' ),
 		);
 	}
-	if ( 'design' === $profile && ! $native ) {
-		$pages['portfolio'] = __( 'Portfolio', 'gnn' );
-		$pages['gallery']   = __( 'Gallery', 'gnn' );
-	}
 	$root_existing = gnn_starter_owned_page( $profile, $editor );
 	$root_new      = ! $root_existing || '1' === get_post_meta( $root_existing->ID, '_gnn_starter_pending', true );
 	$root_baseline = $root_existing ? get_post_meta( $root_existing->ID, '_gnn_starter_baseline', true ) : '';

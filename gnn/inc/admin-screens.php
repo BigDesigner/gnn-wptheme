@@ -175,16 +175,7 @@ function gnn_setup_wizard_content() {
 function gnn_ready_design_grid( $profiles, $ready, $variant ) {
 	echo '<div class="gnn-choice-grid gnn-ready-designs' . ( $variant ? ' gnn-ready-designs--' . esc_attr( $variant ) : '' ) . '">';
 	foreach ( $profiles as $slug => $item ) {
-		$tpl = function_exists( 'gnn_template' ) ? gnn_template( $slug ) : null;
-		if ( $tpl ) {
-			$hero_path   = 'assets/images/demo/' . $slug . '/hero.jpg';
-			$preview_url = is_readable( get_theme_file_path( $hero_path ) ) ? get_theme_file_uri( $hero_path ) : get_theme_file_uri( 'assets/img/placeholder-cover.svg' );
-			$can_install = function_exists( 'gnn_template_requires_met' ) ? gnn_template_requires_met( $tpl ) : $ready;
-		} else {
-			$preview     = 'architecture' === $slug ? 'demo/architecture/image-18.jpg' : ( 'pro' === $slug ? 'demo/pro/hero.jpg' : ( 'commerce' === $slug ? 'demo/commerce/slide-1.jpg' : 'demo/design/work-1.jpg' ) );
-			$preview_url = get_template_directory_uri() . '/assets/images/' . $preview;
-			$can_install = $ready && ( 'commerce' !== $slug || class_exists( 'WooCommerce' ) );
-		}
+		$preview_url = get_theme_file_uri( 'assets/img/placeholder-cover.svg' );
 		$custom_preview = $item['preview'] ?? '';
 		if ( is_string( $custom_preview ) && preg_match( '~\A[\w.-]+(?:/[\w.-]+)*\z~', $custom_preview ) && 0 === validate_file( $custom_preview ) ) {
 			$preview_file = get_theme_file_path( $custom_preview );
@@ -197,14 +188,7 @@ function gnn_ready_design_grid( $profiles, $ready, $variant ) {
 			echo '<p class="gnn-profile-description">' . esc_html( $item['description'] ) . '</p>';
 		}
 		echo '<div class="gnn-profile-action">';
-		if ( 'architecture' === $slug || gnn_st_has( $slug ) || $tpl ) {
-			echo '<button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $slug ) . '" data-label="' . esc_attr( $item['label'] ) . '"' . disabled( ! $can_install, true, false ) . '>' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
-		} else {
-			gnn_management_form_open( 'import' );
-			echo '<input type="hidden" name="profile" value="' . esc_attr( $slug ) . '">';
-			gnn_panel_submit_button( __( 'Add draft pages', 'gnn' ), 'secondary', 'submit', true, $can_install ? array() : array( 'disabled' => 'disabled' ) );
-			echo '<p class="gnn-operation-status" role="status"></p></form>';
-		}
+		echo '<button type="button" class="button button-primary gnn-demo-open" data-profile="' . esc_attr( $slug ) . '" data-label="' . esc_attr( $item['label'] ) . '"' . disabled( ! $ready, true, false ) . '>' . esc_html__( 'Install demo site', 'gnn' ) . '</button>';
 		echo '</div></article>';
 	}
 	echo '</div>';
@@ -226,15 +210,12 @@ function gnn_demo_resume_screen( $job ) {
 	echo '<section class="gnn-settings-card gnn-card-content"><h2>' . esc_html__( 'Demo installation', 'gnn' ) . '</h2><p>' . esc_html__( 'The installation has not finished. Continue from where it stopped.', 'gnn' ) . '</p><button type="button" class="button button-primary gnn-demo-resume" data-job="' . esc_attr( $job['id'] ) . '">' . esc_html__( 'Continue installation', 'gnn' ) . '</button><p class="gnn-demo-status" role="status"></p></section>';
 }
 
-/** Compact plugin cards use WordPress permission-checked actions.
- *
- * @param bool $commerce Whether WooCommerce is needed for this setup.
- */
-function gnn_plugin_cards( $commerce = false ) {
+/** Compact plugin cards use WordPress permission-checked actions. */
+function gnn_plugin_cards() {
 	require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	$plugins = array(
 		'elementor'    => array( 'Elementor', 'elementor/elementor.php', __( 'Build and edit pages visually.', 'gnn' ), __( 'Required for ready-made sites.', 'gnn' ) ),
-		'woocommerce'  => array( 'WooCommerce', 'woocommerce/woocommerce.php', __( 'Add an online store and checkout.', 'gnn' ), $commerce ? __( 'Required for this design.', 'gnn' ) : __( 'Optional; required for an online store.', 'gnn' ) ),
+		'woocommerce'  => array( 'WooCommerce', 'woocommerce/woocommerce.php', __( 'Add an online store and checkout.', 'gnn' ), __( 'Optional; required for an online store.', 'gnn' ) ),
 		'gnn-lightbox' => array( 'GNN Lightbox', 'gnn-lightbox/gnn-lightbox.php', __( 'Open gallery images in a lightbox.', 'gnn' ), __( 'Optional; required for lightbox viewing.', 'gnn' ) ),
 	);
 	echo '<div class="gnn-choice-grid">';
@@ -549,7 +530,7 @@ function gnn_management_page() {
  */
 function gnn_management_tab_content( $tab ) {
 	if ( 'plugins' === $tab ) {
-		gnn_plugin_cards( 'commerce' === gnn_option( 'site_segment' ) );
+		gnn_plugin_cards();
 	} elseif ( 'templates' === $tab ) {
 		gnn_template_catalog();
 	} elseif ( 'layouts' === $tab ) {
@@ -605,17 +586,7 @@ function gnn_management_handle() {
 	$operation = isset( $_POST['operation'] ) && is_string( $_POST['operation'] ) ? sanitize_key( wp_unslash( $_POST['operation'] ) ) : '';
 	$result    = new WP_Error( 'gnn_operation', __( 'Invalid operation.', 'gnn' ) );
 	$target    = 'setup';
-	if ( 'import' === $operation ) {
-		$profile = isset( $_POST['profile'] ) && is_string( $_POST['profile'] ) ? sanitize_key( wp_unslash( $_POST['profile'] ) ) : '';
-		$result  = gnn_configuration_begin( 'setup', gnn_configuration_form_revision() );
-		if ( ! is_wp_error( $result ) ) {
-			$result = gnn_install_starter( $profile, 'elementor' );
-			if ( ! is_wp_error( $result ) ) {
-				$result = gnn_apply_design_preset( $profile, ! empty( $_POST['reset_design'] ) );
-			}
-		}
-		$target = 'templates';
-	} elseif ( 'assignments' === $operation ) {
+	if ( 'assignments' === $operation ) {
 		$raw    = isset( $_POST['regions'] ) && is_array( $_POST['regions'] ) ? wp_unslash( $_POST['regions'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- exact keys and typed values below.
 		$values = array();
 		$result = true;
@@ -676,9 +647,7 @@ function gnn_management_handle() {
 		}
 		$target = 'design' === $operation ? 'typography' : 'setup';
 	}
-	if ( 'import' === $operation && is_wp_error( $result ) && isset( $profile ) ) {
-		$target = 'setup'; }
-	if ( ! is_wp_error( $result ) && in_array( $operation, array( 'scratch', 'import' ), true ) ) {
+	if ( ! is_wp_error( $result ) && 'scratch' === $operation ) {
 		update_option( 'gnn_setup_completed', true, false );
 	}
 	if ( 'design' === $operation ) {

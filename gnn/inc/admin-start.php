@@ -24,7 +24,7 @@ function gnn_start_steps() {
 	$accent   = strtolower( (string) get_theme_mod( 'gnn_accent_color', '#34d399' ) );
 	$home     = 'page' === get_option( 'show_on_front' ) && (int) get_option( 'page_on_front' ) > 0;
 	$contact  = '' !== trim( (string) gnn_option( 'company_email' ) ) || '' !== trim( (string) gnn_option( 'company_phone' ) );
-	$design   = 'general' !== (string) gnn_option( 'site_segment' ) && '' !== (string) gnn_option( 'site_segment' );
+	$design   = '' !== gnn_site_profile();
 	return array(
 		array(
 			'label'  => __( 'Choose a design', 'gnn' ),

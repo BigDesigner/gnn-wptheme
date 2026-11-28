@@ -11,27 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 /** Small, distinct profiles rather than copied commercial demo sites. */
 function gnn_starter_profiles() {
 	$profiles = array(
-		'pro'          => array_merge(
-			gnn_st_profile_pro(),
-			array(
-				'featured' => false,
-				'order'    => 200,
-			)
-		),
-		'commerce'     => array_merge(
-			gnn_st_profile_commerce(),
-			array(
-				'featured' => false,
-				'order'    => 210,
-			)
-		),
-		'design'       => array_merge(
-			gnn_st_profile_design(),
-			array(
-				'featured' => false,
-				'order'    => 220,
-			)
-		),
 		'architecture' => array(
 			'label'        => __( 'GNNarchitecture', 'gnn' ),
 			'accent'       => '#855c40',
@@ -49,6 +28,7 @@ function gnn_starter_profiles() {
 				'header_height'    => 84,
 			),
 			'heading'      => __( 'Space. Light. Life.', 'gnn' ),
+			'preview'      => 'assets/images/demo/architecture/image-18.jpg',
 			'description'  => __( 'Architecture and construction with a live two-column portfolio, gallery, studio and services.', 'gnn' ),
 			'featured'     => false,
 			'order'        => 230,
@@ -86,22 +66,12 @@ function gnn_starter_profiles() {
 }
 
 /**
- * Resolve former names without removing existing customer records or saved option values.
+ * Resolve a shipped design key. Older and unrecognised values use the base theme.
  *
- * @param string $name Profile key.
+ * @param string $name Stored profile key.
  */
 function gnn_starter_profile_key( $name ) {
-	$aliases = apply_filters(
-		'gnn_starter_profile_aliases',
-		array(
-			'general'      => 'pro',
-			'professional' => 'pro',
-			'original'     => 'pro',
-			'industrial'   => 'commerce',
-			'creative'     => 'design',
-		)
-	);
-	return $aliases[ $name ] ?? $name;
+	return 'architecture' === $name || gnn_dp_has( $name ) ? $name : '';
 }
 
 /**
@@ -140,7 +110,7 @@ function gnn_apply_design_preset( $name, $reset = false ) {
 			'heading_font'        => $profile['heading_font'] ?? $profile['font'],
 			'hero_style'          => 'none',
 			'container_width'     => 1440,
-			'heading_size'        => in_array( $name, array( 'architecture', 'design' ), true ) ? 100 : 80,
+			'heading_size'        => 'architecture' === $name ? 100 : 80,
 			'heading_mobile_size' => 42,
 			'accent_light'        => $profile['accent_light'] ?? $profile['accent'],
 			'accent_ink_light'    => '#ffffff',
@@ -270,17 +240,6 @@ function gnn_install_starter( $name, $editor = 'gutenberg' ) {
 	}
 	if ( 'elementor' === $editor && ! gnn_starter_elementor_available() ) {
 		return new WP_Error( 'gnn_starter_elementor', __( 'Activate Elementor 3.6 or newer before installing this edition.', 'gnn' ) );
-	}
-	if ( 'commerce' === $name && 'elementor' === $editor && ! class_exists( 'WooCommerce' ) ) {
-		return new WP_Error( 'gnn_starter_woocommerce', __( 'Activate WooCommerce and complete store setup before importing GNNcommerce.', 'gnn' ) );
-	}
-	if ( 'commerce' === $name && 'elementor' === $editor ) {
-		foreach ( array( 'shop', 'cart', 'checkout', 'myaccount' ) as $utility ) {
-			$id = wc_get_page_id( $utility );
-			if ( $id <= 0 || 'publish' !== get_post_status( $id ) ) {
-				return new WP_Error( 'gnn_starter_woocommerce', __( 'Activate WooCommerce and complete store setup before importing GNNcommerce.', 'gnn' ) );
-			}
-		}
 	}
 	$started = gnn_configuration_begin( 'starter', gnn_configuration_form_revision() );
 	if ( is_wp_error( $started ) ) {

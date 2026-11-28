@@ -1,6 +1,6 @@
 <?php
 /**
- * Original Elementor Free page sets for GNNpro, GNNcommerce and GNNdesign.
+ * Shared building blocks for Elementor Free page sets.
  * Every section is a native container with Free widgets, so it stays editable.
  *
  * @package GNN
@@ -17,12 +17,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function gnn_st_pages( $profile ) {
 	switch ( $profile ) {
-		case 'pro':
-			return gnn_st_pages_pro();
-		case 'commerce':
-			return gnn_st_pages_commerce();
-		case 'design':
-			return gnn_st_pages_design();
 		case 'architecture':
 			return gnn_st_pages_architecture();
 		default:
@@ -41,9 +35,6 @@ function gnn_st_pages( $profile ) {
  * @param string $profile Design key.
  */
 function gnn_dp_has( $profile ) {
-	if ( in_array( $profile, array( 'pro', 'commerce', 'design' ), true ) ) {
-		return true;
-	}
 	return function_exists( 'gnn_demo_get' ) && null !== gnn_demo_get( (string) $profile );
 }
 

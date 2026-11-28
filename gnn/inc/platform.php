@@ -165,16 +165,7 @@ function gnn_platform_schema() {
 				'select',
 				'general',
 				'global',
-				array(
-					'pro'          => __( 'GNNpro', 'gnn' ),
-					'commerce'     => __( 'GNNcommerce', 'gnn' ),
-					'design'       => __( 'GNNdesign', 'gnn' ),
-					'general'      => __( 'General services', 'gnn' ),
-					'professional' => __( 'Professional services', 'gnn' ),
-					'industrial'   => __( 'Industrial and B2B', 'gnn' ),
-					'creative'     => __( 'Creative agency', 'gnn' ),
-					'architecture' => __( 'Architecture', 'gnn' ),
-				) + ( function_exists( 'gnn_starter_profiles' ) ? wp_list_pluck( gnn_starter_profiles(), 'label' ) : array() ),
+				array( 'general' => __( 'None', 'gnn' ) ) + wp_list_pluck( gnn_starter_profiles(), 'label' ),
 			),
 			'portfolio_columns'       => array( __( 'Portfolio and catalog columns', 'gnn' ), 'number', 2, 'pages', 1, 4 ),
 			'portfolio_per_page'      => array( __( 'Items per page', 'gnn' ), 'number', 12, 'pages', 1, 48 ),
@@ -221,6 +212,24 @@ function gnn_platform_defaults() {
 }
 
 /**
+ * Retired Site design values are accepted in existing settings and exports.
+ *
+ * @param mixed $value Stored or submitted value.
+ * @return bool
+ */
+function gnn_is_legacy_site_design( $value ) {
+	return in_array(
+		$value,
+		array(
+			'', 'professional', 'original', 'industrial', 'creative', 'pro', 'commerce', 'design',
+			'agency', 'clinic', 'education', 'event', 'fitness', 'hotel', 'legal', 'magazine',
+			'nonprofit', 'personal', 'photography', 'realestate', 'restaurant', 'saas', 'travel', 'wedding',
+		),
+		true
+	);
+}
+
+/**
  * Validate semantic values before any shared option or theme mod is changed.
  * Strict and pattern entries of gnn_options_schema() are checked here.
  *
@@ -238,7 +247,7 @@ function gnn_validate_platform_input( $input ) {
 		if ( ! is_scalar( $value ) ) {
 			return new WP_Error( 'gnn_type', __( 'Invalid field value type. No settings were changed.', 'gnn' ) ); }
 		$invalid = is_string( $value ) && strlen( $value ) > 65536;
-		if ( 'select' === $type && ! isset( $field['choices'][ $value ] ) ) {
+		if ( 'select' === $type && ! isset( $field['choices'][ $value ] ) && ! ( 'site_segment' === $key && gnn_is_legacy_site_design( $value ) ) ) {
 			$invalid = true; }
 		if ( 'optional_number' === $type && '' !== $value && ( ! preg_match( '/^-?[0-9]+$/D', (string) $value ) || $value < $field['min'] || $value > $field['max'] ) ) {
 			$invalid = true; }
@@ -422,6 +431,9 @@ function gnn_option_sanitize_field( $key, $field, $value, $saved = array() ) {
 		case 'url':
 			return array( true, esc_url_raw( $value ) );
 		case 'select':
+			if ( 'site_segment' === $key && gnn_is_legacy_site_design( $value ) ) {
+				return array( true, $value );
+			}
 			return array( true, isset( $field['choices'][ $value ] ) ? $value : $field['default'] );
 		case 'layout':
 			$value = absint( $value );

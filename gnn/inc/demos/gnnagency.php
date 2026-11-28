@@ -110,7 +110,6 @@ function gnn_gnnagency_data() {
 			array( __( 'One colour, five materials', 'gnn' ), __( 'The same lime behaved differently on coated paper, uncoated stock, fabric, glass and screen. We kept a physical sample beside every proof and adjusted each surface on its own terms.', 'gnn' ) ),
 			array( __( 'What we leave on the workshop wall', 'gnn' ), __( 'We sort workshop notes into decisions, open questions and ideas to test. A photo of the wall gives everyone a record of what was agreed and what still needs a decision.', 'gnn' ) ),
 		),
-		'slides'   => array(),
 		'products' => array(),
 	);
 }

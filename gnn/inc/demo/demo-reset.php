@@ -103,25 +103,13 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 		return new WP_Error( 'gnn_demo_confirm', __( 'Confirm content deletion to apply this demo.', 'gnn' ) );
 	}
 	$package = 0 === strpos( $profile, 'package-' );
-	$tpl     = ! $package && function_exists( 'gnn_template' ) ? gnn_template( $profile ) : null;
 	if ( $package ) {
 		$validated = gnn_package_stage( $profile );
 		if ( is_wp_error( $validated ) ) {
 			return $validated;
 		}
-	} elseif ( $tpl ) {
-		$requires = isset( $tpl['requires'] ) && is_array( $tpl['requires'] ) ? $tpl['requires'] : array( 'elementor' );
-		if ( in_array( 'elementor', $requires, true ) && ! gnn_starter_elementor_available() ) {
-			return new WP_Error( 'gnn_demo_editor', __( 'This demo requires Elementor.', 'gnn' ) );
-		}
-		if ( in_array( 'woocommerce', $requires, true ) && ! class_exists( 'WooCommerce' ) ) {
-			return new WP_Error( 'gnn_starter_woocommerce', __( 'Activate WooCommerce and complete store setup before importing this demo.', 'gnn' ) );
-		}
-		if ( ! gnn_template_requires_met( $tpl ) ) {
-			return new WP_Error( 'gnn_template_requires', __( 'Required plugins for this demo are not active.', 'gnn' ) );
-		}
-	} elseif ( ( 'architecture' !== $profile && ! gnn_dp_has( $profile ) ) || ! gnn_starter_elementor_available() || ( 'commerce' === $profile && ! class_exists( 'WooCommerce' ) ) ) {
-		return new WP_Error( 'gnn_demo_editor', 'commerce' === $profile ? __( 'Activate WooCommerce and complete store setup before importing GNNcommerce.', 'gnn' ) : __( 'This demo requires Elementor.', 'gnn' ) );
+	} elseif ( ( 'architecture' !== $profile && ! gnn_dp_has( $profile ) ) || ! gnn_starter_elementor_available() ) {
+		return new WP_Error( 'gnn_demo_editor', __( 'This demo requires Elementor.', 'gnn' ) );
 	}
 	foreach ( array( 'publish_pages', 'edit_pages', 'edit_posts', 'upload_files' ) as $capability ) {
 		if ( ! current_user_can( $capability ) ) {
@@ -133,7 +121,7 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 			return new WP_Error( 'gnn_demo_image', __( 'A demo image is missing. Reinstall the theme.', 'gnn' ) );
 		}
 	}
-	foreach ( $package || $tpl || gnn_dp_has( $profile ) ? array() : range( 0, 28 ) as $number ) {
+	foreach ( $package || gnn_dp_has( $profile ) ? array() : range( 0, 28 ) as $number ) {
 		if ( 5 !== $number && ! is_readable( get_template_directory() . '/assets/images/demo/architecture/image-' . sprintf( '%02d', $number ) . '.jpg' ) ) {
 			return new WP_Error( 'gnn_demo_image', __( 'A demo image is missing. Reinstall the theme.', 'gnn' ) );
 		}
@@ -200,11 +188,6 @@ function gnn_demo_replace_start( $profile, $confirmed, $revision ) {
 function gnn_demo_clear_references() {
 	wp_cache_set( 'last_changed', microtime(), 'terms' );
 	$complete_options = array( 'gnn_demo_architecture_complete', 'gnn_demo_pro_complete', 'gnn_demo_commerce_complete', 'gnn_demo_design_complete', 'gnn_demo_slide_group_commerce', 'gnn_elementor_templates_installed', 'gnn_usage_index_pending' );
-	if ( function_exists( 'gnn_templates' ) ) {
-		foreach ( array_keys( gnn_templates() ) as $tpl_slug ) {
-			$complete_options[] = 'gnn_demo_' . $tpl_slug . '_complete';
-		}
-	}
 	if ( function_exists( 'gnn_demo_registry' ) ) {
 		foreach ( array_keys( gnn_demo_registry() ) as $demo_key ) {
 			$complete_options[] = 'gnn_demo_' . $demo_key . '_complete';
@@ -281,6 +264,11 @@ function gnn_demo_replace_step( $job_id ) {
 	if ( ! current_user_can( 'manage_options' ) || 'demo' !== ( $job['kind'] ?? '' ) || get_current_user_id() !== (int) $job['owner'] || ! hash_equals( $job['id'], $job_id ) || ! hash_equals( $job['site'], home_url( '/' ) ) || get_stylesheet() !== $job['theme'] || get_template() !== $job['template'] ) {
 		return new WP_Error( 'gnn_demo_owner', __( 'Only the administrator who started this installation can continue.', 'gnn' ) );
 	}
+	if ( 0 !== strpos( $job['profile'], 'package-' ) && '' === gnn_starter_profile_key( $job['profile'] ) ) {
+		// An owner who resumes a retired demo releases its job before any further deletion.
+		delete_option( 'gnn_wipe_job' );
+		return new WP_Error( 'gnn_demo_job', __( 'This installation is not available.', 'gnn' ) );
+	}
 	if ( ! array_key_exists( 'protected_post_ids', $job ) ) {
 		$kit                       = (int) get_option( 'elementor_active_kit' );
 		$job['protected_post_ids'] = 'elementor_library' === get_post_type( $kit ) && 'kit' === get_post_meta( $kit, '_elementor_template_type', true ) ? array( $kit ) : array();
@@ -355,8 +343,7 @@ function gnn_demo_replace_step( $job_id ) {
 		}
 		// Generate one attachment's derivatives per request before saving the page graph.
 		$cursor = (int) ( $job['media_cursor'] ?? 0 );
-		$is_tpl = function_exists( 'gnn_template' ) && null !== gnn_template( $job['profile'] );
-		if ( gnn_dp_has( $job['profile'] ) || $is_tpl ) {
+		if ( gnn_dp_has( $job['profile'] ) ) {
 			$cursor = 29;
 		}
 		if ( 5 === $cursor ) {
@@ -374,9 +361,7 @@ function gnn_demo_replace_step( $job_id ) {
 		}
 		gnn_demo_import_context( true );
 		try {
-			$result = $is_tpl
-				? gnn_tpl_import( $job['profile'], gnn_configuration_revision() )
-				: gnn_import_demo_site( $job['profile'], true, gnn_configuration_revision() );
+			$result = gnn_import_demo_site( $job['profile'], true, gnn_configuration_revision() );
 		} finally {
 			gnn_demo_import_context( false );
 		}
